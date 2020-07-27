@@ -2,21 +2,17 @@
 
 # 실행할 때 꼭! zeroth/s5 폴더 안에 넣고 실행해야 함
 
-# src=$1
-# lm=$2
-# make_mfcc=$3
-# mfcc=$4
-# train_data=$5
-# lang=$6
-# exp=$7
-# dest=$8
+course=$1
+user=$2
+file=$3
 
-course="00008027"
-user="104"
+# course="00008027"
+# user="104"
+# file=$base_dir/temp/test4.m4a
+
 id=$(($(date +%s%N)/1000000))
 
 base_dir=~/PycharmProjects
-file=$base_dir/temp/test4.m4a
 
 data=$base_dir/data
 trans=$base_dir/trans/$id
@@ -53,18 +49,9 @@ local/data_prep_single.sh $data/$course/$user/${course}_${user}_${id}.flac $cour
 
 ## audio를 mfcc로 변환
 steps/make_mfcc.sh --nj 1 --cmd "$cmd" $trans $make_mfcc $mfcc
-#
+
 ## cmvn stats를 계산
 steps/compute_cmvn_stats.sh $trans $mfcc_log_dir $mfcc
-
-#
-## decoding
-#steps/align_fmllr.sh --nj 1 --cmd "$cmd" $trans $lang $exp $dest
-#steps/decode_fmllr.sh --nj 1 --cmd "$cmd" $exp/graph_tgsmall $trans $exp/decode
-
-#$decoder --word-symbol-table=$exp/phone_graph/words.txt \
-#	$exp/final.mdl $exp/phone_graph/HCLG.fst "ark:spk2utt" "ark,s,cs:wav-copy scp,p:wav.scp ark:- |" \
-#	"ark:|gzip -c >$dest/lat.1.gz"
 
 steps/decode_fmllr.sh --nj 1 --cmd "$cmd" $exp/graph_tgsmall $trans $exp/decode
 
