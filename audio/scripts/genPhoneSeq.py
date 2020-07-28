@@ -849,21 +849,11 @@ def convNumber(match):
             kor += num
     return kor
 
-def converrtVocab2Pronounce():
-
-    with open('dic.pronun', 'w') as f:
+def converrtVocab2Pronounce(input_file, output_file):
+    with open(output_file, 'w') as outf, open(input_file, 'r') as inpf:
         #print('Vocab\tPronunciations', file=f)
-
-        nLine=1
-        for line in fileinput.input():
-            if nLine%500 == 0:
-                print('  %d line processed' %(nLine), end='\r', file=sys.stderr)
-                sys.stderr.flush()
-            nLine+=1
-
-            if line.strip() == '+pause+':
-                print(line.strip(), file=f)
-                continue
+        lines = inpf.readlines()
+        for line in lines:
             
             line_=line
             
@@ -912,17 +902,16 @@ def converrtVocab2Pronounce():
             tStr2 = " + ".join(tList2)
 
             # Outputs
-            if flag:
-                print(line.split('\t')[0].strip(), end='\t', file=f)
-            else:
-                print(line.strip(), end='\t', file=f)
             #print(hPronun, end='\t', file=f)
             #print(tStr2,file=f)
             #print(tStr2, end='\t',file=f)
-            print(pronun2psymbol(tStr2), file=f)
-        
-        print('  %d line processed' %(nLine), file=sys.stderr)
+            print(pronun2psymbol(tStr2), file=outf)
 
 if __name__ == '__main__':
-    converrtVocab2Pronounce()
+    if len(sys.argv) != 3:
+        print('Wrong Parameter Given')
+        print('Correct: python3 genPhoneSeq.py <input-trans-file> <output-prons-file>')
+        sys.exit()
+    
+    converrtVocab2Pronounce(sys.argv[1], sys.argv[2])
 
