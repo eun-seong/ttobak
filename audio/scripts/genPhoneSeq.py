@@ -909,7 +909,7 @@ def converrtVocab2Pronounce(input_file, output_file):
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
-        print('Wrong Parameter Given')
+        print('Wrong Argument Given')
         print('Correct: python3 genPhoneSeq.py <input-trans-file> <output-prons-file>')
         sys.exit()
     
