@@ -1,15 +1,15 @@
 import sys
 import math
 
-def get_diff_each(x, y):
+def levenshtein_distance_each(x, y):
     if x == y:
-        return 1.0
+        return 0.0
     elif int(x) == int(y):
         return (x - y) ** 2
     else:
-        return 0.0
+        return 1.0
 
-def get_diff(phone1, phone2):
+def levenshtein_distance(phone1, phone2):
     table = {
         'g': (1.0, 4.0), 'gg': (1.3, 4.0), 'kh': (1.6, 4.0), 'g2': (1.0, 4.0),
         'n': (4.0, 2.0), 'n2': (4.0, 2.0),
@@ -33,24 +33,24 @@ def get_diff(phone1, phone2):
     v1 = table[phone1]
     v2 = table[phone2]
 
-    x = get_diff_each(v1[0], v2[0])
-    y = get_diff_each(v1[1], v2[1])
+    x = levenshtein_distance_each(v1[0], v2[0])
+    y = levenshtein_distance_each(v1[1], v2[1])
 
-    return 0.0
-    # return math.sqrt((x+y) / 2.0)
+    return math.sqrt((x+y) / 2.0)
 
 def lcs_length(text1, text2):
-    text1_len = len(text1) - 1
-    text2_len = len(text2) - 1
+    text1_len = len(text1)
+    text2_len = len(text2)
 
-    cache = [[0] * (text2_len + 1) for _ in range(text1_len + 1)]
-    for i in range(1, text1_len + 1):
-        for j in range(1, text2_len + 1):
-            if text1[i] == text2[j]:
-                cache[i][j] = cache[i-1][j-1] + 1.0
-            else:
-                cache[i][j] = max(cache[i][j-1], cache[i-1][j]) + get_diff(text1[i], text2[j])
+    cache = [[0] * (text2_len+1) for _ in range(text1_len+1)]
+    for i in range(0, text1_len+1):
+        cache[i][0] = i
+    for j in range(0, text2_len+1):
+        cache[0][j] = j
 
+    for i in range(1, text1_len+1):
+        for j in range(1, text2_len+1):
+            cache[i][j] = min(cache[i][j-1]+1.0, cache[i-1][j]+1.0, cache[i-1][j-1]+levenshtein_distance(text1[i-1], text2[j-1])) 
     return cache[text1_len][text2_len]
 
 def calc_score(res, ans, final):
@@ -61,9 +61,9 @@ def calc_score(res, ans, final):
     text2 = ans_file.readlines()[0].strip().split(' ')
 
     lcs = lcs_length(text1, text2)
-    total = max(len(text2), len(text1))
+    total = max(len(text1), len(text2))
 
-    score = lcs / total * 100.0
+    score = 100.0 - (lcs / total * 100.0)
     print(score)
 
     res_file.close()
