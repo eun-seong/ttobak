@@ -8,7 +8,6 @@ You can find more information in [https://kaldi-asr.org](https://kaldi-asr.org, 
 This document contains how to build Korean GOP(Goodness of Pronounciation) calculating engine using Kaldi and Zeroth   
 
 ## 1. Installation
-----
 
 ### Requirements
 ----
@@ -205,4 +204,34 @@ ln -s "Kaldi path"/egs/wsj/s5/utils utils
 
 Change KALDI_ROOT in `path.sh` to kaldi path   
 
-### 
+### Edit Settings
+----
+
+Change 'num_jobs_initial' and 'num_jobs_final' to "number_of_gpu" in `local/chain/multi_condition/run_tdnn_1n.sh`   
+You can easily find out the number of gpu by `lspci | grep -i VGA`
+
+Change 'nCPU' in `run_openslr.sh`
+Comment out 'exit' in `run_openslr.sh`
+
+** Optional **   
+
+You can use kspon data if you download data from [http://www.aihub.or.kr](http://www.aihub.or.kr, AI HUB)   
+Put 5 Kspon Speech files in kspon directory   
+You can check files in [https://github.com/goodatlas/zeroth/pull/13/files](https://github.com/goodatlas/zeroth/pull/13/files, Kspon Updated)   
+Don't forget to change permission of files   
+
+## 2. Learning
+
+Run `sudo nvidia-smi --compute-mode=3`   
+```
+nohup ./run_openslr.sh
+[ctrl] z
+bg
+disown
+jobs
+tail -f nohup.out
+```
+
+Check if the learning is done properly   
+If not, you can start at the point by changing stage in `run_openslr.sh`   
+Learning may take more than a day   
