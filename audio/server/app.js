@@ -12,7 +12,7 @@ var server = http.createServer((request,response) => {
   		const transcript = fields.transcript;
 
   		const oldpath = files.file.path;
-  		const newpath = '/home/marble/nodejs/temp/' + files.file.name;
+  		const newpath = 'temp/' + files.file.name;
 
   		fs.rename(oldpath, newpath, (err) => {
   			if (err) throw err;
