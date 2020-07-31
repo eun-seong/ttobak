@@ -19,14 +19,13 @@ data=$BASE_DIR/data
 log=$BASE_DIR/log
 trans=$log/trans/$id
 ali=$log/ali/$id
-mfcc_log=$log/mfcc
+make_mfcc=$log/make_mfcc
+mfcc=$log/mfcc
+
 model=$BASE_DIR/model
 
 final=$FINAL_DIR/result
 
-lm=$model/lm
-mfcc=$model/mfcc
-lang=$model/lang
 exp=$model/chain_rvb
 
 decoder=$KALDI_ROOT/src/online2bin/online2-wav-nnet3-latgen-faster
@@ -40,6 +39,7 @@ if [ ! -d $log ]; then
     mkdir $log;
     mkdir $log/trans;
     mkdir $log/ali;
+    mkdir $log/make_mfcc;
     mkdir $log/mfcc;
 fi
 
@@ -57,11 +57,12 @@ mkdir $trans
 local/data_prep_single.sh $data/$course/$user/${course}_${user}_${id}.flac $course $user $data $trans
 
 ## audio를 mfcc로 변환
-steps/make_mfcc.sh --nj 1 --cmd "$cmd" $trans $mfcc_log $mfcc
+steps/make_mfcc.sh --nj 1 --cmd "$cmd" $trans $make_mfcc $mfcc
 
 ## cmvn stats를 계산
-steps/compute_cmvn_stats.sh $trans $mfcc_log $mfcc
+steps/compute_cmvn_stats.sh $trans $make_mfcc $mfcc
 
+## decode
 mkdir $ali
 $decoder --do-endpointing=false \
 	--frames-per-chunk=20 \
@@ -70,7 +71,7 @@ $decoder --do-endpointing=false \
 	--config=$exp/tdnn1n_rvb_online/conf/online.conf \
 	--verbose=2 \
 	--min-active=200 --max-active=7000 --beam=1.0 --lattice-beam=6.0 \
-	--acoustic-scale=1.0 \
+	--acoustic-scale=3.0 \
 	--frame-subsampling-factor=3 \
 	--word-symbol-table=$exp/tree_a/graph_tgsmall/words.txt \
 	$exp/tdnn1n_rvb_online/final.mdl $exp/tree_a/graph_tgsmall/HCLG.fst "ark:$trans/spk2utt" "ark,s,cs:wav-copy scp,p:$trans/wav.scp ark:- |" \

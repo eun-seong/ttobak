@@ -1,5 +1,4 @@
 # Project: 또박이
-----
 
 This is the document for **또박이** audio processing model using **Kaldi** and it's Korean recipe **Zeroth**   
 
@@ -12,7 +11,7 @@ This document contains how to build Korean GOP(Goodness of Pronounciation) calcu
 ### Requirements
 ----
 
-* LTS version Linux (I tested in 16.04 and 18.04 on Ubuntu)
+* LTS version Linux (I tested in 18.04 on Ubuntu)
 * RAM more than 64GB
 * Enough storage more than 150GB
 * NVIDIA GPU
@@ -93,8 +92,8 @@ cd tools
 Read the result and install them   
 Run again and check the result is 'all OK'   
 
-** Note **   
-If mkl is not installing properly, then run this script.   
+**Note**   
+If mkl is not installing properly, then run this script   
 
 ```
 wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
@@ -104,7 +103,7 @@ sudo apt-get update
 sudo apt-get install -f --allow-downgrades --allow-remove-essential --allow-change-held-packages -y intel-mkl-64bit-2019.1-053
 ```
 
-Compile the directory using **make**.   
+Compile the directory using **make**   
 
 **Note**   
 You can make faster compile using more processors.   
