@@ -120,9 +120,10 @@ Install port audio for audio IO.
 ./install_portaudio.sh
 ```
 
-Download srilm.tgz from [http://www.speech.sri.com/projects/srilm/download.html](http://www.speech.sri.com/projects/srilm/download.html, srilm.tgz)   
-
-Move file to tools directory and run `./install_srilm.sh`
+Install morfessor for Korean morpheme.   
+```
+./extras/install_morfessor.sh
+```
 
 ### Build Kaldi Source
 ----

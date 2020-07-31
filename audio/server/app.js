@@ -21,7 +21,7 @@ var server = http.createServer((request,response) => {
 	  		fs.rename(oldpath, newpath, (err) => {
 	  			if (err) throw err;
 	  			if (shell.exec('cd ..; ./audio2pron.sh ' + course + ' ' + user + ' ' + files.file.name).code === 0) {
-	  				fs.readFile(resultpath, 'utf8', function(err, data) {
+	  				fs.readFile(resultpath, 'utf8', (err, data) => {
 	  					response.writeHead(200, {"Content-Type": "application/json"});
 	  					response.end(JSON.stringify({course: course, user: user, status: 'ok', score: data}));
 	  				});
@@ -52,8 +52,17 @@ var server = http.createServer((request,response) => {
 
 	  		fs.rename(oldpath, newpath, (err) => {
 	  			if (err) throw err;
-	  			response.writeHead(200, {"Content-Type": "application/json"});
-	  			response.end(JSON.stringify({transcript: transcript, file: files.file.name, score: 55.0}));
+	  			if (shell.exec('cd ..; ./seg_and_audio2pron.sh "' + transcript + '" ' + files.file.name).code === 0) {
+	  				fs.readFile(resultpath, 'utf8', (err, data) => {
+	  					response.writeHead(200, {"Content-Type": "application/json"});
+	  					response.end(JSON.stringify({status: 'ok', score: data}));
+	  				});
+	  				
+	  			} else {
+	  				response.writeHead(200, {"Content-Type": "application/json"});
+	  				response.end(JSON.stringify({status: 'fail'}));
+	  			}
+	  			
 	  		});
   		} catch (TypeError) {
   			response.writeHead(200, {"Content-Type": "application/json"});
