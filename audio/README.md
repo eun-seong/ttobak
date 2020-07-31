@@ -27,6 +27,7 @@ sudo apt-get update;
 sudo apt-get install -y autoconf;
 sudo apt-get install -y automake;
 sudo apt-get install -y bzip2;
+sudo apt-get install -y ffmpeg;
 sudo apt-get install -y gawk;
 sudo apt-get install -y g++;
 sudo apt-get install -y git;

@@ -11,7 +11,10 @@ fi
 
 course=$1
 user=$2
-file=$PWD/server/temp/$3
+file=$3
+
+file_path=$PWD/server/temp/raw/$3
+result_file_path=$PWD/server/temp/result/$3.txt
 
 id=$(($(date +%s%N)/1000000))
 
@@ -49,7 +52,7 @@ fi
 
 cd $ZEROTH_ROOT
 
-ffmpeg -y -i $file -sample_fmt s16 -ar 16000 $data/$course/$user/${course}_${user}_${id}.flac
+ffmpeg -y -i $file_path -sample_fmt s16 -ar 16000 $data/$course/$user/${course}_${user}_${id}.flac
 cp $data/$course/$user/${course}_${user}_${id}.flac $final/${course}_${user}_${id}.flac
 
 # data 준비(AUDIO_INFO 파일과 trans.txt 파일 필수)
@@ -89,6 +92,8 @@ python3 local/result2phone.py $ali/temp.txt $ali/result.txt
 
 # 발음 정확도 계산
 python3 local/calc_pron_score.py $ali/result.txt $data/$course/${course}.prons.txt $final/${course}_${user}_${id}.txt
+
+cp $final/${course}_${user}_${id}.txt $result_file_path
 
 endTime=$(date +'%F %H:%M:%S')
 echo $endTime

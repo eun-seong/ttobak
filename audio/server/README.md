@@ -58,6 +58,7 @@ Here's the version what I installed:
 Run `node app.js` in server directory, and type "ip_address":8080 on your web browser   
 
 ### Proxy Setting
+---
 
 ```
 cd /etc/nginx/sites-available
