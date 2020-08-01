@@ -39,7 +39,7 @@
           formData.append('transcript', document.getElementById('transcript').value);
           formData.append('file', document.getElementById('file').files[0]);
 
-          fetch('/submit', {
+          fetch('/api/segscore', {
             method: 'POST', 
             body: formData
           })
