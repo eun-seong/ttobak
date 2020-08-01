@@ -3,7 +3,7 @@
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 		<meta content="utf-8" http-equiv="encoding">
-    <title>한글 발음 정확도 테스트 페이지</title>
+    <title>한글 발음 정확도 API 페이지</title>
   </head>
   <body>
   	<style>
@@ -21,8 +21,10 @@
   	<div class="form">
   		<form id="form" enctype="multipart/form-data">
   			<div class="form-upper">
-	  			<label for="transcript">텍스트 : </label>
-	  			<input type="text" id="transcript" name="transcript" value="" />
+	  			<label for="course">과정 : </label>
+	  			<input type="text" id="course" name="course" value="" placeholder="00008027" /> <br />
+          <label for="user">유저 : </label>
+          <input type="text" id="user" name="user" value="" placeholder="104" />
 	  		</div>
 	  		<div class="form-lower">
 	  			<label for="file">오디오 : </label>
@@ -36,10 +38,14 @@
         function sendData() {
           var formData = new FormData();
 
-          formData.append('transcript', document.getElementById('transcript').value);
+          formData.append('course', document.getElementById('course').value);
+          formData.append('user', document.getElementById('user').value);
           formData.append('file', document.getElementById('file').files[0]);
 
-          fetch('/api/segscore', {
+          fetch('/api/score', {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
             method: 'POST', 
             body: formData
           })

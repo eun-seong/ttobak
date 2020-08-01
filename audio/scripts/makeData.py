@@ -2,6 +2,8 @@ import sys
 import os
 
 def convert(transcript, d, lm):
+    if not os.path.exists(d):
+    	os.makedirs(d)
     basename = os.path.basename(d)
     text = '{}/text'.format(d)
     trans = '{}/{}.trans.txt'.format(d, basename)
