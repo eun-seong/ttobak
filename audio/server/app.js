@@ -8,17 +8,15 @@ const PORT = 8080;
 
 const app = express();
 app.use(express.static('public'));
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
 
 
 const responseError = (req, res) => {
 	res.json({request: req, status: 'fail'});
 }
 
-const form = formidable();
-
 app.post('/api/update/user', (req,res) => {
+	const form = formidable();
+
 	form.parse(req, (err, fields, files) => {
 		try {
 			const uid = fields.uid;
@@ -41,6 +39,8 @@ app.post('/api/update/user', (req,res) => {
 });
 
 app.post('/api/update/transcript', (req,res) => {
+	const form = formidable();
+
 	form.parse(req, (err, fields, files) => {
 		try {
 			const transcript = fields.transcript;
@@ -58,6 +58,8 @@ app.post('/api/update/transcript', (req,res) => {
 });
 
 app.post('/api/score', (req,res) => {
+	const form = formidable();
+
 	form.parse(req, (err, fields, files) => {
 		try {
 			const course = fields.course;
@@ -67,7 +69,7 @@ app.post('/api/score', (req,res) => {
 
   		const oldpath = files.file.path;
   		const newpath = 'temp/raw/' + files.file.name;
-			const resultpath = 'temp/result/' + files.file.name + '.txt';
+		const resultpath = 'temp/result/' + files.file.name + '.txt';
 
   		fs.rename(oldpath, newpath, (err) => {
   			if (err) throw err;
@@ -89,6 +91,8 @@ app.post('/api/score', (req,res) => {
 });
 
 app.post('/api/segscore', (req,res) => {
+	const form = formidable();
+	
 	form.parse(req, (err, fields, files) => {
 		try {
 			const transcript = fields.transcript;
@@ -119,12 +123,12 @@ app.post('/api/segscore', (req,res) => {
 
 
 app.get('/', (req,res) => {
-	res.writeHead(299, {"Content-Type": "text/html"});
+	res.writeHead(200, {"Content-Type": "text/html"});
 	fs.createReadStream("./public/index.html").pipe(res);
 });
 
 app.get('/api', (req,res) => {
-	res.writeHead(299, {"Content-Type": "text/html"});
+	res.writeHead(200, {"Content-Type": "text/html"});
 	fs.createReadStream("./public/api.html").pipe(res);
 });
 
