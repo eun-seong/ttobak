@@ -1,0 +1,22 @@
+startTime=2020-08-03 16:49:45
+  00008027 104 m
+utils/validate_data_dir.sh: WARNING: you have only one speaker.  This probably a bad idea.
+   Search for the word 'bold' in http://kaldi-asr.org/doc/data_prep.html
+   for more information.
+utils/validate_data_dir.sh: Successfully validated data-directory /home/ubuntu/ttobagi/log/trans/1596473385048
+local/data_prep_single.sh: successfully prepared data in /home/ubuntu/ttobagi/log/trans/1596473385048
+steps/make_mfcc.sh --nj 1 --cmd run.pl --mem 2G /home/ubuntu/ttobagi/log/trans/1596473385048 /home/ubuntu/ttobagi/log/make_mfcc /home/ubuntu/ttobagi/log/mfcc
+utils/validate_data_dir.sh: WARNING: you have only one speaker.  This probably a bad idea.
+   Search for the word 'bold' in http://kaldi-asr.org/doc/data_prep.html
+   for more information.
+utils/validate_data_dir.sh: Successfully validated data-directory /home/ubuntu/ttobagi/log/trans/1596473385048
+steps/make_mfcc.sh: [info]: no segments file exists: assuming wav.scp indexed by utterance.
+steps/compute_cmvn_stats.sh /home/ubuntu/ttobagi/log/trans/1596473385048 /home/ubuntu/ttobagi/log/make_mfcc /home/ubuntu/ttobagi/log/mfcc
+Succeeded creating CMVN stats for 1596473385048
+/home/ubuntu/ttobagi/log/ali/1596473385048/temp.txt /home/ubuntu/ttobagi/log/ali/1596473385048/result.txt
+/home/ubuntu/ttobagi/log/ali/1596473385048/result.txt /home/ubuntu/ttobagi/data/00008027/00008027.prons.txt /home/ubuntu/ttobagi/result/00008027_104_1596473385048.txt
+75.17497471473587
+2020-08-03 16:49:57
+t/00008027_104_1596473384842.txt
+75.17497471473587
+2020-08-03 16:49:57
