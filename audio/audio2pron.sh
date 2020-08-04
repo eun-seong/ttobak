@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 if [ "$#" -ne 3 ]; then
   echo "Usage: $0 <course-id> <user-id> <file>"
@@ -35,7 +35,7 @@ decoder=$KALDI_ROOT/src/online2bin/online2-wav-nnet3-latgen-faster
 
 cmd="run.pl --mem 2G"
 
-startTime=startTime=$(date +'%F %H:%M:%S')
+startTime=$(date +'%F %H:%M:%S')
 echo $startTime
 
 if [ ! -d $log ]; then

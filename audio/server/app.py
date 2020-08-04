@@ -12,6 +12,10 @@ app = Flask(__name__)
 
 ALLOWED_EXTENSIONS = set(['mp3', 'm4a', 'flac', 'wav', 'aac', 'ogg', 'wma', 'aac', '3gp'])
 
+PATH = {
+    'PATH': "/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+}
+
 ERROR_CODE = {
     0: 'Success',
     1: 'Insufficient Parameters',
@@ -96,9 +100,7 @@ def score():
 
     file.save('temp/raw/' + filename)
 
-    log = open('log', 'w')
-    subprocess.call(['./audio2pron.sh', course, user, filename], cwd=os.path.abspath('..'), stdout=log)
-    log.close()
+    subprocess.call('./audio2pron.sh {} {} {}'.format(course, user, filename), shell=True, cwd=os.path.abspath('..'))
 
     if not os.path.isfile('temp/result/{}.txt'.format(filename)):
         return error(request.path, 4)
@@ -127,9 +129,7 @@ def seg_score():
 
     file.save('temp/raw/' + filename)
 
-    log = open('log', 'w')
-    subprocess.call(['./seg_and_audio2pron.sh', transcript, filename], cwd=os.path.abspath('..'), stdout=log)
-    log.close()
+    subprocess.call('./seg_and_audio2pron.sh "{}" {}'.format(transcript, filename), shell=True, cwd=os.path.abspath('..'))
 
     if not os.path.isfile('temp/result/{}.txt'.format(filename)):
         return error(request.path, 4)

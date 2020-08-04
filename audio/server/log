@@ -1,22 +1,90 @@
-startTime=2020-08-03 16:49:45
+startTime=2020-08-04 12:02:20
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/home/ubuntu/ttobagi/audio/server/temp/raw/1596542540704.m4a':
+  Metadata:
+    major_brand     : 3gp4
+    minor_version   : 0
+    compatible_brands: isom3gp4
+    creation_time   : 2020-06-20T09:32:20.000000Z
+    com.android.version: 8.0.0
+  Duration: 00:00:09.92, start: 0.000000, bitrate: 155 kb/s
+    Stream #0:0(eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, mono, fltp, 128 kb/s (default)
+    Metadata:
+      creation_time   : 2020-06-20T09:32:20.000000Z
+      handler_name    : SoundHandle
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> flac (native))
+Press [q] to stop, [?] for help
+Output #0, flac, to '/home/ubuntu/ttobagi/data/00008027/104/00008027_104_1596542540775.flac':
+  Metadata:
+    major_brand     : 3gp4
+    minor_version   : 0
+    compatible_brands: isom3gp4
+    com.android.version: 8.0.0
+    encoder         : Lavf57.83.100
+    Stream #0:0(eng): Audio: flac, 16000 Hz, mono, s16, 128 kb/s (default)
+    Metadata:
+      creation_time   : 2020-06-20T09:32:20.000000Z
+      handler_name    : SoundHandle
+      encoder         : Lavc57.107.100 flac
+size=     173kB time=00:00:09.91 bitrate= 142.9kbits/s speed=  66x    
+video:0kB audio:165kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 4.971072%
   00008027 104 m
+utils/data/get_utt2dur.sh: segments file does not exist so getting durations from wave files
+utils/data/get_utt2dur.sh: could not get utterance lengths from sphere-file headers, using wav-to-duration
+utils/data/get_utt2dur.sh: computed /home/ubuntu/ttobagi/log/trans/1596542540775/utt2dur
 utils/validate_data_dir.sh: WARNING: you have only one speaker.  This probably a bad idea.
    Search for the word 'bold' in http://kaldi-asr.org/doc/data_prep.html
    for more information.
-utils/validate_data_dir.sh: Successfully validated data-directory /home/ubuntu/ttobagi/log/trans/1596473385048
-local/data_prep_single.sh: successfully prepared data in /home/ubuntu/ttobagi/log/trans/1596473385048
-steps/make_mfcc.sh --nj 1 --cmd run.pl --mem 2G /home/ubuntu/ttobagi/log/trans/1596473385048 /home/ubuntu/ttobagi/log/make_mfcc /home/ubuntu/ttobagi/log/mfcc
+utils/validate_data_dir.sh: Successfully validated data-directory /home/ubuntu/ttobagi/log/trans/1596542540775
+local/data_prep_single.sh: successfully prepared data in /home/ubuntu/ttobagi/log/trans/1596542540775
+steps/make_mfcc.sh --nj 1 --cmd run.pl --mem 2G /home/ubuntu/ttobagi/log/trans/1596542540775 /home/ubuntu/ttobagi/log/make_mfcc /home/ubuntu/ttobagi/log/mfcc
 utils/validate_data_dir.sh: WARNING: you have only one speaker.  This probably a bad idea.
    Search for the word 'bold' in http://kaldi-asr.org/doc/data_prep.html
    for more information.
-utils/validate_data_dir.sh: Successfully validated data-directory /home/ubuntu/ttobagi/log/trans/1596473385048
+utils/validate_data_dir.sh: Successfully validated data-directory /home/ubuntu/ttobagi/log/trans/1596542540775
 steps/make_mfcc.sh: [info]: no segments file exists: assuming wav.scp indexed by utterance.
-steps/compute_cmvn_stats.sh /home/ubuntu/ttobagi/log/trans/1596473385048 /home/ubuntu/ttobagi/log/make_mfcc /home/ubuntu/ttobagi/log/mfcc
-Succeeded creating CMVN stats for 1596473385048
-/home/ubuntu/ttobagi/log/ali/1596473385048/temp.txt /home/ubuntu/ttobagi/log/ali/1596473385048/result.txt
-/home/ubuntu/ttobagi/log/ali/1596473385048/result.txt /home/ubuntu/ttobagi/data/00008027/00008027.prons.txt /home/ubuntu/ttobagi/result/00008027_104_1596473385048.txt
+steps/make_mfcc.sh: Succeeded creating MFCC features for 1596542540775
+steps/compute_cmvn_stats.sh /home/ubuntu/ttobagi/log/trans/1596542540775 /home/ubuntu/ttobagi/log/make_mfcc /home/ubuntu/ttobagi/log/mfcc
+Succeeded creating CMVN stats for 1596542540775
+/home/ubuntu/ttobagi/kaldi/src/online2bin/online2-wav-nnet3-latgen-faster --do-endpointing=false --frames-per-chunk=20 --extra-left-context-initial=0 --online=false --config=/home/ubuntu/ttobagi/model/chain_rvb/tdnn1n_rvb_online/conf/online.conf --verbose=2 --min-active=200 --max-active=7000 --beam=1.0 --lattice-beam=6.0 --acoustic-scale=3.0 --frame-subsampling-factor=3 --word-symbol-table=/home/ubuntu/ttobagi/model/chain_rvb/tree_a/graph_tgsmall/words.txt /home/ubuntu/ttobagi/model/chain_rvb/tdnn1n_rvb_online/final.mdl /home/ubuntu/ttobagi/model/chain_rvb/tree_a/graph_tgsmall/HCLG.fst ark:/home/ubuntu/ttobagi/log/trans/1596542540775/spk2utt 'ark,s,cs:wav-copy scp,p:/home/ubuntu/ttobagi/log/trans/1596542540775/wav.scp ark:- |' 'ark:|gzip -c >/home/ubuntu/ttobagi/log/ali/1596542540775/lat.1.gz' 
+LOG (online2-wav-nnet3-latgen-faster[5.5.765~1-f88d5]:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (online2-wav-nnet3-latgen-faster[5.5.765~1-f88d5]:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (online2-wav-nnet3-latgen-faster[5.5.765~1-f88d5]:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 1 orphan nodes.
+LOG (online2-wav-nnet3-latgen-faster[5.5.765~1-f88d5]:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 2 orphan components.
+LOG (online2-wav-nnet3-latgen-faster[5.5.765~1-f88d5]:Collapse():nnet-utils.cc:1472) Added 1 components, removed 2
+LOG (online2-wav-nnet3-latgen-faster[5.5.765~1-f88d5]:CompileLooped():nnet-compile-looped.cc:345) Spent 0.170717 seconds in looped compilation.
+wav-copy scp,p:/home/ubuntu/ttobagi/log/trans/1596542540775/wav.scp ark:- 
+LOG (wav-copy[5.5.765~1-f88d5]:main():wav-copy.cc:68) Copied 1 wave files
+VLOG[2] (online2-wav-nnet3-latgen-faster[5.5.765~1-f88d5]:GetDiagnosticsAndPrintOutput():online2-wav-nnet3-latgen-faster.cc:59) Likelihood per frame for utterance 00008027_104_1596542540775 is 9.32042 over 330 frames, = -1.45566,-10.7761
+00008027_104_1596542540775 단 바드 아산 솔 김보 엽 간 [2] 를 결코 어 측 시타 교행 타이 의 이자 발라 학 구 와 선 갑호 늪 
+VLOG[2] (online2-wav-nnet3-latgen-faster[5.5.765~1-f88d5]:OutputStats():online-timing.cc:106) Latency 1.53172 seconds out of 9.91494, for utterance 00008027_104_1596542540775
+LOG (online2-wav-nnet3-latgen-faster[5.5.765~1-f88d5]:main():online2-wav-nnet3-latgen-faster.cc:296) Decoded utterance 00008027_104_1596542540775
+VLOG[2] (online2-wav-nnet3-latgen-faster[5.5.765~1-f88d5]:PrintDiagnostics():online-ivector-feature.cc:369) By the end of the utterance, objf change/frame from estimating iVector (vs. default) was 10.2089 and iVector length was 10.9595
+LOG (online2-wav-nnet3-latgen-faster[5.5.765~1-f88d5]:Print():online-timing.cc:55) Timing stats: real-time factor for offline decoding was 0.157662 = 1.5632 seconds  / 9.91494 seconds.
+LOG (online2-wav-nnet3-latgen-faster[5.5.765~1-f88d5]:main():online2-wav-nnet3-latgen-faster.cc:302) Decoded 1 utterances, 0 with errors.
+LOG (online2-wav-nnet3-latgen-faster[5.5.765~1-f88d5]:main():online2-wav-nnet3-latgen-faster.cc:304) Overall likelihood per frame was 9.32042 per frame over 330 frames.
+/home/ubuntu/ttobagi/kaldi/src/latbin/lattice-align-phones --replace-output-symbols=true /home/ubuntu/ttobagi/model/chain_rvb/tdnn1n_rvb_online/final.mdl 'ark:gunzip -c /home/ubuntu/ttobagi/log/ali/1596542540775/lat.1.gz|' ark:/home/ubuntu/ttobagi/log/ali/1596542540775/phone_aligned.lats 
+LOG (lattice-align-phones[5.5.765~1-f88d5]:main():lattice-align-phones.cc:104) Successfully aligned 1 lattices; 0 had errors.
+/home/ubuntu/ttobagi/kaldi/src/latbin/lattice-best-path ark:/home/ubuntu/ttobagi/log/ali/1596542540775/phone_aligned.lats ark:/home/ubuntu/ttobagi/log/ali/1596542540775/out.tra ark:/home/ubuntu/ttobagi/log/ali/1596542540775/out.ali 
+LOG (lattice-best-path[5.5.765~1-f88d5]:main():lattice-best-path.cc:99) For utterance 00008027_104_1596542540775, best cost 451.188 + -1171.52 = -720.331 over 330 frames.
+LOG (lattice-best-path[5.5.765~1-f88d5]:main():lattice-best-path.cc:124) Overall cost per frame is -2.18282 = 1.36724 [graph] + -3.55006 [acoustic] over 330 frames.
+LOG (lattice-best-path[5.5.765~1-f88d5]:main():lattice-best-path.cc:128) Done 1 lattices, failed for 0
+/home/ubuntu/ttobagi/kaldi/src/bin/show-alignments /home/ubuntu/ttobagi/model/chain_rvb/tree_a/graph_tgsmall/phones.txt /home/ubuntu/ttobagi/model/chain_rvb/tdnn1n_rvb_online/final.mdl ark:/home/ubuntu/ttobagi/log/ali/1596542540775/out.ali 
+/home/ubuntu/ttobagi/log/ali/1596542540775/temp.txt /home/ubuntu/ttobagi/log/ali/1596542540775/result.txt
+/home/ubuntu/ttobagi/log/ali/1596542540775/result.txt /home/ubuntu/ttobagi/data/00008027/00008027.prons.txt /home/ubuntu/ttobagi/result/00008027_104_1596542540775.txt
 75.17497471473587
-2020-08-03 16:49:57
-t/00008027_104_1596473384842.txt
-75.17497471473587
-2020-08-03 16:49:57
+2020-08-04 12:02:34
+
+-04 12:02:32
