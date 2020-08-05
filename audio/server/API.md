@@ -18,7 +18,7 @@ DB에 student나 과정이 추가될 때마다 호출해야 하는 API
 * **Data Params**   
     `uid=[alphanumeric] | name=[alphanumeric] | gender=['m' or 'f']` 
 * **Success Response**   
-    * Code: 200
+    * Code: 200   
       Content: `{'request': '/api/user/update', 'status': 'Success'}`
 * **Error Response**   
     * uid, name, gender가 data param에 없을 때
@@ -38,7 +38,7 @@ DB에 student나 과정이 추가될 때마다 호출해야 하는 API
 * **Data Params**   
     `transcript="[alphanumeric]" | course=[alphanumeric]`
 * **Success Response**   
-    * Code: 200
+    * Code: 200   
       Content: `{'request': '/api/transcript/update', 'status': 'Success'}`
 * **Error Response**   
     * transcript나 course가 data param에 없을 때   
@@ -62,7 +62,7 @@ DB에 student나 과정이 추가될 때마다 호출해야 하는 API
 * **Data Params**   
     `course=[alphanumeric] | user=[alphanumeric] | file=[file]` 
 * **Success Response**   
-    * Code: 200
+    * Code: 200   
       Content: `{'request': '/api/score', 'status': 'Success', 'score': [float]}`
 * **Error Response**   
     * course, user, file이 data param에 없을 때   
