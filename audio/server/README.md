@@ -39,6 +39,7 @@ Also, you should install **konlpy** and **mecab**
 
 ```
 pip3 install konlpy
+bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
 
 cd /tmp
 cd mecab-python-0.996
