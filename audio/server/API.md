@@ -52,7 +52,7 @@ DB에 student나 과정이 추가될 때마다 호출해야 하는 API
 
 **score**   
 
-* **URL**
+* **URL**   
     /api/score
 * **Method**   
     `POST`
