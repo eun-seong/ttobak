@@ -72,11 +72,11 @@ def update_transcript():
 
     lm = '../../model/lm'
     target = '../../data/{}'.format(course)
-    child = subprocess.Popen('python3 makeData.py "{}" {} {}'.format(transcript, lm, target), cwd='../scripts')
-    returnCode = child.poll()
-
-    if returnCode != 0:
+    try:
+        subprocess.run('python3 makeData.py "{}" {} {}'.format(transcript, lm, target), shell=True, check=True, cwd=os.path.abspath('../scripts'))
+    except:
         return error(request.path, 4)
+
 
     return jsonify({'request': request.path, 'status': 'Success'})
 
@@ -100,7 +100,7 @@ def score():
 
     file.save('temp/raw/' + filename)
 
-    subprocess.call('./audio2pron.sh {} {} {}'.format(course, user, filename), shell=True, cwd=os.path.abspath('..'))
+    subprocess.run('./audio2pron.sh {} {} {}'.format(course, user, filename), shell=True, cwd=os.path.abspath('..'))
 
     if not os.path.isfile('temp/result/{}.txt'.format(filename)):
         return error(request.path, 4)
@@ -129,7 +129,7 @@ def seg_score():
 
     file.save('temp/raw/' + filename)
 
-    subprocess.call('./seg_and_audio2pron.sh "{}" {}'.format(transcript, filename), shell=True, cwd=os.path.abspath('..'))
+    subprocess.run('./seg_and_audio2pron.sh "{}" {}'.format(transcript, filename), shell=True, cwd=os.path.abspath('..'))
 
     if not os.path.isfile('temp/result/{}.txt'.format(filename)):
         return error(request.path, 4)
