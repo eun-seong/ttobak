@@ -9,6 +9,7 @@ API Document for **또박이**
 DB에 student나 과정이 추가될 때마다 호출해야 하는 API
 
 **user**   
+---
 
 * **URL**   
     /api/user/update
@@ -28,6 +29,7 @@ DB에 student나 과정이 추가될 때마다 호출해야 하는 API
       Content: `{'request': '/api/user/update', 'status': 'Fail', 'error': 'Invalid Parameters'}`
 
 **transcript**   
+---
 
 * **URL**   
     /api/transcript/update
@@ -51,6 +53,7 @@ DB에 student나 과정이 추가될 때마다 호출해야 하는 API
 발음 정확도 계산을 위해 호출해야 하는 API
 
 **score**   
+---
 
 * **URL**   
     /api/score
