@@ -34,23 +34,23 @@ def index():
 def api_index():
     return render_template('api.html')
 
-@app.route('/api/update/user', methods=['POST'])
+@app.route('/api/user/update', methods=['POST'])
 def update_user():
     if "uid" not in request.form or \
-        "user" not in request.form or \
+        "name" not in request.form or \
         "gender" not in request.form:
         return error(request.path, 1)
 
     uid = request.form['uid']
-    user = request.form['user']
+    name = request.form['name']
     gender = request.form['gender']
 
-    if uid == '' or user == '' or gender == '':
+    if uid == '' or name == '' or gender == '':
         return error(request.path, 2)
     if gender != 'm' and gender != 'f':
         return error(request.path, 5)
 
-    line = '{}|{}|{}\n'.format(uid, user, gender)
+    line = '{}|{}|{}\n'.format(uid, name, gender)
 
     audio_info = open('../../data/AUDIO_INFO', 'a')
     audio_info.write(line)
@@ -58,7 +58,7 @@ def update_user():
 
     return jsonify({'request': request.path, 'status': 'Success'})
 
-@app.route('/api/update/transcript', methods=['POST'])
+@app.route('/api/transcript/update', methods=['POST'])
 def update_transcript():
     if 'transcript' not in request.form or \
         'course' not in request.form:
