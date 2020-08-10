@@ -1,6 +1,7 @@
 # Server Configuration
 
-This is the document how I start **Nginx** + **Gunicorn** + Flask server   
+This is the document how I start **Nginx** + **Gunicorn** + **Sanic** server   
+The reason why I use Sanic is to make request async   
 
 ## Install Python Components
 ---
@@ -28,11 +29,11 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-Install **Flask** and **Gunicorn**   
+Install **Sanic** and **Gunicorn**   
 
 ```
 pip3 install wheel
-pip3 install gunicorn flask
+pip3 install gunicorn sanic
 ```
 
 Also, you should install **konlpy** and **mecab**   
@@ -84,7 +85,7 @@ User=[username]
 Group=www-data
 WorkingDirectory=[server directory]
 Environment="PATH=[server directory]:/bin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
-ExecStart=[server directory]/venv/bin/gunicorn --workers 5 --threads 4 -k gevent --bind unix:[server directory]/app.sock -m 007 -t 60 wsgi:app
+ExecStart=[server directory]/venv/bin/gunicorn --workers 5 --threads 4 --worker-class sanic.worker.GunicornWorker --bind unix:[server directory]/app.sock -m 007 -t 60 wsgi:app
 
 [Install]
 WantedBy=multi-user.target
@@ -97,7 +98,7 @@ sudo systemctl start app
 sudo systemctl enable app
 ```
 
-Check service is runnign properly
+Check service is running properly
 
 ```
 sudo systemctl status app
