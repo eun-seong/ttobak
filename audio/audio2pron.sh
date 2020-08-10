@@ -29,7 +29,7 @@ model=$BASE_DIR/model
 
 final=$FINAL_DIR/result
 
-exp=$model/chain_rvb
+exp=$model/chain_rvb2
 
 decoder=$KALDI_ROOT/src/online2bin/online2-wav-nnet3-latgen-faster
 

@@ -1,14 +1,12 @@
-from flask import Flask
-from flask import render_template
-from flask import request
-from flask import jsonify
-from werkzeug.utils import secure_filename
+from sanic import Sanic
+from sanic import response
+from sanic.response import json
 
 import subprocess
 import time
 import os
 
-app = Flask(__name__)
+app = Sanic(__name__)
 
 ALLOWED_EXTENSIONS = set(['mp3', 'm4a', 'flac', 'wav', 'aac', 'ogg', 'wma', 'aac', '3gp'])
 
@@ -25,25 +23,29 @@ ERROR_CODE = {
     5: 'Invalid Parameters',
 }
 
+@app.route('/test')
+async def test(request):
+    time.sleep(5)
+    return await response.file('templates/api.html')
 
 @app.route('/')
-def index():
-    return render_template('index.html')
+async def index(request):
+    return await response.file('templates/index.html')
 
 @app.route('/api')
-def api_index():
-    return render_template('api.html')
+async def api_index(request):
+    return await response.file('templates/api.html')
 
 @app.route('/api/user/update', methods=['POST'])
-def update_user():
+async def update_user(request):
     if "uid" not in request.form or \
         "name" not in request.form or \
         "gender" not in request.form:
         return error(request.path, 1)
 
-    uid = request.form['uid']
-    name = request.form['name']
-    gender = request.form['gender']
+    uid = request.form.get('uid')
+    name = request.form.get('name')
+    gender = request.form.get('gender')
 
     if uid == '' or name == '' or gender == '':
         return error(request.path, 2)
@@ -56,16 +58,16 @@ def update_user():
     audio_info.write(line)
     audio_info.close()
 
-    return jsonify({'request': request.path, 'status': 'Success'})
+    return json({'request': request.path, 'status': 'Success'})
 
 @app.route('/api/transcript/update', methods=['POST'])
-def update_transcript():
+async def update_transcript(request):
     if 'transcript' not in request.form or \
         'course' not in request.form:
         return error(request.path, 1)
 
-    transcript = request.form['transcript']
-    course = request.form['course']
+    transcript = request.form.get('transcript')
+    course = request.form.get('course')
 
     if transcript == '' or course == '':
         return error(request.path, 2)
@@ -77,28 +79,29 @@ def update_transcript():
     except:
         return error(request.path, 4)
 
-
-    return jsonify({'request': request.path, 'status': 'Success'})
+    return json({'request': request.path, 'status': 'Success'})
 
 @app.route('/api/score', methods=['POST'])
-def score():
+async def score(request):
     if "course" not in request.form or \
         "user" not in request.form or \
         "file" not in request.files:
         return error(request.path, 1)
 
-    course = request.form['course']
-    user = request.form['user']
-    file = request.files['file']
+    course = request.form.get('course')
+    user = request.form.get('user')
+    file = request.files.get('file')
 
     if course == '' or user == '':
         return error(request.path, 2)
 
-    filename = make_filename(file.filename)
+    filename = make_filename(file.name)
     if filename == '':
         return error(request.path, 3)
 
-    file.save('temp/raw/' + filename)
+    f = open('temp/raw/' + filename, 'wb')
+    f.write(file.body)
+    f.close()
 
     subprocess.run('./audio2pron.sh {} {} {}'.format(course, user, filename), shell=True, cwd=os.path.abspath('..'))
 
@@ -109,25 +112,27 @@ def score():
     result = result_file.readline().strip()
     result_file.close()
 
-    return jsonify({'request': request.path, 'status': 'Success', 'score': float(result)})
+    return json({'request': request.path, 'status': 'Success', 'score': float(result)})
 
 @app.route('/api/segscore', methods=['POST'])
-def seg_score():
+async def seg_score(request):
     if 'transcript' not in request.form or \
         'file' not in request.files:
         return error(request.path, 1)
 
-    transcript = request.form['transcript']
-    file = request.files['file']
+    transcript = request.form.get('transcript')
+    file = request.files.get('file')
 
     if transcript == '':
         return error(request.path, 2)
 
-    filename = make_filename(file.filename)
+    filename = make_filename(file.name)
     if filename == '':
         return error(request.path, 3)
-
-    file.save('temp/raw/' + filename)
+    
+    f = open('temp/raw/' + filename, 'wb')
+    f.write(file.body)
+    f.close()
 
     subprocess.run('./seg_and_audio2pron.sh "{}" {}'.format(transcript, filename), shell=True, cwd=os.path.abspath('..'))
 
@@ -138,7 +143,7 @@ def seg_score():
     result = result_file.readline().strip()
     result_file.close()
 
-    return jsonify({'request': request.path, 'status': 'Success', 'score': float(result)})
+    return json({'request': request.path, 'status': 'Success', 'score': float(result)})
 
 
 def make_filename(filename):
@@ -151,7 +156,7 @@ def make_filename(filename):
     return '{}.{}'.format(str(millis), ext)
 
 def error(req, err):
-    return jsonify({'request': req, 'status': 'Fail', 'error': ERROR_CODE[err]})
+    return json({'request': req, 'status': 'Fail', 'error': ERROR_CODE[err]})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
