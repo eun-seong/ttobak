@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 
 import Button_Pause from 'img/bt_pause.png';
-import Background from 'img/t2_counting/t2_background.png'
-import Tree from 'img/t2_counting/tree.png'
-import Basket from 'img/t2_counting/basket.png';
+import Background from 'img/d2_recognition/d2_background.png'
+import Box1 from 'img/d2_recognition/box1-1.png';
+import Box2 from 'img/d2_recognition/box2-1.png';
 import TTobak from 'img/ttobak/ttobak1-1.png';
 
 /* styled-components */
@@ -25,36 +24,36 @@ const PauseButton = styled(Img)`
     margin: 10px;
 `;
 
-const TreeImg = styled(Img)`
-    width : 60%;
-    opacity: 0.0;
-    top:0;
-    left:0;
+const BoxComponent = styled.div`
+    position: absolute;
+    display: flex;
+    bottom: 10%;
+    justify-content:center;
 `;
 
-const BasketImg = styled(Img)`
-    position: absolute;
-    width: 45%;
-    top: 52%;
-    right: 12%;
+const BoxImg = styled.img`
+    width: 20%;
 `;
 
 const TTobakComponent = styled.img`
     position:absolute;
-    width: 18%;
-    top: 4%;
-    right: 20%;
+    width: 16%;
+    top: 3%;
+    right: 43%;
 `;
 
-const Counting = () => {
+const Recognition = () => {
     return (
         <div>
             <Link to=''><PauseButton src={Button_Pause} alt='일시정지' /></Link>
             <TTobakComponent src={TTobak} alt='또박이' />
-            <BasketImg src={Basket} alt='바구니' />
+            <BoxComponent>
+                <BoxImg src={Box1} alt='box1' />
+                <BoxImg src={Box2} alt='box2' />
+            </BoxComponent>
             <BackgroundImg src={Background} alt='배경화면' />
         </div>
     );
 }
 
-export default Counting;
+export default Recognition;

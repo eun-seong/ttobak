@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Button_Pause from 'img/bt_pause.png';
-// import Background from 'img/t3_phoneme/d1_background.png'
+import Background from 'img/d1_sweep/d1_background.png'
+import DownButton from 'img/d1_sweep/down.png'
+import UpButton from 'img/d1_sweep/up.png'
+import AnswerBox from 'img/d1_sweep/box.png';
 import TTobak from 'img/ttobak/ttobak1-1.png';
 
 /* styled-components */
@@ -61,13 +64,21 @@ const TTobakComponent = styled.img`
     left: 3%;
 `;
 
-const Phoneme = () => {
+const Sweep = () => {
     return (
         <div>
             <Link to=''><PauseButton src={Button_Pause} alt='일시정지' /></Link>
-            {/* <BackgroundImg src={Background} alt='배경화면' /> */}
+            <TTobakComponent src={TTobak} alt='또박이' />
+            <Component>
+                <AnswerBoxImg src={AnswerBox} alt='answerbox' />
+                <ButtonComponent>
+                    <UpButtonImg src={UpButton} alt='up' />
+                    <DownButtonImg src={DownButton} alt='up' />
+                </ButtonComponent>
+            </Component>
+            <BackgroundImg src={Background} alt='배경화면' />
         </div>
     );
 }
 
-export default Phoneme;
+export default Sweep;

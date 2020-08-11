@@ -61,7 +61,7 @@ const TTobakComponent = styled.img`
     left: 3%;
 `;
 
-const Phoneme = () => {
+const Attention = () => {
     return (
         <div>
             <Link to=''><PauseButton src={Button_Pause} alt='일시정지' /></Link>
@@ -70,4 +70,4 @@ const Phoneme = () => {
     );
 }
 
-export default Phoneme;
+export default Attention;

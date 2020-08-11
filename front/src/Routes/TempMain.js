@@ -7,8 +7,8 @@ function TempMain() {
             <div>
                 검사
                 <Link to='/diagnose/sweep'><button>청각처리속도</button></Link>
-                <Link to='/diagnose/listening'><button>어음청취력</button></Link>
-                <Link to='/'><button>선택적 집중력</button></Link>
+                <Link to='/diagnose/recognition'><button>어음청취력</button></Link>
+                <Link to='/diagnose/attention'><button>선택적 집중력</button></Link>
             </div>
             <div>
                 치료
