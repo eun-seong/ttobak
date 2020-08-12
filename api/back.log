@@ -1106,6 +1106,7 @@ Bad Request: /
 Invalid HTTP_HOST header: '13.125.197.119:8000'. You may need to add '13.125.197.119' to ALLOWED_HOSTS.
 Bad Request: /
 [pid: 16059|app: 0|req: 2/6] 89.248.174.166 () {34 vars in 444 bytes} [Wed Aug  5 19:29:13 2020] GET / => generated 56876 bytes in 31 msecs (HTTP/1.1 400) 2 headers in 67 bytes (1 switches on core 0)
+<<<<<<< HEAD
 [pid: 16057|app: 0|req: 1/7] 39.118.205.97 () {42 vars in 849 bytes} [Wed Aug  5 21:14:06 2020] GET /api_test/ => generated 161 bytes in 256 msecs (HTTP/1.1 200) 7 headers in 284 bytes (1 switches on core 0)
 [pid: 16057|app: 0|req: 2/8] 39.118.205.97 () {42 vars in 849 bytes} [Wed Aug  5 21:36:54 2020] GET /api_test/ => generated 161 bytes in 10 msecs (HTTP/1.1 200) 7 headers in 284 bytes (1 switches on core 0)
 [pid: 16058|app: 0|req: 5/9] 39.118.205.97 () {42 vars in 849 bytes} [Wed Aug  5 21:37:46 2020] GET /api_test/ => generated 161 bytes in 10 msecs (HTTP/1.1 200) 7 headers in 284 bytes (1 switches on core 0)
@@ -5314,3 +5315,5 @@ Unauthorized: /api/sign_in
 [pid: 10925|app: 0|req: 1/2] 61.72.162.44 () {48 vars in 1232 bytes} [Wed Aug 12 15:23:05 2020] POST /api/sign_in => generated 29 bytes in 343 msecs (HTTP/1.1 401) 7 headers in 273 bytes (1 switches on core 0)
 Bad Request: /api/sign_in
 [pid: 10927|app: 0|req: 1/3] 61.72.162.44 () {48 vars in 1232 bytes} [Wed Aug 12 15:23:14 2020] POST /api/sign_in => generated 36 bytes in 35 msecs (HTTP/1.1 400) 7 headers in 272 bytes (1 switches on core 0)
+=======
+>>>>>>> 53b8fa38b608a77d61e0cf5554285a5c5edc2d47

@@ -27,7 +27,11 @@ SECRET_KEY = 'cm6)q4k#-=q^ll8#au0tuam9m)mq4ofku1r0+yx4$gtiv1+l4_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['ec2-13-125-197-119.ap-northeast-2.compute.amazonaws.com','13.125.197.119']
+=======
+ALLOWED_HOSTS = ['ec2-13-125-197-119.ap-northeast-2.compute.amazonaws.com']
+>>>>>>> 53b8fa38b608a77d61e0cf5554285a5c5edc2d47
 
 
 # Application definition
@@ -40,7 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+<<<<<<< HEAD
     'tt_apis',
+=======
+    'deact', #test app
+>>>>>>> 53b8fa38b608a77d61e0cf5554285a5c5edc2d47
     'rest_framework', #django_rest_framework
     'corsheaders' #cors
 ]
@@ -51,7 +59,11 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+<<<<<<< HEAD
     #'django.middleware.csrf.CsrfViewMiddleware',
+=======
+    'django.middleware.csrf.CsrfViewMiddleware',
+>>>>>>> 53b8fa38b608a77d61e0cf5554285a5c5edc2d47
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -84,14 +96,21 @@ WSGI_APPLICATION = 'api.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.mysql',
+<<<<<<< HEAD
         'NAME': 'ttobak', # DB명
+=======
+        'NAME': 'test', # DB명
+>>>>>>> 53b8fa38b608a77d61e0cf5554285a5c5edc2d47
         'USER': 'root', # 데이터베이스 계정
         'PASSWORD': 'soma2020', # 계정 비밀번호
         'HOST': 'ttobak.cbbaovh5sf1x.ap-northeast-2.rds.amazonaws.com', # 데이테베이스 주소(IP)
         'PORT': '3306', # 데이터베이스 포트(보통은 3306)
+<<<<<<< HEAD
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO'",
         },
+=======
+>>>>>>> 53b8fa38b608a77d61e0cf5554285a5c5edc2d47
     }
 }
 
@@ -135,6 +154,7 @@ REST_FRAMEWORK = {
     ]
 }
 
+<<<<<<< HEAD
 # CORS_ORIGIN_WHITELIST = (
 #     'http://localhost:3000',
 #     'http://127.0.0.1:3000',
@@ -144,11 +164,22 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = True
+=======
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://ec2-13-125-197-119.ap-northeast-2.compute.amazonaws.com:3000',
+    'http://ec2-13-125-197-119.ap-northeast-2.compute.amazonaws.com'
+)
+>>>>>>> 53b8fa38b608a77d61e0cf5554285a5c5edc2d47
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+<<<<<<< HEAD
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+=======
+>>>>>>> 53b8fa38b608a77d61e0cf5554285a5c5edc2d47
