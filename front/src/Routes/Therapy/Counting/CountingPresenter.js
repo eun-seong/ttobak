@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 
 import Button_Pause from 'img/bt_pause.png';
@@ -26,6 +25,7 @@ const PauseButton = styled(Img)`
 `;
 
 const TreeImg = styled(Img)`
+    position: absolute;
     width : 60%;
     opacity: 0.0;
     top:0;
@@ -46,12 +46,18 @@ const TTobakComponent = styled.img`
     right: 20%;
 `;
 
-const Counting = () => {
+const Counting = ({ onTreeClick, onTreeDragStart, onTreeDragEnd }) => {
     return (
         <div>
-            <Link to=''><PauseButton src={Button_Pause} alt='일시정지' /></Link>
-            <TTobakComponent src={TTobak} alt='또박이' />
+            <TTobakComponent src={TTobak} alt='또박이' onClick={() => alert('hi')} />
+            <TreeImg
+                src={Tree}
+                alt='나무'
+                onTouchStart={onTreeClick}
+                onDragStart={onTreeDragStart}
+                onDragEnd={onTreeDragEnd} />
             <BasketImg src={Basket} alt='바구니' />
+            <Link to=''><PauseButton src={Button_Pause} alt='일시정지' /></Link>
             <BackgroundImg src={Background} alt='배경화면' />
         </div>
     );

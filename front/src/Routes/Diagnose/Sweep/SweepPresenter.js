@@ -4,10 +4,9 @@ import styled from 'styled-components';
 
 import Button_Pause from 'img/bt_pause.png';
 import Background from 'img/d1_sweep/d1_background.png'
-import DownButton from 'img/d1_sweep/down.png'
-import UpButton from 'img/d1_sweep/up.png'
 import AnswerBox from 'img/d1_sweep/box.png';
 import TTobak from 'img/ttobak/ttobak1-1.png';
+
 
 /* styled-components */
 const Img = styled.img`
@@ -64,7 +63,7 @@ const TTobakComponent = styled.img`
     left: 3%;
 `;
 
-const Sweep = () => {
+const Sweep = ({ onMouseDown, onMouseUp, UpButton, DownButton, UP, DOWN }) => {
     return (
         <div>
             <Link to=''><PauseButton src={Button_Pause} alt='일시정지' /></Link>
@@ -72,8 +71,16 @@ const Sweep = () => {
             <Component>
                 <AnswerBoxImg src={AnswerBox} alt='answerbox' />
                 <ButtonComponent>
-                    <UpButtonImg src={UpButton} alt='up' />
-                    <DownButtonImg src={DownButton} alt='up' />
+                    <UpButtonImg
+                        src={UpButton}
+                        alt='up'
+                        onTouchStart={() => onMouseDown(UP)}
+                        onTouchEnd={() => onMouseUp(UP)} />
+                    <DownButtonImg
+                        src={DownButton}
+                        alt='down'
+                        onTouchStart={() => onMouseDown(DOWN)}
+                        onTouchEnd={() => onMouseUp(DOWN)} />
                 </ButtonComponent>
             </Component>
             <BackgroundImg src={Background} alt='배경화면' />

@@ -14,7 +14,7 @@ const globalStyles = createGlobalStyle`
     body{
         font-size:12px;
         overflow: hidden;
-        background-color:rgb(FD,F5,DB);
+        background-color:#FDF5DB;
     }
 `;
 

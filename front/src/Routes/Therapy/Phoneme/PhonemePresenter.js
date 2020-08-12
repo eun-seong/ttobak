@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Button_Pause from 'img/bt_pause.png';
-// import Background from 'img/t3_phoneme/d1_background.png'
+import Background from 'img/t3_phoneme/t3_background.png'
 import TTobak from 'img/ttobak/ttobak1-1.png';
 
 /* styled-components */
@@ -65,7 +65,7 @@ const Phoneme = () => {
     return (
         <div>
             <Link to=''><PauseButton src={Button_Pause} alt='일시정지' /></Link>
-            {/* <BackgroundImg src={Background} alt='배경화면' /> */}
+            <BackgroundImg src={Background} alt='배경화면' />
         </div>
     );
 }
