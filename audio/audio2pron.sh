@@ -57,13 +57,13 @@ cp $data/$course/$user/${course}_${user}_${id}.flac $final/${course}_${user}_${i
 
 # data 준비(AUDIO_INFO 파일과 trans.txt 파일 필수)
 mkdir $trans
-local/data_prep_single.sh $data/$course/$user/${course}_${user}_${id}.flac $course $user $data $trans
+$ZEROTH_ROOT/local/data_prep_single.sh $data/$course/$user/${course}_${user}_${id}.flac $course $user $data $trans
 
 ## audio를 mfcc로 변환
-steps/make_mfcc.sh --nj 1 --cmd "$cmd" $trans $make_mfcc $mfcc
+$ZEROTH_ROOT/steps/make_mfcc.sh --nj 1 --cmd "$cmd" $trans $make_mfcc $mfcc
 
 ## cmvn stats를 계산
-steps/compute_cmvn_stats.sh $trans $make_mfcc $mfcc
+$ZEROTH_ROOT/steps/compute_cmvn_stats.sh $trans $make_mfcc $mfcc
 
 ## decode
 mkdir $ali
@@ -88,10 +88,10 @@ $KALDI_ROOT/src/latbin/lattice-best-path ark:$ali/phone_aligned.lats ark:$ali/ou
 $KALDI_ROOT/src/bin/show-alignments $exp/tree_a/graph_tgsmall/phones.txt $exp/tdnn1n_rvb_online/final.mdl ark:$ali/out.ali >> $ali/temp.txt
 
 # 파일을 phone sequence로 변환
-python3 local/result2phone.py $ali/temp.txt $ali/result.txt
+python3 $ZEROTH_ROOT/local/result2phone.py $ali/temp.txt $ali/result.txt
 
 # 발음 정확도 계산
-python3 local/calc_pron_score.py $ali/result.txt $data/$course/${course}.prons.txt $final/${course}_${user}_${id}.txt
+python3 $ZEROTH_ROOT/local/calc_pron_score.py $ali/result.txt $data/$course/${course}.prons.txt $final/${course}_${user}_${id}.txt
 
 cp $final/${course}_${user}_${id}.txt $result_file_path
 
