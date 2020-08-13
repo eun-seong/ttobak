@@ -1,5 +1,6 @@
 import sys
 import math
+import json
 
 def levenshtein_distance_each(x, y):
     if x == y:
@@ -38,7 +39,7 @@ def levenshtein_distance(phone1, phone2):
 
     return math.sqrt((x+y) / 2.0)
 
-def lcs_length(text1, text2):
+def get_distance(text1, text2):
     text1_len = len(text1)
     text2_len = len(text2)
 
@@ -53,29 +54,41 @@ def lcs_length(text1, text2):
             cache[i][j] = min(cache[i][j-1]+1.0, cache[i-1][j]+1.0, cache[i-1][j-1]+levenshtein_distance(text1[i-1], text2[j-1])) 
     return cache[text1_len][text2_len]
 
-def calc_score(res, ans, final):
+def calc_score(res, ans, trans, final):
+    trans_file = open(trans, 'r')
     res_file = open(res, 'r')
     ans_file = open(ans, 'r')
 
-    text1 = res_file.readlines()[0].strip().split(' ')
-    text2 = ans_file.readlines()[0].strip().split(' ')
+    trans_text = trans_file.readlines()[0].strip()
+    res_text = res_file.readlines()[0].strip()
+    ans_text = ans_file.readlines()[0].strip()
 
-    lcs = lcs_length(text1, text2)
+    text1 = res_text.split(' ')
+    text2 = ans_text.split(' ')
+
+    distance = get_distance(text1, text2)
     total = max(len(text1), len(text2))
 
-    score = 100.0 - (lcs / total * 100.0)
-    print(score)
+    score = 100.0 - (distance / total * 100.0)
 
+    print('Transcript : ', trans_text)
+    print('Correct : ', res_text)
+    print('Student : ', ans_text)
+    print('Score : ', score)
+
+    trans_file.close()
     res_file.close()
     ans_file.close()
 
+    result = {'score': score, 'transcript': trans_text, 'correct': res_text, 'student': ans_text}
+    
     final_file = open(final, 'w')
-    final_file.write(str(score))
+    json.dump(result, final_file)
     final_file.close()
 
 if __name__ == '__main__':
-    print(sys.argv[1], sys.argv[2], sys.argv[3])
-    calc_score(sys.argv[1], sys.argv[2], sys.argv[3])
+    print(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+    calc_score(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
     # res = '/home/marble/PycharmProjects/ali/1595071594619/result.txt'
     # ans = '/home/marble/PycharmProjects/data/00008024/00008024.prons.txt'
     # final = '/home/marble/PycharmProjects/result/00008024_104_1595070537522.txt'

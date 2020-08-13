@@ -13,7 +13,7 @@ transcript=$1
 file=$2
 
 file_path=$PWD/server/temp/raw/$2
-result_file_path=$PWD/server/temp/result/$2.txt
+result_file_path=$PWD/server/temp/result/$2.json
 
 id=$(($(date +%s%N)/1000000))
 
@@ -107,9 +107,9 @@ $KALDI_ROOT/src/bin/show-alignments $exp/tree_a/graph_tgsmall/phones.txt $exp/td
 python3 local/result2phone.py $ali/temp.txt $ali/result.txt
 
 # 발음 정확도 계산
-python3 local/calc_pron_score.py $ali/result.txt $data/$course/${course}.prons.txt $final/${course}_${user}_${id}.txt
+python3 $ZEROTH_ROOT/local/calc_pron_score.py $ali/result.txt $data/$course/${course}.prons.txt $data/$course/text $final/${course}_${user}_${id}.json
 
-cp $final/${course}_${user}_${id}.txt $result_file_path
+cp $final/${course}_${user}_${id}.json $result_file_path
 
 rm -rf $data/$course
 

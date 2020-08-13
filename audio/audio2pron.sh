@@ -14,7 +14,7 @@ user=$2
 file=$3
 
 file_path=$PWD/server/temp/raw/$3
-result_file_path=$PWD/server/temp/result/$3.txt
+result_file_path=$PWD/server/temp/result/$3.json
 
 id=$(($(date +%s%N)/1000000))
 
@@ -29,7 +29,7 @@ model=$BASE_DIR/model
 
 final=$FINAL_DIR/result
 
-exp=$model/chain_rvb2
+exp=$model/chain_rvb
 
 decoder=$KALDI_ROOT/src/online2bin/online2-wav-nnet3-latgen-faster
 
@@ -91,9 +91,9 @@ $KALDI_ROOT/src/bin/show-alignments $exp/tree_a/graph_tgsmall/phones.txt $exp/td
 python3 $ZEROTH_ROOT/local/result2phone.py $ali/temp.txt $ali/result.txt
 
 # 발음 정확도 계산
-python3 $ZEROTH_ROOT/local/calc_pron_score.py $ali/result.txt $data/$course/${course}.prons.txt $final/${course}_${user}_${id}.txt
+python3 $ZEROTH_ROOT/local/calc_pron_score.py $ali/result.txt $data/$course/${course}.prons.txt $data/$course/text $final/${course}_${user}_${id}.json
 
-cp $final/${course}_${user}_${id}.txt $result_file_path
+cp $final/${course}_${user}_${id}.json $result_file_path
 
 endTime=$(date +'%F %H:%M:%S')
 echo $endTime

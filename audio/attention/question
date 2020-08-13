@@ -1,26 +1,35 @@
-question 1 : 영식이는 색종이로 무엇을 접고 있었나요?
-answer 1_0 : 학
-answer 1_1 : 비행기
-answer 1_2 : 오리
-answer 1_3 : 딱지
-correct 1 : 1_0
+question 0 : 영식이는 색종이로 무엇을 접고 있었나요?
+answer 0_0 : 학
+answer 0_1 : 비행기
+answer 0_2 : 오리
+answer 0_3 : 딱지
+correct 0 : 0_0
 
-question 2 : 민지는 동물원에서 무엇을 먹었나요?
-answer 2_0 : 핫도그
-answer 2_1 : 김밥
-answer 2_2 : 떡볶이
-answer 2_3 : 햄버거
-correct 2 : 2_1
+question 1 : 나무꾼이 무엇을 할 때에 호랑이가 공격했나요?
+answer 1_0 : 나무를 옮길 때에요
+answer 1_1 : 나무를 벨 때에요
+answer 1_2 : 잠을 잘 때에요
+answer 1_3 : 밥을 먹을 때에요
+correct 1 : 1_1
 
-question 3 : 나무꾼이 무엇을 할 때에 호랑이가 공격했나요?
-answer 3_0 : 나무를 옮길 때
-answer 3_1 : 나무를 벨 때
-answer 3_2 : 잠을 잘 때
-answer 3_3 : 밥을 먹을 때
-correct 3 : 3_1
+question 2 : 민수는 어떤 것을 좋아하나요?
+answer 2_0 : 달리기를 좋아해요
+answer 2_1 : 요리를 좋아해요
+answer 2_2 : 컴퓨터 게임을 좋아해요
+answer 2_3 : 노래 부르는 것을 좋아해요
+correct 2 : 2_3
 
-question 4 : 채영이는 왜 여름을 좋아하나요?
-answer 4_0 : 물놀이를 할 수 있기 때문이에요
-answer 4_1 : 팥빙수를 먹을 수 있기 때문이에요
-answer 4_2 : 수박을 먹을 수 있기 때문이에요
-answer 4_3 : 방학이 있기 때문이에요
+question 3 : 채영이는 왜 여름을 좋아하나요?
+answer 3_0 : 물놀이를 할 수 있기 때문이에요
+answer 3_1 : 팥빙수를 먹을 수 있기 때문이에요
+answer 3_2 : 수박을 먹을 수 있기 때문이에요
+answer 3_3 : 방학이 있기 때문이에요
+correct 3 : 3_2
+
+question 4 : 민지는 동물원에서 무엇을 먹었나요?
+answer 4_0 : 핫도그
+answer 4_1 : 김밥
+answer 4_2 : 떡볶이
+answer 4_3 : 햄버거
+correct 4 : 4_1
+

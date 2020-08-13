@@ -1,10 +1,10 @@
 from sanic import Sanic
 from sanic import response
-from sanic.response import json
 
 import subprocess
 import time
 import os
+import json
 
 app = Sanic(__name__)
 
@@ -58,7 +58,7 @@ async def update_user(request):
     audio_info.write(line)
     audio_info.close()
 
-    return json({'request': request.path, 'status': 'Success'})
+    return response.json({'request': request.path, 'status': 'Success'})
 
 @app.route('/api/transcript/update', methods=['POST'])
 async def update_transcript(request):
@@ -79,7 +79,7 @@ async def update_transcript(request):
     except:
         return error(request.path, 4)
 
-    return json({'request': request.path, 'status': 'Success'})
+    return response.json({'request': request.path, 'status': 'Success'})
 
 @app.route('/api/score', methods=['POST'])
 async def score(request):
@@ -105,14 +105,14 @@ async def score(request):
 
     subprocess.run('./audio2pron.sh {} {} {}'.format(course, user, filename), shell=True, cwd=os.path.abspath('..'))
 
-    if not os.path.isfile('temp/result/{}.txt'.format(filename)):
+    if not os.path.isfile('temp/result/{}.json'.format(filename)):
         return error(request.path, 4)
 
-    result_file = open('temp/result/{}.txt'.format(filename), 'r')
-    result = result_file.readline().strip()
+    result_file = open('temp/result/{}.json'.format(filename), 'r')
+    result = json.load(result_file)
     result_file.close()
 
-    return json({'request': request.path, 'status': 'Success', 'score': float(result)})
+    return response.json({'request': request.path, 'status': 'Success', 'score': float(result['score']), 'transcript': result['transcript'], 'correct': result['correct'], 'student': result['student']})
 
 @app.route('/api/segscore', methods=['POST'])
 async def seg_score(request):
@@ -136,14 +136,14 @@ async def seg_score(request):
 
     subprocess.run('./seg_and_audio2pron.sh "{}" {}'.format(transcript, filename), shell=True, cwd=os.path.abspath('..'))
 
-    if not os.path.isfile('temp/result/{}.txt'.format(filename)):
+    if not os.path.isfile('temp/result/{}.json'.format(filename)):
         return error(request.path, 4)
 
-    result_file = open('temp/result/{}.txt'.format(filename), 'r')
-    result = result_file.readline().strip()
+    result_file = open('temp/result/{}.json'.format(filename), 'r')
+    result = json.load(result_file)
     result_file.close()
 
-    return json({'request': request.path, 'status': 'Success', 'score': float(result)})
+    return response.json({'request': request.path, 'status': 'Success', 'score': float(result['score']), 'transcript': result['transcript'], 'correct': result['correct'], 'student': result['student']})
 
 
 def make_filename(filename):
@@ -156,7 +156,7 @@ def make_filename(filename):
     return '{}.{}'.format(str(millis), ext)
 
 def error(req, err):
-    return json({'request': req, 'status': 'Fail', 'error': ERROR_CODE[err]})
+    return response.json({'request': req, 'status': 'Fail', 'error': ERROR_CODE[err]})
 
 if __name__ == '__main__':
     app.run()
