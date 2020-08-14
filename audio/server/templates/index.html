@@ -17,6 +17,17 @@
   		.form-upper, .form-lower, .form-bottom {
   			margin: 20px;
   		}
+      #result {
+        width: 800px;
+        margin: 20px auto;
+        font-weight: bold;
+        font-size: 1.5rem;
+        line-height: 2em;
+        color: green;
+        overflow: auto;
+        white-space: pre-wrap;
+      }
+      
   	</style>
   	<div class="form">
   		<form id="form" enctype="multipart/form-data">
@@ -32,22 +43,27 @@
 	  			<button type="button" onclick='sendData();'>Submit</button>
 	  		</div>
   		</form>
-      <script type="text/javascript">
-        function sendData() {
-          var formData = new FormData();
+  	</div>
+    <pre id="result"></pre>
+    <script type="text/javascript">
+      function sendData() {
+        var formData = new FormData();
 
-          formData.append('transcript', document.getElementById('transcript').value);
-          formData.append('file', document.getElementById('file').files[0]);
+        formData.append('transcript', document.getElementById('transcript').value);
+        formData.append('file', document.getElementById('file').files[0]);
 
-          fetch('/api/segscore', {
-            method: 'POST', 
-            body: formData
-          })
-          .then((response) => response.json())
-          .catch((error) => console.error(error))
-          .then((response) => console.log(JSON.stringify(response)));
+        fetch('/api/segscore', {
+          method: 'POST', 
+          body: formData
+        })
+        .then((response) => response.json())
+        .catch((error) => console.error(error))
+        .then((response) => {
+          const result = JSON.stringify(response, undefined, 4);
+          document.getElementById("result").innerHTML = result;
+          document.getElementsByClassName('form')[0].style.display = 'none';
+        });
         }
       </script>
-  	</div>
   </body>
 </html>

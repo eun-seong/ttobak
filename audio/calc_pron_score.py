@@ -80,7 +80,7 @@ def calc_score(res, ans, trans, final):
     res_file.close()
     ans_file.close()
 
-    result = {'score': score, 'transcript': trans_text, 'correct': res_text, 'student': ans_text}
+    result = {'score': score, 'transcript': trans_text, 'correct': ans_text, 'student': res_text}
     
     final_file = open(final, 'w')
     json.dump(result, final_file)
