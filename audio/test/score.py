@@ -1,21 +1,20 @@
 import os, glob
+import json
 
-results = glob.glob('result/*.txt')
+results = glob.glob('result1/*.json')
+results.sort()
 
 phone_score = 0.0
 word_score = 0.0
 text_score = 0.0
 
-results.sort()
-
 for i in range(0, 247):
     file = open(results[i])
-    score = float(file.readline().strip())
+    data = json.load(file)
+    score = float(data['score'])
+    text = data['transcript']
     file.close()
 
-    text_file = open('data/0000{0:04d}/text'.format(i))
-    text = text_file.readline().strip()
-    text_file.close()
 
     if i >= 0 and i < 47: phone_score += score
     elif i >= 47 and i < 147: word_score += score

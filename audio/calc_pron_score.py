@@ -30,7 +30,8 @@ def levenshtein_distance(phone1, phone2):
         'wae': (10.45, 10.65), 'yo': (10.15, 10.4), 'wo': (10.3, 10.775), 'we': (10.15, 10.525),
         'yu': (10.0, 10.45), 'ui': (10.0, 10.25), 'wa': (10.45, 10.65)
     }
-
+    if phone1 not in table or phone2 not in table:
+        return 0.0
     v1 = table[phone1]
     v2 = table[phone2]
 
@@ -58,30 +59,47 @@ def calc_score(res, ans, trans, final):
     trans_file = open(trans, 'r')
     res_file = open(res, 'r')
     ans_file = open(ans, 'r')
+    
+    temp0 = trans_file.readlines()
+    temp1 = res_file.readlines()
+    temp2 = ans_file.readlines()
 
-    trans_text = trans_file.readlines()[0].strip()
-    res_text = res_file.readlines()[0].strip()
-    ans_text = ans_file.readlines()[0].strip()
+    trans_file.close()
+    res_file.close()
+    ans_file.close()
+    
+    score = -1.0
 
-    text1 = res_text.split(' ')
-    text2 = ans_text.split(' ')
+    if len(temp0) == 0:
+        trans_text = ''
+        score = 0.0
+    else:
+        trans_text = temp0[0].strip()
 
-    distance = get_distance(text1, text2)
-    total = max(len(text1), len(text2))
+    if len(temp1) == 0:
+        res_text = []
+        score = 0.0
+    else:
+        res_text = temp1[0].strip().split(' ')
+    if len(temp2) == 0:
+        ans_text = []
+        score = 0.0
+    else:
+        ans_text = temp2[0].strip().split(' ')
+   
+    if score == -1.0:
+        distance = get_distance(res_text, ans_text)
+        total = max(len(res_text), len(ans_text))
 
-    score = 100.0 - (distance / total * 100.0)
-
+        score = 100.0 - (distance / total * 100.0)
+ 
     print('Transcript : ', trans_text)
     print('Correct : ', res_text)
     print('Student : ', ans_text)
     print('Score : ', score)
 
-    trans_file.close()
-    res_file.close()
-    ans_file.close()
-
     result = {'score': score, 'transcript': trans_text, 'correct': ans_text, 'student': res_text}
-    
+
     final_file = open(final, 'w')
     json.dump(result, final_file)
     final_file.close()
