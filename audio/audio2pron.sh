@@ -88,10 +88,10 @@ $KALDI_ROOT/src/latbin/lattice-best-path ark:$ali/phone_aligned.lats ark:$ali/ou
 $KALDI_ROOT/src/bin/show-alignments $exp/tree_a/graph_tgsmall/phones.txt $exp/tdnn1n_rvb_online/final.mdl ark:$ali/out.ali >> $ali/temp.txt
 
 # 파일을 phone sequence로 변환
-python3 $ZEROTH_ROOT/local/result2phone.py $ali/temp.txt $ali/result.txt
+python3 $ZEROTH_ROOT/local/result2time.py $ali/temp.txt $ali/result.json
 
 # 발음 정확도 계산
-python3 $ZEROTH_ROOT/local/calc_pron_score.py $ali/result.txt $data/$course/${course}.prons.txt $data/$course/text $final/${course}_${user}_${id}.json
+python3 $ZEROTH_ROOT/local/calc_pron_score.py $ali/result.json $data/$course/${course}.prons.txt $data/$course/text $final/${course}_${user}_${id}.json
 
 cp $final/${course}_${user}_${id}.json $result_file_path
 

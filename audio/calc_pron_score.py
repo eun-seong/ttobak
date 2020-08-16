@@ -61,9 +61,9 @@ def calc_score(res, ans, trans, final):
     ans_file = open(ans, 'r')
     
     temp0 = trans_file.readlines()
-    temp1 = res_file.readlines()
-    temp2 = ans_file.readlines()
-
+    data = json.load(res_file)
+    temp1 = ans_file.readlines()
+    
     trans_file.close()
     res_file.close()
     ans_file.close()
@@ -77,16 +77,15 @@ def calc_score(res, ans, trans, final):
         trans_text = temp0[0].strip()
 
     if len(temp1) == 0:
-        res_text = []
-        score = 0.0
-    else:
-        res_text = temp1[0].strip().split(' ')
-    if len(temp2) == 0:
         ans_text = []
         score = 0.0
     else:
-        ans_text = temp2[0].strip().split(' ')
-   
+        ans_text = temp1[0].strip().split(' ')
+    
+    res_text = [list(el.values())[0] for el in data]
+    if len(res_text) == 0:
+        score = 0.0
+
     if score == -1.0:
         distance = get_distance(res_text, ans_text)
         total = max(len(res_text), len(ans_text))
@@ -94,11 +93,11 @@ def calc_score(res, ans, trans, final):
         score = 100.0 - (distance / total * 100.0)
  
     print('Transcript : ', trans_text)
-    print('Correct : ', res_text)
-    print('Student : ', ans_text)
+    print('Correct : ', ans_text)
+    print('Student : ', res_text)
     print('Score : ', score)
 
-    result = {'score': score, 'transcript': trans_text, 'correct': ans_text, 'student': res_text}
+    result = {'score': score, 'transcript': trans_text, 'correct': ans_text, 'student': data}
 
     final_file = open(final, 'w')
     json.dump(result, final_file)
