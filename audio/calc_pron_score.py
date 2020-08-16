@@ -55,6 +55,28 @@ def get_distance(text1, text2):
             cache[i][j] = min(cache[i][j-1]+1.0, cache[i-1][j]+1.0, cache[i-1][j-1]+levenshtein_distance(text1[i-1], text2[j-1])) 
     return cache[text1_len][text2_len]
 
+def get_time(element):
+    key = list(element.keys())[0]
+    temp1 = key.split(':')
+    temp2 = temp1[1].split('.')
+ 
+    minutes = int(temp1[0])
+    seconds = int(temp2[0])
+    milis = int(temp2[1])
+   
+    return minutes * 60000 + seconds * 1000 + milis
+
+def get_time_score(element1, element2):
+    time1 = get_time(element1)
+    time2 = get_time(element2)
+
+    if time2 - time1 < 60:
+        return 1.0
+    elif time2 - time1 > 1500:
+        return -1.0
+    else:
+        return 0.0 
+
 def calc_score(res, ans, trans, final):
     trans_file = open(trans, 'r')
     res_file = open(res, 'r')
@@ -68,36 +90,47 @@ def calc_score(res, ans, trans, final):
     res_file.close()
     ans_file.close()
     
-    score = -1.0
+    phone_score = -1.0
+    speed_score = 0.0
 
     if len(temp0) == 0:
         trans_text = ''
-        score = 0.0
+        phone_score = 0.0
+        speed_score = 0.0
     else:
         trans_text = temp0[0].strip()
 
     if len(temp1) == 0:
-        ans_text = []
-        score = 0.0
+        ans = []
+        phone_score = 0.0
+        speed_score = 0.0
     else:
-        ans_text = temp1[0].strip().split(' ')
+        ans = temp1[0].strip().split(' ')
     
-    res_text = [list(el.values())[0] for el in data]
-    if len(res_text) == 0:
-        score = 0.0
+    res = [list(el.values())[0] for el in data]
+    if len(res) == 0:
+        phone_score = 0.0
+        speed_score = 0.0
 
-    if score == -1.0:
-        distance = get_distance(res_text, ans_text)
-        total = max(len(res_text), len(ans_text))
+    if phone_score == -1.0:
+        distance = get_distance(res, ans)
+        total = max(len(res), len(ans))
 
-        score = 100.0 - (distance / total * 100.0)
- 
+        phone_score = 100.0 - (distance / total * 100.0)
+        
+        for idx in range(len(data)-1):
+            speed_score += get_time_score(data[idx], data[idx+1])
+
+    score = min(100.0, phone_score + speed_score)
+    ans_text = ' '.join(ans)
+    res_text = ' '.join(res)
+
     print('Transcript : ', trans_text)
     print('Correct : ', ans_text)
     print('Student : ', res_text)
     print('Score : ', score)
-
-    result = {'score': score, 'transcript': trans_text, 'correct': ans_text, 'student': data}
+    
+    result = {'score': score, 'phone_score': phone_score, 'speed_score': speed_score, 'transcript': trans_text, 'correct': ans_text, 'student': res_text, 'student_time': data}
 
     final_file = open(final, 'w')
     json.dump(result, final_file)

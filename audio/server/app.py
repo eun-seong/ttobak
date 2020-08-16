@@ -112,7 +112,7 @@ async def score(request):
     result = json.load(result_file)
     result_file.close()
 
-    return response.json({'request': request.path, 'status': 'Success', 'score': float(result['score']), 'transcript': result['transcript'], 'correct': result['correct'], 'student': result['student']})
+    return response.json({'request': request.path, 'status': 'Success', 'score': float(result['score']), 'phone_score': float(result['phone_score']), 'speed_score': float(result['speed_score']), 'transcript': result['transcript'], 'correct': result['correct'], 'student': result['student'], 'student_time': result['student_time']})
 
 @app.route('/api/segscore', methods=['POST'])
 async def seg_score(request):
@@ -143,7 +143,7 @@ async def seg_score(request):
     result = json.load(result_file)
     result_file.close()
 
-    return response.json({'request': request.path, 'status': 'Success', 'score': float(result['score']), 'transcript': result['transcript'], 'correct': result['correct'], 'student': result['student']})
+    return response.json({'request': request.path, 'status': 'Success', 'score': float(result['score']), 'phone_score': float(result['phone_score']), 'speed_score': float(result['speed_score']), 'transcript': result['transcript'], 'transcript': result['transcript'], 'correct': result['correct'], 'student': result['student'], 'student_time': result['student_time']})
 
 
 def make_filename(filename):
