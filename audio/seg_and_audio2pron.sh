@@ -69,9 +69,6 @@ cp $data/$course/$user/${course}_${user}_${id}.flac $final/${course}_${user}_${i
 mkdir $trans
 local/data_prep_single.sh $data/$course/$user/${course}_${user}_${id}.flac $course $user $data $trans
 
-# segment update
-local/updateSegmentation.sh $trans $lm
-
 # phone generation
 python3 local/genPhoneSeq.py $data/$course/$course.trans.txt $data/$course/$course.prons.txt
 
