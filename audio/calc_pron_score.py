@@ -12,6 +12,7 @@ def levenshtein_distance_each(x, y):
 
 def levenshtein_distance(phone1, phone2):
     table = {
+        '_': (0.0, 0.0),
         'g': (1.0, 4.0), 'gg': (1.3, 4.0), 'kh': (1.6, 4.0), 'g2': (1.0, 4.0),
         'n': (4.0, 2.0), 'n2': (4.0, 2.0),
         'd': (1.0, 2.0), 'dd': (1.3, 2.0), 't': (1.6, 2.0), 'd2': (1.0, 2.0),
@@ -113,6 +114,15 @@ def calc_score(res, ans, trans, final):
         speed_score = 0.0
 
     if phone_score == -1.0:
+        avg_speed = get_time(data[-1]) / len(res)
+        
+        ins_cand = []
+        for idx in range(len(data)-1):
+            if get_time(data[idx+1]) - get_time(data[idx]) > avg_speed * 1.7:
+                ins_cand.append(idx+len(ins_cand)+1)
+        for el in ins_cand:
+            res.insert(el, '_')        
+
         distance = get_distance(res, ans)
         total = max(len(res), len(ans))
 

@@ -865,47 +865,50 @@ def converrtVocab2Pronounce(input_file, output_file):
             if len(tmp) == 2:
                 flag = True
                 line_ = tmp[1]
+            
+            result = []
+            words = line_.split(' ')
+            for word in words:
+                # convert input into pronunciation
+                pStr = toPhonemeString(word)
+                pronun = pString2Pronun(pStr)
 
-            # convert input into pronunciation
-            tline = re.sub('([ +])', '', line_)
-            pStr = toPhonemeString(tline)
-            pronun = pString2Pronun(pStr)
+                # seperate pronunciation into each morpheme
+                hPronun = toHangul(pronun)
 
-            # seperate pronunciation into each morpheme
-            hPronun = toHangul(pronun)
+                tline  = re.sub('[ ]', '', line_)
+                morphs = tline.split('+')
+                idx   = 0
+                tList  = []
+                tList2 = []
+                for morph in morphs:
+                    morph_p = hPronun[idx:idx+len(morph)]
+                    idx    += len(morph)
+                    tList.append(toPhonemeString(morph))
+                    tList2.append(toPhonemeString(morph_p))
 
-            tline  = re.sub('[ ]', '', line_)
-            morphs = tline.split('+')
-            idx   = 0
-            tList  = []
-            tList2 = []
-            for morph in morphs:
-                morph_p = hPronun[idx:idx+len(morph)]
-                idx    += len(morph)
-                tList.append(toPhonemeString(morph))
-                tList2.append(toPhonemeString(morph_p))
+                # 뒷부분의 변화를 앞단어 쪽으로 옮김
+                for i in range(len(tList)):
+                    if i == 0: continue
 
-            # 뒷부분의 변화를 앞단어 쪽으로 옮김
-            for i in range(len(tList)):
-                if i == 0: continue
+                    if tList[i][0] == 'ㅇ' and tList2[i][0] != 'ㅇ':
+                        if tList[i-1][-1] != '_' and tList2[i-1][-1] == '_':
+                            tList2[i-1] += tList2[i][0]
+                            tList2[i] = tList2[i][1:]
 
-                if tList[i][0] == 'ㅇ' and tList2[i][0] != 'ㅇ':
-                    if tList[i-1][-1] != '_' and tList2[i-1][-1] == '_':
-                        tList2[i-1] += tList2[i][0]
-                        tList2[i] = tList2[i][1:]
+                    if tList[i][0] == 'ㅎ' and tList2[i][0] != 'ㅎ':
+                        if tList[i-1][-1] != '_' and tList2[i-1][-1] == '_':
+                            tList2[i-1] += tList2[i][0]
+                            tList2[i] = tList2[i][1:]
 
-                if tList[i][0] == 'ㅎ' and tList2[i][0] != 'ㅎ':
-                    if tList[i-1][-1] != '_' and tList2[i-1][-1] == '_':
-                        tList2[i-1] += tList2[i][0]
-                        tList2[i] = tList2[i][1:]
+                tStr2 = " + ".join(tList2)
 
-            tStr2 = " + ".join(tList2)
-
-            # Outputs
-            #print(hPronun, end='\t', file=f)
-            #print(tStr2,file=f)
-            #print(tStr2, end='\t',file=f)
-            print(pronun2psymbol(tStr2), file=outf)
+                # Outputs
+                #print(hPronun, end='\t', file=f)
+                #print(tStr2,file=f)
+                #print(tStr2, end='\t',file=f)
+                result.append(pronun2psymbol(tStr2))
+            print(' _ '.join(result), file=outf)
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
