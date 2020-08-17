@@ -9,7 +9,7 @@ def parse_text(src, dst):
     seq_arr = []
     for idx, el in enumerate(seq):
         if el != 'SIL' and el != '' and el != '\n':
-            times = (idx+3)*20//3
+            times = (idx+3+len(seq_arr))*20//3
             minutes = times // 60000
             secs = (times % 60000) // 1000
             milis = times % 1000
