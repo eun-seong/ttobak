@@ -12,4 +12,5 @@ urlpatterns = [
     path('student/modify',StuModify.as_view()),
     path('student/delete',StuDel.as_view()),
     path('student/get',StuGet.as_view())
+
 ]

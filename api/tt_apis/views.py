@@ -1,6 +1,7 @@
 import json
 import bcrypt
 import jwt
+
 from .models  import User,Student,UsrStu
 
 from django.views import View
@@ -22,6 +23,7 @@ class MakeUser(View):
         ).save()
 
         return JsonResponse({"message":"성공적으로 회원가입 되었습니다.","code":1},status=200)
+
 
 
 class LogIn(View):
@@ -166,3 +168,4 @@ class StuGet(View):
                 return JsonResponse({"name":student.stu_name,"birth":student.stu_birth,"gender":student.stu_gender,"code":1},status=200)
             return JsonResponse({"message":"존재하지 않는 학습자 입니다","code":2},status=200)
         return JsonResponse({"message":"존재하지 않는 회원입니다","code":3},status=200)
+

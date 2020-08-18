@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'tt_apis',
+
     'rest_framework', #django_rest_framework
     'corsheaders' #cors
 ]
@@ -52,7 +53,9 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+
     #'django.middleware.csrf.CsrfViewMiddleware',
+
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -86,7 +89,9 @@ DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.mysql',
 
+
         'NAME': 'ttobak', # DB명
+
         'USER': 'root', # 데이터베이스 계정
         'PASSWORD': 'soma2020', # 계정 비밀번호
         'HOST': 'ttobak.cbbaovh5sf1x.ap-northeast-2.rds.amazonaws.com', # 데이테베이스 주소(IP)
@@ -137,6 +142,7 @@ REST_FRAMEWORK = {
     ]
 }
 
+
 # CORS_ORIGIN_WHITELIST = (
 #     'http://localhost:3000',
 #     'http://127.0.0.1:3000',
@@ -146,6 +152,7 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = True
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
@@ -154,3 +161,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+

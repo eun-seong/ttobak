@@ -12,6 +12,7 @@ class ConvQues(models.Model):
     conv_id = models.IntegerField(null=True)
     ques = models.ForeignKey('FocQues',on_delete=models.PROTECT,null=True,db_column='ques_id')
 
+
     class Meta:
         db_table = 'conv_ques'
 
@@ -70,7 +71,6 @@ class StuFoc(models.Model):
 class StuIc(models.Model):
     stu = models.ForeignKey('Student', on_delete=models.PROTECT,null=True,db_column = 'stu_id')
     ic = models.ForeignKey('Icon', on_delete=models.PROTECT,null=True,db_column = 'ic_id')
-
     class Meta:
         db_table = 'stu_ic'
 
@@ -132,6 +132,7 @@ class User(models.Model):
         db_table = 'user'
 
 class UsrStu(models.Model):
+
     usr = models.ForeignKey('User', on_delete=models.PROTECT,null=True,db_column = 'usr_id')
     stu = models.ForeignKey('Student', on_delete=models.PROTECT,null=True,db_column = 'stu_id')
 
