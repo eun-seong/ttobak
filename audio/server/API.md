@@ -63,7 +63,18 @@ DB에 student나 과정이 추가될 때마다 호출해야 하는 API
     `course=[alphanumeric] | user=[alphanumeric] | file=[file]` 
 * **Success Response**   
     * Code: 200   
-      Content: `{'request': '/api/score', 'status': 'Success', 'score': [float], 'transcript': [alphanumeric], 'correct': [alphanumeric], 'student': [alphanumeric]}`   
+      Content: 
+      ```
+      {'request': '/api/score', 
+       'status': 'Success', 
+       'score': [float], 
+       'phone_score': [float], 
+       'speed_score': [float], 
+       'rhythm_score': [float], 
+       'transcript': [alphanumeric], 
+       'correct': [alphanumeric], 
+       'student': [alphanumeric]}
+      ```   
        여기서 transcript는 정답 문자열, correct는 정답 발음열, student는 음성 파일 발음열을 의미   
 * **Error Response**   
     * course, user, file이 data param에 없을 때   
