@@ -14,7 +14,6 @@ def parse_text(src, dst):
             secs = (times % 60000) // 1000
             milis = times % 1000
             seq_arr.append({'{0:02}:{1:02}.{2}'.format(minutes, secs, milis): el.split('_')[0]})
-    print(seq_arr)
 
     input_file.close()
 

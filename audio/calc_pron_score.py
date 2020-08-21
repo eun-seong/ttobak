@@ -12,7 +12,6 @@ def levenshtein_distance_each(x, y):
 
 def levenshtein_distance(phone1, phone2):
     table = {
-        '_': (0.0, 0.0),
         'g': (1.0, 4.0), 'gg': (1.3, 4.0), 'kh': (1.6, 4.0), 'g2': (1.0, 4.0),
         'n': (4.0, 2.0), 'n2': (4.0, 2.0),
         'd': (1.0, 2.0), 'dd': (1.3, 2.0), 't': (1.6, 2.0), 'd2': (1.0, 2.0),
@@ -116,22 +115,45 @@ def calc_score(res, ans, trans, final):
     if phone_score == -1.0:
         avg_speed = get_time(data[-1]) / len(res)
         
+        # add underbar to student's pronounce
         ins_cand = []
         for idx in range(len(data)-1):
             if get_time(data[idx+1]) - get_time(data[idx]) > avg_speed * 1.7:
                 ins_cand.append(idx+len(ins_cand)+1)
         for el in ins_cand:
-            res.insert(el, '_')        
+            res.insert(el, '_')
 
-        distance = get_distance(res, ans)
-        total = max(len(res), len(ans))
+        res_no_underbar = [el for el in res if el != '_']
+        ans_no_underbar = [el for el in ans if el != '_']
+
+        distance = get_distance(res_no_underbar, ans_no_underbar)
+        total = max(len(res_no_underbar), len(ans_no_underbar))
 
         phone_score = 100.0 - (distance / total * 100.0)
         
         for idx in range(len(data)-1):
             speed_score += get_time_score(data[idx], data[idx+1])
+        if speed_score > 10.0: speed_score = 10.0
+        if speed_score < -10.0: speed_score = -10.0
 
-    score = min(100.0, phone_score + speed_score)
+        underbar_count = abs(ans.count('_') - res.count('_'))
+        rhythm_count_score = 5.0 if underbar_count == 0 else -min(underbar_count*0.5, 5.0)
+
+        idx_underbar_res = [idx for idx, el in enumerate(res) if el == '_']
+        idx_underbar_ans = [idx for idx, el in enumerate(ans) if el == '_']
+        
+        rhythm_dis = 0.0
+        for res_idx, res_el in enumerate(res):
+            min_val = 987654321
+            for ans_idx, ans_el in enumerate(ans):
+                min_val = min(min_val, abs(ans_idx - res_idx))
+                if ans_idx >= res_idx: break
+            rhythm_dis += min_val
+        rhythm_dis_score = 5.0 - min(rhythm_dis * 5 / max(len(res), len(ans)), 10.0)
+
+        rhythm_score = rhythm_count_score + rhythm_dis_score
+
+    score = min(100.0, phone_score + speed_score + rhythm_score)
     ans_text = ' '.join(ans)
     res_text = ' '.join(res)
 
@@ -139,8 +161,11 @@ def calc_score(res, ans, trans, final):
     print('Correct : ', ans_text)
     print('Student : ', res_text)
     print('Score : ', score)
+    print('Phone Score : ', phone_score)
+    print('Speed Score : ', speed_score)
+    print('Rhythm Score : ', rhythm_score)
     
-    result = {'score': score, 'phone_score': phone_score, 'speed_score': speed_score, 'transcript': trans_text, 'correct': ans_text, 'student': res_text, 'student_time': data}
+    result = {'score': score, 'phone_score': phone_score, 'speed_score': speed_score, 'rhythm_score': rhythm_score, 'transcript': trans_text, 'correct': ans_text, 'student': res_text}
 
     final_file = open(final, 'w')
     json.dump(result, final_file)
