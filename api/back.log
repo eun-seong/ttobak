@@ -6709,3 +6709,1089 @@ Not Found: /
 [pid: 2676|app: 0|req: 5/15] 196.52.43.110 () {30 vars in 438 bytes} [Tue Aug 18 14:43:23 2020] GET / => generated 2027 bytes in 3 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
 =======
 >>>>>>> 3f9cdcee542b1a067b97c3930e08c5b630866918
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Aug 19 03:30:38 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 15622
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55f651820d00
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 32543)
+spawned uWSGI worker 1 (pid: 32544, cores: 1)
+spawned uWSGI worker 2 (pid: 32545, cores: 1)
+spawned uWSGI worker 3 (pid: 32546, cores: 1)
+spawned uWSGI worker 4 (pid: 32547, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55f651820d00 pid: 32545 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55f651820d00 pid: 32546 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55f651820d00 pid: 32544 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55f651820d00 pid: 32547 (default app)
+Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/urls/resolvers.py", line 544, in resolve
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/urls/resolvers.py", line 588, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/urls/resolvers.py", line 581, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 781, in get_code
+  File "<frozen importlib._bootstrap_external>", line 741, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "./api/urls.py", line 1
+    <<<<<<< HEAD
+     ^
+SyntaxError: invalid syntax
+[pid: 32544|app: 0|req: 1/1] 61.72.162.44 () {44 vars in 1216 bytes} [Wed Aug 19 12:30:40 2020] GET /admin/ => generated 94606 bytes in 79 msecs (HTTP/1.1 500) 5 headers in 164 bytes (1 switches on core 0)
+[pid: 32544|app: 0|req: 2/2] 61.72.162.44 () {44 vars in 1216 bytes} [Wed Aug 19 12:31:57 2020] GET /admin/ => generated 4627 bytes in 200 msecs (HTTP/1.1 200) 7 headers in 271 bytes (1 switches on core 0)
+[pid: 32545|app: 0|req: 1/3] 61.72.162.44 () {44 vars in 1307 bytes} [Wed Aug 19 12:32:00 2020] GET /admin/tt_apis/student/ => generated 4455 bytes in 302 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32546|app: 0|req: 1/4] 61.72.162.44 () {42 vars in 1149 bytes} [Wed Aug 19 12:32:01 2020] GET /admin/jsi18n/ => generated 8330 bytes in 39 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[pid: 32547|app: 0|req: 1/5] 61.72.162.44 () {44 vars in 1341 bytes} [Wed Aug 19 12:32:04 2020] GET /admin/tt_apis/student/4/change/ => generated 5490 bytes in 259 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32547|app: 0|req: 2/6] 61.72.162.44 () {42 vars in 1158 bytes} [Wed Aug 19 12:32:05 2020] GET /admin/jsi18n/ => generated 8330 bytes in 11 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[pid: 32546|app: 0|req: 2/7] 61.72.162.44 () {44 vars in 1307 bytes} [Wed Aug 19 12:32:10 2020] GET /admin/tt_apis/student/ => generated 4455 bytes in 241 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32547|app: 0|req: 3/8] 61.72.162.44 () {42 vars in 1185 bytes} [Wed Aug 19 12:32:11 2020] GET /admin/ => generated 4627 bytes in 25 msecs (HTTP/1.1 200) 7 headers in 271 bytes (1 switches on core 0)
+[pid: 32544|app: 0|req: 3/9] 61.72.162.44 () {44 vars in 1301 bytes} [Wed Aug 19 12:32:13 2020] GET /admin/tt_apis/user/ => generated 4877 bytes in 93 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32547|app: 0|req: 4/10] 61.72.162.44 () {42 vars in 1146 bytes} [Wed Aug 19 12:32:13 2020] GET /admin/jsi18n/ => generated 8330 bytes in 10 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[pid: 32547|app: 0|req: 5/11] 61.72.162.44 () {44 vars in 1332 bytes} [Wed Aug 19 12:32:16 2020] GET /admin/tt_apis/user/5/change/ => generated 5344 bytes in 43 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32547|app: 0|req: 6/12] 61.72.162.44 () {42 vars in 1155 bytes} [Wed Aug 19 12:32:16 2020] GET /admin/jsi18n/ => generated 8330 bytes in 9 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[pid: 32545|app: 0|req: 2/13] 61.72.162.44 () {44 vars in 1301 bytes} [Wed Aug 19 12:32:23 2020] GET /admin/tt_apis/user/ => generated 4877 bytes in 80 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32546|app: 0|req: 3/14] 61.72.162.44 () {44 vars in 1332 bytes} [Wed Aug 19 12:32:24 2020] GET /admin/tt_apis/user/1/change/ => generated 5350 bytes in 39 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32546|app: 0|req: 4/15] 61.72.162.44 () {42 vars in 1155 bytes} [Wed Aug 19 12:32:24 2020] GET /admin/jsi18n/ => generated 8330 bytes in 10 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[pid: 32544|app: 0|req: 4/16] 61.72.162.44 () {44 vars in 1301 bytes} [Wed Aug 19 12:32:27 2020] GET /admin/tt_apis/user/ => generated 4877 bytes in 76 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32544|app: 0|req: 5/17] 61.72.162.44 () {42 vars in 1185 bytes} [Wed Aug 19 12:32:28 2020] GET /admin/ => generated 4627 bytes in 27 msecs (HTTP/1.1 200) 7 headers in 271 bytes (1 switches on core 0)
+[pid: 32546|app: 0|req: 5/18] 61.72.162.44 () {44 vars in 1305 bytes} [Wed Aug 19 12:32:29 2020] GET /admin/tt_apis/usrstu/ => generated 4451 bytes in 74 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32545|app: 0|req: 3/19] 61.72.162.44 () {42 vars in 1148 bytes} [Wed Aug 19 12:32:30 2020] GET /admin/jsi18n/ => generated 8330 bytes in 10 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[pid: 32544|app: 0|req: 6/20] 61.72.162.44 () {44 vars in 1338 bytes} [Wed Aug 19 12:32:32 2020] GET /admin/tt_apis/usrstu/1/change/ => generated 6666 bytes in 49 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32547|app: 0|req: 7/21] 61.72.162.44 () {42 vars in 1157 bytes} [Wed Aug 19 12:32:32 2020] GET /admin/jsi18n/ => generated 8330 bytes in 39 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[pid: 32545|app: 0|req: 4/22] 61.72.162.44 () {44 vars in 1305 bytes} [Wed Aug 19 12:32:36 2020] GET /admin/tt_apis/usrstu/ => generated 4451 bytes in 106 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32547|app: 0|req: 8/23] 61.72.162.44 () {42 vars in 1185 bytes} [Wed Aug 19 12:32:37 2020] GET /admin/ => generated 4627 bytes in 25 msecs (HTTP/1.1 200) 7 headers in 271 bytes (1 switches on core 0)
+[pid: 32547|app: 0|req: 9/24] 61.72.162.44 () {44 vars in 1301 bytes} [Wed Aug 19 12:48:50 2020] GET /admin/tt_apis/user/ => generated 4877 bytes in 99 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32545|app: 0|req: 5/25] 61.72.162.44 () {42 vars in 1146 bytes} [Wed Aug 19 12:48:50 2020] GET /admin/jsi18n/ => generated 8330 bytes in 10 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[pid: 32547|app: 0|req: 10/26] 61.72.162.44 () {44 vars in 1332 bytes} [Wed Aug 19 12:48:52 2020] GET /admin/tt_apis/user/3/change/ => generated 5347 bytes in 38 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32544|app: 0|req: 7/27] 61.72.162.44 () {42 vars in 1155 bytes} [Wed Aug 19 12:48:53 2020] GET /admin/jsi18n/ => generated 8330 bytes in 10 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[pid: 32545|app: 0|req: 6/28] 61.72.162.44 () {44 vars in 1301 bytes} [Wed Aug 19 12:49:02 2020] GET /admin/tt_apis/user/ => generated 4877 bytes in 81 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32547|app: 0|req: 11/29] 61.72.162.44 () {44 vars in 1304 bytes} [Wed Aug 19 12:49:07 2020] GET /admin/tt_apis/ => generated 3338 bytes in 21 msecs (HTTP/1.1 200) 7 headers in 271 bytes (1 switches on core 0)
+[pid: 32546|app: 0|req: 6/30] 61.72.162.44 () {44 vars in 1301 bytes} [Wed Aug 19 12:49:14 2020] GET /admin/tt_apis/user/ => generated 4877 bytes in 105 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32545|app: 0|req: 7/31] 61.72.162.44 () {42 vars in 1185 bytes} [Wed Aug 19 12:49:16 2020] GET /admin/ => generated 4627 bytes in 25 msecs (HTTP/1.1 200) 7 headers in 271 bytes (1 switches on core 0)
+[pid: 32547|app: 0|req: 12/32] 61.72.162.44 () {44 vars in 1301 bytes} [Wed Aug 19 12:49:23 2020] GET /admin/tt_apis/user/ => generated 4877 bytes in 78 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32545|app: 0|req: 8/33] 61.72.162.44 () {42 vars in 1146 bytes} [Wed Aug 19 12:49:23 2020] GET /admin/jsi18n/ => generated 8330 bytes in 9 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[pid: 32546|app: 0|req: 7/34] 61.72.162.44 () {44 vars in 1332 bytes} [Wed Aug 19 12:49:25 2020] GET /admin/tt_apis/user/5/change/ => generated 5344 bytes in 37 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32547|app: 0|req: 13/35] 61.72.162.44 () {42 vars in 1155 bytes} [Wed Aug 19 12:49:25 2020] GET /admin/jsi18n/ => generated 8330 bytes in 11 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[pid: 32546|app: 0|req: 8/36] 61.72.162.44 () {44 vars in 1301 bytes} [Wed Aug 19 12:49:29 2020] GET /admin/tt_apis/user/ => generated 4877 bytes in 80 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 32547|app: 0|req: 14/37] 61.72.162.44 () {42 vars in 1185 bytes} [Wed Aug 19 12:49:29 2020] GET /admin/ => generated 4627 bytes in 25 msecs (HTTP/1.1 200) 7 headers in 271 bytes (1 switches on core 0)
+[pid: 32544|app: 0|req: 8/38] 61.72.162.44 () {42 vars in 1185 bytes} [Wed Aug 19 12:49:33 2020] GET /admin/ => generated 4627 bytes in 25 msecs (HTTP/1.1 200) 7 headers in 271 bytes (1 switches on core 0)
+[pid: 32547|app: 0|req: 15/39] 39.118.205.97 () {48 vars in 1241 bytes} [Wed Aug 19 19:36:31 2020] POST /api/student/get => generated 90 bytes in 15 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+Not Found: /
+[pid: 32544|app: 0|req: 9/40] 209.17.96.122 () {30 vars in 416 bytes} [Thu Aug 20 08:00:36 2020] GET / => generated 2027 bytes in 14 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 32544|app: 0|req: 10/41] 139.162.79.87 () {34 vars in 398 bytes} [Thu Aug 20 18:40:44 2020] GET / => generated 2027 bytes in 6 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Gracefully killing worker 1 (pid: 32544)...
+Gracefully killing worker 3 (pid: 32546)...
+Gracefully killing worker 4 (pid: 32547)...
+Gracefully killing worker 2 (pid: 32545)...
+...gracefully killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /home/ubuntu/ttobak/backend/api
+closing all non-uwsgi socket fds > 2 (max_fd = 1024)...
+found fd 3 mapped to socket 0 (127.0.0.1:8001)
+running /home/ubuntu/ttobak/venv/bin/uwsgi
+[uWSGI] getting INI configuration from back.ini
+*** Starting uWSGI 2.0.19.1 (64bit) on [Thu Aug 20 16:29:08 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/ubuntu/ttobak/backend/api
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 15622
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 inherited INET address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x563b55e0e160
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+gracefully (RE)spawned uWSGI master process (pid: 32543)
+spawned uWSGI worker 1 (pid: 21682, cores: 1)
+spawned uWSGI worker 2 (pid: 21683, cores: 1)
+spawned uWSGI worker 3 (pid: 21684, cores: 1)
+spawned uWSGI worker 4 (pid: 21685, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x563b55e0e160 pid: 21685 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x563b55e0e160 pid: 21684 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x563b55e0e160 pid: 21682 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x563b55e0e160 pid: 21683 (default app)
+Fri Aug 21 01:30:37 2020 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Aug 21 01:30:37 2020 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Thu Aug 20 16:41:12 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 31417
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x5646a78c3cc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 2653)
+spawned uWSGI worker 1 (pid: 2654, cores: 1)
+spawned uWSGI worker 2 (pid: 2655, cores: 1)
+spawned uWSGI worker 3 (pid: 2656, cores: 1)
+spawned uWSGI worker 4 (pid: 2657, cores: 1)
+WSGI app 0 (mountpoint='') ready in 2 seconds on interpreter 0x5646a78c3cc0 pid: 2656 (default app)
+WSGI app 0 (mountpoint='') ready in 2 seconds on interpreter 0x5646a78c3cc0 pid: 2657 (default app)
+WSGI app 0 (mountpoint='') ready in 2 seconds on interpreter 0x5646a78c3cc0 pid: 2654 (default app)
+[pid: 2656|app: 0|req: 1/1] 39.118.205.97 () {44 vars in 853 bytes} [Fri Aug 21 01:41:14 2020] GET /admin => generated 0 bytes in 52 msecs (HTTP/1.1 301) 4 headers in 126 bytes (1 switches on core 0)
+WSGI app 0 (mountpoint='') ready in 2 seconds on interpreter 0x5646a78c3cc0 pid: 2655 (default app)
+[pid: 2654|app: 0|req: 1/2] 39.118.205.97 () {44 vars in 855 bytes} [Fri Aug 21 01:41:14 2020] GET /admin/ => generated 0 bytes in 123 msecs (HTTP/1.1 302) 8 headers in 309 bytes (1 switches on core 0)
+[pid: 2657|app: 0|req: 1/3] 39.118.205.97 () {44 vars in 892 bytes} [Fri Aug 21 01:41:15 2020] GET /admin/login/?next=/admin/ => generated 1933 bytes in 438 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 2657|app: 0|req: 2/4] 39.118.205.97 () {42 vars in 890 bytes} [Fri Aug 21 01:41:15 2020] GET /favicon.ico => generated 2119 bytes in 8 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+[pid: 2654|app: 0|req: 2/5] 39.118.205.97 () {52 vars in 1267 bytes} [Fri Aug 21 01:41:24 2020] POST /admin/login/?next=/admin/ => generated 0 bytes in 135 msecs (HTTP/1.1 302) 12 headers in 741 bytes (1 switches on core 0)
+[pid: 2655|app: 0|req: 1/6] 39.118.205.97 () {46 vars in 1075 bytes} [Fri Aug 21 01:41:24 2020] GET /admin/ => generated 4627 bytes in 256 msecs (HTTP/1.1 200) 7 headers in 271 bytes (1 switches on core 0)
+...brutally killing workers...
+Gracefully killing worker 3 (pid: 2656)...
+Gracefully killing worker 2 (pid: 2655)...
+worker 3 buried after 0 seconds
+Gracefully killing worker 1 (pid: 2654)...
+Gracefully killing worker 4 (pid: 2657)...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 4 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /home/ubuntu/ttobak/backend/api
+closing all non-uwsgi socket fds > 2 (max_fd = 1024)...
+found fd 3 mapped to socket 0 (127.0.0.1:8001)
+running /home/ubuntu/ttobak/venv/bin/uwsgi
+[uWSGI] getting INI configuration from back.ini
+*** Starting uWSGI 2.0.19.1 (64bit) on [Thu Aug 20 17:41:18 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/ubuntu/ttobak/backend/api
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 31417
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 inherited INET address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55c992746160
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+gracefully (RE)spawned uWSGI master process (pid: 2653)
+spawned uWSGI worker 1 (pid: 7945, cores: 1)
+spawned uWSGI worker 2 (pid: 7946, cores: 1)
+spawned uWSGI worker 3 (pid: 7947, cores: 1)
+spawned uWSGI worker 4 (pid: 7948, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55c992746160 pid: 7945 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55c992746160 pid: 7948 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55c992746160 pid: 7946 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55c992746160 pid: 7947 (default app)
+*** Starting uWSGI 2.0.19.1 (64bit) on [Thu Aug 20 18:07:02 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55dd63b50cc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 2262)
+spawned uWSGI worker 1 (pid: 2263, cores: 1)
+spawned uWSGI worker 2 (pid: 2264, cores: 1)
+spawned uWSGI worker 3 (pid: 2265, cores: 1)
+spawned uWSGI worker 4 (pid: 2266, cores: 1)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55dd63b50cc0 pid: 2263 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55dd63b50cc0 pid: 2266 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55dd63b50cc0 pid: 2264 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55dd63b50cc0 pid: 2265 (default app)
+Invalid HTTP_HOST header: 'ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000'. You may need to add 'ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com' to ALLOWED_HOSTS.
+Bad Request: /admin
+[pid: 2265|app: 0|req: 1/1] 39.118.205.97 () {40 vars in 796 bytes} [Fri Aug 21 03:07:14 2020] GET /admin => generated 58419 bytes in 85 msecs (HTTP/1.1 400) 2 headers in 67 bytes (1 switches on core 0)
+Invalid HTTP_HOST header: 'ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000'. You may need to add 'ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[pid: 2264|app: 0|req: 1/2] 39.118.205.97 () {40 vars in 775 bytes} [Fri Aug 21 03:07:14 2020] GET /favicon.ico => generated 58458 bytes in 68 msecs (HTTP/1.1 400) 2 headers in 67 bytes (1 switches on core 0)
+Fri Aug 21 03:08:01 2020 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Aug 21 03:08:01 2020 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Thu Aug 20 18:08:02 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x564280fe2cc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 2428)
+spawned uWSGI worker 1 (pid: 2429, cores: 1)
+spawned uWSGI worker 2 (pid: 2430, cores: 1)
+spawned uWSGI worker 3 (pid: 2431, cores: 1)
+spawned uWSGI worker 4 (pid: 2432, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x564280fe2cc0 pid: 2429 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x564280fe2cc0 pid: 2430 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x564280fe2cc0 pid: 2431 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x564280fe2cc0 pid: 2432 (default app)
+[pid: 2429|app: 0|req: 1/1] 39.118.205.97 () {42 vars in 827 bytes} [Fri Aug 21 03:08:05 2020] GET /admin => generated 0 bytes in 25 msecs (HTTP/1.1 301) 4 headers in 126 bytes (1 switches on core 0)
+[pid: 2432|app: 0|req: 1/2] 39.118.205.97 () {42 vars in 829 bytes} [Fri Aug 21 03:08:05 2020] GET /admin/ => generated 0 bytes in 61 msecs (HTTP/1.1 302) 8 headers in 309 bytes (1 switches on core 0)
+[pid: 2430|app: 0|req: 1/3] 39.118.205.97 () {42 vars in 866 bytes} [Fri Aug 21 03:08:05 2020] GET /admin/login/?next=/admin/ => generated 1933 bytes in 266 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 2431|app: 0|req: 1/4] 39.118.205.97 () {42 vars in 884 bytes} [Fri Aug 21 03:08:05 2020] GET /favicon.ico => generated 2117 bytes in 33 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+[pid: 2431|app: 0|req: 2/5] 39.118.205.97 () {52 vars in 1259 bytes} [Fri Aug 21 03:08:09 2020] POST /admin/login/?next=/admin/ => generated 0 bytes in 122 msecs (HTTP/1.1 302) 12 headers in 739 bytes (1 switches on core 0)
+[pid: 2431|app: 0|req: 3/6] 39.118.205.97 () {46 vars in 1069 bytes} [Fri Aug 21 03:08:09 2020] GET /admin/ => generated 4627 bytes in 231 msecs (HTTP/1.1 200) 7 headers in 271 bytes (1 switches on core 0)
+Fri Aug 21 03:08:46 2020 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Aug 21 03:08:46 2020 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Thu Aug 20 18:08:47 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55a76acbfcc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 2502)
+spawned uWSGI worker 1 (pid: 2503, cores: 1)
+spawned uWSGI worker 2 (pid: 2504, cores: 1)
+spawned uWSGI worker 3 (pid: 2505, cores: 1)
+spawned uWSGI worker 4 (pid: 2506, cores: 1)
+Traceback (most recent call last):
+  File "./api/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/apps/registry.py", line 122, in populate
+    app_config.ready()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/contrib/admin/apps.py", line 24, in ready
+    self.module.autodiscover()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/contrib/admin/__init__.py", line 26, in autodiscover
+    autodiscover_modules('admin', register_to=site)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/utils/module_loading.py", line 47, in autodiscover_modules
+    import_module('%s.%s' % (app_config.name, module_to_search))
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "./tt_apis/admin.py", line 7, in <module>
+    admin.stie.register(SwpTest)
+AttributeError: module 'django.contrib.admin' has no attribute 'stie'
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+Traceback (most recent call last):
+  File "./api/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/apps/registry.py", line 122, in populate
+    app_config.ready()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/contrib/admin/apps.py", line 24, in ready
+    self.module.autodiscover()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/contrib/admin/__init__.py", line 26, in autodiscover
+    autodiscover_modules('admin', register_to=site)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/utils/module_loading.py", line 47, in autodiscover_modules
+    import_module('%s.%s' % (app_config.name, module_to_search))
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "./tt_apis/admin.py", line 7, in <module>
+    admin.stie.register(SwpTest)
+AttributeError: module 'django.contrib.admin' has no attribute 'stie'
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+Traceback (most recent call last):
+  File "./api/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/apps/registry.py", line 122, in populate
+    app_config.ready()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/contrib/admin/apps.py", line 24, in ready
+    self.module.autodiscover()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/contrib/admin/__init__.py", line 26, in autodiscover
+    autodiscover_modules('admin', register_to=site)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/utils/module_loading.py", line 47, in autodiscover_modules
+    import_module('%s.%s' % (app_config.name, module_to_search))
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "./tt_apis/admin.py", line 7, in <module>
+    admin.stie.register(SwpTest)
+AttributeError: module 'django.contrib.admin' has no attribute 'stie'
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+Traceback (most recent call last):
+  File "./api/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/apps/registry.py", line 122, in populate
+    app_config.ready()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/contrib/admin/apps.py", line 24, in ready
+    self.module.autodiscover()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/contrib/admin/__init__.py", line 26, in autodiscover
+    autodiscover_modules('admin', register_to=site)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/utils/module_loading.py", line 47, in autodiscover_modules
+    import_module('%s.%s' % (app_config.name, module_to_search))
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "./tt_apis/admin.py", line 7, in <module>
+    admin.stie.register(SwpTest)
+AttributeError: module 'django.contrib.admin' has no attribute 'stie'
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+--- no python application found, check your startup logs for errors ---
+[pid: 2504|app: -1|req: -1/1] 39.118.205.97 () {46 vars in 1069 bytes} [Fri Aug 21 03:08:49 2020] GET /admin/ => generated 21 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 83 bytes (0 switches on core 0)
+Fri Aug 21 03:09:14 2020 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Aug 21 03:09:14 2020 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Aug 21 03:09:14 2020 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Thu Aug 20 18:09:15 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55b93983ccc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 2544)
+spawned uWSGI worker 1 (pid: 2545, cores: 1)
+spawned uWSGI worker 2 (pid: 2546, cores: 1)
+spawned uWSGI worker 3 (pid: 2547, cores: 1)
+spawned uWSGI worker 4 (pid: 2548, cores: 1)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55b93983ccc0 pid: 2548 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55b93983ccc0 pid: 2545 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55b93983ccc0 pid: 2546 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55b93983ccc0 pid: 2547 (default app)
+[pid: 2547|app: 0|req: 1/1] 39.118.205.97 () {46 vars in 1069 bytes} [Fri Aug 21 03:09:17 2020] GET /admin/ => generated 5510 bytes in 309 msecs (HTTP/1.1 200) 7 headers in 271 bytes (1 switches on core 0)
+[pid: 2545|app: 0|req: 1/2] 39.118.205.97 () {44 vars in 1051 bytes} [Fri Aug 21 03:09:19 2020] GET /admin/tt_apis/swptest/ => generated 7752 bytes in 377 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 2547|app: 0|req: 2/3] 39.118.205.97 () {42 vars in 893 bytes} [Fri Aug 21 03:09:19 2020] GET /admin/jsi18n/ => generated 8330 bytes in 12 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[pid: 2547|app: 0|req: 3/4] 39.118.205.97 () {44 vars in 1085 bytes} [Fri Aug 21 03:09:21 2020] GET /admin/tt_apis/swptest/3/change/ => generated 5869 bytes in 62 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 2546|app: 0|req: 1/5] 39.118.205.97 () {42 vars in 902 bytes} [Fri Aug 21 03:09:21 2020] GET /admin/jsi18n/ => generated 8330 bytes in 45 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[pid: 2547|app: 0|req: 4/6] 39.118.205.97 () {44 vars in 1051 bytes} [Fri Aug 21 03:09:23 2020] GET /admin/tt_apis/swptest/ => generated 7752 bytes in 149 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.19.1 (64bit) on [Thu Aug 20 18:10:04 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55a2bc979cc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 2618)
+spawned uWSGI worker 1 (pid: 2619, cores: 1)
+spawned uWSGI worker 2 (pid: 2620, cores: 1)
+spawned uWSGI worker 3 (pid: 2621, cores: 1)
+spawned uWSGI worker 4 (pid: 2622, cores: 1)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55a2bc979cc0 pid: 2620 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55a2bc979cc0 pid: 2622 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55a2bc979cc0 pid: 2619 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55a2bc979cc0 pid: 2621 (default app)
+[pid: 2619|app: 0|req: 1/1] 39.118.205.97 () {44 vars in 1038 bytes} [Fri Aug 21 03:10:13 2020] GET /admin/ => generated 5510 bytes in 317 msecs (HTTP/1.1 200) 7 headers in 271 bytes (1 switches on core 0)
+[pid: 2622|app: 0|req: 1/2] 39.118.205.97 () {44 vars in 1051 bytes} [Fri Aug 21 03:10:15 2020] GET /admin/tt_apis/student/ => generated 4455 bytes in 343 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 2621|app: 0|req: 1/3] 39.118.205.97 () {42 vars in 893 bytes} [Fri Aug 21 03:10:15 2020] GET /admin/jsi18n/ => generated 8330 bytes in 46 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[pid: 2619|app: 0|req: 2/4] 39.118.205.97 () {44 vars in 1085 bytes} [Fri Aug 21 03:10:16 2020] GET /admin/tt_apis/student/4/change/ => generated 5490 bytes in 56 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+[pid: 2619|app: 0|req: 3/5] 39.118.205.97 () {42 vars in 902 bytes} [Fri Aug 21 03:10:16 2020] GET /admin/jsi18n/ => generated 8330 bytes in 10 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+Internal Server Error: /api/swp_test/ask
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'is_correct' at row 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./tt_apis/views.py", line 190, in post
+    is_correct = 'not solved'
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/query.py", line 433, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/base.py", line 746, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/base.py", line 784, in save_base
+    force_update, using, update_fields,
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/base.py", line 887, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/base.py", line 926, in _do_insert
+    using=using, raw=raw,
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1392, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.DataError: (1406, "Data too long for column 'is_correct' at row 1")
+[pid: 2620|app: 0|req: 1/6] 39.118.205.97 () {48 vars in 988 bytes} [Fri Aug 21 03:11:19 2020] POST /api/swp_test/ask => generated 228421 bytes in 203 msecs (HTTP/1.1 500) 7 headers in 287 bytes (1 switches on core 0)
+Fri Aug 21 03:11:53 2020 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Aug 21 03:11:53 2020 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Thu Aug 20 18:11:54 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55a2f45ebcc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 2846)
+spawned uWSGI worker 1 (pid: 2847, cores: 1)
+spawned uWSGI worker 2 (pid: 2848, cores: 1)
+spawned uWSGI worker 3 (pid: 2849, cores: 1)
+spawned uWSGI worker 4 (pid: 2850, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55a2f45ebcc0 pid: 2847 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55a2f45ebcc0 pid: 2848 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55a2f45ebcc0 pid: 2850 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55a2f45ebcc0 pid: 2849 (default app)
+Internal Server Error: /api/swp_test/ask
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'is_correct' at row 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./tt_apis/views.py", line 190, in post
+    is_correct = 'not solved'
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/query.py", line 433, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/base.py", line 746, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/base.py", line 784, in save_base
+    force_update, using, update_fields,
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/base.py", line 887, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/base.py", line 926, in _do_insert
+    using=using, raw=raw,
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1392, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.DataError: (1406, "Data too long for column 'is_correct' at row 1")
+[pid: 2849|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 988 bytes} [Fri Aug 21 03:11:58 2020] POST /api/swp_test/ask => generated 228421 bytes in 223 msecs (HTTP/1.1 500) 7 headers in 287 bytes (1 switches on core 0)
+Internal Server Error: /api/swp_test/ask
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'is_correct' at row 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./tt_apis/views.py", line 190, in post
+    is_correct = 'not solved'
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/query.py", line 433, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/base.py", line 746, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/base.py", line 784, in save_base
+    force_update, using, update_fields,
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/base.py", line 887, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/base.py", line 926, in _do_insert
+    using=using, raw=raw,
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1392, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.DataError: (1406, "Data too long for column 'is_correct' at row 1")
+[pid: 2849|app: 0|req: 2/2] 39.118.205.97 () {48 vars in 988 bytes} [Fri Aug 21 03:12:26 2020] POST /api/swp_test/ask => generated 228421 bytes in 162 msecs (HTTP/1.1 500) 7 headers in 287 bytes (1 switches on core 0)
+Fri Aug 21 03:14:03 2020 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Thu Aug 20 18:14:05 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55ab193b2cc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 3269)
+spawned uWSGI worker 1 (pid: 3270, cores: 1)
+spawned uWSGI worker 2 (pid: 3271, cores: 1)
+spawned uWSGI worker 3 (pid: 3272, cores: 1)
+spawned uWSGI worker 4 (pid: 3273, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55ab193b2cc0 pid: 3272 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55ab193b2cc0 pid: 3273 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55ab193b2cc0 pid: 3271 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55ab193b2cc0 pid: 3270 (default app)
+Internal Server Error: /api/swp_test/ask
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./tt_apis/views.py", line 196, in post
+    return JsonResponse({"up_path":url+sounds.swp_uppath,"down_path":url+sounds.down_path,"answer":answer,"swp_id":sounds.swp_id,"code":1})
+AttributeError: 'SwpTest' object has no attribute 'down_path'
+[pid: 3270|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 988 bytes} [Fri Aug 21 03:14:16 2020] POST /api/swp_test/ask => generated 75391 bytes in 157 msecs (HTTP/1.1 500) 7 headers in 286 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.19.1 (64bit) on [Thu Aug 20 18:16:06 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x5600e05f0cc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 3514)
+spawned uWSGI worker 1 (pid: 3515, cores: 1)
+spawned uWSGI worker 2 (pid: 3516, cores: 1)
+spawned uWSGI worker 3 (pid: 3517, cores: 1)
+spawned uWSGI worker 4 (pid: 3518, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x5600e05f0cc0 pid: 3516 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x5600e05f0cc0 pid: 3517 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x5600e05f0cc0 pid: 3515 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x5600e05f0cc0 pid: 3518 (default app)
+[pid: 3518|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 988 bytes} [Fri Aug 21 03:16:11 2020] POST /api/swp_test/ask => generated 232 bytes in 47 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 3515|app: 0|req: 1/2] 39.118.205.97 () {48 vars in 988 bytes} [Fri Aug 21 03:16:22 2020] POST /api/swp_test/ask => generated 234 bytes in 51 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+Not Found: /
+[pid: 3518|app: 0|req: 2/3] 209.17.96.218 () {30 vars in 412 bytes} [Fri Aug 21 05:03:07 2020] GET / => generated 2025 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 3515|app: 0|req: 2/4] 92.118.161.21 () {30 vars in 453 bytes} [Fri Aug 21 09:02:15 2020] GET / => generated 2025 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Fri Aug 21 16:28:17 2020 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Aug 21 16:28:17 2020 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Fri Aug 21 07:28:22 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55d4f841fcc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 29650)
+spawned uWSGI worker 1 (pid: 29651, cores: 1)
+spawned uWSGI worker 2 (pid: 29652, cores: 1)
+spawned uWSGI worker 3 (pid: 29653, cores: 1)
+spawned uWSGI worker 4 (pid: 29654, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55d4f841fcc0 pid: 29651 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55d4f841fcc0 pid: 29654 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55d4f841fcc0 pid: 29652 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55d4f841fcc0 pid: 29653 (default app)
+[pid: 29653|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 988 bytes} [Fri Aug 21 16:28:31 2020] POST /api/swp_test/ask => generated 232 bytes in 70 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 29654|app: 0|req: 1/2] 39.118.205.97 () {48 vars in 988 bytes} [Fri Aug 21 16:28:40 2020] POST /api/swp_test/ask => generated 108 bytes in 69 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 29654|app: 0|req: 2/3] 39.118.205.97 () {48 vars in 988 bytes} [Fri Aug 21 16:29:27 2020] POST /api/swp_test/ask => generated 232 bytes in 16 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+Internal Server Error: /api/swp_test/ask
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./tt_apis/views.py", line 179, in post
+    freq = data['freq']
+KeyError: 'freq'
+[pid: 29654|app: 0|req: 3/4] 39.118.205.97 () {48 vars in 988 bytes} [Fri Aug 21 16:30:03 2020] POST /api/swp_test/ask => generated 74210 bytes in 82 msecs (HTTP/1.1 500) 7 headers in 286 bytes (1 switches on core 0)
+Internal Server Error: /api/swp_test/answer
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./tt_apis/views.py", line 218, in post
+    iscorrect = iscorrect
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/query.py", line 431, in create
+    obj = self.model(**kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/base.py", line 500, in __init__
+    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+TypeError: StuSwp() got an unexpected keyword argument 'iscorrect'
+[pid: 29654|app: 0|req: 4/5] 39.118.205.97 () {48 vars in 994 bytes} [Fri Aug 21 16:30:25 2020] POST /api/swp_test/answer => generated 90628 bytes in 78 msecs (HTTP/1.1 500) 7 headers in 286 bytes (1 switches on core 0)
+Fri Aug 21 16:32:22 2020 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Aug 21 16:32:22 2020 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Aug 21 16:32:22 2020 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Aug 21 16:32:22 2020 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Fri Aug 21 07:32:23 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x5596269fbcc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 30110)
+spawned uWSGI worker 1 (pid: 30111, cores: 1)
+spawned uWSGI worker 2 (pid: 30112, cores: 1)
+spawned uWSGI worker 3 (pid: 30113, cores: 1)
+spawned uWSGI worker 4 (pid: 30114, cores: 1)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x5596269fbcc0 pid: 30112 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x5596269fbcc0 pid: 30114 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x5596269fbcc0 pid: 30111 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x5596269fbcc0 pid: 30113 (default app)
+[pid: 30113|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 994 bytes} [Fri Aug 21 16:32:27 2020] POST /api/swp_test/answer => generated 70 bytes in 52 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+[pid: 30111|app: 0|req: 1/2] 39.118.205.97 () {48 vars in 994 bytes} [Fri Aug 21 16:32:44 2020] POST /api/swp_test/answer => generated 70 bytes in 58 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+[pid: 30113|app: 0|req: 2/3] 39.118.205.97 () {48 vars in 994 bytes} [Fri Aug 21 16:32:58 2020] POST /api/swp_test/answer => generated 82 bytes in 38 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+[pid: 30113|app: 0|req: 3/4] 39.118.205.97 () {48 vars in 994 bytes} [Fri Aug 21 16:33:03 2020] POST /api/swp_test/answer => generated 89 bytes in 9 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)

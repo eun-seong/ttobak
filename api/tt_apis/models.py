@@ -1,10 +1,3 @@
-# This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
-#   * Make sure each model has one field with primary_key=True
-#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
-#   * Remove `` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
 
@@ -19,6 +12,7 @@ class ConvQues(models.Model):
 
 class FocQues(models.Model):
     ques_id = models.AutoField(primary_key=True)
+    question = models.CharField(max_length=255,null=True)
     a_1 = models.CharField(max_length=255)
     a_2 = models.CharField(max_length=255)
     a_3 = models.CharField(max_length=255)
@@ -78,7 +72,8 @@ class StuIc(models.Model):
 class StuPh(models.Model):
     sp_id = models.AutoField(primary_key=True)
     stu = models.ForeignKey('Student', on_delete=models.PROTECT,null=True,db_column = 'stu_id')
-    ph = models.ForeignKey('PhTest', on_delete=models.PROTECT,null=True,db_column='ph_id')
+    ph1 = models.ForeignKey('PhTest', on_delete=models.PROTECT,null=True,related_name='ph1')
+    ph2 = models.ForeignKey('PhTest', on_delete=models.PROTECT,null=True,related_name='ph2')
     is_correct = models.CharField(max_length=5)
     sp_date = models.DateField()
 
@@ -91,7 +86,7 @@ class StuSwp(models.Model):
     stu = models.ForeignKey('Student', on_delete=models.PROTECT,null=True,db_column = 'stu_id')
     swp = models.ForeignKey('SwpTest', on_delete=models.PROTECT,null=True,db_column = 'swp_id')
     is_correct = models.CharField(max_length=5)
-    ss_date = models.DateField()
+    ss_date = models.DateField(auto_now = True)
 
     class Meta:
         db_table = 'stu_swp'

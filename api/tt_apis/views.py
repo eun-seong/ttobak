@@ -1,8 +1,9 @@
 import json
 import bcrypt
 import jwt
+import random
 
-from .models  import User,Student,UsrStu
+from .models  import User,Student,UsrStu,SwpTest,StuSwp
 
 from django.views import View
 from django.http import HttpResponse, JsonResponse
@@ -169,3 +170,53 @@ class StuGet(View):
             return JsonResponse({"message":"존재하지 않는 학습자 입니다","code":2},status=200)
         return JsonResponse({"message":"존재하지 않는 회원입니다","code":3},status=200)
 
+class SwpGet(View):
+    @csrf_exempt
+    def post(self,request):
+        data = json.loads(request.body)
+        url = 'https://ttobakaudio.s3-ap-northeast-2.amazonaws.com'
+
+        freq = data['freq']
+        level = data['level']
+        s_id = data['s_id']
+        if Student.objects.filter(pk=s_id).exists():
+            student = Student.objects.get(pk=s_id)
+            if SwpTest.objects.filter(swp_level = level,swp_freq=freq).exists():
+                sounds = SwpTest.objects.get(swp_level=level,swp_freq=freq)
+
+                x = random.randint(1,2)
+                answer = 'up'
+                if x ==1:
+                    answer = 'down' 
+                return JsonResponse({"up_path":url+sounds.swp_uppath,"down_path":url+sounds.swp_downpath,"answer":answer,"swp_id":sounds.swp_id,"code":1},status=200)
+            return JsonResponse({"message":"해당 문제가 존재하지 않습니다.","code":2},status=200)
+        return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":3},status=200)
+
+class SwpAns(View):
+    @csrf_exempt
+    def post(self,request):
+        data = json.loads(request.body)
+
+        s_id = data['s_id']
+        swp_id = data['swp_id']
+        ori = data['ori_answer']
+        stu = data['stu_answer']
+        
+        if Student.objects.filter(pk=s_id).exists():
+            student = Student.objects.get(pk = s_id)
+            if SwpTest.objects.filter(pk=swp_id).exists():
+                swp = SwpTest.objects.get(pk=swp_id)
+
+                iscorrect = 'false'
+                mes = "답이 틀렸습니다."
+                if ori == stu :
+                    iscorrect = 'true'
+                    mes = "답이 맞았습니다."
+                StuSwp.objects.create(
+                    stu = student,
+                    swp = swp,
+                    is_correct = iscorrect
+                )
+                return JsonResponse({"message":mes,"code":1},status=200)
+            return JsonResponse({"message":"해당 문제가 없습니다","code":2},status=200)
+        return JsonResponse({"message":"해당 학습자가 없습니다.","code":3},status=200)
