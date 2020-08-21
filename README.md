@@ -1,7 +1,9 @@
 # Front-end
 ## 파일 구조
-Container-Presenter 구조   
 ![파일_구조](/uploads/0ddfa464ce227e71d6f2c8edfd646ac8/image.png)
+Container-Presenter 구조   
+Container : 화면에 보이는 것 외에 로직을 담고 있음
+Presenter : 화면에 보여지는 것들을 담고 있음
 
 ## Router
 react-router를 통해 검사 및 치료 라우팅
