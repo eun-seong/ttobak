@@ -9,22 +9,19 @@ import TTobak from 'img/ttobak/ttobak1-1.png';
 
 
 /* styled-components */
-const Img = styled.img`
+const BackgroundImg = styled.img`
     width: 100%;
-`;
-
-const BackgroundImg = styled(Img)`
     margin: auto auto;
     bottom:0;
 `;
 
-const PauseButton = styled(Img)`
+const PauseButton = styled.img`
     position : absolute;
     width:7%;
     margin: 10px;
 `;
 
-const ButtonImg = styled(Img)`
+const ButtonImg = styled.img`
     width: 20%;
     top: 60%;
 `;
@@ -39,7 +36,7 @@ const DownButtonImg = styled(ButtonImg)`
     margin: 0 0 0 15px;
 `;
 
-const AnswerBoxImg = styled(Img)`
+const AnswerBoxImg = styled.img`
     width: 100%;
     margin: 5px 0 5px 0 ;
 `;
