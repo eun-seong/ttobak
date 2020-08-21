@@ -23,11 +23,6 @@ ERROR_CODE = {
     5: 'Invalid Parameters',
 }
 
-@app.route('/test')
-async def test(request):
-    time.sleep(5)
-    return await response.file('templates/api.html')
-
 @app.route('/')
 async def index(request):
     return await response.file('templates/index.html')
@@ -58,7 +53,7 @@ async def update_user(request):
     audio_info.write(line)
     audio_info.close()
 
-    return response.json({'request': request.path, 'status': 'Success'})
+    return response.json({'request': request.path, 'status': 'Success', 'code': 0})
 
 @app.route('/api/transcript/update', methods=['POST'])
 async def update_transcript(request):
@@ -79,7 +74,7 @@ async def update_transcript(request):
     except:
         return error(request.path, 4)
 
-    return response.json({'request': request.path, 'status': 'Success'})
+    return response.json({'request': request.path, 'status': 'Success', 'code': 0})
 
 @app.route('/api/score', methods=['POST'])
 async def score(request):
@@ -112,7 +107,7 @@ async def score(request):
     result = json.load(result_file)
     result_file.close()
 
-    return response.json({'request': request.path, 'status': 'Success', 'score': float(result['score']), 'phone_score': float(result['phone_score']), 'speed_score': float(result['speed_score']), 'rhythm_score': float(result['rhythm_score']), 'transcript': result['transcript'], 'transcript': result['transcript'], 'correct': result['correct'], 'student': result['student']})
+    return response.json({'request': request.path, 'status': 'Success', 'code': 0, 'score': float(result['score']), 'phone_score': float(result['phone_score']), 'speed_score': float(result['speed_score']), 'rhythm_score': float(result['rhythm_score']), 'transcript': result['transcript'], 'transcript': result['transcript'], 'correct': result['correct'], 'student': result['student']})
 
 @app.route('/api/segscore', methods=['POST'])
 async def seg_score(request):
@@ -143,7 +138,7 @@ async def seg_score(request):
     result = json.load(result_file)
     result_file.close()
 
-    return response.json({'request': request.path, 'status': 'Success', 'score': float(result['score']), 'phone_score': float(result['phone_score']), 'speed_score': float(result['speed_score']), 'rhythm_score': float(result['rhythm_score']), 'transcript': result['transcript'], 'transcript': result['transcript'], 'correct': result['correct'], 'student': result['student']})
+    return response.json({'request': request.path, 'status': 'Success', 'code': 0, 'score': float(result['score']), 'phone_score': float(result['phone_score']), 'speed_score': float(result['speed_score']), 'rhythm_score': float(result['rhythm_score']), 'transcript': result['transcript'], 'transcript': result['transcript'], 'correct': result['correct'], 'student': result['student']})
 
 
 def make_filename(filename):
@@ -156,7 +151,7 @@ def make_filename(filename):
     return '{}.{}'.format(str(millis), ext)
 
 def error(req, err):
-    return response.json({'request': req, 'status': 'Fail', 'error': ERROR_CODE[err]})
+    return response.json({'request': req, 'status': 'Fail', 'code': err, 'message': ERROR_CODE[err]})
 
 if __name__ == '__main__':
     app.run()

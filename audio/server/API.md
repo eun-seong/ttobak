@@ -19,14 +19,14 @@ DB에 student나 과정이 추가될 때마다 호출해야 하는 API
     `uid=[alphanumeric] | name=[alphanumeric] | gender=['m' or 'f']` 
 * **Success Response**   
     * Code: 200   
-      Content: `{'request': '/api/user/update', 'status': 'Success'}`
+      Content: `{'request': '/api/user/update', 'status': 'Success', 'code': 0}`
 * **Error Response**   
     * uid, name, gender가 data param에 없을 때
-      Content: `{'request': '/api/user/update', 'status': 'Fail', 'error': 'Insufficient Parameters'}`
+      Content: `{'request': '/api/user/update', 'status': 'Fail', 'code': 1, 'message': 'Insufficient Parameters'}`
     * uid, name, gender field가 비어있을 때
-      Content: `{'request': '/api/user/update', 'status': 'Fail', 'error': 'Parameter is not filled'}`
+      Content: `{'request': '/api/user/update', 'status': 'Fail', 'code': 2, 'message': 'Parameter is not filled'}`
     * gender field가 'm'이나 'f'가 아닐 때
-      Content: `{'request': '/api/user/update', 'status': 'Fail', 'error': 'Invalid Parameters'}`
+      Content: `{'request': '/api/user/update', 'status': 'Fail', 'code': 5, 'message': 'Invalid Parameters'}`
 
 **transcript**   
 ---
@@ -42,11 +42,11 @@ DB에 student나 과정이 추가될 때마다 호출해야 하는 API
       Content: `{'request': '/api/transcript/update', 'status': 'Success'}`
 * **Error Response**   
     * transcript나 course가 data param에 없을 때   
-      Content: `{'request': '/api/transcript/update', 'status': 'Fail', 'error': 'Insufficient Parameters'}`
+      Content: `{'request': '/api/transcript/update', 'status': 'Fail', 'code': 1, 'message': 'Insufficient Parameters'}`
     * transcript나 course가 비어있을 때   
-      Content: `{'request': '/api/transcript/update', 'status': 'Fail', 'error': 'Parameter is not filled'}`
+      Content: `{'request': '/api/transcript/update', 'status': 'Fail', 'code': 2, 'message': 'Parameter is not filled'}`
     * 서버 내 처리에서 문제가 생겼을 때   
-      Content: `{'request': '/api/transcript/update', 'status': 'Fail', 'error': 'Processing error'}`
+      Content: `{'request': '/api/transcript/update', 'status': 'Fail', 'code': 4, 'message': 'Processing error'}`
 
 ## Part2 - GOP
 
@@ -65,23 +65,25 @@ DB에 student나 과정이 추가될 때마다 호출해야 하는 API
     * Code: 200   
       Content: 
       ```
-      {'request': '/api/score', 
-       'status': 'Success', 
-       'score': [float], 
-       'phone_score': [float], 
-       'speed_score': [float], 
-       'rhythm_score': [float], 
-       'transcript': [alphanumeric], 
-       'correct': [alphanumeric], 
-       'student': [alphanumeric]}
+      {
+          'request': '/api/score', 
+           'status': 'Success', 
+           'score': [float], 
+           'phone_score': [float], 
+           'speed_score': [float], 
+           'rhythm_score': [float], 
+           'transcript': [alphanumeric], 
+           'correct': [alphanumeric], 
+           'student': [alphanumeric]
+       }
       ```   
        여기서 transcript는 정답 문자열, correct는 정답 발음열, student는 음성 파일 발음열을 의미   
 * **Error Response**   
     * course, user, file이 data param에 없을 때   
-      Content: `{'request': '/api/score', 'status': 'Fail', 'error': 'Insufficient Parameters'}`
+      Content: `{'request': '/api/score', 'status': 'Fail', 'code': 1, 'message': 'Insufficient Parameters'}`
     * course, user field가 비어있을 때   
-      Content: `{'request': '/api/score', 'status': 'Fail', 'error': 'Parameter is not filled'}`
+      Content: `{'request': '/api/score', 'status': 'Fail', 'code': 2, 'message': 'Parameter is not filled'}`
     * 파일이 적절한 타입이 아닐 때   
-      Content: `{'request': '/api/score', 'status': 'Fail', 'error': 'Invalid extensions'}`
+      Content: `{'request': '/api/score', 'status': 'Fail', 'code': 3, 'message': 'Invalid extensions'}`
     * 서버 내 처리에서 문제가 생겼을 때   
-      Content: `{'request': '/api/score', 'status': 'Fail', 'error': 'Processing error'}`
+      Content: `{'request': '/api/score', 'status': 'Fail', 'code': 4, 'message': 'Processing error'}`
