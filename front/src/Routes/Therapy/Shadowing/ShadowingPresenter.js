@@ -43,7 +43,7 @@ const TextBoxImg = styled.img`
 const Shadowing = () => {
     return (
         <div>
-            <Link to=''><PauseButton src={Button_Pause} alt='일시정지' /></Link>
+            <Link to='/'><PauseButton src={Button_Pause} alt='일시정지' /></Link>
             <TTobakComponent src={TTobak} alt='또박이' />
             <Component>
                 <TextBoxImg src={TextBox} alt='textbox' />
