@@ -3,7 +3,7 @@ import bcrypt
 import jwt
 import random
 
-from .models  import User,Student,UsrStu,SwpTest,StuSwp
+from .models  import User,Student,UsrStu,SwpTest,StuSwp,PhTest,StuPh,FocTest,StuFoc,StuFocArr,FocScript,StuFoc
 
 from django.views import View
 from django.http import HttpResponse, JsonResponse
@@ -15,7 +15,7 @@ class MakeUser(View):
         data = json.loads(request.body)
         
         if User.objects.filter(usr_email=data['email']).exists():
-            return JsonResponse({"message":"이미 존재하는 이메일 입니다.","code":2},status=400)
+            return JsonResponse({"message":"이미 존재하는 이메일 입니다.","code":2},status=200)
 
         User.objects.create(
             usr_name=data['name'],
@@ -38,9 +38,9 @@ class LogIn(View):
             if bcrypt.checkpw(data['pw'].encode("UTF-8"),user.usr_pw.encode("UTF-8")):
                 return JsonResponse({"usr_id":user.usr_id,"code":1},status=200)
 
-            return JsonResponse({"message":"Wrong password","code":2},status=401)
+            return JsonResponse({"message":"비밀번호가 일치하지 않습니다.","code":2},status=200)
 
-        return JsonResponse({"message":"Not a registered user","code":3},status=400)
+        return JsonResponse({"message":"가입된 메일 주소가 존재하지 않습니다.","code":3},status=200)
 
 class UserModify(View):
     @csrf_exempt
@@ -53,14 +53,14 @@ class UserModify(View):
 
             if user.usr_email != data['email']:
                 if User.objects.filter(usr_email = data['email']).exists():
-                    return JsonResponse({"message":"이미 존재하는 이메일입니다","code":1},status=200)
+                    return JsonResponse({"message":"이미 존재하는 이메일입니다.","code":2},status=200)
             
             user.usr_email = data['email']
             user.usr_pw = bcrypt.hashpw(data['pw'].encode("UTF-8"),bcrypt.gensalt()).decode("UTF-8")
             user.usr_name = data['name'] 
             user.save()
 
-            return JsonResponse({"message":"변경사항이 저장되었습니다","code":2},status=200)
+            return JsonResponse({"message":"변경사항이 저장되었습니다.","code":1},status=200)
 
         return JsonResponse({"message":"존재하지 않는 회원입니다","code":3},status=200)
 
@@ -73,9 +73,9 @@ class UserDelete(View):
         if User.objects.filter(usr_id = uk).exists():
             user = User.objects.get(usr_id=uk)
             user.delete()
-
+            ##Should add process to delete student and the all related tables' instance. Will be added after creating all the APIs.
             return JsonResponse({"message":"성공적으로 삭제되었습니다.","code":1},status=200)
-        return JsonResponse({"message":"존재하지 않는 회원입니다","code":2},status=200)
+        return JsonResponse({"message":"존재하지 않는 회원입니다.","code":2},status=200)
 
 class UserGet(View):
     @csrf_exempt
@@ -220,3 +220,141 @@ class SwpAns(View):
                 return JsonResponse({"message":mes,"code":1},status=200)
             return JsonResponse({"message":"해당 문제가 없습니다","code":2},status=200)
         return JsonResponse({"message":"해당 학습자가 없습니다.","code":3},status=200)
+
+class PhGet(View):
+    @csrf_exempt
+    def post(self,request):
+        data = json.loads(request.body)
+
+        lev = data['level']
+        s_id = data['s_id']
+
+        if Student.objects.filter(pk=s_id).exists():
+            student = Student.objects.get(pk=s_id)
+            if PhTest.objects.filter(ph_level=lev).exists():
+               Phset = PhTest.objects.filter(ph_level = lev)
+               cnt = Phset.count()
+               n1 = random.randrange(cnt)
+               n2 = random.randrange(cnt)
+               
+               while n1 == n2 :
+                   n2 = random.randrange(cnt)
+               
+               answer = n1
+               if random.randint(1,2) == 1:
+                   answer = n2
+               
+               ph1 = Phset[n1]
+               ph2 = Phset[n2]
+
+
+
+               return JsonResponse({"ph1":ph1.ph_char,"ph1_path":ph1.ph_path,"ph2":ph2.ph_char,"ph2_path":ph2.ph_path,"answer":Phset[answer].ph_char,"code":1},status=200)
+            return JsonResponse({"message":"해당 레벨의 문제가 존재하지 않습니다.","code":2},status=200) 
+        return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":3},status=200)
+
+
+class PhAns(View):
+    @csrf_exempt
+    def post(self,request):
+        data = json.loads(request.body)
+        
+        s_id = data['s_id']
+        ph1 = data['ph1']
+        ph2 = data['ph2']
+        stu_answer = data['stu_answer']
+        ori_answer = data['ori_answer']
+
+        if Student.objects.filter(pk=s_id).exists():
+            student = Student.objects.get(pk=s_id)
+            if PhTest.objects.filter(ph_char = ph1).exists():
+                p1 = PhTest.objects.get(ph_char=ph1)
+                if PhTest.objects.filter(ph_char=ph2).exists():
+                    p2 = PhTest.objects.get(ph_char=ph2)
+
+                    message = "답이 틀렸습니다."
+                    is_correct = "false"
+                    if stu_answer == ori_answer :
+                        message = "답이 맞았습니다."
+                        is_correct = "true"
+
+                    StuPh.objects.create(
+                        stu = student,
+                        ph1 = p1,
+                        ph2 = p2,
+                        is_correct = is_correct
+                    )
+
+                    return JsonResponse({"message":message,"code":1},status=200)
+                return JsonResponse({"message":"ph2가 존재하지 않습니다.","code":2},status=200)
+            return JsonResponse({"message":"ph1이 존재하지 않습니다.","code":3},status=200)
+        return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":4},status=200)
+
+class FocGet(View):
+    @csrf_exempt
+    def post(self,request):
+        data = json.loads(request.body)
+
+        s_id = data['s_id']
+        level = data['level']
+
+        if Student.objects.filter(pk=s_id).exists():
+            student = Student.objects.get(pk=s_id)
+            if FocTest.objects.filter(foc_level = level).exists():
+                cur = 0 
+                if StuFocArr.objects.filter(stu = s_id ).exists():
+                    sfa = StuFocArr.objects.get(stu=s_id)
+                    cur = sfa.stucnt
+                    if cur == 4:
+                        new_list = []
+                        r_num = random.randrange(4)
+                        for i in range(4):
+                            while r_num in new_list:
+                                r_num = random.randrange(4)
+                            new_list.append(r_num)
+                        sfa.o0 = new_list[0]
+                        sfa.o1 = new_list[1]
+                        sfa.o2 = new_list[2]
+                        sfa.o3 = new_list[3]
+                        sfa.stucnt = 0
+                        sfa.save()
+                        cur = 0 
+                else:
+                    new_list = []
+                    r_num = random.randrange(4)
+                    for i in range(4):
+                        while r_num in new_list:
+                            r_num = random.randrange(4)
+                        new_list.append(r_num)
+                    StuFocArr.objects.create(
+                        stu = student,
+                        o0 = new_list[0],
+                        o1 = new_list[1],
+                        o2 = new_list[2],
+                        o3 = new_list[3],
+                        stucnt = 0
+                    )
+                
+                sfa = StuFocArr.objects.get(stu=s_id)
+                conv_id = -1
+                if cur == 0:
+                    conv_id = sfa.o0
+                elif cur == 1:
+                    conv_id = sfa.o1
+                elif cur == 2:
+                    conv_id = sfa.o2
+                elif cur ==3:
+                    conv_id = sfa.o3
+                foc = FocTest.objects.get(foc_level = level , foc_conv_id = conv_id)
+                sfa.stucnt = cur +1
+                sfa.save()
+                return JsonResponse({"sound" : foc.foc_id,"sound_path": foc.foc_voice,"code":1},status=200)
+            return JsonResponse({"message":"해당 레벨에 해당하는 문제가 없습니다.","code":2},status=200)
+        return JsonResponse({"message":"해당 학습자가 없습니다.","code":3},status=200)
+                
+# class FocAns:
+#     @csrf_exempt
+#     def post(self,request):
+#         data = json.loads(request.body)
+
+

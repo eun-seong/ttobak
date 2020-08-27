@@ -7795,3 +7795,1219 @@ WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x5596269fbcc0 pid:
 [pid: 30111|app: 0|req: 1/2] 39.118.205.97 () {48 vars in 994 bytes} [Fri Aug 21 16:32:44 2020] POST /api/swp_test/answer => generated 70 bytes in 58 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
 [pid: 30113|app: 0|req: 2/3] 39.118.205.97 () {48 vars in 994 bytes} [Fri Aug 21 16:32:58 2020] POST /api/swp_test/answer => generated 82 bytes in 38 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
 [pid: 30113|app: 0|req: 3/4] 39.118.205.97 () {48 vars in 994 bytes} [Fri Aug 21 16:33:03 2020] POST /api/swp_test/answer => generated 89 bytes in 9 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+Not Found: /
+[pid: 30113|app: 0|req: 4/5] 185.39.11.84 () {34 vars in 397 bytes} [Fri Aug 21 20:06:42 2020] GET / => generated 2025 bytes in 8 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 30113|app: 0|req: 5/6] 54.245.57.24 () {34 vars in 503 bytes} [Fri Aug 21 23:43:11 2020] GET / => generated 2025 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 30113|app: 0|req: 6/7] 83.97.20.25 () {26 vars in 280 bytes} [Sat Aug 22 02:22:36 2020] GET / => generated 2025 bytes in 4 msecs (HTTP/1.0 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 30113|app: 0|req: 7/8] 185.39.11.84 () {34 vars in 397 bytes} [Sat Aug 22 06:06:55 2020] GET / => generated 2025 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 30113|app: 0|req: 8/9] 209.17.96.10 () {30 vars in 411 bytes} [Sat Aug 22 12:14:33 2020] GET / => generated 2025 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 30113|app: 0|req: 9/10] 139.162.79.87 () {34 vars in 394 bytes} [Sun Aug 23 06:15:21 2020] GET / => generated 2025 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 30111|app: 0|req: 2/11] 209.17.97.74 () {30 vars in 411 bytes} [Sun Aug 23 07:42:23 2020] GET / => generated 2025 bytes in 8 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.19.1 (64bit) on [Sun Aug 23 10:02:29 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x563cb91c2cc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 5036)
+spawned uWSGI worker 1 (pid: 5037, cores: 1)
+spawned uWSGI worker 2 (pid: 5038, cores: 1)
+spawned uWSGI worker 3 (pid: 5039, cores: 1)
+spawned uWSGI worker 4 (pid: 5040, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x563cb91c2cc0 pid: 5038 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x563cb91c2cc0 pid: 5040 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x563cb91c2cc0 pid: 5039 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x563cb91c2cc0 pid: 5037 (default app)
+Sun Aug 23 19:03:06 2020 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun Aug 23 19:03:06 2020 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun Aug 23 19:03:06 2020 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun Aug 23 19:03:06 2020 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Sun Aug 23 10:03:07 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55a4cc34dcc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 5176)
+spawned uWSGI worker 1 (pid: 5177, cores: 1)
+spawned uWSGI worker 2 (pid: 5178, cores: 1)
+spawned uWSGI worker 3 (pid: 5180, cores: 1)
+spawned uWSGI worker 4 (pid: 5181, cores: 1)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55a4cc34dcc0 pid: 5181 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55a4cc34dcc0 pid: 5178 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55a4cc34dcc0 pid: 5177 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55a4cc34dcc0 pid: 5180 (default app)
+Internal Server Error: /api/ph_test/ask
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./tt_apis/views.py", line 234, in post
+    if PhTest.objects.filter(ph_level=level).exists():
+NameError: name 'level' is not defined
+[pid: 5180|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 986 bytes} [Sun Aug 23 19:03:32 2020] POST /api/ph_test/ask => generated 74385 bytes in 155 msecs (HTTP/1.1 500) 7 headers in 286 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.19.1 (64bit) on [Sun Aug 23 10:04:04 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x564ccb38ccc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 5338)
+spawned uWSGI worker 1 (pid: 5339, cores: 1)
+spawned uWSGI worker 2 (pid: 5340, cores: 1)
+spawned uWSGI worker 3 (pid: 5341, cores: 1)
+spawned uWSGI worker 4 (pid: 5342, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x564ccb38ccc0 pid: 5340 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x564ccb38ccc0 pid: 5339 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x564ccb38ccc0 pid: 5342 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x564ccb38ccc0 pid: 5341 (default app)
+Internal Server Error: /api/ph_test/ask
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./tt_apis/views.py", line 237, in post
+    ph1 = phset[0]
+NameError: name 'phset' is not defined
+[pid: 5342|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 986 bytes} [Sun Aug 23 19:04:09 2020] POST /api/ph_test/ask => generated 74479 bytes in 127 msecs (HTTP/1.1 500) 7 headers in 286 bytes (1 switches on core 0)
+[pid: 5339|app: 0|req: 1/2] 39.118.205.97 () {48 vars in 986 bytes} [Sun Aug 23 19:04:36 2020] POST /api/ph_test/ask => generated 16 bytes in 76 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+Not Found: /
+[pid: 5342|app: 0|req: 2/3] 209.17.97.66 () {30 vars in 411 bytes} [Mon Aug 24 09:26:24 2020] GET / => generated 2025 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon Aug 24 09:14:09 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55b90f5cfcc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 11626)
+spawned uWSGI worker 1 (pid: 11627, cores: 1)
+spawned uWSGI worker 2 (pid: 11628, cores: 1)
+spawned uWSGI worker 3 (pid: 11629, cores: 1)
+spawned uWSGI worker 4 (pid: 11630, cores: 1)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55b90f5cfcc0 pid: 11629 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55b90f5cfcc0 pid: 11627 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55b90f5cfcc0 pid: 11630 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55b90f5cfcc0 pid: 11628 (default app)
+[pid: 11630|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:20 2020] POST /api/ph_test/ask => generated 150 bytes in 99 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11627|app: 0|req: 1/2] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:27 2020] POST /api/ph_test/ask => generated 150 bytes in 48 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11628|app: 0|req: 1/3] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:29 2020] POST /api/ph_test/ask => generated 150 bytes in 47 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11628|app: 0|req: 2/4] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:31 2020] POST /api/ph_test/ask => generated 150 bytes in 13 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11628|app: 0|req: 3/5] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:32 2020] POST /api/ph_test/ask => generated 150 bytes in 14 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11627|app: 0|req: 2/6] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:32 2020] POST /api/ph_test/ask => generated 150 bytes in 14 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11629|app: 0|req: 1/7] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:33 2020] POST /api/ph_test/ask => generated 150 bytes in 45 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11630|app: 0|req: 2/8] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:34 2020] POST /api/ph_test/ask => generated 150 bytes in 13 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11627|app: 0|req: 3/9] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:35 2020] POST /api/ph_test/ask => generated 150 bytes in 12 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11629|app: 0|req: 2/10] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:36 2020] POST /api/ph_test/ask => generated 150 bytes in 12 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11628|app: 0|req: 4/11] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:37 2020] POST /api/ph_test/ask => generated 150 bytes in 12 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11627|app: 0|req: 4/12] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:37 2020] POST /api/ph_test/ask => generated 150 bytes in 12 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11630|app: 0|req: 3/13] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:38 2020] POST /api/ph_test/ask => generated 150 bytes in 15 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11628|app: 0|req: 5/14] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:38 2020] POST /api/ph_test/ask => generated 150 bytes in 13 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11628|app: 0|req: 6/15] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:39 2020] POST /api/ph_test/ask => generated 150 bytes in 12 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11628|app: 0|req: 7/16] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:39 2020] POST /api/ph_test/ask => generated 150 bytes in 30 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11627|app: 0|req: 5/17] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:39 2020] POST /api/ph_test/ask => generated 150 bytes in 12 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11627|app: 0|req: 6/18] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:40 2020] POST /api/ph_test/ask => generated 150 bytes in 13 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11629|app: 0|req: 3/19] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:14:40 2020] POST /api/ph_test/ask => generated 150 bytes in 12 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon Aug 24 09:14:58 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x559c14897cc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 11790)
+spawned uWSGI worker 1 (pid: 11791, cores: 1)
+spawned uWSGI worker 2 (pid: 11792, cores: 1)
+spawned uWSGI worker 3 (pid: 11793, cores: 1)
+spawned uWSGI worker 4 (pid: 11794, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x559c14897cc0 pid: 11793 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x559c14897cc0 pid: 11794 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x559c14897cc0 pid: 11792 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x559c14897cc0 pid: 11791 (default app)
+[pid: 11791|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:15:02 2020] POST /api/ph_test/ask => generated 160 bytes in 50 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+Mon Aug 24 18:15:21 2020 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon Aug 24 09:15:22 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55f3ccd79cc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 11821)
+spawned uWSGI worker 1 (pid: 11822, cores: 1)
+spawned uWSGI worker 2 (pid: 11823, cores: 1)
+spawned uWSGI worker 3 (pid: 11824, cores: 1)
+spawned uWSGI worker 4 (pid: 11825, cores: 1)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55f3ccd79cc0 pid: 11825 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55f3ccd79cc0 pid: 11822 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55f3ccd79cc0 pid: 11824 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55f3ccd79cc0 pid: 11823 (default app)
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon Aug 24 09:32:29 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x560f9c84ccc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 13285)
+spawned uWSGI worker 1 (pid: 13286, cores: 1)
+spawned uWSGI worker 2 (pid: 13287, cores: 1)
+spawned uWSGI worker 3 (pid: 13288, cores: 1)
+spawned uWSGI worker 4 (pid: 13289, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x560f9c84ccc0 pid: 13289 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x560f9c84ccc0 pid: 13288 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x560f9c84ccc0 pid: 13286 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x560f9c84ccc0 pid: 13287 (default app)
+[pid: 13289|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 986 bytes} [Mon Aug 24 18:32:34 2020] POST /api/ph_test/ask => generated 161 bytes in 47 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+Mon Aug 24 18:34:05 2020 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Mon Aug 24 18:34:05 2020 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon Aug 24 09:34:05 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x559eba150cc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 13484)
+spawned uWSGI worker 1 (pid: 13485, cores: 1)
+spawned uWSGI worker 2 (pid: 13486, cores: 1)
+spawned uWSGI worker 3 (pid: 13487, cores: 1)
+spawned uWSGI worker 4 (pid: 13488, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x559eba150cc0 pid: 13487 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x559eba150cc0 pid: 13485 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x559eba150cc0 pid: 13486 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x559eba150cc0 pid: 13488 (default app)
+Internal Server Error: /api/ph_test/answer
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./tt_apis/views.py", line 260, in post
+    data = json.loads(request.body)
+  File "/usr/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.6/json/decoder.py", line 355, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Invalid control character at: line 5 column 21 (char 74)
+[pid: 13486|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 992 bytes} [Mon Aug 24 18:34:23 2020] POST /api/ph_test/answer => generated 87294 bytes in 156 msecs (HTTP/1.1 500) 7 headers in 286 bytes (1 switches on core 0)
+[pid: 13488|app: 0|req: 1/2] 39.118.205.97 () {48 vars in 992 bytes} [Mon Aug 24 18:47:10 2020] POST /api/ph_test/answer => generated 70 bytes in 88 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+Not Found: /
+[pid: 13488|app: 0|req: 2/3] 213.6.173.118 () {36 vars in 567 bytes} [Mon Aug 24 19:24:15 2020] GET / => generated 2025 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+[pid: 13488|app: 0|req: 3/4] 39.118.205.97 () {48 vars in 992 bytes} [Tue Aug 25 00:31:25 2020] POST /api/ph_test/answer => generated 86 bytes in 35 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+[pid: 13488|app: 0|req: 4/5] 39.118.205.97 () {48 vars in 992 bytes} [Tue Aug 25 00:31:32 2020] POST /api/ph_test/answer => generated 86 bytes in 9 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+[pid: 13485|app: 0|req: 1/6] 39.118.205.97 () {48 vars in 992 bytes} [Tue Aug 25 00:31:35 2020] POST /api/ph_test/answer => generated 114 bytes in 38 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+Tue Aug 25 01:12:48 2020 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Tue Aug 25 01:12:48 2020 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon Aug 24 16:12:52 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55fd5dad7cc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 11048)
+spawned uWSGI worker 1 (pid: 11049, cores: 1)
+spawned uWSGI worker 2 (pid: 11050, cores: 1)
+spawned uWSGI worker 3 (pid: 11051, cores: 1)
+spawned uWSGI worker 4 (pid: 11052, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55fd5dad7cc0 pid: 11052 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55fd5dad7cc0 pid: 11049 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55fd5dad7cc0 pid: 11051 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55fd5dad7cc0 pid: 11050 (default app)
+Internal Server Error: /api/foc_test/ask
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/utils/deprecation.py", line 93, in __call__
+    response = self.process_request(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/middleware/common.py", line 53, in process_request
+    if self.should_redirect_with_slash(request):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/middleware/common.py", line 71, in should_redirect_with_slash
+    not is_valid_path(request.path_info, urlconf) and
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/urls/base.py", line 154, in is_valid_path
+    resolve(path, urlconf)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/urls/base.py", line 25, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/urls/resolvers.py", line 544, in resolve
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/urls/resolvers.py", line 588, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/urls/resolvers.py", line 581, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "./api/urls.py", line 7, in <module>
+    path('api/',include('tt_apis.urls')), #tt_apis app에서 만들어준 url route적용
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "./tt_apis/urls.py", line 2, in <module>
+    from .views import MakeUser,LogIn,UserModify,UserDelete,UserGet,StuAdd,StuModify,StuDel,StuGet,SwpGet,SwpAns,PhGet,PhAns,FocGet
+  File "./tt_apis/views.py", line 325
+    while r_num in new_list:
+        ^
+IndentationError: expected an indented block
+[pid: 11050|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 988 bytes} [Tue Aug 25 01:13:23 2020] POST /api/foc_test/ask => generated 154666 bytes in 127 msecs (HTTP/1.1 500) 4 headers in 199 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon Aug 24 16:13:53 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55da7abbccc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 11136)
+spawned uWSGI worker 1 (pid: 11137, cores: 1)
+spawned uWSGI worker 2 (pid: 11138, cores: 1)
+spawned uWSGI worker 3 (pid: 11139, cores: 1)
+spawned uWSGI worker 4 (pid: 11140, cores: 1)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55da7abbccc0 pid: 11137 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55da7abbccc0 pid: 11139 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55da7abbccc0 pid: 11138 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55da7abbccc0 pid: 11140 (default app)
+Internal Server Error: /api/foc_test/ask
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./tt_apis/views.py", line 330, in post
+    o0 = new_list[0],
+IndexError: list index out of range
+[pid: 11140|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 988 bytes} [Tue Aug 25 01:13:56 2020] POST /api/foc_test/ask => generated 74943 bytes in 135 msecs (HTTP/1.1 500) 7 headers in 286 bytes (1 switches on core 0)
+Tue Aug 25 01:16:05 2020 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon Aug 24 16:16:06 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55d8d5386cc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 11422)
+spawned uWSGI worker 1 (pid: 11423, cores: 1)
+spawned uWSGI worker 2 (pid: 11424, cores: 1)
+spawned uWSGI worker 3 (pid: 11425, cores: 1)
+spawned uWSGI worker 4 (pid: 11426, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55d8d5386cc0 pid: 11425 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55d8d5386cc0 pid: 11423 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55d8d5386cc0 pid: 11426 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55d8d5386cc0 pid: 11424 (default app)
+Internal Server Error: /api/foc_test/ask
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./tt_apis/views.py", line 334, in post
+    stucnt = 0
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/query.py", line 431, in create
+    obj = self.model(**kwargs)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/base.py", line 482, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/db/models/fields/related_descriptors.py", line 219, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "4": "StuFocArr.stu" must be a "Student" instance.
+[pid: 11426|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 988 bytes} [Tue Aug 25 01:16:10 2020] POST /api/foc_test/ask => generated 94023 bytes in 138 msecs (HTTP/1.1 500) 7 headers in 286 bytes (1 switches on core 0)
+Tue Aug 25 01:17:00 2020 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Tue Aug 25 01:17:00 2020 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon Aug 24 16:17:02 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x56488daf7cc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 11498)
+spawned uWSGI worker 1 (pid: 11499, cores: 1)
+spawned uWSGI worker 2 (pid: 11500, cores: 1)
+spawned uWSGI worker 3 (pid: 11501, cores: 1)
+spawned uWSGI worker 4 (pid: 11502, cores: 1)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x56488daf7cc0 pid: 11500 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x56488daf7cc0 pid: 11501 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x56488daf7cc0 pid: 11499 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x56488daf7cc0 pid: 11502 (default app)
+Internal Server Error: /api/foc_test/ask
+Traceback (most recent call last):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/utils/deprecation.py", line 93, in __call__
+    response = self.process_request(request)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/middleware/common.py", line 53, in process_request
+    if self.should_redirect_with_slash(request):
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/middleware/common.py", line 71, in should_redirect_with_slash
+    not is_valid_path(request.path_info, urlconf) and
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/urls/base.py", line 154, in is_valid_path
+    resolve(path, urlconf)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/urls/base.py", line 25, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/urls/resolvers.py", line 544, in resolve
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/urls/resolvers.py", line 588, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/urls/resolvers.py", line 581, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "./api/urls.py", line 7, in <module>
+    path('api/',include('tt_apis.urls')), #tt_apis app에서 만들어준 url route적용
+  File "/home/ubuntu/ttobak/venv/lib/python3.6/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "./tt_apis/urls.py", line 2, in <module>
+    from .views import MakeUser,LogIn,UserModify,UserDelete,UserGet,StuAdd,StuModify,StuDel,StuGet,SwpGet,SwpAns,PhGet,PhAns,FocGet
+  File "./tt_apis/views.py", line 330
+    stu = ,student,
+          ^
+SyntaxError: invalid syntax
+[pid: 11499|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 988 bytes} [Tue Aug 25 01:17:04 2020] POST /api/foc_test/ask => generated 154583 bytes in 120 msecs (HTTP/1.1 500) 4 headers in 199 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon Aug 24 16:17:20 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x55c5a157ccc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 11526)
+spawned uWSGI worker 1 (pid: 11527, cores: 1)
+spawned uWSGI worker 2 (pid: 11528, cores: 1)
+spawned uWSGI worker 3 (pid: 11529, cores: 1)
+spawned uWSGI worker 4 (pid: 11530, cores: 1)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55c5a157ccc0 pid: 11528 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55c5a157ccc0 pid: 11527 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55c5a157ccc0 pid: 11530 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55c5a157ccc0 pid: 11529 (default app)
+[pid: 11529|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 988 bytes} [Tue Aug 25 01:17:22 2020] POST /api/foc_test/ask => generated 78 bytes in 88 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+[pid: 11530|app: 0|req: 1/2] 39.118.205.97 () {48 vars in 988 bytes} [Tue Aug 25 01:17:41 2020] POST /api/foc_test/ask => generated 78 bytes in 62 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+Tue Aug 25 01:22:00 2020 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Tue Aug 25 01:22:00 2020 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Tue Aug 25 01:22:00 2020 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon Aug 24 16:22:03 2020] ***
+compiled with version: 7.5.0 on 20 July 2020 08:57:41
+os: Linux-5.3.0-1032-aws #34~18.04.2-Ubuntu SMP Fri Jul 24 10:06:28 UTC 2020
+nodename: ip-172-31-4-169
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/ttobak/backend/api
+writing pidfile to /tmp/back.pid
+detected binary path: /home/ubuntu/ttobak/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/ubuntu/ttobak/backend/api
+your processes number limit is 63375
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+PEP 405 virtualenv detected: /home/ubuntu/ttobak/venv/
+Set PythonHome to /home/ubuntu/ttobak/venv/
+Python main interpreter initialized at 0x563801b5ecc0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+spawned uWSGI master process (pid: 11976)
+spawned uWSGI worker 1 (pid: 11977, cores: 1)
+spawned uWSGI worker 2 (pid: 11978, cores: 1)
+spawned uWSGI worker 3 (pid: 11979, cores: 1)
+spawned uWSGI worker 4 (pid: 11980, cores: 1)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x563801b5ecc0 pid: 11980 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x563801b5ecc0 pid: 11977 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x563801b5ecc0 pid: 11979 (default app)
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x563801b5ecc0 pid: 11978 (default app)
+[pid: 11979|app: 0|req: 1/1] 39.118.205.97 () {48 vars in 988 bytes} [Tue Aug 25 01:22:07 2020] POST /api/foc_test/ask => generated 78 bytes in 68 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+[pid: 11979|app: 0|req: 2/2] 39.118.205.97 () {48 vars in 988 bytes} [Tue Aug 25 01:22:25 2020] POST /api/foc_test/ask => generated 78 bytes in 22 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+[pid: 11978|app: 0|req: 1/3] 39.118.205.97 () {48 vars in 988 bytes} [Tue Aug 25 01:22:33 2020] POST /api/foc_test/ask => generated 79 bytes in 55 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+[pid: 11978|app: 0|req: 2/4] 39.118.205.97 () {48 vars in 988 bytes} [Tue Aug 25 01:22:37 2020] POST /api/foc_test/ask => generated 79 bytes in 18 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+[pid: 11979|app: 0|req: 3/5] 39.118.205.97 () {48 vars in 988 bytes} [Tue Aug 25 01:22:47 2020] POST /api/foc_test/ask => generated 78 bytes in 28 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+[pid: 11978|app: 0|req: 3/6] 39.118.205.97 () {48 vars in 988 bytes} [Tue Aug 25 01:22:55 2020] POST /api/foc_test/ask => generated 79 bytes in 49 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+[pid: 11977|app: 0|req: 1/7] 39.118.205.97 () {48 vars in 988 bytes} [Tue Aug 25 01:23:12 2020] POST /api/foc_test/ask => generated 79 bytes in 57 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+[pid: 11978|app: 0|req: 4/8] 39.118.205.97 () {48 vars in 988 bytes} [Tue Aug 25 01:23:21 2020] POST /api/foc_test/ask => generated 127 bytes in 11 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 11979|app: 0|req: 4/9] 39.118.205.97 () {48 vars in 988 bytes} [Tue Aug 25 01:23:25 2020] POST /api/foc_test/ask => generated 89 bytes in 6 msecs (HTTP/1.1 200) 7 headers in 263 bytes (1 switches on core 0)
+Not Found: /
+[pid: 11978|app: 0|req: 5/10] 209.17.97.50 () {30 vars in 411 bytes} [Tue Aug 25 08:18:53 2020] GET / => generated 2025 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 11978|app: 0|req: 6/11] 180.149.125.173 () {34 vars in 492 bytes} [Tue Aug 25 12:47:08 2020] GET / => generated 2025 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 11978|app: 0|req: 7/12] 213.6.173.118 () {36 vars in 567 bytes} [Tue Aug 25 23:23:26 2020] GET / => generated 2025 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Invalid HTTP_HOST header: 'www.msftncsi.com'. You may need to add 'www.msftncsi.com' to ALLOWED_HOSTS.
+Bad Request: /ncsi.txt
+[pid: 11978|app: 0|req: 8/13] 213.6.173.118 () {38 vars in 623 bytes} [Tue Aug 25 23:23:27 2020] GET /ncsi.txt => generated 57500 bytes in 71 msecs (HTTP/1.1 400) 2 headers in 67 bytes (1 switches on core 0)
+Invalid HTTP_HOST header: 'www.msftncsi.com'. You may need to add 'www.msftncsi.com' to ALLOWED_HOSTS.
+Bad Request: /ncsi.txt
+[pid: 11978|app: 0|req: 9/14] 213.6.173.118 () {38 vars in 623 bytes} [Tue Aug 25 23:23:29 2020] GET /ncsi.txt => generated 57500 bytes in 42 msecs (HTTP/1.1 400) 2 headers in 67 bytes (1 switches on core 0)
+Invalid HTTP_HOST header: 'www.msftncsi.com'. You may need to add 'www.msftncsi.com' to ALLOWED_HOSTS.
+Bad Request: /ncsi.txt
+[pid: 11978|app: 0|req: 10/15] 213.6.173.118 () {38 vars in 623 bytes} [Tue Aug 25 23:23:30 2020] GET /ncsi.txt => generated 57500 bytes in 41 msecs (HTTP/1.1 400) 2 headers in 67 bytes (1 switches on core 0)
+Not Found: /HNAP1/
+[pid: 11979|app: 0|req: 5/16] 213.6.173.118 () {38 vars in 620 bytes} [Tue Aug 25 23:23:32 2020] GET /HNAP1/ => generated 2061 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /hudson/script
+[pid: 11978|app: 0|req: 11/17] 213.6.173.118 () {38 vars in 634 bytes} [Tue Aug 25 23:23:32 2020] GET /hudson/script => generated 2082 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /script
+[pid: 11979|app: 0|req: 6/18] 213.6.173.118 () {38 vars in 620 bytes} [Tue Aug 25 23:23:33 2020] GET /script => generated 2061 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /sqlite/main.php
+[pid: 11979|app: 0|req: 7/19] 213.6.173.118 () {38 vars in 638 bytes} [Tue Aug 25 23:23:34 2020] GET /sqlite/main.php => generated 2088 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /sqlitemanager/main.php
+[pid: 11979|app: 0|req: 8/20] 213.6.173.118 () {38 vars in 652 bytes} [Tue Aug 25 23:23:34 2020] GET /sqlitemanager/main.php => generated 2109 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /SQLiteManager/main.php
+[pid: 11978|app: 0|req: 12/21] 213.6.173.118 () {38 vars in 652 bytes} [Tue Aug 25 23:23:35 2020] GET /SQLiteManager/main.php => generated 2109 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /SQLite/main.php
+[pid: 11978|app: 0|req: 13/22] 213.6.173.118 () {38 vars in 638 bytes} [Tue Aug 25 23:23:36 2020] GET /SQLite/main.php => generated 2088 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /SQlite/main.php
+[pid: 11978|app: 0|req: 14/23] 213.6.173.118 () {38 vars in 638 bytes} [Tue Aug 25 23:23:37 2020] GET /SQlite/main.php => generated 2088 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /main.php
+[pid: 11978|app: 0|req: 15/24] 213.6.173.118 () {38 vars in 624 bytes} [Tue Aug 25 23:23:37 2020] GET /main.php => generated 2067 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /test/sqlite/SQLiteManager-1.2.0/SQLiteManager-1.2.0/main.php
+[pid: 11978|app: 0|req: 16/25] 213.6.173.118 () {38 vars in 728 bytes} [Tue Aug 25 23:23:38 2020] GET /test/sqlite/SQLiteManager-1.2.0/SQLiteManager-1.2.0/main.php => generated 2223 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /SQLiteManager-1.2.4/main.php
+[pid: 11978|app: 0|req: 17/26] 213.6.173.118 () {38 vars in 664 bytes} [Tue Aug 25 23:23:39 2020] GET /SQLiteManager-1.2.4/main.php => generated 2127 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /agSearch/SQlite/main.php
+[pid: 11978|app: 0|req: 18/27] 213.6.173.118 () {38 vars in 656 bytes} [Tue Aug 25 23:23:39 2020] GET /agSearch/SQlite/main.php => generated 2115 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpmyadmin/
+[pid: 11979|app: 0|req: 9/28] 213.6.173.118 () {38 vars in 630 bytes} [Tue Aug 25 23:23:40 2020] GET /phpmyadmin/ => generated 2076 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin/
+[pid: 11978|app: 0|req: 19/29] 213.6.173.118 () {38 vars in 630 bytes} [Tue Aug 25 23:23:41 2020] GET /phpMyAdmin/ => generated 2076 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /PMA/
+[pid: 11978|app: 0|req: 20/30] 213.6.173.118 () {38 vars in 616 bytes} [Tue Aug 25 23:23:41 2020] GET /PMA/ => generated 2055 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /pma/
+[pid: 11978|app: 0|req: 21/31] 213.6.173.118 () {38 vars in 616 bytes} [Tue Aug 25 23:23:42 2020] GET /pma/ => generated 2055 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+[pid: 11979|app: 0|req: 10/32] 213.6.173.118 () {38 vars in 620 bytes} [Tue Aug 25 23:23:43 2020] GET /admin/ => generated 0 bytes in 38 msecs (HTTP/1.1 302) 8 headers in 309 bytes (1 switches on core 0)
+[pid: 11977|app: 0|req: 2/33] 213.6.173.118 () {38 vars in 657 bytes} [Tue Aug 25 23:23:44 2020] GET /admin/login/?next=/admin/ => generated 1933 bytes in 232 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+Not Found: /dbadmin/
+[pid: 11979|app: 0|req: 11/34] 213.6.173.118 () {40 vars in 713 bytes} [Tue Aug 25 23:23:45 2020] GET /dbadmin/ => generated 2067 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /mysql/
+[pid: 11979|app: 0|req: 12/35] 213.6.173.118 () {40 vars in 709 bytes} [Tue Aug 25 23:23:45 2020] GET /mysql/ => generated 2061 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /myadmin/
+[pid: 11979|app: 0|req: 13/36] 213.6.173.118 () {40 vars in 713 bytes} [Tue Aug 25 23:23:46 2020] GET /myadmin/ => generated 2067 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /openserver/phpmyadmin/
+[pid: 11978|app: 0|req: 22/37] 213.6.173.118 () {40 vars in 741 bytes} [Tue Aug 25 23:23:47 2020] GET /openserver/phpmyadmin/ => generated 2109 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpmyadmin2/
+[pid: 11978|app: 0|req: 23/38] 213.6.173.118 () {40 vars in 721 bytes} [Tue Aug 25 23:23:47 2020] GET /phpmyadmin2/ => generated 2079 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin2/
+[pid: 11978|app: 0|req: 24/39] 213.6.173.118 () {40 vars in 721 bytes} [Tue Aug 25 23:23:48 2020] GET /phpMyAdmin2/ => generated 2079 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2/
+[pid: 11978|app: 0|req: 25/40] 213.6.173.118 () {40 vars in 723 bytes} [Tue Aug 25 23:23:49 2020] GET /phpMyAdmin-2/ => generated 2082 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /php-my-admin/
+[pid: 11979|app: 0|req: 14/41] 213.6.173.118 () {40 vars in 723 bytes} [Tue Aug 25 23:23:50 2020] GET /php-my-admin/ => generated 2082 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.2.3/
+[pid: 11978|app: 0|req: 26/42] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:23:51 2020] GET /phpMyAdmin-2.2.3/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.2.6/
+[pid: 11978|app: 0|req: 27/43] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:23:52 2020] GET /phpMyAdmin-2.2.6/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.1/
+[pid: 11978|app: 0|req: 28/44] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:23:53 2020] GET /phpMyAdmin-2.5.1/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.4/
+[pid: 11978|app: 0|req: 29/45] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:23:54 2020] GET /phpMyAdmin-2.5.4/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.5-rc1/
+[pid: 11978|app: 0|req: 30/46] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:23:55 2020] GET /phpMyAdmin-2.5.5-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.5-rc2/
+[pid: 11978|app: 0|req: 31/47] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:23:56 2020] GET /phpMyAdmin-2.5.5-rc2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.5/
+[pid: 11978|app: 0|req: 32/48] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:23:57 2020] GET /phpMyAdmin-2.5.5/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.5-pl1/
+[pid: 11979|app: 0|req: 15/49] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:23:57 2020] GET /phpMyAdmin-2.5.5-pl1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.6-rc1/
+[pid: 11980|app: 0|req: 1/50] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:23:58 2020] GET /phpMyAdmin-2.5.6-rc1/ => generated 2106 bytes in 44 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.6-rc2/
+[pid: 11978|app: 0|req: 33/51] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:23:59 2020] GET /phpMyAdmin-2.5.6-rc2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.6/
+[pid: 11978|app: 0|req: 34/52] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:23:59 2020] GET /phpMyAdmin-2.5.6/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.7/
+[pid: 11978|app: 0|req: 35/53] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:24:00 2020] GET /phpMyAdmin-2.5.7/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.7-pl1/
+[pid: 11978|app: 0|req: 36/54] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:01 2020] GET /phpMyAdmin-2.5.7-pl1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-alpha/
+[pid: 11978|app: 0|req: 37/55] 213.6.173.118 () {40 vars in 743 bytes} [Tue Aug 25 23:24:02 2020] GET /phpMyAdmin-2.6.0-alpha/ => generated 2112 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-alpha2/
+[pid: 11979|app: 0|req: 16/56] 213.6.173.118 () {40 vars in 745 bytes} [Tue Aug 25 23:24:02 2020] GET /phpMyAdmin-2.6.0-alpha2/ => generated 2115 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-beta1/
+[pid: 11978|app: 0|req: 38/57] 213.6.173.118 () {40 vars in 743 bytes} [Tue Aug 25 23:24:03 2020] GET /phpMyAdmin-2.6.0-beta1/ => generated 2112 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-beta2/
+[pid: 11978|app: 0|req: 39/58] 213.6.173.118 () {40 vars in 743 bytes} [Tue Aug 25 23:24:04 2020] GET /phpMyAdmin-2.6.0-beta2/ => generated 2112 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-rc1/
+[pid: 11978|app: 0|req: 40/59] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:04 2020] GET /phpMyAdmin-2.6.0-rc1/ => generated 2106 bytes in 6 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-rc2/
+[pid: 11979|app: 0|req: 17/60] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:05 2020] GET /phpMyAdmin-2.6.0-rc2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-rc3/
+[pid: 11980|app: 0|req: 2/61] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:06 2020] GET /phpMyAdmin-2.6.0-rc3/ => generated 2106 bytes in 3 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0/
+[pid: 11979|app: 0|req: 18/62] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:24:06 2020] GET /phpMyAdmin-2.6.0/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-pl1/
+[pid: 11979|app: 0|req: 19/63] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:07 2020] GET /phpMyAdmin-2.6.0-pl1/ => generated 2106 bytes in 3 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-pl2/
+[pid: 11979|app: 0|req: 20/64] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:08 2020] GET /phpMyAdmin-2.6.0-pl2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-pl3/
+[pid: 11978|app: 0|req: 41/65] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:09 2020] GET /phpMyAdmin-2.6.0-pl3/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.1-rc1/
+[pid: 11978|app: 0|req: 42/66] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:09 2020] GET /phpMyAdmin-2.6.1-rc1/ => generated 2106 bytes in 3 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.1-rc2/
+[pid: 11978|app: 0|req: 43/67] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:10 2020] GET /phpMyAdmin-2.6.1-rc2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.1/
+[pid: 11978|app: 0|req: 44/68] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:24:11 2020] GET /phpMyAdmin-2.6.1/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.1-pl1/
+[pid: 11978|app: 0|req: 45/69] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:11 2020] GET /phpMyAdmin-2.6.1-pl1/ => generated 2106 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.1-pl2/
+[pid: 11978|app: 0|req: 46/70] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:12 2020] GET /phpMyAdmin-2.6.1-pl2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.1-pl3/
+[pid: 11978|app: 0|req: 47/71] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:14 2020] GET /phpMyAdmin-2.6.1-pl3/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.2-rc1/
+[pid: 11978|app: 0|req: 48/72] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:15 2020] GET /phpMyAdmin-2.6.2-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.2-beta1/
+[pid: 11978|app: 0|req: 49/73] 213.6.173.118 () {40 vars in 743 bytes} [Tue Aug 25 23:24:15 2020] GET /phpMyAdmin-2.6.2-beta1/ => generated 2112 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.2-rc1/
+[pid: 11978|app: 0|req: 50/74] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:16 2020] GET /phpMyAdmin-2.6.2-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.2/
+[pid: 11978|app: 0|req: 51/75] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:24:17 2020] GET /phpMyAdmin-2.6.2/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.2-pl1/
+[pid: 11978|app: 0|req: 52/76] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:17 2020] GET /phpMyAdmin-2.6.2-pl1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.3/
+[pid: 11978|app: 0|req: 53/77] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:24:19 2020] GET /phpMyAdmin-2.6.3/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.3-rc1/
+[pid: 11978|app: 0|req: 54/78] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:20 2020] GET /phpMyAdmin-2.6.3-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.3/
+[pid: 11978|app: 0|req: 55/79] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:24:21 2020] GET /phpMyAdmin-2.6.3/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.3-pl1/
+[pid: 11978|app: 0|req: 56/80] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:21 2020] GET /phpMyAdmin-2.6.3-pl1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.4-rc1/
+[pid: 11978|app: 0|req: 57/81] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:22 2020] GET /phpMyAdmin-2.6.4-rc1/ => generated 2106 bytes in 3 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.4-pl1/
+[pid: 11978|app: 0|req: 58/82] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:23 2020] GET /phpMyAdmin-2.6.4-pl1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.4-pl2/
+[pid: 11979|app: 0|req: 21/83] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:23 2020] GET /phpMyAdmin-2.6.4-pl2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.4-pl3/
+[pid: 11978|app: 0|req: 59/84] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:24 2020] GET /phpMyAdmin-2.6.4-pl3/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.4-pl4/
+[pid: 11978|app: 0|req: 60/85] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:26 2020] GET /phpMyAdmin-2.6.4-pl4/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.4/
+[pid: 11978|app: 0|req: 61/86] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:24:27 2020] GET /phpMyAdmin-2.6.4/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.7.0-beta1/
+[pid: 11980|app: 0|req: 3/87] 213.6.173.118 () {40 vars in 743 bytes} [Tue Aug 25 23:24:27 2020] GET /phpMyAdmin-2.7.0-beta1/ => generated 2112 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.7.0-rc1/
+[pid: 11979|app: 0|req: 22/88] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:28 2020] GET /phpMyAdmin-2.7.0-rc1/ => generated 2106 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.7.0-pl1/
+[pid: 11980|app: 0|req: 4/89] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:29 2020] GET /phpMyAdmin-2.7.0-pl1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.7.0-pl2/
+[pid: 11978|app: 0|req: 62/90] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:30 2020] GET /phpMyAdmin-2.7.0-pl2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.7.0/
+[pid: 11978|app: 0|req: 63/91] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:24:30 2020] GET /phpMyAdmin-2.7.0/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0-beta1/
+[pid: 11978|app: 0|req: 64/92] 213.6.173.118 () {40 vars in 743 bytes} [Tue Aug 25 23:24:31 2020] GET /phpMyAdmin-2.8.0-beta1/ => generated 2112 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0-rc1/
+[pid: 11978|app: 0|req: 65/93] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:32 2020] GET /phpMyAdmin-2.8.0-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0-rc2/
+[pid: 11978|app: 0|req: 66/94] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:32 2020] GET /phpMyAdmin-2.8.0-rc2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0/
+[pid: 11978|app: 0|req: 67/95] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:24:33 2020] GET /phpMyAdmin-2.8.0/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0.1/
+[pid: 11978|app: 0|req: 68/96] 213.6.173.118 () {40 vars in 735 bytes} [Tue Aug 25 23:24:34 2020] GET /phpMyAdmin-2.8.0.1/ => generated 2100 bytes in 3 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0.2/
+[pid: 11978|app: 0|req: 69/97] 213.6.173.118 () {40 vars in 735 bytes} [Tue Aug 25 23:24:35 2020] GET /phpMyAdmin-2.8.0.2/ => generated 2100 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0.3/
+[pid: 11978|app: 0|req: 70/98] 213.6.173.118 () {40 vars in 735 bytes} [Tue Aug 25 23:24:35 2020] GET /phpMyAdmin-2.8.0.3/ => generated 2100 bytes in 3 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0.4/
+[pid: 11978|app: 0|req: 71/99] 213.6.173.118 () {40 vars in 735 bytes} [Tue Aug 25 23:24:36 2020] GET /phpMyAdmin-2.8.0.4/ => generated 2100 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.1-rc1/
+[pid: 11978|app: 0|req: 72/100] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:24:37 2020] GET /phpMyAdmin-2.8.1-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.1/
+[pid: 11978|app: 0|req: 73/101] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:24:39 2020] GET /phpMyAdmin-2.8.1/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.2/
+[pid: 11978|app: 0|req: 74/102] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:24:39 2020] GET /phpMyAdmin-2.8.2/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /sqlmanager/
+[pid: 11978|app: 0|req: 75/103] 213.6.173.118 () {40 vars in 719 bytes} [Tue Aug 25 23:24:40 2020] GET /sqlmanager/ => generated 2076 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /mysqlmanager/
+[pid: 11978|app: 0|req: 76/104] 213.6.173.118 () {40 vars in 723 bytes} [Tue Aug 25 23:24:41 2020] GET /mysqlmanager/ => generated 2082 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /p/m/a/
+[pid: 11978|app: 0|req: 77/105] 213.6.173.118 () {40 vars in 709 bytes} [Tue Aug 25 23:24:41 2020] GET /p/m/a/ => generated 2061 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /PMA2005/
+[pid: 11978|app: 0|req: 78/106] 213.6.173.118 () {40 vars in 713 bytes} [Tue Aug 25 23:24:42 2020] GET /PMA2005/ => generated 2067 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /pma2005/
+[pid: 11978|app: 0|req: 79/107] 213.6.173.118 () {40 vars in 713 bytes} [Tue Aug 25 23:24:43 2020] GET /pma2005/ => generated 2067 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpmanager/
+[pid: 11979|app: 0|req: 23/108] 213.6.173.118 () {40 vars in 719 bytes} [Tue Aug 25 23:24:43 2020] GET /phpmanager/ => generated 2076 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /php-myadmin/
+[pid: 11978|app: 0|req: 80/109] 213.6.173.118 () {40 vars in 721 bytes} [Tue Aug 25 23:24:44 2020] GET /php-myadmin/ => generated 2079 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpmy-admin/
+[pid: 11978|app: 0|req: 81/110] 213.6.173.118 () {40 vars in 721 bytes} [Tue Aug 25 23:24:45 2020] GET /phpmy-admin/ => generated 2079 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /webadmin/
+[pid: 11978|app: 0|req: 82/111] 213.6.173.118 () {40 vars in 715 bytes} [Tue Aug 25 23:24:46 2020] GET /webadmin/ => generated 2070 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /sqlweb/
+[pid: 11978|app: 0|req: 83/112] 213.6.173.118 () {40 vars in 711 bytes} [Tue Aug 25 23:24:46 2020] GET /sqlweb/ => generated 2064 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /websql/
+[pid: 11978|app: 0|req: 84/113] 213.6.173.118 () {40 vars in 711 bytes} [Tue Aug 25 23:24:47 2020] GET /websql/ => generated 2064 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /webdb/
+[pid: 11978|app: 0|req: 85/114] 213.6.173.118 () {40 vars in 709 bytes} [Tue Aug 25 23:24:48 2020] GET /webdb/ => generated 2061 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /mysqladmin/
+[pid: 11978|app: 0|req: 86/115] 213.6.173.118 () {40 vars in 719 bytes} [Tue Aug 25 23:24:48 2020] GET /mysqladmin/ => generated 2076 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /mysql-admin/
+[pid: 11977|app: 0|req: 3/116] 213.6.173.118 () {40 vars in 721 bytes} [Tue Aug 25 23:24:49 2020] GET /mysql-admin/ => generated 2079 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 11978|app: 0|req: 87/117] 213.6.173.118 () {36 vars in 567 bytes} [Tue Aug 25 23:51:01 2020] GET / => generated 2025 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Invalid HTTP_HOST header: 'www.msftncsi.com'. You may need to add 'www.msftncsi.com' to ALLOWED_HOSTS.
+Bad Request: /ncsi.txt
+[pid: 11978|app: 0|req: 88/118] 213.6.173.118 () {38 vars in 623 bytes} [Tue Aug 25 23:51:02 2020] GET /ncsi.txt => generated 57500 bytes in 42 msecs (HTTP/1.1 400) 2 headers in 67 bytes (1 switches on core 0)
+Invalid HTTP_HOST header: 'www.msftncsi.com'. You may need to add 'www.msftncsi.com' to ALLOWED_HOSTS.
+Bad Request: /ncsi.txt
+[pid: 11978|app: 0|req: 89/119] 213.6.173.118 () {38 vars in 623 bytes} [Tue Aug 25 23:51:07 2020] GET /ncsi.txt => generated 57500 bytes in 44 msecs (HTTP/1.1 400) 2 headers in 67 bytes (1 switches on core 0)
+Invalid HTTP_HOST header: 'www.msftncsi.com'. You may need to add 'www.msftncsi.com' to ALLOWED_HOSTS.
+Bad Request: /ncsi.txt
+[pid: 11979|app: 0|req: 24/120] 213.6.173.118 () {38 vars in 623 bytes} [Tue Aug 25 23:51:08 2020] GET /ncsi.txt => generated 57500 bytes in 66 msecs (HTTP/1.1 400) 2 headers in 67 bytes (1 switches on core 0)
+Not Found: /HNAP1/
+[pid: 11978|app: 0|req: 90/121] 213.6.173.118 () {38 vars in 620 bytes} [Tue Aug 25 23:51:09 2020] GET /HNAP1/ => generated 2061 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /hudson/script
+[pid: 11978|app: 0|req: 91/122] 213.6.173.118 () {38 vars in 634 bytes} [Tue Aug 25 23:51:10 2020] GET /hudson/script => generated 2082 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /script
+[pid: 11977|app: 0|req: 4/123] 213.6.173.118 () {38 vars in 620 bytes} [Tue Aug 25 23:51:11 2020] GET /script => generated 2061 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /sqlite/main.php
+[pid: 11977|app: 0|req: 5/124] 213.6.173.118 () {38 vars in 638 bytes} [Tue Aug 25 23:51:12 2020] GET /sqlite/main.php => generated 2088 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /sqlitemanager/main.php
+[pid: 11978|app: 0|req: 92/125] 213.6.173.118 () {38 vars in 652 bytes} [Tue Aug 25 23:51:12 2020] GET /sqlitemanager/main.php => generated 2109 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /SQLiteManager/main.php
+[pid: 11980|app: 0|req: 5/126] 213.6.173.118 () {38 vars in 652 bytes} [Tue Aug 25 23:51:13 2020] GET /SQLiteManager/main.php => generated 2109 bytes in 6 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /SQLite/main.php
+[pid: 11978|app: 0|req: 93/127] 213.6.173.118 () {38 vars in 638 bytes} [Tue Aug 25 23:51:15 2020] GET /SQLite/main.php => generated 2088 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /SQlite/main.php
+[pid: 11978|app: 0|req: 94/128] 213.6.173.118 () {38 vars in 638 bytes} [Tue Aug 25 23:51:16 2020] GET /SQlite/main.php => generated 2088 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /main.php
+[pid: 11978|app: 0|req: 95/129] 213.6.173.118 () {38 vars in 624 bytes} [Tue Aug 25 23:51:16 2020] GET /main.php => generated 2067 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /test/sqlite/SQLiteManager-1.2.0/SQLiteManager-1.2.0/main.php
+[pid: 11978|app: 0|req: 96/130] 213.6.173.118 () {38 vars in 728 bytes} [Tue Aug 25 23:51:17 2020] GET /test/sqlite/SQLiteManager-1.2.0/SQLiteManager-1.2.0/main.php => generated 2223 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /SQLiteManager-1.2.4/main.php
+[pid: 11978|app: 0|req: 97/131] 213.6.173.118 () {38 vars in 664 bytes} [Tue Aug 25 23:51:18 2020] GET /SQLiteManager-1.2.4/main.php => generated 2127 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /agSearch/SQlite/main.php
+[pid: 11978|app: 0|req: 98/132] 213.6.173.118 () {38 vars in 656 bytes} [Tue Aug 25 23:51:18 2020] GET /agSearch/SQlite/main.php => generated 2115 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpmyadmin/
+[pid: 11979|app: 0|req: 25/133] 213.6.173.118 () {38 vars in 630 bytes} [Tue Aug 25 23:51:19 2020] GET /phpmyadmin/ => generated 2076 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin/
+[pid: 11979|app: 0|req: 26/134] 213.6.173.118 () {38 vars in 630 bytes} [Tue Aug 25 23:51:20 2020] GET /phpMyAdmin/ => generated 2076 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /PMA/
+[pid: 11978|app: 0|req: 99/135] 213.6.173.118 () {38 vars in 616 bytes} [Tue Aug 25 23:51:21 2020] GET /PMA/ => generated 2055 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /pma/
+[pid: 11978|app: 0|req: 100/136] 213.6.173.118 () {38 vars in 616 bytes} [Tue Aug 25 23:51:24 2020] GET /pma/ => generated 2055 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+[pid: 11980|app: 0|req: 6/137] 213.6.173.118 () {38 vars in 620 bytes} [Tue Aug 25 23:51:25 2020] GET /admin/ => generated 0 bytes in 42 msecs (HTTP/1.1 302) 8 headers in 309 bytes (1 switches on core 0)
+[pid: 11978|app: 0|req: 101/138] 213.6.173.118 () {38 vars in 657 bytes} [Tue Aug 25 23:51:26 2020] GET /admin/login/?next=/admin/ => generated 1933 bytes in 203 msecs (HTTP/1.1 200) 8 headers in 439 bytes (1 switches on core 0)
+Not Found: /dbadmin/
+[pid: 11978|app: 0|req: 102/139] 213.6.173.118 () {40 vars in 713 bytes} [Tue Aug 25 23:51:27 2020] GET /dbadmin/ => generated 2067 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /mysql/
+[pid: 11978|app: 0|req: 103/140] 213.6.173.118 () {40 vars in 709 bytes} [Tue Aug 25 23:51:27 2020] GET /mysql/ => generated 2061 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /myadmin/
+[pid: 11978|app: 0|req: 104/141] 213.6.173.118 () {40 vars in 713 bytes} [Tue Aug 25 23:51:28 2020] GET /myadmin/ => generated 2067 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /openserver/phpmyadmin/
+[pid: 11978|app: 0|req: 105/142] 213.6.173.118 () {40 vars in 741 bytes} [Tue Aug 25 23:51:29 2020] GET /openserver/phpmyadmin/ => generated 2109 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpmyadmin2/
+[pid: 11979|app: 0|req: 27/143] 213.6.173.118 () {40 vars in 721 bytes} [Tue Aug 25 23:51:30 2020] GET /phpmyadmin2/ => generated 2079 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin2/
+[pid: 11978|app: 0|req: 106/144] 213.6.173.118 () {40 vars in 721 bytes} [Tue Aug 25 23:51:30 2020] GET /phpMyAdmin2/ => generated 2079 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2/
+[pid: 11978|app: 0|req: 107/145] 213.6.173.118 () {40 vars in 723 bytes} [Tue Aug 25 23:51:31 2020] GET /phpMyAdmin-2/ => generated 2082 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /php-my-admin/
+[pid: 11978|app: 0|req: 108/146] 213.6.173.118 () {40 vars in 723 bytes} [Tue Aug 25 23:51:32 2020] GET /php-my-admin/ => generated 2082 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.2.3/
+[pid: 11980|app: 0|req: 7/147] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:51:32 2020] GET /phpMyAdmin-2.2.3/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.2.6/
+[pid: 11979|app: 0|req: 28/148] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:51:33 2020] GET /phpMyAdmin-2.2.6/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.1/
+[pid: 11977|app: 0|req: 6/149] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:51:34 2020] GET /phpMyAdmin-2.5.1/ => generated 2094 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.4/
+[pid: 11979|app: 0|req: 29/150] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:51:35 2020] GET /phpMyAdmin-2.5.4/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.5-rc1/
+[pid: 11979|app: 0|req: 30/151] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:51:35 2020] GET /phpMyAdmin-2.5.5-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.5-rc2/
+[pid: 11979|app: 0|req: 31/152] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:51:36 2020] GET /phpMyAdmin-2.5.5-rc2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.5/
+[pid: 11977|app: 0|req: 7/153] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:51:37 2020] GET /phpMyAdmin-2.5.5/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.5-pl1/
+[pid: 11979|app: 0|req: 32/154] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:51:37 2020] GET /phpMyAdmin-2.5.5-pl1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.6-rc1/
+[pid: 11978|app: 0|req: 109/155] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:51:38 2020] GET /phpMyAdmin-2.5.6-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.6-rc2/
+[pid: 11978|app: 0|req: 110/156] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:51:39 2020] GET /phpMyAdmin-2.5.6-rc2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.6/
+[pid: 11978|app: 0|req: 111/157] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:51:40 2020] GET /phpMyAdmin-2.5.6/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.7/
+[pid: 11978|app: 0|req: 112/158] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:51:41 2020] GET /phpMyAdmin-2.5.7/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.5.7-pl1/
+[pid: 11978|app: 0|req: 113/159] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:51:42 2020] GET /phpMyAdmin-2.5.7-pl1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-alpha/
+[pid: 11978|app: 0|req: 114/160] 213.6.173.118 () {40 vars in 743 bytes} [Tue Aug 25 23:51:43 2020] GET /phpMyAdmin-2.6.0-alpha/ => generated 2112 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-alpha2/
+[pid: 11978|app: 0|req: 115/161] 213.6.173.118 () {40 vars in 745 bytes} [Tue Aug 25 23:51:44 2020] GET /phpMyAdmin-2.6.0-alpha2/ => generated 2115 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-beta1/
+[pid: 11978|app: 0|req: 116/162] 213.6.173.118 () {40 vars in 743 bytes} [Tue Aug 25 23:51:44 2020] GET /phpMyAdmin-2.6.0-beta1/ => generated 2112 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-beta2/
+[pid: 11978|app: 0|req: 117/163] 213.6.173.118 () {40 vars in 743 bytes} [Tue Aug 25 23:51:51 2020] GET /phpMyAdmin-2.6.0-beta2/ => generated 2112 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-rc1/
+[pid: 11978|app: 0|req: 118/164] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:51:52 2020] GET /phpMyAdmin-2.6.0-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-rc2/
+[pid: 11978|app: 0|req: 119/165] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:51:52 2020] GET /phpMyAdmin-2.6.0-rc2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-rc3/
+[pid: 11978|app: 0|req: 120/166] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:51:53 2020] GET /phpMyAdmin-2.6.0-rc3/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0/
+[pid: 11978|app: 0|req: 121/167] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:51:54 2020] GET /phpMyAdmin-2.6.0/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-pl1/
+[pid: 11980|app: 0|req: 8/168] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:51:56 2020] GET /phpMyAdmin-2.6.0-pl1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-pl2/
+[pid: 11979|app: 0|req: 33/169] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:51:56 2020] GET /phpMyAdmin-2.6.0-pl2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.0-pl3/
+[pid: 11978|app: 0|req: 122/170] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:51:57 2020] GET /phpMyAdmin-2.6.0-pl3/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.1-rc1/
+[pid: 11978|app: 0|req: 123/171] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:51:58 2020] GET /phpMyAdmin-2.6.1-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.1-rc2/
+[pid: 11978|app: 0|req: 124/172] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:51:58 2020] GET /phpMyAdmin-2.6.1-rc2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.1/
+[pid: 11978|app: 0|req: 125/173] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:52:02 2020] GET /phpMyAdmin-2.6.1/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.1-pl1/
+[pid: 11978|app: 0|req: 126/174] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:04 2020] GET /phpMyAdmin-2.6.1-pl1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.1-pl2/
+[pid: 11978|app: 0|req: 127/175] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:05 2020] GET /phpMyAdmin-2.6.1-pl2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.1-pl3/
+[pid: 11978|app: 0|req: 128/176] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:05 2020] GET /phpMyAdmin-2.6.1-pl3/ => generated 2106 bytes in 3 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.2-rc1/
+[pid: 11979|app: 0|req: 34/177] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:06 2020] GET /phpMyAdmin-2.6.2-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.2-beta1/
+[pid: 11978|app: 0|req: 129/178] 213.6.173.118 () {40 vars in 743 bytes} [Tue Aug 25 23:52:07 2020] GET /phpMyAdmin-2.6.2-beta1/ => generated 2112 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.2-rc1/
+[pid: 11978|app: 0|req: 130/179] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:07 2020] GET /phpMyAdmin-2.6.2-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.2/
+[pid: 11978|app: 0|req: 131/180] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:52:08 2020] GET /phpMyAdmin-2.6.2/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.2-pl1/
+[pid: 11978|app: 0|req: 132/181] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:09 2020] GET /phpMyAdmin-2.6.2-pl1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.3/
+[pid: 11978|app: 0|req: 133/182] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:52:13 2020] GET /phpMyAdmin-2.6.3/ => generated 2094 bytes in 6 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.3-rc1/
+[pid: 11978|app: 0|req: 134/183] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:13 2020] GET /phpMyAdmin-2.6.3-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.3/
+[pid: 11978|app: 0|req: 135/184] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:52:17 2020] GET /phpMyAdmin-2.6.3/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.3-pl1/
+[pid: 11978|app: 0|req: 136/185] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:18 2020] GET /phpMyAdmin-2.6.3-pl1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.4-rc1/
+[pid: 11979|app: 0|req: 35/186] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:18 2020] GET /phpMyAdmin-2.6.4-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.4-pl1/
+[pid: 11978|app: 0|req: 137/187] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:22 2020] GET /phpMyAdmin-2.6.4-pl1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.4-pl2/
+[pid: 11978|app: 0|req: 138/188] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:23 2020] GET /phpMyAdmin-2.6.4-pl2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.4-pl3/
+[pid: 11978|app: 0|req: 139/189] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:27 2020] GET /phpMyAdmin-2.6.4-pl3/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.4-pl4/
+[pid: 11980|app: 0|req: 9/190] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:27 2020] GET /phpMyAdmin-2.6.4-pl4/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.6.4/
+[pid: 11978|app: 0|req: 140/191] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:52:28 2020] GET /phpMyAdmin-2.6.4/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.7.0-beta1/
+[pid: 11978|app: 0|req: 141/192] 213.6.173.118 () {40 vars in 743 bytes} [Tue Aug 25 23:52:29 2020] GET /phpMyAdmin-2.7.0-beta1/ => generated 2112 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.7.0-rc1/
+[pid: 11979|app: 0|req: 36/193] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:29 2020] GET /phpMyAdmin-2.7.0-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.7.0-pl1/
+[pid: 11978|app: 0|req: 142/194] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:30 2020] GET /phpMyAdmin-2.7.0-pl1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.7.0-pl2/
+[pid: 11978|app: 0|req: 143/195] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:31 2020] GET /phpMyAdmin-2.7.0-pl2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.7.0/
+[pid: 11978|app: 0|req: 144/196] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:52:32 2020] GET /phpMyAdmin-2.7.0/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0-beta1/
+[pid: 11978|app: 0|req: 145/197] 213.6.173.118 () {40 vars in 743 bytes} [Tue Aug 25 23:52:32 2020] GET /phpMyAdmin-2.8.0-beta1/ => generated 2112 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0-rc1/
+[pid: 11979|app: 0|req: 37/198] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:33 2020] GET /phpMyAdmin-2.8.0-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0-rc2/
+[pid: 11978|app: 0|req: 146/199] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:34 2020] GET /phpMyAdmin-2.8.0-rc2/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0/
+[pid: 11978|app: 0|req: 147/200] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:52:34 2020] GET /phpMyAdmin-2.8.0/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0.1/
+[pid: 11980|app: 0|req: 10/201] 213.6.173.118 () {40 vars in 735 bytes} [Tue Aug 25 23:52:35 2020] GET /phpMyAdmin-2.8.0.1/ => generated 2100 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0.2/
+[pid: 11977|app: 0|req: 8/202] 213.6.173.118 () {40 vars in 735 bytes} [Tue Aug 25 23:52:36 2020] GET /phpMyAdmin-2.8.0.2/ => generated 2100 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0.3/
+[pid: 11978|app: 0|req: 148/203] 213.6.173.118 () {40 vars in 735 bytes} [Tue Aug 25 23:52:37 2020] GET /phpMyAdmin-2.8.0.3/ => generated 2100 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.0.4/
+[pid: 11978|app: 0|req: 149/204] 213.6.173.118 () {40 vars in 735 bytes} [Tue Aug 25 23:52:40 2020] GET /phpMyAdmin-2.8.0.4/ => generated 2100 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.1-rc1/
+[pid: 11978|app: 0|req: 150/205] 213.6.173.118 () {40 vars in 739 bytes} [Tue Aug 25 23:52:41 2020] GET /phpMyAdmin-2.8.1-rc1/ => generated 2106 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.1/
+[pid: 11977|app: 0|req: 9/206] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:52:42 2020] GET /phpMyAdmin-2.8.1/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpMyAdmin-2.8.2/
+[pid: 11977|app: 0|req: 10/207] 213.6.173.118 () {40 vars in 731 bytes} [Tue Aug 25 23:52:42 2020] GET /phpMyAdmin-2.8.2/ => generated 2094 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /sqlmanager/
+[pid: 11978|app: 0|req: 151/208] 213.6.173.118 () {40 vars in 719 bytes} [Tue Aug 25 23:52:43 2020] GET /sqlmanager/ => generated 2076 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /mysqlmanager/
+[pid: 11978|app: 0|req: 152/209] 213.6.173.118 () {40 vars in 723 bytes} [Tue Aug 25 23:52:44 2020] GET /mysqlmanager/ => generated 2082 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /p/m/a/
+[pid: 11978|app: 0|req: 153/210] 213.6.173.118 () {40 vars in 709 bytes} [Tue Aug 25 23:52:45 2020] GET /p/m/a/ => generated 2061 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /PMA2005/
+[pid: 11979|app: 0|req: 38/211] 213.6.173.118 () {40 vars in 713 bytes} [Tue Aug 25 23:52:45 2020] GET /PMA2005/ => generated 2067 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /pma2005/
+[pid: 11978|app: 0|req: 154/212] 213.6.173.118 () {40 vars in 713 bytes} [Tue Aug 25 23:52:46 2020] GET /pma2005/ => generated 2067 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpmanager/
+[pid: 11977|app: 0|req: 11/213] 213.6.173.118 () {40 vars in 719 bytes} [Tue Aug 25 23:52:47 2020] GET /phpmanager/ => generated 2076 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /php-myadmin/
+[pid: 11978|app: 0|req: 155/214] 213.6.173.118 () {40 vars in 721 bytes} [Tue Aug 25 23:52:47 2020] GET /php-myadmin/ => generated 2079 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /phpmy-admin/
+[pid: 11977|app: 0|req: 12/215] 213.6.173.118 () {40 vars in 721 bytes} [Tue Aug 25 23:52:48 2020] GET /phpmy-admin/ => generated 2079 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /webadmin/
+[pid: 11977|app: 0|req: 13/216] 213.6.173.118 () {40 vars in 715 bytes} [Tue Aug 25 23:52:49 2020] GET /webadmin/ => generated 2070 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /sqlweb/
+[pid: 11978|app: 0|req: 156/217] 213.6.173.118 () {40 vars in 711 bytes} [Tue Aug 25 23:52:50 2020] GET /sqlweb/ => generated 2064 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /websql/
+[pid: 11977|app: 0|req: 14/218] 213.6.173.118 () {40 vars in 711 bytes} [Tue Aug 25 23:52:50 2020] GET /websql/ => generated 2064 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /webdb/
+[pid: 11979|app: 0|req: 39/219] 213.6.173.118 () {40 vars in 709 bytes} [Tue Aug 25 23:52:51 2020] GET /webdb/ => generated 2061 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /mysqladmin/
+[pid: 11979|app: 0|req: 40/220] 213.6.173.118 () {40 vars in 719 bytes} [Tue Aug 25 23:52:52 2020] GET /mysqladmin/ => generated 2076 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /mysql-admin/
+[pid: 11979|app: 0|req: 41/221] 213.6.173.118 () {40 vars in 721 bytes} [Tue Aug 25 23:52:52 2020] GET /mysql-admin/ => generated 2079 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 11978|app: 0|req: 157/222] 134.169.32.26 () {32 vars in 373 bytes} [Wed Aug 26 01:49:17 2020] GET / => generated 2025 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 11978|app: 0|req: 158/223] 209.17.97.34 () {30 vars in 411 bytes} [Wed Aug 26 08:36:56 2020] GET / => generated 2025 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 11978|app: 0|req: 159/224] 196.52.43.115 () {30 vars in 434 bytes} [Thu Aug 27 03:34:05 2020] GET / => generated 2025 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 11978|app: 0|req: 160/225] 209.17.96.10 () {30 vars in 411 bytes} [Thu Aug 27 13:57:34 2020] GET / => generated 2025 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)
+Not Found: /
+[pid: 11978|app: 0|req: 161/226] 139.162.79.87 () {34 vars in 394 bytes} [Thu Aug 27 16:34:18 2020] GET / => generated 2025 bytes in 4 msecs (HTTP/1.1 404) 5 headers in 143 bytes (1 switches on core 0)

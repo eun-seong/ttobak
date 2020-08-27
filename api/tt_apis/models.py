@@ -32,6 +32,13 @@ class FocTest(models.Model):
     class Meta:
         db_table = 'foc_test'
 
+class FocScript(models.Model):
+    fs_id = models.AutoField(primary_key=True)
+    conv_id = models.IntegerField()
+    script = models.CharField(max_length = 1000)
+
+    class Meta:
+        db_table = 'foc_script'
 
 class Icon(models.Model):
     ic_id = models.AutoField(primary_key=True)
@@ -56,11 +63,22 @@ class StuFoc(models.Model):
     stu = models.ForeignKey('Student', on_delete=models.PROTECT,null=True,db_column = 'stu_id')
     foc = models.ForeignKey('FocTest', on_delete=models.PROTECT,null=True,db_column = 'foc_id')
     is_correct = models.CharField(max_length=5)
-    sf_date = models.DateField()
+    sf_date = models.DateField(auto_now_add = True)
 
     class Meta:
         db_table = 'stu_foc'
 
+class StuFocArr(models.Model):
+    sfarr_id = models.AutoField(primary_key=True)
+    stu = models.ForeignKey('Student',on_delete = models.PROTECT,null=True,db_column = 'stu_id')
+    o0 = models.IntegerField()
+    o1 = models.IntegerField()
+    o2 = models.IntegerField()
+    o3 = models.IntegerField()
+    stucnt = models.IntegerField(default = 0)
+
+    class Meta:
+        db_table = 'stu_foc_arr'
 
 class StuIc(models.Model):
     stu = models.ForeignKey('Student', on_delete=models.PROTECT,null=True,db_column = 'stu_id')
@@ -75,7 +93,7 @@ class StuPh(models.Model):
     ph1 = models.ForeignKey('PhTest', on_delete=models.PROTECT,null=True,related_name='ph1')
     ph2 = models.ForeignKey('PhTest', on_delete=models.PROTECT,null=True,related_name='ph2')
     is_correct = models.CharField(max_length=5)
-    sp_date = models.DateField()
+    sp_date = models.DateField(auto_now_add = True)
 
     class Meta:
         db_table = 'stu_ph'
@@ -86,7 +104,7 @@ class StuSwp(models.Model):
     stu = models.ForeignKey('Student', on_delete=models.PROTECT,null=True,db_column = 'stu_id')
     swp = models.ForeignKey('SwpTest', on_delete=models.PROTECT,null=True,db_column = 'swp_id')
     is_correct = models.CharField(max_length=5)
-    ss_date = models.DateField(auto_now = True)
+    ss_date = models.DateField(auto_now_add = True)
 
     class Meta:
         db_table = 'stu_swp'
