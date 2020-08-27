@@ -22,45 +22,6 @@ const PauseButton = styled(Img)`
     margin: 10px;
 `;
 
-const ButtonImg = styled(Img)`
-    width: 20%;
-    top: 60%;
-`;
-
-const UpButtonImg = styled(ButtonImg)`
-    width: 40%;
-    margin: 0 15px 0 0;
-`;
-
-const DownButtonImg = styled(ButtonImg)`
-    width:40%;
-    margin: 0 0 0 15px;
-`;
-
-const AnswerBoxImg = styled(Img)`
-    width: 100%;
-    margin: 5px 0 5px 0 ;
-`;
-
-const Component = styled.div`
-    width: 50%;
-    position:absolute;
-    justify-content: center;
-    right:15%;
-`;
-
-const ButtonComponent = styled.div`
-    display: flex;
-    justify-content:center;
-`;
-
-const TTobakComponent = styled.img`
-    position:absolute;
-    width: 20%;
-    top: 17%;
-    left: 3%;
-`;
-
 const Attention = () => {
     return (
         <div>

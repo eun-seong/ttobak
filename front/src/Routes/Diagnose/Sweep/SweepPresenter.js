@@ -63,7 +63,7 @@ const TTobakComponent = styled.img`
 const Sweep = ({ onMouseDown, onMouseUp, UpButton, DownButton, UP, DOWN }) => {
     return (
         <div>
-            <Link to=''><PauseButton src={Button_Pause} alt='일시정지' /></Link>
+            <Link to='/'><PauseButton src={Button_Pause} alt='일시정지' /></Link>
             <TTobakComponent src={TTobak} alt='또박이' />
             <Component>
                 <AnswerBoxImg src={AnswerBox} alt='answerbox' />
