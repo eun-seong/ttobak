@@ -45,12 +45,12 @@ const CardParent = styled.div`
 const Phoneme = () => {
     return (
         <div>
-            <Link to=''><PauseButton src={Button_Pause} alt='일시정지' /></Link>
             <PicBoxParent><PicBox /></PicBoxParent>
             <CardParent>
                 <Card src={Card1} alt='카드1' />
                 <Card src={Card2} alt='카드2' />
             </CardParent>
+            <Link to=''><PauseButton src={Button_Pause} alt='일시정지' /></Link>
             <BackgroundImg src={Background} alt='배경화면' />
         </div>
     );

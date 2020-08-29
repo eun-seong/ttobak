@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import AnswerBoxComp from './AnswerBox';
+
 import Button_Pause from 'img/bt_pause.png';
 import Background from 'img/d1_sweep/d1_background.png'
-import AnswerBox from 'img/d1_sweep/box.png';
 import TTobak from 'img/ttobak/ttobak1-1.png';
-
 
 /* styled-components */
 const BackgroundImg = styled.img`
@@ -36,21 +36,19 @@ const DownButtonImg = styled(ButtonImg)`
     margin: 0 0 0 15px;
 `;
 
-const AnswerBoxImg = styled.img`
-    width: 100%;
-    margin: 5px 0 5px 0 ;
-`;
-
 const Component = styled.div`
     width: 50%;
     position:absolute;
     justify-content: center;
+    margin: 5px 0 0 0 ;
     right:15%;
+    top: 1%;
 `;
 
 const ButtonComponent = styled.div`
     display: flex;
     justify-content:center;
+    margin: 0 0 5px 0 ;
 `;
 
 const TTobakComponent = styled.img`
@@ -60,13 +58,13 @@ const TTobakComponent = styled.img`
     left: 3%;
 `;
 
-const Sweep = ({ onMouseDown, onMouseUp, UpButton, DownButton, UP, DOWN }) => {
+const Sweep = ({ onMouseDown, onMouseUp, UpButton, DownButton, UP, DOWN, Answer1, Answer2 }) => {
     return (
         <div>
             <Link to='/'><PauseButton src={Button_Pause} alt='일시정지' /></Link>
             <TTobakComponent src={TTobak} alt='또박이' />
             <Component>
-                <AnswerBoxImg src={AnswerBox} alt='answerbox' />
+                <AnswerBoxComp Answer1={Answer1} Answer2={Answer2} />
                 <ButtonComponent>
                     <UpButtonImg
                         src={UpButton}
