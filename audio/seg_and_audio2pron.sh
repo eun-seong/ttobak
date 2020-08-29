@@ -1,24 +1,29 @@
 #!/usr/bin/env bash
 
-if [ "$#" -ne 2 ]; then
-  echo "Usage: $0 <transcript> <file>"
-  echo "e.g.: $0 '안녕하세요 반갑습니다' test4.m4a"
+if [ "$#" -ne 3 ]; then
+  echo "Usage: $0 <gender> <transcript> <file>"
+  echo "e.g.: $0 m '안녕하세요 반갑습니다' test4.m4a"
   exit 1
 fi
 
 . ./config.sh
 . ./path.sh
 
-transcript=$1
-file=$2
+gender=$1
+transcript=$2
+file=$3
 
-file_path=$PWD/server/temp/raw/$2
-result_file_path=$PWD/server/temp/result/$2.json
+file_path=$PWD/server/temp/raw/$file
+result_file_path=$PWD/server/temp/result/$file.json
 
 id=$(($(date +%s%N)/1000000))
 
 course=$id
-user=104
+if [ $gender = 'm' ]; then
+    user=100
+else
+    user=101
+fi
 
 data=$BASE_DIR/data
 log=$BASE_DIR/log
@@ -28,7 +33,6 @@ make_mfcc=$log/make_mfcc
 mfcc=$log/mfcc
 
 model=$BASE_DIR/model
-lm=$model/lm
 
 final=$FINAL_DIR/result
 

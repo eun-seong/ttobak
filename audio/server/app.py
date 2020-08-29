@@ -111,15 +111,19 @@ async def score(request):
 
 @app.route('/api/segscore', methods=['POST'])
 async def seg_score(request):
-    if 'transcript' not in request.form or \
+    if 'gender' not in request.form or \
+        'transcript' not in request.form or \
         'file' not in request.files:
         return error(request.path, 1)
 
+    gender = request.form.get('gender')
     transcript = request.form.get('transcript')
     file = request.files.get('file')
 
-    if transcript == '':
+    if gender == '' or transcript == '':
         return error(request.path, 2)
+    if gender != 'm' and gender != 'f':
+        return error(request.path, 5)
 
     filename = make_filename(file.name)
     if filename == '':
@@ -129,7 +133,8 @@ async def seg_score(request):
     f.write(file.body)
     f.close()
 
-    subprocess.run('./seg_and_audio2pron.sh "{}" {}'.format(transcript, filename), shell=True, cwd=os.path.abspath('..'))
+    print('./seg_and_audio2pron.sh {} "{}" {}'.format(gender, transcript, filename))
+    subprocess.run('./seg_and_audio2pron.sh {} "{}" {}'.format(gender, transcript, filename), shell=True, cwd=os.path.abspath('..'))
 
     if not os.path.isfile('temp/result/{}.json'.format(filename)):
         return error(request.path, 4)
