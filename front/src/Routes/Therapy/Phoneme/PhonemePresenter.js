@@ -26,7 +26,7 @@ const PauseButton = styled.img`
 
 const PicBoxParent = styled.div`
     position: absolute;
-    width: 100%;
+    height: 77.5%;
     display: flex;
     justify-content: center;
     top: 2.3%;
@@ -39,6 +39,7 @@ const CardParent = styled.div`
     position: absolute;
     bottom: 0;
     padding: 0px 40px 0px 40px;
+    height:75%;
 `;
 
 

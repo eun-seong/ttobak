@@ -34,10 +34,12 @@ const Component = styled.div`
     display: flex;
     justify-content:center;
     bottom: 18%;
+    height: 31%;
+    width:100%;
 `;
 
 const TextBoxImg = styled.img`
-    width : 88%;
+    height : 100%;
 `;
 
 const Shadowing = () => {
