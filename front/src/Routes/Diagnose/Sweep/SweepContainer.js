@@ -1,27 +1,24 @@
 import React from 'react';
 import SweepPresenter from './SweepPresenter';
-
-import UpButton_UP from 'img/d1_sweep/up.png';
-import DownButton_UP from 'img/d1_sweep/down.png';
-import UpButton_DOWN from 'img/d1_sweep/up_pushed.png';
-import DownButton_DOWN from 'img/d1_sweep/down_pushed.png';
-import AnswerDown from 'img/d1_sweep/answer_down.png';
-import AnswerUp from 'img/d1_sweep/answer_up.png';
+import { D1_Api } from 'api';
+import { SwpTest, TTobak } from 'images';
 
 const UP = 'up';
 const DOWN = 'down';
 
+// D1_Api.ask(500, 1, 4);
+
 export default class extends React.Component {
     state = {
         answerNum: 0,
-        UpButton: UpButton_UP,
-        DownButton: DownButton_UP,
-        Answer: []
+        UpButton: SwpTest.UpButton_UP,
+        DownButton: SwpTest.DownButton_UP,
+        Answer: [],
+        TTobaki: TTobak.ttobak1_1
     };
 
-    onMouseDown = (id) => {
+    onTouchStart = (id) => {
         const { answerNum, Answer } = this.state;
-
         // TODO
         // 두 개 모두 채워지면 정답 애니메이션 나온 후 정답 상자 리셋
         if (answerNum === 2) {
@@ -38,15 +35,15 @@ export default class extends React.Component {
                 case DOWN:
                     // console.log('down-down');
                     this.setState({
-                        DownButton: DownButton_DOWN,
-                        Answer: Answer.concat(AnswerDown)
+                        DownButton: SwpTest.DownButton_DOWN,
+                        Answer: Answer.concat(SwpTest.AnswerDown)
                     });
                     break;
                 case UP:
                     // console.log('up-down');
                     this.setState({
-                        UpButton: UpButton_DOWN,
-                        Answer: Answer.concat(AnswerUp)
+                        UpButton: SwpTest.UpButton_DOWN,
+                        Answer: Answer.concat(SwpTest.AnswerUp)
                     });
                     break;
                 default:
@@ -54,20 +51,20 @@ export default class extends React.Component {
         }
     }
 
-    onMouseUp = (id) => {
-        console.log(this.state);
+    onTouchEnd = (id) => {
+        // console.log(this.state);
 
         switch (id) {
             case DOWN:
                 // console.log('down-up');
                 this.setState({
-                    DownButton: DownButton_UP
+                    DownButton: SwpTest.DownButton_UP
                 });
                 break;
             case UP:
                 // console.log('up-up');
                 this.setState({
-                    UpButton: UpButton_UP
+                    UpButton: SwpTest.UpButton_UP
                 });
                 break;
             default:
@@ -80,17 +77,17 @@ export default class extends React.Component {
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
 
-        const { UpButton, DownButton, Answer } = this.state;
+        const { UpButton, DownButton, Answer, TTobaki } = this.state;
 
         return (
             <SweepPresenter
                 UP={UP} DOWN={DOWN}
-                onMouseDown={this.onMouseDown}
-                onMouseUp={this.onMouseUp}
+                onTouchStart={this.onTouchStart}
+                onTouchEnd={this.onTouchEnd}
                 UpButton={UpButton}
                 DownButton={DownButton}
-                Answer1={Answer[0]}
-                Answer2={Answer[1]}
+                Answer={Answer}
+                TTobak={TTobaki}
             />);
     }
 }

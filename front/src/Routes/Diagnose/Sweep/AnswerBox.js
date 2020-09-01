@@ -3,9 +3,6 @@ import styled from 'styled-components';
 
 import AnswerBox from 'img/d1_sweep/box.png';
 
-import AnswerDown from 'img/d1_sweep/answer_down.png';
-import AnswerUp from 'img/d1_sweep/answer_up.png';
-
 const Div = styled.div`
     display: flex;
     justify-content: center;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Button_Pause from 'img/bt_pause.png';
+import Button_Pause from 'img/button/bt_pause.png';
 import Background from 'img/t2_counting/t2_background.png'
 import Tree from 'img/t2_counting/tree.png'
 import Basket from 'img/t2_counting/basket.png';
@@ -34,9 +34,9 @@ const TreeImg = styled(Img)`
 
 const BasketImg = styled(Img)`
     position: absolute;
-    width: 45%;
+    width: 47%;
     top: 52%;
-    right: 12%;
+    right: 10%;
 `;
 
 const TTobakComponent = styled.img`

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Card from './Card';
 import PicBox from './PicBox';
 
-import Button_Pause from 'img/bt_pause.png';
+import Button_Pause from 'img/button/bt_pause.png';
 import Background from 'img/t3_phoneme/t3_background.png'
 import Card1 from 'img/t3_phoneme/card1.png'
 import Card2 from 'img/t3_phoneme/card2.png'

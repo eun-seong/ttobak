@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Button_Pause from 'img/bt_pause.png';
+import Button_Pause from 'img/button/bt_pause.png';
 import Background from 'img/t1_shadowing/t1_background.png'
 import TextBox from 'img/t1_shadowing/textbox.png'
 import TTobak from 'img/ttobak/ttobak1-1.png';
