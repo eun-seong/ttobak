@@ -27,11 +27,13 @@ const ButtonImg = styled.img`
 
 const UpButtonImg = styled(ButtonImg)`
     width: 40%;
+    height: 40%;
     margin: 0 15px 0 0;
 `;
 
 const DownButtonImg = styled(ButtonImg)`
     width:40%;
+    height: 40%;
     margin: 0 0 0 15px;
 `;
 
