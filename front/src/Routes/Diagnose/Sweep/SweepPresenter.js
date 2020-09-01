@@ -57,24 +57,24 @@ const TTobakComponent = styled.img`
     left: 3%;
 `;
 
-const Sweep = ({ onTouchStart, onTouchEnd, UpButton, DownButton, UP, DOWN, Answer, TTobak }) => {
+const Sweep = (props) => {
     return (
         <div>
             <Link to='/'><PauseButton src={Images.bt_pause} alt='일시정지' /></Link>
-            <TTobakComponent src={TTobak} alt='또박이' />
+            <TTobakComponent src={props.TTobak} alt='또박이' onTouchEnd={props.TTobakiTouch} />
             <Component>
-                <AnswerBoxComp Answer1={Answer[0]} Answer2={Answer[1]} />
+                <AnswerBoxComp Answer1={props.Answer[0]} Answer2={props.Answer[1]} />
                 <ButtonComponent>
                     <UpButtonImg
-                        src={UpButton}
+                        src={props.UpButton}
                         alt='up'
-                        onTouchStart={() => onTouchStart(UP)}
-                        onTouchEnd={() => onTouchEnd(UP)} />
+                        onTouchStart={() => props.onTouchStart(props.UP)}
+                        onTouchEnd={() => props.onTouchEnd(props.UP)} />
                     <DownButtonImg
-                        src={DownButton}
+                        src={props.DownButton}
                         alt='down'
-                        onTouchStart={() => onTouchStart(DOWN)}
-                        onTouchEnd={() => onTouchEnd(DOWN)} />
+                        onTouchStart={() => props.onTouchStart(props.DOWN)}
+                        onTouchEnd={() => props.onTouchEnd(props.DOWN)} />
                 </ButtonComponent>
             </Component>
             <BackgroundImg src={Background} alt='배경화면' />
