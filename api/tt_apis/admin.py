@@ -11,6 +11,5 @@ admin.site.register(StuPh)
 admin.site.register(FocTest)
 admin.site.register(StuFoc)
 admin.site.register(StuFocArr)
-admin.site.register(FocScript)
-admin.stie.register(StuFoc) ##admin site에서 관리할 수 있도록 모델들을 admin site에 추가해줌.
+admin.site.register(FocScript) ##admin site에서 관리할 수 있도록 모델들을 admin site에 추가해줌.
 # Register your models here.

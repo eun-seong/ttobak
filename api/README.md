@@ -402,7 +402,7 @@ OR
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ "up_path" : [path_to_up_sound], "down_path" : [path_to_down_path] , "answer" : [up or down] , "swp_id" : [integer],"code":1}`
+    **Content:** `{ "up_path" : [path_to_up_sound], "down_path" : [path_to_down_path] , "answer1" : [up or down] , "answer2" : [up or down], "swp_id" : [integer],"code":1}`
  
 OR
 
@@ -441,7 +441,7 @@ OR
    **Optional:**
 
 * **Data Params**
-	   `s_id = [integer]` | `swp_id = [integer] | ori_answer = up/down | stu_answer = up/down ` 
+	   `s_id = [integer]` | `swp_id = [integer] | ori_answer1 = [up/down] | ori_answer2 = [up/down] | stu_answer1 =[up/down] | stu_answer = [up/down] ` 
 	  
 * **Success Response:**
 
@@ -467,8 +467,10 @@ OR
       data : { 
 	     "s_id" : 1,
 	     "swp_id" : 1,
-	     "ori_answer" : up,
-	     "stu_answer" : down
+	     "ori_answer1" : "up",
+	     "ori_answer2" : "up",
+	     "stu_answer1" : "up",
+	     "stu_answer2" : down
 		},success : function(r) {
 	         console.log(r)
       }

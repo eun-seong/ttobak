@@ -86,9 +86,9 @@ class UserGet(View):
         if User.objects.filter(usr_id = uk).exists():
             user = User.objects.get(usr_id=uk)
 
-            return JsonResponse({"name":user.usr_name,"email":user.usr_email},status=200)
+            return JsonResponse({"name":user.usr_name,"email":user.usr_email,"code":1},status=200)
 
-        return JsonResponse({"message":"존재하지 않는 회원입니다","code":2},status=200)
+        return JsonResponse({"message":"존재하지 않는 회원입니다.","code":2},status=200)
 
 class StuAdd(View):
     @csrf_exempt
@@ -109,9 +109,9 @@ class StuAdd(View):
                 stu = Student.objects.latest('stu_id')
             )
 
-            return JsonResponse({"message":"성공적으로 추가되었습니다","code":1},status=200)
+            return JsonResponse({"message":"성공적으로 추가되었습니다.","code":1},status=200)
 
-        return JsonResponse({"message":"존재하지 않는 회원입니다","code":2},status=200)
+        return JsonResponse({"message":"존재하지 않는 회원입니다.","code":2},status=200)
 
 class StuModify(View):
     @csrf_exempt
@@ -130,9 +130,9 @@ class StuModify(View):
 
                 student.save()
 
-                return JsonResponse({"message":"성공적으로 수정되었습니다","code":1},status=200)
-            return JsonResponse({"message":"존재하지 않는 학습자 입니다","code":2},status=200)
-        return JsonResponse({"message":"존재하지 않는 회원입니다","code":3},status=200)
+                return JsonResponse({"message":"성공적으로 수정되었습니다.","code":1},status=200)
+            return JsonResponse({"message":"존재하지 않는 학습자 입니다.","code":2},status=200)
+        return JsonResponse({"message":"존재하지 않는 회원입니다.","code":3},status=200)
 
 
 class StuDel(View):
@@ -147,12 +147,12 @@ class StuDel(View):
 
                 tmp = UsrStu.objects.get(usr = uk, stu = sk)
                 tmp.delete()
-
+                ##The deletion of test / study tables' instances related to designated student should be proceed. Will be added.
                 student = Student.objects.get(pk=sk)
                 student.delete()
-                return JsonResponse({"message":"성공적으로 삭제되었습니다","code":1},status=200)
-            return JsonResponse({"message":"존재하지 않는 학습자 입니다","code":2},status=200)
-        return JsonResponse({"message":"존재하지 않는 회원입니다","code":3},status=200)
+                return JsonResponse({"message":"성공적으로 삭제되었습니다.","code":1},status=200)
+            return JsonResponse({"message":"존재하지 않는 학습자입니다.","code":2},status=200)
+        return JsonResponse({"message":"존재하지 않는 회원입니다.","code":3},status=200)
 
 class StuGet(View):
     @csrf_exempt
@@ -167,8 +167,8 @@ class StuGet(View):
                 student = Student.objects.get(pk=sk)
 
                 return JsonResponse({"name":student.stu_name,"birth":student.stu_birth,"gender":student.stu_gender,"code":1},status=200)
-            return JsonResponse({"message":"존재하지 않는 학습자 입니다","code":2},status=200)
-        return JsonResponse({"message":"존재하지 않는 회원입니다","code":3},status=200)
+            return JsonResponse({"message":"존재하지 않는 학습자 입니다.","code":2},status=200)
+        return JsonResponse({"message":"존재하지 않는 회원입니다.","code":3},status=200)
 
 class SwpGet(View):
     @csrf_exempt
@@ -185,10 +185,14 @@ class SwpGet(View):
                 sounds = SwpTest.objects.get(swp_level=level,swp_freq=freq)
 
                 x = random.randint(1,2)
-                answer = 'up'
+                y = random.randint(1,2)
+                answer1 = 'up'
+                answer2 = 'up'
                 if x ==1:
-                    answer = 'down' 
-                return JsonResponse({"up_path":url+sounds.swp_uppath,"down_path":url+sounds.swp_downpath,"answer":answer,"swp_id":sounds.swp_id,"code":1},status=200)
+                    answer1 = 'down'
+                if y == 1:
+                    answer2= 'down' 
+                return JsonResponse({"up_path":url+sounds.swp_uppath,"down_path":url+sounds.swp_downpath,"answer1":answer1,"answer2":answer2,"swp_id":sounds.swp_id,"code":1},status=200)
             return JsonResponse({"message":"해당 문제가 존재하지 않습니다.","code":2},status=200)
         return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":3},status=200)
 
@@ -199,8 +203,10 @@ class SwpAns(View):
 
         s_id = data['s_id']
         swp_id = data['swp_id']
-        ori = data['ori_answer']
-        stu = data['stu_answer']
+        ori1 = data['ori_answer1']
+        ori2 = data['ori_answer2']
+        stu1 = data['stu_answer1']
+        stu2 = data['stu_answer2']
         
         if Student.objects.filter(pk=s_id).exists():
             student = Student.objects.get(pk = s_id)
@@ -209,7 +215,7 @@ class SwpAns(View):
 
                 iscorrect = 'false'
                 mes = "답이 틀렸습니다."
-                if ori == stu :
+                if ori1 == stu1 and ori2 == stu2 :
                     iscorrect = 'true'
                     mes = "답이 맞았습니다."
                 StuSwp.objects.create(
@@ -218,7 +224,7 @@ class SwpAns(View):
                     is_correct = iscorrect
                 )
                 return JsonResponse({"message":mes,"code":1},status=200)
-            return JsonResponse({"message":"해당 문제가 없습니다","code":2},status=200)
+            return JsonResponse({"message":"해당 문제가 없습니다.","code":2},status=200)
         return JsonResponse({"message":"해당 학습자가 없습니다.","code":3},status=200)
 
 class PhGet(View):
