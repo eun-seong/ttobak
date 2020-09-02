@@ -24,8 +24,8 @@ const TreeImg = styled.img`
 
 const BoxComp = ({ Box, Tree, Clicked, id }) => {
     return (
-        <Component onTouchStart={() => Clicked(id)}>
-            <BoxImg src={Box} alt='box' />
+        <Component >
+            <BoxImg src={Box} alt='box' onTouchEnd={() => Clicked(id)} />
             <TreeImg src={Tree} alt='tree2' />
         </Component>
     );

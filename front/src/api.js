@@ -22,4 +22,20 @@ export const D1_Api = {
         }),
 };
 
+export const D2_Api = {
+    ask: (level, s_id) =>
+        api.post("ph_test/ask", {
+            "level": level,
+            "s_id": s_id
+        }),
+    answer: (s_id, oriAnswer, stdAnswer, ph) =>
+        api.post("ph_test/answer", {
+            "s_id": s_id,
+            "ph1": ph[0],
+            "ph2": ph[1],
+            "ori_answer": oriAnswer,
+            "stu_answer": stdAnswer
+        }),
+};
+
 export default api;

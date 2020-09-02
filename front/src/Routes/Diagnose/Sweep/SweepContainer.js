@@ -85,6 +85,7 @@ export default class extends React.Component {
         } else {
             try {
                 const { data } = await D1_Api.ask(500, 1, 4);
+                // console.log(data);
                 if (data.code === 1) {
                     const { answer1, answer2, down_path, up_path, swp_id } = data;
 
