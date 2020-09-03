@@ -24,7 +24,9 @@ export default class extends React.Component {
     };
 
     Clicked = async (id) => {
-        const { Box, answerIndex, TTobaki } = this.state;
+        const { Box, answerIndex, TTobaki, gameState } = this.state;
+        if (!gameState) return;
+
         switch (id) {
             case 0:
                 this.setState({
