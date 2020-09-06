@@ -4,6 +4,14 @@ const api = axios.create({
     baseURL: "http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/api/"
 });
 
+export const Root_Api = {
+    signin: (id, password) =>
+        api.post("user/signin", {
+            "email": id,
+            "password": password
+        }),
+}
+
 export const D1_Api = {
     ask: (freg, level, s_id) =>
         api.post("swp_test/ask", {

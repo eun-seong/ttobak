@@ -54,7 +54,7 @@ const SubmitButton = styled.button`
 `;
 
 
-function SignIn() {
+function SignIn({ handleSubmit, setId, setPassword }) {
     return (
         <div>
             <Contents>
@@ -66,7 +66,7 @@ function SignIn() {
                     <InputBox type='password' placeholder='비밀번호' />
                     <div>비밀번호를 잊으셨나요?</div>
                 </SignInBox>
-                <SubmitButton>확인</SubmitButton>
+                <SubmitButton onTouchEnd={handleSubmit}>확인</SubmitButton>
             </Contents>
         </div>
     );
