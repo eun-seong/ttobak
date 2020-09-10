@@ -16,16 +16,21 @@ const Box = styled.div`
     flex-direction: column;
     width: calc(100% - 90px);
     height: calc(100% - 90px);
-    padding: 0% 4% 4% 4%;
+    padding: 4%;
     background: #ffffff;
     opacity: 80%;
     border-radius: 40px 90px / 80px 40px;
     z-index: 0;
 `;
 
+const Header = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2%;
+`;
+
 const Title = styled.div`
     width: 100%;
-    margin: 4% 0%;
     text-align: center;
     font-size: 2em;
     font-weight: bold;
@@ -37,10 +42,10 @@ const Title = styled.div`
 
 const SubTitle = styled.div`
     width: 100%;
-    margin: 4% 0%;
+    padding-top: 3px;
     text-align: center;
     font-size: 0.5em;
-    font-weight: bold;
+    font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     color: #464646;
@@ -50,6 +55,8 @@ const SubTitle = styled.div`
 const Contents = styled.div`
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
     /* background-color: grey; */
     z-index: 2;
 `;
@@ -67,8 +74,10 @@ function RootBackGround({ background, title, Content, subTitle }) {
     return (
         <Component>
             <Box>
-                <Title>{title}</Title>
-                {tempSubTitle}
+                <Header>
+                    <Title>{title}</Title>
+                    {tempSubTitle}
+                </Header>
                 <Contents>
                     <Content />
                 </Contents>

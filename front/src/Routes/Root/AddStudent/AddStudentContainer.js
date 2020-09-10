@@ -1,5 +1,5 @@
 import React from 'react';
-import ForgotPWPresenter from './ForgotPWPresenter';
+import AddStudentPresenter from './AddStudentPresenter';
 import { Root_Api } from 'api';
 
 export default class extends React.Component {
@@ -8,8 +8,6 @@ export default class extends React.Component {
     api 가져오기
     error 처리 등 모든 것
      */
-
-    // TODO 비밀번호 찾기 후 알림 팝업창
     state = {
         id: null,
         password: null,
@@ -21,9 +19,13 @@ export default class extends React.Component {
         presenter로 가는 모든 스테이트 값 렌더링
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
+        const { id, password } = this.state;
 
         return (<
-            ForgotPWPresenter
+            AddStudentPresenter
+            handleSubmit={this.handleSubmit}
+            id={this.setId} password={this.setPassword}
+
         />);
     }
 }
