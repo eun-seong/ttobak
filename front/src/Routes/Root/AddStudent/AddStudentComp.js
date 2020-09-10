@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import SubmitButton from 'Components/Button';
 import InputBoxComp from './InputBoxComp';
@@ -48,7 +49,9 @@ function AddStudentComp({ handleSubmit }) {
                     <InputBoxComp text={'성별'} />
                 </InputComp>
             </StudentBox>
-            <SubmitButton onClick={handleSubmit} text={'검사 시작'} />
+            <Link to='/'>
+                <SubmitButton onClick={handleSubmit} text={'검사 시작'} />
+            </Link>
         </CompBox>
     );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import SubmitButton from 'Components/Button';
 
@@ -34,7 +35,9 @@ function SignInComp({ handleSubmit }) {
             <ForgotBox>
                 <InputBox type='text' placeholder='이메일' />
             </ForgotBox>
-            <SubmitButton onClick={handleSubmit} text={'확인'} />
+            <Link to='/root/signin'>
+                <SubmitButton onClick={handleSubmit} text={'확인'} />
+            </Link>
         </CompBox>
     );
 }

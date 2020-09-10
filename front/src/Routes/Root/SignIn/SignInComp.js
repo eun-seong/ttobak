@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SubmitButton from 'Components/Button';
+import { Link } from 'react-router-dom';
 
 const CompBox = styled.div`
     display: flex;
@@ -43,10 +44,14 @@ function SignInComp({ handleSubmit, setId, setPassword }) {
             <SignInBox>
                 <InputBox type='text' placeholder='이메일' />
                 <InputBox type='password' placeholder='비밀번호' />
-                <ForgotPassword>비밀번호를 잊으셨나요?</ForgotPassword>
+                <Link to='/root/forgotpassword'>
+                    <ForgotPassword>비밀번호를 잊으셨나요?</ForgotPassword>
+                </Link>
             </SignInBox>
-            <SubmitButton onClick={handleSubmit} text={'확인'} />
-            <SignUpBt>회원 가입</SignUpBt>
+            <Link to='/'>
+                <SubmitButton onClick={handleSubmit} text={'확인'} />
+            </Link>
+            <Link to='/root/signup'><SignUpBt>회원 가입</SignUpBt></Link>
         </CompBox>
     );
 }
