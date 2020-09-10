@@ -47,6 +47,7 @@ export default class extends React.Component {
             SignInPresenter
             handleSubmit={this.handleSubmit}
             id={this.setId} password={this.setPassword}
+
         />);
     }
 }

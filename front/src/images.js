@@ -17,6 +17,9 @@ import ttobak3_2 from 'img/ttobak/ttobak3-2.png';
 import ttobak3_3 from 'img/ttobak/ttobak3-3.png';
 import ttobak3_4 from 'img/ttobak/ttobak3-4.png';
 
+// Root
+import root_background from 'img/root_sign/root_background.png';
+
 // D1 Sweep Test
 import AnswerDown from 'img/d1_sweep/answer_down.png';
 import AnswerUp from 'img/d1_sweep/answer_up.png';
@@ -39,12 +42,7 @@ const Images = {
     bt_pause: bt_pause
 }
 
-export const Pause = {
-    bt_again: bt_again,
-    bt_continue: bt_continue,
-    bt_stop: bt_stop
-}
-
+/* 또박이 */
 export const TTobak = {
     ttobak1_1: ttobak1_1,
     ttobak1_2: ttobak1_2,
@@ -60,6 +58,19 @@ export const TTobak = {
     ttobak3_4: ttobak3_4
 }
 
+/* 루트 */
+export const MainRoot = {
+    root_background: root_background,
+}
+
+/* 학습 중 일시정지 */
+export const Pause = {
+    bt_again: bt_again,
+    bt_continue: bt_continue,
+    bt_stop: bt_stop
+}
+
+/* 검사 */
 export const SwpTest = {
     UpButton_UP: UpButton_UP,
     DownButton_UP: DownButton_UP,
