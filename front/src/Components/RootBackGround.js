@@ -1,4 +1,3 @@
-
 import React from 'react';
 import styled from 'styled-components';
 
@@ -36,6 +35,18 @@ const Title = styled.div`
     z-index: 1;
 `;
 
+const SubTitle = styled.div`
+    width: 100%;
+    margin: 4% 0%;
+    text-align: center;
+    font-size: 0.5em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    color: #464646;
+    z-index: 1;
+`;
+
 const Contents = styled.div`
     width: 100%;
     height: 100%;
@@ -49,11 +60,15 @@ const BackgroundImg = styled.img`
     bottom:0;
 `;
 
-function RootBackGround({ background, title, Content }) {
+function RootBackGround({ background, title, Content, subTitle }) {
+    let tempSubTitle = null;
+    if (subTitle !== undefined) tempSubTitle = <SubTitle>{subTitle}</SubTitle>
+
     return (
         <Component>
             <Box>
                 <Title>{title}</Title>
+                {tempSubTitle}
                 <Contents>
                     <Content />
                 </Contents>
