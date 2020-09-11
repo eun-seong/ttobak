@@ -29,7 +29,7 @@ const InputBox = styled.input`
     color: #464646;
 `;
 
-function SignInComp({ handleSubmit }) {
+function SignUpComp({ handleSubmit }) {
     return (
         <CompBox>
             <SignUpBox>
@@ -44,4 +44,4 @@ function SignInComp({ handleSubmit }) {
     );
 }
 
-export default SignInComp;
+export default SignUpComp;

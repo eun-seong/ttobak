@@ -44,9 +44,9 @@ function SignInComp({ handleSubmit, setId, setPassword }) {
             <SignInBox>
                 <InputBox type='text' placeholder='이메일' />
                 <InputBox type='password' placeholder='비밀번호' />
-                <Link to='/root/forgotpassword'>
-                    <ForgotPassword>비밀번호를 잊으셨나요?</ForgotPassword>
-                </Link>
+                <ForgotPassword>
+                    <Link to='/root/forgotpassword'>비밀번호를 잊으셨나요?</Link>
+                </ForgotPassword>
             </SignInBox>
             <Link to='/'>
                 <SubmitButton onClick={handleSubmit} text={'확인'} />
