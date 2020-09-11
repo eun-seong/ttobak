@@ -37,9 +37,9 @@ for txt in noise_files:
 
 with open('noises.txt', 'w') as f:
     for el in noises:
-        f.write('{} {}\n'.format(el, noises[el]))
+        f.write('{} {}\n'.format(el.split('/')[-1][:-5], noises[el]))
 
-values = list(set(results.values()))
+values = list(dict.fromkeys(list(results.values()), 1).keys())
 with open('script.txt', 'w') as f:
     for idx, val in enumerate(values):
         f.write('script_{0:04d} {1}\n'.format(idx+1, val))

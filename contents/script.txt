@@ -1,1989 +1,1989 @@
-script_0001 드라이기
-script_0002 우리집 앞 커다란 호수에서
-script_0003 와와어어
-script_0004 상선
-script_0005 대구
-script_0006 그 마음
-script_0007 언니처럼 잘 써야지
-script_0008 롤러코스터
-script_0009 구비
-script_0010 약
-script_0011 너
-script_0012 매운 것도 잘 먹고요
-script_0013 으으으으
-script_0014 어제 밥상에 올라온 멸치볶음
-script_0015 어느 무더운 여름날
-script_0016 가보로네
-script_0017 커다랗고 네모난 버스
-script_0018 휴
-script_0019 음식
-script_0020 청소기
-script_0021 연고
-script_0022 너는 왜 집을 지고 다니니
-script_0023 번지
-script_0024 쥐
-script_0025 쮜
-script_0026 친구
-script_0027 허
-script_0028 주장
-script_0029 따끈따끈할 때
-script_0030 위위위위
-script_0031 저 푸르른 강물은
-script_0032 발가락은 부끄러운 듯이
-script_0033 그래도 먹고 싶어
-script_0034 비닐봉투
-script_0035 모가 기다란 것이
-script_0036 혼자 피어 있는
-script_0037 어디에서 날아와서
-script_0038 어른들에게도 어린 시절이 있었구나
-script_0039 겉
-script_0040 옆에 친구들도 없이
-script_0041 이 것은 다름 아닌 콧물이다
-script_0042 군
-script_0043 값
-script_0044 무더운 여름에도
-script_0045 망
-script_0046 쏙 내 집 안에 숨으면 되는걸
-script_0047 장비
-script_0048 꼼지락 꼼지락
-script_0049 ㄸ
-script_0050 농
-script_0051 병아리
-script_0052 커다란 햇님이 좋단다
-script_0053 바람이 불어오니 시원하네요
-script_0054 수줍어하던 달님이
-script_0055 ㄱ
-script_0056 허세
-script_0057 토끼는 소나 말처럼 되새김질을 하지 못해요
-script_0058 어깨가 축 늘어져 있네
-script_0059 체
-script_0060 드
-script_0061 거미
-script_0062 쿠루곤탭파
-script_0063 블라디미르
-script_0064 동산
-script_0065 마니사
-script_0066 신기하다
-script_0067 생활수준
-script_0068 철썩철썩
-script_0069 몸에 안 좋다고
-script_0070 연세
-script_0071 상태
-script_0072 알리가
-script_0073 김치에는 옛 어른들의 지혜가 담겨 있답니다
-script_0074 아 맞다 우산 안 가져왔는데
-script_0075 스마트폰 그만 만져라
-script_0076 울란바토르
-script_0077 안타까운 것은
-script_0078 푸리긏
-script_0079 끙끙 앓다가
-script_0080 어떤 꾸지람을 듣더라도
-script_0081 루
-script_0082 퍄티고르스크
-script_0083 에
-script_0084 클라이페다
-script_0085 내 앞에 줄을 넘는다
-script_0086 오밀조밀 모여있는 아이콘들
-script_0087 해
-script_0088 ㅇ
-script_0089 눠
-script_0090 사랑
-script_0091 아이고 덥다 더워
-script_0092 이를 어쩌지
-script_0093 오락가락
-script_0094 안녕 안녕
-script_0095 구지란왈라
-script_0096 둥지
-script_0097 모래
-script_0098 러시아
-script_0099 베이루트
-script_0100 그다인스크
-script_0101 한자
-script_0102 코피
-script_0103 유여여요
-script_0104 돈
-script_0105 죽
-script_0106 하마
-script_0107 트크바르첼리
-script_0108 누나
-script_0109 원상복귀
-script_0110 된장찌개
-script_0111 에에이이
-script_0112 시원한 바람을 불어본다
-script_0113 버스
-script_0114 배추벌레
-script_0115 스파크스달리
-script_0116 후자
-script_0117 버스 안에는 사람도 많다
-script_0118 푸
-script_0119 외
-script_0120 글씨를 쓸 수 있고
-script_0121 여여여예
-script_0122 유유얘얘
-script_0123 같이 쓰자며 붓을 내미는
-script_0124 두더지
-script_0125 비르잔드
-script_0126 원숭이
-script_0127 폭
-script_0128 왜 공부를 안하니
-script_0129 캄팔라호이마
-script_0130 신학
-script_0131 잠이 온다 잠이 와
-script_0132 넷
-script_0133 텔리아간즈
-script_0134 아빠가 자동차의 속도를 일정하게 유지하기 시작했어요
-script_0135 부
-script_0136 키르쿠크
-script_0137 바
-script_0138 태양광선
-script_0139 담
-script_0140 할머니가 사과나무에서 따주신
-script_0141 구름
-script_0142 펴
-script_0143 하시는 걸텐데
-script_0144 저멀리 보이는 개미집
-script_0145 거리
-script_0146 뵤
-script_0147 똬
-script_0148 메
-script_0149 사양
-script_0150 식
-script_0151 나는
-script_0152 꼭꼭 뭉쳐서
-script_0153 장
-script_0154 대장
-script_0155 밤하늘에 달이 홀로 떠 있습니다
-script_0156 동글동글 알맹이
-script_0157 특별한 날에만 해 주시는
-script_0158 하나 둘 셋 넷
-script_0159 어어오오
-script_0160 컨
-script_0161 친구야 같이 쓰자 우산
-script_0162 뒷 모습이 왠지 모르게 안쓰러운
-script_0163 느릿느릿 달팽이
-script_0164 손수
-script_0165 왈비스만
-script_0166 ㅎ
-script_0167 줄을 한 바퀴 돌리고
-script_0168 문제
-script_0169 밭에 논에 도랑에 잘도 옵니다
-script_0170 현수막
-script_0171 군수
-script_0172 독기
-script_0173 치약을 묻혀서
-script_0174 구
-script_0175 점점 어두워지는 밖
-script_0176 사진
-script_0177 어으으오
-script_0178 유치원
-script_0179 솨
-script_0180 각기 다른 목소리로
-script_0181 이마에서 주르륵
-script_0182 갈증
-script_0183 승기
-script_0184 내가 좋아하는 고기반찬
-script_0185 솔
-script_0186 토호얀두
-script_0187 수채
-script_0188 워워의의
-script_0189 혼자 피어 있는 걸까
-script_0190 하면 되잖아요
-script_0191 이이으으
-script_0192 기다란 연필
-script_0193 새장
-script_0194 주기
-script_0195 웨의의의
-script_0196 또
-script_0197 아이에이
-script_0198 눼
-script_0199 목수
-script_0200 꾜
-script_0201 메니스탄
-script_0202 온기
-script_0203 함께 있는 일기장
-script_0204 서점
-script_0205 칼
-script_0206 깊은 산골에 도깨비가 살고 있어요
-script_0207 친구랑 색종이 한 장 때문에
-script_0208 오해
-script_0209 남자
-script_0210 장미꽃
-script_0211 산
-script_0212 날 보며 웃을 때마다
-script_0213 다람쥐
-script_0214 뜨
-script_0215 너무 무서워서 벌벌 떨었어요
-script_0216 퀸스타운
-script_0217 중국
-script_0218 오오오오
-script_0219 마음이 중요한 것이에요
-script_0220 나도 열심히 연습해서
-script_0221 지메릍
-script_0222 이
-script_0223 새하얀 뭉게구름
-script_0224 통나무
-script_0225 마차
-script_0226 긴장
-script_0227 워
-script_0228 저장
-script_0229 기러기
-script_0230 배우는 실감나게 연기를 정말 잘했어요
-script_0231 주전자
-script_0232 아콜라
-script_0233 몇 달 동안 애태우던 비
-script_0234 무선충전기
-script_0235 씩씩대던 우리는
-script_0236 빨갛게 익은 사과
-script_0237 왜왜워워
-script_0238 한 걸음 한 걸음
-script_0239 안녕하세요
-script_0240 알파시르
-script_0241 닭장
-script_0242 매일
-script_0243 귀뚤귀뚤 귀뚜라미가
-script_0244 청개구리 합창단에 끼어들어요
-script_0245 별
-script_0246 홍삼
-script_0247 빨라지는 개미들
-script_0248 몇 마디 못 치고 틀린다
-script_0249 리
-script_0250 악
-script_0251 달레고르스크
-script_0252 화사하게 비추고
-script_0253 명장면
-script_0254 치약
-script_0255 선생님이 시험 날짜를 알려주셨어요
-script_0256 웃는 얼굴로 떨어지네
-script_0257 몌
-script_0258 용
-script_0259 햇님과도 인사하고
-script_0260 고모
-script_0261 효
-script_0262 꼬리가 나오겠지
-script_0263 디자이너
-script_0264 나를 읽어봐
-script_0265 탕
-script_0266 옷
-script_0267 웨
-script_0268 튀
-script_0269 너가 잘못했어
-script_0270 가
-script_0271 호
-script_0272 애매모호
-script_0273 무언가 주르륵 흘러내린다
-script_0274 빅토리아필시
-script_0275 왜왜어어
-script_0276 놰
-script_0277 우의
-script_0278 과학관에서 다양한 체험을 하는 것이 재밌었어요
-script_0279 코파르니혼
-script_0280 사진기
-script_0281 ㅟ
-script_0282 시계
-script_0283 누나가 얄밉습니다
-script_0284 대학교
-script_0285 자격증
-script_0286 캐릭터
-script_0287 자동차
-script_0288 형님
-script_0289 병
-script_0290 외로운 나팔꽃의
-script_0291 아무 것도 하지 않아도
-script_0292 잔
-script_0293 살짝 고개를 숙인다
-script_0294 쯔
-script_0295 달콤한 알맹이
-script_0296 에스토니아
-script_0297 뜨거운 기운
-script_0298 레몬에이드
-script_0299 건전한 비판은 좋지만 무분별한 비난은 거절합니다
-script_0300 비빔국수
-script_0301 눈 앞에 어둠밖에 없던 것이
-script_0302 만수
-script_0303 노을
-script_0304 어느 화창한 가을날
-script_0305 봐도 봐도 신기한
-script_0306 아까도 먹었자나
-script_0307 예여예예
-script_0308 호랑이도 코끼리도 기린도
-script_0309 그래도 배 쪽은 부드러워요
-script_0310 ㄲ
-script_0311 학
-script_0312 학생증
-script_0313 긍정
-script_0314 하늘에서 새하얀 가루가 내립니다
-script_0315 박하사탕
-script_0316 언제나 흐르고 있는 강물
-script_0317 태
-script_0318 더는 넘어가지 않는 책장
-script_0319 유리창
-script_0320 앜
-script_0321 민
-script_0322 창가
-script_0323 어느새 살랑살랑 날아온
-script_0324 마음
-script_0325 강남
-script_0326 칠
-script_0327 아니 아저씨와 초등학생이 있다
-script_0328 마을 사람 모두 모여
-script_0329 길 가던 다람쥐가
-script_0330 화장실
-script_0331 부산
-script_0332 날개
-script_0333 우우우오
-script_0334 짐바브웨
-script_0335 양산
-script_0336 벼
-script_0337 때
-script_0338 일
-script_0339 의웨웨웨
-script_0340 선생님이 부르시면
-script_0341 찌개
-script_0342 공부도 열심히 하고요
-script_0343 ㅣ
-script_0344 멋
-script_0345 내 땀방울까지
-script_0346 술라이미마야
-script_0347 아있닌
-script_0348 불그스름한 사과
-script_0349 그만 자고 일어나라
-script_0350 술래잡기
-script_0351 여
-script_0352 캬
-script_0353 맛있는 라면
-script_0354 선물
-script_0355 키가 더 자라나면
-script_0356 운동장
-script_0357 와랑갈
-script_0358 알
-script_0359 괘
-script_0360 도리
-script_0361 간수
-script_0362 모두모두 모여라
-script_0363 시
-script_0364 식비
-script_0365 골고루 음식을 섭취해야 다양한 영양소를 얻을 수 있어요
-script_0366 캥거루
-script_0367 선생님이 내 주신 학교 숙제
-script_0368 같이 가는 아이들
-script_0369 봉사
-script_0370 워워웨왜
-script_0371 코타깆
-script_0372 뭐가 그리 바쁜지
-script_0373 자연
-script_0374 지
-script_0375 레소자보츠크
-script_0376 연못
-script_0377 때마침 불어오는
-script_0378 아주 크고 무서운 공룡이었어요
-script_0379 숙제
-script_0380 나팔꽃이 쓸쓸할까봐
-script_0381 달콤한 아이스크림도 못 먹고
-script_0382 하루 종일 기다리면
-script_0383 국어사전
-script_0384 애애애애
-script_0385 여얘유유
-script_0386 돌아오는 건 엄마의 잔소리
-script_0387 달팽아 달팽아
-script_0388 단
-script_0389 나는 작은 손으로
-script_0390 누나가 너무 얄밉습니다
-script_0391 허리케인
-script_0392 지도에서 동서남북 표시로 위치를 알 수 있어요
-script_0393 아스트라한
-script_0394 저 비행기는 무얼 먹고 자랐길래
-script_0395 배추
-script_0396 저렇게 빨리 지나갈까
-script_0397 정신을 차려보니
-script_0398 송아지가 반갑다고 인사합니다
-script_0399 만두
-script_0400 반듯하니 그림같네
-script_0401 읍
-script_0402 쌔
-script_0403 은은하게 바다 냄새를 풍기는
-script_0404 발가락이 내 말을 듣지 않고
-script_0405 그루
-script_0406 살
-script_0407 큼
-script_0408 갈색
-script_0409 면세
-script_0410 부부
-script_0411 나티팅구
-script_0412 민희가 그렇게 좋아하던
-script_0413 태권도
-script_0414 줘
-script_0415 빛
-script_0416 어
-script_0417 구와하
-script_0418 두툼한 종이 뭉치 속에
-script_0419 책상에 앉기만 하면
-script_0420 아 또 콧물이다
-script_0421 날
-script_0422 황사
-script_0423 다
-script_0424 동그라미
-script_0425 치
-script_0426 홀수
-script_0427 앉은지 얼마 되지도 않았는데
-script_0428 방송
-script_0429 시원한 수박도 못 먹고
-script_0430 유유예예
-script_0431 낮에는 뭐하다가
-script_0432 궁
-script_0433 몰라요 몰라요 잠을 자네요
-script_0434 괴
-script_0435 분수
-script_0436 증
-script_0437 뫄
-script_0438 입에는 각자 좁쌀 하나씩 물고
-script_0439 솔솔 부는 바람타고
-script_0440 너는 왜 이렇게 느리니
-script_0441 고목
-script_0442 할머니가 손녀 주려고
-script_0443 화단에 수줍게 피어있는
-script_0444 췌
-script_0445 자기 몫을 다 했다는 듯이
-script_0446 ㅘ
-script_0447 샘
-script_0448 꺼
-script_0449 너는 무엇 때문에
-script_0450 도깨비불
-script_0451 곳
-script_0452 재
-script_0453 누가 이런 걸 만들었을까
-script_0454 금강산
-script_0455 크
-script_0456 진수와의 추억을 잡아당긴다
-script_0457 아
-script_0458 보츠와나
-script_0459 예웨유요
-script_0460 모
-script_0461 고기
-script_0462 도
-script_0463 맹
-script_0464 블럼폰탄
-script_0465 사
-script_0466 유유야왜
-script_0467 선수
-script_0468 봬
-script_0469 선풍기가 돌아가요
-script_0470 탸
-script_0471 스파게티
-script_0472 방학식
-script_0473 남
-script_0474 모여서 이야기한다
-script_0475 위워워왜
-script_0476 번
-script_0477 얘얘예예
-script_0478 움직임이 실려있다
-script_0479 게
-script_0480 알았어 너를 읽을게
-script_0481 앚
-script_0482 하루종일 움직이는 시계
-script_0483 쇄
-script_0484 피노키오
-script_0485 으에에으
-script_0486 개굴 개굴
-script_0487 솔직하게 말할 수 있는
-script_0488 엄마의 잔소리를 들어가며
-script_0489 선생님
-script_0490 천둥번개 치며
-script_0491 뱌
-script_0492 남극
-script_0493 초소
-script_0494 굴
-script_0495 너무 무서워서 도망만 다니다가
-script_0496 낫
-script_0497 오우에이
-script_0498 컴퓨터 책상에 앉으면
-script_0499 시모이우
-script_0500 집 안이 너무 조용해요
-script_0501 필리비
-script_0502 커다란 트럭이
-script_0503 비행기
-script_0504 저 멀리부터 들리는
-script_0505 키가 커서 참 좋겠다
-script_0506 붉은 빛이 돌면서
-script_0507 동전
-script_0508 주인
-script_0509 비와 인사합니다
-script_0510 부드러운 바람에
-script_0511 괜찮다고 따뜻하게 안아주시는
-script_0512 초시계
-script_0513 엄마에게 사과를 하면
-script_0514 ㅛ
-script_0515 ㅓ
-script_0516 보퍼드웨스트
-script_0517 돌
-script_0518 이제는 후두둑 후두둑 비가 내리네
-script_0519 입안에 매운 향이 감돈다
-script_0520 날아다니고 싶다
-script_0521 키슬로보츠크
-script_0522 개굴개굴 개굴개굴
-script_0523 박장대소
-script_0524 관
-script_0525 ㅉ
-script_0526 그늘
-script_0527 칼루가알렉신
-script_0528 낚시
-script_0529 불개미
-script_0530 아기
-script_0531 집중
-script_0532 추가
-script_0533 소박
-script_0534 길
-script_0535 전
-script_0536 와
-script_0537 이것저것 하다 보면
-script_0538 조용하던 밤에
-script_0539 머
-script_0540 버스 기사님이 반갑게 인사하시네
-script_0541 덩실덩실
-script_0542 파
-script_0543 동
-script_0544 다른 사람들의 말을 경청하는 습관을 가집시다
-script_0545 가만히 있는 바람개비에
-script_0546 웨웨웨웨
-script_0547 숯
-script_0548 모레낲
-script_0549 서울로 이사를 간단다
-script_0550 내 실력을 보여주지
-script_0551 왼쪽 발만 들었다가
-script_0552 에리가보
-script_0553 면제
-script_0554 뙤
-script_0555 양
-script_0556 폴짝 폴짝
-script_0557 쇠구슬
-script_0558 귀엽고 사랑스러운 애랍니다
-script_0559 나도 나도
-script_0560 펑펑 눈이 옵니다
-script_0561 다람쥐가 밤을 먹고 있어요
-script_0562 쬬
-script_0563 프랜시스
-script_0564 개구리가 웁니다
-script_0565 지구본
-script_0566 높은 산 좁은 바위 틈새에서
-script_0567 사과
-script_0568 러크낮
-script_0569 낮잠을 잠깐 자도 피곤합니다
-script_0570 언제쯤이면 콩이 달릴까
-script_0571 눈물
-script_0572 위위웨웨
-script_0573 떡
-script_0574 의리
-script_0575 우리나라는 높은 수준의 경제성장을 통해 선진국이 되었습니다
-script_0576 고래
-script_0577 옹기종기 책들이
-script_0578 돼지
-script_0579 리빙스톤
-script_0580 몰수
-script_0581 지수
-script_0582 입으로 바람을 후우 불어본다
-script_0583 친구들도 반갑다고
-script_0584 재료
-script_0585 여기저기
-script_0586 버섯
-script_0587 온갖 동물들의
-script_0588 휴지를 뽑아서 코를 닦는다
-script_0589 형제자매
-script_0590 터지고 쭈글쭈글해도
-script_0591 수진
-script_0592 오렌지
-script_0593 포도
-script_0594 선생님 선생님
-script_0595 잠자리
-script_0596 키위
-script_0597 잠
-script_0598 항상 푸른 빛의 소나무
-script_0599 오토바이
-script_0600 젓가락 행진곡
-script_0601 하나밖에 없는 우리 아빠
-script_0602 여유예예
-script_0603 쟁기
-script_0604 정부
-script_0605 흐르는 속도는 다르지만
-script_0606 선풍기 지쳐서
-script_0607 우리
-script_0608 뎨
-script_0609 오늘은 엄마가 여행을 갔어요
-script_0610 내가 상을 받았다는 것이 실감이 나지 않아요
-script_0611 기차보다도 더 빠르게
-script_0612 쿄
-script_0613 웨외위워
-script_0614 중요성
-script_0615 참나무에 붙어있던 매미들도
-script_0616 아저씨들은 추억도 가져가려고 한다
-script_0617 오이이오
-script_0618 감기가 말끔히 나았어요
-script_0619 탁자
-script_0620 대학원
-script_0621 처가
-script_0622 팀부현
-script_0623 우산대 하나 꼭 잡고
-script_0624 감소
-script_0625 가을 세상을
-script_0626 교
-script_0627 인고
-script_0628 코
-script_0629 의의요요
-script_0630 치수
-script_0631 줄을 지어 차례대로
-script_0632 압
-script_0633 희
-script_0634 방
-script_0635 언
-script_0636 콩자반 호박나물 멸치볶음
-script_0637 엄마가 해주시는
-script_0638 조개
-script_0639 부끄럼 많은 내 짝꿍
-script_0640 학자
-script_0641 뽜
-script_0642 어서 어서 어른이 되고 싶어요
-script_0643 줴
-script_0644 같은 말을 여러 차례 반복해서 학습합시다
-script_0645 아르다빌
-script_0646 ㅆ
-script_0647 송
-script_0648 횡단보도
-script_0649 이 모든 사람들은
-script_0650 엘리베이터
-script_0651 웨웨의외
-script_0652 쒜
-script_0653 대중문화
-script_0654 울리아스타이
-script_0655 공룡이 나를 태우고 힘껏 달렸어요
-script_0656 나비
-script_0657 ㅃ
-script_0658 삐
-script_0659 여수
-script_0660 아산솔
-script_0661 생각을 하자마자
-script_0662 홍
-script_0663 편지
-script_0664 부채
-script_0665 던
-script_0666 계
-script_0667 일본
-script_0668 그래도 밝게 받아주시는 우리 아빠
-script_0669 뷔
-script_0670 삑 소리와 함께 버스에 타면
-script_0671 어어으애
-script_0672 앵무새
-script_0673 가만히 있어봐
-script_0674 운명 교향곡을 연주한다
-script_0675 하늘을 순식간에 날아가는 비행기
-script_0676 이해
-script_0677 흐
-script_0678 감기를 쫓아줬나봐요
-script_0679 지진
-script_0680 가을 산은 빨갛게 노랗게
-script_0681 얼
-script_0682 먼
-script_0683 은자메나
-script_0684 자기한테 오는
-script_0685 친구들과 같이 김밥도 먹고
-script_0686 방귀
-script_0687 무리
-script_0688 발가락한테 전해졌나보다
-script_0689 이빨도 뾰족뾰족 뿔도 뾰족뾰족
-script_0690 한국
-script_0691 수
-script_0692 발레
-script_0693 저녁
-script_0694 이러면 안 되는데
-script_0695 손목
-script_0696 토요일
-script_0697 뿌리
-script_0698 위의워워
-script_0699 앆
-script_0700 얼마
-script_0701 솜
-script_0702 선풍기 날개
-script_0703 완성
-script_0704 짧은 다리 부지런히 움직이며
-script_0705 요오이이
-script_0706 쀠
-script_0707 요요예예
-script_0708 햇살이 내리쬐던 날
-script_0709 얘우우외
-script_0710 난데드
-script_0711 깨소금
-script_0712 우산도 안 쓰고
-script_0713 아무리 부채질을 해 봐도
-script_0714 부지런한 시계
-script_0715 로봇
-script_0716 바른 자세로 공부합시다
-script_0717 소비를 하는 것은 좋지만 무분별한 낭비는 좋지 않아요
-script_0718 멈추지 않고 흐르는 강물
-script_0719 답
-script_0720 집에서도 듣고 싶은
-script_0721 거북이
-script_0722 좋은일도 슬픈일도
-script_0723 결승선을 통과하던 순간
-script_0724 엄마
-script_0725 얘여여유
-script_0726 무쌈
-script_0727 유요요예
-script_0728 점심
-script_0729 왜
-script_0730 시원한 파도소리
-script_0731 적성
-script_0732 ㅌ
-script_0733 도화지에 크레파스로 자동차 그림을 그렸어요
-script_0734 르가온
-script_0735 주장을 할 때에는 항상 근거를 들어야 합니다
-script_0736 다방
-script_0737 매일매일 움직이면
-script_0738 회
-script_0739 신이 나서 얘기하시는 아빠
-script_0740 람사가
-script_0741 퇴
-script_0742 조기
-script_0743 ㅠ
-script_0744 기다리고 기다리던
-script_0745 사리
-script_0746 누
-script_0747 노래를 부른다
-script_0748 주말
-script_0749 원인
-script_0750 너무너무 궁금해요
-script_0751 어어아아
-script_0752 매일 같이 밥먹고
-script_0753 두만강
-script_0754 팅커벨
-script_0755 위잉 위잉
-script_0756 결국 괴물한테 붙잡혔어요
-script_0757 표
-script_0758 같이 가져가주는
-script_0759 조용한 아침에
-script_0760 쿠웨이트
-script_0761 집이 가까워질수록
-script_0762 아빠가 배가 고프다며
-script_0763 꿈에는 무서운 괴물이 나왔어요
-script_0764 옥구슬
-script_0765 자기 멋대로 움직인다
-script_0766 퓨
-script_0767 깨
-script_0768 목
-script_0769 예
-script_0770 옆집 경수네 아저씨도
-script_0771 오이
-script_0772 구구단
-script_0773 선
-script_0774 파리
-script_0775 실
-script_0776 너 방 청소해라
-script_0777 등을 한 번 두드려 주어도
-script_0778 뚫어져라 보고 있으면
-script_0779 무서운 곤충들이 나타나면
-script_0780 아름다운 나비 한 마리
-script_0781 찾아도 찾아도 안보이던 달님이
-script_0782 고마운 바람
-script_0783 오오왜왜
-script_0784 파이자바드
-script_0785 자랑
-script_0786 자그마한 우산 아래
-script_0787 여여여유
-script_0788 어젯밤 꾼 꿈에서는요
-script_0789 스타일
-script_0790 손으로 만져보니
-script_0791 죄인
-script_0792 쒀
-script_0793 싸
-script_0794 사가릇
-script_0795 삐약 삐약
-script_0796 ㅜ
-script_0797 세수
-script_0798 맛있는 밥 먹고 왔는데도
-script_0799 나팔꽃 한 송이
-script_0800 토끼
-script_0801 시비
-script_0802 키
-script_0803 한국인
-script_0804 소심한 내 옆자리 짝꿍
-script_0805 케르만샤
-script_0806 왜왜의의
-script_0807 신기한 동물도 구경하다 보니
-script_0808 나무
-script_0809 포트장틸
-script_0810 강도
-script_0811 고개가 기울어진다
-script_0812 쉼없이 움직이는
-script_0813 계란도 하나 풀어 넣으니
-script_0814 조금씩 조금씩 밝아진다
-script_0815 워워위위
-script_0816 오오아아
-script_0817 우자인
-script_0818 더 듣고 싶은
-script_0819 퀘
-script_0820 현금
-script_0821 죄
-script_0822 공룡이 성큼성큼 다가왔어요
-script_0823 내 짝 지민이가
-script_0824 불쏘시개
-script_0825 의의의의
-script_0826 왜 스르륵 잠이 올까
-script_0827 하얀 도화지로
-script_0828 순수
-script_0829 베닌시티
-script_0830 집
-script_0831 항
-script_0832 나는 마트에서 파는 사과보다
-script_0833 시험은 오월에 볼거야
-script_0834 좁디좁은 샘에서 시작해
-script_0835 뭐가 그리 졸린지
-script_0836 때로는 조심스럽게
-script_0837 전기
-script_0838 다리
-script_0839 산수
-script_0840 귀에 갖다대면
-script_0841 은
-script_0842 요요여예
-script_0843 신선
-script_0844 이 더운 여름에
-script_0845 덕
-script_0846 쯰
-script_0847 세
-script_0848 ㅁ
-script_0849 이아에어
-script_0850 쏴
-script_0851 외외유유
-script_0852 머루
-script_0853 칫솔
-script_0854 생선
-script_0855 동해 바닷가를 찾을 때면
-script_0856 프
-script_0857 음
-script_0858 뢰
-script_0859 여기서부터 여기까지 풀어오세요
-script_0860 신이 난다
-script_0861 따뜻한 햇님이 좋단다
-script_0862 착한 내 옆자리 짝꿍
-script_0863 처
-script_0864 벌
-script_0865 종전
-script_0866 답장
-script_0867 기다란 것이
-script_0868 암기
-script_0869 불
-script_0870 정장 입은 아저씨
-script_0871 거기
-script_0872 키도 조금밖에 안크고
-script_0873 매일 같이 학교가고
-script_0874 맛있는 라면이 완성되었어요
-script_0875 무슨 일을 하더라도
-script_0876 빈트후크
-script_0877 여요요여
-script_0878 찌
-script_0879 금
-script_0880 수와레즈
-script_0881 샌딜라
-script_0882 냄새 맡고 군침을 삼키네
-script_0883 해를 따라다니니
-script_0884 겁
-script_0885 강소
-script_0886 제주도
-script_0887 이이으어
-script_0888 으으에에
-script_0889 예의
-script_0890 폭풍해일
-script_0891 똥
-script_0892 추리
-script_0893 다람쥐는 날카로운 발톱으로 나무를 잘 타요
-script_0894 롸
-script_0895 자전거
-script_0896 함께 노래부르는
-script_0897 명절
-script_0898 켈리마네
-script_0899 피아노
-script_0900 덩치도 나랑 비슷하면서
-script_0901 이번 시험은 망쳤어요
-script_0902 유산
-script_0903 파랑
-script_0904 밤비
-script_0905 해도 해도 끝이 보이지 않네
-script_0906 그 때 다가오는 옆집에 사는 영민이
-script_0907 귤
-script_0908 처방전
-script_0909 머슴
-script_0910 너네 집을 지고 다니니
-script_0911 얘여유예
-script_0912 조금씩 감겨오는 눈꺼풀
-script_0913 허머너스
-script_0914 잘못 쓴 것을 지울 수 있네
-script_0915 야우의얘
-script_0916 육
-script_0917 터널
-script_0918 의
-script_0919 아이고 예쁘다
-script_0920 에에에에
-script_0921 돌기
-script_0922 할아버지와 아빠가 있다
-script_0923 논
-script_0924 아이스크림
-script_0925 국
-script_0926 즈
-script_0927 애기와 함께 탄 아주머니
-script_0928 모기
-script_0929 신나게 춤을 춥니다
-script_0930 카우리아리
-script_0931 빨래
-script_0932 골고루 먹어야 키가 큰단다
-script_0933 홰
-script_0934 게임 끄고 공부해라
-script_0935 엄마 엄마
-script_0936 하늘을 날아가는 비행기
-script_0937 잠셰드푸르
-script_0938 초파리
-script_0939 시원한 바람
-script_0940 다 똑같은 구름인데
-script_0941 벌레먹은 사과가 좋아요
-script_0942 생
-script_0943 하늘 보는 나랑도 인사하고
-script_0944 어째서일까
-script_0945 배구선수
-script_0946 비가 무척 많이 오던 날
-script_0947 항상 개미만한 목소리로 대답하는
-script_0948 건강
-script_0949 귀
-script_0950 신
-script_0951 짭쪼름한 맛에 고소한 멸치볶음
-script_0952 피아노 앞에 앉았다
-script_0953 푼
-script_0954 우산 같이 쓰고 온 추억
-script_0955 버
-script_0956 점점 더 거세지는 빗방울
-script_0957 행사
-script_0958 송이송이 열려 있네
-script_0959 걔
-script_0960 음식물을 닦아내는
-script_0961 의의왜의
-script_0962 최선을 다해 열심히 하겠다는
-script_0963 밖에서 열심히 달리기를 했어요
-script_0964 널
-script_0965 역사 속에는 옛날 조상들의 삶의 모습이 담겨있어요
-script_0966 삐쭉 삐쭉 가시는 많지만
-script_0967 얼마 지나지 않아
-script_0968 감기에 걸린 것도 아닌데
-script_0969 만
-script_0970 챼
-script_0971 할머니가 따주신
-script_0972 강낭콩을 볼 수 있겠지
-script_0973 타고 내려온 땀
-script_0974 모잠비크
-script_0975 누렇게 변한 그 앨범에
-script_0976 햬
-script_0977 대양
-script_0978 블
-script_0979 자기 잘못을 인정하고
-script_0980 집들이
-script_0981 일년 전에는 잘 쳤는데
-script_0982 꼬
-script_0983 파도
-script_0984 아쉽지만 내려놓은 스마트폰
-script_0985 동화책을 읽고 싶어요
-script_0986 변수
-script_0987 끄
-script_0988 뉘
-script_0989 왜 갑자기 콧물이 나지
-script_0990 오리
-script_0991 미
-script_0992 아 아까 놀지 말고 미리 할 걸
-script_0993 옆에 있는 화려한 반찬보다도
-script_0994 마트에서 파는 사과
-script_0995 외외요요
-script_0996 시험 공부 하나도 안 했는데
-script_0997 피터마리
-script_0998 산더미 같은 숙제
-script_0999 이이애애
-script_1000 강산
-script_1001 잘라뤼
-script_1002 웨웨의워
-script_1003 물건들을 남김없이 가져간다
-script_1004 뼈
-script_1005 토
-script_1006 피자
-script_1007 파이잩
-script_1008 곰
-script_1009 꿩
-script_1010 좨
-script_1011 강아지가 공원에서 신나게 뛰어다녀요
-script_1012 늘
-script_1013 내가 쓴 글씨는
-script_1014 트레이너
-script_1015 조심
-script_1016 매일매일 하루하루
-script_1017 끊이지 않는 엄마의 잔소리
-script_1018 짬뽕
-script_1019 유리그릇
-script_1020 아무리 막아보려 해도
-script_1021 워위외웨
-script_1022 천
-script_1023 후보
-script_1024 뚜
-script_1025 통크부
-script_1026 하늘에 구멍 뚫린듯
-script_1027 도라지
-script_1028 댁
-script_1029 모쉘베이
-script_1030 맛있게 생긴 사과
-script_1031 수줍게 고개를 들이민다
-script_1032 나와디
-script_1033 벌레가 한입 깨물고 간 사과
-script_1034 봉
-script_1035 연수
-script_1036 육십오
-script_1037 구멍
-script_1038 작
-script_1039 외웨외위
-script_1040 쩌
-script_1041 나한테 언제 크냐며 놀립니다
-script_1042 투표
-script_1043 벨레드웨이네
-script_1044 쇠똥구리
-script_1045 광
-script_1046 속어
-script_1047 힘
-script_1048 됴
-script_1049 이 곳은 출입이 금지된 구역이니 돌아가 주세요
-script_1050 상품
-script_1051 포도나무
-script_1052 빌
-script_1053 섞여 있는 그림과 글자들
-script_1054 가지
-script_1055 연어
-script_1056 모양도 크기도 서로 다릅니다
-script_1057 요
-script_1058 머리
-script_1059 랜
-script_1060 쨍쨍하던 하늘에서
-script_1061 매
-script_1062 헝겊
-script_1063 돌고래
-script_1064 쀄
-script_1065 나무야 나무야
-script_1066 구불구불 지렁이 같고
-script_1067 어디로 가고 있는 걸까
-script_1068 눈물도 아니고 땀도 아니다
-script_1069 단풍
-script_1070 사과나무에서 두 팔 벌려 따신
-script_1071 이 세상 어디든지
-script_1072 탈
-script_1073 넋
-script_1074 상
-script_1075 고마운 마음에
-script_1076 손으로 등을 만지면 따끔따끔
-script_1077 까맣게 잊고 있던 책을 펼처보니
-script_1078 포트알프레드
-script_1079 포크레인
-script_1080 냉장고
-script_1081 메아리치는 파도 소리
-script_1082 편지봉투
-script_1083 쓰레기
-script_1084 오늘은 친구랑 싸웠어요
-script_1085 아 맞다 숙제가 있었구나
-script_1086 뻬
-script_1087 강정
-script_1088 에얘애어
-script_1089 종이에 베여서 피가 많이 나요
-script_1090 화
-script_1091 투구
-script_1092 화보
-script_1093 워워웨웨
-script_1094 차
-script_1095 아니야 내가 잘못했어
-script_1096 도사
-script_1097 상대편
-script_1098 아제르바이잔
-script_1099 껍질 속에 숨겨진
-script_1100 유외외이
-script_1101 웨웨오오
-script_1102 호수
-script_1103 갈카크요
-script_1104 앝
-script_1105 집을 가지고 다니면
-script_1106 애어어어
-script_1107 단바드
-script_1108 위
-script_1109 공장에서는 신발이나 자동차같이 공업 제품들을 생산합니다
-script_1110 땅콩
-script_1111 ㅞ
-script_1112 온수
-script_1113 떠
-script_1114 삐쭉삐쭉 솟아있는 내 칫솔
-script_1115 노래
-script_1116 성격
-script_1117 참 좋습니다
-script_1118 워워아워
-script_1119 엘도레트
-script_1120 조미
-script_1121 아이스크림 먹고 싶어요
-script_1122 오랜만에 봄비를 맞고
-script_1123 ㄷ
-script_1124 이렇게 잘하는데
-script_1125 뚀
-script_1126 자기를 찾았냐는 듯이
-script_1127 디레다와
-script_1128 쉬
-script_1129 불나방
-script_1130 푸른 소나무
-script_1131 그네
-script_1132 열 살이나 되었지요
-script_1133 죠
-script_1134 이번 시험도 또 망쳤어요
-script_1135 연설
-script_1136 덩
-script_1137 유예여얘
-script_1138 간
-script_1139 떡볶이
-script_1140 가시지 않는
-script_1141 어부가 한가롭게 바다에서 낚시를 해요
-script_1142 시험지에 붉은색 비가 내려요
-script_1143 극
-script_1144 호랑이
-script_1145 검
-script_1146 교육
-script_1147 온종일
-script_1148 갑자기 땀이 주르륵
-script_1149 남산
-script_1150 고라크푸르
-script_1151 퇘
-script_1152 어느새 들려오는 엄마 목소리
-script_1153 오징어
-script_1154 꾀
-script_1155 ㅐ
-script_1156 간장
-script_1157 조용하게 외로이
-script_1158 국내선
-script_1159 그림자
-script_1160 얼마나 좋은데
-script_1161 스마트폰 그만해라
-script_1162 유유유유
-script_1163 밥 먹을 때는 조용히 해라
-script_1164 눈
-script_1165 연기
-script_1166 야
-script_1167 끝이 보이지 않는
-script_1168 도레미파솔
-script_1169 친구한테 줘야지
-script_1170 익살스럽게 웃으며 놀려댑니다
-script_1171 호호 불어서
-script_1172 자세히 보니 별들도 있습니다
-script_1173 해는 저 높이 떠오르고
-script_1174 즐거운 체육시간
-script_1175 틀
-script_1176 티비
-script_1177 구리
-script_1178 파도소리에는
-script_1179 새벽부터 쉬지 않고 쏟아집니다
-script_1180 미술관
-script_1181 어어어어
-script_1182 위워위워
-script_1183 얘얘얘얘
-script_1184 야수
-script_1185 달님이 숨죽여 노래를 듣는다
-script_1186 건너
-script_1187 추
-script_1188 지우개
-script_1189 참외
-script_1190 써
-script_1191 악기
-script_1192 숲
-script_1193 하
-script_1194 배드민턴
-script_1195 스
-script_1196 칼얀퍼
-script_1197 우우오오
-script_1198 스몰렌스트
-script_1199 바닷가에 덩그러니 놓여있는
-script_1200 반다르아비스
-script_1201 바다를 바라보니 마음이 편안해요
-script_1202 우리집 앞에 멈춰선다
-script_1203 ㅖ
-script_1204 먹성
-script_1205 가푸릌
-script_1206 들으면 들을수록
-script_1207 대야
-script_1208 동시
-script_1209 박
-script_1210 채소
-script_1211 친구들과 함께 딱지치기하며 놀았던 그 때가 아직도 생생합니다
-script_1212 이렇게 고마운 나무가 없다
-script_1213 도끼
-script_1214 오오애애
-script_1215 카멜레온
-script_1216 커
-script_1217 계속되는 잔소리에
-script_1218 축구
-script_1219 힘이 없고 나른하다
-script_1220 예왜웨위
-script_1221 컬
-script_1222 밝은 얼굴로 비 얘기합니다
-script_1223 엄마 죄송해요
-script_1224 여여예예
-script_1225 유
-script_1226 의의외외
-script_1227 빨래건조대
-script_1228 자유이용권
-script_1229 성공
-script_1230 테
-script_1231 축하
-script_1232 초록색과 주황색이 섞인 사과
-script_1233 해바라기야
-script_1234 귀뚤귀뚤 귀뚤귀뚤
-script_1235 뵈
-script_1236 소란스러운 분위기 속에 나는 열심히 책을 읽고 있었습니다
-script_1237 현
-script_1238 ㄴ
-script_1239 카
-script_1240 유유요요
-script_1241 무트와라
-script_1242 짜
-script_1243 정비
-script_1244 의의웨워
-script_1245 반지
-script_1246 고양이도 반갑다고 대답합니다
-script_1247 이때는 이렇게 지냈었지
-script_1248 후
-script_1249 뭐
-script_1250 방긋 미소를 짓고 있다
-script_1251 외외외외
-script_1252 뜨거운 주전자에 손이 데일 수 있어요
-script_1253 글
-script_1254 맘스베리
-script_1255 ㅊ
-script_1256 락
-script_1257 이걸 누르면 뿅뿅뿅뿅 게임이
-script_1258 파도 송송 썰어 넣고
-script_1259 식도
-script_1260 솜사탕처럼 생긴 새털구름
-script_1261 진심
-script_1262 빨간색 노란색
-script_1263 집 앞에 나와 서서는
-script_1264 라면
-script_1265 행복
-script_1266 째깍째깍 소리내며
-script_1267 꿈에서 깨고 말았어요
-script_1268 구경꾼
-script_1269 무
-script_1270 개울가에 개구리도
-script_1271 수영장
-script_1272 친구들과 신나게 놀다보니
-script_1273 엄마랑 있으면
-script_1274 웨위의외
-script_1275 정신을 차려보려 하지만
-script_1276 먼저
-script_1277 은하
-script_1278 밀
-script_1279 제
-script_1280 비
-script_1281 앟
-script_1282 빈
-script_1283 체육시간
-script_1284 피
-script_1285 아보타바드
-script_1286 섬
-script_1287 의의웨웨
-script_1288 님
-script_1289 빵
-script_1290 햄버거
-script_1291 잔비바르
-script_1292 장기
-script_1293 무음
-script_1294 토마토
-script_1295 초등학생
-script_1296 한강
-script_1297 짜증 섞인 내 목소리
-script_1298 텔레비전
-script_1299 신비
-script_1300 소개팅
-script_1301 반성할 줄 아는
-script_1302 한글
-script_1303 유유의의
-script_1304 나는 우리 고슴도치가
-script_1305 종소리
-script_1306 체르니스톰니
-script_1307 요요요요
-script_1308 쵀
-script_1309 우리 엄마
-script_1310 세상
-script_1311 내 눈만 아프다
-script_1312 윗집에서 치는 피아노 소리가
-script_1313 뀌
-script_1314 강
-script_1315 파르디잔디스
-script_1316 리코더
-script_1317 푸자이라
-script_1318 식은 땀을 흘리던 민희는
-script_1319 모두모두 포도 알맹이
-script_1320 가루
-script_1321 쑥
-script_1322 궁금해서 따라가 보면
-script_1323 투
-script_1324 예쁜거 주워서
-script_1325 코임바토르
-script_1326 서머셋이스트
-script_1327 어디로 가고 있나
-script_1328 동물놀이
-script_1329 언니가 쓴 글씨는
-script_1330 줄
-script_1331 그래도 그래도
-script_1332 사설
-script_1333 귀지
-script_1334 회사에서 돌아오신 우리 아빠
-script_1335 마지막
-script_1336 우
-script_1337 수건
-script_1338 앋
-script_1339 쉐
-script_1340 배부르게 먹고 가는 고슴도치
-script_1341 ㅏ
-script_1342 흉내
-script_1343 절기
-script_1344 각색
-script_1345 다녀오셨어요 인사하면
-script_1346 그렇게 막연하게만 이야기하지 말고 확실하게 말해줘
-script_1347 잠깐 땀을 식힐 때면
-script_1348 시끄럽게 노래부르니
-script_1349 새파란 바다로 향합니다
-script_1350 녹
-script_1351 얘
-script_1352 성인
-script_1353 하투와
-script_1354 엄마랑 동물원에 갔습니다
-script_1355 오늘은 맛있는거 먹었어요
-script_1356 뇌
-script_1357 앞집 선아네 아주머니도
-script_1358 여얘얘여
-script_1359 야옹 야옹
-script_1360 영어
-script_1361 스타리오스콜
-script_1362 배추김치
-script_1363 엄마에게 소리 지르면 안 되는데
-script_1364 때로는 강인하게
-script_1365 아들 손자 며느리 다 모아서
-script_1366 피아노도 냉장고도
-script_1367 애애아으
-script_1368 옥
-script_1369 그냥 넘는 건 재미없어
-script_1370 맛있는 군고구마
-script_1371 개구리
-script_1372 너무 오래되어 빛이 바랜 앨범
-script_1373 리브리빌
-script_1374 그
-script_1375 사탕
-script_1376 속도
-script_1377 떄
-script_1378 바람은 씨앗을 먼 곳으로 옮기는 매체 가운데 하나이다
-script_1379 우리 누나는 나보다 한 살 많습니다
-script_1380 언제 멈추나
-script_1381 유리
-script_1382 묘
-script_1383 국수
-script_1384 네
-script_1385 짜장면
-script_1386 따
-script_1387 컵
-script_1388 꼬불꼬불 면발의
-script_1389 네모나고 조그만 화면 속에
-script_1390 점
-script_1391 옥수
-script_1392 발
-script_1393 문어
-script_1394 폐
-script_1395 끼
-script_1396 맛
-script_1397 만나서 반갑구나
-script_1398 불편
-script_1399 햇살
-script_1400 개미는 오늘도 열심히 일합니다
-script_1401 풔
-script_1402 우산 바깥은 조금 젖어도
-script_1403 미끄럼틀
-script_1404 아르자마스
-script_1405 둥실둥실 떠가는 구름들
-script_1406 매일 같이 놀던 진수가
-script_1407 사월에는 동물원으로 소풍을 간대요
-script_1408 도깨비시장
-script_1409 꾸
-script_1410 쏜살같이 지나가는 시간
-script_1411 엿
-script_1412 저는 초등학교 삼학년입니다
-script_1413 ㅒ
-script_1414 마라차구
-script_1415 완
-script_1416 책
-script_1417 터
-script_1418 거
-script_1419 잎
-script_1420 덤
-script_1421 얘우유예
-script_1422 가을 바람에 하나 둘 떨어지네
-script_1423 뤄
-script_1424 찰기
-script_1425 퐈
-script_1426 포자
-script_1427 내가 음식을 조금만 흘려도
-script_1428 천천히 속도를 줄인다
-script_1429 딸기
-script_1430 앞에는 까만 게 달려서
-script_1431 애애얘얘
-script_1432 아이쿠 줄에 걸렸네
-script_1433 지하철
-script_1434 말
-script_1435 영
-script_1436 매일마다 나를 반겨주는
-script_1437 너무 신나고 재밌었어요
-script_1438 티
-script_1439 태양
-script_1440 꿀
-script_1441 발람퍼
-script_1442 도레미파
-script_1443 밍개체비르
-script_1444 예쁜 옷으로 꽃단장했네
-script_1445 보건실
-script_1446 가위
-script_1447 바람
-script_1448 우여이이
-script_1449 노
-script_1450 트
-script_1451 자랄라바트
-script_1452 고마운 칫솔
-script_1453 으에어아
-script_1454 레이크옴부로
-script_1455 명
-script_1456 새보다도 더 빠르게
-script_1457 에아아이
-script_1458 학교
-script_1459 기차를 타고 여행을 떠나요
-script_1460 책을 한장 펼쳐보니
-script_1461 면
-script_1462 레몬
-script_1463 시간이 많이 남았구나
-script_1464 커피
-script_1465 므
-script_1466 봄비
-script_1467 너구리
-script_1468 아슈하바트
-script_1469 네 마디 치다가 못 치겠다
-script_1470 마
-script_1471 침
-script_1472 복지
-script_1473 유유유얘
-script_1474 깜깜한 밤이 되어야
-script_1475 송아지 낮잠에 푹 들었어요
-script_1476 수박
-script_1477 홍시
-script_1478 의자
-script_1479 디
-script_1480 섀
-script_1481 선인장처럼 등에 난 가시
-script_1482 뷰
-script_1483 삐약
-script_1484 연극
-script_1485 예예얘얘
-script_1486 이웨웨에
-script_1487 오목
-script_1488 암발라
-script_1489 휴지
-script_1490 고민
-script_1491 으
-script_1492 열쇠
-script_1493 하늘 높이 흘러가는
-script_1494 바지
-script_1495 ㅋ
-script_1496 차갑습니다
-script_1497 부드러운 바람을 느끼면서
-script_1498 헝클어진 칫솔이
-script_1499 오오유유
-script_1500 부스
-script_1501 방긋 웃는
-script_1502 꺄
-script_1503 현재
-script_1504 부추
-script_1505 배
-script_1506 풀
-script_1507 산에서부터 흘러 흘러
-script_1508 라디오
-script_1509 사장
-script_1510 꾸벅꾸벅 떨어지는 고개
-script_1511 께
-script_1512 어른들께 예의바르게 인사를 드립시다
-script_1513 감사
-script_1514 진달래
-script_1515 케
-script_1516 눈봉우리
-script_1517 활
-script_1518 쌀
-script_1519 생고기
-script_1520 앞
-script_1521 꽃
-script_1522 셔츠
-script_1523 외웨웨왜
-script_1524 기
-script_1525 레
-script_1526 여얘유여
-script_1527 냉난방기
-script_1528 콰
-script_1529 생명
-script_1530 제기차기
-script_1531 우기
-script_1532 아주 커다란 공룡이 나왔어요
-script_1533 엄마한테 고기반찬 투정부리니
-script_1534 마음속으로 소리친다
-script_1535 잠이 들었어요
-script_1536 다른 사람의 기분은 아랑곳하지 않고 자리에 앉았어요
-script_1537 그 자리를 지키는
-script_1538 앛
-script_1539 워의의위
-script_1540 우우에오
-script_1541 여요예유
-script_1542 얘얘요요
-script_1543 유여얘여
-script_1544 생활방식
-script_1545 ㅚ
-script_1546 누가 누가 먼저 클까
-script_1547 매미와 청개구리들
-script_1548 입안에 쏙
-script_1549 병아리가 노래합니다
-script_1550 성장기의 청소년들은 근육과 골격이 급속도로 발달합니다
-script_1551 에으으오
-script_1552 성품
-script_1553 짭조름한 바다 향과 함께
-script_1554 소리
-script_1555 소나무
-script_1556 정상
-script_1557 빨리 빨리 키 크고 싶다
-script_1558 빙글빙글 돌아가던 바람개비도
-script_1559 단지
-script_1560 비자
-script_1561 팡
-script_1562 달
-script_1563 나
-script_1564 우차네클런치
-script_1565 보라색 동그라미
-script_1566 연
-script_1567 ㄹ
-script_1568 만잔퍼
-script_1569 집이 얼마나 무거운데
-script_1570 나도 비행기처럼
-script_1571 뎌
-script_1572 앗
-script_1573 우산
-script_1574 친구들과도 사이좋게 놀아요
-script_1575 내 옆자리 짝꿍
-script_1576 핚브라
-script_1577 민희는 감기에 걸렸어요
-script_1578 유유예얘
-script_1579 위위외외
-script_1580 직속부하
-script_1581 ㅗ
-script_1582 개미
-script_1583 으아어우
-script_1584 알라하
-script_1585 애볼로와
-script_1586 얇디얇은 실이 뭉쳐
-script_1587 함께 다같이
-script_1588 신기한 우리 집 시계
-script_1589 적도기니
-script_1590 난
-script_1591 문제가 무슨 뜻인지도 모르겠어요
-script_1592 뜰
-script_1593 워워외외
-script_1594 공
-script_1595 짐
-script_1596 버튼
-script_1597 가르바하레이
-script_1598 울긋불긋 예쁘게 달려있던
-script_1599 쒸
-script_1600 알았어요 엄마
-script_1601 쿠세이르
-script_1602 비가 옵니다
-script_1603 언제나
-script_1604 정거장
-script_1605 후회해도 후회해도 소용없네
-script_1606 무슨 일이 있어도
-script_1607 밤
-script_1608 의위워위
-script_1609 앨범 속 아빠 모습
-script_1610 봄
-script_1611 들
-script_1612 속
-script_1613 악수
-script_1614 그래도 내가 미술 준비물 안 가져왔을 때
-script_1615 하늘을 날아다니고 싶다
-script_1616 솔솔 불며 장난치던 바람이
-script_1617 겹
-script_1618 쭤
-script_1619 땅 속에 지렁이도
-script_1620 왜왜왜왜
-script_1621 칸푸르
-script_1622 강가
-script_1623 붜
-script_1624 마을 사람 노래불러도
-script_1625 아빠
-script_1626 배낭을 맨 형 누나들
-script_1627 파맀다
-script_1628 비가 내리기 시작합니다
-script_1629 이자
-script_1630 오늘은 그만
-script_1631 세상 멋진 풍경 구경하느라
-script_1632 박쥐
-script_1633 소설
-script_1634 입
-script_1635 주르륵 흘러내리는 것은
-script_1636 등
-script_1637 소나무의 커다란 그늘 아래에서
-script_1638 댜
-script_1639 내 마음이 그대로
-script_1640 부두놀리놉카
-script_1641 막
-script_1642 밥상에 하나 없네
-script_1643 그루트폰테인
-script_1644 주콥카리브니
-script_1645 암
-script_1646 주렁주렁
-script_1647 집게벌레
-script_1648 요예얘요
-script_1649 앙
-script_1650 고향
-script_1651 국제
-script_1652 매운 떡볶이 때문이다
-script_1653 타조
-script_1654 바다
-script_1655 에애으으
-script_1656 오카라
-script_1657 놔가릇
-script_1658 ㅑ
-script_1659 따뜻하고 달콤한
-script_1660 쁘
-script_1661 보
-script_1662 발가락이 내 말을 듣지 않는다
-script_1663 빨리 어른이 되고 싶어요
-script_1664 빙글빙글 돌아가는
-script_1665 어지러워요
-script_1666 시르카
-script_1667 음반디카
-script_1668 둘도 없는 친구 사이에 싸움이 일어났지만 곧 화해했어요
-script_1669 키상가니
-script_1670 간사
-script_1671 반드시
-script_1672 ㅢ
-script_1673 바하왈푸르
-script_1674 씨름
-script_1675 고
-script_1676 씨
-script_1677 친구들아 친구들아
-script_1678 잠에서 깨고 보니
-script_1679 빙글빙글 돌아간다
-script_1680 켸
-script_1681 뻐꾸기
-script_1682 눈 하나 깜짝 않고
-script_1683 고모부
-script_1684 동화책
-script_1685 다섯 여섯 일곱 여덟
-script_1686 한 방울도 귀하지요
-script_1687 또박또박
-script_1688 어느새 그쳤다
-script_1689 포
-script_1690 저
-script_1691 선생님이 시험지를 나눠주셨어요
-script_1692 우우어얘
-script_1693 원
-script_1694 퍄
-script_1695 어른이 되면 안될까요
-script_1696 눈도 똘망똘망
-script_1697 증상
-script_1698 ㅅ
-script_1699 밤나무에는 주먹만한 밤이
-script_1700 강아지
-script_1701 여여여여
-script_1702 모자
-script_1703 생쥐는 사자보다 작고 연약해요
-script_1704 눈사람을 만들어 봅니다
-script_1705 ㅍ
-script_1706 치타굉
-script_1707 불가사리
-script_1708 아버지
-script_1709 어디론가 향하는 개미떼
-script_1710 방긋 웃는다
-script_1711 이이이이
-script_1712 워워워워
-script_1713 내가 조금만 장난을 쳐도 삐지는
-script_1714 애
-script_1715 너무 시끄러워서 고막이 터질 것 같아요
-script_1716 달 옆에서 밤하늘을 밝힙니다
-script_1717 감
-script_1718 물
-script_1719 도구
-script_1720 나이로비
-script_1721 서
-script_1722 피터팬
-script_1723 꽃다발
-script_1724 챔피언
-script_1725 애이어어
-script_1726 하늘에서 주룩주룩 비가 내리네
-script_1727 젼
-script_1728 ㅈ
-script_1729 홍길동
-script_1730 김
-script_1731 이걸 누르면 재미난 동영상이
-script_1732 으으오오
-script_1733 ㅕ
-script_1734 축
-script_1735 자
-script_1736 앙카라
-script_1737 씌
-script_1738 가끔씩만 먹을 수 있는
-script_1739 우이어우
-script_1740 먼지
-script_1741 안
-script_1742 왕
-script_1743 설
-script_1744 바라삿
-script_1745 개나리
-script_1746 예유여요
-script_1747 중
-script_1748 예예예예
-script_1749 나한테는 어른인 것처럼 말합니다
-script_1750 우비
-script_1751 다르에스
-script_1752 살랑살랑 떨어지는 단풍
-script_1753 주
-script_1754 검은 것은 글씨이고 하얀 것은 종이에요
-script_1755 먹이를 주면 쪼르륵 달려와
-script_1756 어느 더운 여름날
-script_1757 쐐
-script_1758 블라와요
-script_1759 사건
-script_1760 개
-script_1761 가늘고 긴 막대기 끝에
-script_1762 금장
-script_1763 요리
-script_1764 최대한 병이 손상되지 않게 조심스럽게 뚜껑을 열었다
-script_1765 아니야 난 너와 친구가 되고 싶어
-script_1766 이에 꼭 하나씩 남아있는
-script_1767 어느새 시험이 이틀 남았어요
-script_1768 편
-script_1769 지칠 법도 한데
-script_1770 열
-script_1771 로봇청소기
-script_1772 망원경
-script_1773 쿠키
-script_1774 숨바왕가
-script_1775 두꺼운 이불 속에서
-script_1776 택시
-script_1777 늪
-script_1778 대한민국
-script_1779 언니
-script_1780 능
-script_1781 밥
-script_1782 쨰
-script_1783 모가디슈
-script_1784 책상도 침대도
-script_1785 좁은 틈새에서 얼마나 힘들었을까
-script_1786 사전
-script_1787 워워외위
-script_1788 으의야야
-script_1789 카메라
-script_1790 두부
-script_1791 톄
-script_1792 뛰
-script_1793 돠
-script_1794 타
-script_1795 손
-script_1796 아니야 너가 잘못했어
-script_1797 아 애들 귀여운 것좀 봐
-script_1798 꾼
-script_1799 내가 잘못했어
-script_1800 더 빠르게 넘는다
-script_1801 극장
-script_1802 뀨
-script_1803 어서 어서
-script_1804 국회의원
-script_1805 캘커트
-script_1806 재미
-script_1807 컴퓨터
-script_1808 화분
-script_1809 볼고그라드
-script_1810 몸이 오들오들 떨리는 겨울에도
-script_1811 ㅝ
-script_1812 내가 기르는 고슴도치는요
-script_1813 자두
-script_1814 씨앗
-script_1815 차곡차곡 적었어요
-script_1816 오른 발만 들었다가
-script_1817 ㅡ
-script_1818 댕
-script_1819 친구가 되어주는
-script_1820 호루라기
-script_1821 소라껍데기 주워서
-script_1822 가방
-script_1823 조
-script_1824 권
-script_1825 마하치칼라
-script_1826 인구
-script_1827 종
-script_1828 아주아주 자그마한
-script_1829 드넓은 바다로 향합니다
-script_1830 이미지
-script_1831 뽀뽀
-script_1832 철가방
-script_1833 펀자브
-script_1834 허수아비
-script_1835 상인
-script_1836 궈
-script_1837 송어
-script_1838 대
-script_1839 무지개
-script_1840 지나가던 잠자리가 툭툭 건드려도
-script_1841 벌레 먹은 사과가 훨씬 좋아요
-script_1842 음매 음매
-script_1843 너는 키가 왜 이리 크니
-script_1844 된장찌개를 먹는 우리 아빠
-script_1845 십
-script_1846 굳세게 서 있는 소나무
-script_1847 고기반찬
-script_1848 뫼
-script_1849 가마
-script_1850 쟁
-script_1851 코끼리
-script_1852 엄마도 나 잘되라고
-script_1853 줄을 재빠르게 돌리고
-script_1854 선생님께 인사를 드려요
-script_1855 혼수
-script_1856 운
-script_1857 소설을 읽을 때에는 작가의 배경에 대한 지식이 필요합니다
-script_1858 성
-script_1859 알모라
-script_1860 진
-script_1861 ㅔ
-script_1862 구석구석
-script_1863 소
-script_1864 야유애여
-script_1865 투르순조타
-script_1866 묻어
-script_1867 툭 멈췄어요
-script_1868 최
-script_1869 추억을 내 마음으로 가져간다
-script_1870 오랜만
-script_1871 스와코푸문트
-script_1872 마루
-script_1873 멈추지 않고 계속 넘는다
-script_1874 ㅙ
-script_1875 떼
-script_1876 왜 기운이 없어질까
-script_1877 인
-script_1878 태극기
-script_1879 피아노 학원 다닐 때
-script_1880 방금 전까지만 해도
-script_1881 뺴
-script_1882 효자
+script_0001 귀
+script_0002 남
+script_0003 해
+script_0004 밀
+script_0005 옷
+script_0006 잔
+script_0007 댁
+script_0008 겁
+script_0009 시
+script_0010 병
+script_0011 소
+script_0012 점
+script_0013 키
+script_0014 앞
+script_0015 무
+script_0016 논
+script_0017 자
+script_0018 글
+script_0019 용
+script_0020 겉
+script_0021 다
+script_0022 뜰
+script_0023 피
+script_0024 상
+script_0025 네
+script_0026 벌
+script_0027 추
+script_0028 만
+script_0029 죄
+script_0030 일
+script_0031 구
+script_0032 삼
+script_0033 도
+script_0034 알
+script_0035 꽃
+script_0036 연
+script_0037 달
+script_0038 혀
+script_0039 녹
+script_0040 김
+script_0041 약
+script_0042 덕
+script_0043 조
+script_0044 군
+script_0045 잎
+script_0046 폐
+script_0047 꿈
+script_0048 터
+script_0049 샘
+script_0050 능
+script_0051 난
+script_0052 위
+script_0053 죽
+script_0054 더
+script_0055 값
+script_0056 모
+script_0057 금
+script_0058 효
+script_0059 성
+script_0060 빛
+script_0061 서
+script_0062 날
+script_0063 깨
+script_0064 잠
+script_0065 표
+script_0066 눈
+script_0067 길
+script_0068 코
+script_0069 숯
+script_0070 오
+script_0071 강
+script_0072 외
+script_0073 장
+script_0074 대
+script_0075 육
+script_0076 미
+script_0077 솔
+script_0078 벼
+script_0079 담
+script_0080 처
+script_0081 띠
+script_0082 전
+script_0083 늘
+script_0084 양
+script_0085 회
+script_0086 겹
+script_0087 인
+script_0088 답
+script_0089 노
+script_0090 불
+script_0091 목
+script_0092 계
+script_0093 실
+script_0094 애
+script_0095 널
+script_0096 안
+script_0097 쑥
+script_0098 종
+script_0099 음
+script_0100 국
+script_0101 마
+script_0102 봄
+script_0103 이
+script_0104 농
+script_0105 학
+script_0106 들
+script_0107 간
+script_0108 컵
+script_0109 새
+script_0110 등
+script_0111 개
+script_0112 징
+script_0113 손
+script_0114 유
+script_0115 밤
+script_0116 예
+script_0117 십
+script_0118 얼
+script_0119 쥐
+script_0120 또
+script_0121 파
+script_0122 너
+script_0123 맛
+script_0124 끼
+script_0125 틀
+script_0126 나
+script_0127 곳
+script_0128 운
+script_0129 덤
+script_0130 주
+script_0131 침
+script_0132 억
+script_0133 후
+script_0134 당
+script_0135 매
+script_0136 신
+script_0137 뼈
+script_0138 낫
+script_0139 교
+script_0140 발
+script_0141 저
+script_0142 굴
+script_0143 꾀
+script_0144 살
+script_0145 님
+script_0146 왕
+script_0147 곰
+script_0148 면
+script_0149 열
+script_0150 산
+script_0151 두
+script_0152 공
+script_0153 말
+script_0154 넋
+script_0155 방
+script_0156 힘
+script_0157 야
+script_0158 짐
+script_0159 그
+script_0160 차
+script_0161 읍
+script_0162 수
+script_0163 돌
+script_0164 넷
+script_0165 검
+script_0166 놀
+script_0167 한
+script_0168 포
+script_0169 의
+script_0170 섬
+script_0171 은
+script_0172 때
+script_0173 사
+script_0174 집
+script_0175 배
+script_0176 솜
+script_0177 화
+script_0178 절
+script_0179 뇌
+script_0180 귤
+script_0181 여
+script_0182 칼
+script_0183 씨
+script_0184 돈
+script_0185 엿
+script_0186 꿀
+script_0187 막
+script_0188 비
+script_0189 궁
+script_0190 단
+script_0191 요
+script_0192 빵
+script_0193 늪
+script_0194 옥
+script_0195 재
+script_0196 탈
+script_0197 기
+script_0198 멋
+script_0199 우
+script_0200 엄마랑 동물원에 갔습니다
+script_0201 기차를 타고 여행을 떠나요
+script_0202 집 안이 너무 조용해요
+script_0203 수박은 너무 달콤해요
+script_0204 동화책을 읽고 싶어요
+script_0205 개미는 오늘도 열심히 일합니다
+script_0206 다람쥐가 밤을 먹고 있어요
+script_0207 바른 자세로 공부합시다
+script_0208 바람이 불어오니 시원하네요
+script_0209 선생님께 인사를 드려요
+script_0210 강아지가 공원에서 신나게 뛰어다녀요
+script_0211 종이에 베여서 피가 많이 나요
+script_0212 바다를 바라보니 마음이 편안해요
+script_0213 생쥐는 사자보다 작고 연약해요
+script_0214 어부가 한가롭게 바다에서 낚시를 해요
+script_0215 낮잠을 잠깐 자도 피곤합니다
+script_0216 어른들께 예의바르게 인사를 드립시다
+script_0217 깊은 산골에 도깨비가 살고 있어요
+script_0218 너무 시끄러워서 고막이 터질 것 같아요
+script_0219 뜨거운 주전자에 손이 데일 수 있어요
+script_0220 도화지에 크레파스로 자동차 그림을 그렸어요
+script_0221 배우는 실감나게 연기를 정말 잘했어요
+script_0222 다람쥐는 날카로운 발톱으로 나무를 잘 타요
+script_0223 내가 상을 받았다는 것이 실감이 나지 않아요
+script_0224 같은 말을 여러 차례 반복해서 학습합시다
+script_0225 토끼는 소나 말처럼 되새김질을 하지 못해요
+script_0226 안개가 자욱이 끼어서 앞이 보이지 않아요
+script_0227 지도에서 동서남북 표시로 위치를 알 수 있어요
+script_0228 김치에는 옛 어른들의 지혜가 담겨 있답니다
+script_0229 과학관에서 다양한 체험을 하는 것이 재밌었어요
+script_0230 공장에서는 신발이나 자동차같이 공업 제품들을 생산합니다
+script_0231 이 곳은 출입이 금지된 구역이니 돌아가 주세요
+script_0232 소설을 읽을 때에는 작가의 배경에 대한 지식이 필요합니다
+script_0233 역사 속에는 옛날 조상들의 삶의 모습이 담겨있어요
+script_0234 다른 사람들의 말을 경청하는 습관을 가집시다
+script_0235 다른 사람의 기분은 아랑곳하지 않고 자리에 앉았어요
+script_0236 친구들과 함께 딱지치기하며 놀았던 그 때가 아직도 생생합니다
+script_0237 골고루 음식을 섭취해야 다양한 영양소를 얻을 수 있어요
+script_0238 소란스러운 분위기 속에 나는 열심히 책을 읽고 있었습니다
+script_0239 그렇게 막연하게만 이야기하지 말고 확실하게 말해줘
+script_0240 성장기의 청소년들은 근육과 골격이 급속도로 발달합니다
+script_0241 우리나라는 높은 수준의 경제성장을 통해 선진국이 되었습니다
+script_0242 건전한 비판은 좋지만 무분별한 비난은 거절합니다
+script_0243 둘도 없는 친구 사이에 싸움이 일어났지만 곧 화해했어요
+script_0244 주장을 할 때에는 항상 근거를 들어야 합니다
+script_0245 소비를 하는 것은 좋지만 무분별한 낭비는 좋지 않아요
+script_0246 아빠가 자동차의 속도를 일정하게 유지하기 시작했어요
+script_0247 최대한 병이 손상되지 않게 조심스럽게 뚜껑을 열었다
+script_0248 태풍으로 인해 수도관이 터져서 물이 나오지 않습니다
+script_0249 바람은 씨앗을 먼 곳으로 옮기는 매체 가운데 하나이다
+script_0250 친구들아 친구들아
+script_0251 안녕 안녕
+script_0252 친구들도 반갑다고
+script_0253 선생님 선생님
+script_0254 안녕하세요
+script_0255 만나서 반갑구나
+script_0256 개굴 개굴
+script_0257 개구리가 웁니다
+script_0258 삐약 삐약
+script_0259 병아리가 노래합니다
+script_0260 음매 음매
+script_0261 송아지가 반갑다고 인사합니다
+script_0262 야옹 야옹
+script_0263 고양이도 반갑다고 대답합니다
+script_0264 송아지 낮잠에 푹 들었어요
+script_0265 지나가던 잠자리가 툭툭 건드려도
+script_0266 몰라요 몰라요 잠을 자네요
+script_0267 뭐가 그리 졸린지
+script_0268 마을 사람 노래불러도
+script_0269 어느 더운 여름날
+script_0270 위잉 위잉
+script_0271 선풍기가 돌아가요
+script_0272 빙글빙글 돌아가는
+script_0273 선풍기 날개
+script_0274 어지러워요
+script_0275 선풍기 지쳐서
+script_0276 툭 멈췄어요
+script_0277 갑자기 땀이 주르륵
+script_0278 호호 불어서
+script_0279 따끈따끈할 때
+script_0280 입안에 쏙
+script_0281 따뜻하고 달콤한
+script_0282 맛있는 군고구마
+script_0283 아이고 덥다 더워
+script_0284 아이스크림 먹고 싶어요
+script_0285 엄마 엄마
+script_0286 아까도 먹었자나
+script_0287 오늘은 그만
+script_0288 그래도 그래도
+script_0289 아이스크림 먹고싶어요
+script_0290 매일매일 하루하루
+script_0291 차곡차곡 적었어요
+script_0292 오늘은 맛있는거 먹었어요
+script_0293 오늘은 친구랑 싸웠어요
+script_0294 좋은일도 슬픈일도
+script_0295 함께 있는 일기장
+script_0296 나무야 나무야
+script_0297 너는 키가 왜 이리 크니
+script_0298 키가 커서 참 좋겠다
+script_0299 나도 나도
+script_0300 빨리 빨리 키 크고 싶다
+script_0301 어서 어서
+script_0302 키 큰 어른이 되고 싶다
+script_0303 조용한 아침에
+script_0304 살랑살랑 떨어지는 단풍
+script_0305 빨간색 노란색
+script_0306 아이고 예쁘다
+script_0307 예쁜거 주워서
+script_0308 친구한테 줘야지
+script_0309 펑펑 눈이 옵니다
+script_0310 하늘에서 새하얀 가루가 내립니다
+script_0311 손으로 만져보니
+script_0312 차갑습니다
+script_0313 꼭꼭 뭉쳐서
+script_0314 눈사람을 만들어 봅니다
+script_0315 아주아주 자그마한
+script_0316 누가 누가 먼저 클까
+script_0317 너무너무 궁금해요
+script_0318 하루 종일 기다리면
+script_0319 꼬리가 나오겠지
+script_0320 언제쯤이면 콩이 달릴까
+script_0321 키가 더 자라나면
+script_0322 강낭콩을 볼 수 있겠지
+script_0323 옹기종기 책들이
+script_0324 모여서 이야기한다
+script_0325 나를 읽어봐
+script_0326 방긋 웃는다
+script_0327 알았어 너를 읽을게
+script_0328 내가 쓴 글씨는
+script_0329 구불구불 지렁이 같고
+script_0330 언니가 쓴 글씨는
+script_0331 반듯하니 그림같네
+script_0332 나도 열심히 연습해서
+script_0333 언니처럼 잘 써야지
+script_0334 쨍쨍하던 하늘에서
+script_0335 비가 내리기 시작합니다
+script_0336 땅 속에 지렁이도
+script_0337 개울가에 개구리도
+script_0338 오랜만에 봄비를 맞고
+script_0339 신나게 춤을 춥니다
+script_0340 밤하늘에 달이 홀로 떠 있습니다
+script_0341 조용하게 외로이
+script_0342 자세히 보니 별들도 있습니다
+script_0343 달 옆에서 밤하늘을 밝힙니다
+script_0344 함께 다같이
+script_0345 해바라기야
+script_0346 너는 무엇 때문에
+script_0347 해를 따라다니니
+script_0348 나는
+script_0349 따뜻한 햇님이 좋단다
+script_0350 무슨 일이 있어도
+script_0351 방긋 웃는
+script_0352 커다란 햇님이 좋단다
+script_0353 친구랑 색종이 한 장 때문에
+script_0354 친구랑 음료수 한 모금 때문에
+script_0355 말싸움을 했다
+script_0356 너가 잘못했어
+script_0357 아니야 너가 잘못했어
+script_0358 씩씩대던 우리는
+script_0359 선생님 앞에서
+script_0360 화해를 했다
+script_0361 내가 잘못했어
+script_0362 아니야 내가 잘못했어
+script_0363 기다란 것이
+script_0364 앞에는 까만 게 달려서
+script_0365 글씨를 쓸 수 있고
+script_0366 뒤에는 지우개가 달려서
+script_0367 잘못 쓴 것을 지울 수 있네
+script_0368 누가 이런 걸 만들었을까
+script_0369 봐도 봐도 신기한
+script_0370 기다란 연필
+script_0371 하얀 도화지로
+script_0372 모두모두 모여라
+script_0373 호랑이도 코끼리도 기린도
+script_0374 동글동글 알맹이
+script_0375 보라색 동그라미
+script_0376 껍질 속에 숨겨진
+script_0377 달콤한 알맹이
+script_0378 터지고 쭈글쭈글해도
+script_0379 모두모두 포도 알맹이
+script_0380 가늘고 긴 막대기 끝에
+script_0381 모가 기다란 것이
+script_0382 삐쭉삐쭉 솟아있는 내 칫솔
+script_0383 치약을 묻혀서
+script_0384 구석구석
+script_0385 음식물을 닦아내는
+script_0386 고마운 칫솔
+script_0387 어째서일까
+script_0388 헝클어진 칫솔이
+script_0389 안타까운 것은
+script_0390 네모나고 조그만 화면 속에
+script_0391 오밀조밀 모여있는 아이콘들
+script_0392 이걸 누르면 재미난 동영상이
+script_0393 이걸 누르면 뿅뿅뿅뿅 게임이
+script_0394 이것저것 하다 보면
+script_0395 쏜살같이 지나가는 시간
+script_0396 스마트폰 그만해라
+script_0397 어느새 들려오는 엄마 목소리
+script_0398 아쉽지만 내려놓은 스마트폰
+script_0399 짧은 다리 부지런히 움직이며
+script_0400 어디론가 향하는 개미떼
+script_0401 입에는 각자 좁쌀 하나씩 물고
+script_0402 줄을 지어 차례대로
+script_0403 어디로 가고 있나
+script_0404 궁금해서 따라가 보면
+script_0405 저멀리 보이는 개미집
+script_0406 집이 가까워질수록
+script_0407 빨라지는 개미들
+script_0408 엄마가 해주시는
+script_0409 콩자반 호박나물 멸치볶음
+script_0410 내가 좋아하는 고기반찬
+script_0411 밥상에 하나 없네
+script_0412 엄마한테 고기반찬 투정부리니
+script_0413 돌아오는 건 엄마의 잔소리
+script_0414 골고루 먹어야 키가 큰단다
+script_0415 그래도 먹고 싶어
+script_0416 고기반찬
+script_0417 두툼한 종이 뭉치 속에
+script_0418 섞여 있는 그림과 글자들
+script_0419 한장 한장 넘길 때마다
+script_0420 조금씩 감겨오는 눈꺼풀
+script_0421 잠이 온다 잠이 와
+script_0422 꾸벅꾸벅 떨어지는 고개
+script_0423 정신을 차려보려 하지만
+script_0424 더는 넘어가지 않는 책장
+script_0425 우리 누나는 나보다 한 살 많습니다
+script_0426 한 살밖에 안 많으면서
+script_0427 나한테 언제 크냐며 놀립니다
+script_0428 키도 조금밖에 안크고
+script_0429 덩치도 나랑 비슷하면서
+script_0430 나한테는 어른인 것처럼 말합니다
+script_0431 내가 음식을 조금만 흘려도
+script_0432 익살스럽게 웃으며 놀려댑니다
+script_0433 누나가 얄밉습니다
+script_0434 누나가 너무 얄밉습니다
+script_0435 선생님이 내 주신 학교 숙제
+script_0436 여기서부터 여기까지 풀어오세요
+script_0437 친구들과 신나게 놀다보니
+script_0438 점점 어두워지는 밖
+script_0439 아 맞다 숙제가 있었구나
+script_0440 까맣게 잊고 있던 책을 펼처보니
+script_0441 산더미 같은 숙제
+script_0442 해도 해도 끝이 보이지 않네
+script_0443 아 아까 놀지 말고 미리 할 걸
+script_0444 후회해도 후회해도 소용없네
+script_0445 너무 오래되어 빛이 바랜 앨범
+script_0446 누렇게 변한 그 앨범에
+script_0447 할아버지와 아빠가 있다
+script_0448 아니 아저씨와 초등학생이 있다
+script_0449 이때는 이렇게 지냈었지
+script_0450 아 애들 귀여운 것좀 봐
+script_0451 신이 나서 얘기하시는 아빠
+script_0452 어른들에게도 어린 시절이 있었구나
+script_0453 앨범 속 아빠 모습
+script_0454 매일마다 나를 반겨주는
+script_0455 내 옆자리 짝꿍
+script_0456 선생님이 부르시면
+script_0457 항상 개미만한 목소리로 대답하는
+script_0458 부끄럼 많은 내 짝꿍
+script_0459 내가 조금만 장난을 쳐도 삐지는
+script_0460 소심한 내 옆자리 짝꿍
+script_0461 그래도 내가 미술 준비물 안 가져왔을 때
+script_0462 같이 쓰자며 붓을 내미는
+script_0463 착한 내 옆자리 짝꿍
+script_0464 마음이 중요한 것이에요
+script_0465 무슨 일을 하더라도
+script_0466 최선을 다해 열심히 하겠다는
+script_0467 그 마음
+script_0468 어떤 꾸지람을 듣더라도
+script_0469 솔직하게 말할 수 있는
+script_0470 자기 잘못을 인정하고
+script_0471 반성할 줄 아는
+script_0472 어젯밤 꾼 꿈에서는요
+script_0473 아주 커다란 공룡이 나왔어요
+script_0474 이빨도 뾰족뾰족 뿔도 뾰족뾰족
+script_0475 아주 크고 무서운 공룡이었어요
+script_0476 공룡이 성큼성큼 다가왔어요
+script_0477 너무 무서워서 벌벌 떨었어요
+script_0478 아니야 난 너와 친구가 되고 싶어
+script_0479 공룡이 나를 태우고 힘껏 달렸어요
+script_0480 너무 신나고 재밌었어요
+script_0481 화단에 수줍게 피어있는
+script_0482 나팔꽃 한 송이
+script_0483 어디에서 날아와서
+script_0484 혼자 피어 있는 걸까
+script_0485 옆에 친구들도 없이
+script_0486 혼자 피어 있는
+script_0487 나팔꽃이 쓸쓸할까봐
+script_0488 어느새 살랑살랑 날아온
+script_0489 나비 한 마리
+script_0490 외로운 나팔꽃의
+script_0491 친구가 되어주는
+script_0492 아름다운 나비 한 마리
+script_0493 책상에 앉기만 하면
+script_0494 왜 스르륵 잠이 올까
+script_0495 앉은지 얼마 되지도 않았는데
+script_0496 고개가 기울어진다
+script_0497 왜 기운이 없어질까
+script_0498 맛있는 밥 먹고 왔는데도
+script_0499 힘이 없고 나른하다
+script_0500 컴퓨터 책상에 앉으면
+script_0501 눈도 똘망똘망
+script_0502 신이 난다
+script_0503 신기하다
+script_0504 저는 초등학교 삼학년입니다
+script_0505 열 살이나 되었지요
+script_0506 매운 것도 잘 먹고요
+script_0507 공부도 열심히 하고요
+script_0508 친구들과도 사이좋게 놀아요
+script_0509 이렇게 잘하는데
+script_0510 어른이 되면 안될까요
+script_0511 빨리 어른이 되고 싶어요
+script_0512 어서 어서 어른이 되고 싶어요
+script_0513 회사에서 돌아오신 우리 아빠
+script_0514 어깨가 축 늘어져 있네
+script_0515 다녀오셨어요 인사하면
+script_0516 그래도 밝게 받아주시는 우리 아빠
+script_0517 엄마의 잔소리를 들어가며
+script_0518 된장찌개를 먹는 우리 아빠
+script_0519 뒷 모습이 왠지 모르게 안쓰러운
+script_0520 하나밖에 없는 우리 아빠
+script_0521 커다랗고 네모난 버스
+script_0522 삑 소리와 함께 버스에 타면
+script_0523 버스 기사님이 반갑게 인사하시네
+script_0524 버스 안에는 사람도 많다
+script_0525 등산복을 입은 할머니와 할아버지
+script_0526 배낭을 맨 형 누나들
+script_0527 애기와 함께 탄 아주머니
+script_0528 정장 입은 아저씨
+script_0529 이 모든 사람들은
+script_0530 어디로 가고 있는 걸까
+script_0531 째깍째깍 소리내며
+script_0532 하루종일 움직이는 시계
+script_0533 매일매일 움직이면
+script_0534 지칠 법도 한데
+script_0535 쉼없이 움직이는
+script_0536 부지런한 시계
+script_0537 언제 멈추나
+script_0538 뚫어져라 보고 있으면
+script_0539 내 눈만 아프다
+script_0540 신기한 우리 집 시계
+script_0541 어제 밥상에 올라온 멸치볶음
+script_0542 짭쪼름한 맛에 고소한 멸치볶음
+script_0543 옆에 있는 화려한 반찬보다도
+script_0544 은은하게 바다 냄새를 풍기는
+script_0545 밥을 다 먹고 나도
+script_0546 이에 꼭 하나씩 남아있는
+script_0547 하늘에서 주룩주룩 비가 내리네
+script_0548 점점 더 거세지는 빗방울
+script_0549 이제는 후두둑 후두둑 비가 내리네
+script_0550 아 맞다 우산 안 가져왔는데
+script_0551 친구야 같이 쓰자 우산
+script_0552 그 때 다가오는 옆집에 사는 영민이
+script_0553 우산대 하나 꼭 잡고
+script_0554 한 걸음 한 걸음
+script_0555 자그마한 우산 아래
+script_0556 걸어가는 아이들
+script_0557 우산 바깥은 조금 젖어도
+script_0558 같이 가는 아이들
+script_0559 하늘을 순식간에 날아가는 비행기
+script_0560 저 비행기는 무얼 먹고 자랐길래
+script_0561 저렇게 빨리 지나갈까
+script_0562 새보다도 더 빠르게
+script_0563 기차보다도 더 빠르게
+script_0564 하늘을 날아가는 비행기
+script_0565 나도 비행기처럼
+script_0566 하늘을 날아다니고 싶다
+script_0567 이 세상 어디든지
+script_0568 날아다니고 싶다
+script_0569 내가 기르는 고슴도치는요
+script_0570 삐쭉 삐쭉 가시는 많지만
+script_0571 귀엽고 사랑스러운 애랍니다
+script_0572 손으로 등을 만지면 따끔따끔
+script_0573 선인장처럼 등에 난 가시
+script_0574 그래도 배 쪽은 부드러워요
+script_0575 먹이를 주면 쪼르륵 달려와
+script_0576 배부르게 먹고 가는 고슴도치
+script_0577 나는 우리 고슴도치가
+script_0578 참 좋습니다
+script_0579 달팽아 달팽아
+script_0580 너는 왜 집을 지고 다니니
+script_0581 집이 얼마나 무거운데
+script_0582 너네 집을 지고 다니니
+script_0583 집을 가지고 다니면
+script_0584 얼마나 좋은데
+script_0585 무서운 곤충들이 나타나면
+script_0586 쏙 내 집 안에 숨으면 되는걸
+script_0587 느릿느릿 달팽이
+script_0588 너는 왜 이렇게 느리니
+script_0589 세상 멋진 풍경 구경하느라
+script_0590 느릿느릿 천천히 간단다
+script_0591 두등실 달님이 떠오른다
+script_0592 아침에는 어디로 갔는지
+script_0593 찾아도 찾아도 안보이던 달님이
+script_0594 수줍게 고개를 들이민다
+script_0595 자기를 찾았냐는 듯이
+script_0596 방금 전까지만 해도
+script_0597 눈 앞에 어둠밖에 없던 것이
+script_0598 조금씩 조금씩 밝아진다
+script_0599 수줍어하던 달님이
+script_0600 방긋 미소를 짓고 있다
+script_0601 귀뚤귀뚤 귀뚜라미가
+script_0602 조용하던 밤에
+script_0603 노래를 부른다
+script_0604 귀뚤귀뚤 귀뚤귀뚤
+script_0605 달님이 숨죽여 노래를 듣는다
+script_0606 옆집 살던 진수가
+script_0607 서울로 이사를 간단다
+script_0608 매일 같이 학교가고
+script_0609 매일 같이 밥먹고
+script_0610 매일 같이 놀던 진수가
+script_0611 커다란 트럭이
+script_0612 우리집 앞에 멈춰선다
+script_0613 피아노도 냉장고도
+script_0614 책상도 침대도
+script_0615 물건들을 남김없이 가져간다
+script_0616 천둥번개 치며
+script_0617 비가 무척 많이 오던 날
+script_0618 우산 같이 쓰고 온 추억
+script_0619 아저씨들은 추억도 가져가려고 한다
+script_0620 나는 작은 손으로
+script_0621 진수와의 추억을 잡아당긴다
+script_0622 추억을 내 마음으로 가져간다
+script_0623 마트에서 파는 사과
+script_0624 빨갛게 익은 사과
+script_0625 붉은 빛이 돌면서
+script_0626 맛있게 생긴 사과
+script_0627 할머니가 사과나무에서 따주신
+script_0628 불그스름한 사과
+script_0629 벌레가 한입 깨물고 간 사과
+script_0630 초록색과 주황색이 섞인 사과
+script_0631 나는 마트에서 파는 사과보다
+script_0632 할머니가 따주신
+script_0633 벌레먹은 사과가 좋아요
+script_0634 할머니가 손녀 주려고
+script_0635 사과나무에서 두 팔 벌려 따신
+script_0636 벌레 먹은 사과가 훨씬 좋아요
+script_0637 개굴개굴 개굴개굴
+script_0638 우리집 앞 커다란 호수에서
+script_0639 청개구리 요란하게 노래불러요
+script_0640 낮에는 뭐하다가
+script_0641 깜깜한 밤이 되어야
+script_0642 시끄럽게 노래부르니
+script_0643 아들 손자 며느리 다 모아서
+script_0644 각기 다른 목소리로
+script_0645 청개구리 모두 모여 합창을 해요
+script_0646 참나무에 붙어있던 매미들도
+script_0647 청개구리 합창단에 끼어들어요
+script_0648 어느 무더운 여름날
+script_0649 함께 노래부르는
+script_0650 매미와 청개구리들
+script_0651 아무 것도 하지 않아도
+script_0652 언제나 흐르고 있는 강물
+script_0653 아무리 막아보려 해도
+script_0654 멈추지 않고 흐르는 강물
+script_0655 때로는 조심스럽게
+script_0656 때로는 강인하게
+script_0657 흐르는 속도는 다르지만
+script_0658 저 푸르른 강물은
+script_0659 산에서부터 흘러 흘러
+script_0660 온갖 물고기들을 키워내고
+script_0661 드넓은 바다로 향합니다
+script_0662 좁디좁은 샘에서 시작해
+script_0663 끝이 보이지 않는
+script_0664 새파란 바다로 향합니다
+script_0665 시험은 오월에 볼거야
+script_0666 선생님이 시험 날짜를 알려주셨어요
+script_0667 아직은 삼월이니
+script_0668 시간이 많이 남았구나
+script_0669 사월에는 동물원으로 소풍을 간대요
+script_0670 친구들과 같이 김밥도 먹고
+script_0671 신기한 동물도 구경하다 보니
+script_0672 어느새 시험이 이틀 남았어요
+script_0673 이를 어쩌지
+script_0674 시험 공부 하나도 안 했는데
+script_0675 책을 한장 펼쳐보니
+script_0676 금새 졸음이 쏟아지네요
+script_0677 정신을 차려보니
+script_0678 선생님이 시험지를 나눠주셨어요
+script_0679 검은 것은 글씨이고 하얀 것은 종이에요
+script_0680 문제가 무슨 뜻인지도 모르겠어요
+script_0681 선생님이 시험지를 채점해서 주셨어요
+script_0682 시험지에 붉은색 비가 내려요
+script_0683 이번 시험은 망쳤어요
+script_0684 이번 시험도 또 망쳤어요
+script_0685 윗집에서 치는 피아노 소리가
+script_0686 우리집까지 들려온다
+script_0687 젓가락 행진곡
+script_0688 몇 마디 못 치고 틀린다
+script_0689 내 실력을 보여주지
+script_0690 피아노 앞에 앉았다
+script_0691 운명 교향곡을 연주한다
+script_0692 네 마디 치다가 못 치겠다
+script_0693 일년 전에는 잘 쳤는데
+script_0694 피아노 학원 다닐 때
+script_0695 더 열심히 연습할 걸 그랬다
+script_0696 기다리고 기다리던
+script_0697 비가 옵니다
+script_0698 하늘에 구멍 뚫린듯
+script_0699 새벽부터 쉬지 않고 쏟아집니다
+script_0700 앞집 선아네 아주머니도
+script_0701 옆집 경수네 아저씨도
+script_0702 집 앞에 나와 서서는
+script_0703 우산도 안 쓰고
+script_0704 비와 인사합니다
+script_0705 한 방울도 귀하지요
+script_0706 몇 달 동안 애태우던 비
+script_0707 밭에 논에 도랑에 잘도 옵니다
+script_0708 마을 사람 모두 모여
+script_0709 밝은 얼굴로 비 얘기합니다
+script_0710 다 똑같은 구름인데
+script_0711 모양도 크기도 서로 다릅니다
+script_0712 하늘 높이 흘러가는
+script_0713 새하얀 뭉게구름
+script_0714 얇디얇은 실이 뭉쳐
+script_0715 솜사탕처럼 생긴 새털구름
+script_0716 솔솔 부는 바람타고
+script_0717 둥실둥실 떠가는 구름들
+script_0718 햇님과도 인사하고
+script_0719 하늘 보는 나랑도 인사하고
+script_0720 뭐가 그리 바쁜지
+script_0721 멀리 멀리 흘러가는 구름들
+script_0722 너 방 청소해라
+script_0723 스마트폰 그만 만져라
+script_0724 밥 먹을 때는 조용히 해라
+script_0725 끊이지 않는 엄마의 잔소리
+script_0726 왜 공부를 안하니
+script_0727 게임 끄고 공부해라
+script_0728 그만 자고 일어나라
+script_0729 계속되는 잔소리에
+script_0730 짜증 섞인 내 목소리
+script_0731 알았어요 엄마
+script_0732 하면 되잖아요
+script_0733 이러면 안 되는데
+script_0734 엄마에게 소리 지르면 안 되는데
+script_0735 엄마도 나 잘되라고
+script_0736 하시는 걸텐데
+script_0737 엄마 죄송해요
+script_0738 엄마에게 사과를 하면
+script_0739 괜찮다고 따뜻하게 안아주시는
+script_0740 우리 엄마
+script_0741 어느 화창한 가을날
+script_0742 해는 저 높이 떠오르고
+script_0743 가을 산은 빨갛게 노랗게
+script_0744 예쁜 옷으로 꽃단장했네
+script_0745 밤나무에는 주먹만한 밤이
+script_0746 송이송이 열려 있네
+script_0747 길 가던 다람쥐가
+script_0748 냄새 맡고 군침을 삼키네
+script_0749 울긋불긋 예쁘게 달려있던
+script_0750 단풍잎 은행잎
+script_0751 가을 바람에 하나 둘 떨어지네
+script_0752 가을 세상을
+script_0753 화사하게 비추고
+script_0754 자기 몫을 다 했다는 듯이
+script_0755 웃는 얼굴로 떨어지네
+script_0756 이 더운 여름에
+script_0757 민희는 감기에 걸렸어요
+script_0758 민희가 그렇게 좋아하던
+script_0759 달콤한 아이스크림도 못 먹고
+script_0760 시원한 수박도 못 먹고
+script_0761 끙끙 앓다가
+script_0762 두꺼운 이불 속에서
+script_0763 잠이 들었어요
+script_0764 꿈에는 무서운 괴물이 나왔어요
+script_0765 너무 무서워서 도망만 다니다가
+script_0766 결국 괴물한테 붙잡혔어요
+script_0767 식은 땀을 흘리던 민희는
+script_0768 꿈에서 깨고 말았어요
+script_0769 잠에서 깨고 보니
+script_0770 감기가 말끔히 나았어요
+script_0771 꿈에 나온 괴물이
+script_0772 감기를 쫓아줬나봐요
+script_0773 주르륵 흘러내리는 것은
+script_0774 눈물도 아니고 땀도 아니다
+script_0775 이 것은 다름 아닌 콧물이다
+script_0776 감기에 걸린 것도 아닌데
+script_0777 왜 갑자기 콧물이 나지
+script_0778 생각을 하자마자
+script_0779 입안에 매운 향이 감돈다
+script_0780 매운 떡볶이 때문이다
+script_0781 휴지를 뽑아서 코를 닦는다
+script_0782 얼마 지나지 않아
+script_0783 무언가 주르륵 흘러내린다
+script_0784 아 또 콧물이다
+script_0785 무더운 여름에도
+script_0786 몸이 오들오들 떨리는 겨울에도
+script_0787 항상 푸른 빛의 소나무
+script_0788 소나무의 커다란 그늘 아래에서
+script_0789 잠깐 땀을 식힐 때면
+script_0790 이렇게 고마운 나무가 없다
+script_0791 높은 산 좁은 바위 틈새에서
+script_0792 굳세게 서 있는 소나무
+script_0793 좁은 틈새에서 얼마나 힘들었을까
+script_0794 고마운 마음에
+script_0795 등을 한 번 두드려 주어도
+script_0796 눈 하나 깜짝 않고
+script_0797 그 자리를 지키는
+script_0798 푸른 소나무
+script_0799 동해 바닷가를 찾을 때면
+script_0800 저 멀리부터 들리는
+script_0801 철썩철썩
+script_0802 시원한 파도소리
+script_0803 파도소리에는
+script_0804 온갖 동물들의
+script_0805 움직임이 실려있다
+script_0806 바닷가에 덩그러니 놓여있는
+script_0807 소라껍데기 주워서
+script_0808 귀에 갖다대면
+script_0809 짭조름한 바다 향과 함께
+script_0810 메아리치는 파도 소리
+script_0811 집에서도 듣고 싶은
+script_0812 들으면 들을수록
+script_0813 더 듣고 싶은
+script_0814 꼼지락 꼼지락
+script_0815 발가락이 내 말을 듣지 않고
+script_0816 자기 멋대로 움직인다
+script_0817 가만히 있어봐
+script_0818 마음속으로 소리친다
+script_0819 발가락은 부끄러운 듯이
+script_0820 살짝 고개를 숙인다
+script_0821 내 짝 지민이가
+script_0822 날 보며 웃을 때마다
+script_0823 발가락이 내 말을 듣지 않는다
+script_0824 내 마음이 그대로
+script_0825 발가락한테 전해졌나보다
+script_0826 엄마랑 있으면
+script_0827 몸에 안 좋다고
+script_0828 특별한 날에만 해 주시는
+script_0829 맛있는 라면
+script_0830 오늘은 엄마가 여행을 갔어요
+script_0831 아빠가 배가 고프다며
+script_0832 라면을 끓이셨어요
+script_0833 파도 송송 썰어 넣고
+script_0834 계란도 하나 풀어 넣으니
+script_0835 맛있는 라면이 완성되었어요
+script_0836 가끔씩만 먹을 수 있는
+script_0837 꼬불꼬불 면발의
+script_0838 어느 날
+script_0839 햇살이 내리쬐던 날
+script_0840 즐거운 체육시간
+script_0841 밖에서 열심히 달리기를 했어요
+script_0842 결승선을 통과하던 순간
+script_0843 이마에서 주르륵
+script_0844 타고 내려온 땀
+script_0845 아무리 부채질을 해 봐도
+script_0846 가시지 않는
+script_0847 뜨거운 기운
+script_0848 때마침 불어오는
+script_0849 시원한 바람
+script_0850 내 땀방울까지
+script_0851 같이 가져가주는
+script_0852 고마운 바람
+script_0853 폴짝 폴짝
+script_0854 줄을 한 바퀴 돌리고
+script_0855 하나 둘 셋 넷
+script_0856 내 앞에 줄을 넘는다
+script_0857 줄을 재빠르게 돌리고
+script_0858 더 빠르게 넘는다
+script_0859 다섯 여섯 일곱 여덟
+script_0860 멈추지 않고 계속 넘는다
+script_0861 그냥 넘는 건 재미없어
+script_0862 왼쪽 발만 들었다가
+script_0863 오른 발만 들었다가
+script_0864 아이쿠 줄에 걸렸네
+script_0865 부드러운 바람에
+script_0866 빙글빙글 돌아간다
+script_0867 자기한테 오는
+script_0868 부드러운 바람을 느끼면서
+script_0869 솔솔 불며 장난치던 바람이
+script_0870 어느새 그쳤다
+script_0871 빙글빙글 돌아가던 바람개비도
+script_0872 천천히 속도를 줄인다
+script_0873 가만히 있는 바람개비에
+script_0874 입으로 바람을 후우 불어본다
+script_0875 내 근심과 걱정을 날려보내게
+script_0876 시원한 바람을 불어본다
+script_0877 밥
+script_0878 감
+script_0879 입
+script_0880 숲
+script_0881 별
+script_0882 눈물
+script_0883 수박
+script_0884 사랑
+script_0885 학교
+script_0886 단어
+script_0887 포도
+script_0888 고민
+script_0889 성공
+script_0890 행복
+script_0891 친구
+script_0892 엄마
+script_0893 국수
+script_0894 파도
+script_0895 날개
+script_0896 동화책
+script_0897 컴퓨터
+script_0898 냉장고
+script_0899 비행기
+script_0900 한라산
+script_0901 러시아
+script_0902 유리창
+script_0903 자전거
+script_0904 쇠구슬
+script_0905 거북이
+script_0906 개나리
+script_0907 앵무새
+script_0908 다람쥐
+script_0909 구구단
+script_0910 무지개
+script_0911 도깨비불
+script_0912 비빔국수
+script_0913 스파게티
+script_0914 국어사전
+script_0915 유리그릇
+script_0916 주렁주렁
+script_0917 또박또박
+script_0918 초등학생
+script_0919 편지봉투
+script_0920 오토바이
+script_0921 피노키오
+script_0922 허수아비
+script_0923 제기차기
+script_0924 술래잡기
+script_0925 배추김치
+script_0926 아이스크림
+script_0927 엘리베이터
+script_0928 로봇청소기
+script_0929 무선충전기
+script_0930 빨래건조대
+script_0931 자유이용권
+script_0932 레몬에이드
+script_0933 롤러코스터
+script_0934 도깨비시장
+script_0935 도레미파솔
+script_0936 고기
+script_0937 고모
+script_0938 고향
+script_0939 고
+script_0940 가
+script_0941 포도나무
+script_0942 포장마차
+script_0943 포크레인
+script_0944 크
+script_0945 대한민국
+script_0946 대추나무
+script_0947 대장장이
+script_0948 배구선수
+script_0949 배드민턴
+script_0950 배추벌레
+script_0951 레
+script_0952 드
+script_0953 동그라미
+script_0954 동산
+script_0955 동물놀이
+script_0956 동
+script_0957 봉
+script_0958 개구리
+script_0959 개미
+script_0960 리
+script_0961 호랑이
+script_0962 호수
+script_0963 호루라기
+script_0964 제
+script_0965 호
+script_0966 허리
+script_0967 허세
+script_0968 허
+script_0969 세
+script_0970 아
+script_0971 오락가락
+script_0972 오징어
+script_0973 오이
+script_0974 락
+script_0975 한국
+script_0976 한자
+script_0977 한글
+script_0978 대나무
+script_0979 대학교
+script_0980 머리
+script_0981 머루
+script_0982 머슴
+script_0983 버
+script_0984 머
+script_0985 거
+script_0986 강남
+script_0987 강가
+script_0988 강도
+script_0989 홍삼
+script_0990 홍길동
+script_0991 홍시
+script_0992 송
+script_0993 홍
+script_0994 현금
+script_0995 현재
+script_0996 현수막
+script_0997 젼
+script_0998 현
+script_0999 도라지
+script_1000 도사
+script_1001 도레미파
+script_1002 보
+script_1003 생고기
+script_1004 생명
+script_1005 생활수준
+script_1006 생
+script_1007 쟁
+script_1008 댕
+script_1009 맹
+script_1010 박쥐
+script_1011 박장대소
+script_1012 박하사탕
+script_1013 박
+script_1014 탕
+script_1015 하
+script_1016 작
+script_1017 원숭이
+script_1018 원상복귀
+script_1019 원시인
+script_1020 원
+script_1021 명
+script_1022 불나방
+script_1023 불쏘시개
+script_1024 불가사리
+script_1025 물
+script_1026 줄
+script_1027 풀
+script_1028 집중
+script_1029 집들이
+script_1030 집게벌레
+script_1031 중
+script_1032 게
+script_1033 기러기
+script_1034 드라이기
+script_1035 냉난방기
+script_1036 치
+script_1037 오리
+script_1038 소리
+script_1039 병아리
+script_1040 원인
+script_1041 한국인
+script_1042 허리케인
+script_1043 진
+script_1044 민
+script_1045 빈
+script_1046 신혼부부
+script_1047 정부
+script_1048 고모부
+script_1049 푸
+script_1050 부
+script_1051 반드시
+script_1052 택시
+script_1053 낚시
+script_1054 디
+script_1055 운동장
+script_1056 정거장
+script_1057 수영장
+script_1058 영
+script_1059 건강
+script_1060 두만강
+script_1061 한강
+script_1062 망
+script_1063 팡
+script_1064 항
+script_1065 텔레비전
+script_1066 사전
+script_1067 처방전
+script_1068 천
+script_1069 번
+script_1070 자격증
+script_1071 갈증
+script_1072 학생증
+script_1073 증
+script_1074 디자이너
+script_1075 트레이너
+script_1076 건너
+script_1077 트
+script_1078 상대편
+script_1079 송편
+script_1080 불편
+script_1081 푼
+script_1082 편
+script_1083 라면
+script_1084 짜장면
+script_1085 명장면
+script_1086 짜
+script_1087 국회의원
+script_1088 대학원
+script_1089 유치원
+script_1090 생활방식
+script_1091 방학식
+script_1092 음식
+script_1093 식
+script_1094 활
+script_1095 폭풍해일
+script_1096 토요일
+script_1097 온종일
+script_1098 폭
+script_1099 태양광선
+script_1100 신선
+script_1101 국내선
+script_1102 선
+script_1103 광
+script_1104 지우개
+script_1105 된장찌개
+script_1106 찌
+script_1107 화장실
+script_1108 덩실덩실
+script_1109 보건실
+script_1110 덩
+script_1111 빌
+script_1112 소설
+script_1113 연설
+script_1114 전설
+script_1115 설
+script_1116 직속부하
+script_1117 은하
+script_1118 축하
+script_1119 축
+script_1120 속
+script_1121 불개미
+script_1122 소개팅
+script_1123 지
+script_1124 형제자매
+script_1125 애매모호
+script_1126 매미
+script_1127 장미꽃
+script_1128 이미지
+script_1129 미술관
+script_1130 관
+script_1131 지진
+script_1132 진달래
+script_1133 사진기
+script_1134 오랜만
+script_1135 라디오
+script_1136 랜
+script_1137 어
+script_1138 교육
+script_1139 체육시간
+script_1140 육십오
+script_1141 강아지
+script_1142 금강산
+script_1143 아버지
+script_1144 휴지
+script_1145 지하철
+script_1146 휴
+script_1147 횡단보도
+script_1148 단풍
+script_1149 던
+script_1150 매일
+script_1151 스타일
+script_1152 일본
+script_1153 스
+script_1154 칠
+script_1155 대중문화
+script_1156 화분
+script_1157 바
+script_1158 극장
+script_1159 남극
+script_1160 연극
+script_1161 블
+script_1162 극
+script_1163 태권도
+script_1164 태극기
+script_1165 상태
+script_1166 태
+script_1167 권
+script_1168 비닐봉투
+script_1169 봉사
+script_1170 눈봉우리
+script_1171 투
+script_1172 저녁
+script_1173 먼저
+script_1174 여기저기
+script_1175 먼
+script_1176 세수
+script_1177 연세
+script_1178 신세대
+script_1179 피자
+script_1180 그림자
+script_1181 자연
+script_1182 언니
+script_1183 챔피언
+script_1184 언제나
+script_1185 컨
+script_1186 언
+script_1187 구경꾼
+script_1188 지구본
+script_1189 꾼
+script_1190 컬
+script_1191 완성
+script_1192 성격
+script_1193 중요성
+script_1194 완
+script_1195 큼
+script_1196 아아아아
+script_1197 어어어어
+script_1198 오오오오
+script_1199 우우우우
+script_1200 으으으으
+script_1201 이이이이
+script_1202 애애애애
+script_1203 에에에에
+script_1204 으으오오
+script_1205 이이으으
+script_1206 에에이이
+script_1207 오오아아
+script_1208 어어오오
+script_1209 이이애애
+script_1210 우우오오
+script_1211 어어아아
+script_1212 으으에에
+script_1213 오오애애
+script_1214 우우우오
+script_1215 애애아으
+script_1216 어어으애
+script_1217 오이이오
+script_1218 애어어어
+script_1219 으에에으
+script_1220 어으으오
+script_1221 우에이이
+script_1222 에애으으
+script_1223 오우에이
+script_1224 으에어아
+script_1225 에아아이
+script_1226 에으으오
+script_1227 으아어우
+script_1228 애이어어
+script_1229 우우에오
+script_1230 우이어우
+script_1231 이아에어
+script_1232 아이에이
+script_1233 여여여여
+script_1234 요요요요
+script_1235 유유유유
+script_1236 얘얘얘얘
+script_1237 예예예예
+script_1238 유유예예
+script_1239 얘얘요요
+script_1240 예예얘얘
+script_1241 유유요요
+script_1242 예예여여
+script_1243 여여예예
+script_1244 얘얘예예
+script_1245 예예요요
+script_1246 요요여여
+script_1247 유유얘얘
+script_1248 여여여유
+script_1249 요요여예
+script_1250 유유예얘
+script_1251 유여여요
+script_1252 얘여여유
+script_1253 유요요예
+script_1254 여얘얘여
+script_1255 여유예예
+script_1256 요요예예
+script_1257 여얘유유
+script_1258 여얘유여
+script_1259 유여얘여
+script_1260 예여예예
+script_1261 유예여얘
+script_1262 요예얘요
+script_1263 얘여유예
+script_1264 유유유얘
+script_1265 예유여요
+script_1266 여요예유
+script_1267 여요요여
+script_1268 왜왜왜왜
+script_1269 워워워워
+script_1270 웨웨웨웨
+script_1271 외외외외
+script_1272 위위위위
+script_1273 의의의의
+script_1274 위위웨웨
+script_1275 왜왜의의
+script_1276 왜왜워워
+script_1277 위위외외
+script_1278 워워의의
+script_1279 의의외외
+script_1280 워워외외
+script_1281 의의웨웨
+script_1282 워워웨웨
+script_1283 워워위위
+script_1284 웨웨의외
+script_1285 의의왜의
+script_1286 의의웨워
+script_1287 웨의의의
+script_1288 외왜왜웨
+script_1289 외웨웨왜
+script_1290 위워워왜
+script_1291 위의워워
+script_1292 의웨웨웨
+script_1293 웨웨의워
+script_1294 워워외위
+script_1295 워위외웨
+script_1296 의위워위
+script_1297 워의의위
+script_1298 워워웨왜
+script_1299 웨외위워
+script_1300 외웨외위
+script_1301 위워위워
+script_1302 웨웨오오
+script_1303 외외유유
+script_1304 유유의의
+script_1305 오오유유
+script_1306 애애얘얘
+script_1307 왜왜어어
+script_1308 오오왜왜
+script_1309 의의요요
+script_1310 외외요요
+script_1311 와와어어
+script_1312 유유야왜
+script_1313 워워아워
+script_1314 우우어얘
+script_1315 이웨웨에
+script_1316 여여여예
+script_1317 얘우우외
+script_1318 유외외이
+script_1319 요오이이
+script_1320 우여이이
+script_1321 으의야야
+script_1322 얘우유예
+script_1323 야유애여
+script_1324 에얘애어
+script_1325 예웨유요
+script_1326 예왜웨위
+script_1327 이이으어
+script_1328 우왜유에
+script_1329 웨위의외
+script_1330 야우의얘
+script_1331 으
+script_1332 에
+script_1333 얘
+script_1334 왜
+script_1335 워
+script_1336 웨
+script_1337 거기
+script_1338 도리
+script_1339 다리
+script_1340 사진
+script_1341 수진
+script_1342 조기
+script_1343 주기
+script_1344 투구
+script_1345 투기
+script_1346 이자
+script_1347 의자
+script_1348 가루
+script_1349 그루
+script_1350 마루
+script_1351 거미
+script_1352 사리
+script_1353 커피
+script_1354 코피
+script_1355 소박
+script_1356 우의
+script_1357 예의
+script_1358 무리
+script_1359 이해
+script_1360 오해
+script_1361 사설
+script_1362 추리
+script_1363 체리
+script_1364 아기
+script_1365 우기
+script_1366 사건
+script_1367 수건
+script_1368 여수
+script_1369 야수
+script_1370 도구
+script_1371 대구
+script_1372 사양
+script_1373 서양
+script_1374 배추
+script_1375 부추
+script_1376 버스
+script_1377 부스
+script_1378 마음
+script_1379 무음
+script_1380 저장
+script_1381 주장
+script_1382 진심
+script_1383 조심
+script_1384 구리
+script_1385 거리
+script_1386 조미
+script_1387 재미
+script_1388 우리
+script_1389 요리
+script_1390 사장
+script_1391 새장
+script_1392 의리
+script_1393 유리
+script_1394 대장
+script_1395 도장
+script_1396 우산
+script_1397 유산
+script_1398 처가
+script_1399 추가
+script_1400 후자
+script_1401 효자
+script_1402 화보
+script_1403 후보
+script_1404 초소
+script_1405 채소
+script_1406 죄인
+script_1407 주인
+script_1408 긍정
+script_1409 강정
+script_1410 밤비
+script_1411 봄비
+script_1412 발레
+script_1413 벌레
+script_1414 쟁기
+script_1415 장기
+script_1416 봉송
+script_1417 방송
+script_1418 성품
+script_1419 상품
+script_1420 정상
+script_1421 증상
+script_1422 긴장
+script_1423 간장
+script_1424 면세
+script_1425 만세
+script_1426 상인
+script_1427 성인
+script_1428 생선
+script_1429 상선
+script_1430 장비
+script_1431 정비
+script_1432 순수
+script_1433 산수
+script_1434 속도
+script_1435 식도
+script_1436 변수
+script_1437 분수
+script_1438 온기
+script_1439 연기
+script_1440 황사
+script_1441 행사
+script_1442 연고
+script_1443 인고
+script_1444 손수
+script_1445 선수
+script_1446 문제
+script_1447 면제
+script_1448 가방
+script_1449 가위
+script_1450 고래
+script_1451 나무
+script_1452 나비
+script_1453 남자
+script_1454 너구리
+script_1455 도끼
+script_1456 동전
+script_1457 두더지
+script_1458 둥지
+script_1459 리코더
+script_1460 만두
+script_1461 망원경
+script_1462 모기
+script_1463 모자
+script_1464 미끄럼틀
+script_1465 바다
+script_1466 바지
+script_1467 반지
+script_1468 배꼽
+script_1469 사과
+script_1470 사탕
+script_1471 서점
+script_1472 손목
+script_1473 쇠똥구리
+script_1474 열쇠
+script_1475 오렌지
+script_1476 자두
+script_1477 잠자리
+script_1478 조개
+script_1479 주전자
+script_1480 책
+script_1481 청소기
+script_1482 축구
+script_1483 치약
+script_1484 칫솔
+script_1485 카메라
+script_1486 캥거루
+script_1487 코끼리
+script_1488 키위
+script_1489 타조
+script_1490 태양
+script_1491 탬버린
+script_1492 토끼
+script_1493 토마토
+script_1494 파리
+script_1495 편지
+script_1496 피아노
+script_1497 피터팬
+script_1498 하마
+script_1499 연못
+script_1500 햄버거
+script_1501 꿩
+script_1502 땅콩
+script_1503 똥
+script_1504 떡
+script_1505 떡볶이
+script_1506 딸기
+script_1507 빨래
+script_1508 뻐꾸기
+script_1509 뽀뽀
+script_1510 뿌리
+script_1511 쓰레기
+script_1512 씨앗
+script_1513 씨름
+script_1514 쌀
+script_1515 짬뽕
+script_1516 짝수
+script_1517 쪽지
+script_1518 찌개
+script_1519 ㄱ
+script_1520 ㅂ
+script_1521 ㅈ
+script_1522 ㄸ
+script_1523 ㅉ
+script_1524 ㄲ
+script_1525 ㄴ
+script_1526 ㄹ
+script_1527 ㅎ
+script_1528 ㅆ
+script_1529 ㄷ
+script_1530 ㅅ
+script_1531 ㅍ
+script_1532 ㅁ
+script_1533 ㅋ
+script_1534 ㅌ
+script_1535 ㅊ
+script_1536 ㅃ
+script_1537 ㅏ
+script_1538 ㅐ
+script_1539 ㅒ
+script_1540 ㅠ
+script_1541 ㅖ
+script_1542 ㅗ
+script_1543 ㅞ
+script_1544 ㅢ
+script_1545 ㅟ
+script_1546 ㅓ
+script_1547 ㅡ
+script_1548 ㅑ
+script_1549 ㅔ
+script_1550 ㅘ
+script_1551 ㅜ
+script_1552 ㅣ
+script_1553 ㅕ
+script_1554 ㅛ
+script_1555 ㅚ
+script_1556 ㅙ
+script_1557 ㅝ
+script_1558 ㅇ
+script_1559 강산
+script_1560 가지
+script_1561 구름
+script_1562 그네
+script_1563 그늘
+script_1564 구멍
+script_1565 귀지
+script_1566 경례
+script_1567 누나
+script_1568 남산
+script_1569 당나귀
+script_1570 대야
+script_1571 동시
+script_1572 돼지
+script_1573 돌고래
+script_1574 레몬
+script_1575 로봇
+script_1576 마지막
+script_1577 마차
+script_1578 무쌈
+script_1579 모래
+script_1580 명절
+script_1581 바람
+script_1582 버섯
+script_1583 버튼
+script_1584 부부
+script_1585 부산
+script_1586 비밀
+script_1587 방귀
+script_1588 시계
+script_1589 선물
+script_1590 선생님
+script_1591 세상
+script_1592 셔츠
+script_1593 소나무
+script_1594 영어
+script_1595 우비
+script_1596 옥구슬
+script_1597 양산
+script_1598 아빠
+script_1599 자동차
+script_1600 점심
+script_1601 종소리
+script_1602 주말
+script_1603 제주도
+script_1604 재료
+script_1605 중국
+script_1606 창가
+script_1607 참외
+script_1608 초시계
+script_1609 추억
+script_1610 청소
+script_1611 초파리
+script_1612 철가방
+script_1613 카멜레온
+script_1614 쿠키
+script_1615 캐릭터
+script_1616 투표
+script_1617 터널
+script_1618 탁자
+script_1619 통나무
+script_1620 팅커벨
+script_1621 형님
+script_1622 흉내
+script_1623 햇살
+script_1624 헝겊
+script_1625 꽃다발
+script_1626 꿀단지
+script_1627 깨소금
+script_1628 단바드
+script_1629 아산솔
+script_1630 팀부현
+script_1631 칸푸르
+script_1632 캘커트
+script_1633 치타굉
+script_1634 파이잩
+script_1635 알라하
+script_1636 구와하
+script_1637 가푸릌
+script_1638 사가릇
+script_1639 아콜라
+script_1640 난데드
+script_1641 와랑갈
+script_1642 잘라뤼
+script_1643 푸리긏
+script_1644 러크낮
+script_1645 모레낲
+script_1646 펀자브
+script_1647 르가온
+script_1648 알리가
+script_1649 알모라
+script_1650 필리비
+script_1651 통크부
+script_1652 지메릍
+script_1653 코타깆
+script_1654 파맀다
+script_1655 오카라
+script_1656 암발라
+script_1657 우자인
+script_1658 인도르
+script_1659 발람퍼
+script_1660 놔가릇
+script_1661 샌딜라
+script_1662 하투와
+script_1663 칼얀퍼
+script_1664 만잔퍼
+script_1665 마니사
+script_1666 람사가
+script_1667 시르카
+script_1668 아있닌
+script_1669 바라삿
+script_1670 나와디
+script_1671 앙카라
+script_1672 핚브라
+script_1673 나이로비
+script_1674 잔비바르
+script_1675 다르에스
+script_1676 엘도레트
+script_1677 숨바왕가
+script_1678 키상가니
+script_1679 무트와라
+script_1680 루붐바시
+script_1681 모잠비크
+script_1682 켈리마네
+script_1683 짐바브웨
+script_1684 블라와요
+script_1685 시모이우
+script_1686 프랜시스
+script_1687 토호얀두
+script_1688 가보로네
+script_1689 블럼폰탄
+script_1690 퀸스타운
+script_1691 피터마리
+script_1692 맘스베리
+script_1693 허머너스
+script_1694 모쉘베이
+script_1695 왈비스만
+script_1696 빈트후크
+script_1697 보츠와나
+script_1698 수와레즈
+script_1699 리빙스톤
+script_1700 적도기니
+script_1701 리브리빌
+script_1702 포트장틸
+script_1703 애볼로와
+script_1704 음반디카
+script_1705 베닌시티
+script_1706 나티팅구
+script_1707 은자메나
+script_1708 알파시르
+script_1709 마라차구
+script_1710 디레다와
+script_1711 에리가보
+script_1712 갈카크요
+script_1713 모가디슈
+script_1714 푸자이라
+script_1715 쿠웨이트
+script_1716 쿠세이르
+script_1717 카프러스
+script_1718 케르만샤
+script_1719 키르쿠크
+script_1720 베이루트
+script_1721 아르다빌
+script_1722 비르잔드
+script_1723 메니스탄
+script_1724 베르테로스
+script_1725 에스토니아
+script_1726 클라이페다
+script_1727 비드고슈치
+script_1728 그다인스크
+script_1729 스몰렌스트
+script_1730 아르자마스
+script_1731 블라디미르
+script_1732 볼고그라드
+script_1733 아스트라한
+script_1734 마하치칼라
+script_1735 밍개체비르
+script_1736 아슈하바트
+script_1737 바하왈푸르
+script_1738 구지란왈라
+script_1739 파이자바드
+script_1740 비자야와다
+script_1741 코임바토르
+script_1742 울란바토르
+script_1743 자랄라바트
+script_1744 코파르니혼
+script_1745 투르순조타
+script_1746 쿠루곤탭파
+script_1747 아보타바드
+script_1748 텔리아간즈
+script_1749 고라크푸르
+script_1750 카우리아리
+script_1751 잠셰드푸르
+script_1752 서머셋이스트
+script_1753 포트알프레드
+script_1754 보퍼드웨스트
+script_1755 그루트폰테인
+script_1756 스와코푸문트
+script_1757 빅토리아필시
+script_1758 레이크옴부로
+script_1759 캄팔라호이마
+script_1760 가르바하레이
+script_1761 벨레드웨이네
+script_1762 반다르아비스
+script_1763 스파크스달리
+script_1764 파르디잔디스
+script_1765 달레고르스크
+script_1766 레소자보츠크
+script_1767 울리아스타이
+script_1768 아제르바이잔
+script_1769 술라이미마야
+script_1770 트크바르첼리
+script_1771 퍄티고르스크
+script_1772 부두놀리놉카
+script_1773 키슬로보츠크
+script_1774 스타리오스콜
+script_1775 우차네클런치
+script_1776 주콥카리브니
+script_1777 체르니스톰니
+script_1778 칼루가알렉신
+script_1779 뭐
+script_1780 눠
+script_1781 므
+script_1782 메
+script_1783 놰
+script_1784 누
+script_1785 루
+script_1786 뱌
+script_1787 댜
+script_1788 뵤
+script_1789 뾰
+script_1790 뚀
+script_1791 꼬
+script_1792 붜
+script_1793 풔
+script_1794 봬
+script_1795 퇘
+script_1796 켜
+script_1797 뎨
+script_1798 쁘
+script_1799 뚜
+script_1800 꺼
+script_1801 됴
+script_1802 티
+script_1803 켸
+script_1804 삐
+script_1805 따
+script_1806 괴
+script_1807 궈
+script_1808 퇴
+script_1809 케
+script_1810 뺴
+script_1811 떄
+script_1812 뻬
+script_1813 께
+script_1814 뿨
+script_1815 쀠
+script_1816 튀
+script_1817 쀄
+script_1818 퀘
+script_1819 뜨
+script_1820 끄
+script_1821 똬
+script_1822 퐈
+script_1823 뛰
+script_1824 떠
+script_1825 커
+script_1826 꺄
+script_1827 탸
+script_1828 꾜
+script_1829 쿄
+script_1830 프
+script_1831 퍄
+script_1832 캬
+script_1833 타
+script_1834 카
+script_1835 줘
+script_1836 쭤
+script_1837 쒀
+script_1838 줴
+script_1839 췌
+script_1840 좨
+script_1841 홰
+script_1842 싸
+script_1843 체
+script_1844 쇄
+script_1845 쮜
+script_1846 쒸
+script_1847 쩌
+script_1848 쯔
+script_1849 흐
+script_1850 쐐
+script_1851 쵀
+script_1852 씌
+script_1853 희
+script_1854 뎌
+script_1855 껴
+script_1856 토
+script_1857 햬
+script_1858 뵈
+script_1859 뙤
+script_1860 뫄
+script_1861 뽜
+script_1862 쌔
+script_1863 쒜
+script_1864 쉬
+script_1865 테
+script_1866 걔
+script_1867 챼
+script_1868 뢰
+script_1869 최
+script_1870 롸
+script_1871 솨
+script_1872 괘
+script_1873 뷰
+script_1874 뀨
+script_1875 쬬
+script_1876 즈
+script_1877 돠
+script_1878 콰
+script_1879 퓨
+script_1880 뷔
+script_1881 눼
+script_1882 쉐
 script_1883 초
-script_1884 나비 한 마리
-script_1885 짝수
-script_1886 키 큰 어른이 되고 싶다
-script_1887 징
-script_1888 아아아아
-script_1889 체리
-script_1890 청소
-script_1891 원시인
-script_1892 예예여여
-script_1893 만세
-script_1894 뿨
-script_1895 화해를 했다
-script_1896 꿈
-script_1897 더
-script_1898 송편
-script_1899 루붐바시
-script_1900 선생님 앞에서
-script_1901 등산복을 입은 할머니와 할아버지
-script_1902 놀
-script_1903 인도르
-script_1904 ㅂ
-script_1905 신혼부부
-script_1906 허리
-script_1907 고을
-script_1908 삼
-script_1909 새
-script_1910 주부
-script_1911 켜
-script_1912 비자야와다
-script_1913 두
-script_1914 선생님이 시험지를 채점해서 주셨어요
-script_1915 라면을 끓이셨어요
-script_1916 한 살밖에 안 많으면서
-script_1917 옆집 살던 진수가
-script_1918 금새 졸음이 쏟아지네요
-script_1919 듸
-script_1920 단어
-script_1921 한라산
-script_1922 쪽지
-script_1923 안개가 자욱이 끼어서 앞이 보이지 않아요
-script_1924 등기
-script_1925 태풍으로 인해 수도관이 터져서 물이 나오지 않습니다
-script_1926 아이스크림 먹고싶어요
-script_1927 우리집까지 들려온다
-script_1928 말싸움을 했다
-script_1929 내 근심과 걱정을 날려보내게
-script_1930 당나귀
-script_1931 대나무
-script_1932 온갖 물고기들을 키워내고
-script_1933 투기
-script_1934 더 열심히 연습할 걸 그랬다
-script_1935 신세대
-script_1936 꿈에 나온 괴물이
-script_1937 대장장이
-script_1938 밥을 다 먹고 나도
-script_1939 두등실 달님이 떠오른다
-script_1940 오
-script_1941 걸어가는 아이들
-script_1942 뒤에는 지우개가 달려서
-script_1943 경례
-script_1944 느릿느릿 천천히 간단다
-script_1945 수비
-script_1946 포장마차
-script_1947 우우우우
-script_1948 꿀단지
-script_1949 청개구리 요란하게 노래불러요
-script_1950 았
-script_1951 혀
-script_1952 아침에는 어디로 갔는지
-script_1953 우왜유에
-script_1954 한
-script_1955 서양
-script_1956 예예요요
-script_1957 요요여여
-script_1958 난시
-script_1959 대추나무
-script_1960 매미
-script_1961 친구랑 음료수 한 모금 때문에
-script_1962 전설
-script_1963 실학
-script_1964 띄
-script_1965 어느 날
-script_1966 추억
-script_1967 비드고슈치
-script_1968 비밀
-script_1969 아직은 삼월이니
-script_1970 카프러스
-script_1971 멀리 멀리 흘러가는 구름들
-script_1972 수박은 너무 달콤해요
-script_1973 배꼽
-script_1974 청개구리 모두 모여 합창을 해요
-script_1975 우에이이
-script_1976 껴
-script_1977 띠
-script_1978 한장 한장 넘길 때마다
-script_1979 탬버린
-script_1980 도장
-script_1981 봉송
-script_1982 베르테로스
-script_1983 외왜왜웨
-script_1984 뾰
-script_1985 당
-script_1986 절
-script_1987 단풍잎 은행잎
-script_1988 억
-script_1989 벌레
+script_1884 꾸
+script_1885 뤄
+script_1886 묘
+script_1887 몌
+script_1888 톄
+script_1889 띄
+script_1890 펴
+script_1891 죠
+script_1892 와
+script_1893 써
+script_1894 듸
+script_1895 쯰
+script_1896 섀
+script_1897 쨰
+script_1898 뉘
+script_1899 뀌
+script_1900 떼
+script_1901 쏴
+script_1902 뫼
+script_1903 악
+script_1904 앆
+script_1905 앜
+script_1906 앋
+script_1907 앝
+script_1908 앗
+script_1909 았
+script_1910 앚
+script_1911 앛
+script_1912 앟
+script_1913 암
+script_1914 압
+script_1915 앙
+script_1916 수채
+script_1917 부채
+script_1918 숙제
+script_1919 국제
+script_1920 먼지
+script_1921 번지
+script_1922 인구
+script_1923 자랑
+script_1924 파랑
+script_1925 다방
+script_1926 대양
+script_1927 가마
+script_1928 오목
+script_1929 고목
+script_1930 단지
+script_1931 찰기
+script_1932 악수
+script_1933 복지
+script_1934 고을
+script_1935 노을
+script_1936 종전
+script_1937 삐약
+script_1938 주부
+script_1939 두부
+script_1940 연수
+script_1941 지수
+script_1942 치수
+script_1943 포자
+script_1944 노래
+script_1945 구비
+script_1946 수비
+script_1947 비자
+script_1948 티비
+script_1949 시비
+script_1950 먹성
+script_1951 적성
+script_1952 등기
+script_1953 승기
+script_1954 간수
+script_1955 만수
+script_1956 문어
+script_1957 묻어
+script_1958 암기
+script_1959 악기
+script_1960 옥수
+script_1961 온수
+script_1962 절기
+script_1963 전기
+script_1964 독기
+script_1965 돌기
+script_1966 군수
+script_1967 송어
+script_1968 속어
+script_1969 얼마
+script_1970 신학
+script_1971 실학
+script_1972 목수
+script_1973 몰수
+script_1974 간사
+script_1975 감사
+script_1976 홀수
+script_1977 혼수
+script_1978 난시
+script_1979 각색
+script_1980 갈색
+script_1981 금장
+script_1982 강소
+script_1983 감소
+script_1984 연어
+script_1985 닭장
+script_1986 답장
+script_1987 신비
+script_1988 식비
+script_1989 학자
