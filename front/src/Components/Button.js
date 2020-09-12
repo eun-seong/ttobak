@@ -6,6 +6,7 @@ const ButtonDiv = styled.button`
     height: 34px;
     font-size: 1rem;
     border-radius: 26px;
+    border: 0px solid;
     margin-top: 10px;
     background-color:#AC9BC9;
     color: #ffffff;
