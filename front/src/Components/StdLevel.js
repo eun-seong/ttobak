@@ -2,22 +2,27 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Level = styled.div`
-    display: flex;
-    width: 67px;
-    height: 35px;
-    text-align: center;
+    display: inline-block;
     justify-content: center;
     align-items:center;
-    font-size: 1.1rem;
+    font-size: ${props => props.size || '1.1rem'} ;
     border-radius: 10px;
     border: 0px solid;
     background-color:${props => props.color || '#8BAB8D'} ;
     color: #ffffff;
 `;
 
-function StdLevel({ text, color }) {
+const Text = styled.div`
+    display: inline-block;
+    padding: 5px 7px;
+    text-align: center;
+`
+
+function StdLevel({ text, color, fontSize }) {
     return (
-        <Level color={color}>{text}</Level>
+        <Level color={color} size={fontSize}>
+            <Text>{text}</Text>
+        </Level>
     );
 }
 

@@ -45,7 +45,7 @@ const ResultContent = ({ student }) => {
             <DiagHeader>
                 <DiagSummary>
                     <DiagTitle>어음청취력 검사</DiagTitle>
-                    <StdLevel text={'우수'} color={''} />
+                    <StdLevel text={'우수'} />
                 </DiagSummary>
                 <DiagExplain>
                     간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명

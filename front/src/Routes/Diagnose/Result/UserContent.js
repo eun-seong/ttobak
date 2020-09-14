@@ -6,22 +6,34 @@ import StdLevel from 'Components/StdLevel';
 const Component = styled.div`
     display: flex;
     flex-direction: row;
+    width: 60vw;
+    justify-content: space-between;
 `;
 
-const DiagHeader = styled.div`
-    margin: 0px 0px 20px 0px;
+const StdInfo = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    width: 20vw;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 16px;
+    background-color: #F6DB57;
 `;
 
-const DiagSummary = styled.div`
-    padding: 1% 0% 3% 0%;
+const StdName = styled.div`
+    font-size: 1rem;
+    font-weight: bold;
+`;
+
+const StdBirth = styled.div`
+    font-size: 0.7rem;
 `;
 
 const DiagTitle = styled.div`
     font-weight: bold;
     font-size: 1.1rem;
-    margin: 2.5px;
     display: flex;
     flex-direction: row;
 `;
@@ -29,19 +41,14 @@ const DiagTitle = styled.div`
 const DiagResult = styled.div`
     display: flex;
     flex-direction: column;
+    width:35vw;
 `;
 
-const DiagExplain = styled.div`
-    flex: 1;
-    margin: 0px 0px 0px 3%;
-    padding: 13px;
-    border-radius: 10px;
-    font-size: 0.75rem;
-    background-color: #DFD7C4;
-`;
-
-const ResultExplain = styled.div`
-    font-size: 0.9rem;
+const Diag = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2.5px 0;
 `;
 
 const ResultContent = ({ student }) => {
@@ -49,10 +56,23 @@ const ResultContent = ({ student }) => {
 
     return (
         <Component>
+            <StdInfo>
+                <StdName>이지호</StdName>
+                <StdBirth>1998년 11월 11일</StdBirth>
+            </StdInfo>
             <DiagResult>
-                <DiagTitle>청각처리 검사</DiagTitle>
-                <DiagTitle>청각처리 검사</DiagTitle>
-                <DiagTitle>청각처리 검사</DiagTitle>
+                <Diag>
+                    <DiagTitle>청각처리 검사</DiagTitle>
+                    <StdLevel text={'우수'} fontSize={'0.8rem'} />
+                </Diag>
+                <Diag>
+                    <DiagTitle>어음청취력 검사</DiagTitle>
+                    <StdLevel text={'우수'} fontSize={'0.8rem'} />
+                </Diag>
+                <Diag>
+                    <DiagTitle>선택적 집중력 검사</DiagTitle>
+                    <StdLevel text={'우수'} fontSize={'0.8rem'} />
+                </Diag>
             </DiagResult>
         </Component>
     );
