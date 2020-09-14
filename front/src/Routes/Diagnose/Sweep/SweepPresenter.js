@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import AnswerBoxComp from './AnswerBox';
+import PauseButton from 'Components/PauseButton';
 
-import Images from 'images';
 import Background from 'img/d1_sweep/d1_background.png'
 
 /* styled-components */
@@ -12,12 +12,6 @@ const BackgroundImg = styled.img`
     width: 100%;
     margin: auto auto;
     bottom:0;
-`;
-
-const PauseButton = styled.img`
-    position : absolute;
-    width:7%;
-    margin: 10px;
 `;
 
 const ButtonImg = styled.img`
@@ -62,7 +56,7 @@ const TTobakComponent = styled.img`
 const Sweep = (props) => {
     return (
         <div>
-            <Link to='/'><PauseButton src={Images.bt_pause} alt='일시정지' /></Link>
+            <PauseButton link={'/'} />
             <TTobakComponent src={props.TTobak} alt='또박이' onTouchEnd={props.TTobakiTouch} />
             <Component>
                 <AnswerBoxComp Answer1={props.Answer[0]} Answer2={props.Answer[1]} />

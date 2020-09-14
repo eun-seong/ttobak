@@ -20,6 +20,12 @@ import ttobak3_4 from 'img/ttobak/ttobak3-4.png';
 // Root
 import root_background from 'img/root_sign/root_background.png';
 
+import icon1 from 'img/Icon/icon1.png';
+import icon2 from 'img/Icon/icon2.png';
+import icon3 from 'img/Icon/icon3.png';
+import icon_background from 'img/Icon/icon_background.png';
+import bt_back from 'img/Icon/bt_back.png';
+
 // D1 Sweep Test
 import AnswerDown from 'img/d1_sweep/answer_down.png';
 import AnswerUp from 'img/d1_sweep/answer_up.png';
@@ -39,7 +45,8 @@ import Tree1 from 'img/d2_recognition/tree1.png';
 import Tree2 from 'img/d2_recognition/tree2.png';
 
 const Images = {
-    bt_pause: bt_pause
+    bt_pause: bt_pause,
+    bt_back: bt_back
 }
 
 /* 또박이 */
@@ -61,6 +68,8 @@ export const TTobak = {
 /* 루트 */
 export const MainRoot = {
     root_background: root_background,
+    icon_background: icon_background,
+    IconList: [icon1, icon2, icon3],
 }
 
 /* 학습 중 일시정지 */

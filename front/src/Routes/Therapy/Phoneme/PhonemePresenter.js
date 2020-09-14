@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Card from './Card';
 import PicBox from './PicBox';
 
-import Button_Pause from 'img/button/bt_pause.png';
+import PauseButton from 'Components/PauseButton';
 import Background from 'img/t3_phoneme/t3_background.png'
 import Card1 from 'img/t3_phoneme/card1.png'
 import Card2 from 'img/t3_phoneme/card2.png'
@@ -15,13 +15,6 @@ const BackgroundImg = styled.img`
     width: 100%;
     margin: auto auto;
     bottom:0;
-`;
-
-const PauseButton = styled.img`
-    width: 100%;
-    position : absolute;
-    width:7%;
-    margin: 10px;
 `;
 
 const PicBoxParent = styled.div`
@@ -51,7 +44,7 @@ const Phoneme = () => {
                 <Card src={Card1} alt='카드1' />
                 <Card src={Card2} alt='카드2' />
             </CardParent>
-            <Link to=''><PauseButton src={Button_Pause} alt='일시정지' /></Link>
+            <PauseButton link={'/'} />
             <BackgroundImg src={Background} alt='배경화면' />
         </div>
     );

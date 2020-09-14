@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Button_Pause from 'img/button/bt_pause.png';
+import PauseButton from 'Components/PauseButton';
 import Background from 'img/t2_counting/t2_background.png'
 import Tree from 'img/t2_counting/tree.png'
 import Basket from 'img/t2_counting/basket.png';
@@ -16,12 +16,6 @@ const Img = styled.img`
 const BackgroundImg = styled(Img)`
     margin: auto auto;
     bottom:0;
-`;
-
-const PauseButton = styled(Img)`
-    position : absolute;
-    width:7%;
-    margin: 10px;
 `;
 
 const TreeImg = styled(Img)`
@@ -57,7 +51,7 @@ const Counting = ({ onTreeClick, onTreeDragStart, onTreeDragEnd }) => {
                 onDragStart={onTreeDragStart}
                 onDragEnd={onTreeDragEnd} />
             <BasketImg src={Basket} alt='바구니' />
-            <Link to=''><PauseButton src={Button_Pause} alt='일시정지' /></Link>
+            <PauseButton link={'/'} />
             <BackgroundImg src={Background} alt='배경화면' />
         </div>
     );

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import PauseButton from 'Components/PauseButton';
+
 const Component = styled.div`
     width: 100vw;
     height: 100vh;
@@ -16,9 +18,8 @@ const Box = styled.div`
     flex-direction: column;
     width: calc(100% - 90px);
     height: calc(100% - 90px);
-    padding: 4%;
-    background: #ffffff;
-    opacity: 80%;
+    padding: 3%;
+    background-color: rgba(255,255,255,0.8);
     border-radius: 40px 90px / 80px 40px;
     z-index: 0;
 `;
@@ -32,7 +33,7 @@ const Header = styled.div`
 const Title = styled.div`
     width: 100%;
     text-align: center;
-    font-size: 2em;
+    font-size: 1rem;
     font-weight: bold;
     font-stretch: normal;
     font-style: normal;
@@ -44,7 +45,7 @@ const SubTitle = styled.div`
     width: 100%;
     padding-top: 3px;
     text-align: center;
-    font-size: 0.5em;
+    font-size: 0.45rem;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -73,6 +74,8 @@ function RootBackGround({ background, title, Content, subTitle }) {
 
     return (
         <Component>
+            {/* TODO 이전으로 */}
+            <PauseButton link={'/'} back={true} />
             <Box>
                 <Header>
                     <Title>{title}</Title>

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const ButtonDiv = styled.button`
     width: 95px;
     height: 34px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     border-radius: 26px;
     border: 0px solid;
     margin-top: 10px;

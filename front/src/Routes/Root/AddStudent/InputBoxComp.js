@@ -11,12 +11,13 @@ const InputComp = styled.div`
 `;
 
 const Text = styled.div`
-    font-size: 1.2rem;
+    font-size: 1rem;
     padding-right: 20px;
 `;
 
 const InputBox = styled.input`
     border-color: #ffffff00;
+    background-color: rgba(0,0,0,0);
     border-bottom-color: #d2d2d2;
     height: 25px;
     width: 60%;
