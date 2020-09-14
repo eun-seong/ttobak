@@ -3,20 +3,64 @@ import styled from 'styled-components';
 import StdLevel from 'Components/StdLevel';
 
 /* styled-components */
+const Component = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const DiagHeader = styled.div`
+    margin: 0px 0px 20px 0px;
+    display: flex;
+    flex-direction: row;
+`;
+
+const DiagSummary = styled.div`
+    padding: 1% 0% 3% 0%;
+`;
+
 const DiagTitle = styled.div`
     font-weight: bold;
     font-size: 1.1rem;
     margin-bottom: 5px;
 `;
 
+const DiagExplain = styled.div`
+    flex: 1;
+    margin: 0px 0px 0px 3%;
+    padding: 13px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    background-color: #DFD7C4;
+`;
+
+const ResultExplain = styled.div`
+    font-size: 0.9rem;
+`;
+
 const ResultContent = ({ student }) => {
     document.body.style.overflow = "visible"
 
     return (
-        <div>
-            <DiagTitle>어음청취력 검사</DiagTitle>
-            <StdLevel text={'우수'} color={''} />
-        </div>
+        <Component>
+            <DiagHeader>
+                <DiagSummary>
+                    <DiagTitle>어음청취력 검사</DiagTitle>
+                    <StdLevel text={'우수'} color={''} />
+                </DiagSummary>
+                <DiagExplain>
+                    간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명
+                    간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명
+                    간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명
+                </DiagExplain>
+            </DiagHeader>
+            <ResultExplain>
+                검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명
+                검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명
+                검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명
+                검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명
+                검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명
+            </ResultExplain>
+        </Component>
     );
 }
 

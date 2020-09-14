@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import HeaderComp from 'Components/HeaderComp';
-import ExplainBoxcomp from 'Components/ExplainBoxComp';
+import ExplainBoxComp from 'Components/ExplainBoxComp';
 import Button from 'Components/Button';
 
 import ResultContent from './ResultContent';
+import UserContent from './UserContent';
 
 /* styled-components */
 const ScrollBox = styled.div`
@@ -15,16 +16,23 @@ const ScrollBox = styled.div`
     align-items: center;
 `;
 
+const UserInfo = styled.div`
+    
+`;
+
 const Result = () => {
-    document.body.style.overflow = "visible"
+    document.body.style.overflow = 'visible';
 
     return (
         <div>
             <HeaderComp title={'또박이 검사 결과'} />
             <ScrollBox>
-                <ExplainBoxcomp Content={ResultContent} />
-                <ExplainBoxcomp Content={ResultContent} />
-                <ExplainBoxcomp Content={ResultContent} />
+                <div>
+                    <ExplainBoxComp Content={UserContent} />
+                </div>
+                <ExplainBoxComp Content={ResultContent} />
+                <ExplainBoxComp Content={ResultContent} />
+                <ExplainBoxComp Content={ResultContent} />
                 <Button text={'확인'} />
             </ScrollBox>
         </div>
