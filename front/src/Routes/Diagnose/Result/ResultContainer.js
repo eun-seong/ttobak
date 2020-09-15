@@ -1,5 +1,5 @@
 import React from 'react';
-import ResultPresentainer from './ResultPresentainer';
+import ResultPresenter from './ResultPresenter';
 
 export default class extends React.Component {
 
@@ -10,7 +10,7 @@ export default class extends React.Component {
         */
 
         return (
-            <ResultPresentainer
+            <ResultPresenter
             />);
     }
 }

@@ -4,8 +4,9 @@ import { MainRoot } from 'images';
 import RootBackGround from 'Components/RootBackGround';
 import AddStudentComp from './AddStudentComp';
 
-const AddStudent = ({ iconNum, match }) => {
+const AddStudent = ({ iconNum }) => {
     // console.log(match.params.iconNum);
+    //TODO match 해결해야 됨
     return (
         <RootBackGround
             background={MainRoot.root_background}

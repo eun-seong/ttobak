@@ -4,7 +4,6 @@ import Signin from 'Routes/Root/SignIn';
 import Signup from 'Routes/Root/SignUp';
 import ForgotPassword from 'Routes/Root/ForgotPassword';
 import AddStudent from 'Routes/Root/AddStudent';
-import Main from 'Routes/Root/Main';
 import SelectIcon from 'Routes/Root/SelectIcon';
 import Root from './Router';
 
@@ -17,7 +16,6 @@ export default () => (
             <Route path="/root/forgotpassword" component={ForgotPassword} />
             <Route path="/root/addstd/:iconNum" component={AddStudent} />
             <Route path="/root/selecticon" component={SelectIcon} />
-            <Route path="/root/main" component={Main} />
             <Redirect from="*" to="/" />
         </Switch>
     </Router>

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch, withRouter } from 're
 import Diagnose from './Router_Diagnose';
 import Therapy from './Router_Therapy';
 import Root from './Router_Root';
+import Main from './Router_Main';
 import TempMain from 'Routes/TempMain';
 
 const MainRouter = () => (
@@ -13,6 +14,7 @@ const MainRouter = () => (
             <Route path='/diagnose' component={Diagnose} />
             <Route path='/therapy' component={Therapy} />
             <Route path='/root' component={Root} />
+            <Route path='/main' component={Main} />
             <Redirect from='*' to='/' />
         </Switch>
     </Router>
