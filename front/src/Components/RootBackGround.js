@@ -68,14 +68,16 @@ const BackgroundImg = styled.img`
     bottom:0;
 `;
 
-function RootBackGround({ background, title, Content, subTitle }) {
+function RootBackGround({ background, title, Content, subTitle, signin }) {
     let tempSubTitle = null;
     if (subTitle !== undefined) tempSubTitle = <SubTitle>{subTitle}</SubTitle>
+    let BackButton = <PauseButton link={'/'} back={true} />;
+    if (signin) BackButton = null;
 
     return (
         <Component>
             {/* TODO 이전으로 */}
-            <PauseButton link={'/'} back={true} />
+            {BackButton}
             <Box>
                 <Header>
                     <Title>{title}</Title>

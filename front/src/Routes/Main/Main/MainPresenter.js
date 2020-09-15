@@ -36,7 +36,7 @@ const Main = () => {
                     text={'맞춤 학습'} width={'56vw'}
                     headercolor={'#F6DB57'}
                     color={'#F8E384'}
-                    Contents={CustomLearning} />
+                    Contents={<CustomLearning />} />
                 <SubComp>
                     <Link to='/root/tempmain'>
                         <ButtonBox

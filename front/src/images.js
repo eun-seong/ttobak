@@ -44,6 +44,19 @@ import Box2_3 from 'img/d2_recognition/box2-3.png';
 import Tree1 from 'img/d2_recognition/tree1.png';
 import Tree2 from 'img/d2_recognition/tree2.png';
 
+// Main
+import therapy0 from 'img/main/therapy0.png';
+import therapy1 from 'img/main/therapy1.png';
+import therapy2 from 'img/main/therapy2.png';
+import therapy3 from 'img/main/therapy3.png';
+import therapy4 from 'img/main/therapy4.png';
+import therapy5 from 'img/main/therapy5.png';
+import therapy6 from 'img/main/therapy6.png';
+import therapy7 from 'img/main/therapy7.png';
+import therapy8 from 'img/main/therapy8.png';
+import therapy9 from 'img/main/therapy9.png';
+import therapy10 from 'img/main/therapy10.png';
+
 const Images = {
     bt_pause: bt_pause,
     bt_back: bt_back
@@ -99,5 +112,19 @@ export const Recognition = {
     Tree1: Tree1,
     Tree2: Tree2,
 }
+
+export const MainTherapy = [
+    therapy0,
+    therapy1,
+    therapy2,
+    therapy3,
+    therapy4,
+    therapy5,
+    therapy6,
+    therapy7,
+    therapy8,
+    therapy9,
+    therapy10,
+]
 
 export default Images;
