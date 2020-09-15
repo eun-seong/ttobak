@@ -10,7 +10,7 @@ export default () => (
             <Route path="/" exact component={Root} />
             <Route path="/main/main" exact component={Main} />
             <Route path="/main/select" exact component={SelectLearning} />
-            <Redirect from="*" to="/" />
+            <Redirect from="*" to="/main/main" />
         </Switch>
     </Router>
 )

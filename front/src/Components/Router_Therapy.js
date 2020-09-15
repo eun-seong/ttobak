@@ -12,7 +12,7 @@ export default () => (
             <Route path="/therapy/counting" component={Counting} />
             <Route path="/therapy/phoneme" component={Phoneme} />
             <Route path="/therapy/shadowing" component={Shadowing} />
-            <Redirect from="*" to="/" />
+            <Redirect from="*" to="/main/main" />
         </Switch>
     </Router>
 )

@@ -10,12 +10,11 @@ import TempMain from 'Routes/TempMain';
 const MainRouter = () => (
     <Router>
         <Switch>
-            <Route path='/' exact component={TempMain} />
             <Route path='/diagnose' component={Diagnose} />
             <Route path='/therapy' component={Therapy} />
             <Route path='/root' component={Root} />
             <Route path='/main' component={Main} />
-            <Redirect from='*' to='/' />
+            <Redirect from='*' to='/main' />
         </Switch>
     </Router>
 )

@@ -16,7 +16,7 @@ export default () => (
             <Route path="/root/forgotpassword" component={ForgotPassword} />
             <Route path="/root/addstd/:iconNum" component={AddStudent} />
             <Route path="/root/selecticon" component={SelectIcon} />
-            <Redirect from="*" to="/" />
+            <Redirect from="*" to="/main/main" />
         </Switch>
     </Router>
 )

@@ -14,7 +14,7 @@ export default () => (
             <Route path="/diagnose/attention" component={Attention} />
             <Route path="/diagnose/sweep" component={Sweep} />
             <Route path="/diagnose/result" component={Result} />
-            <Redirect from="*" to="/" />
+            <Redirect from="*" to="/main/main" />
         </Switch>
     </Router>
 )

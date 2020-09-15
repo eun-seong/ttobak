@@ -38,7 +38,7 @@ const Main = () => {
                     color={'#F8E384'}
                     Contents={<CustomLearning />} />
                 <SubComp>
-                    <Link to='/root/tempmain'>
+                    <Link to='/main/select'>
                         <ButtonBox
                             text={'복습하기'}
                             Contents={<div>이전에 했던 내용을 복습해요!</div>}
@@ -46,7 +46,7 @@ const Main = () => {
                             color={'#97C3EB'}
                             width={'31w'} height={'36vh'} />
                     </Link>
-                    <Link to='/root/tempmain'>
+                    <Link to='/main/select'>
                         <ButtonBox
                             text={'학습 선택하기'}
                             Contents={<div>학습을 선택해요!</div>}
