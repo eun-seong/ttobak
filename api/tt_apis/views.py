@@ -3,7 +3,7 @@ import bcrypt
 import jwt
 import random
 
-from .models  import User,Student,UsrStu,SwpTest,StuSwp,PhTest,StuPh,FocTest,StuFoc,StuFocArr,FocScript,StuFoc
+from .models  import User,Student,UsrStu,StuIc,Icon,TestMaster,StuTest
 
 from django.views import View
 from django.http import HttpResponse, JsonResponse
@@ -108,6 +108,12 @@ class StuAdd(View):
                 usr = user,
                 stu = Student.objects.latest('stu_id')
             )
+            icon = Icon.objects.get(pk = data['ic_id'])
+
+            StuIc.objects.create(
+                stu = Student.objects.latest('stu_id'),
+                ic = icon
+            )
 
             return JsonResponse({"message":"성공적으로 추가되었습니다.","code":1},status=200)
 
@@ -123,7 +129,8 @@ class StuModify(View):
         if User.objects.filter(usr_id = uk).exists():
             if Student.objects.filter(stu_id = sk).exists():
                 student = Student.objects.get(pk=sk)
-                
+                # icon = Icon.objects.get(pk=ic_id)
+                # stu_ic = StuIc.objects.get(stu_id=sk)
                 student.stu_name = data['name']
                 student.stu_birth = data['birth']
                 student.stu_gender = data['gender']
@@ -181,8 +188,8 @@ class SwpGet(View):
         s_id = data['s_id']
         if Student.objects.filter(pk=s_id).exists():
             student = Student.objects.get(pk=s_id)
-            if SwpTest.objects.filter(swp_level = level,swp_freq=freq).exists():
-                sounds = SwpTest.objects.get(swp_level=level,swp_freq=freq)
+            if TestMaster.objects.filter(ques_level = level,ques_int=freq,test_idx=1).exists():
+                sounds = TestMaster.objects.get(ques_level=level,ques_int=freq,test_idx=1)
 
                 x = random.randint(1,2)
                 y = random.randint(1,2)
@@ -192,7 +199,7 @@ class SwpGet(View):
                     answer1 = 'down'
                 if y == 1:
                     answer2= 'down' 
-                return JsonResponse({"up_path":url+sounds.swp_uppath,"down_path":url+sounds.swp_downpath,"answer1":answer1,"answer2":answer2,"swp_id":sounds.swp_id,"code":1},status=200)
+                return JsonResponse({"up_path":url+sounds.ques_path1,"down_path":url+sounds.ques_path2,"answer1":answer1,"answer2":answer2,"swp_id":sounds.ques_id,"code":1},status=200)
             return JsonResponse({"message":"해당 문제가 존재하지 않습니다.","code":2},status=200)
         return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":3},status=200)
 
@@ -210,18 +217,19 @@ class SwpAns(View):
         
         if Student.objects.filter(pk=s_id).exists():
             student = Student.objects.get(pk = s_id)
-            if SwpTest.objects.filter(pk=swp_id).exists():
-                swp = SwpTest.objects.get(pk=swp_id)
+            if TestMaster.objects.filter(pk=swp_id).exists():
+                swp = TestMaster.objects.get(pk=swp_id)
 
-                iscorrect = 'false'
+                iscorrect = 'N'
                 mes = "답이 틀렸습니다."
                 if ori1 == stu1 and ori2 == stu2 :
-                    iscorrect = 'true'
+                    iscorrect = 'Y'
                     mes = "답이 맞았습니다."
-                StuSwp.objects.create(
+                StuTest.objects.create(
                     stu = student,
-                    swp = swp,
-                    is_correct = iscorrect
+                    ques = swp,
+                    is_correct = iscorrect,
+                    test_txt = 'swp'
                 )
                 return JsonResponse({"message":mes,"code":1},status=200)
             return JsonResponse({"message":"해당 문제가 없습니다.","code":2},status=200)
@@ -231,14 +239,15 @@ class PhGet(View):
     @csrf_exempt
     def post(self,request):
         data = json.loads(request.body)
+        url = 'https://ttobakaudio.s3-ap-northeast-2.amazonaws.com'
 
         lev = data['level']
         s_id = data['s_id']
 
         if Student.objects.filter(pk=s_id).exists():
             student = Student.objects.get(pk=s_id)
-            if PhTest.objects.filter(ph_level=lev).exists():
-               Phset = PhTest.objects.filter(ph_level = lev)
+            if TestMaster.objects.filter(ques_level=lev,test_idx=2).exists():
+               Phset = TestMaster.objects.filter(ques_level = lev,test_idx=2)
                cnt = Phset.count()
                n1 = random.randrange(cnt)
                n2 = random.randrange(cnt)
@@ -255,7 +264,7 @@ class PhGet(View):
 
 
 
-               return JsonResponse({"ph1":ph1.ph_char,"ph1_path":ph1.ph_path,"ph2":ph2.ph_char,"ph2_path":ph2.ph_path,"answer":Phset[answer].ph_char,"code":1},status=200)
+               return JsonResponse({"ph1":ph1.ques_char,"ph1_path":url+ph1.ques_path1,"ph2":ph2.ques_char,"ph2_path":url+ph2.ques_path1,"answer":Phset[answer].ques_char,"code":1},status=200)
             return JsonResponse({"message":"해당 레벨의 문제가 존재하지 않습니다.","code":2},status=200) 
         return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":3},status=200)
 
@@ -273,22 +282,23 @@ class PhAns(View):
 
         if Student.objects.filter(pk=s_id).exists():
             student = Student.objects.get(pk=s_id)
-            if PhTest.objects.filter(ph_char = ph1).exists():
-                p1 = PhTest.objects.get(ph_char=ph1)
-                if PhTest.objects.filter(ph_char=ph2).exists():
-                    p2 = PhTest.objects.get(ph_char=ph2)
+            if TestMaster.objects.filter(ques_char = ph1,test_idx=2).exists():
+                p1 = TestMaster.objects.get(ques_char=ph1,test_idx=2)
+                if TestMaster.objects.filter(ques_char=ph2,test_idx=2).exists():
+                    p2 = TestMaster.objects.get(ques_char=ph2,test_idx=2)
 
                     message = "답이 틀렸습니다."
-                    is_correct = "false"
+                    is_correct = "N"
                     if stu_answer == ori_answer :
                         message = "답이 맞았습니다."
-                        is_correct = "true"
+                        is_correct = "Y"
 
-                    StuPh.objects.create(
+                    StuTest.objects.create(
                         stu = student,
-                        ph1 = p1,
-                        ph2 = p2,
-                        is_correct = is_correct
+                        ques = p1,
+                        ques2 = p2,
+                        is_correct = is_correct,
+                        test_txt = 'ph'
                     )
 
                     return JsonResponse({"message":message,"code":1},status=200)
@@ -300,13 +310,14 @@ class FocGet(View):
     @csrf_exempt
     def post(self,request):
         data = json.loads(request.body)
+        url = 'https://ttobakaudio.s3-ap-northeast-2.amazonaws.com'
 
         s_id = data['s_id']
         level = data['level']
 
         if Student.objects.filter(pk=s_id).exists():
             student = Student.objects.get(pk=s_id)
-            if FocTest.objects.filter(foc_level = level).exists():
+            if TestMaster.objects.filter(ques_level = level,test_idx=3).exists():
                 cur = 0 
                 if StuFocArr.objects.filter(stu = s_id ).exists():
                     sfa = StuFocArr.objects.get(stu=s_id)
@@ -351,10 +362,10 @@ class FocGet(View):
                     conv_id = sfa.o2
                 elif cur ==3:
                     conv_id = sfa.o3
-                foc = FocTest.objects.get(foc_level = level , foc_conv_id = conv_id)
+                foc = TestMaster.objects.get(ques_level = level , ques_int = conv_id)
                 sfa.stucnt = cur +1
                 sfa.save()
-                return JsonResponse({"sound" : foc.foc_id,"sound_path": foc.foc_voice,"code":1},status=200)
+                return JsonResponse({"sound" : foc.ques_id,"sound_path": url+foc.ques_path1,"code":1},status=200)
             return JsonResponse({"message":"해당 레벨에 해당하는 문제가 없습니다.","code":2},status=200)
         return JsonResponse({"message":"해당 학습자가 없습니다.","code":3},status=200)
                 
