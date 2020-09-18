@@ -1,25 +1,33 @@
 # Front-end
-## 파일 구조
-**Container-Presenter** 구조    
-![파일_구조](/uploads/0ddfa464ce227e71d6f2c8edfd646ac8/image.png)   
+## 구조
+**Container-Presenter** 구조     
 `Container` : 화면에 보이는 것 외에 로직을 담고 있음    
 `Presenter` : 화면에 보여지는 것들을 담고 있음    
+`api`       : RESTful API 관련 함수   
 
 ## Router
-react-router를 통해 검사 및 치료 라우팅
-```html
-<Switch>
-    <Route path="/" exact component={TempMain} />
-    <Route path="/diagnose/recognition" component={Recognition} />
-    <Route path="/diagnose/attention" component={Attention} />
-    <Route path="/diagnose/sweep" component={Sweep} />
-    <Route path="/diagnose/result" component={Result} />
-    <Route path="/therapy/counting" component={Counting} />
-    <Route path="/therapy/phoneme" component={Phoneme} />
-    <Route path="/therapy/shadowing" component={Shadowing} />
-    <Redirect from="*" to="/" />
-</Switch>
-```
+#### Root(/root)
+* [로그인(/signin)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/root/signin)
+* [회원 가입(/signup)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/root/signup)
+* [비밀번호 찾기(/forgotpassword)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/root/forgotpassword)
+* [학습자 추가(/addstd)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/root/addstd)
+* [학습자 선택(/selecticon)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/root/selecticon)
+
+#### Main(/main)
+* [메인 화면(/main)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/main/main)
+* [학습 선택 하기(/select)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/main/select)
+
+#### Diagnose(/diagnose)
+* [음운 인식 능력(/recognition)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/diagnose/recognition)
+* [선택적 집중력(/attention)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/diagnose/attention)
+* [음운청취력(/sweep)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/diagnose/sweep)
+* [검사 결과(/result)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/diagnose/result)
+
+#### Therapy(/therapy)
+* [음절 수 계산(/counting)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/therapy/counting)
+* [음운 인식(/phoneme)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/therapy/phoneme)
+* [따라 읽기(/shadowing)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/therapy/shadowing)
+
 
 ## 스타일링
 `styled-component`를 사용하여 `css` 적용

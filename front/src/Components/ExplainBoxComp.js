@@ -6,16 +6,16 @@ const ExplainBox = styled.div`
     border-radius: 15px;
     background-color: #FFFFFF;
     border: 2px solid #DFD7C4;
-    margin: 0px 0px 25px 0px;
     padding: 20px;
+    margin-bottom: ${props => props.margin || '0px'};
 `;
 
-function ExplainBoxcomp({ Content }) {
+function ExplainBoxComp({ Content, margin }) {
     return (
-        <ExplainBox>
-            <Content />
+        <ExplainBox margin={margin}>
+            {Content}
         </ExplainBox>
     );
 }
 
-export default ExplainBoxcomp;
+export default ExplainBoxComp;

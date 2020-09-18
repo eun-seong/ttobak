@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import StdLevel from 'Components/StdLevel';
 
+import level from 'const';
+
 /* styled-components */
 const Component = styled.div`
     display: flex;
@@ -45,7 +47,7 @@ const ResultContent = ({ student }) => {
             <DiagHeader>
                 <DiagSummary>
                     <DiagTitle>어음청취력 검사</DiagTitle>
-                    <StdLevel text={'우수'} />
+                    <StdLevel text={level.level2.text} />
                 </DiagSummary>
                 <DiagExplain>
                     간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명

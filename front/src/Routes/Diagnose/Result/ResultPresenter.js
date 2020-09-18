@@ -28,11 +28,11 @@ const Result = () => {
             <HeaderComp title={'또박이 검사 결과'} />
             <ScrollBox>
                 <div>
-                    <ExplainBoxComp Content={UserContent} />
+                    <ExplainBoxComp Content={<UserContent />} margin={'25px'} />
                 </div>
-                <ExplainBoxComp Content={ResultContent} />
-                <ExplainBoxComp Content={ResultContent} />
-                <ExplainBoxComp Content={ResultContent} />
+                <ExplainBoxComp Content={<ResultContent />} margin={'25px'} />
+                <ExplainBoxComp Content={<ResultContent />} margin={'25px'} />
+                <ExplainBoxComp Content={<ResultContent />} margin={'25px'} />
                 <Button text={'확인'} />
             </ScrollBox>
         </div>

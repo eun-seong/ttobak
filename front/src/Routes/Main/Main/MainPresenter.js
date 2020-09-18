@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import StdBox from 'Components/StdBox';
 
 import ButtonBox from './ButtonBox';
 import CustomLearning from './CustomLearning';
@@ -30,7 +31,7 @@ const SubComp = styled.div`
 const Main = () => {
     return (
         <Container>
-            <StdBox />
+            <StdBox linkto={'/main/stdinfo'} main={true} />
             <Component>
                 <ButtonBox
                     text={'맞춤 학습'} width={'56vw'}
@@ -44,7 +45,7 @@ const Main = () => {
                             Contents={<div>이전에 했던 내용을 복습해요!</div>}
                             headercolor={'#62AAF5'}
                             color={'#97C3EB'}
-                            width={'31w'} height={'36vh'} />
+                            width={'31w'} height={'34vh'} />
                     </Link>
                     <Link to='/main/select'>
                         <ButtonBox
@@ -52,43 +53,11 @@ const Main = () => {
                             Contents={<div>학습을 선택해요!</div>}
                             headercolor={'#F59F6E'}
                             color={'#F7BC93'}
-                            width={'31vw'} height={'36vh'} />
+                            width={'31vw'} height={'34vh'} />
                     </Link>
                 </SubComp>
             </Component>
         </Container>
-    );
-}
-
-const StdComp = styled.div`
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    margin-bottom: 15px;
-`;
-
-const Bar = styled.div`
-    display: flex;
-    width: 85vw;
-    height: 34px;
-    background-color: #ffffff;
-    border-radius: 40px;
-`;
-
-const Setting = styled.div`
-    height: 34px;
-    width: 34px;
-    background-color: #ffffff;
-    border-radius: 40px;
-    margin-left: 14px;
-`;
-
-const StdBox = () => {
-    return (
-        <StdComp>
-            <Bar />
-            <Setting />
-        </StdComp>
     );
 }
 
