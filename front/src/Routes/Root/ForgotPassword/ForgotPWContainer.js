@@ -1,8 +1,9 @@
 import React from 'react';
 import ForgotPWPresenter from './ForgotPWPresenter';
 import { Root_Api } from 'api';
+import { withRouter } from 'react-router-dom';
 
-export default class extends React.Component {
+class ForgetPassword extends React.Component {
     /* 
     모든 로직 추가 
     api 가져오기
@@ -16,6 +17,10 @@ export default class extends React.Component {
 
     }
 
+    goBack = () => {
+        this.props.history.goBack();
+    };
+
     render() {
         /*
         presenter로 가는 모든 스테이트 값 렌더링
@@ -24,6 +29,9 @@ export default class extends React.Component {
 
         return (<
             ForgotPWPresenter
+            goBack={this.goBack}
         />);
     }
 }
+
+export default withRouter(ForgetPassword);

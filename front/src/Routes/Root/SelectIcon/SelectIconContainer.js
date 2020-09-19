@@ -1,8 +1,9 @@
 import React from 'react';
 import SelectIconPersentainer from './SelectIconPersentainer';
 import { Root_Api } from 'api';
+import { withRouter } from 'react-router-dom';
 
-export default class extends React.Component {
+class SelectIcon extends React.Component {
     /* 
     모든 로직 추가 
     api 가져오기
@@ -12,6 +13,10 @@ export default class extends React.Component {
         id: null,
         password: null,
     }
+
+    goBack = () => {
+        this.props.history.goBack();
+    };
 
     render() {
         /*
@@ -24,6 +29,9 @@ export default class extends React.Component {
             SelectIconPersentainer
             handleSubmit={this.handleSubmit}
             id={this.setId} password={this.setPassword}
+            goBack={this.goBack}
         />);
     }
 }
+
+export default withRouter(SelectIcon);

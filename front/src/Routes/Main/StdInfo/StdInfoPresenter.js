@@ -5,7 +5,7 @@ import StdInfoComp from './StdInfoComp';
 
 import StdBox from 'Components/StdBox';
 import ExplainBoxComp from 'Components/ExplainBoxComp';
-import Images from 'images';
+import BackButton from 'Components/BackButton';
 import level from 'const';
 
 /* styled-components */
@@ -20,11 +20,7 @@ const HeaderBox = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-between;
-`;
-
-const PauseButtonStyled = styled.img`
-    width: 43px;
-    margin-right: 15px;
+    align-items: center;
 `;
 
 const InfoBox = styled.div`
@@ -34,15 +30,13 @@ const InfoBox = styled.div`
     justify-content: space-between;
 `;
 
-const StdInfo = () => {
+const StdInfo = ({ goBack }) => {
     const { color, text } = level.level3;
-    console.log(text);
+
     return (
         <Container>
             <HeaderBox>
-                <Link to={''}>
-                    <PauseButtonStyled src={Images.bt_back} alt='뒤로가기' />
-                </Link>
+                <BackButton goBack={goBack} size={'43px'} />
                 <StdBox />
             </HeaderBox>
             <InfoBox>

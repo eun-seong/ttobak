@@ -1,7 +1,12 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import MainPresenter from './MainPresenter';
 
-export default class extends React.Component {
+class Main extends React.Component {
+
+    goBack = () => {
+        this.props.history.goBack();
+    }
 
     render() {
         /*
@@ -11,6 +16,9 @@ export default class extends React.Component {
 
         return (
             <MainPresenter
+                goBack={this.goBack}
             />);
     }
 }
+
+export default withRouter(Main);

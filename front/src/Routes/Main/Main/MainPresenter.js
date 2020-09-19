@@ -28,10 +28,10 @@ const SubComp = styled.div`
     height: 100%;
 `;
 
-const Main = () => {
+const Main = ({ goBack }) => {
     return (
         <Container>
-            <StdBox linkto={'/main/stdinfo'} main={true} />
+            <StdBox linkto={'/main/stdinfo'} main={true} goBack={goBack} />
             <Component>
                 <ButtonBox
                     text={'맞춤 학습'} width={'56vw'}

@@ -31,7 +31,7 @@ const Content = styled.div`
     text-align: center;
 `;
 
-const ButtonBox = ({ text, Contents, color, headercolor, width, height }) => {
+const ButtonBox = ({ text, Contents, color, headercolor, width, height, goBack }) => {
     return (
         <Box color={color} width={width} height={height}>
             <Header color={headercolor}>{text}</Header>

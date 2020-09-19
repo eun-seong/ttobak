@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import HeaderComp from 'Components/HeaderComp';
-import PauseButton from 'Components/PauseButton';
 import ContentComp from 'Components/ContentComp';
+import BackButton from 'Components/BackButton';
 
 /* styled-components */
 const Container = styled.div`
@@ -15,21 +15,30 @@ const Container = styled.div`
     padding-top: 0%;
 `;
 
-const Main = ({ ContentsList }) => {
+const Line = styled.div`
+    height: 2px;
+    width: 100%;
+    background-color: #DFD7C4;
+`;
+
+const SelectLearning = ({ ContentsList, goBack }) => {
     document.body.style.overflow = 'visible';
+    console.log(goBack);
 
     return (
         <Container>
-            <PauseButton link={'/'} back={true} />
+            <BackButton goBack={goBack} />
             <HeaderComp title={'선택하기'} />
             {ContentsList.map((list) => {
                 return (
-                    <ContentComp src={list.img} key={list.index} />
+                    <div>
+                        <ContentComp src={list.img} key={list.index} />
+                        <Line />
+                    </div>
                 );
             })}
         </Container>
     );
 }
 
-
-export default Main;
+export default SelectLearning;

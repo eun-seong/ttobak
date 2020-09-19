@@ -9,8 +9,7 @@ function SignIn({ handleSubmit, setId, setPassword }) {
         <RootBackGround
             background={MainRoot.root_background}
             title={'또박이 로그인'}
-            Content={SignInComp}
-            signin={true}>
+            Content={SignInComp}>
         </RootBackGround>
     );
 }

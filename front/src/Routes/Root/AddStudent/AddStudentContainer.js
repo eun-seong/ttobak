@@ -1,8 +1,9 @@
 import React from 'react';
 import AddStudentPresenter from './AddStudentPresenter';
 import { Root_Api } from 'api';
+import { withRouter } from 'react-router-dom';
 
-export default class extends React.Component {
+class AddStudent extends React.Component {
     /* 
     모든 로직 추가 
     api 가져오기
@@ -13,6 +14,10 @@ export default class extends React.Component {
         password: null,
 
     }
+
+    goBack = () => {
+        this.props.history.goBack();
+    };
 
     render() {
         /*
@@ -25,7 +30,9 @@ export default class extends React.Component {
             AddStudentPresenter
             handleSubmit={this.handleSubmit}
             id={this.setId} password={this.setPassword}
-
+            goBack={this.goBack}
         />);
     }
 }
+
+export default withRouter(AddStudent);

@@ -14,12 +14,12 @@ const StdComp = styled.div`
 
 const Bar = styled(Link)`
     display: flex;
-    width: 100%;
     height: 37px;
     background-color: #ffffff;
     border-radius: 40px;
     align-items: center;
     padding: 2px;
+    flex: 1;
 `;
 
 const Setting = styled(Link)`
@@ -56,15 +56,15 @@ const Name = styled.div`
     text-align: center;
 `;
 
-const StdBox = ({ linkto, main }) => {
+const StdBox = ({ linkto, main, goBack }) => {
     return (
         <StdComp>
-            <Bar to={''}>
+            <Bar to={linkto} goBack={goBack}>
                 <ProfileIcon size={'33px'} iconNum={1} />
                 <Name>이지호</Name>
             </Bar>
-            { main && <Setting to=''>설정</Setting>}
-            { main || <StdChange to=''>학습자 변경</StdChange>}
+            { main && <Setting to='/user/setting'>설정</Setting>}
+            { !main && <StdChange to='/user/stdsetting'>학습자 변경</StdChange>}
         </StdComp >
     );
 }

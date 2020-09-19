@@ -10,21 +10,12 @@ const PauseButtonStyled = styled.img`
     left: 10px;
 `;
 
-function PauseButton({ link, back }) {
-    if (back) {
-        return (
-            <Link to={link}>
-                <PauseButtonStyled src={Images.bt_back} alt='뒤로가기' />
-            </Link>
-        );
-    }
-    else {
-        return (
-            <Link to={'link'}>
-                <PauseButtonStyled src={Images.bt_pause} alt='일시정지' />
-            </Link>
-        );
-    }
+function PauseButton({ link }) {
+    return (
+        <Link to={'link'}>
+            <PauseButtonStyled src={Images.bt_pause} alt='일시정지' />
+        </Link>
+    )
 }
 
 export default PauseButton;

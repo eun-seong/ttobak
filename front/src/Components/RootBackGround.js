@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PauseButton from 'Components/PauseButton';
+import BackButton from 'Components/BackButton';
 
 const Component = styled.div`
     width: 100vw;
@@ -68,20 +68,20 @@ const BackgroundImg = styled.img`
     bottom:0;
 `;
 
-function RootBackGround({ background, title, Content, subTitle, signin }) {
-    let tempSubTitle = null;
-    if (subTitle !== undefined) tempSubTitle = <SubTitle>{subTitle}</SubTitle>
-    let BackButton = <PauseButton link={'/'} back={true} />;
-    if (signin) BackButton = null;
+function RootBackGround({ background, title, Content, subTitle, goBack }) {
+    // let tempSubTitle = null;
+    // if (subTitle !== undefined) tempSubTitle = <SubTitle>{subTitle}</SubTitle>
+    // let BackButton = <PauseButton link={'/'} back={true} />;
+    // if (signin) BackButton = null;
 
     return (
         <Component>
             {/* TODO 이전으로 */}
-            {BackButton}
+            {!goBack || <BackButton link={'/'} goBack={goBack} />}
             <Box>
                 <Header>
                     <Title>{title}</Title>
-                    {tempSubTitle}
+                    {subTitle && <SubTitle>{subTitle}</SubTitle>}
                 </Header>
                 <Contents>
                     <Content />

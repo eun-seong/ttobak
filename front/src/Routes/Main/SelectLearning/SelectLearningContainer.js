@@ -2,8 +2,9 @@ import React from 'react';
 import SelectLearningPresenter from './SelectLearningPresenter';
 
 import { MainTherapy } from 'images';
+import { withRouter } from 'react-router-dom';
 
-export default class extends React.Component {
+class Select extends React.Component {
     state = {
         ContentsList: [
             { index: 0, img: MainTherapy[0] },
@@ -20,6 +21,10 @@ export default class extends React.Component {
         ]
     }
 
+    goBack = () => {
+        this.props.history.goBack();
+    }
+
     render() {
         /*
         presenter로 가는 모든 스테이트 값 렌더링
@@ -30,6 +35,9 @@ export default class extends React.Component {
         return (
             <SelectLearningPresenter
                 ContentsList={ContentsList}
+                goBack={this.goBack}
             />);
     }
 }
+
+export default withRouter(Select);

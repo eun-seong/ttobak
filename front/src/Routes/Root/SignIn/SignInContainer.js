@@ -1,8 +1,9 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import SignInPresenter from './SignInPresenter';
 import { Root_Api } from 'api';
 
-export default class extends React.Component {
+class SignIn extends React.Component {
     /* 
     모든 로직 추가 
     api 가져오기
@@ -47,7 +48,7 @@ export default class extends React.Component {
             SignInPresenter
             handleSubmit={this.handleSubmit}
             id={this.setId} password={this.setPassword}
-
         />);
     }
 }
+export default withRouter(SignIn);
