@@ -262,27 +262,6 @@ class UsrStu(models.Model):
 #     class Meta:
 #         db_table = "stu_count"
 
-# class ComCure(models.Model):
-#     com_id = models.AutoField(primary_key=True)
-#     com_level = models.IntegerField()
-#     com_w1 = models.CharField(max_length=10)
-#     com_w2 = models.CharField(max_length=10)
-#     com_w3 = models.CharField(max_length=10)
-#     com_e1 = models.CharField(max_length=10)
-#     com_e2 = models.CharField(max_length=10)
-#     com_e3 = models.CharField(max_length=10)
-#     com_e4 = models.CharField(max_length=10)
-#     com_ans = models.CharField(max_length=10)
-#     com_w1path = models.CharField(max_length=255)
-#     com_w2path = models.CharField(max_length=255)
-#     com_w3path = models.CharField(max_length=255)
-#     com_e1path = models.CharField(max_length=255)
-#     com_e2path = models.CharField(max_length=255)
-#     com_e3path = models.CharField(max_length=255)
-#     com_e4path = models.CharField(max_length=255)
-
-#     class Meta:
-#         db_table = "com_cure"
 
 # class StuCom(models.Model):
 #     stu = models.ForeignKey('Student',on_delete=models.PROTECT,null=True,db_column='stu_id')
@@ -405,3 +384,78 @@ class StuTest(models.Model):
 
     class Meta:
         db_table = "stu_test"
+
+class ComCure(models.Model):
+    com_id = models.AutoField(primary_key=True)
+    com_level = models.IntegerField()
+    com_w1 = models.CharField(max_length=10)
+    com_w2 = models.CharField(max_length=10)
+    com_w3 = models.CharField(max_length=10)
+    com_e1 = models.CharField(max_length=10)
+    com_e2 = models.CharField(max_length=10)
+    com_e3 = models.CharField(max_length=10)
+    com_e4 = models.CharField(max_length=10)
+    com_ans = models.CharField(max_length=10)
+    com_w1path = models.CharField(max_length=255)
+    com_w2path = models.CharField(max_length=255)
+    com_w3path = models.CharField(max_length=255)
+    com_e1path = models.CharField(max_length=255)
+    com_e2path = models.CharField(max_length=255)
+    com_e3path = models.CharField(max_length=255)
+    com_e4path = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = "com_cure"
+
+class CureIdx(models.Model):
+    idx_id = models.AutoField(primary_key = True)
+    idx_txt = models.CharField(max_length = 20)
+
+    class Meta:
+        db_table = "cure_idx"
+    
+class CureMaster(models.Model):
+    cure_id = models.AutoField(primary_key=True)
+    cure_level = models.IntegerField(null=True)
+    cure_path = models.CharField(max_length=255)
+    cure_path2 = models.CharField(max_length=255)
+    cure_tid = models.IntegerField(null=True) #text identifier for poemtext and selfcure
+    cure_word = models.CharField(max_length =10)
+    cure_word2 = models.CharField(max_length = 10) #for vowelsound and consosound
+    cure_text = models.CharField(max_length = 255) #for longer words like poem
+
+    class Meta:
+        db_table = "cure_master"
+
+
+class StuCure(models.Model):
+    stu = models.ForeignKey('Student',on_delete = models.PROTECT,null=True,db_column='stu_id')
+    cure = models.ForeignKey('CureMaster',on_delete=models.PROTECT,null=True,db_column='cure_id')
+    cure2 = models.ForeignKey('ComCure',on_delete = models.PROTECT,null=True,db_column = 'com_id') ##for com_cure record
+    T_OR_F = (
+        ('Y',"yes"),
+        ('N',"no"),
+    )
+    cure_txt = models.CharField(max_length=10,null=True)
+    is_correct = models.CharField(max_length=1,choices = T_OR_F)
+    cure_rate = models.IntegerField(null=True)
+    date = models.DateField(auto_now_add=True)
+
+    class Meta:
+        db_table = "stu_cure"
+
+class MainImg(models.Model):
+    img_id = models.AutoField(primary_key=True)
+    img_path = models.CharField(max_length = 255)
+    img_desc = models.CharField(max_length = 255)
+
+    class Meta:
+        db_table = "main_img"
+
+class WordImg(models.Model):
+    img_id = models.AutoField(primary_key=True)
+    img_path = models.CharField(max_length=255)
+    img_desc = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = "word_img"
