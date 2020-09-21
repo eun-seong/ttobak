@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import HeaderComp from 'Components/HeaderComp';
 import ContentComp from 'Components/ContentComp';
-import BackButton from 'Components/BackButton';
 
 /* styled-components */
 const Container = styled.div`
@@ -27,8 +26,7 @@ const SelectLearning = ({ ContentsList, goBack }) => {
 
     return (
         <Container>
-            <BackButton goBack={goBack} />
-            <HeaderComp title={'선택하기'} />
+            <HeaderComp title={'선택하기'} goBack={goBack} />
             {ContentsList.map((list) => {
                 return (
                     <div>

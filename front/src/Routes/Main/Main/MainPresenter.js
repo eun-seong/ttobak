@@ -31,7 +31,7 @@ const SubComp = styled.div`
 const Main = ({ goBack }) => {
     return (
         <Container>
-            <StdBox linkto={'/main/stdinfo'} main={true} goBack={goBack} />
+            <StdBox linkto={'/user/stdinfo'} main={true} goBack={goBack} />
             <Component>
                 <ButtonBox
                     text={'맞춤 학습'} width={'56vw'}

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import BackButton from 'Components/BackButton';
 
 const Header = styled.div`
     display: flex;
@@ -31,15 +32,18 @@ const SubTitle = styled.div`
     z-index: 1;
 `;
 
-function HeaderComp({ title, subTitle }) {
+function HeaderComp({ title, subTitle, goBack }) {
     let tempSubTitle = null;
     if (subTitle !== undefined) tempSubTitle = <SubTitle>{subTitle}</SubTitle>
 
     return (
-        <Header>
-            <Title>{title}</Title>
-            {tempSubTitle}
-        </Header>
+        <div>
+            <Header>
+                <Title>{title}</Title>
+                {tempSubTitle}
+            </Header>
+            {(!!goBack) && <BackButton goBack={goBack} />}
+        </div>
     );
 }
 

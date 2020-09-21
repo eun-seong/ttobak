@@ -35,6 +35,8 @@ const StdInfo = ({ goBack }) => {
 
     return (
         <Container>
+            {/* TODO
+            학습자 페이지 UI 변경 */}
             <HeaderBox>
                 <BackButton goBack={goBack} size={'43px'} />
                 <StdBox />

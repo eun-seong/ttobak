@@ -1,7 +1,8 @@
 import React from 'react';
-import SettingsPresenter from './SettingsPresenter';
+import { withRouter } from 'react-router-dom';
+import StdStatisticsPresenter from './StdStatisticsPresenter';
 
-export default class extends React.Component {
+class StdStatstics extends React.Component {
 
     goBack = () => {
         this.props.history.goBack();
@@ -15,8 +16,10 @@ export default class extends React.Component {
         */
 
         return (
-            <SettingsPresenter
+            <StdStatisticsPresenter
                 goBack={this.goBack}
             />);
     }
 }
+
+export default withRouter(StdStatstics);
