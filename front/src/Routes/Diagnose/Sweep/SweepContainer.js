@@ -2,30 +2,28 @@ import React, { useMemo } from 'react';
 import SweepPresenter from './SweepPresenter';
 import { D1_Api } from 'api';
 import { SwpTest, TTobak } from 'images';
+import { withRouter } from 'react-router-dom';
 
 const UP = 'up';
 const DOWN = 'down';
 
 // D1_Api.ask(500, 1, 4);
 
-export default class extends React.Component {
-    constructor(props) {
-        super(props);
+class Sweep extends React.Component {
+    state = {
+        gameState: false,
+        UpButton: SwpTest.UpButton_UP,
+        DownButton: SwpTest.DownButton_UP,
+        sweep: [],
+        path: [],
+        oriAnswer: [],
+        stdAnswer: [],
+        Answer: [],
+        TTobaki: TTobak.ttobak1_1,
+        swp_id: null,
+        s_id: 4,
+    };
 
-        this.state = {
-            gameState: false,
-            UpButton: SwpTest.UpButton_UP,
-            DownButton: SwpTest.DownButton_UP,
-            sweep: [],
-            path: [],
-            oriAnswer: [],
-            stdAnswer: [],
-            Answer: [],
-            TTobaki: TTobak.ttobak1_1,
-            swp_id: null,
-            s_id: 4,
-        };
-    }
 
     onTouchStart = (id) => {
         const { Answer, stdAnswer, gameState } = this.state;
@@ -142,11 +140,7 @@ export default class extends React.Component {
     }
 
     render() {
-        /*
-        presenter로 가는 모든 스테이트 값 렌더링
-        예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
-        */
-
+        console.log(this.props.history);
         const { UpButton, DownButton, Answer, TTobaki } = this.state;
 
         return (
@@ -162,3 +156,5 @@ export default class extends React.Component {
             />);
     }
 }
+
+export default withRouter(Sweep);

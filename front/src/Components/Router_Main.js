@@ -11,8 +11,8 @@ import User from './Router_User';
 export default () => (
     <Router>
         <Switch>
-            <Route path="/main/select" exact component={SelectLearning} />
-            <Route path="/main/main" exact component={Main} />
+            <Route path='/main/select' exact component={SelectLearning} />
+            <Route path='/main/main' exact component={Main} />
 
             <Route path='/diagnose' component={Diagnose} />
             <Route path='/therapy' component={Therapy} />

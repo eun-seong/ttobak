@@ -31,12 +31,10 @@ const Header = styled.div`
 `;
 
 const Title = styled.div`
+    font-family: 'paybooc-Bold';
     width: 100%;
     text-align: center;
-    font-size: 1rem;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
+    font-size: 1.4rem;
     color: #464646;
     z-index: 1;
 `;
@@ -74,6 +72,8 @@ function RootBackGround({ background, title, Content, subTitle, goBack }) {
     // let BackButton = <PauseButton link={'/'} back={true} />;
     // if (signin) BackButton = null;
 
+    console.log(!goBack || 'true');
+    console.log(goBack);
     return (
         <Component>
             {/* TODO 이전으로 */}

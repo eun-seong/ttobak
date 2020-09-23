@@ -14,11 +14,11 @@ import UserInfo from 'Routes/User/UserInfo';
 export default () => (
     <Router>
         <Switch>
-            <Route path="/user/setting" component={Setting} />
-            <Route path="/user/stdinfo" exact component={StdInfo} />
-            <Route path="/user/userinfo" exact component={UserInfo} />
-            <Route path="/user/stdstatistics" exact component={StdStatistics} />
-            <Route path="/user/stdmanaging" exact component={StdManaging} />
+            <Route path='/user/setting' exact component={Setting} />
+            <Route path='/user/stdinfo' exact component={StdInfo} />
+            <Route path='/user/userinfo' exact component={UserInfo} />
+            <Route path='/user/stdstatistics' exact component={StdStatistics} />
+            <Route path='/user/stdmanaging' exact component={StdManaging} />
 
             <Route path='/diagnose' component={Diagnose} />
             <Route path='/therapy' component={Therapy} />

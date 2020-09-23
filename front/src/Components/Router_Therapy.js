@@ -12,9 +12,9 @@ import User from './Router_User';
 export default () => (
     <Router>
         <Switch>
-            <Route path="/therapy/counting" component={Counting} />
-            <Route path="/therapy/phoneme" component={Phoneme} />
-            <Route path="/therapy/shadowing" component={Shadowing} />
+            <Route path='/therapy/counting' exect component={Counting} />
+            <Route path='/therapy/phoneme' exect component={Phoneme} />
+            <Route path='/therapy/shadowing' exect component={Shadowing} />
 
             <Route path='/diagnose' component={Diagnose} />
             <Route path='/root' component={Root} />

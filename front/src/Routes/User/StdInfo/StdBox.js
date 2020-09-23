@@ -46,6 +46,7 @@ const Name = styled.div`
 `;
 
 const StdBox = ({ goBack }) => {
+    console.log('stdinfo - stdbox');
     return (
         <StdComp>
             <BackButton goBack={goBack} size={'43px'} />

@@ -32,9 +32,9 @@ const SelectLearning = ({ ContentsList, goBack }) => {
             <HeaderComp title={'선택하기'} goBack={goBack} />
             {ContentsList.map((list) => {
                 return (
-                    <div>
+                    <div key={list.index} >
                         <ContentBox>
-                            <ContentComp src={list.img} key={list.index} flex={5} />
+                            <ContentComp src={list.img} flex={5} />
                         </ContentBox>
                         <Line />
                     </div>

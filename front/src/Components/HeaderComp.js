@@ -13,9 +13,7 @@ const Title = styled.div`
     width: 100%;
     text-align: center;
     font-size: 2em;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
+    font-family: 'paybooc-Bold';
     color: #464646;
     z-index: 1;
 `;
@@ -25,24 +23,19 @@ const SubTitle = styled.div`
     padding-top: 3px;
     text-align: center;
     font-size: 0.5em;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
+    font-family: 'paybooc-Light';
     color: #464646;
     z-index: 1;
 `;
 
 function HeaderComp({ title, subTitle, goBack }) {
-    let tempSubTitle = null;
-    if (subTitle !== undefined) tempSubTitle = <SubTitle>{subTitle}</SubTitle>
-
     return (
         <div>
             <Header>
                 <Title>{title}</Title>
-                {tempSubTitle}
+                {!!subTitle || <SubTitle>{subTitle}</SubTitle>}
             </Header>
-            {(!!goBack) && <BackButton goBack={goBack} />}
+            {!goBack || <BackButton goBack={goBack} />}
         </div>
     );
 }
