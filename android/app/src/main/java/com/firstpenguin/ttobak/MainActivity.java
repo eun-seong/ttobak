@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebChromeClient;
@@ -23,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
         webView = (WebView) findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);//자바스크립트 허용
 
-        webView.loadUrl("http://13.125.100.8/");//웹뷰 실행
+//        webView.loadUrl("http://13.125.100.8/main/main");//웹뷰 실행
+        webView.loadUrl("http://172.30.1.53:3000/main/main");//웹뷰 실행
         webView.setWebChromeClient(new WebChromeClient());//웹뷰에 크롬 사용 허용//이 부분이 없으면 크롬에서 alert가 뜨지 않음
 
     }

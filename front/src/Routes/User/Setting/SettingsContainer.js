@@ -1,7 +1,8 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import SettingsPresenter from './SettingsPresenter';
 
-export default class extends React.Component {
+class Setting extends React.Component {
 
     goBack = () => {
         this.props.history.goBack();
@@ -20,3 +21,5 @@ export default class extends React.Component {
             />);
     }
 }
+
+export default withRouter(Setting);

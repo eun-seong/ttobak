@@ -10,10 +10,16 @@ const Container = styled.div`
     padding: 20px;
 `;
 
+const Div = styled.div`
+    height: 65%;
+`;
+
 function CustomLearning() {
     return (
         <Container>
-            <ContentComp src={MainTherapy[0]} />
+            <Div>
+                <ContentComp src={MainTherapy[0]} />
+            </Div>
         </Container>
     );
 }

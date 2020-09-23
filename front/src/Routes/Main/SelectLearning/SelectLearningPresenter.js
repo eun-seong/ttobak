@@ -14,6 +14,10 @@ const Container = styled.div`
     padding-top: 0%;
 `;
 
+const ContentBox = styled.div`
+    height: 100px;
+`;
+
 const Line = styled.div`
     height: 2px;
     width: 100%;
@@ -22,7 +26,6 @@ const Line = styled.div`
 
 const SelectLearning = ({ ContentsList, goBack }) => {
     document.body.style.overflow = 'visible';
-    console.log(goBack);
 
     return (
         <Container>
@@ -30,7 +33,9 @@ const SelectLearning = ({ ContentsList, goBack }) => {
             {ContentsList.map((list) => {
                 return (
                     <div>
-                        <ContentComp src={list.img} key={list.index} />
+                        <ContentBox>
+                            <ContentComp src={list.img} key={list.index} flex={5} />
+                        </ContentBox>
                         <Line />
                     </div>
                 );

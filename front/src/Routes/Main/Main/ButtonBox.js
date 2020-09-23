@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Box = styled.div`
+const Box = styled(Link)`
     align-items: center;
     width: ${props => props.width || '100%'};
     height: ${props => props.height || '100%'};
@@ -26,14 +27,15 @@ const Content = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 100%;
     height: calc(100% - 40px);
     font-size: 0.8rem;
     text-align: center;
 `;
 
-const ButtonBox = ({ text, Contents, color, headercolor, width, height, goBack }) => {
+const ButtonBox = ({ text, Contents, color, headercolor, width, height, linkto }) => {
     return (
-        <Box color={color} width={width} height={height}>
+        <Box to={linkto} color={color} width={width} height={height}>
             <Header color={headercolor}>{text}</Header>
             <Content>
                 {Contents}

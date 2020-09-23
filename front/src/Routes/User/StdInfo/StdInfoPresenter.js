@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import StdInfoComp from './StdInfoComp';
 
-import StdBox from 'Components/StdBox';
+import StdBox from './StdBox';
 import ExplainBoxComp from 'Components/ExplainBoxComp';
-import BackButton from 'Components/BackButton';
 import level from 'const';
 
 /* styled-components */
@@ -16,11 +15,11 @@ const Container = styled.div`
     padding: 3% 4.5% 4% 4.5%;
 `;
 
-const HeaderBox = styled.div`
+const BoxContainer = styled.div`
     display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
+    width: 95%;
+    justify-content: flex-end;
+    align-self: flex-end;
 `;
 
 const InfoBox = styled.div`
@@ -37,10 +36,7 @@ const StdInfo = ({ goBack }) => {
         <Container>
             {/* TODO
             학습자 페이지 UI 변경 */}
-            <HeaderBox>
-                <BackButton goBack={goBack} size={'43px'} />
-                <StdBox />
-            </HeaderBox>
+            <BoxContainer><StdBox goBack={goBack} /></BoxContainer>
             <InfoBox>
                 <ExplainBoxComp Content={<StdInfoComp title={'총 학습량'} />} />
                 <ExplainBoxComp
