@@ -47,7 +47,7 @@ with open('script.txt', 'w') as f:
 linked = {}
 for result in results:
     idx = values.index(results[result])
-    linked[result] = 'script_{0:04d}'.format(idx)
+    linked[result] = 'script_{0:04d}'.format(idx+1)
 
 with open('linked.txt', 'w') as f:
     for el in linked:
