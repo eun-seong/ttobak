@@ -608,7 +608,7 @@ treatment/01_poemtext/poem_02_0022_0009 느릿느릿 달팽이
 treatment/01_poemtext/poem_02_0022_0010 너는 왜 이렇게 느리니
 treatment/01_poemtext/poem_02_0022_0011 세상 멋진 풍경 구경하느라
 treatment/01_poemtext/poem_02_0022_0012 느릿느릿 천천히 간단다
-treatment/01_poemtext/poem_03_0001_0001 두등실 달님이 떠오른다
+treatment/01_poemtext/poem_03_0001_0001 두둥실 달님이 떠오른다
 treatment/01_poemtext/poem_03_0001_0002 아침에는 어디로 갔는지
 treatment/01_poemtext/poem_03_0001_0003 찾아도 찾아도 안보이던 달님이
 treatment/01_poemtext/poem_03_0001_0004 수줍게 고개를 들이민다
