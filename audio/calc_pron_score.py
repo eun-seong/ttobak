@@ -2,14 +2,16 @@ import sys
 import math
 import json
 
+# 두 음운의 각 요소별로 Levenshtein 거리를 측정
 def levenshtein_distance_each(x, y):
-    if x == y:
+    if x == y: # 같으면 0
         return 0.0
-    elif int(x) == int(y):
+    elif int(x) == int(y): # 클래스가 같으면 차이의 제곱
         return (x - y) ** 2
-    else:
+    else: # 다르면 1
         return 1.0
 
+# Levenshtein 거리 측정
 def levenshtein_distance(phone1, phone2):
     table = {
         'g': (1.0, 4.0), 'gg': (1.3, 4.0), 'kh': (1.6, 4.0), 'g2': (1.0, 4.0),
@@ -30,7 +32,7 @@ def levenshtein_distance(phone1, phone2):
         'wae': (10.45, 10.65), 'yo': (10.15, 10.4), 'wo': (10.3, 10.775), 'we': (10.15, 10.525),
         'yu': (10.0, 10.45), 'ui': (10.0, 10.25), 'wa': (10.45, 10.65)
     }
-    if phone1 not in table or phone2 not in table:
+    if phone1 not in table or phone2 not in table: # 없는 음운이라면 0을 리턴
         return 0.0
     v1 = table[phone1]
     v2 = table[phone2]
@@ -38,23 +40,26 @@ def levenshtein_distance(phone1, phone2):
     x = levenshtein_distance_each(v1[0], v2[0])
     y = levenshtein_distance_each(v1[1], v2[1])
 
-    return math.sqrt((x+y) / 2.0)
+    return math.sqrt((x+y) / 2.0) # 두 거리 합을 2로 나눈 후 제곱근을 취함
 
 def get_distance(text1, text2):
     text1_len = len(text1)
     text2_len = len(text2)
 
+    # 변두리의 값을 초기화
     cache = [[0] * (text2_len+1) for _ in range(text1_len+1)]
     for i in range(0, text1_len+1):
         cache[i][0] = i
     for j in range(0, text2_len+1):
         cache[0][j] = j
 
+    # i, j에서의 최소 Levenshtein Distance 값을 구함
     for i in range(1, text1_len+1):
         for j in range(1, text2_len+1):
             cache[i][j] = min(cache[i][j-1]+1.0, cache[i-1][j]+1.0, cache[i-1][j-1]+levenshtein_distance(text1[i-1], text2[j-1])) 
     return cache[text1_len][text2_len]
 
+# 각각의 엘리먼트 시간 값을 integer로 바꿔줌
 def get_time(element):
     key = list(element.keys())[0]
     temp1 = key.split(':')
@@ -66,13 +71,12 @@ def get_time(element):
    
     return minutes * 60000 + seconds * 1000 + milis
 
+# 앞 음운과 뒤 음운 사이 시간 차이에 따른 스코어 값 계산(1.5초 이상 차이나면 감점)
 def get_time_score(element1, element2):
     time1 = get_time(element1)
     time2 = get_time(element2)
 
-    if time2 - time1 < 60:
-        return 1.0
-    elif time2 - time1 > 1500:
+    if time2 - time1 >= 1500:
         return -1.0
     else:
         return 0.0 
@@ -93,35 +97,39 @@ def calc_score(res, words, ans, trans, final):
     ans_file.close()
     words_file.close()
     
-    phone_score = -1.0
+    flag = False
+    phone_score = 0.0
     speed_score = 0.0
 
-    if len(temp0) == 0:
+    if len(temp0) == 0: # transcript 파일이 비어있으면 점수는 0점
         trans_text = ''
         phone_score = 0.0
         speed_score = 0.0
+        flag = True
     else:
         trans_text = temp0[0].strip()
 
-    if len(temp1) == 0:
+    if len(temp1) == 0: # answer 파일이 비어있으면 점수는 0점
         ans = []
         phone_score = 0.0
         speed_score = 0.0
+        flag = True
     else:
         ans = temp1[0].strip().split(' ')
     
     res = [list(el.values())[0] for el in data]
-    if len(res) == 0:
+    if len(res) == 0: # result json 파일이 비어있으면 점수는 0점
         phone_score = 0.0
         speed_score = 0.0
+        flag = True
 
-    if phone_score == -1.0:
-        avg_speed = get_time(data[-1]) / len(res)
+    if not flag: # 문제가 발생하지 않았다면
+        avg_speed = get_time(data[-1]) / len(res) # 말하는 평균 속도 계산
         
-        # add underbar to student's pronounce
+        # 음운 사이의 간격이 평균 속도의 1.7 이상이면 '_' 추가
         ins_cand = []
         for idx in range(len(data)-1):
-            if get_time(data[idx+1]) - get_time(data[idx]) > avg_speed * 1.7:
+            if get_time(data[idx+1]) - get_time(data[idx]) > avg_speed * 1.7: 
                 ins_cand.append(idx+len(ins_cand)+1)
         for el in ins_cand:
             res.insert(el, '_')
@@ -129,18 +137,20 @@ def calc_score(res, words, ans, trans, final):
         res_no_underbar = [el for el in res if el != '_']
         ans_no_underbar = [el for el in ans if el != '_']
 
+        # 정답 script와 학생 script 사이의 Levenshtein 거리 측정
         distance = get_distance(res_no_underbar, ans_no_underbar)
         total = max(len(res_no_underbar), len(ans_no_underbar))
 
+        # 100점 만점으로 phone_score를 계산
         phone_score = 100.0 - (distance / total * 100.0)
         
+        # -10 ~ 0점으로 speed 점수 계산
         for idx in range(len(data)-1):
             speed_score += get_time_score(data[idx], data[idx+1])
-        if speed_score > 10.0: speed_score = 10.0
         if speed_score < -10.0: speed_score = -10.0
 
         underbar_count = abs(ans.count('_') - res.count('_'))
-        rhythm_count_score = 5.0 if underbar_count == 0 else -min(underbar_count*0.5, 5.0)
+        rhythm_count_score = 0.0 if underbar_count == 0 else -min(underbar_count*0.5, 5.0) # 띄어쓰기 개수가 맞으면 0점, 틀리면 틀린 개수마다 0.5점 감점(최저는 -5.0)
 
         idx_underbar_res = [idx for idx, el in enumerate(res) if el == '_']
         idx_underbar_ans = [idx for idx, el in enumerate(ans) if el == '_']
@@ -156,7 +166,7 @@ def calc_score(res, words, ans, trans, final):
 
         rhythm_score = rhythm_count_score + rhythm_dis_score
 
-    score = min(100.0, phone_score + speed_score + rhythm_score)
+    score = min(100.0, phone_score + speed_score + rhythm_score) # 100점 만점으로 계산해서 발음 점수 + 속도 점수 + 리듬 점수 합산
     ans_text = ' '.join(ans)
     res_text = ' '.join(res)
 
