@@ -1,21 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ButtonDiv = styled.button`
-    width: 95px;
-    height: 34px;
-    font-size: 0.9rem;
-    font-family: 'paybooc-Medium';
     border-radius: 26px;
     border: 0px solid;
     margin-top: 10px;
+    padding: 0 10px;
     background-color:#AC9BC9;
     color: #ffffff;
 `;
 
-function Button({ text, onClick }) {
+const Text = styled.div`
+    font-size: 1.1rem;
+    font-family: 'paybooc-Medium';
+    padding: 10px 30px;
+`;
+
+function Button({ text, onClick, link }) {
     return (
-        <ButtonDiv onTouchEnd={onClick}>{text}</ButtonDiv>
+        <Link to={link}>
+            <ButtonDiv onTouchEnd={onClick}>
+                <Text>{text}</Text>
+            </ButtonDiv>
+        </Link>
     );
 }
 

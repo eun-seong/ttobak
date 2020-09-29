@@ -33,7 +33,7 @@ const Result = () => {
                 <ExplainBoxComp Content={<ResultContent />} margin={'25px'} />
                 <ExplainBoxComp Content={<ResultContent />} margin={'25px'} />
                 <ExplainBoxComp Content={<ResultContent />} margin={'25px'} />
-                <Link to='/main/main'><Button text={'확인'} /></Link>
+                <Button text={'확인'} link={'/main/main'} />
             </ScrollBox>
         </div>
     );
