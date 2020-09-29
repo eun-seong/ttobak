@@ -9,12 +9,16 @@ const DOWN = 'down';
 
 // D1_Api.ask(500, 1, 4);
 
-class Sweep extends React.Component {
+class Sweep extends React.PureComponent {
+    constructor() {
+        super();
+    }
+
     state = {
         gameState: false,
         UpButton: SwpTest.UpButton_UP,
         DownButton: SwpTest.DownButton_UP,
-        sweep: [],
+        url: [],
         path: [],
         oriAnswer: [],
         stdAnswer: [],
@@ -23,7 +27,6 @@ class Sweep extends React.Component {
         swp_id: null,
         s_id: 4,
     };
-
 
     onTouchStart = (id) => {
         const { Answer, stdAnswer, gameState } = this.state;
@@ -60,14 +63,16 @@ class Sweep extends React.Component {
                 this.setState({
                     DownButton: SwpTest.DownButton_UP
                 });
-                if (gameState) path[1].play();
+                if (gameState)
+                    window.BRIDGE.playSound(path[0]);
                 break;
             case UP:
                 // console.log('up-up');
                 this.setState({
                     UpButton: SwpTest.UpButton_UP
                 });
-                if (gameState) path[0].play();
+                if (gameState)
+                    window.BRIDGE.playSound(path[1]);
                 break;
             default:
         }
@@ -77,36 +82,38 @@ class Sweep extends React.Component {
     TTobakiTouch = async () => {
         const { gameState } = this.state;
         if (gameState) {
-            await this.state.sweep[0].play();
+            const { url } = this.state;
+            window.BRIDGE.playSound(url[0]);
             this.delay(1000);
-            await this.state.sweep[1].play();
+            window.BRIDGE.playSound(url[1]);
         } else {
             try {
                 const { data } = await D1_Api.ask(500, 1, 4);
-                // console.log(data);
+                console.log(data);
+
                 if (data.code === 1) {
                     const { answer1, answer2, down_path, up_path, swp_id } = data;
-
-                    const [url1, url2] = [
-                        answer1 === 'up' ? up_path : down_path,
-                        answer2 === 'up' ? up_path : down_path
-                    ];
 
                     this.setState({
                         gameState: true,
                         oriAnswer: [answer1, answer2],
                         swp_id: swp_id,
-                        sweep: [new Audio(url1), new Audio(url2)],
-                        path: [new Audio(up_path), new Audio(down_path)]
+                        url: [
+                            answer1 === 'up' ? up_path : down_path,
+                            answer2 === 'up' ? up_path : down_path
+                        ],
+                        path: [up_path, down_path],
                     });
 
-                    await this.state.sweep[0].play();
+                    const { url } = this.state;
+                    window.BRIDGE.playSound(url[0]);
                     this.delay(1000);
-                    await this.state.sweep[1].play();
+                    window.BRIDGE.playSound(url[1]);
+
                 }
-                else console.log(data.message);
+                else console.log('data message: ' + data.message);
             } catch (e) {
-                console.log(e);
+                console.log('error: ' + e);
             }
         }
     }
@@ -125,13 +132,12 @@ class Sweep extends React.Component {
             this.setState({
                 gameState: false,
                 Answer: [],
-                sweep: [],
+                url: [],
                 path: [],
                 oriAnswer: [],
                 stdAnswer: [],
             });
         }
-
     }
 
     delay = (ms) => {
@@ -141,7 +147,7 @@ class Sweep extends React.Component {
 
     render() {
         console.log(this.props.history);
-        const { UpButton, DownButton, Answer, TTobaki } = this.state;
+        const { UpButton, DownButton, Answer, TTobaki, url, playingStatus } = this.state;
 
         return (
             <SweepPresenter
@@ -153,6 +159,9 @@ class Sweep extends React.Component {
                 Answer={Answer}
                 TTobak={TTobaki}
                 TTobakiTouch={this.TTobakiTouch}
+                url={url}
+                status={playingStatus}
+                onEnded={() => console.log('onEnded')}
             />);
     }
 }

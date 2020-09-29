@@ -1,5 +1,5 @@
 import React from 'react';
-import CountingPresenter from './CountingPresenter';
+import CountPresenter from './CountPresenter';
 
 import Apple1 from 'img/t2_counting/apple1.png';
 import Apple2 from 'img/t2_counting/apple2.png';
@@ -35,7 +35,7 @@ export default class extends React.Component {
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
         return (
-            <CountingPresenter
+            <CountPresenter
                 onTreeClick={this.onTreeClick}
                 onTreeDrag={this.onTreeDrag}
                 onTreeDragEnd={this.onTreeDragEnd} />);

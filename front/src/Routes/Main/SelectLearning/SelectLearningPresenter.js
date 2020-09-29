@@ -34,7 +34,12 @@ const SelectLearning = ({ ContentsList, goBack }) => {
                 return (
                     <div key={list.index} >
                         <ContentBox>
-                            <ContentComp src={list.img} flex={5} />
+                            <ContentComp
+                                src={list.img}
+                                flex={5}
+                                title={list.title}
+                                explain={list.explain}
+                                url={list.url} />
                         </ContentBox>
                         <Line />
                     </div>

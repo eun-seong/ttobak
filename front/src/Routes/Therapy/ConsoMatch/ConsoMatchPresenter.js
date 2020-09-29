@@ -17,37 +17,14 @@ const BackgroundImg = styled(Img)`
     bottom:0;
 `;
 
-const TTobakComponent = styled.img`
-    position:absolute;
-    width: 17%;
-    top: 6%;
-    left: 39%;
-`;
-
-const Component = styled.div`
-    position:absolute;
-    display: flex;
-    justify-content:center;
-    bottom: 18%;
-    height: 31%;
-    width:100%;
-`;
-
-const TextBoxImg = styled.img`
-    height : 100%;
-`;
-
-const Shadowing = () => {
+const ConsoMatch = () => {
     return (
         <div>
             <PauseButton link={'/'} />
-            <TTobakComponent src={TTobak} alt='또박이' />
-            <Component>
-                <TextBoxImg src={TextBox} alt='textbox' />
-            </Component>
+            ConsoMatch
             <BackgroundImg src={Background} alt='배경화면' />
         </div>
     );
 }
 
-export default Shadowing;
+export default ConsoMatch;
