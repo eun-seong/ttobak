@@ -31,84 +31,6 @@ async def index(request):
 async def api_index(request):
     return await response.file('templates/api.html')
 
-@app.route('/api/user/update', methods=['POST'])
-async def update_user(request):
-    if "uid" not in request.form or \
-        "name" not in request.form or \
-        "gender" not in request.form:
-        return error(request.path, 1)
-
-    uid = request.form.get('uid')
-    name = request.form.get('name')
-    gender = request.form.get('gender')
-
-    if uid == '' or name == '' or gender == '':
-        return error(request.path, 2)
-    if gender != 'm' and gender != 'f':
-        return error(request.path, 5)
-
-    line = '{}|{}|{}\n'.format(uid, name, gender)
-
-    audio_info = open('../../data/AUDIO_INFO', 'a')
-    audio_info.write(line)
-    audio_info.close()
-
-    return response.json({'request': request.path, 'status': 'Success', 'code': 0})
-
-@app.route('/api/transcript/update', methods=['POST'])
-async def update_transcript(request):
-    if 'transcript' not in request.form or \
-        'course' not in request.form:
-        return error(request.path, 1)
-
-    transcript = request.form.get('transcript')
-    course = request.form.get('course')
-
-    if transcript == '' or course == '':
-        return error(request.path, 2)
-
-    lm = '../../model/lm'
-    target = '../../data/{}'.format(course)
-    try:
-        subprocess.run('python3 makeData.py "{}" {} {}'.format(transcript, lm, target), shell=True, check=True, cwd=os.path.abspath('../scripts'))
-    except:
-        return error(request.path, 4)
-
-    return response.json({'request': request.path, 'status': 'Success', 'code': 0})
-
-@app.route('/api/score', methods=['POST'])
-async def score(request):
-    if "course" not in request.form or \
-        "user" not in request.form or \
-        "file" not in request.files:
-        return error(request.path, 1)
-
-    course = request.form.get('course')
-    user = request.form.get('user')
-    file = request.files.get('file')
-
-    if course == '' or user == '':
-        return error(request.path, 2)
-
-    filename = make_filename(file.name)
-    if filename == '':
-        return error(request.path, 3)
-
-    f = open('temp/raw/' + filename, 'wb')
-    f.write(file.body)
-    f.close()
-
-    subprocess.run('./audio2pron.sh {} {} {}'.format(course, user, filename), shell=True, cwd=os.path.abspath('..'))
-
-    if not os.path.isfile('temp/result/{}.json'.format(filename)):
-        return error(request.path, 4)
-
-    result_file = open('temp/result/{}.json'.format(filename), 'r')
-    result = json.load(result_file)
-    result_file.close()
-
-    return response.json({'request': request.path, 'status': 'Success', 'code': 0, 'score': float(result['score']), 'phone_score': float(result['phone_score']), 'speed_score': float(result['speed_score']), 'rhythm_score': float(result['rhythm_score']), 'transcript': result['transcript'], 'transcript': result['transcript'], 'correct': result['correct'], 'student': result['student']})
-
 @app.route('/api/segscore', methods=['POST'])
 async def seg_score(request):
     if 'gender' not in request.form or \
@@ -143,7 +65,7 @@ async def seg_score(request):
     result = json.load(result_file)
     result_file.close()
 
-    return response.json({'request': request.path, 'status': 'Success', 'code': 0, 'score': float(result['score']), 'phone_score': float(result['phone_score']), 'speed_score': float(result['speed_score']), 'rhythm_score': float(result['rhythm_score']), 'transcript': result['transcript'], 'transcript': result['transcript'], 'correct': result['correct'], 'student': result['student']})
+    return response.json({'request': request.path, 'status': 'Success', 'code': 0, 'score': float(result['score']), 'phone_score': float(result['phone_score']), 'speed_score': float(result['speed_score']), 'rhythm_score': float(result['rhythm_score']), 'transcript': result['transcript'], 'student_transcript': result['student_trans'], 'correct': result['correct'], 'student': result['student']})
 
 
 def make_filename(filename):
