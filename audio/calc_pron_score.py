@@ -77,18 +77,21 @@ def get_time_score(element1, element2):
     else:
         return 0.0 
 
-def calc_score(res, ans, trans, final):
+def calc_score(res, words, ans, trans, final):
     trans_file = open(trans, 'r')
     res_file = open(res, 'r')
     ans_file = open(ans, 'r')
+    words_file = open(words, 'r')
     
     temp0 = trans_file.readlines()
     data = json.load(res_file)
     temp1 = ans_file.readlines()
-    
+    words_data = words_file.readline()    
+
     trans_file.close()
     res_file.close()
     ans_file.close()
+    words_file.close()
     
     phone_score = -1.0
     speed_score = 0.0
@@ -159,21 +162,22 @@ def calc_score(res, ans, trans, final):
 
     print('Transcript : ', trans_text)
     print('Correct : ', ans_text)
+    print('Student Transcript : ', words_data)
     print('Student : ', res_text)
     print('Score : ', score)
     print('Phone Score : ', phone_score)
     print('Speed Score : ', speed_score)
     print('Rhythm Score : ', rhythm_score)
     
-    result = {'score': score, 'phone_score': phone_score, 'speed_score': speed_score, 'rhythm_score': rhythm_score, 'transcript': trans_text, 'correct': ans_text, 'student': res_text}
+    result = {'score': score, 'phone_score': phone_score, 'speed_score': speed_score, 'rhythm_score': rhythm_score, 'transcript': trans_text, 'correct': ans_text, 'student_trans': words_data, 'student': res_text}
 
     final_file = open(final, 'w')
     json.dump(result, final_file)
     final_file.close()
 
 if __name__ == '__main__':
-    print(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
-    calc_score(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+    print(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
+    calc_score(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
     # res = '/home/marble/PycharmProjects/ali/1595071594619/result.txt'
     # ans = '/home/marble/PycharmProjects/data/00008024/00008024.prons.txt'
     # final = '/home/marble/PycharmProjects/result/00008024_104_1595070537522.txt'
