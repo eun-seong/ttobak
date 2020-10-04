@@ -168,4 +168,22 @@ def insert_treatment_06_vowelsound():
                 curs.execute(sql, (level, path1, path2, ex1, ex2))
     conn.commit()
 
-insert_treatment_06_vowelsound()
+def insert_treatment_07_consomatch():
+    default_path = '/treatment/07_consomatch/'
+
+    for script in range(1, 89):
+        text_path = '.' + default_path + 'text_{0:04d}.txt'.format(script)
+        with open(text_path) as f:
+            line = f.readline().strip()
+
+            path1 = default_path + 'text_{0:04d}_0001.wav'.format(script)
+            path2 = '/words/{}.{}.png'.format(script, line)
+
+            sql = '''INSERT INTO cure_master(cure_level, cure_path, cure_path2, cure_word, idx_id) 
+                            VALUES (1, %s, %s, %s, 7)'''
+
+            curs.execute(sql, (path1, path2, line))
+
+    conn.commit()
+
+insert_treatment_07_consomatch()
