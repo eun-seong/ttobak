@@ -95,3 +95,28 @@ def insert_treatment_03_count():
         curs.execute(sql, (path, line))
 
     conn.commit()
+
+def insert_treatment_04_common():
+    default_path = '/treatment/04_common/'
+
+    for level in range(1, 4):
+        for script in range(1, 21):
+            text_path = '.' + default_path + 'text_{0:02d}_{1:04d}.txt'.format(level, script)
+
+            with open(text_path) as f:
+                lines = f.readlines()
+                lines = [el.strip() for el in lines]
+
+                word1, word2, word3 = lines[:3]
+                ex1, ex2, ex3, ex4 = lines[3:7]
+                ans = lines[7]
+
+                paths = [default_path + 'text_{0:02d}_{1:04d}_{2:04d}.wav'.format(level, script, idx) for idx in range(1, 9)]
+
+                sql = '''INSERT INTO com_cure(com_level, com_w1, com_w2, com_w3, com_e1, com_e2, com_e3, com_e4, 
+                            com_ans, com_w1path, com_w2path, com_w3path, com_e1path, com_e2path, com_e3path, com_e4path) 
+                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'''
+
+                curs.execute(sql, (level, word1, word2, word3, ex1, ex2, ex3, ex4, ans,
+                                   paths[0], paths[1], paths[2], paths[3], paths[4], paths[5], paths[6]))
+    conn.commit()
