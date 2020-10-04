@@ -38,3 +38,24 @@ def insert_diagnose_02_recognition():
 
     conn.commit()
 
+def insert_dignose_03_attention():
+    default_path = '/diagnose/03_attention/'
+
+    for word_level in range(1, 6):
+        for noise_level in range(1, 6):
+            for script in range(1, 11):
+                path = default_path + 'atten_{0:02d}_{1:02d}_{2:04d}.wav'.format(word_level, noise_level, script)
+                level = (word_level-1) * 5 + noise_level
+
+                text_path = '.' + default_path + 'text_{0:02d}_{1:04d}.txt'.format(word_level, script)
+                with open(text_path) as f:
+                    line = f.readline().strip()
+
+                sql = '''INSERT INTO test_master(ques_level, ques_path1, ques_int, ques_char, idx_id)
+                            VALUES (%s, %s, %s, %s, 3)'''
+
+
+                curs.execute(sql, (level, path, script, line))
+
+    conn.commit()
+insert_dignose_03_attention()
