@@ -20,4 +20,21 @@ def insert_diagnose_01_sweeps():
 
     conn.commit()
 
-insert_diagnose_01_sweeps()
+def insert_diagnose_02_recognition():
+    default_path = '/diagnose/02_recognition/'
+
+    for dataset in range(1, 5):
+        for script in range(1, 51):
+            path = default_path + 'text_{0:02d}_{1:04d}_0001.wav'.format(dataset, script)
+
+            text_path = '.' + default_path + 'text_{0:02d}_{1:04d}.txt'.format(dataset, script)
+            with open(text_path) as f:
+                line = f.readline().strip()
+
+            sql = '''INSERT INTO test_master(ques_level, ques_path1, ques_int, ques_char, idx_id)
+                        VALUES (1, %s, %s, %s, 2)'''
+
+            curs.execute(sql, (path, dataset, line))
+
+    conn.commit()
+
