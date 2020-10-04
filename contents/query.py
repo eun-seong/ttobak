@@ -11,8 +11,8 @@ def insert_diagnose_01_sweeps():
 
     for level in levels:
         for freq in freqs:
-            path1 = default_path + 'd_{}_{}.wav'.format(freq, levels[level])
-            path2 = default_path + 'u_{}_{}.wav'.format(freq, levels[level])
+            path1 = default_path + 'd_{}_{}.mp3'.format(freq, levels[level])
+            path2 = default_path + 'u_{}_{}.mp3'.format(freq, levels[level])
 
             sql = '''INSERT INTO test_master(ques_level, ques_path1, ques_path2, ques_int, idx_id) 
                         VALUES (%s, %s, %s, %s, 1)'''
@@ -26,7 +26,7 @@ def insert_diagnose_02_recognition():
 
     for dataset in range(1, 5):
         for script in range(1, 51):
-            path = default_path + 'text_{0:02d}_{1:04d}_0001.wav'.format(dataset, script)
+            path = default_path + 'text_{0:02d}_{1:04d}_0001.mp3'.format(dataset, script)
 
             text_path = '.' + default_path + 'text_{0:02d}_{1:04d}.txt'.format(dataset, script)
             with open(text_path) as f:
@@ -45,7 +45,7 @@ def insert_dignose_03_attention():
     for word_level in range(1, 6):
         for noise_level in range(1, 6):
             for script in range(1, 11):
-                path = default_path + 'atten_{0:02d}_{1:02d}_{2:04d}.wav'.format(word_level, noise_level, script)
+                path = default_path + 'atten_{0:02d}_{1:02d}_{2:04d}.mp3'.format(word_level, noise_level, script)
                 level = (word_level-1) * 5 + noise_level
 
                 text_path = '.' + default_path + 'text_{0:02d}_{1:04d}.txt'.format(word_level, script)
@@ -71,7 +71,7 @@ def insert_treatment_01_poem():
                 lines = [el.strip() for el in lines if el.strip() != '']
 
                 for line in range(len(lines)):
-                    path = default_path + 'poem_{0:02d}_{1:04d}_{2:04d}.wav'.format(level, script, line+1)
+                    path = default_path + 'poem_{0:02d}_{1:04d}_{2:04d}.mp3'.format(level, script, line+1)
 
                     sql = '''INSERT INTO cure_master(cure_level, cure_path, cure_tid, cure_text, idx_id)
                                 VALUES (%s, %s, %s, %s, 1)'''
@@ -84,7 +84,7 @@ def insert_treatment_03_count():
     default_path = '/treatment/03_count/'
 
     for script in range(1, 61):
-        path = default_path + 'text_{0:04d}_0001.wav'.format(script)
+        path = default_path + 'text_{0:04d}_0001.mp3'.format(script)
         text_path = '.' + default_path + 'text_{0:04d}.txt'.format(script)
 
         with open(text_path) as f:
@@ -112,7 +112,7 @@ def insert_treatment_04_common():
                 ex1, ex2, ex3, ex4 = lines[3:7]
                 ans = lines[7]
 
-                paths = [default_path + 'text_{0:02d}_{1:04d}_{2:04d}.wav'.format(level, script, idx) for idx in range(1, 9)]
+                paths = [default_path + 'text_{0:02d}_{1:04d}_{2:04d}.mp3'.format(level, script, idx) for idx in range(1, 9)]
 
                 sql = '''INSERT INTO com_cure(com_level, com_w1, com_w2, com_w3, com_e1, com_e2, com_e3, com_e4, 
                             com_ans, com_w1path, com_w2path, com_w3path, com_e1path, com_e2path, com_e3path, com_e4path) 
@@ -130,7 +130,7 @@ def insert_treatment_05_vowelword():
         text_files.sort()
 
         for script in range(1, len(text_files)+1):
-            path = default_path + 'text_{0:02d}_{1:04d}_0001.wav'.format(level, script)
+            path = default_path + 'text_{0:02d}_{1:04d}_0001.mp3'.format(level, script)
             text_path = text_files[script-1]
 
             with open(text_path) as f:
@@ -156,8 +156,8 @@ def insert_treatment_06_vowelsound():
                 lines = [el.strip() for el in lines]
 
                 ans, ex1, ex2 = lines
-                path1 = default_path + 'text_{0:02d}_{1:04d}_0002.wav'.format(level, script)
-                path2 = default_path + 'text_{0:02d}_{1:04d}_0003.wav'.format(level, script)
+                path1 = default_path + 'text_{0:02d}_{1:04d}_0002.mp3'.format(level, script)
+                path2 = default_path + 'text_{0:02d}_{1:04d}_0003.mp3'.format(level, script)
 
                 if ans == ex2:
                     ex1, ex2 = ex2, ex1
@@ -176,7 +176,7 @@ def insert_treatment_07_consomatch():
         with open(text_path) as f:
             line = f.readline().strip()
 
-            path1 = default_path + 'text_{0:04d}_0001.wav'.format(script)
+            path1 = default_path + 'text_{0:04d}_0001.mp3'.format(script)
             path2 = '/words/{}.{}.png'.format(script, line)
 
             sql = '''INSERT INTO cure_master(cure_level, cure_path, cure_path2, cure_word, idx_id) 
@@ -231,7 +231,7 @@ def insert_treatment_09_consoword():
 
         for script in range(1, len(text_files) + 1):
             text_path = '.' + default_path + 'text_{0:02d}_{1:04d}.txt'.format(level, script)
-            path = default_path + 'text_{0:02d}_{1:04d}_0001.wav'.format(level, script)
+            path = default_path + 'text_{0:02d}_{1:04d}_0001.mp3'.format(level, script)
 
             with open(text_path) as f:
                 line = f.readline()
@@ -252,7 +252,7 @@ def insert_treatment_10_consosound():
 
         for script in range(1, len(text_files) + 1):
             text_path = '.' + default_path + 'text_{0:02d}_{1:04d}.txt'.format(level, script)
-            path = default_path + 'text_{0:02d}_{1:04d}_0001.wav'.format(level, script)
+            path = default_path + 'text_{0:02d}_{1:04d}_0001.mp3'.format(level, script)
 
             with open(text_path) as f:
                 lines = f.readlines()
@@ -281,7 +281,7 @@ def insert_treatment_11_selfpoem():
                 lines = [el.strip() for el in lines if el.strip() != '']
 
                 for line in range(len(lines)):
-                    path = default_path + 'poem_{0:02d}_{1:04d}_{2:04d}.wav'.format(level, script, line+1)
+                    path = default_path + 'poem_{0:02d}_{1:04d}_{2:04d}.mp3'.format(level, script, line+1)
 
                     sql = '''INSERT INTO cure_master(cure_level, cure_tid, cure_text, idx_id)
                                 VALUES (%s, %s, %s, 11)'''
