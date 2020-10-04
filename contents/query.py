@@ -243,4 +243,50 @@ def insert_treatment_09_consoword():
 
     conn.commit()
 
-insert_treatment_09_consoword()
+def insert_treatment_10_consosound():
+    default_path = '/treatment/10_consosound/'
+
+    for level in range(1, 7):
+        text_files = glob.glob('.' + default_path + 'text_{0:02d}_*'.format(level))
+        text_files.sort()
+
+        for script in range(1, len(text_files) + 1):
+            text_path = '.' + default_path + 'text_{0:02d}_{1:04d}.txt'.format(level, script)
+            path = default_path + 'text_{0:02d}_{1:04d}_0001.wav'.format(level, script)
+
+            with open(text_path) as f:
+                lines = f.readlines()
+                lines = [el.strip() for el in lines]
+
+                ans, ex1, ex2 = lines
+
+                if ans == ex2:
+                    ex1, ex2 = ex2, ex1
+
+                sql = '''INSERT INTO cure_master(cure_level, cure_path, cure_word, cure_word2, idx_id)
+                                    VALUES (%s, %s, %s, %s, 10)'''
+
+                curs.execute(sql, (level, path, ex1, ex2))
+
+    conn.commit()
+
+def insert_treatment_11_selfpoem():
+    default_path = '/treatment/01_poem/'
+
+    for level in range(1, 4):
+        for script in range(1, 21):
+            text_path = '.' + default_path + 'poem_{0:02d}_{1:04d}.txt'.format(level, script)
+            with open(text_path) as f:
+                lines = f.readlines()[2:]
+                lines = [el.strip() for el in lines if el.strip() != '']
+
+                for line in range(len(lines)):
+                    path = default_path + 'poem_{0:02d}_{1:04d}_{2:04d}.wav'.format(level, script, line+1)
+
+                    sql = '''INSERT INTO cure_master(cure_level, cure_tid, cure_text, idx_id)
+                                VALUES (%s, %s, %s, 11)'''
+
+                    curs.execute(sql, (level, script, lines[line]))
+
+    conn.commit()
+
