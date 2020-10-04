@@ -1,4 +1,5 @@
 import pymysql
+import glob
 
 conn = pymysql.connect(host='ttobak.cbbaovh5sf1x.ap-northeast-2.rds.amazonaws.com',user='root',password='soma2020',db='ttobak',charset='utf8')
 curs = conn.cursor()
@@ -120,3 +121,24 @@ def insert_treatment_04_common():
                 curs.execute(sql, (level, word1, word2, word3, ex1, ex2, ex3, ex4, ans,
                                    paths[0], paths[1], paths[2], paths[3], paths[4], paths[5], paths[6]))
     conn.commit()
+
+def insert_treatment_05_vowelword():
+    default_path = '/treatment/05_vowelword/'
+
+    for level in range(1, 4):
+        text_files = glob.glob('.' + default_path + 'text_{0:02d}_*'.format(level))
+        text_files.sort()
+
+        for script in range(1, len(text_files)+1):
+            path = default_path + 'text_{0:02d}_{1:04d}_0001.wav'.format(level, script)
+            text_path = text_files[script-1]
+
+            with open(text_path) as f:
+                line = f.readline().strip()
+
+                sql = '''INSERT INTO cure_master(cure_level, cure_path, cure_word, idx_id) 
+                            VALUES (%s, %s, %s, 5)'''
+                curs.execute(sql, (level, path, line))
+    conn.commit()
+
+insert_treatment_05_vowelword()
