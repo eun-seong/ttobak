@@ -180,10 +180,46 @@ def insert_treatment_07_consomatch():
             path2 = '/words/{}.{}.png'.format(script, line)
 
             sql = '''INSERT INTO cure_master(cure_level, cure_path, cure_path2, cure_word, idx_id) 
-                            VALUES (1, %s, %s, %s, 7)'''
+                               VALUES (1, %s, %s, %s, 7)'''
 
             curs.execute(sql, (path1, path2, line))
 
     conn.commit()
 
-insert_treatment_07_consomatch()
+def insert_treatment_08_consocommon():
+    default_path = '/treatment/08_consocommon/'
+    data_text = '''가방 가위 개구리 개미 고래 나무 나비 남자 너구리 날개 대나무 도끼 동전 
+                    두더지 둥지 라면 리코더 만두 망원경 모기 모자 미끄럼틀 바다 바지 반지 
+                    배꼽 버스 사과 사탕 서점 손목 쇠똥구리 열쇠 오렌지 오리 우산 운동장 자두 
+                    잠자리 조개 주전자 지우개 책 청소기 축구 치약 칫솔 카메라 캥거루 코끼리 
+                    키위 커피 타조 태양 탬버린 토끼 토마토 파리 편지 포도 피아노 피터팬 허리 
+                    호랑이 하마 연못 햄버거 꽃 꿈 꿩 꿀 땅콩 똥 떡 떡볶이 딸기 빨래 뻐꾸기 
+                    뽀뽀 뿌리 쓰레기 씨앗 씨름 쌀 짬뽕 짝수 쪽지 찌개'''
+    data = data_text.split(' ')
+
+    for level in range(1, 4):
+        text_files = glob.glob('.' + default_path + 'text_{0:02d}_*'.format(level))
+        text_files.sort()
+
+        for script in range(1, len(text_files)):
+            text_path = '.' + default_path + 'text_{0:02d}_{1:04d}.txt'.format(level, script)
+
+            with open(text_path) as f:
+                lines = f.readlines()
+                lines = [el.strip() for el in lines]
+
+                word, ex1, ex2, ans = lines
+
+                if word == ex2:
+                    ex1, ex2 = ex2, ex1
+
+                idx = data.index(word)
+                path = '/words/{}.{}.png'.format(idx, word)
+
+                sql = '''INSERT INTO cure_master(cure_level, cure_path, cure_word, cure_word2, cure_text, idx_id) 
+                               VALUES (%s, %s, %s, %s, %s, 8)'''
+
+                curs.execute(sql, (level, path, ex1, ex2, word))
+    conn.commit()
+
+insert_treatment_08_consocommon()
