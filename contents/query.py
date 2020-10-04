@@ -79,3 +79,19 @@ def insert_treatment_01_poem():
 
     conn.commit()
 
+def insert_treatment_03_count():
+    default_path = '/treatment/03_count/'
+
+    for script in range(1, 61):
+        path = default_path + 'text_{0:04d}_0001.wav'.format(script)
+        text_path = '.' + default_path + 'text_{0:04d}.txt'.format(script)
+
+        with open(text_path) as f:
+            line = f.readline().strip()
+
+        sql = '''INSERT INTO cure_master(cure_level, cure_path, cure_word, idx_id) 
+                    VALUES (1, %s, %s, 3)'''
+
+        curs.execute(sql, (path, line))
+
+    conn.commit()
