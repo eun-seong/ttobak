@@ -141,4 +141,31 @@ def insert_treatment_05_vowelword():
                 curs.execute(sql, (level, path, line))
     conn.commit()
 
-insert_treatment_05_vowelword()
+def insert_treatment_06_vowelsound():
+    default_path = '/treatment/06_vowelsound/'
+
+    for level in range(1, 6):
+        text_files = glob.glob('.' + default_path + 'text_{0:02d}_*'.format(level))
+        text_files.sort()
+
+        for script in range(1, len(text_files)+1):
+            text_path = text_files[script - 1]
+
+            with open(text_path) as f:
+                lines = f.readlines()
+                lines = [el.strip() for el in lines]
+
+                ans, ex1, ex2 = lines
+                path1 = default_path + 'text_{0:02d}_{1:04d}_0002.wav'.format(level, script)
+                path2 = default_path + 'text_{0:02d}_{1:04d}_0003.wav'.format(level, script)
+
+                if ans == ex2:
+                    ex1, ex2 = ex2, ex1
+                    path1, path2 = path2, path1
+
+                sql = '''INSERT INTO cure_master(cure_level, cure_path, cure_path2, cure_word, cure_word2, idx_id) 
+                            VALUES (%s, %s, %s, %s, %s, 6)'''
+                curs.execute(sql, (level, path1, path2, ex1, ex2))
+    conn.commit()
+
+insert_treatment_06_vowelsound()
