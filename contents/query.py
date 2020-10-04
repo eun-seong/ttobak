@@ -213,13 +213,34 @@ def insert_treatment_08_consocommon():
                 if word == ex2:
                     ex1, ex2 = ex2, ex1
 
-                idx = data.index(word)
+                idx = data.index(word) + 1
                 path = '/words/{}.{}.png'.format(idx, word)
 
                 sql = '''INSERT INTO cure_master(cure_level, cure_path, cure_word, cure_word2, cure_text, idx_id) 
-                               VALUES (%s, %s, %s, %s, %s, 8)'''
+                            VALUES (%s, %s, %s, %s, %s, 8)'''
 
                 curs.execute(sql, (level, path, ex1, ex2, word))
     conn.commit()
 
-insert_treatment_08_consocommon()
+def insert_treatment_09_consoword():
+    default_path = '/treatment/09_consoword/'
+
+    for level in range(1, 3):
+        text_files = glob.glob('.' + default_path + 'text_{0:02d}_*'.format(level))
+        text_files.sort()
+
+        for script in range(1, len(text_files) + 1):
+            text_path = '.' + default_path + 'text_{0:02d}_{1:04d}.txt'.format(level, script)
+            path = default_path + 'text_{0:02d}_{1:04d}_0001.wav'.format(level, script)
+
+            with open(text_path) as f:
+                line = f.readline()
+
+                sql = '''INSERT INTO cure_master(cure_level, cure_path, cure_word, idx_id)
+                            VALUES (%s, %s, %s, 9)'''
+
+                curs.execute(sql, (level, path, line))
+
+    conn.commit()
+
+insert_treatment_09_consoword()
