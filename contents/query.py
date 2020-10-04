@@ -58,4 +58,24 @@ def insert_dignose_03_attention():
                 curs.execute(sql, (level, path, script, line))
 
     conn.commit()
-insert_dignose_03_attention()
+
+def insert_treatment_01_poem():
+    default_path = '/treatment/01_poem/'
+
+    for level in range(1, 4):
+        for script in range(1, 21):
+            text_path = '.' + default_path + 'poem_{0:02d}_{1:04d}.txt'.format(level, script)
+            with open(text_path) as f:
+                lines = f.readlines()[2:]
+                lines = [el.strip() for el in lines if el.strip() != '']
+
+                for line in range(len(lines)):
+                    path = default_path + 'poem_{0:02d}_{1:04d}_{2:04d}.wav'.format(level, script, line+1)
+
+                    sql = '''INSERT INTO cure_master(cure_level, cure_path, cure_tid, cure_text, idx_id)
+                                VALUES (%s, %s, %s, %s, 1)'''
+
+                    curs.execute(sql, (level, path, script, lines[line]))
+
+    conn.commit()
+
