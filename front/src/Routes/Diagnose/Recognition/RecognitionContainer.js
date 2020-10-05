@@ -1,27 +1,25 @@
 import React from 'react';
 import RecognitionPresenter from './RecognitionPresenter';
+import { withRouter } from 'react-router-dom';
 
 import { TTobak, D2 } from 'images';
 import { D2_Api } from 'api';
-
-export default class extends React.Component {
-    /* 
-    모든 로직 추가 
-    api 가져오기
-    error 처리 등 모든 것
-     */
-
-    state = {
-        s_id: 4,
-        gameState: false,
-        Box: [D2.d2_Box1_1, D2.d2_Box2_1],
-        oriAnswer: null,
-        stdAnswer: null,
-        path: [],
-        answerIndex: null,
-        ph: [],
-        TTobaki: TTobak.ttobak3_1
-    };
+class Recognition extends React.PureComponent {
+    constructor({ s_id }) {
+        super();
+        this.state = {
+            s_id: s_id || 4,
+            gameState: false,
+            Box: [D2.d2_Box1_1, D2.d2_Box2_1],
+            oriAnswer: null,
+            stdAnswer: null,
+            path: [],
+            answerIndex: null,
+            ph: [],
+            audio: [],
+            TTobaki: TTobak.ttobak3_1
+        };
+    }
 
     Clicked = async (id) => {
         const { Box, answerIndex, TTobaki, gameState } = this.state;
@@ -46,53 +44,58 @@ export default class extends React.Component {
 
         this.finished();
         console.log(this.state);
-
-        // console.log(id);
-
     }
 
     TTobakiTouch = async () => {
         const { gameState } = this.state;
 
         if (gameState) {
-            const { path, answerIndex } = this.state;
-
-            await new Audio(path[0]).play();
-            this.delay(1000);
-            await new Audio(path[1]).play();
-            this.delay(1300);
-            await new Audio(path[answerIndex]).play();
-
+            this.playSound();
         } else {
             try {
-                this.setState({
-                })
                 const { data } = await D2_Api.ask(1, 4);
                 console.log(data);
                 if (data.code === 1) {
-                    const [ph_path, ph] = [[data.ph1_path, data.ph2_path], [data.ph1, data.ph2]];
                     const { answer } = data;
+                    const ph_path = [data.ph1_path, data.ph2_path];
+                    const ph = [data.ph1, data.ph2];
+                    console.log(ph_path);
 
                     this.setState({
                         gameState: true,
                         oriAnswer: answer,
                         path: ph_path,
                         answerIndex: (answer === ph[0] ? 0 : 1),
+                        audio: [new Audio(ph_path[(answer === ph[0] ? 0 : 1)]), new Audio(ph_path[0]), new Audio(ph_path[1])],
                         ph: ph,
                     });
 
                     console.log(this.state);
-                    const { path, answerIndex } = this.state;
-                    await new Audio(path[0]).play();
-                    this.delay(1000);
-                    await new Audio(path[1]).play();
-                    this.delay(1300);
-                    await new Audio(path[answerIndex]).play();
+                    this.playSound();
                 }
             } catch (e) {
                 console.log(e);
             }
         }
+    }
+
+    changeTTobaki = (ttobaki) => {
+        this.setState({
+            TTobaki: ttobaki
+        });
+    }
+
+    playSound = async () => {
+        const { audio } = this.state;
+        this.changeTTobaki(TTobak.ttobak2_2);
+        await audio[0].play();
+        this.delay(1300);
+        this.changeTTobaki(TTobak.ttobak3_1);
+
+        await audio[1].play();
+        this.delay(1300);
+
+        await audio[2].play();
     }
 
     finished = async () => {
@@ -117,7 +120,6 @@ export default class extends React.Component {
                 TTobaki: TTobak.ttobak3_1
             });
         }
-
     }
 
     delay = (ms) => {
@@ -126,12 +128,8 @@ export default class extends React.Component {
     }
 
     render() {
-        /*
-        presenter로 가는 모든 스테이트 값 렌더링
-        예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
-        */
-
         const { Box, TTobaki } = this.state;
+
         return (
             <RecognitionPresenter
                 Background={D2.d2_background}
@@ -142,3 +140,6 @@ export default class extends React.Component {
             />);
     }
 }
+
+
+export default withRouter(Recognition);

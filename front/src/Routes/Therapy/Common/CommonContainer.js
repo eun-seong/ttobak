@@ -1,4 +1,5 @@
 import React from 'react';
+import { T3 } from 'images';
 import CommonPresenter from './CommonPresenter';
 
 export default class extends React.Component {
@@ -12,6 +13,7 @@ export default class extends React.Component {
         presenter로 가는 모든 스테이트 값 렌더링
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
-        return (<CommonPresenter />);
+        return (<CommonPresenter
+            Background={T3.t3_background} />);
     }
 }

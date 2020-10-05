@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Box from 'img/t3_phoneme/frame.png';
-import ExcPic from 'img/t3_phoneme/excpic.png';
+import { T7 } from 'images';
 
 const PicBoxComponent = styled.div`
     display: flex;
@@ -22,8 +21,8 @@ const FrameBox = styled.img`
 const PicBox = ({ src }) => {
     return (
         <PicBoxComponent>
-            <Picture src={ExcPic} alt='그림' />
-            <FrameBox src={Box} alt='정답박스' />
+            <Picture src={T7.t7_excpic} alt='그림' />
+            <FrameBox src={T7.t7_frame} alt='정답박스' />
         </PicBoxComponent>
     );
 }
