@@ -83,9 +83,14 @@ class Sweep extends React.PureComponent {
         const { gameState } = this.state;
         if (gameState) {
             const { url } = this.state;
-            window.BRIDGE.playSound(url[0]);
+
+            window.BRIDGE.playSound('https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/diagnose/sweep/d_500_80.wav');
             this.delay(1000);
-            window.BRIDGE.playSound(url[1]);
+            window.BRIDGE.playSound('https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/diagnose/sweep/u_500_80.wav');
+
+            // window.BRIDGE.playSound(url[0]);
+            // this.delay(1000);
+            // window.BRIDGE.playSound(url[1]);
         } else {
             try {
                 const { data } = await D1_Api.ask(500, 1, 4);
@@ -106,9 +111,14 @@ class Sweep extends React.PureComponent {
                     });
 
                     const { url } = this.state;
-                    window.BRIDGE.playSound(url[0]);
+                    window.BRIDGE.playSound('https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/diagnose/sweep/d_500_80.wav');
                     this.delay(1000);
-                    window.BRIDGE.playSound(url[1]);
+                    window.BRIDGE.playSound('https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/diagnose/sweep/u_500_80.wav');
+
+
+                    // window.BRIDGE.playSound(url[0]);
+                    // this.delay(1000);
+                    // window.BRIDGE.playSound(url[1]);
 
                 }
                 else console.log('data message: ' + data.message);

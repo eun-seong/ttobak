@@ -40,7 +40,7 @@ const UserInfo = ({ goBack }) => {
             <HeaderComp title={'회원 정보'} goBack={goBack} />
             <Contents>
                 <InputBoxComp />
-                <Button text={'비밀번호 변경'} link={'/user/chpassword'} />
+                <Button text={'비밀번호 변경'} to='/user/chpassword' />
             </Contents>
             <TextButton>
                 <Text to=''>회원 탈퇴</Text>

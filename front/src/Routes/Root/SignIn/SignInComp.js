@@ -34,7 +34,7 @@ const ForgotPassword = styled.div`
     margin-top: 3px;
 `;
 
-const SignUpBt = styled.div`
+const SignUpBt = styled(Link)`
     margin-top: 5px;
 `;
 
@@ -48,10 +48,8 @@ function SignInComp({ handleSubmit, setId, setPassword }) {
                     <Link to='/root/forgotpassword'>비밀번호를 잊으셨나요?</Link>
                 </ForgotPassword>
             </SignInBox>
-            <Link to='/'>
-                <SubmitButton onClick={handleSubmit} text={'확인'} />
-            </Link>
-            <Link to='/root/signup'><SignUpBt>회원 가입</SignUpBt></Link>
+            <SubmitButton onClick={handleSubmit} text={'확인'} to='/' />
+            <SignUpBt to='/root/signup'>회원 가입</SignUpBt>
         </CompBox>
     );
 }

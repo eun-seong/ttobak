@@ -56,9 +56,7 @@ function AddStudentComp({ iconNum }) {
                     <InputBoxComp text={'성별'} />
                 </InputComp>
             </StudentBox>
-            <Link to='/'>
-                <SubmitButton text={'검사 시작'} />
-            </Link>
+            <SubmitButton text={'검사 시작'} to='/' />
         </CompBox>
     );
 }

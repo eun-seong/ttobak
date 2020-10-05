@@ -35,9 +35,7 @@ function SignInComp({ handleSubmit }) {
             <ForgotBox>
                 <InputBox type='text' placeholder='이메일' />
             </ForgotBox>
-            <Link to='/root/signin'>
-                <SubmitButton onClick={handleSubmit} text={'확인'} />
-            </Link>
+            <SubmitButton onClick={handleSubmit} text={'확인'} to='/root/signin' />
         </CompBox>
     );
 }

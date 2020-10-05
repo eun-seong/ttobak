@@ -37,9 +37,7 @@ function SignUpComp({ handleSubmit }) {
                 <InputBox type='password' placeholder='비밀번호' />
                 <InputBox type='password' placeholder='비밀번호 확인' />
             </SignUpBox>
-            <Link to='/root/addstd'>
-                <SubmitButton onClick={handleSubmit} text={'회원 가입'} />
-            </Link>
+            <SubmitButton onClick={handleSubmit} text={'회원 가입'} to='/root/addstd' />
         </CompBox>
     );
 }

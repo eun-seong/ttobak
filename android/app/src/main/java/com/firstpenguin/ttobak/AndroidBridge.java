@@ -37,7 +37,7 @@ public class AndroidBridge{
                 mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 try {
                     mp.setDataSource(sweepURl);
-                    mp.prepare(); // might take long! (for buffering, etc)
+                    mp.prepareAsync(); // might take long! (for buffering, etc)
                 } catch (IOException e){
                     Log.d(LOG_TAG, "onClick: "+e);
                 }

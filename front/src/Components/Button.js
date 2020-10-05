@@ -17,9 +17,9 @@ const Text = styled.div`
     padding: 10px 30px;
 `;
 
-function Button({ text, onClick, link }) {
+function Button({ text, onClick, to }) {
     return (
-        <Link to={link}>
+        <Link to={to}>
             <ButtonDiv onTouchEnd={onClick}>
                 <Text>{text}</Text>
             </ButtonDiv>
