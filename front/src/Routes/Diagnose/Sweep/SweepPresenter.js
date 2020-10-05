@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Sound from 'react-sound';
 
 import AnswerBoxComp from './AnswerBox';
 import PauseButton from 'Components/PauseButton';
@@ -54,13 +55,27 @@ const TTobakComponent = styled.img`
 `;
 
 const Sweep = (props) => {
+    console.log('Sweep');
+    console.log(props);
     return (
         <div>
             <PauseButton link={'/'} />
+            {/* 또박이 사운드 재생 */}
+            <Sound url={props.ttobakSound.url}
+                playStatus={props.ttobakSound.playingStatus}
+                onFinishedPlaying={props.handleTTobakFinishedPlaying}
+                autoLoad={true}
+                ignoreMobileRestrictions={true} />
             <TTobakComponent src={props.TTobak} alt='또박이' onTouchEnd={props.TTobakiTouch} />
             <Component>
                 <AnswerBoxComp Answer1={props.Answer[0]} Answer2={props.Answer[1]} />
                 <ButtonComponent>
+                    {/* 버튼 사운드 재생 */}
+                    <Sound url={props.buttonSound.url}
+                        playStatus={props.buttonSound.buttonPlayingStatus}
+                        onFinishedPlaying={props.handleButtonFinishedPlaying}
+                        autoLoad={true}
+                        ignoreMobileRestrictions={true} />
                     <UpButtonImg
                         src={props.UpButton}
                         alt='up'

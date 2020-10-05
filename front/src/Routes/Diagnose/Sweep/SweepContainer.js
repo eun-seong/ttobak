@@ -3,6 +3,7 @@ import SweepPresenter from './SweepPresenter';
 import { D1_Api } from 'api';
 import { SwpTest, TTobak } from 'images';
 import { withRouter } from 'react-router-dom';
+import Sound from 'react-sound';
 
 const UP = 'up';
 const DOWN = 'down';
@@ -15,23 +16,29 @@ class Sweep extends React.PureComponent {
     }
 
     state = {
-        gameState: false,
-        UpButton: SwpTest.UpButton_UP,
-        DownButton: SwpTest.DownButton_UP,
-        url: [],
-        path: [],
-        oriAnswer: [],
-        stdAnswer: [],
-        Answer: [],
-        TTobaki: TTobak.ttobak1_1,
-        swp_id: null,
-        s_id: 4,
+        gameState: false,                           // 게임 상태
+        UpButton: SwpTest.UpButton_UP,              // 버튼 이미지 상태
+        DownButton: SwpTest.DownButton_UP,          // 버튼 이미지 상태
+        url: [],                                    // sweep 정답 순서 경로
+        path: [],                                   // up_sweep, down_sweep 소리 경로
+        oriAnswer: [],                              // 정답
+        stdAnswer: [],                              // 학습자 정답
+        Answer: [],                                 // 정답 상자
+        TTobaki: TTobak.ttobak1_1,                  // 또박이 이미지 상태
+        swp_id: null,                               // sweep 검사 아이디 
+        s_id: 4,                                    // 학습자 아이디
+        buttonSound: {
+            buttonPlayingStatus: Sound.status.STOPPED,  // 사운드 재생상태
+            url: null
+        },
+        ttobakSound: {
+            ttobakPlayingStatus: Sound.status.STOPPED,  // 사운드 재생상태
+            url: null
+        }
     };
 
     onTouchStart = (id) => {
         const { Answer, stdAnswer, gameState } = this.state;
-        // TODO
-        // 두 개 모두 채워지면 정답 애니메이션 나온 후 정답 상자 리셋
 
         switch (id) {
             case DOWN:
@@ -55,7 +62,8 @@ class Sweep extends React.PureComponent {
     }
 
     onTouchEnd = (id) => {
-        // console.log(this.state);
+        console.log('onTouchEnd');
+        console.log(this.state);
         const { gameState, path } = this.state;
         switch (id) {
             case DOWN:
@@ -64,7 +72,12 @@ class Sweep extends React.PureComponent {
                     DownButton: SwpTest.DownButton_UP
                 });
                 if (gameState)
-                    window.BRIDGE.playSound(path[0]);
+                    this.setState({
+                        buttonSound: {
+                            buttonPlayingStatus: Sound.status.PLAYING,
+                            url: 'https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/diagnose/01_sweeps/d_500_80.mp3'//path[0]
+                        }
+                    })
                 break;
             case UP:
                 // console.log('up-up');
@@ -72,7 +85,12 @@ class Sweep extends React.PureComponent {
                     UpButton: SwpTest.UpButton_UP
                 });
                 if (gameState)
-                    window.BRIDGE.playSound(path[1]);
+                    this.setState({
+                        buttonSound: {
+                            buttonPlayingStatus: Sound.status.PLAYING,
+                            url: 'https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/diagnose/01_sweeps/u_500_80.mp3'//path[1]
+                        }
+                    })
                 break;
             default:
         }
@@ -80,13 +98,15 @@ class Sweep extends React.PureComponent {
     }
 
     TTobakiTouch = async () => {
+        // console.log(this.state);
+
         const { gameState } = this.state;
         if (gameState) {
             const { url } = this.state;
 
-            window.BRIDGE.playSound('https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/diagnose/sweep/d_500_80.wav');
-            this.delay(1000);
-            window.BRIDGE.playSound('https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/diagnose/sweep/u_500_80.wav');
+            // window.BRIDGE.playSound('https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/diagnose/sweep/d_500_80.wav');
+            // this.delay(1000);
+            // window.BRIDGE.playSound('https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/diagnose/sweep/u_500_80.wav');
 
             // window.BRIDGE.playSound(url[0]);
             // this.delay(1000);
@@ -95,10 +115,10 @@ class Sweep extends React.PureComponent {
             try {
                 const { data } = await D1_Api.ask(500, 1, 4);
                 console.log(data);
+                // window.BRIDGE.toast(JSON.stringify(data.data));
 
                 if (data.code === 1) {
                     const { answer1, answer2, down_path, up_path, swp_id } = data;
-
                     this.setState({
                         gameState: true,
                         oriAnswer: [answer1, answer2],
@@ -110,16 +130,20 @@ class Sweep extends React.PureComponent {
                         path: [up_path, down_path],
                     });
 
-                    const { url } = this.state;
-                    window.BRIDGE.playSound('https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/diagnose/sweep/d_500_80.wav');
-                    this.delay(1000);
-                    window.BRIDGE.playSound('https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/diagnose/sweep/u_500_80.wav');
-
-
-                    // window.BRIDGE.playSound(url[0]);
+                    // this.setState({
+                    //     playingStatus: Sound.status.PLAYING
+                    // })
                     // this.delay(1000);
-                    // window.BRIDGE.playSound(url[1]);
-
+                    // this.setState({
+                    //     playingStatus: Sound.status.PLAYING
+                    // })
+                    // soundManager.setup({
+                    //     url: url,
+                    //     ignoreMobileRestrictions: true,
+                    // })
+                    // window.BRIDGE.playSound('https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/diagnose/sweep/d_500_80.wav');
+                    // this.delay(1000);
+                    // window.BRIDGE.playSound('https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/diagnose/sweep/u_500_80.wav');
                 }
                 else console.log('data message: ' + data.message);
             } catch (e) {
@@ -150,14 +174,29 @@ class Sweep extends React.PureComponent {
         }
     }
 
-    delay = (ms) => {
+    handleButtonFinishedPlaying = () => {
+        this.setState({
+            buttonSound: {
+                buttonPlayingStatus: Sound.status.PLAYING,
+                url: null
+            }
+        })
+    }
+
+    handleTTobakFinishedPlaying = () => {
+        this.setState({
+            ttobakPlayingStatus: Sound.status.STOPPED
+        })
+    }
+
+    delay = async (ms) => {
         const now = new Date().getTime()
         while (new Date().getTime() < now + ms) { }
     }
 
     render() {
         console.log(this.props.history);
-        const { UpButton, DownButton, Answer, TTobaki, url, playingStatus } = this.state;
+        const { UpButton, DownButton, Answer, TTobaki, buttonSound, ttobakSound } = this.state;
 
         return (
             <SweepPresenter
@@ -169,9 +208,9 @@ class Sweep extends React.PureComponent {
                 Answer={Answer}
                 TTobak={TTobaki}
                 TTobakiTouch={this.TTobakiTouch}
-                url={url}
-                status={playingStatus}
-                onEnded={() => console.log('onEnded')}
+                buttonSound={buttonSound} ttobakSound={ttobakSound}
+                handleButtonFinishedPlaying={this.handleButtonFinishedPlaying}
+                handleTTobakFinishedPlaying={this.handleTTobakFinishedPlaying}
             />);
     }
 }

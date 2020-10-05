@@ -12,7 +12,7 @@ const BackButtonStyled = styled.img`
 function BackButton({ goBack }) {
     return (
         <BackButtonStyled src={Images.bt_back} alt='뒤로가기'
-            onTouchEnd={goBack} />
+            onClick={goBack} />
     );
 }
 

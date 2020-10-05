@@ -4,8 +4,12 @@ import StdInfoPresenter from './StdInfoPresenter';
 
 class StdInfo extends React.Component {
 
-    goBack = () => {
+    goBack = e => {
+        this.preventDefault = true;
         this.props.history.goBack();
+        e.stopPropagation();
+        this.preventDefault = false;
+        e.nativeEvent.stopImmediatePropagation();
     }
 
     render() {

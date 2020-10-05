@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-sound": "^1.2.0",
+    "soundmanager2": "^2.97.20170602"
+  }
+}

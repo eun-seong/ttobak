@@ -59,4 +59,9 @@ public class AndroidBridge{
         mp = null;
     }
 
+    @JavascriptInterface
+    public void toast(String str){
+        Log.d(LOG_TAG, "toast: "+str);
+    }
+
 }
