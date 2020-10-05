@@ -1,12 +1,7 @@
 import React from 'react';
 import CountPresenter from './CountPresenter';
 
-import Apple1 from 'img/t2_counting/apple1.png';
-import Apple2 from 'img/t2_counting/apple2.png';
-import Apple3 from 'img/t2_counting/apple3.png';
-import Apple4 from 'img/t2_counting/apple4.png';
-
-const Apples = [Apple1, Apple2, Apple3, Apple4];
+import { T2, TTobak } from 'images';
 
 export default class extends React.Component {
     state = {
@@ -15,7 +10,7 @@ export default class extends React.Component {
 
     onTreeClick = () => {
         console.log('tree Clicked');
-        const apple = Apples[Math.floor(Math.random * 3)];
+        const apple = T2.t2_Apples[Math.floor(Math.random * 3)];
         return (
             <img src={apple} alt='사과' draggable='true' />
         );
@@ -36,6 +31,9 @@ export default class extends React.Component {
         */
         return (
             <CountPresenter
+                Background={T2.t2_background}
+                Basket={T2.t2_basket}
+                TTobak={TTobak[0]}
                 onTreeClick={this.onTreeClick}
                 onTreeDrag={this.onTreeDrag}
                 onTreeDragEnd={this.onTreeDragEnd} />);

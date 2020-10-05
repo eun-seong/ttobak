@@ -1,12 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import PauseButton from 'Components/PauseButton';
-import Background from 'img/t2_counting/t2_background.png'
-import Tree from 'img/t2_counting/tree.png'
-import Basket from 'img/t2_counting/basket.png';
-import TTobak from 'img/ttobak/ttobak1-1.png';
 
 /* styled-components */
 const Img = styled.img`
@@ -40,16 +35,16 @@ const TTobakComponent = styled.img`
     right: 20%;
 `;
 
-const Counting = ({ onTreeClick, onTreeDragStart, onTreeDragEnd }) => {
+const Counting = ({ onTreeClick, onTreeDragStart, onTreeDragEnd, Background, TTobak, Basket }) => {
     return (
         <div>
             <TTobakComponent src={TTobak} alt='또박이' onClick={() => alert('hi')} />
-            <TreeImg
+            {/* <TreeImg
                 src={Tree}
                 alt='나무'
                 onTouchStart={onTreeClick}
                 onDragStart={onTreeDragStart}
-                onDragEnd={onTreeDragEnd} />
+                onDragEnd={onTreeDragEnd} /> */}
             <BasketImg src={Basket} alt='바구니' />
             <PauseButton link={'/'} />
             <BackgroundImg src={Background} alt='배경화면' />

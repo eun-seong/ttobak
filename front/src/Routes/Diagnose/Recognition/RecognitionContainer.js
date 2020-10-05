@@ -1,7 +1,7 @@
 import React from 'react';
 import RecognitionPresenter from './RecognitionPresenter';
 
-import { TTobak, Recognition } from 'images';
+import { TTobak, D2 } from 'images';
 import { D2_Api } from 'api';
 
 export default class extends React.Component {
@@ -14,7 +14,7 @@ export default class extends React.Component {
     state = {
         s_id: 4,
         gameState: false,
-        Box: [Recognition.Box1_1, Recognition.Box2_1],
+        Box: [D2.d2_Box1_1, D2.d2_Box2_1],
         oriAnswer: null,
         stdAnswer: null,
         path: [],
@@ -30,13 +30,13 @@ export default class extends React.Component {
         switch (id) {
             case 0:
                 this.setState({
-                    Box: [answerIndex === id ? Recognition.Box1_3 : Recognition.Box1_2, Box[1]],
+                    Box: [answerIndex === id ? D2.d2_Box1_3 : D2.d2_Box1_2, Box[1]],
                     TTobaki: [answerIndex === id ? TTobak.ttobak2_1 : TTobaki]
                 });
                 break;
             case 1:
                 this.setState({
-                    Box: [Box[0], answerIndex === id ? Recognition.Box2_3 : Recognition.Box2_2],
+                    Box: [Box[0], answerIndex === id ? D2.d2_Box2_3 : D2.d2_Box2_2],
                     TTobaki: [answerIndex === id ? TTobak.ttobak2_1 : TTobaki]
                 });
                 break;
@@ -108,7 +108,7 @@ export default class extends React.Component {
             this.delay(2000);
             this.setState({
                 gameState: false,
-                Box: [Recognition.Box1_1, Recognition.Box2_1],
+                Box: [D2.d2_Box1_1, D2.d2_Box2_1],
                 oriAnswer: null,
                 stdAnswer: null,
                 path: [],
@@ -134,6 +134,7 @@ export default class extends React.Component {
         const { Box, TTobaki } = this.state;
         return (
             <RecognitionPresenter
+                Background={D2.d2_background}
                 TTobaki={TTobaki}
                 TTobakiTouch={this.TTobakiTouch}
                 Box={Box}

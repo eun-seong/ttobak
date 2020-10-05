@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Container = styled(Link)`
+const Container = styled.div`
     display: flex;
     height: 100%;
     flex-direction: row;
@@ -34,9 +34,9 @@ const Explain = styled.div`
     font-size: 1rem;
 `;
 
-function ContentComp({ src, title, explain, flex, url }) {
+function ContentComp({ src, title, explain, flex }) {
     return (
-        <Container to={url}>
+        <Container>
             <Img src={src} alt='이미지' />
             <Text flex={flex}>
                 <Title>{title || '어음청취력'}</Title>

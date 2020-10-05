@@ -1,12 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Sound from 'react-sound';
 
-import AnswerBoxComp from './AnswerBox';
 import PauseButton from 'Components/PauseButton';
 
-import Background from 'img/d1_sweep/d1_background.png'
+import AnswerBoxComp from './AnswerBox';
 
 /* styled-components */
 const BackgroundImg = styled.img`
@@ -88,7 +86,7 @@ const Sweep = (props) => {
                         onTouchEnd={() => props.onTouchEnd(props.DOWN)} />
                 </ButtonComponent>
             </Component>
-            <BackgroundImg src={Background} alt='배경화면' />
+            <BackgroundImg src={props.Background} alt='배경화면' />
         </div>
     );
 }

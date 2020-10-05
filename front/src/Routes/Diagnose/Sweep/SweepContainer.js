@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import SweepPresenter from './SweepPresenter';
 import { D1_Api } from 'api';
-import { SwpTest, TTobak } from 'images';
+import { D1, TTobak } from 'images';
 import { withRouter } from 'react-router-dom';
 import Sound from 'react-sound';
 
@@ -17,8 +17,8 @@ class Sweep extends React.PureComponent {
 
     state = {
         gameState: false,                           // 게임 상태
-        UpButton: SwpTest.UpButton_UP,              // 버튼 이미지 상태
-        DownButton: SwpTest.DownButton_UP,          // 버튼 이미지 상태
+        UpButton: D1.d1_UpButton_UP,              // 버튼 이미지 상태
+        DownButton: D1.d1_DownButton_UP,          // 버튼 이미지 상태
         url: [],                                    // sweep 정답 순서 경로
         path: [],                                   // up_sweep, down_sweep 소리 경로
         oriAnswer: [],                              // 정답
@@ -44,16 +44,16 @@ class Sweep extends React.PureComponent {
             case DOWN:
                 // console.log('down-down');
                 this.setState({
-                    DownButton: SwpTest.DownButton_DOWN,
-                    Answer: Answer.concat(gameState ? SwpTest.AnswerDown : []),
+                    DownButton: D1.d1_DownButton_DOWN,
+                    Answer: Answer.concat(gameState ? D1.d1_AnswerDown : []),
                     stdAnswer: stdAnswer.concat(gameState ? DOWN : [])
                 });
                 break;
             case UP:
                 // console.log('up-down');
                 this.setState({
-                    UpButton: SwpTest.UpButton_DOWN,
-                    Answer: Answer.concat(gameState ? SwpTest.AnswerUp : []),
+                    UpButton: D1.d1_UpButton_DOWN,
+                    Answer: Answer.concat(gameState ? D1.d1_AnswerUp : []),
                     stdAnswer: stdAnswer.concat(gameState ? UP : [])
                 });
                 break;
@@ -69,7 +69,7 @@ class Sweep extends React.PureComponent {
             case DOWN:
                 // console.log('down-up');
                 this.setState({
-                    DownButton: SwpTest.DownButton_UP
+                    DownButton: D1.d1_DownButton_UP
                 });
                 if (gameState)
                     this.setState({
@@ -82,7 +82,7 @@ class Sweep extends React.PureComponent {
             case UP:
                 // console.log('up-up');
                 this.setState({
-                    UpButton: SwpTest.UpButton_UP
+                    UpButton: D1.d1_UpButton_UP
                 });
                 if (gameState)
                     this.setState({
@@ -200,6 +200,7 @@ class Sweep extends React.PureComponent {
 
         return (
             <SweepPresenter
+                Background={D1.d1_background}
                 UP={UP} DOWN={DOWN}
                 onTouchStart={this.onTouchStart}
                 onTouchEnd={this.onTouchEnd}

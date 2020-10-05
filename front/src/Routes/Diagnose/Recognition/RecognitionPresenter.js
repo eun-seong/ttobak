@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import AnswerComp from './AnswerComp';
 import PauseButton from 'Components/PauseButton';
 
-import Background from 'img/d2_recognition/d2_background.png'
+import AnswerComp from './AnswerComp';
 
 /* styled-components */
 const Img = styled.img`
@@ -23,7 +22,7 @@ const TTobakComponent = styled.img`
     right: 43%;
 `;
 
-const Recognition = ({ TTobaki, Box, Clicked, TTobakiTouch }) => {
+const Recognition = ({ TTobaki, Box, Clicked, TTobakiTouch, Background }) => {
     return (
         <div>
             <PauseButton link={'/'} />

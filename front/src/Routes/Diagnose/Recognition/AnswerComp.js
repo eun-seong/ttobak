@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import BoxComp from './BoxComp';
-import { Recognition } from 'images';
+import { D2 } from 'images';
 
 const Component = styled.div`
     position: absolute;
@@ -15,8 +15,8 @@ const Component = styled.div`
 const AnswerComp = ({ Box, Clicked }) => {
     return (
         <Component>
-            <BoxComp Tree={Recognition.Tree1} Box={Box[0]} Clicked={Clicked} id={0} />
-            <BoxComp Tree={Recognition.Tree2} Box={Box[1]} Clicked={Clicked} id={1} />
+            <BoxComp Tree={D2.d2_Tree1} Box={Box[0]} Clicked={Clicked} id={0} />
+            <BoxComp Tree={D2.d2_Tree2} Box={Box[1]} Clicked={Clicked} id={1} />
         </Component>
     );
 }
