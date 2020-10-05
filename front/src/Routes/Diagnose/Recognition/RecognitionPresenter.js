@@ -22,12 +22,12 @@ const TTobakComponent = styled.img`
     right: 43%;
 `;
 
-const Recognition = ({ TTobaki, Box, Clicked, TTobakiTouch, Background }) => {
+const Recognition = ({ TTobaki, Box, Clicked, TTobakiTouch, Background, isAnimate }) => {
     return (
         <div>
             <PauseButton link={'/'} />
             <TTobakComponent src={TTobaki} alt='또박이' onTouchEnd={TTobakiTouch} />
-            <AnswerComp Box={Box} Clicked={Clicked} />
+            <AnswerComp Box={Box} Clicked={Clicked} isAnimate={isAnimate} />
             <BackgroundImg src={Background} alt='배경화면' />
         </div>
     );

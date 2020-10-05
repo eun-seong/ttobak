@@ -105,11 +105,22 @@ class Sweep extends React.PureComponent {
         }
     }
 
-    playSound = async () => {
+    playSound = () => {
         const { sweep } = this.state;
-        await sweep[0].play();
-        this.delay(1000);
-        await sweep[1].play();
+        this.setState({
+            TTobaki: TTobak.ttobak1_2
+        })
+        sweep[0].play();
+
+        setTimeout(() => {
+            sweep[1].play();
+        }, 1000);
+
+        setTimeout(() => {
+            this.setState({
+                TTobaki: TTobak.ttobak1_1
+            })
+        }, 1500);
     }
 
     finished = async () => {
@@ -122,21 +133,17 @@ class Sweep extends React.PureComponent {
         } catch (e) {
             console.log(e);
         } finally {
-            this.delay(800);
-            this.setState({
-                gameState: false,
-                Answer: [],
-                sweep: [],
-                path: [],
-                oriAnswer: [],
-                stdAnswer: [],
-            });
+            setTimeout(() => {
+                this.setState({
+                    gameState: false,
+                    Answer: [],
+                    sweep: [],
+                    path: [],
+                    oriAnswer: [],
+                    stdAnswer: [],
+                });
+            }, 1000)
         }
-    }
-
-    delay = async (ms) => {
-        const now = new Date().getTime()
-        while (new Date().getTime() < now + ms) { }
     }
 
     render() {

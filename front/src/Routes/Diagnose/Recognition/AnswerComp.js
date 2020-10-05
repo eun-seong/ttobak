@@ -12,11 +12,11 @@ const Component = styled.div`
     margin: 0 10%;
 `;
 
-const AnswerComp = ({ Box, Clicked }) => {
+const AnswerComp = ({ Box, Clicked, isAnimate }) => {
     return (
         <Component>
-            <BoxComp Tree={D2.d2_Tree1} Box={Box[0]} Clicked={Clicked} id={0} />
-            <BoxComp Tree={D2.d2_Tree2} Box={Box[1]} Clicked={Clicked} id={1} />
+            <BoxComp Tree={D2.d2_Tree1} Box={Box[0]} Clicked={Clicked} id={0} isAnimate={isAnimate[0]} />
+            <BoxComp Tree={D2.d2_Tree2} Box={Box[1]} Clicked={Clicked} id={1} isAnimate={isAnimate[1]} />
         </Component>
     );
 }

@@ -17,7 +17,8 @@ class Recognition extends React.PureComponent {
             answerIndex: null,
             ph: [],
             audio: [],
-            TTobaki: TTobak.ttobak3_1
+            TTobaki: TTobak.ttobak3_1,
+            isAnimate: [false, false],
         };
     }
 
@@ -71,7 +72,10 @@ class Recognition extends React.PureComponent {
                     });
 
                     console.log(this.state);
-                    this.playSound();
+                    await this.playSound();
+                    this.setState({
+                        isAnimate: [false, false]
+                    })
                 }
             } catch (e) {
                 console.log(e);
@@ -85,17 +89,36 @@ class Recognition extends React.PureComponent {
         });
     }
 
+    animateBox = (index) => {
+        if (!index)
+            this.setState({
+                isAnimate: [true, false]
+            });
+        else
+            this.setState({
+                isAnimate: [true, true]
+            });
+    }
+
     playSound = async () => {
         const { audio } = this.state;
-        this.changeTTobaki(TTobak.ttobak2_2);
-        await audio[0].play();
-        this.delay(1300);
-        this.changeTTobaki(TTobak.ttobak3_1);
+        this.changeTTobaki(TTobak.ttobak1_2);
+        audio[0].play();
 
-        await audio[1].play();
-        this.delay(1300);
+        setTimeout(() => {
+            audio[1].play();
+            this.changeTTobaki(TTobak.ttobak3_1);
+            this.setState({
+                isAnimate: [true, false]
+            });
+        }, 1300);
 
-        await audio[2].play();
+        setTimeout(() => {
+            audio[2].play();
+            this.setState({
+                isAnimate: [false, true]
+            });
+        }, 2600);
     }
 
     finished = async () => {
@@ -108,27 +131,23 @@ class Recognition extends React.PureComponent {
         } catch (e) {
             console.log(e);
         } finally {
-            this.delay(2000);
-            this.setState({
-                gameState: false,
-                Box: [D2.d2_Box1_1, D2.d2_Box2_1],
-                oriAnswer: null,
-                stdAnswer: null,
-                path: [],
-                answerIndex: null,
-                ph: [],
-                TTobaki: TTobak.ttobak3_1
-            });
+            setTimeout(() => {
+                this.setState({
+                    gameState: false,
+                    Box: [D2.d2_Box1_1, D2.d2_Box2_1],
+                    oriAnswer: null,
+                    stdAnswer: null,
+                    path: [],
+                    answerIndex: null,
+                    ph: [],
+                    TTobaki: TTobak.ttobak3_1
+                });
+            }, 1500);
         }
     }
 
-    delay = (ms) => {
-        const now = new Date().getTime()
-        while (new Date().getTime() < now + ms) { }
-    }
-
     render() {
-        const { Box, TTobaki } = this.state;
+        const { Box, TTobaki, isAnimate } = this.state;
 
         return (
             <RecognitionPresenter
@@ -137,6 +156,7 @@ class Recognition extends React.PureComponent {
                 TTobakiTouch={this.TTobakiTouch}
                 Box={Box}
                 Clicked={this.Clicked}
+                isAnimate={isAnimate}
             />);
     }
 }

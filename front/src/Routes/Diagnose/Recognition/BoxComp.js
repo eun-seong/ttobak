@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const Component = styled.div`
     display: flex;
@@ -9,10 +9,25 @@ const Component = styled.div`
 `;
 
 const BoxImg = styled.img`
-    position: relative;
-    width: 100%;
-    top: 16%;
-    z-index: 2;
+    ${props => {
+        if (props.isAnimate) {
+            return css`
+                position: relative;
+                width: 100%;
+                top: 16%;
+                z-index: 2;
+                animation: ${animate} 0.5s 0.3s 2 alternate;
+                animation-timing-function:ease;
+            `;
+        } else {
+            return css`
+                position: relative;
+                width: 100%;
+                top: 16%;
+                z-index: 2;
+            `;
+        }
+    }}
 `;
 
 const TreeImg = styled.img`
@@ -22,10 +37,19 @@ const TreeImg = styled.img`
     margin-left: 10%;
 `;
 
-const BoxComp = ({ Box, Tree, Clicked, id }) => {
+const animate = keyframes`
+    from{
+        bottom:0px;
+    }
+    to{
+        top:10px;
+    }
+`;
+
+const BoxComp = ({ Box, Tree, Clicked, id, isAnimate }) => {
     return (
         <Component >
-            <BoxImg src={Box} alt='box' onTouchEnd={() => Clicked(id)} />
+            <BoxImg src={Box} alt='box' onTouchEnd={() => Clicked(id)} isAnimate={isAnimate} />
             <TreeImg src={Tree} alt='tree2' />
         </Component>
     );
