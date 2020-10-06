@@ -1,17 +1,30 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import AttentionPresenter from './AttentionPresenter';
 
-export default class extends React.Component {
-    /* 
-    모든 로직 추가 
-    api 가져오기
-    error 처리 등 모든 것
-     */
+import { D3 } from 'images';
+import { D3_Api } from 'api';
+
+class Attention extends React.Component {
+    constructor(s_id) {
+        super();
+        this.state = {
+            gameState: false,
+            s_id: s_id || 4,                            // 학습자 아이디
+        };
+    }
+
+    Test = async () => {
+        const data = await D3_Api.ask(1, 4);
+        console.log(data);
+    }
+
     render() {
-        /*
-        presenter로 가는 모든 스테이트 값 렌더링
-        예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
-        */
-        return (<AttentionPresenter />);
+        this.Test();
+        return (<AttentionPresenter
+            Background={D3.d3_background}
+        />);
     }
 }
+
+export default withRouter(Attention);

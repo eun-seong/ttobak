@@ -1,14 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import Common from 'Routes/Therapy/Common';
-import ConsoCommon from 'Routes/Therapy/ConsoCommon';
-import ConsoMatch from 'Routes/Therapy/ConsoMatch';
-import ConsoSound from 'Routes/Therapy/ConsoSound';
-import ConsoWord from 'Routes/Therapy/ConsoWord';
-import Count from 'Routes/Therapy/Count';
-import Poemtext from 'Routes/Therapy/Poemtext';
-import VowelSound from 'Routes/Therapy/VowelSound';
-import VowelWord from 'Routes/Therapy/VowelWord';
+import Common from 'Routes/Therapy/T3_Common';
+import ConsoCommon from 'Routes/Therapy/T7_ConsoCommon';
+import ConsoMatch from 'Routes/Therapy/T6_ConsoMatch';
+import Sound from 'Routes/Therapy/T5_Sound';
+import Word from 'Routes/Therapy/T4_Word';
+import Count from 'Routes/Therapy/T2_Count';
+import Poemtext from 'Routes/Therapy/T1_Poemtext';
 
 import Diagnose from './Router_Diagnose';
 import Root from './Router_Root';
@@ -21,12 +19,10 @@ export default () => (
             <Route path='/therapy/common' exect component={Common} />
             <Route path='/therapy/consocommon' exect component={ConsoCommon} />
             <Route path='/therapy/consomatch' exect component={ConsoMatch} />
-            <Route path='/therapy/consosound' exect component={ConsoSound} />
-            <Route path='/therapy/consoword' exect component={ConsoWord} />
+            <Route path='/therapy/sound/:type' exect component={Sound} />
+            <Route path='/therapy/word/:type' exect component={Word} />
             <Route path='/therapy/count' exect component={Count} />
             <Route path='/therapy/poemtext' exect component={Poemtext} />
-            <Route path='/therapy/vowelsound' exect component={VowelSound} />
-            <Route path='/therapy/vowelword' exect component={VowelWord} />
 
             <Route path='/diagnose' component={Diagnose} />
             <Route path='/root' component={Root} />

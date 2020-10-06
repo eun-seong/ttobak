@@ -4,12 +4,14 @@ import styled from 'styled-components';
 
 import PauseButton from 'Components/PauseButton';
 import Background from 'img/t1_shadowing/t1_background.png'
-import TextBox from 'img/t1_shadowing/textbox.png'
-import TTobak from 'img/ttobak/ttobak1-1.png';
 
 /* styled-components */
 const Img = styled.img`
     width: 100%;
+`;
+
+const Component = styled.div`
+    position: absolute;
 `;
 
 const BackgroundImg = styled(Img)`
@@ -17,11 +19,13 @@ const BackgroundImg = styled(Img)`
     bottom:0;
 `;
 
-const VowelWord = () => {
+const VowelWord = ({ text }) => {
     return (
         <div>
             <PauseButton link={'/'} />
-            VowelWord
+            <Component>
+                {text}
+            </Component>
             <BackgroundImg src={Background} alt='배경화면' />
         </div>
     );

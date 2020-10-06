@@ -15,7 +15,7 @@ export default class extends React.Component {
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
         return (<ConsoCommonPresenter
-            Backgroud={T7.t7_background}
+            Background={T7.t7_background}
             Card={[Characters.card1, Characters.card2]}
         />);
     }

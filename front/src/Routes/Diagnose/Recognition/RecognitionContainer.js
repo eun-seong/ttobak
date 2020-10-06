@@ -51,7 +51,10 @@ class Recognition extends React.PureComponent {
         const { gameState } = this.state;
 
         if (gameState) {
-            this.playSound();
+            await this.playSound();
+            this.setState({
+                isAnimate: [false, false]
+            })
         } else {
             try {
                 const { data } = await D2_Api.ask(1, 4);

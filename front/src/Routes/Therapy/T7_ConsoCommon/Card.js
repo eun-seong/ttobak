@@ -7,8 +7,8 @@ const CardComponent = styled.div`
     text-align: center;
 `;
 
-const TextComponent = styled.p`
-    font-size: 22vw;
+const TextComponent = styled.div`
+    font-size: 8rem;
     position: absolute;
 `;
 

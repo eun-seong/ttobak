@@ -80,7 +80,7 @@ class Select extends React.Component {
             {
                 index: 10,
                 img: MainTherapy[10],
-                url: '/therapy/attention',
+                url: '/diagnose/attention',
                 title: '의미 | 선택적 집중력',
                 explain: '다른 사람의 말을 집중해서 들어  봐요',
             },

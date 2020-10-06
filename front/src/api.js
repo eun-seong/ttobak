@@ -46,4 +46,16 @@ export const D2_Api = {
         }),
 };
 
+export const D3_Api = {
+    ask: (level, s_id) =>
+        api.post("foc_test/ask", {
+            "level": level,
+            "s_id": s_id
+        }),
+    answer: (s_id, oriAnswer, stdAnswer, ph) =>
+        api.post("foc_test/answer", {
+
+        }),
+};
+
 export default api;
