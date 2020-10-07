@@ -3,27 +3,26 @@ import styled from 'styled-components';
 
 import { T7 } from 'images';
 
-const PicBoxComponent = styled.div`
-    display: flex;
-    justify-content: center;
-`;
-
 const Picture = styled.img`
-    position: absolute;
-    width: 35%;
-    top: 10%;
+    width: 78%;
 `;
 
-const FrameBox = styled.img`
-    width: 43%;
+const FrameBox = styled.div`
+    display: flex;
+    background-image: url(${props => props.src});
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    justify-content:center;
+    align-items: center;
 `;
 
 const PicBox = ({ src }) => {
     return (
-        <PicBoxComponent>
-            <Picture src={T7.t7_excpic} alt='그림' />
-            <FrameBox src={T7.t7_frame} alt='정답박스' />
-        </PicBoxComponent>
+        <FrameBox src={T7.t7_frame}>
+            <Picture src={src || T7.t7_excpic} alt='그림' />
+        </FrameBox>
     );
 }
 

@@ -1,25 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import CardComp from './Card';
 import PicBox from './PicBox';
 
-import PauseButton from 'Components/PauseButton';
+import GameBackground from 'Components/GameBackground';
+import CardComp from 'Components/Card';
 
-/* styled-components */
-const BackgroundImg = styled.img`
-    width: 100%;
-    margin: auto auto;
-    bottom:0;
+const Div = styled.div`
+    display: flex;
+    justify-content: center;
+    height: 100vh;
 `;
 
 const PicBoxParent = styled.div`
-    position: absolute;
-    height: 77.5%;
-    display: flex;
-    justify-content: center;
-    top: 2.3%;
+    width: ${props => props.picSize};
+    height: ${props => props.picSize};
+    max-width: 300px;
+    margin-top: 3%;
 `;
 
 const CardParent = styled.div`
@@ -28,23 +25,33 @@ const CardParent = styled.div`
     flex-direction: row;
     position: absolute;
     bottom: 0;
-    padding: 0px 40px 0px 40px;
-    height:75%;
+    margin-bottom: 2%;
+    width: calc(100vw - 11%);
+    height:75vh;
 `;
 
+const ConsoCommon = ({ Card }) => {
+    const [cardSize, textSize] = ['22vw', '6.5rem'];
 
-const ConsoCommon = ({ Background, Card }) => {
     return (
-        <div>
-            <PicBoxParent><PicBox /></PicBoxParent>
+        <Div>
+            <PicBoxParent picSize={'40vw'}><PicBox /></PicBoxParent>
             <CardParent>
-                <CardComp src={Card[0]} alt='카드1' />
-                <CardComp src={Card[1]} alt='카드2' />
+                <CardComp src={Card[0]} alt='카드1' textSize={textSize} cardSize={cardSize} />
+                <CardComp src={Card[1]} alt='카드2' textSize={textSize} cardSize={cardSize} />
             </CardParent>
-            <PauseButton link={'/'} />
-            <BackgroundImg src={Background} alt='배경화면' />
-        </div>
+        </Div>
     );
 }
 
-export default ConsoCommon;
+const Game = ({ Background, Card }) => {
+    return (
+        <GameBackground BackgroundImg={Background}
+            Children={
+                <ConsoCommon Card={Card} />
+            }>
+        </GameBackground>
+    );
+}
+
+export default Game;

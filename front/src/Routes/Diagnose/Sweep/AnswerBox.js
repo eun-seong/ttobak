@@ -1,52 +1,50 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import AnswerBox from 'img/d1_sweep/box.png';
-// import { SwpTest } from 'images';
-
-const Div = styled.div`
+const AnswerBoxImg = styled.div`
     display: flex;
     justify-content: center;
-`;
-
-const AnswerBoxImg = styled.img`
+    height: 65%;
     width: 100%;
-    height: 100%;
+    background-image: url(${props => props.src});
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center;
 `;
 
 const AnswerComp = styled.div`
-    position: absolute;
-    width: 65%;
-    height: 28%;
+    width: 54vh;
+    height: 24vh;
     display: flex;
     justify-content: space-between;
-    /* background-color: red; */
-    top: 15%;
-    padding: 0 ${props => props.paddingSide} 0 ${props => props.paddingSide};
-`;
-
-const BoxFram = styled.div`
-    /* display: flex;
-    flex-grow:1;
-    justify-content: ${props => props.flex}; */
-    /* background-color:gray; */
+    margin-top: 16vh;
 `;
 
 const Answer = styled.img`
     height:100%;
-    /* flex-grow:1; */
 `;
 
-const AnswerBoxComp = ({ Answer1, Answer2 }) => {
+const AnswerBoxComp = ({ Answer1, Answer2, AnswerBox }) => {
     return (
-        <Div>
-            <AnswerComp paddingSide={'2.3%'}>
+        <AnswerBoxImg src={AnswerBox} >
+            <AnswerComp>
                 <Answer src={Answer1} />
                 <Answer src={Answer2} />
             </AnswerComp>
-            <AnswerBoxImg src={AnswerBox} alt='answerbox' />
-        </Div>
+        </AnswerBoxImg>
     );
 }
+
+// const AnswerBoxComp = ({ Answer1, Answer2 }) => {
+//     return (
+//         <Div>
+//             <AnswerComp paddingSide={'2.3%'}>
+//                 <Answer src={Answer1} />
+//                 <Answer src={Answer2} />
+//             </AnswerComp>
+//             <AnswerBoxImg src={AnswerBox} alt='answerbox' />
+//         </Div>
+//     );
+// }
 
 export default AnswerBoxComp;

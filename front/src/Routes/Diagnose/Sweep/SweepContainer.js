@@ -160,6 +160,7 @@ class Sweep extends React.PureComponent {
                 Answer={Answer}
                 TTobak={TTobaki}
                 TTobakiTouch={this.TTobakiTouch}
+                AnswerBox={D1.d1_box}
             />);
     }
 }

@@ -1,58 +1,57 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PauseButton from 'Components/PauseButton';
-
-import CardComp from './Card';
+import GameBackground from 'Components/GameBackground';
+import CardComp from 'Components/Card';
 
 /* styled-components */
-const Component = styled.div`
+const Div = styled.div`
     display: flex;
-    width: 100vw;
     height: 100vh;
 `;
 
-const Img = styled.img`
-    width: 100%;
-`;
-
-const BackgroundImg = styled(Img)`
-    margin: auto auto;
-    bottom:0;
-`;
-
 const TTobakComponent = styled.img`
-    position:absolute;
+    position: absolute;
     width: 20%;
-    top: 17%;
-    left: 3%;
+    height: auto;
+    top: 18%;
+    left: 4%;
 `;
 
 const CardParent = styled.div`
     position: absolute;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
     flex-direction: row;
-    right: 6%;
-    bottom: 4%;
-    width: 60vw;
-    height: 96vh;
+    justify-content: space-between;
+    width: 55vw;
+    height:85vh;
+    margin-right: 8%;
+    bottom: 0; right: 0;
+    margin-bottom: 2%;
 `;
 
-const VowelSound = (props) => {
-    console.log(props);
+const VowelSound = ({ props }) => {
+    const [cardSize, textSize] = ['24vw', '7rem'];
+
     return (
-        <Component>
-            <PauseButton link={'/'} />
+        <Div>
             <TTobakComponent src={props.TTobak} alt='또박이' onTouchEnd={props.TTobakiTouch} />
             <CardParent>
-                <CardComp src={props.Card[0]} alt='카드1' />
-                <CardComp src={props.Card[1]} alt='카드2' />
+                <CardComp src={props.Card[0]} alt='카드1' textSize={textSize} cardSize={cardSize} />
+                <CardComp src={props.Card[1]} alt='카드2' textSize={textSize} cardSize={cardSize} />
             </CardParent>
-            <BackgroundImg src={props.Background} alt='배경화면' />
-        </Component>
+        </Div>
     );
 }
 
-export default VowelSound;
+const Game = ({ Background, ...props }) => {
+    return (
+        <GameBackground BackgroundImg={Background}
+            Children={
+                <VowelSound props={props} />
+            }>
+        </GameBackground>
+    );
+}
+
+export default Game;

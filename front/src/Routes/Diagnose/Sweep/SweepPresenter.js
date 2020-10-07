@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import Sound from 'react-sound';
 
-import PauseButton from 'Components/PauseButton';
+import GameBackground from 'Components/GameBackground';
 
 import AnswerBoxComp from './AnswerBox';
 
 /* styled-components */
-const BackgroundImg = styled.img`
-    width: 100%;
-    margin: auto auto;
-    bottom:0;
+const Div = styled.div`
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    height: 100vh;
 `;
 
 const ButtonImg = styled.img`
@@ -19,63 +19,46 @@ const ButtonImg = styled.img`
 `;
 
 const UpButtonImg = styled(ButtonImg)`
-    width: 40%;
-    height: 40%;
-    margin: 0 15px 0 0;
+    height: 100%;
+    width: auto;
+    margin-right: 15px;
 `;
 
 const DownButtonImg = styled(ButtonImg)`
-    width:40%;
-    height: 40%;
-    margin: 0 0 0 15px;
+    height: 100%;
+    width: auto;
+    margin-left: 15px;
 `;
 
 const Component = styled.div`
-    width: 50%;
-    position:absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    margin: 5px 0 0 0 ;
-    right:15%;
-    top: 1%;
+    height: 90%;
+    width: 68%;
 `;
 
 const ButtonComponent = styled.div`
     display: flex;
     justify-content:center;
-    margin: 0 0 5px 0 ;
+    height: 35%;
 `;
 
 const TTobakComponent = styled.img`
     position:absolute;
     width: 20%;
-    top: 17%;
-    left: 3%;
+    top: 18%;
+    left: 4%;
 `;
 
-const Sweep = (props) => {
-    console.log('Sweep');
-    console.log(props);
+const Sweep = ({ props }) => {
     return (
-        <div>
-            <PauseButton link={'/'} />
-            {/* 또박이 사운드 재생 */}
-            {/* <Sound
-                url={props.ttobakSound.url}
-                playStatus={props.ttobakSound.ttobakPlayingStatus}
-                onFinishedPlaying={props.handleTTobakFinishedPlaying}
-                autoLoad={true}
-                ignoreMobileRestrictions={true} /> */}
+        <Div>
             <TTobakComponent src={props.TTobak} alt='또박이' onTouchEnd={props.TTobakiTouch} />
             <Component>
-                <AnswerBoxComp Answer1={props.Answer[0]} Answer2={props.Answer[1]} />
+                <AnswerBoxComp Answer1={props.Answer[0]} Answer2={props.Answer[1]} AnswerBox={props.AnswerBox} />
                 <ButtonComponent>
-                    {/* 버튼 사운드 재생 */}
-                    {/* <Sound
-                        url={props.buttonSound.url}
-                        playStatus={props.buttonSound.buttonPlayingStatus}
-                        onFinishedPlaying={props.handleButtonFinishedPlaying}
-                        autoLoad={true}
-                        ignoreMobileRestrictions={true} /> */}
                     <UpButtonImg
                         src={props.UpButton}
                         alt='up'
@@ -88,9 +71,18 @@ const Sweep = (props) => {
                         onTouchEnd={() => props.onTouchEnd(props.DOWN)} />
                 </ButtonComponent>
             </Component>
-            <BackgroundImg src={props.Background} alt='배경화면' />
-        </div>
+        </Div>
     );
 }
 
-export default Sweep;
+const Game = ({ Background, ...props }) => {
+    return (
+        <GameBackground BackgroundImg={Background}
+            Children={
+                <Sweep props={props} />
+            }>
+        </GameBackground>
+    );
+}
+
+export default Game;

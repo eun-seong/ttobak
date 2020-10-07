@@ -41,6 +41,7 @@ import d1_DownButton_UP from 'img/d1_sweep/down.png';
 import d1_UpButton_DOWN from 'img/d1_sweep/up_pushed.png';
 import d1_DownButton_DOWN from 'img/d1_sweep/down_pushed.png';
 import d1_background from 'img/d1_sweep/d1_background.png';
+import d1_box from 'img/d1_sweep/box.png';
 
 // D2 Recognition
 import d2_Box1_1 from 'img/d2_recognition/box1-1.png';
@@ -153,6 +154,7 @@ export const D1 = {
     d1_UpButton_DOWN: d1_UpButton_DOWN,
     d1_DownButton_DOWN: d1_DownButton_DOWN,
     d1_background: d1_background,
+    d1_box: d1_box,
 }
 
 export const D2 = {
