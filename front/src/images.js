@@ -69,6 +69,7 @@ import therapy7 from 'img/main/therapy7.png';
 import therapy8 from 'img/main/therapy8.png';
 import therapy9 from 'img/main/therapy9.png';
 import therapy10 from 'img/main/therapy10.png';
+import therapy11 from 'img/main/therapy11.png';
 
 // T1
 import t1_background from 'img/t1_shadowing/t1_background.png';
@@ -219,6 +220,7 @@ export const MainTherapy = [
     therapy8,
     therapy9,
     therapy10,
+    therapy11,
 ]
 
 export default Images;

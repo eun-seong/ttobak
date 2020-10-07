@@ -12,7 +12,7 @@ const PauseButtonStyled = styled.img`
 
 function PauseButton({ link }) {
     return (
-        <Link to={'link'}>
+        <Link to={link}>
             <PauseButtonStyled src={Images.bt_pause} alt='일시정지' />
         </Link>
     )

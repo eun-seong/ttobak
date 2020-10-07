@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import GameBackground from 'Components/GameBackground';
 
-
 const Attention = ({ props }) => {
     return (
         <div>

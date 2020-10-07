@@ -1,30 +1,56 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import PauseButton from 'Components/PauseButton';
-import Background from 'img/t1_shadowing/t1_background.png'
-import TextBox from 'img/t1_shadowing/textbox.png'
-import TTobak from 'img/ttobak/ttobak1-1.png';
+import GameBackground from 'Components/GameBackground';
+import FrameBox from './FrameBox';
 
-/* styled-components */
-const Img = styled.img`
-    width: 100%;
+const Div = styled.div`
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
 `;
 
-const BackgroundImg = styled(Img)`
-    margin: auto auto;
-    bottom:0;
+const Frames = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    align-items:flex-end;
+    width: 80vw;
+    height: ${props => props.frameSize};
 `;
 
-const ConsoMatch = () => {
+const WormComponent = styled.img`
+    position:absolute;
+    height: 60%;
+    bottom: 7%;
+    right: 5%;
+`;
+
+const ConsoMatch = ({ props }) => {
+    const frameSize = '40vh';
+
     return (
-        <div>
-            <PauseButton link={'/'} />
-            ConsoMatch
-            <BackgroundImg src={Background} alt='배경화면' />
-        </div>
+        <Div>
+            <Frames>
+                {props.frameList.map((list, index) => {
+                    return (
+                        <FrameBox key={index} text={list} frameSize={frameSize} />
+                    );
+                })}
+            </Frames>
+            <WormComponent src={props.Worm} alt='또박이' onTouchEnd={props.WormTouch} />
+        </Div>
     );
 }
 
-export default ConsoMatch;
+const Game = ({ Background, ...props }) => {
+    return (
+        <GameBackground BackgroundImg={Background}
+            Children={
+                <ConsoMatch props={props} />
+            }>
+        </GameBackground>
+    );
+}
+
+export default Game;

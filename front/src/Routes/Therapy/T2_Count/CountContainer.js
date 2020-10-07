@@ -33,7 +33,7 @@ export default class extends React.Component {
             <CountPresenter
                 Background={T2.t2_background}
                 Basket={T2.t2_basket}
-                TTobak={TTobak[0]}
+                TTobak={TTobak.ttobak1_1}
                 onTreeClick={this.onTreeClick}
                 onTreeDrag={this.onTreeDrag}
                 onTreeDragEnd={this.onTreeDragEnd} />);

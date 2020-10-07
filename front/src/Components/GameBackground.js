@@ -15,7 +15,7 @@ const GameBackground = ({ BackgroundImg, Children }) => {
     return (
         <BackgroundDiv src={BackgroundImg}>
             {Children}
-            <PauseButton link={'/'} />
+            <PauseButton link={'/main/main'} />
         </BackgroundDiv>
     );
 }

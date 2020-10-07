@@ -1,5 +1,5 @@
 import React from 'react';
-import { T3 } from 'images';
+import { T3, TTobak } from 'images';
 import CommonPresenter from './CommonPresenter';
 
 export default class extends React.Component {
@@ -14,6 +14,10 @@ export default class extends React.Component {
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
         return (<CommonPresenter
-            Background={T3.t3_background} />);
+            Background={T3.t3_background}
+            TTobak={TTobak.ttobak1_1}
+            boxList={['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ']}
+            BoxImg={T3.t3_textbox}
+        />);
     }
 }

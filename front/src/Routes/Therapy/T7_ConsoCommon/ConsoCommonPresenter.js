@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PicBox from './PicBox';
-
+import FrameBox from './FrameBox';
 import GameBackground from 'Components/GameBackground';
 import CardComp from 'Components/Card';
 
@@ -35,7 +34,7 @@ const ConsoCommon = ({ Card }) => {
 
     return (
         <Div>
-            <PicBoxParent picSize={'40vw'}><PicBox /></PicBoxParent>
+            <PicBoxParent picSize={'40vw'}><FrameBox /></PicBoxParent>
             <CardParent>
                 <CardComp src={Card[0]} alt='카드1' textSize={textSize} cardSize={cardSize} />
                 <CardComp src={Card[1]} alt='카드2' textSize={textSize} cardSize={cardSize} />

@@ -17,6 +17,7 @@ const Bar = styled(Link)`
     display: flex;
     height: 100%;
     background-color: #ffffff;
+    border: 1.5px solid #DFD7C4;
     border-radius: 40px;
     align-items: center;
     padding: 2px;
@@ -28,6 +29,7 @@ const Setting = styled(Link)`
     width: 37px;
     background-color: #ffffff;
     border-radius: 40px;
+    border: 1.5px solid #DFD7C4;
     margin-left: 15px;
     text-align: center;
     display: flex;

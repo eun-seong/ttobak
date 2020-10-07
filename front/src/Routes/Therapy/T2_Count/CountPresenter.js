@@ -1,55 +1,60 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PauseButton from 'Components/PauseButton';
+import GameBackground from 'Components/GameBackground';
 
-/* styled-components */
-const Img = styled.img`
-    width: 100%;
+const Div = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    width: 100vw;
+    height: 100vh;
 `;
 
-const BackgroundImg = styled(Img)`
-    margin: auto auto;
-    bottom:0;
+const Basket = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    height: auto;
 `;
 
-const TreeImg = styled(Img)`
+const BasketImg = styled.img`
     position: absolute;
-    width : 60%;
-    opacity: 0.0;
-    top:0;
-    left:0;
-`;
-
-const BasketImg = styled(Img)`
-    position: absolute;
-    width: 47%;
-    top: 52%;
-    right: 10%;
+    height: 50%;
+    bottom: 2.5%;
 `;
 
 const TTobakComponent = styled.img`
     position:absolute;
     width: 18%;
-    top: 4%;
+    top: 6%;
     right: 20%;
 `;
 
-const Counting = ({ onTreeClick, onTreeDragStart, onTreeDragEnd, Background, TTobak, Basket }) => {
+const Counting = ({ props }) => {
     return (
-        <div>
-            <TTobakComponent src={TTobak} alt='또박이' onClick={() => alert('hi')} />
+        <Div>
+            <TTobakComponent src={props.TTobak} alt='또박이' onClick={() => alert('ttobaki')} />
             {/* <TreeImg
                 src={Tree}
                 alt='나무'
                 onTouchStart={onTreeClick}
                 onDragStart={onTreeDragStart}
                 onDragEnd={onTreeDragEnd} /> */}
-            <BasketImg src={Basket} alt='바구니' />
-            <PauseButton link={'/'} />
-            <BackgroundImg src={Background} alt='배경화면' />
-        </div>
+            <Basket>
+                <BasketImg src={props.Basket} alt='바구니' />
+            </Basket>
+        </Div>
     );
 }
 
-export default Counting;
+const Game = ({ Background, ...props }) => {
+    return (
+        <GameBackground BackgroundImg={Background}
+            Children={
+                <Counting props={props} />
+            }>
+        </GameBackground>
+    );
+}
+
+export default Game;
