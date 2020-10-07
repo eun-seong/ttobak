@@ -1,19 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PauseButton from 'Components/PauseButton';
+import GameBackground from 'Components/GameBackground';
 
 import AnswerComp from './AnswerComp';
-
-/* styled-components */
-const Img = styled.img`
-    width: 100%;
-`;
-
-const BackgroundImg = styled(Img)`
-    margin: auto auto;
-    bottom:0;
-`;
 
 const TTobakComponent = styled.img`
     position:absolute;
@@ -22,15 +12,23 @@ const TTobakComponent = styled.img`
     right: 43%;
 `;
 
-const Recognition = ({ TTobaki, Box, Clicked, TTobakiTouch, Background, isAnimate }) => {
+const Recognition = ({ props }) => {
     return (
         <div>
-            <PauseButton link={'/'} />
-            <TTobakComponent src={TTobaki} alt='또박이' onTouchEnd={TTobakiTouch} />
-            <AnswerComp Box={Box} Clicked={Clicked} isAnimate={isAnimate} />
-            <BackgroundImg src={Background} alt='배경화면' />
+            <TTobakComponent src={props.TTobaki} alt='또박이' onTouchEnd={props.TTobakiTouch} />
+            <AnswerComp Box={props.Box} Clicked={props.Clicked} isAnimate={props.isAnimate} />
         </div>
     );
 }
 
-export default Recognition;
+const Game = ({ Background, ...props }) => {
+    return (
+        <GameBackground BackgroundImg={Background}
+            Children={
+                <Recognition props={props} />
+            }>
+        </GameBackground>
+    );
+}
+
+export default Game;
