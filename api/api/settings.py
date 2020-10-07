@@ -29,8 +29,22 @@ INSTALLED_APPS = [
     'tt_apis', #api app
 
     'rest_framework', #django_rest_framework
-    'corsheaders' #cors 설정 허용을 위함
+    'corsheaders', #cors 설정 허용을 위함
+    'allauth',
+    'allauth.account',
+    # 'allauth.account.context_processors',
+    # ' allauth.socialaccount.context_processors.socialaccount',
+    'rest_auth.registration',
+    'django.contrib.sites',
 ]
+
+SITE_ID = 1
+# AUTH_USER_MODEL = 'tt_apis.User'
+# REST_USE_JWT = True
+# ACCOUNT_EMAIL_REQUIRED = False
+# ACCOUNT_USERNAME_REQUIRED = False
+# ACCOUNT_EMAIL_VERIFICATION = None
+# ACCOUNT_LOGOUT_ON_GET = True
 
 MIDDLEWARE = [ #기본설정
     'corsheaders.middleware.CorsMiddleware',    
@@ -59,6 +73,8 @@ TEMPLATES = [ #기본설정
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "allauth.account.context_processors.account",
+                "allauth.socialaccount.context_processors.socialaccount",
             ],
         },
     },
@@ -123,9 +139,20 @@ USE_TZ = True #기본 설정
 
 REST_FRAMEWORK = { #허용된 상태만 restframework에 접근할 수 있도록 설정해줌.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ]
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser'
+    ],
 }
+
 
 
 # CORS_ORIGIN_WHITELIST = ( #실제 api를 호출하게 될 주소를 포함시켜서 cors설정을 허용해줌.

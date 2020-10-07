@@ -4,17 +4,17 @@ conn = pymysql.connect(host='ttobak.cbbaovh5sf1x.ap-northeast-2.rds.amazonaws.co
 
 curs = conn.cursor()
 
-sql = """insert into test_master(ques_level,ques_path1,idx_id) values (%s,%s,%s)"""
+sql = """insert into main_img(img_path,img_desc) values (%s,%s)"""
 
-level = [0,1,2,3,4,5,6]
-sound = [0,1,2,3]
+desc = ['a','모음 단어','모음 소리구분','자음 그림소리매칭','자음 음운 포함 여부','자음 단어 발음하기','자음 소리 구분','음운 음절 수 계산','음운 공통소리 찾기','청각처리속도','어음청취력','선택적 집중력']
+num = [1,2,3,4,5,6,7,8,9,10,11]
 
-for s in sound:
-    for l in level:
-        path1 = '/diagnose/concentration/sound_'
-        path1 = path1 +str(s)+'_'+str(l)+'.wav'
+for n in num:
+    
+    path1 = '/Main/'+str(n)+'.png'
+    
 
-        curs.execute(sql,(str(l),path1,3))
+    curs.execute(sql,(path1,desc[n]))
     
 conn.commit()
 
