@@ -156,12 +156,15 @@ class StuCure(models.Model):
         ('N',"no"),
     )
     cure_txt = models.CharField(max_length=50,null=True)
-    is_correct = models.CharField(max_length=1,choices = T_OR_F)
+    is_correct = models.CharField(max_length=1,choices = T_OR_F,null=True)
     date = models.DateField(auto_now_add=True)
     full_score = models.IntegerField(null=True)
     phone_score = models.IntegerField(null=True)
     speed_score = models.IntegerField(null=True)
     rhythm_score = models.IntegerField(null=True)
+    is_review = models.CharField(max_length=1,choices=T_OR_F,null=True)
+    stu_answer = models.CharField(max_length = 255,null=True)
+    ori_answer = models.CharField(max_length = 255,null=True)
     class Meta:
         db_table = "stu_cure"
 

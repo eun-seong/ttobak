@@ -502,22 +502,160 @@ class CureGet(View):
             return JsonResponse({"read":read,"cure":cure,"daily_cure": stucur.cur_curr,"answers": answer , "code":1},status=200)
         return JsonResponse({"message": "존재하지 않는 학습자입니다.","code":2},status=200)
 
-# class CureAns(View):
-#     def update_read(self,s_id,new_read_id,read_idx):
-#         if CureMaster.objects.filter(pk=new_read_id).exists():
-#             next_read = CureMaster.objects.get(pk=new_read_id)
-#             new_idx = read_idx
-#             if new_idx != next_read.cure_idx:
-#                 read_order = CureIdx.objects.get(pk=next_read.cure_idx).read_order + 1
-#                 if CureIdx.objects.filter(read_order = read_order).exists():
-#                     new_idx = CureIdx.objects.get(read_order=read_order).idx_id
-#                 else:
-#                     return "모든 글을 학습했습니다."
-#             cure_info = CureIdx.objects.get(pk=new_idx)
-#             stucur = StuCurrent.objects.get(stu_id=s_id)
-#             stucur.cur_read = cure_info.idx_txt
-#             stucur.cur_read_id = next_read.cure_id
-#             stucur.read_level = next_read.cure_level
-#             stucur.save()
-#         else:
-#             return "모든 글을 학습했습니다."
+class CureAns(View):
+    def update_read(self,s_id,new_read_id,read_idx):
+        if CureMaster.objects.filter(pk=new_read_id).exists():
+            next_read = CureMaster.objects.get(pk=new_read_id)
+            new_read_idx = read_idx
+            if new_read_idx != next_read.cure_idx.idx_id:
+                read_order = CureIdx.objects.get(pk=next_read.cure_idx.idx_id)
+                read_order = read_order.read_order
+                read_order += 1 
+                if CureIdx.objects.filter(read_order = read_order).exists():
+                    new_read_idx = CureIdx.objects.get(read_order=read_order).idx_id
+                else:
+                    return False
+            cure_info = CureIdx.objects.get(pk=new_read_idx)
+            stucur = StuCurrent.objects.get(stu_id=s_id)
+            stucur.cur_read = cure_info.idx_txt
+            stucur.cur_read_id = next_read.cure_id
+            stucur.read_level = next_read.cure_level
+            stucur.save()
+            return True
+        else:
+            return False
+    
+    def ans_read(self,student,data,idx_id):
+        score = data['score']
+        phone_score = data['phone_score']
+        speed_score = data['speed_score']
+        rhythm_score = data['rhythm_score']
+        cure_id = data['cure_id']
+        cure_txt = CureIdx.objects.get(pk=idx_id).idx_txt
+        class_txt = 'A'
+        is_pass = False
+        is_review = data['is_review'] 
+        if score >= 85:
+            is_pass = True
+        elif score >= 75 :
+            class_txt = 'B'
+        elif score >= 65:
+            clsss_txt = 'C'
+        elif score >= 55:
+            class_txt = 'D'
+        StuCure.objects.create(
+            stu = student,
+            full_score = score,
+            cure_id = cure_id,
+            phone_score = phone_score,
+            speed_score = speed_score,
+            rhythm_score = rhythm_score,
+            is_review = is_review,
+            cure_txt = cure_txt
+        ).save()
+        return cure_id+1, class_txt, is_pass
+
+    def answer_alternative(self,student,data,idx_id):
+        ori_answer = data['ori_answer']
+        stu_answer = data['stu_answer']
+        cure_id = data['cure_id']
+        cure = CureMaster.objects.get(pk=cure_id)
+        cure_txt = CureIdx.objects.get(pk=idx_id).idx_txt
+        is_review = data['is_review']
+        is_correct = 'F'
+        if ori_answer == stu_answer:
+            is_correct = 'T'
+        StuCure.objects.create(
+            stu = student,
+            is_correct = is_correct,
+            cure_id = cure_id,
+            is_review = is_review,
+            ori_answer = ori_answer,
+            stu_answer = stu_answer,
+            cure_txt = cure_txt
+        ).save()
+        to_next_level = False
+        to_next_study = False
+        stucur = StuCurrent.objects.get(stu_id = student.stu_id)
+        if stucur.cur_curr_last1 and stucur.cur_curr_last2 and stucur.cur_curr_last3:
+            if stucur.cur_curr_last1 >= 90 and stucur.cur_curr_last2 >= 90 and stucur.cur_curr_last3 >= 90:
+                if CureMaster.objects.filter(idx_id = idx_id, cure_level = cure.cure_level+1).exists():
+                    to_next_level = True
+                else:
+                    to_next_study = True
+        return to_next_level, to_next_study , is_correct
+
+    def update_alternative(self,to_next_level,to_next_study,data,student,idx_txt,idx_id):
+        s_id = student.stu_id
+        stucur = StuCurrent.objects.get(stu_id = s_id)
+        if to_next_level:
+            stucur.curr_level += 1
+            stucur.cur_curr_last1 = 0
+            stucur.cur_curr_last2 = 0
+            stucur.cur_curr_last3 = 0
+        if to_next_study:
+            current = CureIdx.objects.get(idx_id).curr_order
+            next_cur = current + 1
+            if CureIdx.objects.filter(curr_order = next_cur).exists():
+                stucur.curr_curr = next_cur
+                stucur.cur_level = 1
+                stucur.cur_curr_last1 = 0
+                stucur.cur_curr_last2 = 0
+                stucur.cur_curr_last3 = 0
+            else : 
+                return False
+        if not to_next_level and not to_next_study:
+            temp1 = 0
+            temp2 = 0
+            cures = StuCure.objects.filter(stu = student,cure_txt = idx_txt,is_review = 'F')
+            length = cures.count()
+            if length % 10 == 0:
+                cures = list(cures)[-10:]
+                if stucur.cur_curr_last1:
+                    temp1 = stucur.cur_curr_last1
+                if stucur.cur_curr_last2:
+                    temp2 = stucur.cur_curr_last2
+                tmp = 0
+                for c in cures:
+                    if c.is_correct == 'T':
+                        tmp += 1
+                stucur.cur_curr_last1 = tmp * 10
+                stucur.cur_curr_last2 = temp1
+                stucur.cur_curr_last3 = temp2
+        
+        stucur.save()
+        return True
+
+
+        
+
+    @csrf_exempt
+    def post(self,request):
+        data = json.loads(request.body)
+        s_id = data['s_id']
+        idx_txt = data['idx_txt']
+        if CureIdx.objects.filter(idx_txt = idx_txt).exists():
+            i = CureIdx.objects.get(idx_txt = idx_txt)
+            idx_id = i.idx_id
+            if Student.objects.filter(pk=s_id).exists():
+                student = Student.objects.get(pk=s_id)
+                if idx_id == 1 or idx_id == 2 or idx_id == 11 or idx_id == 12: # read
+                    new_read_id , class_txt , is_pass = self.ans_read(student,data,idx_id)
+                    if is_pass :
+                        s = self.update_read(s_id,new_read_id,idx_id)
+                        if s:
+                            return JsonResponse({"is_okay":is_pass,"class": class_txt,"code":1},status=200)
+                        else:
+                            return JsonResponse({"is_okay":is_pass,"class": class_txt,"message": "더 이상 학습할 문제가 없습니다.","code":2},status=200)
+                elif idx_id == 3:
+                    to_next_level, to_next_study, is_correct = self.answer_alternative(student,data,idx_id)
+                    s = self.update_alternative(to_next_level,to_next_study,data,student,idx_txt,idx_id)
+                    if s:
+                        return JsonResponse({"is_correct":is_correct,"code":1},status=200)
+                    else:
+                        return JsonResponse({"is_correct":is_correct,"code":1,"message":"모든 문제를 학습하였습니다."})
+        else:
+            return JsonResponse({"message": "해당 학습이 존재하지 않습니다.","code":"err"},status=200)
+
+
+        
