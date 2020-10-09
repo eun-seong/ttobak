@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         WebView.setWebContentsDebuggingEnabled(true);
 
 //        webView.loadUrl("http://13.125.100.8/main/main");//웹뷰 실행
-//        webView.loadUrl("http://172.30.1.53:3000/main/main");//웹뷰 실행
-        webView.loadUrl("http://172.30.1.53:3000/therapy/consocommon");//웹뷰 실행
+        webView.loadUrl("http://172.30.1.53:3000/main/test");//웹뷰 실행
+//        webView.loadUrl("http://172.30.1.53:3000/therapy/consocommon");//웹뷰 실행
     }
 
     private void hideNavigationBar() {

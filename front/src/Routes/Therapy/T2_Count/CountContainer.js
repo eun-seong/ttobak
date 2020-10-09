@@ -1,41 +1,51 @@
 import React from 'react';
-import CountPresenter from './CountPresenter';
+import { DndProvider } from 'react-dnd'
+import { TouchBackend } from 'react-dnd-touch-backend';
 
 import { T2, TTobak } from 'images';
 
+import CountPresenter from './CountPresenter';
+
 export default class extends React.Component {
     state = {
-
+        isDragging: false,
+        touchPosition: [],
+        clientHeight: document.documentElement.clientHeight
     };
 
-    onTreeClick = () => {
-        console.log('tree Clicked');
+    onTreeTouchStartHandle = e => {
+        console.log('tree Touch start');
+        this.setState({
+            isDragging: true,
+            touchPosition: [e.changedTouches[0].pageX, e.changedTouches[0].pageY],
+        })
         const apple = T2.t2_Apples[Math.floor(Math.random * 3)];
-        return (
-            <img src={apple} alt='사과' draggable='true' />
-        );
     }
 
-    onTreeDrag = () => {
-        console.log('tree Draged');
-    }
+    onTreeTouchEndHandle = () => {
+        console.log('tree Touch end');
 
-    onTreeDragEnd = () => {
-        console.log('tree Draged end');
+        this.setState({
+            isDragging: false,
+        })
     }
 
     render() {
-        /*
-        presenter로 가는 모든 스테이트 값 렌더링
-        예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
-        */
+        const { isDragging, touchPosition, clientHeight } = this.state;
+
         return (
-            <CountPresenter
-                Background={T2.t2_background}
-                Basket={T2.t2_basket}
-                TTobak={TTobak.ttobak1_1}
-                onTreeClick={this.onTreeClick}
-                onTreeDrag={this.onTreeDrag}
-                onTreeDragEnd={this.onTreeDragEnd} />);
+            <DndProvider backend={TouchBackend}>
+                <CountPresenter
+                    Background={T2.t2_background}
+                    Basket={T2.t2_basket}
+                    TTobak={TTobak.ttobak1_1}
+                    onTreeTouchStartHandle={this.onTreeTouchStartHandle}
+                    onTreeTouchEndHandle={this.onTreeTouchEndHandle}
+                    isDragging={isDragging}
+                    touchPosition={touchPosition}
+                    clientHeight={clientHeight}
+                />
+            </DndProvider>
+        );
     }
 }

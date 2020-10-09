@@ -13,4 +13,8 @@ const level = {
     },
 }
 
+export const ItemTypes = {
+    APPLE: 'apple',
+}
+
 export default level;

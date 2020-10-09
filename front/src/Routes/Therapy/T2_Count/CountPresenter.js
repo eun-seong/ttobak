@@ -2,12 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 
 import GameBackground from 'Components/GameBackground';
+import Apple from './Apple';
 
 const Div = styled.div`
     display: flex;
     justify-content: flex-end;
     width: 100vw;
     height: 100vh;
+`;
+
+const TreeDiv = styled.div`
+    position: absolute;
+    /* background-color: skyblue; */
+    width: 20vw;
+    height: 30vw;
+    left: 0;
 `;
 
 const Basket = styled.div`
@@ -33,13 +42,9 @@ const TTobakComponent = styled.img`
 const Counting = ({ props }) => {
     return (
         <Div>
+            <Apple isTreeDragging={props.isDragging} touchPosition={props.touchPosition} clientHeight={props.clientHeight} />
+            <TreeDiv onTouchStart={props.onTreeTouchStartHandle} onTouchEnd={props.onTreeTouchEndHandle}></TreeDiv>
             <TTobakComponent src={props.TTobak} alt='또박이' onClick={() => alert('ttobaki')} />
-            {/* <TreeImg
-                src={Tree}
-                alt='나무'
-                onTouchStart={onTreeClick}
-                onDragStart={onTreeDragStart}
-                onDragEnd={onTreeDragEnd} /> */}
             <Basket>
                 <BasketImg src={props.Basket} alt='바구니' />
             </Basket>

@@ -9,7 +9,7 @@ const globalStyles = createGlobalStyle`
         box-sizing:border-box;
         margin: 0px;
         padding: 0px;
-        
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
     }
     body{
         font-family: 'paybooc-Medium';
