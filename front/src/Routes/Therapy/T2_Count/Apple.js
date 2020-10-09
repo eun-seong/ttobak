@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { useDrag, DragPreviewImage } from 'react-dnd'
+import { useDrag } from 'react-dnd'
 import { usePreview } from 'react-dnd-preview';
 
 import { ItemTypes } from 'const';
@@ -21,36 +21,38 @@ const AppleImg = styled.img`
     z-index: 2;
 `;
 
-const ApplePreview = ({ touchPosition, clientHeight }) => {
-    const { display, itemType, item, style } = usePreview();
-    console.log('#######display ' + display);
+let apple = null;
+
+const ApplePreview = ({ touchPosition }) => {
+    const { display, style } = usePreview();
     if (!display) {
         return null;
     }
 
     const trans = style.WebkitTransform.split('(')[1].split(')')[0].split(', ');
     const [transX, transY] = [
-        parseFloat(trans[0].split('px')[0]) + touchPosition[0] - 0.105 * clientHeight,
-        parseFloat(trans[1].split('px')[0]) + touchPosition[1] - 0.105 * clientHeight
+        parseFloat(trans[0].split('px')[0]) + touchPosition[0] - 0.105 * document.documentElement.clientHeight,
+        parseFloat(trans[1].split('px')[0]) + touchPosition[1] - 0.105 * document.documentElement.clientHeight
     ];
-    style.transform = `translate(${transX}px, ${transY}px)`;
     style.WebkitTransform = `translate(${transX}px, ${transY}px)`;
 
-    return <AppleImg src={T2.t2_Apples[1]} alt='apple' style={style} />;
+    return <AppleImg src={apple} alt='apple' style={style} />;
 }
 
-const Apple = ({ isTreeDragging, touchPosition, clientHeight, onTreeTouchStartHandle, onTreeTouchEndHandle }) => {
+const Apple = ({ isTreeDragging, touchPosition, onTreeTouchStartHandle, onTreeTouchEndHandle, createRandomApple }) => {
     const [{ isDragging }, drag] = useDrag({
         item: { type: ItemTypes.APPLE },
+        begin: () => {
+            apple = createRandomApple();
+        },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging()
         }),
     });
 
-    console.log('#######isDragging ' + isDragging);
     return (
         <>
-            <ApplePreview touchPosition={touchPosition} isTreeDragging={isTreeDragging} clientHeight={clientHeight} />
+            <ApplePreview touchPosition={touchPosition} isTreeDragging={isTreeDragging} />
             <TreeDiv
                 ref={drag}
                 isTreeDragging={isTreeDragging}
