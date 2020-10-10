@@ -411,18 +411,43 @@ class CureGet(View):
         else:
             return "더 이상 치료가 존재하지 않습니다."
     
-    def get_review():
+    def get_review(self,s_id):
         return 1
+
+    def get_specified(self,s_id,idx_txt):
+        idx_id = CureIdx.objects.get(idx_txt = idx_txt).idx_id
+        
+        answer = []
+        if idx_id == 4:
+            cures = list(ComCure.objects.all())
+            rand_cures = random.sample(cures,10)
+            s_cures = self.serialized(rand_cures,idx_id)
+        elif idx_id != 7:
+            cures = list(CureMaster.objects.filter(cure_idx = idx_id))
+            rand_cures = random.sample(cures,10)
+            s_cures = self.serialized(rand_cures,idx_id)
+        if idx_id == 7 :
+            cures = CureMaster.objects.filter(cure_idx = idx_id)
+            cnt = cures.count()
+            s_cures,answer = self.make_answer(7,cnt,1)
+            s_cures = self.serialized(s_cures,7)
+        s_cures.is_valid()
+        return s_cures.data,answer
 
     def serialized(self,data,curr_idx):
         cure_serializer = {
+            1 : sz.ReadSerializer(data=data,many=True),
+            2 : sz.ReadSerializer(data=data,many=True),
             3 : sz.CountSerializer(data=data,many=True),
+            4 : sz.CommonSerializer(data= data,many=True),
             5 : sz.CountSerializer(data=data,many=True),
             6 : sz.VowelsoundSerializer(data=data,many=True),
             7 : sz.ConsomatchSerializer(data=data,many=True),
             8 : sz.ConsocommonSerializer(data=data,many=True),
             9 : sz.CountSerializer(data=data,many=True),
             10 : sz.ConsosoundSerializer(data=data,many=True),
+            11 : sz.ReadSerializer(data=data,many=True),
+            12 : sz.ReadSerializer(data=data,many=True),
         }
         return cure_serializer[curr_idx]
     
@@ -479,7 +504,12 @@ class CureGet(View):
         s_id = data['s_id']
         if 'idx_txt' in data:
             idx_txt = data['idx_txt']
-            return JsonResponse({"sss":idx_txt},status=200)
+            if idx_txt == 'review':
+                read, cure, answer = self.get_review(s_id)
+                return JsonResponse({"read":read,"cure":cure,"answer":answer,"code":"review"},status=200)
+            else:
+                cure, answer = self.get_specified(s_id,idx_txt)
+                return JsonResponse({"cure":cure,"answer":answer,"code":"speicifed"},status=200)
         if Student.objects.filter(pk=s_id).exists():
             student = Student.objects.get(pk=s_id)
             if not StuCurrent.objects.filter(stu_id = s_id).exists():
@@ -574,60 +604,236 @@ class CureAns(View):
             stu_answer = stu_answer,
             cure_txt = cure_txt
         ).save()
-        to_next_level = False
-        to_next_study = False
-        stucur = StuCurrent.objects.get(stu_id = student.stu_id)
-        if stucur.cur_curr_last1 and stucur.cur_curr_last2 and stucur.cur_curr_last3:
-            if stucur.cur_curr_last1 >= 90 and stucur.cur_curr_last2 >= 90 and stucur.cur_curr_last3 >= 90:
-                if CureMaster.objects.filter(idx_id = idx_id, cure_level = cure.cure_level+1).exists():
-                    to_next_level = True
-                else:
-                    to_next_study = True
-        return to_next_level, to_next_study , is_correct
+        s = self.update_current(data,student,cure_txt,idx_id)
+        return is_correct , s
 
-    def update_alternative(self,to_next_level,to_next_study,data,student,idx_txt,idx_id):
+    def update_current(self,data,student,idx_txt,idx_id):
         s_id = student.stu_id
         stucur = StuCurrent.objects.get(stu_id = s_id)
-        if to_next_level:
-            stucur.curr_level += 1
-            stucur.cur_curr_last1 = 0
-            stucur.cur_curr_last2 = 0
-            stucur.cur_curr_last3 = 0
-        if to_next_study:
-            current = CureIdx.objects.get(idx_id).curr_order
-            next_cur = current + 1
-            if CureIdx.objects.filter(curr_order = next_cur).exists():
-                stucur.curr_curr = next_cur
-                stucur.cur_level = 1
-                stucur.cur_curr_last1 = 0
-                stucur.cur_curr_last2 = 0
-                stucur.cur_curr_last3 = 0
-            else : 
-                return False
-        if not to_next_level and not to_next_study:
-            temp1 = 0
-            temp2 = 0
-            cures = StuCure.objects.filter(stu = student,cure_txt = idx_txt,is_review = 'F')
-            length = cures.count()
-            if length % 10 == 0:
-                cures = list(cures)[-10:]
-                if stucur.cur_curr_last1:
-                    temp1 = stucur.cur_curr_last1
-                if stucur.cur_curr_last2:
-                    temp2 = stucur.cur_curr_last2
-                tmp = 0
-                for c in cures:
-                    if c.is_correct == 'T':
-                        tmp += 1
-                stucur.cur_curr_last1 = tmp * 10
-                stucur.cur_curr_last2 = temp1
-                stucur.cur_curr_last3 = temp2
-        
+        temp1 = 0
+        temp2 = 0
+        cures = StuCure.objects.filter(stu = student,cure_txt = idx_txt,is_review = 'F')
+        length = cures.count()
+        if length % 10 == 0:
+            cures = list(cures)[-10:]
+            if stucur.cur_curr_last1:
+                temp1 = stucur.cur_curr_last1
+            if stucur.cur_curr_last2:
+                temp2 = stucur.cur_curr_last2
+            tmp = 0
+            for c in cures:
+                if c.is_correct == 'T':
+                    tmp += 1
+            stucur.cur_curr_last1 = tmp * 10
+            stucur.cur_curr_last2 = temp1
+            stucur.cur_curr_last3 = temp2
+            stucur.save()
+        if stucur.cur_curr_last1 >= 90 and stucur.cur_curr_last2 >= 90 and stucur.cur_curr_last3 >= 90:
+            if idx_id == 4:
+                if ComCure.objects.filter(com_level = stucur.curr_level+1).exists():
+                    stucur.curr_level += 1
+                    stucur.cur_curr_last1 = 0
+                    stucur.cur_curr_last2 = 0
+                    stucur.cur_curr_last3 = 0
+                    stucur.save()
+                else:
+                    current = CureIdx.objects.get(pk=idx_id).curr_order
+                    next_cur = current + 1
+                    if CureIdx.objects.filter(curr_order = next_cur).exists():
+                        nextc = CureIdx.objects.get(curr_order = next_cur).idx_txt
+                        stucur.cur_curr = nextc
+                        stucur.cur_level = 1
+                        stucur.cur_curr_last1 = 0
+                        stucur.cur_curr_last2 = 0
+                        stucur.cur_curr_last3 = 0
+                        stucur.save()
+                    else : 
+                        stucur.save()
+                        return False
+            else :
+                if CureMaster.objects.filter(cure_idx = idx_id,cure_level = stucur.curr_level+1).exists():
+                    stucur.curr_level += 1
+                    stucur.cur_curr_last1 = 0
+                    stucur.cur_curr_last2 = 0
+                    stucur.cur_curr_last3 = 0
+                    stucur.save()
+                else:
+                    current = CureIdx.objects.get(pk=idx_id).curr_order
+                    next_cur = current + 1
+                    if CureIdx.objects.filter(curr_order = next_cur).exists():
+                        nextc = CureIdx.objects.get(curr_order = next_cur).idx_txt
+                        stucur.cur_curr = nextc
+                        stucur.cur_curr_last1 = 0
+                        stucur.cur_curr_last2 = 0
+                        stucur.cur_curr_last3 = 0
+                        stucur.save()
+                    else : 
+                        stucur.save()
+                        return False                   
         stucur.save()
         return True
 
-
+    def answer_common(self,student,data,idx_id,idx_txt):
+        com_id = data['cure_id']
+        com_cure = ComCure.objects.get(pk=com_id)
+        ori_answer = data['ori_answer']
+        stu_answer = data['stu_answer']
+        is_correct = 'F'
+        if ori_answer == stu_answer :
+            is_correct = 'T'
+        is_review  = data['is_review']
+        StuCure.objects.create(
+            stu = student,
+            cure_txt = idx_txt,
+            is_correct = is_correct,
+            com_cure = com_cure,
+            is_review = is_review,
+            ori_answer = ori_answer,
+            stu_answer = stu_answer
+        ).save()
+        s = self.update_current(data,student,idx_txt,idx_id)
+                   
+        return is_correct , s
         
+    def answer_sound(self,student,data,idx_id,idx_txt):
+        score = data['score']
+        phone_score = data['phone_score']
+        speed_score = data['speed_score']
+        rhythm_score = data['rhythm_score']
+        cure_id = data['cure_id']
+        class_txt = 'A'
+        is_pass = False
+        is_review = data['is_review']
+        if score >= 85:
+            is_pass = True
+        elif score >= 75:
+            class_txt = 'B'
+        elif score >= 65:
+            class_txt = 'C'
+        elif score >= 55:
+            class_txt = 'D'
+        StuCure.objects.create(
+            stu = student,
+            full_score = score,
+            cure_id = cure_id,
+            phone_score = phone_score,
+            speed_score = speed_score,
+            rhythm_score = rhythm_score,
+            is_review = is_review,
+            cure_txt = idx_txt
+        ).save()
+        s = self.update_sound(data,student,idx_txt,idx_id)
+        return is_pass , class_txt, s
+
+    def update_sound(self,data,student,idx_txt,idx_id):
+        s_id = student.stu_id
+        stucur = StuCurrent.objects.get(stu_id = s_id)
+        temp1 = 0
+        temp2 = 0
+        cures = StuCure.objects.filter(stu = student,cure_txt = idx_txt,is_review = 'F')
+        length = cures.count()
+        if length % 10 == 0:
+            cures = list(cures)[-10:]
+            if stucur.cur_curr_last1:
+                temp1 = stucur.cur_curr_last1
+            if stucur.cur_curr_last2:
+                temp2 = stucur.cur_curr_last2
+            tmp = 0
+            for c in cures:
+                if c.full_score >= 85:
+                    tmp += 1
+            stucur.cur_curr_last1 = tmp * 10
+            stucur.cur_curr_last2 = temp1
+            stucur.cur_curr_last3 = temp2
+            stucur.save()
+        if stucur.cur_curr_last1 >= 90 and stucur.cur_curr_last2 >= 90 and stucur.cur_curr_last3 >= 90:
+            if CureMaster.objects.filter(cure_idx = idx_id,cure_level = stucur.curr_level+1).exists():
+                stucur.curr_level += 1
+                stucur.cur_curr_last1 = 0
+                stucur.cur_curr_last2 = 0
+                stucur.cur_curr_last3 = 0
+                stucur.save()
+            else:
+                current = CureIdx.objects.get(pk=idx_id).curr_order
+                next_cur = current + 1
+                if CureIdx.objects.filter(curr_order = next_cur).exists():
+                    nextc = CureIdx.objects.get(curr_order = next_cur).idx_txt
+                    stucur.cur_curr = nextc
+                    stucur.cur_curr_last1 = 0
+                    stucur.cur_curr_last2 = 0
+                    stucur.cur_curr_last3 = 0
+                    stucur.save()
+                else : 
+                    stucur.save()
+                    return False                   
+        stucur.save()
+        return True
+
+    def answer_consomatch(self,student,data,idx_id,idx_txt):
+        cure1  = data['cure_id']
+        cure2 = data['cure_id2']
+        cure3 = data['cure_id3']
+        c1 = CureMaster.objects.get(pk = cure1)
+        c2 = CureMaster.objects.get(pk=cure2)
+        c3 = CureMaster.objects.get(pk=cure3)
+        ori_answer = data['ori_answer']
+        stu_answer = data['stu_answer']
+        is_correct = 'F'
+        if ori_answer == stu_answer:
+            is_correct = 'T'
+        is_review = data['is_review']
+        StuCure.objects.create(
+            stu = student,
+            cure_txt = idx_txt,
+            cure = c1,
+            cure_2 = c2,
+            cure_3 = c3,
+            is_correct = is_correct,
+            is_review = is_review,
+            ori_answer = ori_answer,
+            stu_answer = stu_answer
+        ).save()
+
+        s = self.update_consomatch(data,student,idx_txt,idx_id)
+
+        return is_correct,s
+   
+    def update_consomatch(self,data,student,idx_txt,idx_id):
+        s_id = student.stu_id
+        stucur = StuCurrent.objects.get(stu_id = s_id)
+        temp1 = 0
+        temp2 = 0
+        cures = StuCure.objects.filter(stu = student,cure_txt = idx_txt,is_review = 'F')
+        length = cures.count()
+        if length % 10 == 0:
+            cures = list(cures)[-10:]
+            if stucur.cur_curr_last1:
+                temp1 = stucur.cur_curr_last1
+            if stucur.cur_curr_last2:
+                temp2 = stucur.cur_curr_last2
+            tmp = 0
+            for c in cures:
+                if c.is_correct == 'T':
+                    tmp += 1
+            stucur.cur_curr_last1 = tmp * 10
+            stucur.cur_curr_last2 = temp1
+            stucur.cur_curr_last3 = temp2
+            stucur.save()
+        if stucur.cur_curr_last1 >= 90 and stucur.cur_curr_last2 >= 90 and stucur.cur_curr_last3 >= 90:
+            current = CureIdx.objects.get(pk=idx_id).curr_order
+            next_cur = current + 1
+            if CureIdx.objects.filter(curr_order = next_cur).exists():
+                nextc = CureIdx.objects.get(curr_order = next_cur).idx_txt
+                stucur.cur_curr = nextc
+                stucur.cur_curr_last1 = 0
+                stucur.cur_curr_last2 = 0
+                stucur.cur_curr_last3 = 0
+                stucur.save()
+            else : 
+                stucur.save()
+                return False                   
+        stucur.save()
+        return True
 
     @csrf_exempt
     def post(self,request):
@@ -647,13 +853,33 @@ class CureAns(View):
                             return JsonResponse({"is_okay":is_pass,"class": class_txt,"code":1},status=200)
                         else:
                             return JsonResponse({"is_okay":is_pass,"class": class_txt,"message": "더 이상 학습할 문제가 없습니다.","code":2},status=200)
-                elif idx_id == 3:
-                    to_next_level, to_next_study, is_correct = self.answer_alternative(student,data,idx_id)
-                    s = self.update_alternative(to_next_level,to_next_study,data,student,idx_txt,idx_id)
+                elif idx_id == 3 or idx_id == 6 or idx_id == 8 or idx_id == 10:
+                    is_correct, s = self.answer_alternative(student,data,idx_id)
                     if s:
                         return JsonResponse({"is_correct":is_correct,"code":1},status=200)
                     else:
-                        return JsonResponse({"is_correct":is_correct,"code":1,"message":"모든 문제를 학습하였습니다."})
+                        return JsonResponse({"is_correct":is_correct,"code":2,"message":"모든 문제를 학습하였습니다."},status=200)
+                elif idx_id == 4:
+                    is_correct,s = self.answer_common(student,data,idx_id,idx_txt)
+                    if s:
+                        return JsonResponse({"is_corret":is_correct,"code":1},status=200)
+                    else:
+                        return JsonResponse({"is_correct":is_correct,"code":2,"message":"모든 문제를 학습하였습니다."},status=200)
+                elif idx_id == 5 or idx_id == 9:
+                    is_pass,class_txt, s = self.answer_sound(student,data,idx_id,idx_txt)
+                    if s:
+                        return JsonResponse({"is_pass":is_pass,"class":class_txt,"code":1},status=200)
+                    else:
+                        return JsonResponse({"is_pass":is_pass,"class":class_txt,"code":2,"message":"모든 문제를 학습하였습니다."},status=200)
+                elif idx_id == 7:
+                    is_correct, s = self.answer_consomatch(student,data,idx_id,idx_txt)
+                    if s:
+                        return JsonResponse({"is_correct":is_correct,"code":1},status=200)
+                    else:
+                        return JsonResponse({"is_correct":is_correct,"code":2,"message":"모든 문제를 학습하였습니다."},status=200)
+            else:
+                return JsonResponse({"message":"해당 학습지가 존재하지 않습니다.","code":3},status=200)
+
         else:
             return JsonResponse({"message": "해당 학습이 존재하지 않습니다.","code":"err"},status=200)
 
