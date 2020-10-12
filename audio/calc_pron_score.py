@@ -4,11 +4,41 @@ import json
 
 # 두 음운의 각 요소별로 Levenshtein 거리를 측정
 def levenshtein_distance_each(x, y):
-    if x == y: # 같으면 0
-        return 0.0
-    elif int(x) == int(y): # 클래스가 같으면 차이의 제곱
-        return (x - y) ** 2
-    else: # 다르면 1
+    if x[0] < 10.0 and y[0] < 10.0: # 둘 다 자음인 경우
+        # 첫 번째 클래스의 차이 계산
+        if x[0] == y[0]:
+            diff1 = 0.0
+        elif int(x[0]) == int(y[0]):
+            diff1 = 0.3 ** 2
+        else:
+            diff1 = 1.0
+
+        # 두 번째 클래스의 차이 계산
+        if x[1] == y[1]:
+            diff2 = 0.0
+        else:
+            diff2 = 1.0
+
+        return math.sqrt((diff1 + diff2) / 2.0)
+    elif x[0] >= 10.0 and y[0] >= 10.0: #  둘 다 모음인 경우
+        # 첫 번째 클래스의 차이 계산
+        if x[0] == y[0]:
+            diff1 = 0.0
+        elif int(x[0]) == int(y[0]):
+            diff1 = (x[0] - y[0]) ** 2
+        else:
+            diff1 = 1.0
+
+        # 두 번째 클래스의 차이 계산
+        if x[1] == y[1]:
+            diff2 = 0.0
+        elif int(x[1]) == int(y[1]):
+            diff2 = (x[1] - y[1]) ** 2
+        else:
+            diff2 = 1.0
+
+        return math.sqrt((diff1 + diff2) / 2.0)
+    else:
         return 1.0
 
 # Levenshtein 거리 측정
@@ -37,10 +67,7 @@ def levenshtein_distance(phone1, phone2):
     v1 = table[phone1]
     v2 = table[phone2]
 
-    x = levenshtein_distance_each(v1[0], v2[0])
-    y = levenshtein_distance_each(v1[1], v2[1])
-
-    return math.sqrt((x+y) / 2.0) # 두 거리 합을 2로 나눈 후 제곱근을 취함
+    return levenshtein_distance_each(v1, v2)
 
 def get_distance(text1, text2):
     text1_len = len(text1)
