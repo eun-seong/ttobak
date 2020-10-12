@@ -5,7 +5,7 @@ from . import models as tmodel
 class SwpSerializer(serializers.ModelSerializer):
     class Meta:
         model = tmodel.TestMaster
-        fields =("ques_id","ques_path1","ques_path2","ques_int")
+        fields =("ques_id","ques_path1","ques_path2")
 
 class PhSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,7 +15,7 @@ class PhSerializer(serializers.ModelSerializer):
 class FocSerializer(serializers.ModelSerializer):
     class Meta:
         model = tmodel.TestMaster
-        fields = ("ques_id","ques_path1","ques_int","ques_char")
+        fields = ("ques_id","ques_path1","ques_int","ques_char","ques_level")
 
 class ReadSerializer(serializers.ModelSerializer):
     class Meta:

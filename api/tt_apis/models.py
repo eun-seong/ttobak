@@ -97,6 +97,7 @@ class StuTest(models.Model):
     phone_score = models.IntegerField(null=True)
     speed_score = models.IntegerField(null=True)
     rhythm_score = models.IntegerField(null=True)
+    is_review = models.CharField(max_length=1,choices=T_OR_F,null=True)
     class Meta:
         db_table = "stu_test"
 
@@ -181,6 +182,20 @@ class StuCurrent(models.Model):
 
     class Meta:
         db_table = "stu_current"
+
+class TestCurrent(models.Model):
+    stu = models.ForeignKey('Student',on_delete = models.PROTECT,null=True,db_column ='stu_id')
+    swp_freq = models.IntegerField(null=True)
+    swp_lev = models.IntegerField(null=True)
+    swp_passed = models.IntegerField(null=True)
+    swp_did = models.IntegerField(null=True)
+    # ph_count = models.IntegerField(null=True)
+    focus_lev = models.IntegerField(null = True)
+    focus_passed = models.IntegerField(null=True)
+    focus_did = models.IntegerField(null = True)
+
+    class Meta:
+        db_table = 'test_current'
 
 class MainImg(models.Model):
     img_id = models.AutoField(primary_key=True)
