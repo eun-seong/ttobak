@@ -44,3 +44,5 @@ API Document for **또박이**
       Content: `{'request': '/api/segscore', 'status': 'Fail', 'code': 4, 'message': 'Processing error'}`
     * gender field가 'm'이나 'f'가 아닐 때
       Content: {'request': '/api/segscore', 'status': 'Fail', 'code': 5, 'message': 'Invalid Parameters'}
+    * 파일이 너무 클 때
+      Content: {'request': '/api/segscore', 'status': 'Fail', 'code': 6, 'message': 'Too Big File'}

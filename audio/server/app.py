@@ -21,6 +21,7 @@ ERROR_CODE = {
     3: 'Invalid extensions',
     4: 'Processing error',
     5: 'Invalid Parameters',
+    6: 'Too Big File',
 }
 
 @app.route('/')
@@ -55,6 +56,10 @@ async def seg_score(request):
     f.write(file.body)
     f.close()
 
+    filesize = get_filesize('temp/raw/' + filename)
+    if filesize == -1 or filesize >= 1.0:
+        return error(request.path, 6)
+
     print('./seg_and_audio2pron.sh {} "{}" {}'.format(gender, transcript, filename))
     subprocess.run('./seg_and_audio2pron.sh {} "{}" {}'.format(gender, transcript, filename), shell=True, cwd=os.path.abspath('..'))
 
@@ -67,6 +72,14 @@ async def seg_score(request):
 
     return response.json({'request': request.path, 'status': 'Success', 'code': 0, 'score': float(result['score']), 'phone_score': float(result['phone_score']), 'speed_score': float(result['speed_score']), 'rhythm_score': float(result['rhythm_score']), 'transcript': result['transcript'], 'student_transcript': result['student_trans'], 'correct': result['correct'], 'student': result['student']})
 
+
+def get_filesize(filename):
+    try:
+        size_bytes = os.path.getsize(filename)
+        size_mb = size_bytes / 1024 / 1024
+        return size_mb
+    except:
+        return -1
 
 def make_filename(filename):
     millis = int(round(time.time() * 1000))
