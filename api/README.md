@@ -1,7 +1,15 @@
-﻿# 또박이 API 정의 문서
+﻿## 또박이 API 정의 문서
 
 API Document for **또박이** 
 All of the APIs include responses automatically created by server. i.e) 404 not found / 500 Internal Server Error / etc..
+
+** All the urls should be concatenated with "https://ttobakaudio.s3-ap-northeast-2.amazonaws.com"
+
+**is_review parameter includes information whether the student solves the problem for a daily study or for a review session.
+
+**idx_txt parameter for treatment uses the same indicator for each study in gitlab. For diagnose, 'swp' for sweep test, 'ph' for recognition, 'foc' for attention
+
+**parameters for pronunciation use exactly same parameters of audio server.
 
 ## Part 1 -  USER
 
@@ -166,9 +174,6 @@ OR
          alert(r['message'])
       }
     });
-
-* **Extra notes**
-	* the deletion of the students and related tables' instances belong to the designated user should be preceded 
 
  **get**
 ----
@@ -356,7 +361,7 @@ OR
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ "name": [string], "birth" : [date] , "gender" : ['male' or 'female'],"code":1 }`
+    **Content:** `{ "name": [string], "birth" : [date] , "gender" : ['male' or 'female'],"icon" : [path],"code":1 }`
  
 OR
 
@@ -383,12 +388,12 @@ OR
     });    
    
 
-## Part3 - Swp_Test
+## Part3 - Swp
 
  **ask**
 ----
 * **URL**
-	/swp_test/ask
+	/diagnose/ask
 
 * **Method:**
 	  `POST`
@@ -397,17 +402,17 @@ OR
    **Optional:**
 
 * **Data Params**
-	   `freq = [integer]` | `level = [integer] | s_id = [integer]` 
+	   `s_id = [integer] | idx_txt = "swp"` 
 	  
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ "up_path" : [path_to_up_sound], "down_path" : [path_to_down_path] , "answer1" : [up or down] , "answer2" : [up or down], "swp_id" : [integer],"code":1}`
+    **Content:** `{ "swp" : { "ques_id" : [integer], "ques_path1" : [path_to_down_path] , "ques_path2" : [path_to_up_path] } , "answers" : { set_of_five answer_set } , "code":1}`
  
 OR
 
   * **Code:** 200 <br />
-    **Content:** `{ "message"  : "해당문제가 존재하지 않습니다.","code": 2 }`
+    **Content:** `{ "message"  : "해당 학습이 존재하지 않습니다.","code": 2 }`
 
   OR
 
@@ -417,13 +422,12 @@ OR
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/swp_test/ask",
+      url: "link/to/api/cure/ask",
       dataType: "json",
       type : "POST",
       data : { 
-	     "freq" : 500,
-	     "level" : 1,
-	     "s_id" : 1
+	     "s_id" : 1,
+	     "idx_txt" : "swp"
 		},success : function(r) {
 	         console.log(r)
       }
@@ -432,7 +436,7 @@ OR
  **answer**
 ----
 * **URL**
-	/swp_test/answer
+	/diagnose/answer
 
 * **Method:**
 	  `POST`
@@ -441,48 +445,51 @@ OR
    **Optional:**
 
 * **Data Params**
-	   `s_id = [integer]` | `swp_id = [integer] | ori_answer1 = [up/down] | ori_answer2 = [up/down] | stu_answer1 =[up/down] | stu_answer = [up/down] ` 
+	   `s_id = [integer]` | `ques_id = [integer] | ori_answer1 = [up/down] | ori_answer2 = [up/down] | stu_answer1 =[up/down] | stu_answer = [up/down] , is_review = [True/False], idx_txt = "swp"` 
 	  
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ "message" : ["답이 맞았습니다." or "답이 틀렸습니다."] }`
+    **Content:** `{ "is_correct" : ["T" or "F"], "to_next" : [True/False], "to_next_freq" : [True/False] }`
+    
+ *stop when to_next == "모든 문제를 풀었습니다"*
  
 OR
 
   * **Code:** 200 <br />
-    **Content:** `{ "message" : "해당 문제가 없습니다.","code" : 2 }`
+    **Content:** `{ "message" : "해당하는 검사가 존재하지 않습니다.","code" : 2 }`
 
   OR
 
   * **Code:** 200 <br />
-    **Content:** `{ "message" : "해당 학습자가 없습니다." ,"code" : 3 }`
+    **Content:** `{ "message" : "해당 학습자가 존재하지 않습니다." ,"code" : 3 }`
 
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/swp_test/answer",
+      url: "link/to/api/diagnose/answer",
       dataType: "json",
       type : "POST",
       data : { 
 	     "s_id" : 1,
-	     "swp_id" : 1,
+	     "ques_id" : 1,
 	     "ori_answer1" : "up",
 	     "ori_answer2" : "up",
 	     "stu_answer1" : "up",
-	     "stu_answer2" : down
+	     "stu_answer2" : "down",
+	     "is_review" : "T",
+	     "idx_txt" : "swp"
 		},success : function(r) {
 	         console.log(r)
       }
     });   
 
 
-## Part4 - Ph_Test
-
+## Part4 - Recognition
  **ask**
 ----
 * **URL**
-	/ph_test/ask
+	/diagnose/ask
 
 * **Method:**
 	  `POST`
@@ -491,12 +498,12 @@ OR
    **Optional:**
 
 * **Data Params**
-	   `level = [integer]| s_id = [integer]` 
+	   `s_id = [integer] | idx_txt = "ph"` 
 	  
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ "ph1" : [character], "ph1_path" : [path_to_ph1] , "ph2" : [character] , "ph2_path" : [path_to_ph2], "answer" : [character],"code":1}`
+    **Content:** `{ "phs" : {set of 50 character("ques_id" : [integer], "ques_path1" : [path], "ques_char" : [character]) },"answers" : {set of 25 answer set(integers mean the ques_id1, ques_id2, ques_id of answer) }"code":1}`
  
 OR 
 
@@ -506,16 +513,16 @@ OR
   OR
 
   * **Code:** 200<br />
-    **Content:** `{ "message" : "해당 학습자가 없습니다.","code":3 }`
+    **Content:** `{ "message" : "해당 학습자가 존재하지 않습니다.","code":3 }`
 
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/ph_test/ask",
+      url: "link/to/diagnose/ask",
       dataType: "json",
       type : "POST",
       data : { 
-	     "level" : 1,
+	     "idx_txt" : "ph",
 	     "s_id" : 1
 		},success : function(r) {
 	         console.log(r)
@@ -525,7 +532,7 @@ OR
  **answer**
 ----
 * **URL**
-	/ph_test/answer
+	/diagnose/answer
 
 * **Method:**
 	  `POST`
@@ -534,26 +541,22 @@ OR
    **Optional:**
 
 * **Data Params**
-	   `s_id = [integer]` | `ph1 = [character] | ph2 = [character] | stu_answer = [character] | ori_answer = [character] ` 
+	   `s_id = [integer]` | `ques_id1 = [integer] | ques_id2 = [integer] | stu_answer = [character] | ori_answer = [character] | is_review = ["T" or "F"] | idx_txt = "ph" ` 
 	  
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ "message" : ["답이 맞았습니다" or "답이 틀렸습니다."],"code":1 }`
+    **Content:** `{ "is_correct" : ["T" or "F"],"code":1 }`
  
 OR
 
   * **Code:** 200 <br />
-    **Content:** `{ "message" : "ph2가 존재하지 않습니다.","code" : 2 }`
+    **Content:** `{ "message" : "해당하는 검사가 존재하지 않습니다.","code" : 2 }`
 
   OR
 
   * **Code:** 200 <br />
-    **Content:** `{ "message" : "ph1이 존재하지 않습니다.","code":3 }`
-
-  OR
-  * **Code:** 200 <br />
-    **Content:** `{ "message" : "해당 학습자가 존재하지 않습니다.","code":4 }`
+    **Content:** `{ "message" : "해당 학습자가 존재하지 않습니다.","code":3 }`
 
 * **Sample Call:**
   ```javascript
@@ -563,21 +566,24 @@ OR
       type : "POST",
       data : { 
 	     "s_id" : 1,
-	     "ph1" : "귀",
-	     "ph2" : "남"
+	     "ques_id1" : 2,
+	     "ques_id2" : 3
 	     "ori_answer" : "귀",
 	     "stu_answer" : "남",
+	     "is_review" : "F",
+	     "idx_txt" : "ph"
 		},success : function(r) {
 	         console.log(r)
       }
     });   
+*call for every 25 questions*
 
-## Part5 - foc_Test
+## Part5 - Attention
 
  **ask**
 ----
 * **URL**
-	/foc_test/ask
+	/diagnose/ask
 
 * **Method:**
 	  `POST`
@@ -586,40 +592,357 @@ OR
    **Optional:**
 
 * **Data Params**
-	   `level = [integer] | s_id = [integer] `
+	   `idx_txt = "foc" | s_id = [integer] `
 		  
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ "sound": [integer], "sound_path" : [path_to_sound_path],"code":1}`
+    **Content:** `{"focus" : {set of 5 question("ques_id" : [integer],"ques_path1": path, "ques_int" : [integer], "ques_char" : [character], "ques_level : [integer])},"code" : 1}`
+
+ *Use the five questions in numerical order of ques_level. Do not mind ques_int*
  
 OR
 
   * **Code:** 200 <br />
-    **Content:** `{ "message" : "해당 레벨에 해당하는 문제가 없습니다.","code":2 }`
+    **Content:** `{ "message" : "해당하는 문제가 존재하지 않습니다.","code":2 }`
 
   OR
 
   * **Code:** 200 <br />
-    **Content:** `{ "message" : "해당 학습자가 없습니다.","code: 3 }`
+    **Content:** `{ "message" : "해당하는 학습자가 존재하지 않습니다.","code": 3 }`
 
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/foc_test/ask",
+      url: "link/to/api/diagnose/ask",
       dataType: "json",
       type : "POST",
       data : { 
-	     "level" : 1,
+	     "idx_txt" : "foc",
 	     "s_id" : 1
 		},success : function(r) {
 	         console.log(r)
       }
     });   
 
- ~~**answer**~~
+
+ **answer**
 ----
-The test method itself has changed a bit. Need to be re-written.
+* **URL**
+	/diagnose/answer
+
+* **Method:**
+	  `POST`
+*  **URL Params**
+   **Required:**
+   **Optional:**
+
+* **Data Params**
+	   `s_id = [integer]` | `ques_id = [integer] | full_score = [integer] | phone_score = [integer] | speed_score = [integer] | rhythm_score = [integer] | is_review = ["T" or "F"] | idx_txt = "foc"`
+		  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ "is_pass": [True/False], "to_next_level" : [True],"is_stop" : [True/False], "code":1}`
+    
+ *diagnose finishes when is_stop == True OR to_next_level =="모든 문제를 학습했습니다" *
+
+OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당하는 검사가 존재하지 않습니다.","code":2 }`
+
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당하는 학습자가 존재하지 않습니다.","code": 3 }`
+
+* **Sample Call:**
+  ```javascript
+    $.ajax({
+      url: "link/to/api/foc_cure/answer",
+      dataType: "json",
+      type : "POST",
+      data : { 
+	     "full_score" : 90,
+	     "phone_score" : 80,
+	     "speed_score" : 5,
+	     "rhythm_score" : 5,
+	     "idx_txt" : "foc",
+	     "ques_id" : 1,
+	     "s_id" : 1,
+	     "is_review" : "F"
+		},success : function(r) {
+	         console.log(r)
+      }
+    });   
+
+## Part6 - Treatment
+
+ **ask**
+----
+* **URL**
+	/cure/ask
+
+* **Method:**
+	  `POST`
+*  **URL Params**
+   **Required:**
+   **Optional:**
+
+* **Data Params**
+	   `s_id = [integer] `
+
+*include idx_txt = [idx_txt] incase of student choose what to study. ex) idx_txt = "poem", s_id = [integer]*
+
+*in case of review, please set the idx_txt = 'review'. But the review function is still in progress, and will be updated soon.*
+		  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ "read": {set of 10 daily read contents("cure_id" : [integer], "cure_level" : level, "cure_path" : path, "cure_tid" : [integer], "cure_text": corresponding text)}, "cure" : {set of questions. normally 10, but please check the ask_form.txt}, "answers" : {set of answers. only in case of consomatch. Plase check ask_form.txt},"daily_cure" : [idx_txt],"code":[1(normal case)/"review"(review case)/"specified"(arbitrary case)]}`
+
+*in case of code == review or specified, daily_cure will be omitted*
+ 
+OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "존재하지 않는 학습자입니다.","code": 2 }`
+
+* **Sample Call:**
+  ```javascript
+    $.ajax({
+      url: "link/to/api/diagnose/ask",
+      dataType: "json",
+      type : "POST",
+      data : { 
+	     "s_id" : 1
+		},success : function(r) {
+	         console.log(r)
+      }
+    });   
+
+ **answer(1) - read(poem,text,selfpoem,selftext) **
+----
+* **URL**
+	/diagnose/answer
+
+* **Method:**
+	  `POST`
+*  **URL Params**
+   **Required:**
+   **Optional:**
+
+* **Data Params**
+	   `s_id = [integer]` | `cure_id = [integer] | full_score = [integer] | phone_score = [integer] | rhythm_score = [integer] | speed_score = [integer] | is_review = ["T" or "F"] | idx_txt = [idx_txt]`
+		  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ is_okay=[True/False],class=['A' ~ 'D'],"code":1 }`
+ 
+  OR
+  
+  * **Code:** 200 <br />
+    **Content:** `{ is_okay = [True/False],class = ['A' ~'D'], "message" : "더 이상 학습할 문제가 없습니다.","code": 2 }`
+
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당 학습자가 존재하지 않습니다.","code": 3 }`
+
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당 학습이 존재하지 않습니다.","code": 4 }`
+    
+* **Sample Call:**
+  ```javascript
+    $.ajax({
+      url: "link/to/api/diagnose/answer",
+      dataType: "json",
+      type : "POST",
+      data : { 
+	     "full_score" : 80,
+	     "phone_score" : 70,
+	     "speed_score" : 5,
+	     "rhythm_score " : 5,
+	     "is_review" : "F",
+	     "idx_txt" : "poem"
+	     "cure_id" : 1
+	     "s_id" : 1
+		},success : function(r) {
+	         console.log(r)
+      }
+    });   
+
+ **answer(2) - count, vowelsound, consocommon, consosound , common**
+----
+* **URL**
+	/diagnose/answer
+
+* **Method:**
+	  `POST`
+*  **URL Params**
+   **Required:**
+   **Optional:**
+
+* **Data Params**
+	   `s_id = [integer]` | `cure_id = [integer] | ori_answer = [character] | stu_answer = [character] | is_review = ["T" or "F"] | idx_txt = [idx_txt]`
+
+*in case of count, stu_answer & ori_answer can be integer*
+*for the others, they should be character/word*
+		  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ is_correct=[True/False],"code":1 }`
+ 
+  OR
+  
+  * **Code:** 200 <br />
+    **Content:** `{ is_correct = [True/False],"message" : "모든 문제를 학습하였습니다.","code": 2 }`
+
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당 학습자가 존재하지 않습니다.","code": 3 }`
+
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당 학습이 존재하지 않습니다.","code": 4 }`
+    
+* **Sample Call:**
+  ```javascript
+    $.ajax({
+      url: "link/to/api/diagnose/answer",
+      dataType: "json",
+      type : "POST",
+      data : { 
+	     "ori_answer" : 5,
+	     "stu_answer" : 3,
+	     "is_review" : "F",
+	     "idx_txt" : "count"
+	     "cure_id" : 1
+	     "s_id" : 1
+		},success : function(r) {
+	         console.log(r)
+      }
+    });   
+
+ **answer(3) - vowelword, consoword **
+----
+* **URL**
+	/diagnose/answer
+
+* **Method:**
+	  `POST`
+*  **URL Params**
+   **Required:**
+   **Optional:**
+
+* **Data Params**
+	   `s_id = [integer]` | `cure_id = [integer] | full_score = [integer] | phone_score = [integer] | rhythm_score = [integer] | speed_score = [integer] | is_review = ["T" or "F"] | idx_txt = [idx_txt]`
+		  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ is_okay=[True/False],class=['A' ~ 'D'],"code":1 }`
+ 
+  OR
+  
+  * **Code:** 200 <br />
+    **Content:** `{ is_okay = [True/False],class = ['A' ~'D'], "message" : "모든 문제를 학습하였습니다.","code": 2 }`
+
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당 학습자가 존재하지 않습니다.","code": 3 }`
+
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당 학습이 존재하지 않습니다.","code": 4 }`
+    
+* **Sample Call:**
+  ```javascript
+    $.ajax({
+      url: "link/to/api/diagnose/answer",
+      dataType: "json",
+      type : "POST",
+      data : { 
+	     "full_score" : 80,
+	     "phone_score" : 70,
+	     "speed_score" : 5,
+	     "rhythm_score " : 5,
+	     "is_review" : "F",
+	     "idx_txt" : "poem"
+	     "cure_id" : 1
+	     "s_id" : 1
+		},success : function(r) {
+	         console.log(r)
+      }
+    });   
+
+ **answer(4) - consomatch **
+----
+* **URL**
+	/diagnose/answer
+
+* **Method:**
+	  `POST`
+*  **URL Params**
+   **Required:**
+   **Optional:**
+
+* **Data Params**
+	   `s_id = [integer]` | `cure_id = [integer] | cure_id2 = [integer] | cure_id3 = [integer] | ori_answer = [character] | stu_answer = [character] | is_review = ["T" or "F"] | idx_txt = [idx_txt]`
+
+*ori_answer & stu_answer should be the word*
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ is_correct=[True/False],"code":1 }`
+ 
+  OR
+  
+  * **Code:** 200 <br />
+    **Content:** `{ is_correct = [True/False],, "message" : "모든 문제를 학습하였습니다.","code": 2 }`
+
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당 학습자가 존재하지 않습니다.","code": 3 }`
+
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당 학습이 존재하지 않습니다.","code": 4 }`
+    
+* **Sample Call:**
+  ```javascript
+    $.ajax({
+      url: "link/to/api/diagnose/answer",
+      dataType: "json",
+      type : "POST",
+      data : { 
+	     "cure_id" : 2,
+	     "cure_id2" : 3,
+	     "cure_id3" : 4,
+	     "stu_answer " : "가방",
+	     "ori_answer" : "오리",
+	     "idx_txt" : "consomatch",
+	     "is_review" : "F"
+	     "s_id" : 1
+		},success : function(r) {
+	         console.log(r)
+      }
+    });   
+
+
+
 
 
 

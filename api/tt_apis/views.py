@@ -283,7 +283,7 @@ class TestGet(View):
                     focus = self.get_foc(testcur)
                     return JsonResponse({"focus":focus,"code":1},status=200)
             return JsonResponse({"message":"해당 학습이 존재하지 않습니다.","code":2},status=200)
-        return JsonResponse({"message":"해당 학습지가 없습니다.","code":3},status=200)
+        return JsonResponse({"message":"해당 학습자가 없습니다.","code":3},status=200)
 
 class TestAns(View):
     def ans_swp(self,student,data,idx_id,swp):
@@ -751,7 +751,7 @@ class CureGet(View):
             curr_idx = CureIdx.objects.get(idx_txt=stucur.cur_curr).idx_id
             curr_level = stucur.curr_level
             cure , answer = self.get_cure(curr_idx,curr_level)
-            return JsonResponse({"read":read,"cure":cure,"daily_cure": stucur.cur_curr,"answers": answer , "code":1},status=200)
+            return JsonResponse({"read":read,"cure":cure,"daily_cure": stucur.cur_curr,"answers": answer , "code":1},status=200)        
         return JsonResponse({"message": "존재하지 않는 학습자입니다.","code":2},status=200)
 
 class CureAns(View):
