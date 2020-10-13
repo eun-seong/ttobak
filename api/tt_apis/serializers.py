@@ -63,3 +63,8 @@ class ConsosoundSerializer(serializers.ModelSerializer):
     class Meta:
         model = tmodel.CureMaster
         fields = ("cure_id","cure_level","cure_path","cure_word","cure_word2")
+
+class VoiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = tmodel.Voice
+        fields = ("voc_path","voc_script")

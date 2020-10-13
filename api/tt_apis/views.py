@@ -5,7 +5,7 @@ import random
 import requests
 import time
 
-from .models  import User,Student,UsrStu,StuIc,Icon,TestMaster,StuTest,CureMaster,StuCure,StuCurrent,TestIdx,CureIdx,ComCure,TestCurrent
+from .models  import User,Student,UsrStu,StuIc,Icon,TestMaster,StuTest,CureMaster,StuCure,StuCurrent,TestIdx,CureIdx,ComCure,TestCurrent,Voice
 from . import serializers as sz
 
 from django.views import View
@@ -351,6 +351,7 @@ class TestAns(View):
             ques = ph1,
             ques2 = ph2,
             test_txt = 'ph',
+            is_review = is_review,
             is_correct = is_correct
         ).save()
         return is_correct 
@@ -731,7 +732,7 @@ class CureGet(View):
                 return JsonResponse({"read":read,"cure":cure,"answer":answer,"code":"review"},status=200)
             else:
                 cure, answer = self.get_specified(s_id,idx_txt)
-                return JsonResponse({"cure":cure,"answer":answer,"code":"speicifed"},status=200)
+                return JsonResponse({"cure":cure,"answer":answer,"code":"specified"},status=200)
         if Student.objects.filter(pk=s_id).exists():
             student = Student.objects.get(pk=s_id)
             if not StuCurrent.objects.filter(stu_id = s_id).exists():
@@ -1106,4 +1107,8 @@ class CureAns(View):
             return JsonResponse({"message": "해당 학습이 존재하지 않습니다.","code":"err"},status=200)
 
 
-        
+class Tutorial(View):
+    def post(self,request):
+        data = json.loads(request.body)
+        idx_txt = data['idx_txt']
+        idx_id =     

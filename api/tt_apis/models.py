@@ -212,3 +212,12 @@ class WordImg(models.Model):
 
     class Meta:
         db_table = "word_img"
+
+class Voice(models.Model):
+    voc_id = models.AutoField(primary_key = True)
+    voc_path = models.CharField(max_length = 255)
+    voc_desc = models.CharField(max_length = 255)
+    voc_script = models.CharField(max_length = 255)
+
+    class Meta:
+        db_table = "voice"
