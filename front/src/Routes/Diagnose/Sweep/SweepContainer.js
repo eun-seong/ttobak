@@ -94,7 +94,6 @@ class Sweep extends React.PureComponent {
                 const { answers, swp: { ques_id, ques_path1, ques_path2 } } = data;
 
                 this.setState({
-                    gameState: true,
                     oriAnswer: answers,
                     ques_id: ques_id,
                     buttonSound: [new Audio(soundURL + ques_path2), new Audio(soundURL + ques_path1)],
@@ -125,6 +124,7 @@ class Sweep extends React.PureComponent {
 
         setTimeout(() => {
             this.setState({
+                gameState: true,
                 TTobaki: TTobak.ttobak1_1
             })
         }, 1500);
@@ -152,6 +152,7 @@ class Sweep extends React.PureComponent {
                     console.log('next game');
                 } else {
                     this.setState({
+                        gameState: false,
                         Answer: [],
                         sweep: [],
                         path: [],

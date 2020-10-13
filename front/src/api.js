@@ -67,13 +67,12 @@ export const D2_Api = {
     answer: (s_id, oriAnswer, stdAnswer, ph, is_review) =>
         api.post(url.diagnose_answer, {
             "s_id": s_id,
-            "ques_id1": ph[0],
+            "ques_id": ph[0],
             "ques_id2": ph[1],
             "ori_answer": oriAnswer,
             "stu_answer": stdAnswer,
             "is_review": is_review,
             "idx_txt": idx_txt.ph
-
         }),
 };
 
@@ -85,6 +84,18 @@ export const D3_Api = {
         }),
     answer: (s_id, oriAnswer, stdAnswer, ph) =>
         api.post(url.diagnose_answer, {
+
+        }),
+};
+
+export const T1_Api = {
+    ask: (s_id, idx_txt) =>
+        api.post(url.therapy_ask, {
+            "s_id": s_id,
+            // "idx_txt": null
+        }),
+    answer: (s_id, oriAnswer, stdAnswer, ph) =>
+        api.post(url.therapy_answer, {
 
         }),
 };

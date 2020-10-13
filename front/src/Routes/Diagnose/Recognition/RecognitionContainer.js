@@ -3,87 +3,100 @@ import RecognitionPresenter from './RecognitionPresenter';
 import { withRouter } from 'react-router-dom';
 
 import { TTobak, D2 } from 'images';
-import { D2_Api } from 'api';
+import { D2_Api, soundURL } from 'api';
 class Recognition extends React.PureComponent {
     constructor({ s_id }) {
         super();
         this.state = {
             s_id: s_id || 4,
             gameState: false,
-            Box: [D2.d2_Box1_1, D2.d2_Box2_1],
-            oriAnswer: null,
-            stdAnswer: null,
-            path: [],
-            answerIndex: null,
-            ph: [],
-            audio: [],
+            Box: [D2.d2_Box1_1, D2.d2_Box2_1],          // Box 이미지
             TTobaki: TTobak.ttobak3_1,
+            oriAnswer: null,                            // 정답
+            stdAnswer: null,                            // 학생 답
+            phSound: [],                                   //
+            audio: [],
+            answerIndex: 0,
             isAnimate: [false, false],
+            phIndex: 0,
+            phs: null,
+            phFirstIndex: 0,
         };
     }
 
-    Clicked = async (id) => {
+    async componentDidMount() {
+        this.newRequest();
+        setTimeout(() => this.playSound(), 1000);
+    }
+
+    newRequest = async () => {
+        console.log('new request');
+        const { s_id } = this.state;
+
+        try {
+            const { data } = await D2_Api.ask(s_id);
+            const phFirstIndex = data.phs[0].ques_id;
+            console.log(data);
+
+            if (data.code === 1) {
+                const { answers } = data;
+                const answer = [
+                    data.phs[answers[0][0] - phFirstIndex],
+                    data.phs[answers[0][1] - phFirstIndex],
+                    data.phs[answers[0][2] - phFirstIndex]
+                ]
+                this.setState({
+                    oriAnswer: answers,
+                    phs: data.phs,
+                    phFirstIndex: phFirstIndex,
+                    answerIndex: (answer[0].ques_id === answer[2].ques_id ? 0 : 1),
+                    answer: answer,
+                    phSound: [
+                        new Audio(soundURL + answer[0].ques_path1),
+                        new Audio(soundURL + answer[1].ques_path1),
+                        new Audio(soundURL + answer[2].ques_path1),
+                    ],
+                });
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    TTobakiTouch = async () => {
+        if (!!this.state.gameState) {
+            this.playSound();
+            this.setState({
+                gameState: false,
+                isAnimate: [false, false]
+            })
+        }
+    }
+
+    onBoxTouchHandle = async (id) => {
         const { Box, answerIndex, TTobaki, gameState } = this.state;
         if (!gameState) return;
 
         switch (id) {
             case 0:
                 this.setState({
+                    gameState: false,
                     Box: [answerIndex === id ? D2.d2_Box1_3 : D2.d2_Box1_2, Box[1]],
-                    TTobaki: [answerIndex === id ? TTobak.ttobak2_1 : TTobaki]
+                    TTobaki: [answerIndex === id ? TTobak.ttobak2_1 : TTobaki],
                 });
                 break;
             case 1:
                 this.setState({
+                    gameState: false,
                     Box: [Box[0], answerIndex === id ? D2.d2_Box2_3 : D2.d2_Box2_2],
-                    TTobaki: [answerIndex === id ? TTobak.ttobak2_1 : TTobaki]
+                    TTobaki: [answerIndex === id ? TTobak.ttobak2_1 : TTobaki],
                 });
                 break;
             default:
                 break;
         }
 
-        this.finished();
-        console.log(this.state);
-    }
-
-    TTobakiTouch = async () => {
-        const { gameState } = this.state;
-
-        if (gameState) {
-            await this.playSound();
-            this.setState({
-                isAnimate: [false, false]
-            })
-        } else {
-            try {
-                const { data } = await D2_Api.ask(1, 4);
-                console.log(data);
-                if (data.code === 1) {
-                    const { answer } = data;
-                    const ph_path = [data.ph1_path, data.ph2_path];
-                    const ph = [data.ph1, data.ph2];
-                    console.log(ph_path);
-
-                    this.setState({
-                        gameState: true,
-                        oriAnswer: answer,
-                        path: ph_path,
-                        answerIndex: (answer === ph[0] ? 0 : 1),
-                        audio: [new Audio(ph_path[(answer === ph[0] ? 0 : 1)]), new Audio(ph_path[0]), new Audio(ph_path[1])],
-                        ph: ph,
-                    });
-
-                    console.log(this.state);
-                    await this.playSound();
-                    this.setState({
-                        isAnimate: [false, false]
-                    })
-                }
-            } catch (e) {
-                console.log(e);
-            }
-        }
+        this.finished(id);
     }
 
     changeTTobaki = (ttobaki) => {
@@ -104,48 +117,75 @@ class Recognition extends React.PureComponent {
     }
 
     playSound = async () => {
-        const { audio } = this.state;
+        const { phSound } = this.state;
         this.changeTTobaki(TTobak.ttobak1_2);
-        audio[0].play();
+        phSound[2].play();
 
         setTimeout(() => {
-            audio[1].play();
+            phSound[0].play();
             this.changeTTobaki(TTobak.ttobak3_1);
             this.setState({
                 isAnimate: [true, false]
             });
-        }, 1300);
+        }, 1500);
 
         setTimeout(() => {
-            audio[2].play();
+            phSound[1].play();
             this.setState({
                 isAnimate: [false, true]
             });
-        }, 2600);
+        }, 2900);
+
+        setTimeout(() => {
+            this.setState({
+                gameState: true,
+            })
+        }, 4000);
     }
 
-    finished = async () => {
+    finished = async (id) => {
         console.log('finished');
-        const { s_id, oriAnswer, stdAnswer, ph } = this.state;
+        const { s_id, answer } = this.state;
+        const [ph, oriAnswer, stdAnswer] = [
+            [answer[0].ques_id, answer[1].ques_id],
+            answer[0].ques_id === answer[2].ques_id ? answer[0].ques_char : answer[1].ques_char,
+            answer[id].ques_char
+        ];
 
         try {
-            const data = await D2_Api.answer(s_id, oriAnswer, stdAnswer, ph);
+            const data = await D2_Api.answer(s_id, oriAnswer, stdAnswer, ph, "T");
             console.log(data);
         } catch (e) {
             console.log(e);
         } finally {
             setTimeout(() => {
+                const { oriAnswer, phIndex, phs, phFirstIndex } = this.state;
+                const answer = [
+                    phs[oriAnswer[phIndex + 1][0] - phFirstIndex],
+                    phs[oriAnswer[phIndex + 1][1] - phFirstIndex],
+                    phs[oriAnswer[phIndex + 1][2] - phFirstIndex]
+                ];
+
                 this.setState({
                     gameState: false,
                     Box: [D2.d2_Box1_1, D2.d2_Box2_1],
-                    oriAnswer: null,
                     stdAnswer: null,
-                    path: [],
                     answerIndex: null,
-                    ph: [],
-                    TTobaki: TTobak.ttobak3_1
+                    TTobaki: TTobak.ttobak3_1,
+                    phIndex: phIndex + 1,
+                    answerIndex: (answer[0].ques_id === answer[2].ques_id ? 0 : 1),
+                    answer: answer,
+                    phSound: [
+                        new Audio(soundURL + answer[0].ques_path1),
+                        new Audio(soundURL + answer[1].ques_path1),
+                        new Audio(soundURL + answer[2].ques_path1),
+                    ],
                 });
             }, 1500);
+
+            setTimeout(() => {
+                this.playSound();
+            }, 3000);
         }
     }
 
@@ -158,7 +198,7 @@ class Recognition extends React.PureComponent {
                 TTobaki={TTobaki}
                 TTobakiTouch={this.TTobakiTouch}
                 Box={Box}
-                Clicked={this.Clicked}
+                Clicked={this.onBoxTouchHandle}
                 isAnimate={isAnimate}
             />);
     }
