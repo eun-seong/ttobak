@@ -4,7 +4,6 @@ import { useDrag } from 'react-dnd'
 import { usePreview } from 'react-dnd-preview';
 
 import { ItemTypes } from 'const';
-import { T2 } from 'images';
 
 const TreeDiv = styled.div`
     position: absolute;
@@ -51,7 +50,7 @@ const Apple = ({ isTreeDragging, touchPosition, onTreeTouchStartHandle, onTreeTo
     });
 
     return (
-        <>
+        <div>
             <ApplePreview touchPosition={touchPosition} isTreeDragging={isTreeDragging} />
             <TreeDiv
                 ref={drag}
@@ -59,7 +58,7 @@ const Apple = ({ isTreeDragging, touchPosition, onTreeTouchStartHandle, onTreeTo
                 onTouchStart={onTreeTouchStartHandle}
                 onTouchEnd={onTreeTouchEndHandle}
             ></TreeDiv>
-        </>
+        </div>
     );
 }
 

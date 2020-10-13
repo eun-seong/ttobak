@@ -1,6 +1,6 @@
 import React from 'react';
 import SweepPresenter from './SweepPresenter';
-import { D1_Api } from 'api';
+import { D1_Api, soundURL } from 'api';
 import { D1, TTobak } from 'images';
 import { withRouter } from 'react-router-dom';
 
@@ -14,15 +14,20 @@ class Sweep extends React.PureComponent {
             gameState: false,                           // 게임 상태
             UpButton: D1.d1_UpButton_UP,                // 버튼 이미지 상태
             DownButton: D1.d1_DownButton_UP,            // 버튼 이미지 상태
-            sweep: [],                                  // sweep 정답 순서 경로
-            path: [],                                   // up_sweep, down_sweep 소리 경로
-            oriAnswer: [],                              // 정답
+            buttonSound: [],                            // up_sweep, down_sweep 소리 경로
+            oriAnswer: null,                            // 정답
             stdAnswer: [],                              // 학습자 정답
             Answer: [],                                 // 정답 상자
             TTobaki: TTobak.ttobak1_1,                  // 또박이 이미지 상태
-            swp_id: null,                               // sweep 검사 아이디 
+            ques_id: null,                              // sweep 검사 아이디 
             s_id: s_id || 4,                            // 학습자 아이디
+            swpIndex: 0,
         };
+    }
+
+    async componentDidMount() {
+        this.newRequest();
+        setTimeout(() => this.playSound(), 1000);
     }
 
     onTouchStart = (id) => {
@@ -50,21 +55,21 @@ class Sweep extends React.PureComponent {
     }
 
     onTouchEnd = (id) => {
-        const { gameState, path } = this.state;
+        const { gameState, buttonSound } = this.state;
         switch (id) {
             case DOWN:
                 // console.log('down-up');
                 this.setState({
                     DownButton: D1.d1_DownButton_UP
                 });
-                if (gameState) path[1].play();
+                if (gameState) buttonSound[1].play();
                 break;
             case UP:
                 // console.log('up-up');
                 this.setState({
                     UpButton: D1.d1_UpButton_UP
                 });
-                if (gameState) path[0].play();
+                if (gameState) buttonSound[0].play();
                 break;
             default:
         }
@@ -72,48 +77,50 @@ class Sweep extends React.PureComponent {
     }
 
     TTobakiTouch = async () => {
-        // console.log(this.state);
-        const { gameState } = this.state;
-        if (gameState) {
+        if (this.state.gameState) {
             this.playSound();
-        } else {
-            try {
-                const { data } = await D1_Api.ask(500, 1, 4);
-                console.log(data);
+        }
+    }
 
-                if (data.code === 1) {
-                    const { answer1, answer2, down_path, up_path, swp_id } = data;
-                    const url = [
-                        answer1 === 'up' ? up_path : down_path,
-                        answer2 === 'up' ? up_path : down_path
-                    ]
+    newRequest = async () => {
+        console.log('new request');
+        const { s_id } = this.state;
 
-                    this.setState({
-                        gameState: true,
-                        oriAnswer: [answer1, answer2],
-                        swp_id: swp_id,
-                        path: [new Audio(up_path), new Audio(down_path)],
-                        sweep: [new Audio(url[0]), new Audio(url[1])],
-                    });
+        try {
+            const { data } = await D1_Api.ask(s_id);
+            console.log(data);
 
-                    this.playSound();
-                }
-                else console.log('data message: ' + data.message);
-            } catch (e) {
-                console.log('error: ' + e);
+            if (data.code === 1) {
+                const { answers, swp: { ques_id, ques_path1, ques_path2 } } = data;
+
+                this.setState({
+                    gameState: true,
+                    oriAnswer: answers,
+                    ques_id: ques_id,
+                    buttonSound: [new Audio(soundURL + ques_path2), new Audio(soundURL + ques_path1)],
+                });
             }
+            else console.log('data message: ' + data.message);
+        } catch (e) {
+            console.log('error: ' + e);
         }
     }
 
     playSound = () => {
-        const { sweep } = this.state;
+        const { swpIndex, oriAnswer, buttonSound } = this.state;
+
+        if (swpIndex > 4) {
+            this.newRequest();
+            return;
+        }
+
         this.setState({
             TTobaki: TTobak.ttobak1_2
-        })
-        sweep[0].play();
+        });
+        (UP === oriAnswer[swpIndex][0] ? buttonSound[0] : buttonSound[1]).play();
 
         setTimeout(() => {
-            sweep[1].play();
+            (UP === oriAnswer[swpIndex][1] ? buttonSound[0] : buttonSound[1]).play();
         }, 1000);
 
         setTimeout(() => {
@@ -125,24 +132,41 @@ class Sweep extends React.PureComponent {
 
     finished = async () => {
         console.log('finished');
-        const { s_id, swp_id, oriAnswer, stdAnswer } = this.state;
+        const { s_id, ques_id, oriAnswer, stdAnswer, swpIndex } = this.state;
+        const answer = [oriAnswer[swpIndex][0], oriAnswer[swpIndex][1]];
 
         try {
-            const data = await D1_Api.answer(s_id, swp_id, oriAnswer, stdAnswer);
+            const { data } = await D1_Api.answer(s_id, ques_id, answer, stdAnswer, false);
             console.log(data);
+
+            if (data.code === 1) {
+                if (data.to_next === true || data.to_next_freq === true) {
+                    await this.nextLevel();
+                    this.nextQuestion();
+                    setTimeout(() => {
+                        this.playSound();
+                    }, 1000);
+                }
+                else if (data.to_next === '모든 문제를 풀었습니다') {
+                    // TODO 다음 검사로
+                    console.log('next game');
+                } else {
+                    this.setState({
+                        Answer: [],
+                        sweep: [],
+                        path: [],
+                        stdAnswer: [],
+                        swpIndex: swpIndex + 1,
+                    });
+
+                    setTimeout(() => {
+                        this.playSound();
+                    }, 2000);
+                }
+            }
         } catch (e) {
             console.log(e);
-        } finally {
-            setTimeout(() => {
-                this.setState({
-                    gameState: false,
-                    Answer: [],
-                    sweep: [],
-                    path: [],
-                    oriAnswer: [],
-                    stdAnswer: [],
-                });
-            }, 1000)
+            // TODO 에러 처리
         }
     }
 
