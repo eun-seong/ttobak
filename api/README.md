@@ -541,7 +541,7 @@ OR
    **Optional:**
 
 * **Data Params**
-	   `s_id = [integer]` | `ques_id1 = [integer] | ques_id2 = [integer] | stu_answer = [character] | ori_answer = [character] | is_review = ["T" or "F"] | idx_txt = "ph" ` 
+	   `s_id = [integer]` | `ques_id = [integer] | ques_id2 = [integer] | stu_answer = [character] | ori_answer = [character] | is_review = ["T" or "F"] | idx_txt = "ph" ` 
 	  
 * **Success Response:**
 
@@ -561,7 +561,7 @@ OR
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/swp_test/answer",
+      url: "link/to/api/diagnose/answer",
       dataType: "json",
       type : "POST",
       data : { 
@@ -660,7 +660,7 @@ OR
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/foc_cure/answer",
+      url: "link/to/api/diagnose/answer",
       dataType: "json",
       type : "POST",
       data : { 
