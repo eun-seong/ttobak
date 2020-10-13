@@ -340,8 +340,8 @@ class TestAns(View):
         return is_correct,to_next_level,to_next_freq
 
     def ans_ph(self,student,data,idx_id,ph1,ph2):
-        stu_answer = data['stu_answer1']
-        ori_answer = data['ori_answer1']
+        stu_answer = data['stu_answer']
+        ori_answer = data['ori_answer']
         is_review = data['is_review']
         is_correct = 'F'
         if stu_answer == ori_answer:
