@@ -561,7 +561,7 @@ OR
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/swp_test/answer",
+      url: "link/to/api/diagnose/answer",
       dataType: "json",
       type : "POST",
       data : { 
@@ -660,7 +660,7 @@ OR
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/foc_cure/answer",
+      url: "link/to/api/diagnose/answer",
       dataType: "json",
       type : "POST",
       data : { 
