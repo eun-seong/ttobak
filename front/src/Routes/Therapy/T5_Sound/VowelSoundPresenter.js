@@ -31,14 +31,14 @@ const CardParent = styled.div`
 `;
 
 const VowelSound = ({ props }) => {
-    const [cardSize, textSize] = ['24vw', '7rem'];
+    const [cardSize, textSize] = ['24vw', '3.5rem'];
 
     return (
         <Div>
             <TTobakComponent src={props.TTobak} alt='또박이' onTouchEnd={props.TTobakiTouch} />
             <CardParent>
-                <CardComp src={props.Card[0]} alt='카드1' textSize={textSize} cardSize={cardSize} />
-                <CardComp src={props.Card[1]} alt='카드2' textSize={textSize} cardSize={cardSize} />
+                <CardComp src={props.Card[0]} alt='카드1' textSize={textSize} cardSize={cardSize} text={props.CardTextList[0]} />
+                <CardComp src={props.Card[1]} alt='카드2' textSize={textSize} cardSize={cardSize} text={props.CardTextList[1]} />
             </CardParent>
         </Div>
     );

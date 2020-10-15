@@ -179,10 +179,14 @@ export const T5_Api = {
             "s_id": s_id,
             "idx_txt": idx_txt.vowelsound,
         }),
-    answer: (s_id) =>
+    answer: (s_id, ori_answer, stu_answer, cure_id, is_review) =>
         api.post(url.therapy_answer, {
             "s_id": s_id,
+            "cure_id": cure_id,
             "idx_txt": idx_txt.vowelsound,
+            "is_review": is_review || "F",
+            "ori_answer": ori_answer,
+            "stu_answer": stu_answer,
         }),
 };
 

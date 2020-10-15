@@ -22,10 +22,12 @@ const ImgComponent = styled.div`
 const TextComponent = styled.div`
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align:center;
     font-size: ${props => props.textSize || '1rem'};
     font-weight: bold;
     width: 80%;
+    height: 50%;
 `;
 
 const Card = ({ src, text, textSize, cardSize }) => {
