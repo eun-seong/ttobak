@@ -30,11 +30,17 @@ const Boxes = styled.div`
 const Common = ({ props }) => {
     return (
         <Div>
-            <TTobakComponent src={props.TTobak} alt='또박이' onTouchEnd={props.TTobakiTouch} />
+            <TTobakComponent src={props.TTobak} alt='또박이' onTouchEnd={props.onTTobakiTouchHandle} />
             <Boxes>
-                {props.boxList.map((list, index) => {
+                {props.boxTextList.map((list, index) => {
                     return (
-                        <BoxComponent key={index} text={list} BoxImg={props.BoxImg} />
+                        <BoxComponent
+                            key={index}
+                            text={list}
+                            index={index}
+                            BoxImg={props.BoxImg}
+                            isAnimate={props.isAnimate[index]}
+                            onBoxTouchHandle={props.onBoxTouchHandle} />
                     );
                 })}
             </Boxes>

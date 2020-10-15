@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const Box = styled.div`
     display: flex;
@@ -11,21 +11,38 @@ const Box = styled.div`
     background-repeat: no-repeat;
     background-size: auto 100%;
     background-position: center;
+    ${props => {
+        if (props.isAnimate) {
+            return css`
+                animation: ${animate} 0.5s 0.3s 2 alternate;
+                animation-timing-function:ease;
+            `;
+        }
+    }}
+`;
+
+const animate = keyframes`
+    from{
+        bottom:0px;
+    }
+    to{
+        top:10px;
+    }
 `;
 
 const Text = styled.div`
     display: flex;
     justify-content: center;
     text-align:center;
-    font-size: 6rem;
+    font-size: 4rem;
     font-weight: bold;
     width: 70%;
 `;
 
 
-const BoxComponent = ({ text, BoxImg }) => {
+const BoxComponent = ({ text, BoxImg, isAnimate, onBoxTouchHandle, index }) => {
     return (
-        <Box src={BoxImg}>
+        <Box src={BoxImg} isAnimate={isAnimate} onTouchEnd={() => onBoxTouchHandle(index)}>
             <Text>{text || 'ㄱ'}</Text>
         </Box>
     );

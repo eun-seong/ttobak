@@ -26,6 +26,7 @@ export default class extends React.Component {
                 numOfApples: 0,
             },
             timeOut: null,
+            TTobaki: TTobak.ttobak1_1,
         };
     }
 
@@ -56,16 +57,10 @@ export default class extends React.Component {
         }
     }
 
-    TTobakiTouch = () => {
-        const { gameState } = this.state;
-        if (gameState) {
-            this.playSound();
-        }
-    }
-
     playSound = () => {
         const { currentAudio } = this.state;
         currentAudio.play();
+        this.changeTTobaki(TTobak.ttobak3_2);
 
         this.setState({
             gameState: false,
@@ -74,7 +69,21 @@ export default class extends React.Component {
         currentAudio.addEventListener('ended', () => {
             this.setState({
                 gameState: true,
+                TTobaki: TTobak.ttobak1_1,
             })
+        });
+    }
+
+    TTobakiTouch = () => {
+        const { gameState } = this.state;
+        if (gameState) {
+            this.playSound();
+        }
+    }
+
+    changeTTobaki = (ttobaki) => {
+        this.setState({
+            TTobaki: ttobaki
         });
     }
 
@@ -153,14 +162,14 @@ export default class extends React.Component {
     }
 
     render() {
-        const { isDragging, touchPosition, Apple, answer } = this.state;
+        const { isDragging, touchPosition, Apple, answer, TTobaki } = this.state;
 
         return (
             <DndProvider backend={TouchBackend}>
                 <CountPresenter
                     Background={T2.t2_background}
                     Basket={T2.t2_basket}
-                    TTobak={TTobak.ttobak1_1}
+                    TTobak={TTobaki}
                     TTobakiTouch={this.TTobakiTouch}
                     onTreeTouchStartHandle={this.onTreeTouchStartHandle}
                     onTreeTouchEndHandle={this.onTreeTouchEndHandle}
