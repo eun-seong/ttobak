@@ -16,13 +16,13 @@ import User from './Router_User';
 export default () => (
     <Router>
         <Switch>
-            <Route path='/therapy/shadowing/:type' exect component={Shadowing} />
-            <Route path='/therapy/count' exect component={Count} />
-            <Route path='/therapy/common' exect component={Common} />
-            <Route path='/therapy/word/:type' exect component={Word} />
-            <Route path='/therapy/sound/:type' exect component={Sound} />
-            <Route path='/therapy/consocommon' exect component={ConsoCommon} />
-            <Route path='/therapy/consomatch' exect component={ConsoMatch} />
+            <Route path='/therapy/shadowing/:type/:s_id/:is_review' exect component={Shadowing} />
+            <Route path='/therapy/count/:s_id/:is_review' exect component={Count} />
+            <Route path='/therapy/common/:s_id/:is_review' exect component={Common} />
+            <Route path='/therapy/word/:type/:s_id/:is_review' exect component={Word} />
+            <Route path='/therapy/sound/:type/:s_id/:is_review' exect component={Sound} />
+            <Route path='/therapy/consocommon/:s_id/:is_review' exect component={ConsoCommon} />
+            <Route path='/therapy/consomatch/:s_id/:is_review' exect component={ConsoMatch} />
 
             <Route path='/diagnose' component={Diagnose} />
             <Route path='/root' component={Root} />

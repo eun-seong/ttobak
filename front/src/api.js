@@ -11,6 +11,7 @@ const url = {
     diagnose_answer: 'diagnose/answer',
     therapy_ask: 'cure/ask',
     therapy_answer: 'cure/answer',
+    audio_segscore: 'segscore',
 }
 
 const idx_txt = {
@@ -24,7 +25,8 @@ const idx_txt = {
     count: 'count',
     vowelsound: 'vowelsound',
     consocommon: 'consocommon',
-    consocound: 'consocound',
+    consosound: 'consosound',
+    consomatch: 'consomatch',
     common: 'common',
     vowelword: 'vowelword',
     consoword: 'consoword',
@@ -88,15 +90,147 @@ export const D3_Api = {
         }),
 };
 
-export const T1_Api = {
-    ask: (s_id, idx_txt) =>
+export const Daily_Api = {
+    ask: (s_id) =>
         api.post(url.therapy_ask, {
             "s_id": s_id,
-            // "idx_txt": null
         }),
-    answer: (s_id, oriAnswer, stdAnswer, ph) =>
-        api.post(url.therapy_answer, {
+}
 
+export const T1_Api = {
+    ask: (s_id) =>
+        api.post(url.therapy_ask, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.poem,
+        }),
+    answer: (s_id, full_score, phone_score, speed_score, rhythm_score, is_review, cure_id) =>
+        api.post(url.therapy_answer, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.poem,
+            "full_score": full_score,
+            "phone_score": phone_score,
+            "speed_score": speed_score,
+            "rhythm_score ": rhythm_score,
+            "is_review": is_review,
+            "cure_id": cure_id
+        }),
+};
+
+export const Audio_Api = {
+    segscroe: (gender, transcript, file) => {
+        api.post(url.audio_segscore, {
+            gender: gender,
+            transcript: transcript,
+            file: file,
+        })
+    }
+}
+
+export const T2_Api = {
+    ask: (s_id) =>
+        api.post(url.therapy_ask, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.count,
+        }),
+    answer: (s_id, ori_answer, stu_answer, cure_id, is_review) =>
+        api.post(url.therapy_answer, {
+            "s_id": s_id,
+            "cure_id": cure_id,
+            "idx_txt": idx_txt.count,
+            "is_review": is_review || "F",
+            "ori_answer": ori_answer,
+            "stu_answer": stu_answer,
+        }),
+};
+
+export const T3_Api = {
+    ask: (s_id) =>
+        api.post(url.therapy_ask, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.common,
+        }),
+    answer: (s_id) =>
+        api.post(url.therapy_answer, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.common,
+        }),
+};
+
+export const T4_Api = {
+    ask: (s_id) =>
+        api.post(url.therapy_ask, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.vowelword,
+        }),
+    answer: (s_id) =>
+        api.post(url.therapy_answer, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.vowelword,
+        }),
+};
+
+export const T5_Api = {
+    ask: (s_id) =>
+        api.post(url.therapy_ask, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.vowelsound,
+        }),
+    answer: (s_id) =>
+        api.post(url.therapy_answer, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.vowelsound,
+        }),
+};
+
+export const T6_Api = {
+    ask: (s_id) =>
+        api.post(url.therapy_ask, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.consomatch,
+        }),
+    answer: (s_id) =>
+        api.post(url.therapy_answer, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.consomatch,
+        }),
+};
+
+export const T7_Api = {
+    ask: (s_id) =>
+        api.post(url.therapy_ask, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.consocommon,
+        }),
+    answer: (s_id) =>
+        api.post(url.therapy_answer, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.consocommon,
+        }),
+};
+
+export const T8_Api = {
+    ask: (s_id) =>
+        api.post(url.therapy_ask, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.consoword,
+        }),
+    answer: (s_id) =>
+        api.post(url.therapy_answer, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.consoword,
+        }),
+};
+
+export const T9_Api = {
+    ask: (s_id) =>
+        api.post(url.therapy_ask, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.consosound,
+        }),
+    answer: (s_id) =>
+        api.post(url.therapy_answer, {
+            "s_id": s_id,
+            "idx_txt": idx_txt.consosound,
         }),
 };
 

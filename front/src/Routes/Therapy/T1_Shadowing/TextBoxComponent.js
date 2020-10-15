@@ -17,7 +17,7 @@ const Text = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
+    font-size: 2.3rem;
     height: 65%;
     width: 80%;
 `;

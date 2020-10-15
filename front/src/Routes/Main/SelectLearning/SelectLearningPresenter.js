@@ -24,7 +24,7 @@ const Line = styled.div`
     background-color: #DFD7C4;
 `;
 
-const SelectLearning = ({ ContentsList, goBack }) => {
+const SelectLearning = ({ ContentsList, goBack, s_id }) => {
     document.body.style.overflow = 'visible';
 
     return (
@@ -39,7 +39,7 @@ const SelectLearning = ({ ContentsList, goBack }) => {
                                 flex={5}
                                 title={list.title}
                                 explain={list.explain}
-                                url={list.url} />
+                                url={list.url + `/${s_id}/F`} />
                         </ContentBox>
                         <Line />
                     </div>

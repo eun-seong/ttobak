@@ -21,7 +21,7 @@ class Sweep extends React.PureComponent {
             TTobaki: TTobak.ttobak1_1,                  // 또박이 이미지 상태
             ques_id: null,                              // sweep 검사 아이디 
             s_id: s_id || 4,                            // 학습자 아이디
-            swpIndex: 0,
+            currentIndex: 0,
         };
     }
 
@@ -106,9 +106,9 @@ class Sweep extends React.PureComponent {
     }
 
     playSound = () => {
-        const { swpIndex, oriAnswer, buttonSound } = this.state;
+        const { currentIndex, oriAnswer, buttonSound } = this.state;
 
-        if (swpIndex > 4) {
+        if (currentIndex > 4) {
             this.newRequest();
             return;
         }
@@ -116,10 +116,10 @@ class Sweep extends React.PureComponent {
         this.setState({
             TTobaki: TTobak.ttobak1_2
         });
-        (UP === oriAnswer[swpIndex][0] ? buttonSound[0] : buttonSound[1]).play();
+        (UP === oriAnswer[currentIndex][0] ? buttonSound[0] : buttonSound[1]).play();
 
         setTimeout(() => {
-            (UP === oriAnswer[swpIndex][1] ? buttonSound[0] : buttonSound[1]).play();
+            (UP === oriAnswer[currentIndex][1] ? buttonSound[0] : buttonSound[1]).play();
         }, 1000);
 
         setTimeout(() => {
@@ -132,8 +132,8 @@ class Sweep extends React.PureComponent {
 
     finished = async () => {
         console.log('finished');
-        const { s_id, ques_id, oriAnswer, stdAnswer, swpIndex } = this.state;
-        const answer = [oriAnswer[swpIndex][0], oriAnswer[swpIndex][1]];
+        const { s_id, ques_id, oriAnswer, stdAnswer, currentIndex } = this.state;
+        const answer = [oriAnswer[currentIndex][0], oriAnswer[currentIndex][1]];
 
         try {
             const { data } = await D1_Api.answer(s_id, ques_id, answer, stdAnswer, false);
@@ -157,7 +157,7 @@ class Sweep extends React.PureComponent {
                         sweep: [],
                         path: [],
                         stdAnswer: [],
-                        swpIndex: swpIndex + 1,
+                        currentIndex: currentIndex + 1,
                     });
 
                     setTimeout(() => {

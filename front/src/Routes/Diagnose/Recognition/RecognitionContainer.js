@@ -127,14 +127,14 @@ class Recognition extends React.PureComponent {
             this.setState({
                 isAnimate: [true, false]
             });
-        }, 1500);
+        }, 2000);
 
         setTimeout(() => {
             phSound[1].play();
             this.setState({
                 isAnimate: [false, true]
             });
-        }, 2900);
+        }, 3500);
 
         setTimeout(() => {
             this.setState({
@@ -153,7 +153,7 @@ class Recognition extends React.PureComponent {
         ];
 
         try {
-            const data = await D2_Api.answer(s_id, oriAnswer, stdAnswer, ph, "T");
+            const data = await D2_Api.answer(s_id, oriAnswer, stdAnswer, ph, 'T');
             console.log(data);
         } catch (e) {
             console.log(e);

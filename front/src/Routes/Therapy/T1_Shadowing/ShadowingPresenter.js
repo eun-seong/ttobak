@@ -30,7 +30,7 @@ const Shadowing = ({ props }) => {
         <Div>
             <TTobakComponent src={props.TTobak} alt='또박이' />
             <TextBox>
-                <TextBoxComponent src={props.TextBox} type={props.type} />
+                <TextBoxComponent src={props.TextBox} type={props.type} text={props.text} />
             </TextBox>
         </Div>
     );
