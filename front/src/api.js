@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export const soundURL = 'https://ttobakaudio.s3-ap-northeast-2.amazonaws.com';
-export const baseURL = 'http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000';
 
 const api = axios.create({
     baseURL: "http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/api/"
@@ -216,10 +215,14 @@ export const T7_Api = {
             "s_id": s_id,
             "idx_txt": idx_txt.consocommon,
         }),
-    answer: (s_id) =>
+    answer: (s_id, ori_answer, stu_answer, cure_id, is_review) =>
         api.post(url.therapy_answer, {
             "s_id": s_id,
+            "cure_id": cure_id,
             "idx_txt": idx_txt.consocommon,
+            "is_review": is_review || "F",
+            "ori_answer": ori_answer,
+            "stu_answer": stu_answer,
         }),
 };
 

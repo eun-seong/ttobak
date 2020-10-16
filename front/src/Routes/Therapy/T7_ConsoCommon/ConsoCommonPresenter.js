@@ -29,25 +29,38 @@ const CardParent = styled.div`
     height:75vh;
 `;
 
-const ConsoCommon = ({ Card }) => {
+const ConsoCommon = ({ props }) => {
     const [cardSize, textSize] = ['22vw', '6.5rem'];
 
     return (
         <Div>
-            <PicBoxParent picSize={'40vw'}><FrameBox /></PicBoxParent>
+            <PicBoxParent picSize={'40vw'}><FrameBox src={props.picBox} /></PicBoxParent>
             <CardParent>
-                <CardComp src={Card[0]} alt='카드1' textSize={textSize} cardSize={cardSize} />
-                <CardComp src={Card[1]} alt='카드2' textSize={textSize} cardSize={cardSize} />
+                <CardComp
+                    src={props.Card[0]}
+                    alt='카드1'
+                    textSize={textSize}
+                    cardSize={cardSize}
+                    text={props.CardTextList[0]}
+                    onCardTouchHandle={props.onCardTouchHandle}
+                    index={0} />
+                <CardComp
+                    src={props.Card[1]}
+                    alt='카드2' textSize={textSize}
+                    cardSize={cardSize}
+                    text={props.CardTextList[1]}
+                    onCardTouchHandle={props.onCardTouchHandle}
+                    index={1} />
             </CardParent>
         </Div>
     );
 }
 
-const Game = ({ Background, Card }) => {
+const Game = ({ Background, ...props }) => {
     return (
         <GameBackground BackgroundImg={Background}
             Children={
-                <ConsoCommon Card={Card} />
+                <ConsoCommon props={props} />
             }>
         </GameBackground>
     );

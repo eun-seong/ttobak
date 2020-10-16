@@ -30,9 +30,9 @@ const TextComponent = styled.div`
     height: 50%;
 `;
 
-const Card = ({ src, text, textSize, cardSize }) => {
+const Card = ({ src, text, textSize, cardSize, index, onCardTouchHandle }) => {
     return (
-        <CardComponent cardSize={cardSize}>
+        <CardComponent cardSize={cardSize} onTouchEnd={() => onCardTouchHandle(index)}>
             <ImgComponent src={src}>
                 <TextComponent textSize={textSize}>{text || 'ㅅ'}</TextComponent>
             </ImgComponent>

@@ -23,7 +23,7 @@ const Picture = styled.img`
 const FrameBox = ({ src }) => {
     return (
         <Box src={T7.t7_frame} >
-            <Picture src={src || T7.t7_excpic} alt='그림' />
+            <Picture src={src} alt='그림' />
         </Box>
     );
 }

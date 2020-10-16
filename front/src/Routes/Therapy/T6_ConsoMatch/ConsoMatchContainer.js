@@ -2,7 +2,7 @@ import React from 'react';
 import ConsoMatchPresenter from './ConsoMatchPresenter';
 
 import { T6, Characters } from 'images';
-import { T6_Api, soundURL, baseURL } from 'api';
+import { T6_Api, soundURL } from 'api';
 
 export default class extends React.Component {
     constructor({ match }) {
@@ -46,7 +46,7 @@ export default class extends React.Component {
                 this.cureLength = data.answer.length;
                 this.cure = data.cure;
                 this.currentCure = data.answer[this.currentIndex];
-                console.log(baseURL + this.getListFilter('cure_tid', this.currentCure[0]).cure_path2);
+                console.log(soundURL + this.getListFilter('cure_tid', this.currentCure[0]).cure_path2);
                 this.currentAudio = new Audio(soundURL + this.getListFilter('cure_tid', this.currentCure[3][0]).cure_path);
                 this.currentAudio.addEventListener('ended', () => {
                     this.setState({
@@ -57,9 +57,9 @@ export default class extends React.Component {
 
                 this.setState({
                     PicBoxList: [
-                        baseURL + this.getListFilter('cure_tid', this.currentCure[0]).cure_path2,
-                        baseURL + this.getListFilter('cure_tid', this.currentCure[1]).cure_path2,
-                        baseURL + this.getListFilter('cure_tid', this.currentCure[2]).cure_path2,
+                        soundURL + this.getListFilter('cure_tid', this.currentCure[0]).cure_path2,
+                        soundURL + this.getListFilter('cure_tid', this.currentCure[1]).cure_path2,
+                        soundURL + this.getListFilter('cure_tid', this.currentCure[2]).cure_path2,
                     ]
                 })
             }
@@ -123,9 +123,9 @@ export default class extends React.Component {
 
                 this.setState({
                     PicBoxList: [
-                        baseURL + this.getListFilter('cure_tid', this.currentCure[0]).cure_path2,
-                        baseURL + this.getListFilter('cure_tid', this.currentCure[1]).cure_path2,
-                        baseURL + this.getListFilter('cure_tid', this.currentCure[2]).cure_path2,
+                        soundURL + this.getListFilter('cure_tid', this.currentCure[0]).cure_path2,
+                        soundURL + this.getListFilter('cure_tid', this.currentCure[1]).cure_path2,
+                        soundURL + this.getListFilter('cure_tid', this.currentCure[2]).cure_path2,
                     ]
                 })
 
