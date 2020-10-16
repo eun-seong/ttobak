@@ -20,9 +20,9 @@ const Picture = styled.img`
     height: 78%;
 `;
 
-const FrameBox = ({ src, frameSize }) => {
+const FrameBox = ({ src, frameSize, index, onBoxTouchHandle }) => {
     return (
-        <Box src={T6.t6_frame} frameSize={frameSize || '100%'}>
+        <Box src={T6.t6_frame} frameSize={frameSize || '100%'} onTouchEnd={() => onBoxTouchHandle(index)}>
             <Picture src={src || T6.t6_excpic} alt='그림' />
         </Box>
     );

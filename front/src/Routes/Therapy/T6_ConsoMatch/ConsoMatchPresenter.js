@@ -34,11 +34,17 @@ const ConsoMatch = ({ props }) => {
             <Frames>
                 {props.frameList.map((list, index) => {
                     return (
-                        <FrameBox key={index} text={list} frameSize={frameSize} />
+                        <FrameBox
+                            key={index}
+                            text={list}
+                            frameSize={frameSize}
+                            onBoxTouchHandle={props.onBoxTouchHandle}
+                            index={index}
+                        />
                     );
                 })}
             </Frames>
-            <WormComponent src={props.Worm} alt='또박이' onTouchEnd={props.WormTouch} />
+            <WormComponent src={props.Worm} alt='또박이' onTouchEnd={props.onWormTouchHandle} />
         </Div>
     );
 }
