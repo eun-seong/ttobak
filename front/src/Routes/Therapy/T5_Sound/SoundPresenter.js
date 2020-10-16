@@ -37,8 +37,22 @@ const Sound = ({ props }) => {
         <Div>
             <TTobakComponent src={props.TTobak} alt='또박이' onTouchEnd={props.TTobakiTouch} />
             <CardParent>
-                <CardComp src={props.Card[0]} alt='카드1' textSize={textSize} cardSize={cardSize} text={props.CardTextList[0]} />
-                <CardComp src={props.Card[1]} alt='카드2' textSize={textSize} cardSize={cardSize} text={props.CardTextList[1]} />
+                <CardComp
+                    src={props.Card[0]}
+                    alt='카드1'
+                    textSize={textSize}
+                    cardSize={cardSize}
+                    text={props.CardTextList[0]}
+                    index={0}
+                    onCardTouchHandle={props.onCardTouchHandle} />
+                <CardComp
+                    src={props.Card[1]}
+                    alt='카드2'
+                    textSize={textSize}
+                    cardSize={cardSize}
+                    text={props.CardTextList[1]}
+                    index={1}
+                    onCardTouchHandle={props.onCardTouchHandle} />
             </CardParent>
         </Div>
     );

@@ -13,20 +13,27 @@ export default class extends React.Component {
             s_id: parseInt(match.params.s_id) || 4,
             is_review: match.params.is_review,
             TTobaki: TTobak.ttobak1_1,
-            cure: null,
-            cureLength: 0,
-            currentIndex: 0,
             gameState: false,
             boxTextList: null,
             isAnimate: [false, false, false, false],
         };
 
-        var currentAudio = null;
+        this.currentAudio = null;
+        this.cure = null;
+        this.cureLength = 0;
+        this.currentIndex = 0;
     }
 
     async componentDidMount() {
         this.newRequest();
         setTimeout(() => this.playSound(), 1000);
+    }
+
+    componentWillUnmount() {
+        for (var i = 0; i < 7; i++) {
+            this.currentAudio[i].pause();
+            this.currentAudio[i] = null;
+        }
     }
 
     newRequest = async () => {
@@ -48,9 +55,9 @@ export default class extends React.Component {
                     new Audio(soundURL + first.com_w2path),
                     new Audio(soundURL + first.com_w3path),
                 ];
+                this.cure = data.cure;
+                this.cureLength = data.cure.length;
                 this.setState({
-                    cure: data.cure,
-                    cureLength: data.cure.length,
                     boxTextList: [first.com_e1, first.com_e2, first.com_e3, first.com_e4],
                 })
                 this.setListener();
@@ -79,10 +86,12 @@ export default class extends React.Component {
                 TTobaki: TTobak.ttobak1_1
             })
             setTimeout(() => {
-                this.currentAudio[5].play();
-                this.setState({
-                    TTobaki: TTobak.ttobak3_2
-                })
+                if (!!this.currentAudio[5]) {
+                    this.currentAudio[5].play();
+                    this.setState({
+                        TTobaki: TTobak.ttobak3_2
+                    })
+                }
             }, 1000);
         });
         this.currentAudio[5].addEventListener('ended', () => {
@@ -90,10 +99,12 @@ export default class extends React.Component {
                 TTobaki: TTobak.ttobak1_1
             })
             setTimeout(() => {
-                this.currentAudio[6].play();
-                this.setState({
-                    TTobaki: TTobak.ttobak3_2
-                })
+                if (!!this.currentAudio[6]) {
+                    this.currentAudio[6].play();
+                    this.setState({
+                        TTobaki: TTobak.ttobak3_2
+                    })
+                }
             }, 1000);
         });
         this.currentAudio[6].addEventListener('ended', () => {
@@ -110,10 +121,12 @@ export default class extends React.Component {
             TTobaki: TTobak.ttobak1_1
         });
         setTimeout(() => {
-            this.currentAudio[index + 1].play();
-            this.setState({
-                TTobaki: TTobak.ttobak1_2
-            })
+            if (!!this.currentAudio[index + 1]) {
+                this.currentAudio[index + 1].play();
+                this.setState({
+                    TTobaki: TTobak.ttobak1_2
+                })
+            }
         }, time);
     }
 
@@ -123,7 +136,9 @@ export default class extends React.Component {
             TTobaki: TTobak.ttobak1_2
         });
 
-        this.currentAudio[0].play();
+        if (!!this.currentAudio[0]) {
+            this.currentAudio[0].play();
+        }
     }
 
     onTTobakiTouchHandle = () => {

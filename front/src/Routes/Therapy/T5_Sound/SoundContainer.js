@@ -17,18 +17,24 @@ export default class extends React.Component {
         }
 
         this.cure = null;
-        this.cureLength = 0;
+        this.currentCure = null;
         this.currentIndex = 0;
         this.currentAudio = null;
         this.idx_text = match.params.type + 'sound';
     }
 
     async componentDidMount() {
-        this.newRequest();
+        if (this.state.type === 'vowel') this.newRequestVowel();
+        else if (this.state.type === 'conso') this.newRequestConso();
         setTimeout(() => this.playSound(), 1000);
     }
 
-    newRequest = async () => {
+    componentWillUnmount() {
+        this.currentAudio.pause();
+        this.currentAudio = null;
+    }
+
+    newRequestVowel = async () => {
         console.log('new request');
 
         try {
@@ -37,13 +43,11 @@ export default class extends React.Component {
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
-                var first = data.cure[0];
                 this.cure = data.cure;
-                this.cureLength = data.cure.length;
-                this.currentAudio = [new Audio(first.cure_path), new Audio(first.cure_path2)];
-
+                this.currentCure = data.cure[this.currentIndex];
+                this.setAudio();
                 this.setState({
-                    CardTextList: [first.cure_word, first.cure_word2],
+                    CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
                 })
             }
             else console.log('data message: ' + data.message);
@@ -52,11 +56,49 @@ export default class extends React.Component {
         }
     }
 
+    newRequestConso = async () => {
+        console.log('new request');
+        // TODO
+        try {
+            //     const { s_id } = this.state;
+            //     const { data } = await T_Api2.ask(s_id, this.idx_text);
+            //     console.log(data);
+
+            //     if (data.code === 'specified' || data.code === 1) {
+            //         this.cure = data.cure;
+            //         this.currentCure = data.cure[this.currentIndex];
+            //         this.setAudio();
+            //         this.setState({
+            //             CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
+            //         })
+            //     }
+            //     else console.log('data message: ' + data.message);
+        } catch (e) {
+            console.log('error: ' + e);
+        }
+    }
+
+    setAudio = () => {
+        this.currentAudio = this.currentCure.answer === 1
+            ? new Audio(soundURL + this.currentCure.cure_path) :
+            new Audio(soundURL + this.currentCure.cure_path2);
+        console.log(this.currentAudio)
+        this.currentAudio.addEventListener('ended', () => {
+            this.setState({
+                gameState: true,
+                TTobaki: TTobak.ttobak1_1
+            })
+        })
+    }
+
     playSound = () => {
-        this.setState({
-            gameState: false,
-            TTobaki: TTobak.ttobak1_2
-        });
+        if (!!this.currentAudio) {
+            this.setState({
+                gameState: false,
+                TTobaki: TTobak.ttobak1_2
+            });
+            this.currentAudio.play();
+        }
     }
 
     onTTobakiTouchHandle = () => {
@@ -72,20 +114,36 @@ export default class extends React.Component {
         })
 
         try {
-            // const { data } = await T_Api2.answer(
-            //     s_id,
-            //     cure[currentIndex].com_ans,
-            //     boxTextList[index],
-            //     cure_id,
-            //     is_review,
-            //      this.idx_text
-            // );
-            // console.log(data);
+            const { s_id, is_review, CardTextList } = this.state;
+            const { data } = await T_Api2.answer(
+                s_id,
+                this.currentCure.answer === 1 ? this.currentCure.cure_word : this.currentCure.cure_word2,
+                CardTextList[index],
+                this.currentCure.cure_id,
+                is_review,
+                this.idx_text
+            );
+            console.log(data);
 
-            // if (data.code === 1) {
-            //     const nextIndex = currentIndex + 1;
+            if (data.code === 1) {
+                if (this.currentIndex < this.cure.length) this.currentIndex++;
+                else {
+                    this.gameDone();
+                    return;
+                }
+                this.currentCure = this.cure[this.currentIndex];
+                this.setAudio();
+                setTimeout(() => {
+                    this.setState({
+                        CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
+                        TTobaki: TTobak.ttobak1_1
+                    });
+                }, 2000);
 
-            // }
+                setTimeout(() => {
+                    this.playSound();
+                }, 3000);
+            }
         } catch (e) {
             console.log(e);
         }

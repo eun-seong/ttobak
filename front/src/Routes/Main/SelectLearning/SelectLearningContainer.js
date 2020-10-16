@@ -18,7 +18,7 @@ class Select extends React.Component {
             {
                 index: 1,
                 img: MainTherapy[1],
-                url: '/therapy/shadowing/vowel',
+                url: '/therapy/shadowing/vowelword',
                 title: '모음 | 단어',
                 explain: '모음 단어를 듣고 무엇인지 맞혀 봐요',
             },
@@ -46,7 +46,7 @@ class Select extends React.Component {
             {
                 index: 5,
                 img: MainTherapy[5],
-                url: '/therapy/shadowing/conso',
+                url: '/therapy/shadowing/consoword',
                 title: '자음 | 단어 발음하기',
                 explain: '단어를 발음해  봐요',
             },

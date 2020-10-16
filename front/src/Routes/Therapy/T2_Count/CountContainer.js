@@ -15,10 +15,6 @@ export default class extends React.Component {
         this.state = {
             s_id: parseInt(match.params.s_id) || 4,
             is_review: match.params.is_review,
-            cure: null,
-            cureLength: 0,
-            currentIndex: 0,
-            currentAudio: null,
             gameState: false,
             isDragging: false,
             touchPosition: [],
@@ -27,14 +23,24 @@ export default class extends React.Component {
                 applesInBasket: [],
                 numOfApples: 0,
             },
-            timeOut: null,
             TTobaki: TTobak.ttobak1_1,
         };
+
+        this.cure = null;
+        this.cureLength = 0;
+        this.currentIndex = 0;
+        this.currentAudio = null;
+        this.timeOut = null;
     }
 
     async componentDidMount() {
         this.newRequest();
         setTimeout(() => this.playSound(), 1000);
+    }
+
+    componentWillUnmount() {
+        this.currentAudio.pause();
+        this.currentAudio = null;
     }
 
     newRequest = async () => {
@@ -47,11 +53,9 @@ export default class extends React.Component {
 
             if (data.code === 'specified' || data.code === 1) {
                 const first = data.cure[0];
-                this.setState({
-                    cure: data.cure,
-                    cureLength: data.cure.length,
-                    currentAudio: new Audio(soundURL + first.cure_path),
-                })
+                this.cure = data.cure;
+                this.cureLength = data.cure.length;
+                this.currentAudio = new Audio(soundURL + first.cure_path);
             }
             else console.log('data message: ' + data.message);
         } catch (e) {
@@ -60,20 +64,21 @@ export default class extends React.Component {
     }
 
     playSound = () => {
-        const { currentAudio } = this.state;
-        currentAudio.play();
-        this.changeTTobaki(TTobak.ttobak3_2);
+        if (!!this.currentAudio) {
+            this.currentAudio.play();
+            this.changeTTobaki(TTobak.ttobak3_2);
 
-        this.setState({
-            gameState: false,
-        });
-
-        currentAudio.addEventListener('ended', () => {
             this.setState({
-                gameState: true,
-                TTobaki: TTobak.ttobak1_1,
-            })
-        });
+                gameState: false,
+            });
+
+            this.currentAudio.addEventListener('ended', () => {
+                this.setState({
+                    gameState: true,
+                    TTobaki: TTobak.ttobak1_1,
+                })
+            });
+        }
     }
 
     TTobakiTouch = () => {
@@ -90,32 +95,41 @@ export default class extends React.Component {
     }
 
     gameDone = async () => {
-        const { s_id, Apple: { numOfApples }, currentIndex, cureLength, is_review, cure } = this.state;
+        this.setState({
+            TTobaki: TTobak.ttobak2_1
+        })
+        const { s_id, Apple: { numOfApples }, is_review } = this.state;
 
         const { data } = await T_Api2.answer(
             s_id,
-            cure[currentIndex].cure_word.length.toString(),
+            this.cure[this.currentIndex].cure_word.length.toString(),
             numOfApples.toString(),
-            cure[currentIndex].cure_id,
+            this.cure[this.currentIndex].cure_id,
             is_review,
             idx_txt
         );
         console.log(data);
 
-        const nextIndex = cureLength > currentIndex ? currentIndex + 1 : 0;
-        this.setState({
-            gameState: false,
-            timeOut: null,
-            currentIndex: nextIndex,
-            currentAudio: new Audio(soundURL + cure[nextIndex].cure_path),
-            isDragging: false,
-            touchPosition: [],
-            Apple: {
-                randomApple: T2.t2_Apples[Math.floor(Math.random() * 4)],
-                applesInBasket: [],
-                numOfApples: 0,
-            },
-        });
+        if (this.currentIndex < this.cureLength) this.currentIndex++;
+        else return;
+
+        this.currentIndex = this.currentIndex;
+        this.currentAudio = new Audio(soundURL + this.cure[this.currentIndex].cure_path);
+
+        setTimeout(() => {
+            this.setState({
+                gameState: false,
+                timeOut: null,
+                isDragging: false,
+                touchPosition: [],
+                TTobaki: TTobak.ttobak1_1,
+                Apple: {
+                    randomApple: T2.t2_Apples[Math.floor(Math.random() * 4)],
+                    applesInBasket: [],
+                    numOfApples: 0,
+                },
+            });
+        }, 1000);
 
         setTimeout(() => {
             this.playSound();
@@ -135,8 +149,13 @@ export default class extends React.Component {
     }
 
     dropApple = () => {
-        const { Apple: { applesInBasket, numOfApples, randomApple }, timeOut } = this.state;
-        if (timeOut) clearTimeout(timeOut);
+        const { Apple: { applesInBasket, numOfApples, randomApple } } = this.state;
+        if (this.timeOut) clearTimeout(this.timeOut);
+
+        this.timeOut = setTimeout(() => {
+            console.log('setTimeout');
+            this.gameDone();
+        }, 3000);
 
         this.setState({
             Apple: {
@@ -144,10 +163,6 @@ export default class extends React.Component {
                 numOfApples: numOfApples <= 5 ? numOfApples + 1 : 5,
                 applesInBasket: applesInBasket.concat(randomApple),
             },
-            timeOut: setTimeout(() => {
-                console.log('setTimeout');
-                this.gameDone();
-            }, 3000)
         });
     }
 

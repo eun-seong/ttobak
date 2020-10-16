@@ -28,6 +28,11 @@ export default class extends React.Component {
         setTimeout(() => this.playSound(), 1000);
     }
 
+    componentWillUnmount() {
+        this.currentAudio.pause();
+        this.currentAudio = null;
+    }
+
     getListFilter = (key, value) => {
         return this.cure.filter((object) => { return object[key] === value })[0]
     }
@@ -71,11 +76,13 @@ export default class extends React.Component {
 
 
     playSound = () => {
-        this.setState({
-            gameState: false,
-            Worm: Characters.worm2_1,
-        });
-        this.currentAudio.play();
+        if (!!this.currentAudio) {
+            this.setState({
+                gameState: false,
+                Worm: Characters.worm2_1,
+            });
+            this.currentAudio.play();
+        }
     }
 
     gameDone = () => {

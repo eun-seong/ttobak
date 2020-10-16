@@ -56,10 +56,12 @@ export default class extends React.Component {
 
 
     playSound = () => {
-        this.setState({
-            gameState: false,
-        });
-        // this.currentAudio.play();
+        if (!!this.currentAudio) {
+            this.setState({
+                gameState: false,
+            });
+            // this.currentAudio.play();
+        }
     }
 
     gameDone = () => {
