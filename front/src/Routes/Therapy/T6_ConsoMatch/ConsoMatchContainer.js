@@ -2,7 +2,7 @@ import React from 'react';
 import ConsoMatchPresenter from './ConsoMatchPresenter';
 
 import { T6, Characters } from 'images';
-import { T6_Api, soundURL } from 'api';
+import { T_Api4, soundURL } from 'api';
 
 export default class extends React.Component {
     constructor({ match }) {
@@ -37,7 +37,7 @@ export default class extends React.Component {
         const { s_id } = this.state;
 
         try {
-            const { data } = await T6_Api.ask(s_id);
+            const { data } = await T_Api4.ask(s_id);
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
@@ -96,7 +96,7 @@ export default class extends React.Component {
                 this.getListFilter('cure_tid', this.currentCure[1]).cure_id,
                 this.getListFilter('cure_tid', this.currentCure[2]).cure_id,
             ];
-            const { data } = await T6_Api.answer(
+            const { data } = await T_Api4.answer(
                 s_id,
                 cure_id,
                 this.getListFilter('cure_tid', this.currentCure[id]).cure_word,

@@ -126,41 +126,24 @@ export const Audio_Api = {
     }
 }
 
-export const T2_Api = {
-    ask: (s_id) =>
+export const T_Api2 = {
+    ask: (s_id, idx_txt) =>
         api.post(url.therapy_ask, {
             "s_id": s_id,
-            "idx_txt": idx_txt.count,
+            "idx_txt": idx_txt,
         }),
-    answer: (s_id, ori_answer, stu_answer, cure_id, is_review) =>
+    answer: (s_id, ori_answer, stu_answer, cure_id, is_review, idx_txt) =>
         api.post(url.therapy_answer, {
             "s_id": s_id,
             "cure_id": cure_id,
-            "idx_txt": idx_txt.count,
+            "idx_txt": idx_txt,
             "is_review": is_review || "F",
             "ori_answer": ori_answer,
             "stu_answer": stu_answer,
         }),
 };
 
-export const T3_Api = {
-    ask: (s_id) =>
-        api.post(url.therapy_ask, {
-            "s_id": s_id,
-            "idx_txt": idx_txt.common,
-        }),
-    answer: (s_id, ori_answer, stu_answer, cure_id, is_review) =>
-        api.post(url.therapy_answer, {
-            "s_id": s_id,
-            "cure_id": cure_id,
-            "idx_txt": idx_txt.common,
-            "is_review": is_review || "F",
-            "ori_answer": ori_answer,
-            "stu_answer": stu_answer,
-        }),
-};
-
-export const T4_Api = {
+export const T_Api3 = {
     ask: (s_id) =>
         api.post(url.therapy_ask, {
             "s_id": s_id,
@@ -173,24 +156,7 @@ export const T4_Api = {
         }),
 };
 
-export const T5_Api = {
-    ask: (s_id) =>
-        api.post(url.therapy_ask, {
-            "s_id": s_id,
-            "idx_txt": idx_txt.vowelsound,
-        }),
-    answer: (s_id, ori_answer, stu_answer, cure_id, is_review) =>
-        api.post(url.therapy_answer, {
-            "s_id": s_id,
-            "cure_id": cure_id,
-            "idx_txt": idx_txt.vowelsound,
-            "is_review": is_review || "F",
-            "ori_answer": ori_answer,
-            "stu_answer": stu_answer,
-        }),
-};
-
-export const T6_Api = {
+export const T_Api4 = {
     ask: (s_id) =>
         api.post(url.therapy_ask, {
             "s_id": s_id,
@@ -206,49 +172,6 @@ export const T6_Api = {
             "stu_answer": stu_answer,
             "ori_answer": ori_answer,
             "is_review": is_review
-        }),
-};
-
-export const T7_Api = {
-    ask: (s_id) =>
-        api.post(url.therapy_ask, {
-            "s_id": s_id,
-            "idx_txt": idx_txt.consocommon,
-        }),
-    answer: (s_id, ori_answer, stu_answer, cure_id, is_review) =>
-        api.post(url.therapy_answer, {
-            "s_id": s_id,
-            "cure_id": cure_id,
-            "idx_txt": idx_txt.consocommon,
-            "is_review": is_review || "F",
-            "ori_answer": ori_answer,
-            "stu_answer": stu_answer,
-        }),
-};
-
-export const T8_Api = {
-    ask: (s_id) =>
-        api.post(url.therapy_ask, {
-            "s_id": s_id,
-            "idx_txt": idx_txt.consoword,
-        }),
-    answer: (s_id) =>
-        api.post(url.therapy_answer, {
-            "s_id": s_id,
-            "idx_txt": idx_txt.consoword,
-        }),
-};
-
-export const T9_Api = {
-    ask: (s_id) =>
-        api.post(url.therapy_ask, {
-            "s_id": s_id,
-            "idx_txt": idx_txt.consosound,
-        }),
-    answer: (s_id) =>
-        api.post(url.therapy_answer, {
-            "s_id": s_id,
-            "idx_txt": idx_txt.consosound,
         }),
 };
 

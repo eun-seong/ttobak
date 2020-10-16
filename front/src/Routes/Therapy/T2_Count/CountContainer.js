@@ -3,9 +3,11 @@ import { DndProvider } from 'react-dnd'
 import { TouchBackend } from 'react-dnd-touch-backend';
 
 import { T2, TTobak } from 'images';
-import { T2_Api, soundURL } from 'api';
+import { T_Api2, soundURL } from 'api';
 
 import CountPresenter from './CountPresenter';
+
+const idx_txt = 'count';
 
 export default class extends React.Component {
     constructor({ match }) {
@@ -40,7 +42,7 @@ export default class extends React.Component {
         const { s_id, is_review } = this.state;
 
         try {
-            const { data } = await T2_Api.ask(s_id);
+            const { data } = await T_Api2.ask(s_id, idx_txt);
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
@@ -90,12 +92,13 @@ export default class extends React.Component {
     gameDone = async () => {
         const { s_id, Apple: { numOfApples }, currentIndex, cureLength, is_review, cure } = this.state;
 
-        const { data } = await T2_Api.answer(
+        const { data } = await T_Api2.answer(
             s_id,
             cure[currentIndex].cure_word.length.toString(),
             numOfApples.toString(),
             cure[currentIndex].cure_id,
-            is_review
+            is_review,
+            idx_txt
         );
         console.log(data);
 

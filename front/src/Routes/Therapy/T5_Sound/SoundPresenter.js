@@ -30,7 +30,7 @@ const CardParent = styled.div`
     margin-bottom: 2%;
 `;
 
-const VowelSound = ({ props }) => {
+const Sound = ({ props }) => {
     const [cardSize, textSize] = ['24vw', '3.5rem'];
 
     return (
@@ -48,7 +48,7 @@ const Game = ({ Background, ...props }) => {
     return (
         <GameBackground BackgroundImg={Background}
             Children={
-                <VowelSound props={props} />
+                <Sound props={props} />
             }>
         </GameBackground>
     );

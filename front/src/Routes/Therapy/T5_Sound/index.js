@@ -1,3 +1,3 @@
-import VowelSoundContainer from './VowelSoundContainer';
+import SoundContainer from './SoundContainer';
 
-export default VowelSoundContainer;
+export default SoundContainer;

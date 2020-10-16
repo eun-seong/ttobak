@@ -2,7 +2,9 @@ import React from 'react';
 import { T3, TTobak } from 'images';
 import CommonPresenter from './CommonPresenter';
 
-import { T3_Api, soundURL } from 'api';
+import { T_Api2, soundURL } from 'api';
+
+const idx_text = 'common';
 
 export default class extends React.Component {
     constructor({ match }) {
@@ -32,7 +34,7 @@ export default class extends React.Component {
         const { s_id } = this.state;
 
         try {
-            const { data } = await T3_Api.ask(s_id);
+            const { data } = await T_Api2.ask(s_id, idx_text);
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
@@ -138,12 +140,13 @@ export default class extends React.Component {
 
         try {
             const { s_id, cure, currentIndex, boxTextList, is_review } = this.state;
-            const { data } = await T3_Api.answer(
+            const { data } = await T_Api2.answer(
                 s_id,
                 cure[currentIndex].com_ans,
                 boxTextList[index],
                 cure[currentIndex].com_id,
-                is_review
+                is_review,
+                idx_text
             );
             console.log(data);
 

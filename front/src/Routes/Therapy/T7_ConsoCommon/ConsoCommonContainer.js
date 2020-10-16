@@ -2,7 +2,9 @@ import React from 'react';
 import ConsoCommonPresenter from './ConsoCommonPresenter';
 
 import { T7, Characters } from 'images';
-import { T7_Api, soundURL } from 'api';
+import { T_Api2, soundURL } from 'api';
+
+const idx_text = 'consocommon';
 
 export default class extends React.Component {
     constructor({ match }) {
@@ -32,7 +34,7 @@ export default class extends React.Component {
         const { s_id } = this.state;
 
         try {
-            const { data } = await T7_Api.ask(s_id);
+            const { data } = await T_Api2.ask(s_id, idx_text);
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
@@ -67,11 +69,12 @@ export default class extends React.Component {
     onCardTouchHandle = async (id) => {
         try {
             const { s_id, is_review } = this.state;
-            const { data } = await T7_Api.answer(
+            const { data } = await T_Api2.answer(
                 s_id, this.ori_answer[this.currentCure.cure_level - 1],
                 this.ori_answer[id],
                 this.currentCure.cure_id,
-                is_review
+                is_review,
+                idx_text
             );
             console.log(data);
 

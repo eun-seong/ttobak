@@ -1,8 +1,8 @@
 import React from 'react';
-import VowelSoundPresenter from './VowelSoundPresenter';
+import SoundPresenter from './SoundPresenter';
 
 import { T5, TTobak, Characters } from 'images';
-import { T5_Api, soundURL } from 'api';
+import { T_Api2, soundURL } from 'api';
 
 export default class extends React.Component {
     constructor({ match }) {
@@ -16,10 +16,11 @@ export default class extends React.Component {
             CardTextList: null,
         }
 
-        var cure = null;
-        var cureLength = 0;
-        var currentIndex = 0;
-        var currentAudio = null;
+        this.cure = null;
+        this.cureLength = 0;
+        this.currentIndex = 0;
+        this.currentAudio = null;
+        this.idx_text = match.params.type + 'sound';
     }
 
     async componentDidMount() {
@@ -32,7 +33,7 @@ export default class extends React.Component {
 
         try {
             const { s_id } = this.state;
-            const { data } = await T5_Api.ask(s_id);
+            const { data } = await T_Api2.ask(s_id, this.idx_text);
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
@@ -71,12 +72,13 @@ export default class extends React.Component {
         })
 
         try {
-            // const { data } = await T3_Api.answer(
+            // const { data } = await T_Api2.answer(
             //     s_id,
             //     cure[currentIndex].com_ans,
             //     boxTextList[index],
             //     cure_id,
-            //     is_review
+            //     is_review,
+            //      this.idx_text
             // );
             // console.log(data);
 
@@ -92,7 +94,7 @@ export default class extends React.Component {
     render() {
         const { TTobaki, CardTextList } = this.state;
 
-        return (<VowelSoundPresenter
+        return (<SoundPresenter
             Background={T5.t5_background}
             TTobak={TTobaki}
             TTobakiTouch={this.onTTobakiTouchHandle}
