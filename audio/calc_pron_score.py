@@ -127,11 +127,13 @@ def calc_score(res, words, ans, trans, final):
     flag = False
     phone_score = 0.0
     speed_score = 0.0
+    rhythm_score = 0.0
 
     if len(temp0) == 0: # transcript 파일이 비어있으면 점수는 0점
         trans_text = ''
         phone_score = 0.0
         speed_score = 0.0
+        rhythm_score = 0.0
         flag = True
     else:
         trans_text = temp0[0].strip()
@@ -140,6 +142,7 @@ def calc_score(res, words, ans, trans, final):
         ans = []
         phone_score = 0.0
         speed_score = 0.0
+        rhythm_score = 0.0
         flag = True
     else:
         ans = temp1[0].strip().split(' ')
@@ -148,6 +151,7 @@ def calc_score(res, words, ans, trans, final):
     if len(res) == 0: # result json 파일이 비어있으면 점수는 0점
         phone_score = 0.0
         speed_score = 0.0
+        rhythm_score = 0.0
         flag = True
 
     if not flag: # 문제가 발생하지 않았다면
