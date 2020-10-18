@@ -16,19 +16,23 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    private final static String TAG="@@@";
+    private final static String TAG = "@@@";
     private static String fileName = null;
     private WebView webView;
     private MediaRecorder recorder;
     MediaPlayer mp;
     // Requesting permission to RECORD_AUDIO
     private boolean permissionToRecordAccepted = false;
-    private String [] permissions = {Manifest.permission.RECORD_AUDIO};
+    private String[] permissions = {Manifest.permission.RECORD_AUDIO};
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
+
+    private String gender;
+    private String transcript;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,15 +91,29 @@ public class MainActivity extends AppCompatActivity {
         recorder = null;
     }
 
+    private void setInfo(String gd, String ts) {
+        gender = gd;
+        transcript = ts;
+    }
+
+    private void request() {
+        try {
+            String response = HttpConnection.fileServer(new AudioData(gender, transcript, fileName));
+            Log.d(TAG, "request: " + response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode){
+        switch (requestCode) {
             case REQUEST_RECORD_AUDIO_PERMISSION:
-                permissionToRecordAccepted  = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                permissionToRecordAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                 break;
         }
-        if (!permissionToRecordAccepted ) finish();
+        if (!permissionToRecordAccepted) finish();
     }
 
     private void hideNavigationBar() {
@@ -114,22 +132,22 @@ public class MainActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
     }
 
-    class AndroidBridge{
+    class AndroidBridge {
         @JavascriptInterface
-        public void recordAudio(){
+        public void recordAudio(String gender, String transcript) {
             startRecording();
-            new Handler().postDelayed(new Runnable()
-            {
+            setInfo(gender, transcript);
+            new Handler().postDelayed(new Runnable() {
                 @Override
-                public void run()
-                {
+                public void run() {
                     stopRecording();
+                    request();
                 }
-            }, 10000);
+            }, 3000);
         }
 
         @JavascriptInterface
-        public void setCurrentCure(){
+        public void setCurrentCure() {
 
         }
     }

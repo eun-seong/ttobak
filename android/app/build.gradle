@@ -3,6 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
+    useLibrary 'org.apache.http.legacy'
+
     defaultConfig {
         applicationId "com.firstpenguin.ttobak"
         minSdkVersion 23
@@ -11,6 +13,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -26,4 +29,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient-android', version: '4.3.5'
+    implementation (group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.3.6') {
+        exclude module: 'org.apache.httpcomponents:httpclient'
+    }
 }

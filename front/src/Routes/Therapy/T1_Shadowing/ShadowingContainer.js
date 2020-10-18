@@ -12,6 +12,7 @@ export default class extends React.Component {
             is_review: match.params.is_review,
             idx_text: match.params.type,
             cureText: null,
+            isRecording: false,
         }
         this.cure = null;
         this.currentIndex = 0;
@@ -57,7 +58,7 @@ export default class extends React.Component {
             this.currentAudio.play();
             this.currentAudio.addEventListener('ended', () => {
                 console.log('이제 따라 읽어볼까요?');
-                // window.BRIDGE.recordAudio();
+                window.BRIDGE.recordAudio('m', this.currentCure.cure_id);
                 // setTimeout(() => {
                 //     const file = window.BRIDGE.getRecordFile();
                 //     console.log(file);
