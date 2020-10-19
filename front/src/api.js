@@ -116,16 +116,6 @@ export const T1_Api = {
         }),
 };
 
-export const Audio_Api = {
-    segscroe: (gender, transcript, file) => {
-        api.post(url.audio_segscore, {
-            gender: gender,
-            transcript: transcript,
-            file: file,
-        })
-    }
-}
-
 export const T_Api2 = {
     ask: (s_id, idx_txt) =>
         api.post(url.therapy_ask, {

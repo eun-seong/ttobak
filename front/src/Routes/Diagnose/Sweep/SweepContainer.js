@@ -118,14 +118,14 @@ class Sweep extends React.PureComponent {
                 this.setState({
                     DownButton: D1.d1_DownButton_UP
                 });
-                if (gameState) this.buttonSound[1].play();
+                if (gameState && !!this.buttonSound[1]) this.buttonSound[1].play();
                 break;
             case UP:
                 // console.log('up-up');
                 this.setState({
                     UpButton: D1.d1_UpButton_UP
                 });
-                if (gameState) this.buttonSound[0].play();
+                if (gameState && !!this.buttonSound[0]) this.buttonSound[0].play();
                 break;
             default:
         }
@@ -147,7 +147,7 @@ class Sweep extends React.PureComponent {
             gameState: false,
         })
 
-        this.swpSound[0].play();
+        if (!!this.swpSound[0]) this.swpSound[0].play();
     }
 
     finished = async () => {

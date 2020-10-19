@@ -13,10 +13,10 @@ import User from './Router_User';
 export default () => (
     <Router>
         <Switch>
-            <Route path='/diagnose/recognition' exect component={Recognition} />
-            <Route path='/diagnose/attention' exect component={Attention} />
-            <Route path='/diagnose/sweep' exect component={Sweep} />
-            <Route path='/diagnose/result' exect component={Result} />
+            <Route path='/diagnose/recognition/:s_id/:is_review' exect component={Recognition} />
+            <Route path='/diagnose/attention/:s_id/:is_review' exect component={Attention} />
+            <Route path='/diagnose/sweep/:s_id/:is_review' exect component={Sweep} />
+            <Route path='/diagnose/result/:s_id' exect component={Result} />
 
             <Route path='/therapy' component={Therapy} />
             <Route path='/root' component={Root} />

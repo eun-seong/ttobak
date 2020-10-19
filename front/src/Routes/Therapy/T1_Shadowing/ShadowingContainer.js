@@ -17,11 +17,34 @@ export default class extends React.Component {
         this.cure = null;
         this.currentIndex = 0;
         this.currentAudio = null;
+        this.audioResult = null;
     }
 
     async componentDidMount() {
         this.newRequest();
         setTimeout(() => this.playSound(), 1000);
+
+        window.addEventListener("android", function (e) {
+            console.log(e.detail);
+            this.audioResult = e.detail;
+            if (this.audioResult.status === 'Success') {
+
+            } else {
+                switch (this.audioResult.code) {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                }
+            }
+            T1_Api.answer(s_id, full_score, phone_score, speed_score, rhythm_score, is_review, cure_id)
+        });
     }
 
     componentWillUnmount() {
@@ -59,16 +82,13 @@ export default class extends React.Component {
             this.currentAudio.addEventListener('ended', () => {
                 console.log('이제 따라 읽어볼까요?');
                 window.BRIDGE.recordAudio('m', this.currentCure.cure_id);
-                // setTimeout(() => {
-                //     const file = window.BRIDGE.getRecordFile();
-                //     console.log(file);
-                // }, 12000)
             })
         }
     }
 
-    getAudioResult = () => {
+    getAudioResult = (json) => {
         console.log('getAudioResult');
+        console.log(json);
     }
 
     render() {

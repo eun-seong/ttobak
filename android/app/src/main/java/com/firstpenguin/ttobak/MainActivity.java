@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
@@ -13,41 +14,52 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    private final static String TAG = "@@@";
-    private static String fileName = null;
-    private WebView webView;
-    private MediaRecorder recorder;
-    MediaPlayer mp;
     // Requesting permission to RECORD_AUDIO
     private boolean permissionToRecordAccepted = false;
     private String[] permissions = {Manifest.permission.RECORD_AUDIO};
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
-
-    private String gender;
-    private String transcript;
+    private final static String TAG = "@@@";
+    private String fileName = null;
+    private MediaRecorder recorder;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mContext = this;
 
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
         hideNavigationBar();
 
         /* WebView */
-        webView = (WebView) findViewById(R.id.webView);
+        WebView webView = (WebView) findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);//자바스크립트 허용
+        webView.getSettings().setDomStorageEnabled(true);
         webView.addJavascriptInterface(new AndroidBridge(), "BRIDGE");
         webView.setWebChromeClient(new WebChromeClient());//웹뷰에 크롬 사용 허용//이 부분이 없으면 크롬에서 alert가 뜨지 않음
         WebView.setWebContentsDebuggingEnabled(true);
+
+        webView.evaluateJavascript(
+                "(function () {" +
+                "var event = window.createEvent('Event');" +
+                "window.dispatchEvent(event);" +
+                "}) (); ", new ValueCallback<String>() {
+            @Override
+            public void onReceiveValue(String value) {
+                Log.d(TAG, "onReceiveValue: " + value);
+            }
+        });
 
 //        webView.loadUrl("http://172.30.1.53:3000/main/test");//웹뷰 실행
         webView.loadUrl("http://172.30.1.53:3000/therapy/shadowing/poem");//웹뷰 실행
@@ -71,9 +83,11 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "startRecording: ");
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         recorder.setOutputFile(fileName);
-        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.HE_AAC);
+        recorder.setAudioEncodingBitRate(384000);
+        recorder.setAudioSamplingRate(44100);
 
         try {
             recorder.prepare();
@@ -91,15 +105,10 @@ public class MainActivity extends AppCompatActivity {
         recorder = null;
     }
 
-    private void setInfo(String gd, String ts) {
-        gender = gd;
-        transcript = ts;
-    }
-
-    private void request() {
+    private void request(String gender, String transcript) {
         try {
-            String response = HttpConnection.fileServer(new AudioData(gender, transcript, fileName));
-            Log.d(TAG, "request: " + response);
+            HttpConnection task = new HttpConnection(new WeakReference<>(this));
+            task.execute(gender, transcript, fileName);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -134,14 +143,14 @@ public class MainActivity extends AppCompatActivity {
 
     class AndroidBridge {
         @JavascriptInterface
-        public void recordAudio(String gender, String transcript) {
+        public void recordAudio(final String gender, final String transcript) {
             startRecording();
-            setInfo(gender, transcript);
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     stopRecording();
-                    request();
+                    request(gender, transcript);
+                    Log.d(TAG, "run: " + gender + " " + transcript);
                 }
             }, 3000);
         }

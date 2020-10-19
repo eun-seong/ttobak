@@ -1,128 +1,144 @@
 package com.firstpenguin.ttobak;
 
-import android.net.http.AndroidHttpClient;
+import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.mime.HttpMultipartMode;
-import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.entity.mime.content.FileBody;
-import org.json.JSONObject;
+import android.webkit.ValueCallback;
+import android.webkit.WebView;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
+import java.net.ProtocolException;
 import java.net.URL;
-import java.util.Objects;
 
-public class HttpConnection {
+public class HttpConnection extends AsyncTask<String, Void, String> {
     private static final String TAG = "@@@";
-    private AudioData data;
-    private final static String url = "http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/api/segscore";
+    private WeakReference<MainActivity> activityReference;
 
-//    public static String POST(AudioData data) {
-//        InputStream is = null;
-//        String result = "";
-//        try {
-//            URL urlCon = new URL(url);
-//            HttpURLConnection httpCon = (HttpURLConnection) urlCon.openConnection();
-//
-//            String json = "";
-//
-//            JSONObject jsonObject = new JSONObject();
-//            jsonObject.accumulate("gender", data.getGender());
-//            jsonObject.accumulate("transcript", data.getTranscript());
-//            jsonObject.accumulate("file", data.getFile());
-//
-//            json = jsonObject.toString();
-//            Log.d(TAG, "POST: " + json);
-//
-//            // ** Alternative way to convert Person object to JSON string usin Jackson Lib
-//            // ObjectMapper mapper = new ObjectMapper();
-//            // json = mapper.writeValueAsString(person);
-//
-//            httpCon.setRequestProperty("Accept", "application/json");
-//            httpCon.setRequestProperty("Content-type", "multipart/form-data");
-//
-//            httpCon.setDoOutput(true);
-//            httpCon.setDoInput(true);
-//
-//            OutputStream os = httpCon.getOutputStream();
-//            os.write(json.getBytes("euc-kr"));
-//            os.flush();
-//            try {
-//                is = httpCon.getInputStream();
-//
-//                if (is != null)
-//                    result = convertInputStreamToString(is);
-//                else
-//                    result = "Did not work!";
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            } finally {
-//                httpCon.disconnect();
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (Exception e) {
-//            Log.d("InputStream", Objects.requireNonNull(e.getLocalizedMessage()));
-//        }
-//
-//        return result;
-//    }
-//
-//    private static String convertInputStreamToString(InputStream inputStream) throws IOException {
-//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-//        String line = "";
-//        StringBuilder result = new StringBuilder();
-//        while ((line = bufferedReader.readLine()) != null)
-//            result.append(line);
-//
-//        inputStream.close();
-//        return result.toString();
-//    }
+    public HttpConnection(WeakReference<MainActivity> activityReference) {
+        this.activityReference = activityReference;
+    }
 
+    @Override
+    protected String doInBackground(String... params) {
+        final String urlStr = "http://54.180.102.87/api/segscore";
+        final String twoHyphens = "--";
+        String[] dataName = {"gender", "transcript", "file"};
+        String resp = "";
 
-    public static String fileServer(AudioData data) throws IOException {
-        // Create MultipartEntityBuilder
-        MultipartEntityBuilder builder = MultipartEntityBuilder.create();
-        builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+        // boundary생성, 여기서는 고정값이지만 되도록이면 실행할때마다 다른값을 할당하자.
+        String lineEnd = "\r\n";
+        String boundary = "androidupload";
+        File targetFile = new File(params[2]);
 
-        // Set String Params
-        builder.addTextBody("gender", data.getGender(), ContentType.create("Multipart/related", "UTF-8"));
-        builder.addTextBody("transcript", data.getTranscript(), ContentType.create("Multipart/related", "UTF-8"));
-
-        // Set File Params
-        builder.addPart("file", new FileBody(data.getFile()));
-        // File 이 여러개 인 경우 아래와 같이 adpart 를 하나 더 추가해 주면 된다.
-//        builder.addPart("Key 값", new FileBody(new File("File 경로")));
-
-        // Send Request
-        InputStream inputStream = null;
-        HttpClient httpClient = AndroidHttpClient.newInstance("Android");
-        HttpPost httpPost = new HttpPost(url);
-        httpPost.setEntity(builder.build());
-        HttpResponse httpResponse = httpClient.execute(httpPost);
-        HttpEntity httpEntity = httpResponse.getEntity();
-        inputStream = httpEntity.getContent();
-
-        // Response
-        BufferedReader buffedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-        StringBuilder stringBuilder = new StringBuilder();
-        String line = null;
-
-        while ((line = buffedReader.readLine()) != null) {
-            stringBuilder.append(line).append("\n");
+        byte[] buffer;
+        int maxBufferSize = 5 * 1024 * 1024;
+        HttpURLConnection conn = null;
+        try {
+            conn = (HttpURLConnection) new URL(urlStr).openConnection();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        inputStream.close();
+        try {
+            assert conn != null;
+            conn.setRequestMethod("POST");
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        }
+        conn.setReadTimeout(10000);
+        conn.setConnectTimeout(10000);
+        conn.setDoOutput(true);
+        conn.setDoInput(true);
+        conn.setUseCaches(false);
+        conn.setRequestProperty("ENCTYPE", "multipart/form-data");
+        conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
+        String delimiter = twoHyphens + boundary + lineEnd; // --androidupload\r\n
 
-        return line;
+        StringBuilder postDataBuilder = new StringBuilder();
+        for (int i = 0; i < 2; i++) {
+            postDataBuilder.append(delimiter);
+            postDataBuilder.
+                    append("Content-Disposition: form-data; name=\"").
+                    append(dataName[i]).append("\"").
+                    append(lineEnd).
+                    append(lineEnd).
+                    append(params[i]).
+                    append(lineEnd);
+        }
+        // 파일이 존재할 때에만 생성
+        postDataBuilder.append(delimiter);
+        postDataBuilder.
+                append("Content-Disposition: form-data; name=\"").
+                append(dataName[2]).
+                append("\";filename=\"").
+                append(targetFile.getName()).
+                append("\"").append(lineEnd);
+        try {
+            DataOutputStream ds = new DataOutputStream(conn.getOutputStream());
+            ds.write(postDataBuilder.toString().getBytes());
+
+            ds.writeBytes(lineEnd);
+            FileInputStream fStream = new FileInputStream(targetFile);
+            buffer = new byte[maxBufferSize];
+            int length = -1;
+            while ((length = fStream.read(buffer)) != -1) {
+                ds.write(buffer, 0, length);
+            }
+            ds.writeBytes(lineEnd);
+            ds.writeBytes(lineEnd);
+            ds.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd); // requestbody end
+            fStream.close();
+
+            ds.flush();
+            ds.close();
+
+            int responseCode = conn.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                String line = null;
+                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                while ((line = br.readLine()) != null) {
+                    resp += line;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return resp;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+    }
+
+    @Override
+    protected void onPostExecute(String result) {
+        super.onPostExecute(result);
+        Log.d(TAG, "onPostExecute: " + result);
+
+        MainActivity activity = activityReference.get();
+        if (activity == null || activity.isFinishing()) return;
+
+        WebView webView = activity.findViewById(R.id.webView);
+        webView.evaluateJavascript(
+                "var event = new CustomEvent(\"android\", {\n" +
+                        "    detail: \n" +
+                        "        " + result + "\n" +
+                        "    \n" +
+                        "});\n" +
+                        "window.dispatchEvent(event);\n"
+                , new ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String value) {
+                        Log.d(TAG, "onReceiveValue: " + value);
+                    }
+                });
     }
 }

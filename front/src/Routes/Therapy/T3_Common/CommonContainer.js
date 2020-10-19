@@ -154,33 +154,37 @@ export default class extends React.Component {
         })
 
         try {
-            const { s_id, cure, currentIndex, boxTextList, is_review } = this.state;
+            const { s_id, boxTextList, is_review } = this.state;
             const { data } = await T_Api2.answer(
                 s_id,
-                cure[currentIndex].com_ans,
+                this.cure[this.currentIndex].com_ans,
                 boxTextList[index],
-                cure[currentIndex].com_id,
+                this.cure[this.currentIndex].com_id,
                 is_review,
                 idx_text
             );
             console.log(data);
 
             if (data.code === 1) {
-                const nextIndex = currentIndex + 1;
+                this.currentIndex++;
                 this.currentAudio = [
-                    new Audio(soundURL + cure[nextIndex].com_e1path),
-                    new Audio(soundURL + cure[nextIndex].com_e2path),
-                    new Audio(soundURL + cure[nextIndex].com_e3path),
-                    new Audio(soundURL + cure[nextIndex].com_e4path),
-                    new Audio(soundURL + cure[nextIndex].com_w1path),
-                    new Audio(soundURL + cure[nextIndex].com_w2path),
-                    new Audio(soundURL + cure[nextIndex].com_w3path),
+                    new Audio(soundURL + this.cure[this.currentIndex].com_e1path),
+                    new Audio(soundURL + this.cure[this.currentIndex].com_e2path),
+                    new Audio(soundURL + this.cure[this.currentIndex].com_e3path),
+                    new Audio(soundURL + this.cure[this.currentIndex].com_e4path),
+                    new Audio(soundURL + this.cure[this.currentIndex].com_w1path),
+                    new Audio(soundURL + this.cure[this.currentIndex].com_w2path),
+                    new Audio(soundURL + this.cure[this.currentIndex].com_w3path),
                 ];
 
                 this.setListener();
                 setTimeout(() => {
                     this.setState({
-                        boxTextList: [cure[nextIndex].com_e1, cure[nextIndex].com_e2, cure[nextIndex].com_e3, cure[nextIndex].com_e4],
+                        boxTextList: [
+                            this.cure[this.currentIndex].com_e1,
+                            this.cure[this.currentIndex].com_e2,
+                            this.cure[this.currentIndex].com_e3,
+                            this.cure[this.currentIndex].com_e4],
                         TTobaki: TTobak.ttobak1_1,
                     })
                 }, 2000);

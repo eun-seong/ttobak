@@ -168,7 +168,7 @@ class Recognition extends React.PureComponent {
         this.setState({
             TTobaki: TTobak.ttobak3_2,
         })
-        this.phSound[2].play();
+        if (!!this.phSound[2]) this.phSound[2].play();
     }
 
     diagDone = () => {
