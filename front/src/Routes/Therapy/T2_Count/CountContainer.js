@@ -36,6 +36,7 @@ export default class extends React.Component {
     async componentDidMount() {
         this.newRequest();
         setTimeout(() => this.playSound(), 1000);
+        this.preloading();
     }
 
     componentWillUnmount() {
@@ -177,6 +178,18 @@ export default class extends React.Component {
         this.setState({
             isDragging: false,
         })
+    }
+
+    preloading = () => {
+        for (var prop in TTobak) {
+            console.log(TTobak[prop]);
+
+            let img = new Image();
+            img.src = TTobak[prop];
+            img.onload = () => {
+                console.log('hi')
+            };
+        }
     }
 
     render() {

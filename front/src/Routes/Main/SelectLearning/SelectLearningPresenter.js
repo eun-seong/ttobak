@@ -39,7 +39,7 @@ const SelectLearning = ({ ContentsList, goBack, s_id }) => {
                                 flex={5}
                                 title={list.title}
                                 explain={list.explain}
-                                url={list.url + `/${s_id}/F`} />
+                                url={list.url + `/${s_id}/F/T`} />
                         </ContentBox>
                         <Line />
                     </div>

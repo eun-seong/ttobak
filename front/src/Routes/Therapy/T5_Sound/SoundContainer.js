@@ -24,8 +24,7 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
-        if (this.state.type === 'vowel') this.newRequestVowel();
-        else if (this.state.type === 'conso') this.newRequestConso();
+        this.newRequest();
         setTimeout(() => this.playSound(), 1000);
     }
 
@@ -34,7 +33,7 @@ export default class extends React.Component {
         this.currentAudio = null;
     }
 
-    newRequestVowel = async () => {
+    newRequest = async () => {
         console.log('new request');
 
         try {
@@ -56,33 +55,21 @@ export default class extends React.Component {
         }
     }
 
-    newRequestConso = async () => {
-        console.log('new request');
-        // TODO
-        try {
-            //     const { s_id } = this.state;
-            //     const { data } = await T_Api2.ask(s_id, this.idx_text);
-            //     console.log(data);
-
-            //     if (data.code === 'specified' || data.code === 1) {
-            //         this.cure = data.cure;
-            //         this.currentCure = data.cure[this.currentIndex];
-            //         this.setAudio();
-            //         this.setState({
-            //             CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
-            //         })
-            //     }
-            //     else console.log('data message: ' + data.message);
-        } catch (e) {
-            console.log('error: ' + e);
-        }
-    }
-
     setAudio = () => {
-        this.currentAudio = this.currentCure.answer === 1
-            ? new Audio(soundURL + this.currentCure.cure_path) :
-            new Audio(soundURL + this.currentCure.cure_path2);
-        console.log(this.currentAudio)
+        if (this.state.type === 'conso') {
+            this.currentCure.answer = Math.floor(Math.random() * 2) + 1;
+            this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
+            if (this.currentCure.answer === 2) {
+                var tmp = this.currentCure.cure_word;
+                this.currentCure.cure_word = this.currentCure.cure_word2;
+                this.currentCure.cure_word2 = tmp;
+            }
+        } else {
+            this.currentAudio = this.currentCure.answer === 1
+                ? new Audio(soundURL + this.currentCure.cure_path) :
+                new Audio(soundURL + this.currentCure.cure_path2);
+        }
+
         this.currentAudio.addEventListener('ended', () => {
             this.setState({
                 gameState: true,
@@ -110,11 +97,13 @@ export default class extends React.Component {
         const { gameState } = this.state;
         if (!gameState) return;
         this.setState({
+            gameState: false,
             TTobaki: TTobak.ttobak2_2
         })
 
         try {
             const { s_id, is_review, CardTextList } = this.state;
+            console.log(this.currentCure.answer, this.currentCure.cure_word, this.currentCure.cure_word2)
             const { data } = await T_Api2.answer(
                 s_id,
                 this.currentCure.answer === 1 ? this.currentCure.cure_word : this.currentCure.cure_word2,
@@ -126,17 +115,19 @@ export default class extends React.Component {
             console.log(data);
 
             if (data.code === 1) {
-                if (this.currentIndex < this.cure.length) this.currentIndex++;
+                if (this.currentIndex < this.cure.length - 1) this.currentIndex++;
                 else {
                     this.gameDone();
                     return;
                 }
                 this.currentCure = this.cure[this.currentIndex];
                 this.setAudio();
+
                 setTimeout(() => {
                     this.setState({
                         CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
-                        TTobaki: TTobak.ttobak1_1
+                        TTobaki: TTobak.ttobak1_1,
+                        gameState: true,
                     });
                 }, 2000);
 
@@ -147,6 +138,10 @@ export default class extends React.Component {
         } catch (e) {
             console.log(e);
         }
+    }
+
+    gameDone = () => {
+        console.log('game doen!')
     }
 
     render() {

@@ -17,6 +17,7 @@ const ImgComponent = styled.div`
     width: 100%;
     height: 100%;
     justify-content:center;
+    z-index: 1;
 `;
 
 const TextComponent = styled.div`
@@ -28,6 +29,7 @@ const TextComponent = styled.div`
     font-weight: bold;
     width: 80%;
     height: 50%;
+    z-index: 2;
 `;
 
 const Card = ({ src, text, textSize, cardSize, index, onCardTouchHandle }) => {

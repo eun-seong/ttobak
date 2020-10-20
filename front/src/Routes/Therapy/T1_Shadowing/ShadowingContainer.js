@@ -2,7 +2,7 @@ import React from 'react';
 import ShadowingPresenter from './ShadowingPresenter';
 
 import { T1, TTobak } from 'images';
-import { T1_Api, T_Api2, Audio_Api, soundURL } from 'api';
+import { T_ask_api, T1_Api, soundURL, T_Api2 } from 'api';
 
 export default class extends React.Component {
     constructor({ match }) {
@@ -10,6 +10,7 @@ export default class extends React.Component {
         this.state = {
             s_id: match.params.s_id || 4,
             is_review: match.params.is_review,
+            is_selected: match.params.is_selected,
             idx_text: match.params.type,
             cureText: null,
             isRecording: false,
@@ -24,26 +25,10 @@ export default class extends React.Component {
         this.newRequest();
         setTimeout(() => this.playSound(), 1000);
 
-        window.addEventListener("android", function (e) {
+        window.addEventListener("android", async (e) => {
             console.log(e.detail);
             this.audioResult = e.detail;
-            if (this.audioResult.status === 'Success') {
-
-            } else {
-                switch (this.audioResult.code) {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    default:
-                        break;
-                }
-            }
-            T1_Api.answer(s_id, full_score, phone_score, speed_score, rhythm_score, is_review, cure_id)
+            this.audioListener();
         });
     }
 
@@ -57,7 +42,7 @@ export default class extends React.Component {
         const { s_id } = this.state;
 
         try {
-            const { data } = await T_Api2.ask(s_id, this.state.idx_text);
+            const { data } = await T1_Api.ask(s_id, this.state.idx_text);
             console.log(data);
 
             if (data.code === 'specified') {
@@ -70,6 +55,40 @@ export default class extends React.Component {
                         this.currentCure.cure_word : this.currentCure.cure_text
                     ),
                 })
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    audioListener = async () => {
+        try {
+            if (this.audioResult.status === 'Success') {
+                const { s_id, is_review } = this.state;
+                console.log(
+                    s_id,
+                    this.audioResult.score,
+                    this.audioResult.phone_score,
+                    this.audioResult.speed_score,
+                    this.audioResult.rhythm_score,
+                    is_review,
+                    this.audioResult.transcript,
+                    this.state.idx_text)
+                const { data } = await T1_Api.answer(
+                    s_id,
+                    this.audioResult.score,
+                    this.audioResult.phone_score,
+                    this.audioResult.speed_score,
+                    this.audioResult.rhythm_score,
+                    is_review,
+                    this.audioResult.transcript,
+                    this.state.idx_text
+                );
+                console.log(data);
+
+                if (data.code === 2) console.log(data.message);
+            } else {
+                console.log(this.audioResult.message);
             }
         } catch (e) {
             console.log(e);

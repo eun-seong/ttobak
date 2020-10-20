@@ -97,20 +97,26 @@ export const Daily_Api = {
         }),
 }
 
+export const T_ask_api = (s_id) =>
+    api.post(url.therapy_ask, {
+        "s_id": s_id,
+        "idx_txt": idx_txt,
+    })
+
 export const T1_Api = {
-    ask: (s_id) =>
+    ask: (s_id, idx_txt) =>
         api.post(url.therapy_ask, {
             "s_id": s_id,
-            "idx_txt": idx_txt.poem,
+            "idx_txt": idx_txt,
         }),
-    answer: (s_id, full_score, phone_score, speed_score, rhythm_score, is_review, cure_id) =>
+    answer: (s_id, full_score, phone_score, speed_score, rhythm_score, is_review, cure_id, idx_txt) =>
         api.post(url.therapy_answer, {
             "s_id": s_id,
-            "idx_txt": idx_txt.poem,
-            "full_score": full_score,
+            "idx_txt": idx_txt,
+            "score": full_score,
             "phone_score": phone_score,
             "speed_score": speed_score,
-            "rhythm_score ": rhythm_score,
+            "rhythm_score": rhythm_score,
             "is_review": is_review,
             "cure_id": cure_id
         }),
