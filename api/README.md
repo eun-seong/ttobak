@@ -1006,7 +1006,7 @@ for cure statistics*
   OR
   
   * **Code:** 200 <br />
-    **Content:** `{ "score_swp" : set of integer{점수} , "score_ph" : set of integer{점수} , "score_foc" : set of integer(점수),"class" : 3 of [high/mid/low] "code":"diagnose"}`
+    **Content:** `{ "score_swp" : set of integer{점수} , "score_ph" : set of integer{점수} , "score_foc" : set of integer(점수),"class" : 3 of [high/mid/low],"result" : status[고위험험/저위험/경미/정상],"code":"diagnose"}`
  
   OR
 
