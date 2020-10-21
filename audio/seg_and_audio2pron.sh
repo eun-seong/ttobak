@@ -76,13 +76,7 @@ local/data_prep_single.sh $data/$course/$user/${course}_${user}_${id}.flac $cour
 # phone generation
 python3 local/genPhoneSeq.py $data/$course/$course.trans.txt $data/$course/$course.prons.txt
 
-## audio를 mfcc로 변환
-steps/make_mfcc.sh --nj 1 --cmd "$cmd" $trans $make_mfcc $mfcc
-
-## cmvn stats를 계산
-steps/compute_cmvn_stats.sh $trans $make_mfcc $mfcc
-
-## decode
+# decode
 mkdir $ali
 $decoder --do-endpointing=false \
 	--frames-per-chunk=20 \
@@ -94,14 +88,16 @@ $decoder --do-endpointing=false \
 	--acoustic-scale=3.0 \
 	--frame-subsampling-factor=3 \
 	--word-symbol-table=$exp/tree_a/graph_tgsmall/words.txt \
-	$exp/tdnn1n_rvb_online/final.mdl $exp/tree_a/graph_tgsmall/HCLG.fst "ark:$trans/spk2utt" "ark,s,cs:wav-copy scp,p:$trans/wav.scp ark:- |" \
+	$exp/tdnn1n_rvb_online/final.mdl $exp/tree_a/graph_tgsmall/HCLG.fst "ark:$trans/spk2utt" "scp,p:$trans/wav.scp" \
 	"ark:|gzip -c >$ali/lat.1.gz"
 
+# 단어 형태의 lattice를 음소 형태로 변환
 $KALDI_ROOT/src/latbin/lattice-align-phones --replace-output-symbols=true $exp/tdnn1n_rvb_online/final.mdl "ark:gunzip -c ${ali}/lat.1.gz|" ark:$ali/phone_aligned.lats
 
+# 가장 확률이 높은 1가지 경우를 선택
 $KALDI_ROOT/src/latbin/lattice-best-path ark:$ali/phone_aligned.lats ark:$ali/out.tra ark:$ali/out.ali
 
-## align을 발음 sequence를 포함한 파일로 출력
+# align을 발음 sequence를 포함한 파일로 출력
 $KALDI_ROOT/src/bin/show-alignments $exp/tree_a/graph_tgsmall/phones.txt $exp/tdnn1n_rvb_online/final.mdl ark:$ali/out.ali >> $ali/temp.txt
 
 # 파일을 단어 sequence로 변환
@@ -119,4 +115,5 @@ rm -rf $data/$course
 
 endTime=$(date +'%F %H:%M:%S')
 echo $endTime
+
 
