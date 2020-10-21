@@ -418,6 +418,16 @@ OR
 
   * **Code:** 200 <br />
     **Content:** `{ "message" : "해당 학습자가 존재하지 않습니다.","code": 3 }`
+ 
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "voice" : [list of sample voice]("voc_path" : path, "voc_script" : script "voc_desc" : description for voice),"sample_ques" : ["ques_id": 71,"ques_path1":"/diagnose/01_sweeps/d_500_80.mp3","ques_path2":"/diagnose/01_sweeps/u_500_80.mp3"],"code": "tutorial" }`
+
+*Please do not send back the answer for tutorial question.*
+
+  
+  
 
 * **Sample Call:**
   ```javascript
@@ -515,6 +525,14 @@ OR
   * **Code:** 200<br />
     **Content:** `{ "message" : "해당 학습자가 존재하지 않습니다.","code":3 }`
 
+OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "voice" : [list of sample voice]("voc_path" : path, "voc_script" : script "voc_desc" : description for voice),"sample_ques" : [sample question] {"ques_id": 84,"ques_path1": "/diagnose/02_recognition/text_01_0001_0001.mp3","ques_char": "귀"},{"ques_id": 85,"ques_path1": "/diagnose/02_recognition/text_01_0002_0001.mp3",
+"ques_char": "남"},"code": "tutorial" }`
+
+*Please do not send back the answer for tutorial question.*
+
 * **Sample Call:**
   ```javascript
     $.ajax({
@@ -541,7 +559,7 @@ OR
    **Optional:**
 
 * **Data Params**
-	   `s_id = [integer]` | `ques_id = [integer] | ques_id2 = [integer] | stu_answer = [character] | ori_answer = [character] | is_review = ["T" or "F"] | idx_txt = "ph" ` 
+	   `s_id = [integer]` | `ques_id1 = [integer] | ques_id2 = [integer] | stu_answer = [character] | ori_answer = [character] | is_review = ["T" or "F"] | idx_txt = "ph" ` 
 	  
 * **Success Response:**
 
@@ -561,7 +579,7 @@ OR
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/diagnose/answer",
+      url: "link/to/api/swp_test/answer",
       dataType: "json",
       type : "POST",
       data : { 
@@ -610,6 +628,13 @@ OR
 
   * **Code:** 200 <br />
     **Content:** `{ "message" : "해당하는 학습자가 존재하지 않습니다.","code": 3 }`
+
+OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "voice" : [list of sample voice]("voc_path" : path, "voc_script" : script "voc_desc" : description for voice),"sample_ques" : [sample question]{"ques_id": 534,"ques_path1": "/diagnose/03_attention/atten_01_01_0001.mp3","ques_char": "엄마랑 동물원에 갔습니다"},"code": "tutorial" }`
+
+*Please do not send back the answer for tutorial question.*
 
 * **Sample Call:**
   ```javascript
@@ -660,7 +685,7 @@ OR
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/diagnose/answer",
+      url: "link/to/api/foc_cure/answer",
       dataType: "json",
       type : "POST",
       data : { 
@@ -700,7 +725,7 @@ OR
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ "read": {set of 10 daily read contents("cure_id" : [integer], "cure_level" : level, "cure_path" : path, "cure_tid" : [integer], "cure_text": corresponding text)}, "cure" : {set of questions. normally 10, but please check the ask_form.txt}, "answers" : {set of answers. only in case of consomatch. Plase check ask_form.txt},"daily_cure" : [idx_txt],"code":[1(normal case)/"review"(review case)/"specified"(arbitrary case)]}`
+    **Content:** `{ "read": {set of 10 daily read contents("cure_id" : [integer], "cure_level" : level, "cure_path" : path, "cure_tid" : [integer], "cure_text": corresponding text)}, "cure" : {set of questions. normally 10, but please check the ask_form.txt}, "answers" : {set of answers. only in case of consomatch. Plase check ask_form.txt},"read_voice" : [instruction voices]{"voc_path": path, "voc_script" :script, "voc_desc" : description },"daily_cure" : [idx_txt],"daily_read" : [idx_txt], "tut_voice" : [list of sample voice],"sample_ques" : [sample question], "code":[1(normal case)/"review"(review case)/"specified"(arbitrary case)] / "tutorial"(for 1st time of each cure)}`
 
 *in case of code == review or specified, daily_cure will be omitted*
  
@@ -708,6 +733,9 @@ OR
 
   * **Code:** 200 <br />
     **Content:** `{ "message" : "존재하지 않는 학습자입니다.","code": 2 }`
+
+*Please do not send back the answer for tutorial question.*
+*check out tut_ques.txt for tutorial question / tutorial voice form*
 
 * **Sample Call:**
   ```javascript
@@ -739,12 +767,14 @@ OR
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ is_okay=[True/False],class=['A' ~ 'D'],"code":1 }`
+    **Content:** `{ is_okay=[True/False],class=['A' ~ 'D'],"class_voice": path, "code":1 }`
  
   OR
   
   * **Code:** 200 <br />
-    **Content:** `{ is_okay = [True/False],class = ['A' ~'D'], "message" : "더 이상 학습할 문제가 없습니다.","code": 2 }`
+    **Content:** `{ is_okay = [True/False],class = ['A' ~'D'], "class_voice": path, "message" : "더 이상 학습할 문제가 없습니다.","code": 2 }`
+
+*class voice can be null*
 
   OR
 
@@ -755,6 +785,9 @@ OR
 
   * **Code:** 200 <br />
     **Content:** `{ "message" : "해당 학습이 존재하지 않습니다.","code": 4 }`
+   
+
+*Please do not send back the answer for tutorial question.*
     
 * **Sample Call:**
   ```javascript
@@ -796,12 +829,14 @@ OR
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ is_correct=[True/False],"code":1 }`
+    **Content:** `{ "is_correct";[True/False],"correct_voice" : path, "code":1 }`
  
   OR
   
   * **Code:** 200 <br />
-    **Content:** `{ is_correct = [True/False],"message" : "모든 문제를 학습하였습니다.","code": 2 }`
+    **Content:** `{ "is_correct" :[True/False],"correct_voice" : path, "message" : "모든 문제를 학습하였습니다.","code": 2 }`
+
+*correct voice can be null*
 
   OR
 
@@ -831,7 +866,7 @@ OR
       }
     });   
 
- **answer(3) - vowelword, consoword **
+ answer(3) - vowelword, consoword 
 ----
 * **URL**
 	/diagnose/answer
@@ -848,12 +883,14 @@ OR
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ is_okay=[True/False],class=['A' ~ 'D'],"code":1 }`
+    **Content:** `{ is_okay=[True/False],class=['A' ~ 'D'],"class_voice" : path,"code":1 }`
+ 
+ *class voice can be null*
  
   OR
   
   * **Code:** 200 <br />
-    **Content:** `{ is_okay = [True/False],class = ['A' ~'D'], "message" : "모든 문제를 학습하였습니다.","code": 2 }`
+    **Content:** `{ is_okay = [True/False],class = ['A' ~'D'],"class_voice" : path, "message" : "모든 문제를 학습하였습니다.","code": 2 }`
 
   OR
 
@@ -885,7 +922,7 @@ OR
       }
     });   
 
- **answer(4) - consomatch **
+ answer(4) - consomatch 
 ----
 * **URL**
 	/diagnose/answer
@@ -942,7 +979,54 @@ OR
     });   
 
 
+## Part6 - Statistics
+
+ **ask**
+----
+* **URL**
+	/statistic/ask
+
+* **Method:**
+	  `POST`
+*  **URL Params**
+   **Required:**
+   **Optional:**
+
+* **Data Params**
+	   `s_id = [integer] | cure_or_test = [cure/test],  period = [day/week/month]`  
+	  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ "amount" : set of integer{학습량} , "score" : set of integer{성취도} , "voice_score" : set of integer(발음 정확도), "class" : 3 of[high/mid/low],"code":"cure"}`
+
+*will be sorted by period
+for cure statistics*
+ 
+  OR
+  
+  * **Code:** 200 <br />
+    **Content:** `{ "score_swp" : set of integer{점수} , "score_ph" : set of integer{점수} , "score_foc" : set of integer(점수),"class" : 3 of [high/mid/low] "code":"diagnose"}`
+ 
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당 학습자가 존재하지 않습니다.","code": 2 }`
+ 
 
 
-
+* **Sample Call:**
+  ```javascript
+    $.ajax({
+      url: "link/to/api/statistics/ask",
+      dataType: "json",
+      type : "POST",
+      data : { 
+	     "s_id" : 1,
+	     "cure_or_test" : "cure",
+	     "period" : "day"
+		},success : function(r) {
+	         console.log(r)
+      }
+    });   
 

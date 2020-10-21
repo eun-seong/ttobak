@@ -96,10 +96,10 @@ desc = [
 num = len(voices)
 for n in range(num):
     path = '/extra/extra_00'
-    if n < 10:
-        path = '/extra/extra_000' + str(n) + '.mp3'
+    if n+1 < 10:
+        path += '0' + str(n+1) + '.mp3'
     else:
-        path += str(n) + '.mp3'
+        path += str(n+1) + '.mp3'
     curs.execute(sql,(path,desc[n],voices[n]))
     
 conn.commit()

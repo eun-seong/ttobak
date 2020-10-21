@@ -13,6 +13,8 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 
+from django.db.models import Q
+
 
 class MakeUser(View):
     @csrf_exempt
@@ -249,6 +251,42 @@ class TestGet(View):
         foc_data.is_valid()
         return foc_data.data
 
+    def get_tutorial(self,idx_txt):
+        if idx_txt == 'swp':
+            voice = []
+            desc = [1,2,3,4]
+            for d in desc:
+                voc = Voice.objects.get(pk = d)
+                voice.append(voc)
+            vdat = sz.VoiceSerializer(data=voice,many = True)
+            swp = TestMaster.objects.get(ques_id = 71)
+            sdat = sz.SwpSerializer(instance = swp)
+            vdat.is_valid()
+            return vdat.data, sdat.data
+        elif idx_txt == 'ph':
+            voice = []
+            desc = [5,37,21]
+            for d in desc:
+                voc = Voice.objects.get(pk = d)
+                voice.append(voc)
+            vdat = sz.VoiceSerializer(data=voice,many = True)
+            ph = TestMaster.objects.filter(Q(ques_id = 84)| Q(ques_id=85))
+            sdat = sz.PhSerializer(data = ph,many=True)
+            vdat.is_valid()
+            sdat.is_valid()
+            return vdat.data, sdat.data
+        elif idx_txt == 'foc':
+            voice = []
+            desc = [6,22,35,7]
+            for d in desc:
+                voc = Voice.objects.get(pk = d)
+                voice.append(voc)
+            vdat = sz.VoiceSerializer(data=voice,many = True)
+            foc = TestMaster.objects.get(ques_id = 534)
+            sdat = sz.PhSerializer(instance = foc)
+            vdat.is_valid()
+            return vdat.data, sdat.data
+
     @csrf_exempt
     def post(self,request):
         data = json.loads(request.body)
@@ -268,12 +306,18 @@ class TestGet(View):
                 ).save()
             testcur = TestCurrent.objects.get(stu_id = s_id)
             idx_txt = data['idx_txt']
+            if not StuTest.objects.filter(stu_id = s_id , test_txt = idx_txt).exists():
+                StuTest.objects.create(
+                    stu = student,
+                    test_txt = idx_txt
+                ).save()
+                voice , sample_ques = self.get_tutorial(idx_txt)
+                return JsonResponse({"voice":voice,"sample_ques":sample_ques,"code":"tutorial"},status=200)
             if TestIdx.objects.filter(idx_txt = idx_txt):
                 idx_id = TestIdx.objects.get(idx_txt = idx_txt).idx_id
                 if idx_id == 1:
                     swp = TestMaster.objects.get(ques_int = testcur.swp_freq,ques_level = testcur.swp_lev,test_idx = idx_id)
                     swp = sz.SwpSerializer(instance=swp)
-                    # swp.is_valid()
                     answer = self.make_swp_answer() 
                     return JsonResponse({"swp":swp.data,"answers":answer,"code":1},status=200)
                 if idx_id == 2:
@@ -630,9 +674,16 @@ class CureGet(View):
             read_data = sz.ReadSerializer(data = reads,many=True)
             read_data.is_valid()
             read_data = read_data.data
-            return read_data
+            voice = []
+            desc = [9]
+            for d in desc:
+                voc = Voice.objects.get(pk = d)
+                voice.append(voc)
+            vdat = sz.VoiceSerializer(data=voice,many = True)
+            vdat.is_valid()
+            return read_data,vdat.data
         else:
-            return "더 이상 치료가 존재하지 않습니다."
+            return "더 이상 치료가 존재하지 않습니다.", ''
     
     def get_review(self,s_id):
         return 1
@@ -748,11 +799,11 @@ class CureGet(View):
             read_idx = CureIdx.objects.get(idx_txt=stucur.cur_read).idx_id
             read_id = stucur.cur_read_id
             read_level = stucur.read_level
-            read = self.get_read(read_idx,read_id,read_level)
+            read, read_voice = self.get_read(read_idx,read_id,read_level)
             curr_idx = CureIdx.objects.get(idx_txt=stucur.cur_curr).idx_id
             curr_level = stucur.curr_level
             cure , answer = self.get_cure(curr_idx,curr_level)
-            return JsonResponse({"read":read,"cure":cure,"daily_cure": stucur.cur_curr,"answers": answer , "code":1},status=200)        
+            return JsonResponse({"read":read,"read_voice": read_voice,"cure":cure,"daily_cure": stucur.cur_curr,"daily_read": stucur.cur_read, "answers": answer , "code":1},status=200)        
         return JsonResponse({"message": "존재하지 않는 학습자입니다.","code":2},status=200)
 
 class CureAns(View):
@@ -779,7 +830,7 @@ class CureAns(View):
             return False
     
     def ans_read(self,student,data,idx_id):
-        score = data['score']
+        score = data['full_score']
         phone_score = data['phone_score']
         speed_score = data['speed_score']
         rhythm_score = data['rhythm_score']
@@ -806,7 +857,8 @@ class CureAns(View):
             is_review = is_review,
             cure_txt = cure_txt
         ).save()
-        return cure_id+1, class_txt, is_pass
+        cure_id = int(cure_id)+1
+        return cure_id, class_txt, is_pass
 
     def answer_alternative(self,student,data,idx_id):
         ori_answer = data['ori_answer']
@@ -919,7 +971,7 @@ class CureAns(View):
         return is_correct , s
         
     def answer_sound(self,student,data,idx_id,idx_txt):
-        score = data['score']
+        score = data['full_score']
         phone_score = data['phone_score']
         speed_score = data['speed_score']
         rhythm_score = data['rhythm_score']
@@ -1106,9 +1158,23 @@ class CureAns(View):
         else:
             return JsonResponse({"message": "해당 학습이 존재하지 않습니다.","code":"err"},status=200)
 
+    
+# class GetDaily(View):
+#     @csrt_exempt
+#     def post(self,request):
+#         data = json.loads(request.body)
+#         s_id = data['s_id']
 
-class Tutorial(View):
-    def post(self,request):
-        data = json.loads(request.body)
-        idx_txt = data['idx_txt']
-        idx_id =     
+#         if Student.objects.filter(pk =s_id).exists():
+#             student = Student.objects.get(pk=s_id)
+#             if not StuCurrent.objects.filter(stu_id = s_id).exists():
+
+# class Statistic(View):
+#     def post(self,request):
+#         data = json.loads(request.body)
+#         s_id = data['s_id']
+#         period = data['period']
+
+#         if Student.objects.filter(pk=s_id).exists():
+#             student = Student.objects.get(pk=s_id)
+            

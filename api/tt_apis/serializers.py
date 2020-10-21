@@ -67,4 +67,4 @@ class ConsosoundSerializer(serializers.ModelSerializer):
 class VoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = tmodel.Voice
-        fields = ("voc_path","voc_script")
+        fields = ("voc_path","voc_script","voc_desc")
