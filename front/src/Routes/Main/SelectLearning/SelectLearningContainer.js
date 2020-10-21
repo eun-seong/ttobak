@@ -103,7 +103,6 @@ class Select extends React.Component {
             let img = new Image();
             img.src = this.ContentsList[i].img;
             img.onload = () => {
-                console.log('hi')
                 this.numOfLoadedImage++;
                 if (this.numOfLoadedImage === 12)
                     this.setState({

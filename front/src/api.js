@@ -113,7 +113,7 @@ export const T1_Api = {
         api.post(url.therapy_answer, {
             "s_id": s_id,
             "idx_txt": idx_txt,
-            "score": full_score,
+            "full_score": full_score,
             "phone_score": phone_score,
             "speed_score": speed_score,
             "rhythm_score": rhythm_score,
