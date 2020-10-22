@@ -35,9 +35,13 @@ class Main extends React.Component {
             if (data.code === 1) {
                 this.setState({
                     data: data,
-                    daily_custom: data.daily_cure,
+                    // daily_custom: data.daily_cure,
+                    // daily_link: ContentsList.filter(c => {
+                    //     return c.name === data.daily_cure;
+                    // })[0].url,
+                    daily_custom: 'common',
                     daily_link: ContentsList.filter(c => {
-                        return c.name === data.daily_cure;
+                        return c.name === 'common';
                     })[0].url,
                 });
             }

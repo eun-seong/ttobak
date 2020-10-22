@@ -29,6 +29,13 @@ export default class extends React.Component {
         if (this.type === 'daily') {
             console.log(location.state.data.read);
             this.cure = location.state.data.read;
+        }
+    }
+
+    async componentDidMount() {
+        this.imagesPreloading();
+        if (this.type !== 'daily') this.newRequest();
+        else {
             this.currentCure = this.cure[this.currentIndex];
             this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
             if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
@@ -37,12 +44,6 @@ export default class extends React.Component {
                 cureText: this.currentCure.cure_text
             };
         }
-    }
-
-    async componentDidMount() {
-        this.imagesPreloading();
-        if (this.type !== 'daily') this.newRequest();
-        // setTimeout(() => this.playSound(), 1000);
 
         window.addEventListener("android", async (e) => {
             console.log(e.detail);

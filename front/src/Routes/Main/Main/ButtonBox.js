@@ -30,18 +30,20 @@ const Content = styled.div`
     height: 100%;
     height: calc(100% - 40px);
     font-size: 0.8rem;
-    text-align: center;
+    text-align: ${props => props.isDaily ? 'start' : 'center'};
 `;
 
 const ButtonBox = ({ text, Contents, color, headercolor, width, height, linkto, isImageLoaded, data }) => {
-    var to_data = null;
+    let to_data = null;
+    let isDaily = false;
     if (!!data) {
         to_data = {
             pathname: linkto + '/daily',
             state: {
                 data: data,
             }
-        }
+        };
+        isDaily = true;
     } else {
         to_data = {
             pathname: linkto,
@@ -54,7 +56,7 @@ const ButtonBox = ({ text, Contents, color, headercolor, width, height, linkto, 
     return (
         <Box to={to_data} color={color} width={width} height={height}>
             <Header color={headercolor}>{text}</Header>
-            <Content>
+            <Content isDaily={isDaily}>
                 {Contents}
             </Content>
         </Box>

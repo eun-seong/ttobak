@@ -7,8 +7,17 @@ import { T_Api2, soundURL } from 'api';
 const idx_text = 'common';
 
 export default class extends React.Component {
-    constructor({ match }) {
+    constructor({ match, location }) {
         super();
+        this.type = match.params.learning_type;
+        this.currentAudio = null;
+        this.cure = null;
+        this.currentIndex = 0;
+        this.currentCure = null;
+        this.numOfLoadedImage = 0;
+        this.picture = { T3, TTobak };
+        this.totalImages = Object.keys(T3).length + Object.keys(TTobak).length;
+
         this.state = {
             s_id: parseInt(match.params.s_id) || 4,
             is_review: match.params.is_review,
@@ -18,15 +27,18 @@ export default class extends React.Component {
             isAnimate: [false, false, false, false],
         };
 
-        this.currentAudio = null;
-        this.cure = null;
-        this.cureLength = 0;
-        this.currentIndex = 0;
+        if (this.type === 'daily') {
+            console.log(location.state.data.cure);
+            this.cure = location.state.data.cure;
+        }
     }
 
     async componentDidMount() {
-        this.newRequest();
-        setTimeout(() => this.playSound(), 1000);
+        this.imagesPreloading();
+        if (this.type !== 'daily') this.newRequest();
+        else {
+            this.setCurrent(0);
+        }
     }
 
     componentWillUnmount() {
@@ -45,27 +57,38 @@ export default class extends React.Component {
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
-                const first = data.cure[0];
-                this.currentAudio = [
-                    new Audio(soundURL + first.com_e1path),
-                    new Audio(soundURL + first.com_e2path),
-                    new Audio(soundURL + first.com_e3path),
-                    new Audio(soundURL + first.com_e4path),
-                    new Audio(soundURL + first.com_w1path),
-                    new Audio(soundURL + first.com_w2path),
-                    new Audio(soundURL + first.com_w3path),
-                ];
                 this.cure = data.cure;
-                this.cureLength = data.cure.length;
-                this.setState({
-                    boxTextList: [first.com_e1, first.com_e2, first.com_e3, first.com_e4],
-                })
-                this.setListener();
+                this.setCurrent(0);
             }
             else console.log('data message: ' + data.message);
         } catch (e) {
             console.log('error: ' + e);
         }
+    }
+
+    setCurrent = (timeout) => {
+        this.currentCure = this.cure[this.currentIndex];
+        this.currentAudio = [
+            new Audio(soundURL + this.currentCure.com_e1path),
+            new Audio(soundURL + this.currentCure.com_e2path),
+            new Audio(soundURL + this.currentCure.com_e3path),
+            new Audio(soundURL + this.currentCure.com_e4path),
+            new Audio(soundURL + this.currentCure.com_w1path),
+            new Audio(soundURL + this.currentCure.com_w2path),
+            new Audio(soundURL + this.currentCure.com_w3path),
+        ];
+
+        this.setListener();
+        setTimeout(() => {
+            this.setState({
+                boxTextList: [
+                    this.cure[this.currentIndex].com_e1,
+                    this.cure[this.currentIndex].com_e2,
+                    this.cure[this.currentIndex].com_e3,
+                    this.cure[this.currentIndex].com_e4],
+                TTobaki: TTobak.ttobak1_1,
+            })
+        }, timeout);
     }
 
     setListener = () => {
@@ -172,27 +195,8 @@ export default class extends React.Component {
                     this.gameDone();
                     return;
                 }
-                this.currentAudio = [
-                    new Audio(soundURL + this.cure[this.currentIndex].com_e1path),
-                    new Audio(soundURL + this.cure[this.currentIndex].com_e2path),
-                    new Audio(soundURL + this.cure[this.currentIndex].com_e3path),
-                    new Audio(soundURL + this.cure[this.currentIndex].com_e4path),
-                    new Audio(soundURL + this.cure[this.currentIndex].com_w1path),
-                    new Audio(soundURL + this.cure[this.currentIndex].com_w2path),
-                    new Audio(soundURL + this.cure[this.currentIndex].com_w3path),
-                ];
 
-                this.setListener();
-                setTimeout(() => {
-                    this.setState({
-                        boxTextList: [
-                            this.cure[this.currentIndex].com_e1,
-                            this.cure[this.currentIndex].com_e2,
-                            this.cure[this.currentIndex].com_e3,
-                            this.cure[this.currentIndex].com_e4],
-                        TTobaki: TTobak.ttobak1_1,
-                    })
-                }, 2000);
+                this.setCurrent(2000);
 
                 setTimeout(() => {
                     this.playSound();
@@ -206,6 +210,47 @@ export default class extends React.Component {
 
     gameDone = () => {
         console.log('done!!');
+    }
+
+    imagesPreloading = (picture) => {
+        for (let i in picture) {
+            for (let prop in picture[i]) {
+                if (typeof (picture[i][prop]) === 'object') {
+                    this.totalImages += picture[i][prop].length;
+                    this.totalImages--;
+
+                    let arr = picture[i][prop];
+                    for (let i in arr) {
+                        let img = new Image();
+                        img.src = arr[i];
+                        ++this.numOfLoadedImage;
+                        img.onload = () => {
+                            if (this.numOfLoadedImage === this.totalImages) {
+                                this.setState({
+                                    isImageLoaded: true,
+                                    TTobaki: TTobak.ttobak1_1,
+                                })
+                                setTimeout(() => this.playSound(), 1000);
+                            }
+                        };
+                    }
+
+                } else {
+                    let img = new Image();
+                    img.src = picture[i][prop];
+                    ++this.numOfLoadedImage;
+                    img.onload = () => {
+                        if (this.numOfLoadedImage === this.totalImages) {
+                            this.setState({
+                                isImageLoaded: true,
+                                TTobaki: TTobak.ttobak1_1,
+                            })
+                            setTimeout(() => this.playSound(), 1000);
+                        }
+                    };
+                }
+            }
+        }
     }
 
     render() {
