@@ -58,9 +58,9 @@ def levenshtein_distance(phone1, phone2):
         'e': (10.3, 10.15), 'oe': (10.3, 10.37), 'o': (10.3, 10.8),
         'ae': (10.6, 10.3), 'eo': (10.6, 10.65),
         'a': (10.9, 10.5),
-        'ya': (10.45, 10.25), 'yae': (10.3, 10.15), 'yeo': (10.3, 10.375), 'ye': (10.15, 10.075),
-        'wae': (10.45, 10.65), 'yo': (10.15, 10.4), 'wo': (10.3, 10.775), 'we': (10.15, 10.525),
-        'yu': (10.0, 10.45), 'ui': (10.0, 10.25), 'wa': (10.45, 10.65)
+        'ya': (10.72, 10.4), 'yeo': (10.48, 10.52), 'yo': (10.24, 10.64), 'yu': (10.0, 10.72), 'yae': (10.48, 10.24), 'ye': (10.24, 10.12),
+        'ui': (10.0, 10.1),
+        'wa': (10.78, 10.56), 'wae': (10.54, 10.4), 'wo': (10.54, 10.68), 'we': (10.3, 10.28)
     }
     if phone1 not in table or phone2 not in table: # 없는 음운이라면 0을 리턴
         return 0.0
@@ -98,12 +98,12 @@ def get_time(element):
    
     return minutes * 60000 + seconds * 1000 + milis
 
-# 앞 음운과 뒤 음운 사이 시간 차이에 따른 스코어 값 계산(1.5초 이상 차이나면 감점)
+# 앞 음운과 뒤 음운 사이 시간 차이에 따른 스코어 값 계산(0.15초 이상 차이나면 감점)
 def get_time_score(element1, element2):
     time1 = get_time(element1)
     time2 = get_time(element2)
 
-    if time2 - time1 >= 1500:
+    if time2 - time1 >= 150:
         return -1.0
     else:
         return 0.0 
@@ -181,15 +181,16 @@ def calc_score(res, words, ans, trans, final):
         if speed_score < -10.0: speed_score = -10.0
 
         underbar_count = abs(ans.count('_') - res.count('_'))
-        rhythm_count_score = 0.0 if underbar_count == 0 else -min(underbar_count*0.5, 5.0) # 띄어쓰기 개수가 맞으면 0점, 틀리면 틀린 개수마다 0.5점 감점(최저는 -5.0)
+        rhythm_count_score = 5.0 - min(underbar_count*0.5, 10.0) # 띄어쓰기 개수가 맞으면 5점, 틀리면 틀린 개수마다 0.5점 감점(-5 ~ 5점)
 
         idx_underbar_res = [idx for idx, el in enumerate(res) if el == '_']
         idx_underbar_ans = [idx for idx, el in enumerate(ans) if el == '_']
-        
+
+        # 띄어쓰기 사이 최소 간격의 합을 측정해서 합친 후, 길이로 나눈 후 5를 곱해 줌(-5 ~ 5점)
         rhythm_dis = 0.0
-        for res_idx, res_el in enumerate(res):
+        for res_idx, res_el in enumerate(idx_underbar_res):
             min_val = 987654321
-            for ans_idx, ans_el in enumerate(ans):
+            for ans_idx, ans_el in enumerate(idx_underbar_ans):
                 min_val = min(min_val, abs(ans_idx - res_idx))
                 if ans_idx >= res_idx: break
             rhythm_dis += min_val
