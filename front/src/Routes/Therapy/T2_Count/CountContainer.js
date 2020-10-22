@@ -2,6 +2,7 @@ import React from 'react';
 import { DndProvider } from 'react-dnd'
 import { TouchBackend } from 'react-dnd-touch-backend';
 
+import LoadingComp from 'Components/LoadingComp';
 import { T2, TTobak } from 'images';
 import { T_Api2, soundURL } from 'api';
 
@@ -10,11 +11,21 @@ import CountPresenter from './CountPresenter';
 const idx_txt = 'count';
 
 export default class extends React.Component {
-    constructor({ match }) {
+    constructor({ match, location }) {
         super();
+        this.type = match.params.learning_type;
+        this.cure = null;
+        this.cureLength = 0;
+        this.currentIndex = 0;
+        this.currentAudio = null;
+        this.currentCure = 0;
+        this.timeOut = null;
+        this.numOfLoadedImage = 0;
+        this.picture = { T2, TTobak };
+        this.totalImages = Object.keys(T2).length + Object.keys(TTobak).length;
+
         this.state = {
             s_id: parseInt(match.params.s_id) || 4,
-            is_review: match.params.is_review,
             gameState: false,
             isDragging: false,
             touchPosition: [],
@@ -24,24 +35,27 @@ export default class extends React.Component {
                 numOfApples: 0,
             },
             TTobaki: TTobak.ttobak1_1,
+            isImageLoaded: false,
         };
 
-        this.cure = null;
-        this.cureLength = 0;
-        this.currentIndex = 0;
-        this.currentAudio = null;
-        this.timeOut = null;
+        if (this.type === 'daily') {
+            console.log(location.state.data.cure);
+            this.cure = location.state.data.cure;
+            this.currentCure = this.cure[this.currentIndex];
+            this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
+        }
     }
 
     async componentDidMount() {
-        this.newRequest();
-        setTimeout(() => this.playSound(), 1000);
-        this.preloading();
+        this.imagesPreloading(this.picture);
+        if (this.type !== 'daily') this.newRequest();
     }
 
     componentWillUnmount() {
-        this.currentAudio.pause();
-        this.currentAudio = null;
+        if (!!this.currentAudio) {
+            this.currentAudio.pause();
+            this.currentAudio = null;
+        }
     }
 
     newRequest = async () => {
@@ -53,10 +67,9 @@ export default class extends React.Component {
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
-                const first = data.cure[0];
                 this.cure = data.cure;
-                this.cureLength = data.cure.length;
-                this.currentAudio = new Audio(soundURL + first.cure_path);
+                this.currentCure = data.cure[this.currentIndex];
+                this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
             }
             else console.log('data message: ' + data.message);
         } catch (e) {
@@ -111,10 +124,11 @@ export default class extends React.Component {
         );
         console.log(data);
 
-        if (this.currentIndex < this.cureLength - 1) this.currentIndex++;
+        if (this.currentIndex < this.cure.length - 1) this.currentIndex++;
         else return;
 
         this.currentIndex = this.currentIndex;
+        this.currentCure = this.cure[this.currentIndex];
         this.currentAudio = new Audio(soundURL + this.cure[this.currentIndex].cure_path);
 
         setTimeout(() => {
@@ -180,38 +194,71 @@ export default class extends React.Component {
         })
     }
 
-    preloading = () => {
-        for (var prop in TTobak) {
-            console.log(TTobak[prop]);
+    imagesPreloading = (picture) => {
+        for (let i in picture) {
+            for (let prop in picture[i]) {
+                if (typeof (picture[i][prop]) === 'object') {
+                    this.totalImages += picture[i][prop].length;
+                    this.totalImages--;
 
-            let img = new Image();
-            img.src = TTobak[prop];
-            img.onload = () => {
-                console.log('hi')
-            };
+                    let arr = picture[i][prop];
+                    for (let i in arr) {
+                        let img = new Image();
+                        img.src = arr[i];
+                        ++this.numOfLoadedImage;
+                        img.onload = () => {
+                            if (this.numOfLoadedImage === this.totalImages) {
+                                this.setState({
+                                    isImageLoaded: true,
+                                    TTobaki: TTobak.ttobak1_1,
+                                })
+                                setTimeout(() => this.playSound(), 1000);
+                            }
+                        };
+                    }
+
+                } else {
+                    let img = new Image();
+                    img.src = picture[i][prop];
+                    ++this.numOfLoadedImage;
+                    img.onload = () => {
+                        if (this.numOfLoadedImage === this.totalImages) {
+                            this.setState({
+                                isImageLoaded: true,
+                                TTobaki: TTobak.ttobak1_1,
+                            })
+                            setTimeout(() => this.playSound(), 1000);
+                        }
+                    };
+                }
+            }
         }
     }
 
     render() {
-        const { isDragging, touchPosition, Apple, answer, TTobaki } = this.state;
-
-        return (
-            <DndProvider backend={TouchBackend}>
-                <CountPresenter
-                    Background={T2.t2_background}
-                    Basket={T2.t2_basket}
-                    TTobak={TTobaki}
-                    TTobakiTouch={this.TTobakiTouch}
-                    onTreeTouchStartHandle={this.onTreeTouchStartHandle}
-                    onTreeTouchEndHandle={this.onTreeTouchEndHandle}
-                    isDragging={isDragging}
-                    touchPosition={touchPosition}
-                    createRandomApple={this.createRandomApple}
-                    dropApple={this.dropApple}
-                    Apple={Apple}
-                    answer={answer}
-                />
-            </DndProvider>
-        );
+        const { isDragging, touchPosition, Apple, answer, TTobaki, isImageLoaded } = this.state;
+        if (isImageLoaded) {
+            return (
+                <DndProvider backend={TouchBackend}>
+                    <CountPresenter
+                        Background={T2.t2_background}
+                        Basket={T2.t2_basket}
+                        TTobak={TTobaki}
+                        TTobakiTouch={this.TTobakiTouch}
+                        onTreeTouchStartHandle={this.onTreeTouchStartHandle}
+                        onTreeTouchEndHandle={this.onTreeTouchEndHandle}
+                        isDragging={isDragging}
+                        touchPosition={touchPosition}
+                        createRandomApple={this.createRandomApple}
+                        dropApple={this.dropApple}
+                        Apple={Apple}
+                        answer={answer}
+                    />
+                </DndProvider>
+            );
+        }
+        else {
+            return <LoadingComp />
+        }
     }
 }

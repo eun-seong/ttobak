@@ -35,9 +35,9 @@ class Main extends React.Component {
             if (data.code === 1) {
                 this.setState({
                     data: data,
-                    daily_custom: data.daily_read,
+                    daily_custom: data.daily_cure,
                     daily_link: ContentsList.filter(c => {
-                        return c.name === data.daily_read;
+                        return c.name === data.daily_cure;
                     })[0].url,
                 });
             }

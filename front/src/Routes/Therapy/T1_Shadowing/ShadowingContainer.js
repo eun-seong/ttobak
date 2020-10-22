@@ -170,8 +170,9 @@ export default class extends React.Component {
             for (let prop in this.picture[i]) {
                 let img = new Image();
                 img.src = this.picture[i][prop];
+                ++this.numOfLoadedImage;
                 img.onload = () => {
-                    if (++this.numOfLoadedImage === totalImages) {
+                    if (this.numOfLoadedImage === totalImages) {
                         this.setState({
                             isImageLoaded: true,
                             TTobaki: TTobak.ttobak1_1,
