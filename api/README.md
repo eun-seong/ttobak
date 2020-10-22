@@ -981,7 +981,7 @@ OR
 
 ## Part6 - Statistics
 
- **ask**
+ **get**
 ----
 * **URL**
 	/statistic/ask
@@ -1018,7 +1018,7 @@ for cure statistics*
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/statistics/ask",
+      url: "link/to/api/statistics/get",
       dataType: "json",
       type : "POST",
       data : { 
