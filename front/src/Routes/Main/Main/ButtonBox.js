@@ -33,9 +33,26 @@ const Content = styled.div`
     text-align: center;
 `;
 
-const ButtonBox = ({ text, Contents, color, headercolor, width, height, linkto }) => {
+const ButtonBox = ({ text, Contents, color, headercolor, width, height, linkto, isImageLoaded, data }) => {
+    var to_data = null;
+    if (!!data) {
+        to_data = {
+            pathname: linkto + '/daily',
+            state: {
+                data: data,
+            }
+        }
+    } else {
+        to_data = {
+            pathname: linkto,
+            state: {
+                isImageLoaded: isImageLoaded
+            }
+        }
+    }
+
     return (
-        <Box to={linkto} color={color} width={width} height={height}>
+        <Box to={to_data} color={color} width={width} height={height}>
             <Header color={headercolor}>{text}</Header>
             <Content>
                 {Contents}

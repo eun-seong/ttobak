@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import ContentComp from 'Components/ContentComp';
-import { MainTherapy } from 'images';
+import ContentList from '../ContentsList';
 
 const Container = styled.div`
     width: 100%;
@@ -14,14 +14,20 @@ const Div = styled.div`
     height: 65%;
 `;
 
-function CustomLearning() {
-    return (
-        <Container>
-            <Div>
-                <ContentComp src={MainTherapy[0]} />
-            </Div>
-        </Container>
-    );
+function CustomLearning({ daily_custom }) {
+    const content = ContentList.filter(c => {
+        return c.name === daily_custom;
+    })[0];
+
+    if (!!content)
+        return (
+            <Container>
+                <Div>
+                    <ContentComp content={content} />
+                </Div>
+            </Container>
+        );
+    else return <div>loading...</div>
 }
 
 export default CustomLearning;

@@ -3,41 +3,74 @@ import { withRouter } from 'react-router-dom';
 import MainPresenter from './MainPresenter';
 
 import { Daily_Api } from 'api';
+import ContentsList from '../ContentsList';
 
 class Main extends React.Component {
-    state = {
-        s_id: 4,
+    constructor() {
+        super();
+        this.state = {
+            s_id: 4,
+            data: null,
+            isImageLoaded: false,
+            daily_custom: null,
+            daily_link: null,
+        }
+        this.numOfLoadedImage = 0;
     }
 
-    goBack = e => {
-        this.preventDefault = true;
+    goBack = () => {
         this.props.history.goBack();
-        e.stopPropagation();
-        this.preventDefault = false;
-        e.nativeEvent.stopImmediatePropagation();
     }
 
     async componentDidMount() {
-        // const { s_id } = this.state;
-        // try {
-        //     const { data } = await Daily_Api.ask(s_id);
-        //     console.log(data);
+        this.request();
+        this.imagesPreloading();
+    }
 
-        //     if (data.code === 1) {
+    request = async () => {
+        try {
+            const { data } = await Daily_Api.ask(this.state.s_id);
+            console.log(data);
 
-        //     }
-        // }
-        // catch (e) {
-        //     console.log(e);
-        // }
+            if (data.code === 1) {
+                this.setState({
+                    data: data,
+                    daily_custom: data.daily_read,
+                    daily_link: ContentsList.filter(c => {
+                        return c.name === data.daily_read;
+                    })[0].url,
+                });
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    imagesPreloading = () => {
+        for (var i = 0; i < ContentsList.length; i++) {
+            let img = new Image();
+            img.src = ContentsList[i].img;
+            img.onload = () => {
+                this.numOfLoadedImage++;
+                if (this.numOfLoadedImage === ContentsList.length)
+                    this.setState({
+                        isImageLoaded: true,
+                    })
+            };
+        }
     }
 
     render() {
+        const { data, isImageLoaded, daily_custom, daily_link } = this.state;
         console.log(this.props.history);
 
         return (
             <MainPresenter
                 goBack={this.goBack}
+                data={data}
+                isImageLoaded={isImageLoaded}
+                daily_custom={daily_custom}
+                daily_link={daily_link}
             />);
     }
 }

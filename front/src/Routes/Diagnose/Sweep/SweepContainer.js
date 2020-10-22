@@ -8,11 +8,11 @@ const UP = 'up';
 const DOWN = 'down';
 
 class Sweep extends React.PureComponent {
-    constructor({ match }) {
+    constructor(props) {
         super();
         this.state = {
-            s_id: parseInt(match.params.s_id) || 4,
-            is_review: match.params.is_review,
+            s_id: parseInt(props.match.params.s_id) || 4,
+            is_review: props.match.params.is_review,
             gameState: false,                           // 게임 상태
             UpButton: D1.d1_UpButton_UP,                // 버튼 이미지 상태
             DownButton: D1.d1_DownButton_UP,            // 버튼 이미지 상태

@@ -29,7 +29,7 @@ const SubComp = styled.div`
     height: 100%;
 `;
 
-const Main = () => {
+const Main = ({ data, isImageLoaded, daily_custom, daily_link }) => {
     return (
         <Container>
             <StdBox />
@@ -38,8 +38,9 @@ const Main = () => {
                     text={'맞춤 학습'} width={'56vw'}
                     headercolor={'#F6DB57'}
                     color={'#F8E384'}
-                    Contents={<CustomLearning />}
-                    linkto={'/diagnose/sweep'} />
+                    linkto={daily_link} data={data}
+                    Contents={<CustomLearning daily_custom={daily_custom} />}
+                />
                 <SubComp>
                     <ButtonBox
                         text={'복습하기'}
@@ -47,14 +48,18 @@ const Main = () => {
                         headercolor={'#62AAF5'}
                         color={'#97C3EB'}
                         width={'31w'} height={'34vh'}
-                        linkto={'/main/select'} />
+                        linkto={'/main/select'}
+                        isImageLoaded={isImageLoaded}
+                    />
                     <ButtonBox
                         text={'학습 선택하기'}
                         Contents={<div>학습을 선택해요!</div>}
                         headercolor={'#F59F6E'}
                         color={'#F7BC93'}
                         width={'31vw'} height={'34vh'}
-                        linkto={'/main/select'} />
+                        linkto={'/main/select'}
+                        isImageLoaded={isImageLoaded}
+                    />
                 </SubComp>
             </Component>
         </Container>

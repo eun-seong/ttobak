@@ -1,9 +1,8 @@
 import React from 'react';
-import ShadowingPresenter from './ShadowingPresenter';
+import SelfPresenter from './SelfPresenter';
 
 import { T1, TTobak } from 'images';
 import { T1_Api, soundURL } from 'api';
-import LoadingComp from 'Components/LoadingComp';
 
 export default class extends React.Component {
     constructor({ match, location }) {
@@ -15,34 +14,22 @@ export default class extends React.Component {
         this.currentIndex = 0;
         this.currentAudio = null;
         this.audioResult = null;
-        this.picture = { T1, TTobak };
-        this.numOfLoadedImage = 0;
 
         this.state = {
             s_id: match.params.s_id || 4,
             cureText: null,
             isRecording: false,
             TTobaki: TTobak.ttobak1_1,
-            isImageLoaded: false,
         }
 
-        if (this.type === 'daily') {
-            console.log(location.state.data.read);
-            this.cure = location.state.data.read;
-            this.currentCure = this.cure[this.currentIndex];
-            this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
-            if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
-                this.currentCure.cure_text = this.currentCure.cure_word;
-            this.state = {
-                cureText: this.currentCure.cure_text
-            };
-        }
+        if (this.type === 'daily') this.setState({
+            data: location.state.data,
+        })
     }
 
     async componentDidMount() {
-        this.imagesPreloading();
-        if (this.type !== 'daily') this.newRequest();
-        // setTimeout(() => this.playSound(), 1000);
+        this.newRequest();
+        setTimeout(() => window.BRIDGE.recordAudio('m', this.currentCure.cure_text), 1000);
 
         window.addEventListener("android", async (e) => {
             console.log(e.detail);
@@ -72,11 +59,7 @@ export default class extends React.Component {
             if (data.code === 'specified' || data.code === 1) {
                 this.cure = data.cure;
                 this.currentCure = data.cure[this.currentIndex];
-                this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
-                if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
-                    this.currentCure.cure_text = this.currentCure.cure_word;
                 this.setState({
-                    TTobaki: TTobak.ttobak1_1,
                     cureText: this.currentCure.cure_text
                 });
             }
@@ -163,40 +146,16 @@ export default class extends React.Component {
         console.log('done!!');
     }
 
-    imagesPreloading = () => {
-        let totalImages = Object.keys(this.picture.T1).length + Object.keys(this.picture.TTobak).length;
-
-        for (let i in this.picture) {
-            for (let prop in this.picture[i]) {
-                let img = new Image();
-                img.src = this.picture[i][prop];
-                img.onload = () => {
-                    if (++this.numOfLoadedImage === totalImages) {
-                        this.setState({
-                            isImageLoaded: true,
-                            TTobaki: TTobak.ttobak1_1,
-                        })
-                    }
-                };
-            }
-        }
-    }
-
     render() {
-        const { type, cureText, TTobaki, isRecording, isImageLoaded } = this.state;
+        const { type, cureText, TTobaki, isRecording } = this.state;
 
-        if (isImageLoaded) {
-            return (<ShadowingPresenter
-                Background={T1.t1_background}
-                TextBox={T1.t1_textbox}
-                TTobak={TTobaki}
-                type={type}
-                text={cureText}
-                isRecording={isRecording}
-            />);
-        }
-        else {
-            return <LoadingComp />
-        }
+        return (<SelfPresenter
+            Background={T1.t1_background}
+            TTobak={TTobaki}
+            TextBox={T1.t1_textbox}
+            type={type}
+            text={cureText}
+            isRecording={isRecording}
+        />);
     }
 }

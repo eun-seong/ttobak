@@ -23,7 +23,7 @@ const Line = styled.div`
     background-color: #DFD7C4;
 `;
 
-const SelectLearning = ({ ContentsList, goBack }) => {
+const Review = ({ ContentsList, goBack }) => {
     document.body.style.overflow = 'visible';
 
     return (
@@ -46,4 +46,4 @@ const SelectLearning = ({ ContentsList, goBack }) => {
     );
 }
 
-export default SelectLearning;
+export default Review;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Images from 'images';
+import Images, { imageURL } from 'images';
 
 const BackButtonStyled = styled.img`
     position : absolute;

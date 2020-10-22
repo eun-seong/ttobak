@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import SelectLearningPresenter from './SelectLearningPresenter';
+import ReviewPresenter from './ReviewPresenter';
 import ContentsList from '../ContentsList';
 import LoadingComp from 'Components/LoadingComp';
 
@@ -30,7 +30,7 @@ class Select extends React.Component {
 
         if (isImageLoaded)
             return (
-                <SelectLearningPresenter
+                <ReviewPresenter
                     ContentsList={ContentsList}
                     goBack={this.goBack}
                     s_id={s_id}

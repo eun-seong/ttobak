@@ -9,6 +9,13 @@ const Container = styled(Link)`
     padding: 5px 0;
 `;
 
+const Div = styled.div`
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    padding: 5px 0;
+`;
+
 const Text = styled.div`
     display: flex;
     height: 100%;
@@ -34,15 +41,18 @@ const Explain = styled.div`
     font-size: 1rem;
 `;
 
-function ContentComp({ src, title, explain, flex, url }) {
+function ContentComp({ flex, url, content }) {
+    var ContentContainer = Container;
+    if (!url) ContentContainer = Div;
+
     return (
-        <Container to={url}>
-            <Img src={src} alt='이미지' />
+        <ContentContainer to={url}>
+            <Img src={content.img} alt={content.name} />
             <Text flex={flex}>
-                <Title>{title || '어음청취력'}</Title>
-                <Explain>{explain || '소리를 듣고 구분해요!'}</Explain>
+                <Title>{content.title || '어음청취력'}</Title>
+                <Explain>{content.explain || '소리를 듣고 구분해요!'}</Explain>
             </Text>
-        </Container>
+        </ContentContainer>
     );
 }
 
