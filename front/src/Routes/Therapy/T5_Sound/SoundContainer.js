@@ -3,29 +3,46 @@ import SoundPresenter from './SoundPresenter';
 
 import { T5, TTobak, Characters } from 'images';
 import { T_Api2, soundURL } from 'api';
+import LoadingComp from 'Components/LoadingComp';
 
 export default class extends React.Component {
-    constructor({ match }) {
+    constructor({ match, location }) {
         super();
-        this.state = {
-            s_id: parseInt(match.params.s_id) || 4,
-            type: match.params.type,
-            is_review: match.params.is_review,
-            TTobaki: TTobak.ttobak1_1,                  // 또박이 이미지 상태
-            gameState: false,
-            CardTextList: null,
-        }
-
+        this.learning_type = match.params.learning_type;
+        this.type = match.params.type;
         this.cure = null;
         this.currentCure = null;
         this.currentIndex = 0;
         this.currentAudio = null;
-        this.idx_text = match.params.type + 'sound';
+        this.numOfLoadedImage = 0;
+        this.picture = { T5, TTobak, Characters };
+        this.totalImages = Object.keys(T5).length + Object.keys(TTobak).length + Object.keys(Characters).length;
+
+        this.state = {
+            s_id: parseInt(match.params.s_id) || 4,
+            is_review: match.params.is_review,
+            TTobaki: TTobak.ttobak1_1,                  // 또박이 이미지 상태
+            gameState: false,
+            CardTextList: null,
+            isImageLoaded: false,
+        }
+
+        if (this.learning_type === 'daily') {
+            console.log(location.state.data.cure);
+            this.cure = location.state.data.cure;
+            this.currentCure = this.cure[this.currentIndex];
+            this.setAudio();
+        }
     }
 
     async componentDidMount() {
-        this.newRequest();
-        setTimeout(() => this.playSound(), 1000);
+        this.imagesPreloading(this.picture);
+        if (this.learning_type !== 'daily') this.newRequest();
+        else {
+            this.setState({
+                CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
+            })
+        }
     }
 
     componentWillUnmount() {
@@ -56,7 +73,7 @@ export default class extends React.Component {
     }
 
     setAudio = () => {
-        if (this.state.type === 'conso') {
+        if (this.type === 'conso') {
             this.currentCure.answer = Math.floor(Math.random() * 2) + 1;
             this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
             if (this.currentCure.answer === 2) {
@@ -81,7 +98,7 @@ export default class extends React.Component {
     playSound = () => {
         if (!!this.currentAudio) {
             this.setState({
-                gameState: false,
+                gameState: true,
                 TTobaki: TTobak.ttobak1_2
             });
             this.currentAudio.play();
@@ -144,16 +161,61 @@ export default class extends React.Component {
         console.log('game doen!')
     }
 
-    render() {
-        const { TTobaki, CardTextList } = this.state;
+    imagesPreloading = (picture) => {
+        for (let i in picture) {
+            for (let prop in picture[i]) {
+                if (typeof (picture[i][prop]) === 'object') {
+                    this.totalImages += picture[i][prop].length;
+                    this.totalImages--;
 
-        return (<SoundPresenter
-            Background={T5.t5_background}
-            TTobak={TTobaki}
-            TTobakiTouch={this.onTTobakiTouchHandle}
-            Card={[Characters.card1, Characters.card2]}
-            CardTextList={CardTextList || ['아', '에']}
-            onCardTouchHandle={this.onCardTouchHandle}
-        />);
+                    let arr = picture[i][prop];
+                    for (let i in arr) {
+                        let img = new Image();
+                        img.src = arr[i];
+                        ++this.numOfLoadedImage;
+                        img.onload = () => {
+                            if (this.numOfLoadedImage === this.totalImages) {
+                                this.setState({
+                                    isImageLoaded: true,
+                                    TTobaki: TTobak.ttobak1_1,
+                                })
+                                setTimeout(() => this.playSound(), 1000);
+                            }
+                        };
+                    }
+
+                } else {
+                    let img = new Image();
+                    img.src = picture[i][prop];
+                    ++this.numOfLoadedImage;
+                    img.onload = () => {
+                        if (this.numOfLoadedImage === this.totalImages) {
+                            this.setState({
+                                isImageLoaded: true,
+                                TTobaki: TTobak.ttobak1_1,
+                            })
+                            setTimeout(() => this.playSound(), 1000);
+                        }
+                    };
+                }
+            }
+        }
+    }
+
+    render() {
+        const { TTobaki, CardTextList, isImageLoaded } = this.state;
+        if (isImageLoaded) {
+            return (<SoundPresenter
+                Background={T5.t5_background}
+                TTobak={TTobaki}
+                TTobakiTouch={this.onTTobakiTouchHandle}
+                Card={[Characters.card1, Characters.card2]}
+                CardTextList={CardTextList || ['아', '에']}
+                onCardTouchHandle={this.onCardTouchHandle}
+            />);
+        }
+        else {
+            return <LoadingComp />
+        }
     }
 }

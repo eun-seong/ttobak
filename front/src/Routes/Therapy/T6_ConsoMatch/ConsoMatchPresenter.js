@@ -36,9 +36,9 @@ const ConsoMatch = ({ props }) => {
                     return (
                         <FrameBox
                             key={index}
-                            text={list}
+                            src={list}
                             frameSize={frameSize}
-                            onBoxTouchHandle={props.onBoxTouchHandle}
+                            onFrameTouchHandle={props.onFrameTouchHandle}
                             index={index}
                         />
                     );

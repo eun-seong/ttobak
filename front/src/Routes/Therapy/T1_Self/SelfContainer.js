@@ -8,7 +8,7 @@ export default class extends React.Component {
     constructor({ match, location }) {
         super();
         this.idx_text = match.params.type;
-        this.type = match.params.learning_type;
+        this.learning_type = match.params.learning_type;
         this.cure = null;
         this.currentCure = null;
         this.currentIndex = 0;
@@ -22,7 +22,7 @@ export default class extends React.Component {
             TTobaki: TTobak.ttobak1_1,
         }
 
-        if (this.type === 'daily') this.setState({
+        if (this.learning_type === 'daily') this.setState({
             data: location.state.data,
         })
     }
@@ -82,7 +82,7 @@ export default class extends React.Component {
                     this.audioResult.phone_score,
                     this.audioResult.speed_score,
                     this.audioResult.rhythm_score,
-                    this.type === 'review' ? 'T' : 'F',
+                    this.learning_type === 'review' ? 'T' : 'F',
                     this.currentCure.cure_id,
                     this.idx_text
                 );

@@ -9,7 +9,7 @@ export default class extends React.Component {
     constructor({ match, location }) {
         super();
         this.idx_text = match.params.type;
-        this.type = match.params.learning_type;
+        this.learning_type = match.params.learning_type;
         this.cure = null;
         this.currentCure = null;
         this.currentIndex = 0;
@@ -26,7 +26,7 @@ export default class extends React.Component {
             isImageLoaded: false,
         }
 
-        if (this.type === 'daily') {
+        if (this.learning_type === 'daily') {
             console.log(location.state.data.read);
             this.cure = location.state.data.read;
         }
@@ -34,7 +34,7 @@ export default class extends React.Component {
 
     async componentDidMount() {
         this.imagesPreloading();
-        if (this.type !== 'daily') this.newRequest();
+        if (this.learning_type !== 'daily') this.newRequest();
         else {
             this.currentCure = this.cure[this.currentIndex];
             this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
@@ -100,7 +100,7 @@ export default class extends React.Component {
                     this.audioResult.phone_score,
                     this.audioResult.speed_score,
                     this.audioResult.rhythm_score,
-                    this.type === 'review' ? 'T' : 'F',
+                    this.learning_type === 'review' ? 'T' : 'F',
                     this.currentCure.cure_id,
                     this.idx_text
                 );

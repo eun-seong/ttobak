@@ -13,7 +13,7 @@ const idx_txt = 'count';
 export default class extends React.Component {
     constructor({ match, location }) {
         super();
-        this.type = match.params.learning_type;
+        this.learning_type = match.params.learning_type;
         this.cure = null;
         this.cureLength = 0;
         this.currentIndex = 0;
@@ -38,7 +38,7 @@ export default class extends React.Component {
             isImageLoaded: false,
         };
 
-        if (this.type === 'daily') {
+        if (this.learning_type === 'daily') {
             console.log(location.state.data.cure);
             this.cure = location.state.data.cure;
             this.currentCure = this.cure[this.currentIndex];
@@ -48,7 +48,7 @@ export default class extends React.Component {
 
     async componentDidMount() {
         this.imagesPreloading(this.picture);
-        if (this.type !== 'daily') this.newRequest();
+        if (this.learning_type !== 'daily') this.newRequest();
     }
 
     componentWillUnmount() {

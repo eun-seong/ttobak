@@ -2,6 +2,7 @@ import React from 'react';
 import { T3, TTobak } from 'images';
 import CommonPresenter from './CommonPresenter';
 
+import LoadingComp from 'Components/LoadingComp';
 import { T_Api2, soundURL } from 'api';
 
 const idx_text = 'common';
@@ -9,7 +10,7 @@ const idx_text = 'common';
 export default class extends React.Component {
     constructor({ match, location }) {
         super();
-        this.type = match.params.learning_type;
+        this.learning_type = match.params.learning_type;
         this.currentAudio = null;
         this.cure = null;
         this.currentIndex = 0;
@@ -27,7 +28,7 @@ export default class extends React.Component {
             isAnimate: [false, false, false, false],
         };
 
-        if (this.type === 'daily') {
+        if (this.learning_type === 'daily') {
             console.log(location.state.data.cure);
             this.cure = location.state.data.cure;
         }
@@ -35,7 +36,7 @@ export default class extends React.Component {
 
     async componentDidMount() {
         this.imagesPreloading();
-        if (this.type !== 'daily') this.newRequest();
+        if (this.learning_type !== 'daily') this.newRequest();
         else {
             this.setCurrent(0);
         }
@@ -139,7 +140,6 @@ export default class extends React.Component {
     }
 
     listenerFunc = (index, time) => {
-
         this.setState({
             TTobaki: TTobak.ttobak1_1
         });
@@ -155,7 +155,7 @@ export default class extends React.Component {
 
     playSound = () => {
         this.setState({
-            gameState: false,
+            gameState: true,
             TTobaki: TTobak.ttobak1_2
         });
 
@@ -254,16 +254,21 @@ export default class extends React.Component {
     }
 
     render() {
-        const { boxTextList, isAnimate, TTobaki } = this.state;
+        const { boxTextList, isAnimate, TTobaki, isImageLoaded } = this.state;
 
-        return (<CommonPresenter
-            Background={T3.t3_background}
-            TTobak={TTobaki}
-            onTTobakiTouchHandle={this.onTTobakiTouchHandle}
-            boxTextList={boxTextList || ['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ']}
-            onBoxTouchHandle={this.onBoxTouchHandle}
-            BoxImg={T3.t3_textbox}
-            isAnimate={isAnimate}
-        />);
+        if (isImageLoaded) {
+            return (<CommonPresenter
+                Background={T3.t3_background}
+                TTobak={TTobaki}
+                onTTobakiTouchHandle={this.onTTobakiTouchHandle}
+                boxTextList={boxTextList || ['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ']}
+                onBoxTouchHandle={this.onBoxTouchHandle}
+                BoxImg={T3.t3_textbox}
+                isAnimate={isAnimate}
+            />);
+        }
+        else {
+            return <LoadingComp />
+        }
     }
 }

@@ -24,7 +24,7 @@ const ContentsList = [
         explain: '모음 단어를 듣고 무엇인지 맞혀 봐요',
     },
     {
-        name: 'vowel',
+        name: 'vowelsound',
         img: MainTherapy[2],
         url: '/therapy/sound/vowel',
         title: '모음 | 소리 구분',
@@ -52,7 +52,7 @@ const ContentsList = [
         explain: '단어를 발음해  봐요',
     },
     {
-        name: 'conso',
+        name: 'consosound',
         img: MainTherapy[6],
         url: '/therapy/sound/conso',
         title: '자음 | 소리 구분',
