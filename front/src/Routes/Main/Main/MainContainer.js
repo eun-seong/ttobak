@@ -39,9 +39,9 @@ class Main extends React.Component {
                     // daily_link: ContentsList.filter(c => {
                     //     return c.name === data.daily_cure;
                     // })[0].url,
-                    daily_custom: 'vowelsound',
+                    daily_custom: 'consocommon',
                     daily_link: ContentsList.filter(c => {
-                        return c.name === 'vowelsound';
+                        return c.name === 'consocommon';
                     })[0].url,
                 });
             }
