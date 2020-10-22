@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import MakeUser,LogIn,UserModify,UserDelete,UserGet,StuAdd,StuModify,StuDel,StuGet,CureGet,CureAns,TestGet,TestAns
+from .views import MakeUser,LogIn,UserModify,UserDelete,UserGet,StuAdd,StuModify,StuDel,StuGet,CureGet,CureAns,TestGet,TestAns,Statistic
 from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [ ##만들어준 view들을 경로 지정해서 routing해줌.
@@ -23,5 +23,6 @@ urlpatterns = [ ##만들어준 view들을 경로 지정해서 routing해줌.
     path('cure/answer',CureAns.as_view()),
     path('diagnose/ask',TestGet.as_view()),
     path('diagnose/answer',TestAns.as_view()),
+    path('statistic/get',Statistic.as_view()),
     path('user/jwt_login',obtain_jwt_token)
 ]

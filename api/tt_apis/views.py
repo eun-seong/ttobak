@@ -4,6 +4,7 @@ import jwt
 import random
 import requests
 import time
+import datetime
 
 from .models  import User,Student,UsrStu,StuIc,Icon,TestMaster,StuTest,CureMaster,StuCure,StuCurrent,TestIdx,CureIdx,ComCure,TestCurrent,Voice
 from . import serializers as sz
@@ -13,7 +14,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 
-from django.db.models import Q
+from django.db.models import Q,Avg
 
 
 class MakeUser(View):
@@ -1169,12 +1170,181 @@ class CureAns(View):
 #             student = Student.objects.get(pk=s_id)
 #             if not StuCurrent.objects.filter(stu_id = s_id).exists():
 
-# class Statistic(View):
-#     def post(self,request):
-#         data = json.loads(request.body)
-#         s_id = data['s_id']
-#         period = data['period']
+class Statistic(View):
+    def test_result(self,student,date,period):
+        times = []
+        swp_score = {}
+        ph_score = {}
+        foc_score = {}
+        classes = []
+        if period == 'day':
+            for i in range(7):
+                tmp = date + datetime.timedelta(days = -(6-i))
+                times.append(tmp.strftime('%Y-%m-%d'))
+            for t in times:
+                swp_whole = StuTest.objects.filter(stu=student,date = t, test_txt = 'swp').count()
+                if swp_whole == 0:
+                    swp_score[t] = None
+                else:
+                    swp_correct = StuTest.objects.filter(stu = student,date=t,test_txt='swp',is_correct = 'T').count()
+                    swp_score[t] = (swp_correct/swp_whole) * 100
+                ph_whole = StuTest.objects.filter(stu = student,date=t,test_txt = 'ph').count()
+                if ph_whole == 0 :
+                    ph_score[t] = None
+                else:
+                    ph_correct = StuTest.objects.filter(stu=student,date=t,test_txt='ph',is_correct = 'T').count()
+                    ph_score[t] = (ph_correct/ph_whole)*100
+                foctemp = []
+                foctemp.append(StuTest.objects.filter(stu=student,date=t,test_txt='foc').aggregate(Avg('full_score')))
+                foctemp.append(StuTest.objects.filter(stu=student,date=t,test_txt='foc').aggregate(Avg('phone_score')))
+                foctemp.append(StuTest.objects.filter(stu=student,date=t,test_txt='foc').aggregate(Avg('speed_score')))
+                foctemp.append(StuTest.objects.filter(stu=student,date=t,test_txt='foc').aggregate(Avg('rhythm_score')))
+                foc_score[t] = foctemp
+        if period == 'week':
+            for i in range(7):
+                tmp = date + datetime.timedelta(weeks = -(7-i))
+                times.append(tmp.strftime('%Y-%m-%d'))
+            for i in range(7):
+                if i != 6 :
+                    t = times[i]
+                    t2 = times[i+1]
+                else:
+                    t = times[i]
+                    t2 = date.strftime('%Y-%m-%d')
+                swp_whole = StuTest.objects.filter(stu=student,date__range= [t,t2], test_txt = 'swp').count()
+                if swp_whole == 0:
+                    swp_score[t+'~'+t2] = None
+                else:
+                    swp_correct = StuTest.objects.filter(stu = student,date__range=[t,t2],test_txt='swp',is_correct = 'T').count()
+                    swp_score[t+'~'+t2] = (swp_correct/swp_whole) * 100
+                ph_whole = StuTest.objects.filter(stu = student,date__range=[t,t2],test_txt = 'ph').count()
+                if ph_whole == 0 :
+                    ph_score[t+'~'+t2] = None
+                else:
+                    ph_correct = StuTest.objects.filter(stu=student,date__range=[t,t2],test_txt='ph',is_correct = 'T').count()
+                    ph_score[t+'~'+t2] = (ph_correct/ph_whole)*100
+                foctemp = []
+                foctemp.append(StuTest.objects.filter(stu=student,date__range=[t,t2],test_txt='foc').aggregate(Avg('full_score')))
+                foctemp.append(StuTest.objects.filter(stu=student,date__range=[t,t2],test_txt='foc').aggregate(Avg('phone_score')))
+                foctemp.append(StuTest.objects.filter(stu=student,date__range=[t,t2],test_txt='foc').aggregate(Avg('speed_score')))
+                foctemp.append(StuTest.objects.filter(stu=student,date__range=[t,t2],test_txt='foc').aggregate(Avg('rhythm_score')))
+                foc_score[t+'~'+t2] = foctemp
+        if period == 'month':
+            mon = date.month
+            year = date.year
+            for i in range(7):
+                times.append(mon-(6-i))
+            for t in times:
+                swp_whole = StuTest.objects.filter(stu=student,date__year = year,date__month= t, test_txt = 'swp').count()
+                if swp_whole == 0:
+                    swp_score[t] = None
+                else:
+                    swp_correct = StuTest.objects.filter(stu = student,date__year = year,date__month= t,test_txt='swp',is_correct = 'T').count()
+                    swp_score[t] = (swp_correct/swp_whole) * 100
+                ph_whole = StuTest.objects.filter(stu = student,date__year = year,date__month= t,test_txt = 'ph').count()
+                if ph_whole == 0 :
+                    ph_score[t] = None
+                else:
+                    ph_correct = StuTest.objects.filter(stu=student,date__year = year,date__month= t,test_txt='ph',is_correct = 'T').count()
+                    ph_score[t] = (ph_correct/ph_whole)*100
+                foctemp = []
+                foctemp.append(StuTest.objects.filter(stu=student,date__year = year,date__month= t,test_txt='foc').aggregate(Avg('full_score')))
+                foctemp.append(StuTest.objects.filter(stu=student,date__year = year,date__month= t,test_txt='foc').aggregate(Avg('phone_score')))
+                foctemp.append(StuTest.objects.filter(stu=student,date__year = year,date__month= t,test_txt='foc').aggregate(Avg('speed_score')))
+                foctemp.append(StuTest.objects.filter(stu=student,date__year = year,date__month= t,test_txt='foc').aggregate(Avg('rhythm_score')))
+                foc_score[t] = foctemp
 
-#         if Student.objects.filter(pk=s_id).exists():
-#             student = Student.objects.get(pk=s_id)
-            
+        return swp_score,ph_score,foc_score
+
+    def cure_result(self,student,date,period):
+        times = []
+        amount = {}
+        score = {}
+        voice_score = {}
+        if period == 'day':
+            for i in range(7):
+                tmp = date + datetime.timedelta(days = -(6-i))
+                times.append(tmp.strftime('%Y-%m-%d'))
+            for t in times:
+                score_whole = StuCure.objects.filter(stu=student,date = t).exclude(is_correct__isnull=True).count()
+                if score_whole == 0:
+                    score[t] = None
+                else:
+                    correct = StuCure.objects.filter(stu = student,date=t,is_correct = 'T').count()
+                    score[t] = (correct/score_whole) * 100
+                did = StuCure.objects.filter(stu=student,date=t).count()
+                amount[t] = did
+                voctemp = []
+                voctemp.append(StuCure.objects.filter(stu=student,date=t).exclude(full_score__isnull=True).aggregate(Avg('full_score')))
+                voctemp.append(StuCure.objects.filter(stu=student,date=t).exclude(full_score__isnull=True).aggregate(Avg('phone_score')))
+                voctemp.append(StuCure.objects.filter(stu=student,date=t).exclude(full_score__isnull=True).aggregate(Avg('speed_score')))
+                voctemp.append(StuCure.objects.filter(stu=student,date=t).exclude(full_score__isnull=True).aggregate(Avg('rhythm_score')))
+                voice_score[t] = voctemp
+        
+        if period == 'week':
+            for i in range(7):
+                tmp = date + datetime.timedelta(weeks = -(7-i))
+                times.append(tmp.strftime('%Y-%m-%d'))
+            for i in range(7):
+                if i != 6 :
+                    t = times[i]
+                    t2 = times[i+1]
+                else:
+                    t = times[i]
+                    t2 = date.strftime('%Y-%m-%d')
+                score_whole = StuCure.objects.filter(stu=student,date__range=[t,t2]).exclude(is_correct__isnull=True).count()
+                if score_whole == 0:
+                    score[t+'~'+t2] = None
+                else:
+                    correct = StuCure.objects.filter(stu = student,date__range=[t,t2],is_correct = 'T').count()
+                    score[t+'~'+t2] = (correct/score_whole) * 100
+                did = StuCure.objects.filter(stu=student,date__range=[t,t2]).count()
+                amount[t+'~'+t2] = did
+                voctemp = []
+                voctemp.append(StuCure.objects.filter(stu=student,date__range=[t,t2]).exclude(full_score__isnull=True).aggregate(Avg('full_score')))
+                voctemp.append(StuCure.objects.filter(stu=student,date__range=[t,t2]).exclude(full_score__isnull=True).aggregate(Avg('phone_score')))
+                voctemp.append(StuCure.objects.filter(stu=student,date__range=[t,t2]).exclude(full_score__isnull=True).aggregate(Avg('speed_score')))
+                voctemp.append(StuCure.objects.filter(stu=student,date__range=[t,t2]).exclude(full_score__isnull=True).aggregate(Avg('rhythm_score')))
+                voice_score[t+'~'+t2] = voctemp
+        if period == "month":
+            mon = date.month
+            year = date.year
+            for i in range(7):
+                times.append(mon-(6-i))
+            for t in times:
+                score_whole = StuCure.objects.filter(stu=student,date__year = year,date__month= t).exclude(is_correct__isnull=True).count()
+                if score_whole == 0:
+                    score[t] = None
+                else:
+                    correct = StuCure.objects.filter(stu = student,date__year = year,date__month= t,is_correct = 'T').count()
+                    score[t] = (correct/score_whole) * 100
+                did = StuCure.objects.filter(stu=student,date__year = year,date__month= t).count()
+                amount[t] = did
+                voctemp = []
+                voctemp.append(StuCure.objects.filter(stu=student,date__year = year,date__month= t).exclude(full_score__isnull=True).aggregate(Avg('full_score')))
+                voctemp.append(StuCure.objects.filter(stu=student,date__year = year,date__month= t).exclude(full_score__isnull=True).aggregate(Avg('phone_score')))
+                voctemp.append(StuCure.objects.filter(stu=student,date__year = year,date__month= t).exclude(full_score__isnull=True).aggregate(Avg('speed_score')))
+                voctemp.append(StuCure.objects.filter(stu=student,date__year = year,date__month= t).exclude(full_score__isnull=True).aggregate(Avg('rhythm_score')))
+                voice_score[t] = voctemp
+
+        return amount,score,voice_score       
+
+
+    def post(self,request):
+        data = json.loads(request.body)
+        s_id = data['s_id']
+        period = data['period']
+        cort = data['cure_or_test']
+        date = datetime.datetime.now()
+
+        if Student.objects.filter(pk=s_id).exists():
+            student = Student.objects.get(pk=s_id)
+            if cort == 'test':
+                # score_swp ,score_ph,score_foc, classes, result = self.test_result(student,date,period)
+                score_swp,score_ph,foc_score = self.test_result(student,date,period)
+                return JsonResponse({"score_swp":score_swp,"score_ph":score_ph,"score_foc":foc_score,"code":cort},status=200)
+            elif cort == 'cure':
+                amount , score , voice_score = self.cure_result(student,date,period)
+                return JsonResponse({"amount":amount,"score":score,"voice_score":voice_score,"code":cort},status=200)
+        else:
+            return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":2},status=200)
