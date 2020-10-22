@@ -97,12 +97,6 @@ export const Daily_Api = {
         }),
 }
 
-export const T_ask_api = (s_id) =>
-    api.post(url.therapy_ask, {
-        "s_id": s_id,
-        "idx_txt": idx_txt,
-    })
-
 export const T1_Api = {
     ask: (s_id, idx_txt) =>
         api.post(url.therapy_ask, {

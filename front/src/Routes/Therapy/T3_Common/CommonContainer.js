@@ -166,7 +166,12 @@ export default class extends React.Component {
             console.log(data);
 
             if (data.code === 1) {
-                this.currentIndex++;
+                if (this.currentIndex < this.cure.length - 1) {
+                    this.currentIndex++;
+                } else {
+                    this.gameDone();
+                    return;
+                }
                 this.currentAudio = [
                     new Audio(soundURL + this.cure[this.currentIndex].com_e1path),
                     new Audio(soundURL + this.cure[this.currentIndex].com_e2path),
@@ -192,10 +197,15 @@ export default class extends React.Component {
                 setTimeout(() => {
                     this.playSound();
                 }, 4000);
+
             }
         } catch (e) {
             console.log(e);
         }
+    }
+
+    gameDone = () => {
+        console.log('done!!');
     }
 
     render() {

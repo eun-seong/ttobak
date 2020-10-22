@@ -16,6 +16,7 @@ import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import java.io.File;
@@ -44,24 +45,15 @@ public class MainActivity extends AppCompatActivity {
 
         /* WebView */
         WebView webView = (WebView) findViewById(R.id.webView);
-        webView.getSettings().setJavaScriptEnabled(true);//자바스크립트 허용
-        webView.getSettings().setDomStorageEnabled(true);
+        WebView.setWebContentsDebuggingEnabled(true);
         webView.addJavascriptInterface(new AndroidBridge(), "BRIDGE");
         webView.setWebChromeClient(new WebChromeClient());//웹뷰에 크롬 사용 허용//이 부분이 없으면 크롬에서 alert가 뜨지 않음
-        WebView.setWebContentsDebuggingEnabled(true);
 
-        webView.evaluateJavascript(
-                "(function () {" +
-                "var event = window.createEvent('Event');" +
-                "window.dispatchEvent(event);" +
-                "}) (); ", new ValueCallback<String>() {
-            @Override
-            public void onReceiveValue(String value) {
-                Log.d(TAG, "onReceiveValue: " + value);
-            }
-        });
+        webView.getSettings().setJavaScriptEnabled(true);//자바스크립트 허용
+        webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
 
-//        webView.loadUrl("http://172.30.1.53:3000/main/test");//웹뷰 실행
+        //        webView.loadUrl("http://172.30.1.53:3000/main/test");//웹뷰 실행
         webView.loadUrl("http://172.30.1.53:3000/therapy/shadowing/poem");//웹뷰 실행
 
 
@@ -153,11 +145,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "run: " + gender + " " + transcript);
                 }
             }, 3000);
-        }
-
-        @JavascriptInterface
-        public void setCurrentCure() {
-
         }
     }
 

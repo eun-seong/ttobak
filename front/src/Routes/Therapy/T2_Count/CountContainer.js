@@ -111,7 +111,7 @@ export default class extends React.Component {
         );
         console.log(data);
 
-        if (this.currentIndex < this.cureLength) this.currentIndex++;
+        if (this.currentIndex < this.cureLength - 1) this.currentIndex++;
         else return;
 
         this.currentIndex = this.currentIndex;
