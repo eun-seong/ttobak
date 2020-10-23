@@ -80,7 +80,7 @@ export default class extends React.Component {
     }
 
     setAudio = () => {
-        if (this.type === 'conso') {
+        if (this.type === 'consosound') {
             this.currentCure.answer = Math.floor(Math.random() * 2) + 1;
             this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
             if (this.currentCure.answer === 2) {
@@ -193,7 +193,8 @@ export default class extends React.Component {
                 img.onload = () => {
                     this.setState({
                         percent: (++this.numOfLoadedImage / this.totalImages) * 100
-                    })
+                    });
+
                     if (this.numOfLoadedImage === this.totalImages) {
                         this.setState({
                             isImageLoaded: true,

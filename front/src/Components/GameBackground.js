@@ -9,6 +9,8 @@ const BackgroundDiv = styled.div`
     background-size: cover;
     width: 100vw;
     height: 100vh;
+    font-family:'NanumBarunGothic';
+    font-weight: 400;
 `;
 
 const GameBackground = ({ BackgroundImg, Children, onPauseButtonHandle }) => {
