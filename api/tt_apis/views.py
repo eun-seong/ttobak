@@ -371,6 +371,9 @@ class TestAns(View):
                     testcur.swp_passed = 0
                     testcur.save()
                 else :
+                    testcur.swp_did = 0
+                    testcur.swp_passed = 0 
+                    testcur.save()
                     to_next_level = "모든 단계를 풀었습니다."
             else:
                 if TestMaster.objects.filter(ques_level = 1, ques_int = testcur.swp_freq*2).exists():
@@ -1123,12 +1126,11 @@ class CureAns(View):
                 student = Student.objects.get(pk=s_id)
                 if idx_id == 1 or idx_id == 2 or idx_id == 11 or idx_id == 12: # read
                     new_read_id , class_txt , is_pass = self.ans_read(student,data,idx_id)
-                    if is_pass :
-                        s = self.update_read(s_id,new_read_id,idx_id)
-                        if s:
-                            return JsonResponse({"is_okay":is_pass,"class": class_txt,"code":1},status=200)
-                        else:
-                            return JsonResponse({"is_okay":is_pass,"class": class_txt,"message": "더 이상 학습할 문제가 없습니다.","code":2},status=200)
+                    s = self.update_read(s_id,new_read_id,idx_id)
+                    if s:
+                        return JsonResponse({"is_okay":is_pass,"class": class_txt,"code":1},status=200)
+                    else:
+                        return JsonResponse({"is_okay":is_pass,"class": class_txt,"message": "더 이상 학습할 문제가 없습니다.","code":2},status=200)
                 elif idx_id == 3 or idx_id == 6 or idx_id == 8 or idx_id == 10:
                     is_correct, s = self.answer_alternative(student,data,idx_id)
                     if s:
@@ -1154,11 +1156,24 @@ class CureAns(View):
                     else:
                         return JsonResponse({"is_correct":is_correct,"code":2,"message":"모든 문제를 학습하였습니다."},status=200)
             else:
-                return JsonResponse({"message":"해당 학습지가 존재하지 않습니다.","code":3},status=200)
+                return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":3},status=200)
 
         else:
             return JsonResponse({"message": "해당 학습이 존재하지 않습니다.","code":"err"},status=200)
 
+class CureSave(View):
+    @csrf_exempt
+    def post(self,request):
+        data = json.loads(request.body)
+        s_id = data['s_id']
+        if Student.objects.filter(pk=s_id).exists():
+            student = Student.objects.filter(pk = s_id)
+            stucur = StuCurrent.objects.get(stu_id=s_id)
+            current =[]
+            current.append(stucur.cur_read)
+            current.append(stucur.cur_curr)
+            return JsonResponse({"current":current,"code":1},status=200)
+        return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":2},satus=200)
     
 # class GetDaily(View):
 #     @csrt_exempt
@@ -1176,7 +1191,8 @@ class Statistic(View):
         swp_score = {}
         ph_score = {}
         foc_score = {}
-        classes = []
+        classes = ['d','d','d']
+        levels = [1,1,1]
         if period == 'day':
             for i in range(7):
                 tmp = date + datetime.timedelta(days = -(6-i))
@@ -1194,12 +1210,8 @@ class Statistic(View):
                 else:
                     ph_correct = StuTest.objects.filter(stu=student,date=t,test_txt='ph',is_correct = 'T').count()
                     ph_score[t] = (ph_correct/ph_whole)*100
-                foctemp = []
-                foctemp.append(StuTest.objects.filter(stu=student,date=t,test_txt='foc').aggregate(Avg('full_score')))
-                foctemp.append(StuTest.objects.filter(stu=student,date=t,test_txt='foc').aggregate(Avg('phone_score')))
-                foctemp.append(StuTest.objects.filter(stu=student,date=t,test_txt='foc').aggregate(Avg('speed_score')))
-                foctemp.append(StuTest.objects.filter(stu=student,date=t,test_txt='foc').aggregate(Avg('rhythm_score')))
-                foc_score[t] = foctemp
+                
+                foc_score[t] = StuTest.objects.filter(stu=student,date=t,test_txt='foc').aggregate(Avg('full_score'))['full_score__avg']
         if period == 'week':
             for i in range(7):
                 tmp = date + datetime.timedelta(weeks = -(7-i))
@@ -1223,12 +1235,7 @@ class Statistic(View):
                 else:
                     ph_correct = StuTest.objects.filter(stu=student,date__range=[t,t2],test_txt='ph',is_correct = 'T').count()
                     ph_score[t+'~'+t2] = (ph_correct/ph_whole)*100
-                foctemp = []
-                foctemp.append(StuTest.objects.filter(stu=student,date__range=[t,t2],test_txt='foc').aggregate(Avg('full_score')))
-                foctemp.append(StuTest.objects.filter(stu=student,date__range=[t,t2],test_txt='foc').aggregate(Avg('phone_score')))
-                foctemp.append(StuTest.objects.filter(stu=student,date__range=[t,t2],test_txt='foc').aggregate(Avg('speed_score')))
-                foctemp.append(StuTest.objects.filter(stu=student,date__range=[t,t2],test_txt='foc').aggregate(Avg('rhythm_score')))
-                foc_score[t+'~'+t2] = foctemp
+                foc_score[t+'~'+t2] = StuTest.objects.filter(stu=student,date__range=[t,t2],test_txt='foc').aggregate(Avg('full_score'))['full_score__avg']
         if period == 'month':
             mon = date.month
             year = date.year
@@ -1247,14 +1254,67 @@ class Statistic(View):
                 else:
                     ph_correct = StuTest.objects.filter(stu=student,date__year = year,date__month= t,test_txt='ph',is_correct = 'T').count()
                     ph_score[t] = (ph_correct/ph_whole)*100
-                foctemp = []
-                foctemp.append(StuTest.objects.filter(stu=student,date__year = year,date__month= t,test_txt='foc').aggregate(Avg('full_score')))
-                foctemp.append(StuTest.objects.filter(stu=student,date__year = year,date__month= t,test_txt='foc').aggregate(Avg('phone_score')))
-                foctemp.append(StuTest.objects.filter(stu=student,date__year = year,date__month= t,test_txt='foc').aggregate(Avg('speed_score')))
-                foctemp.append(StuTest.objects.filter(stu=student,date__year = year,date__month= t,test_txt='foc').aggregate(Avg('rhythm_score')))
-                foc_score[t] = foctemp
-
-        return swp_score,ph_score,foc_score
+                foc_score[t] = StuTest.objects.filter(stu=student,date__year = year,date__month= t,test_txt='foc').aggregate(Avg('full_score'))['full_score__avg']
+        cscore = [0,0,0]
+        for i in times:
+            if swp_score[i] == None:
+                cscore[0] += 0 
+            else :
+                cscore[0] = cscore[0] + swp_score[i]
+            if ph_score[i] == None:
+                cscore[1] += 0 
+            else :
+                cscore[1] = cscore[1] + ph_score[i]
+            if foc_score[i] == None:
+                cscore[2] += 0 
+            else :
+                cscore[2] = cscore[2] + foc_score[i]
+        for idx,c in enumerate(cscore):
+            if (c/7) >= 85:
+                classes[idx] = '우수'
+            elif (c/7) >= 75:
+                classes[idx]  ='보통'
+            else:
+                classes[idx] = '미흠'
+        slevels = [1,1,1]
+        every_swp = StuTest.objects.filter(stu=student,test_txt = 'swp',is_correct = 'T').order_by('-id')[:15]
+        if every_swp.count() ==0:
+            levels[1] = 1
+        for s in every_swp:
+            sw = TestMaster.objects.get(pk=s.ques_id)
+            freq = sw.ques_int
+            if freq == 500:
+                if slevels[0] <= sw.ques_level +1:
+                    slevels[0] = sw.ques_level +1
+            elif freq == 1000:
+                if slevels[1] <= sw.ques_level +1:
+                    slevels[1] = sw.ques_level +1
+            elif freq == 2000:
+                if slevels[2] <= sw.ques_level +1:
+                    slevels[2] = sw.ques_level +1
+        levels[0] = min(slevels)
+        every_ph = StuTest.objects.filter(stu=student,test_txt = 'ph').order_by('-id')[:25]
+        c_ph = len([p for p in every_ph if p.is_correct == 'T'])
+        pscore = (c_ph/25) * 100
+        if pscore >= 96:
+            levels[1]= 6
+        elif pscore >= 86:
+            levels[1] =5
+        elif pscore >= 70:
+            levels[1] = 4
+        elif pscore >= 50:
+            levels[1] = 3
+        elif pscore >= 33:
+            levles[1] = 2
+        levels[2] = TestCurrent.objects.get(stu = student).focus_lev +1
+        tot_lev = min(levels)
+        if tot_lev >=5:
+            status = '경미'
+        elif tot_lev >=3:
+            status = '저위험군'
+        elif tot_lev >=1:
+            status = '고위험군'
+        return swp_score,ph_score,foc_score,classes,status
 
     def cure_result(self,student,date,period):
         times = []
@@ -1274,12 +1334,7 @@ class Statistic(View):
                     score[t] = (correct/score_whole) * 100
                 did = StuCure.objects.filter(stu=student,date=t).count()
                 amount[t] = did
-                voctemp = []
-                voctemp.append(StuCure.objects.filter(stu=student,date=t).exclude(full_score__isnull=True).aggregate(Avg('full_score')))
-                voctemp.append(StuCure.objects.filter(stu=student,date=t).exclude(full_score__isnull=True).aggregate(Avg('phone_score')))
-                voctemp.append(StuCure.objects.filter(stu=student,date=t).exclude(full_score__isnull=True).aggregate(Avg('speed_score')))
-                voctemp.append(StuCure.objects.filter(stu=student,date=t).exclude(full_score__isnull=True).aggregate(Avg('rhythm_score')))
-                voice_score[t] = voctemp
+                voice_score[t] = StuCure.objects.filter(stu=student,date=t).exclude(full_score__isnull=True).aggregate(Avg('full_score'))['full_score__avg']
         
         if period == 'week':
             for i in range(7):
@@ -1300,12 +1355,7 @@ class Statistic(View):
                     score[t+'~'+t2] = (correct/score_whole) * 100
                 did = StuCure.objects.filter(stu=student,date__range=[t,t2]).count()
                 amount[t+'~'+t2] = did
-                voctemp = []
-                voctemp.append(StuCure.objects.filter(stu=student,date__range=[t,t2]).exclude(full_score__isnull=True).aggregate(Avg('full_score')))
-                voctemp.append(StuCure.objects.filter(stu=student,date__range=[t,t2]).exclude(full_score__isnull=True).aggregate(Avg('phone_score')))
-                voctemp.append(StuCure.objects.filter(stu=student,date__range=[t,t2]).exclude(full_score__isnull=True).aggregate(Avg('speed_score')))
-                voctemp.append(StuCure.objects.filter(stu=student,date__range=[t,t2]).exclude(full_score__isnull=True).aggregate(Avg('rhythm_score')))
-                voice_score[t+'~'+t2] = voctemp
+                voice_score[t+'~'+t2] =StuCure.objects.filter(stu=student,date__range=[t,t2]).exclude(full_score__isnull=True).aggregate(Avg('full_score'))['full_score__avg']
         if period == "month":
             mon = date.month
             year = date.year
@@ -1320,12 +1370,7 @@ class Statistic(View):
                     score[t] = (correct/score_whole) * 100
                 did = StuCure.objects.filter(stu=student,date__year = year,date__month= t).count()
                 amount[t] = did
-                voctemp = []
-                voctemp.append(StuCure.objects.filter(stu=student,date__year = year,date__month= t).exclude(full_score__isnull=True).aggregate(Avg('full_score')))
-                voctemp.append(StuCure.objects.filter(stu=student,date__year = year,date__month= t).exclude(full_score__isnull=True).aggregate(Avg('phone_score')))
-                voctemp.append(StuCure.objects.filter(stu=student,date__year = year,date__month= t).exclude(full_score__isnull=True).aggregate(Avg('speed_score')))
-                voctemp.append(StuCure.objects.filter(stu=student,date__year = year,date__month= t).exclude(full_score__isnull=True).aggregate(Avg('rhythm_score')))
-                voice_score[t] = voctemp
+                voice_score[t] =StuCure.objects.filter(stu=student,date__year = year,date__month= t).exclude(full_score__isnull=True).aggregate(Avg('full_score'))['full_score__avg']
 
         return amount,score,voice_score       
 
@@ -1341,8 +1386,8 @@ class Statistic(View):
             student = Student.objects.get(pk=s_id)
             if cort == 'test':
                 # score_swp ,score_ph,score_foc, classes, result = self.test_result(student,date,period)
-                score_swp,score_ph,foc_score = self.test_result(student,date,period)
-                return JsonResponse({"score_swp":score_swp,"score_ph":score_ph,"score_foc":foc_score,"code":cort},status=200)
+                score_swp,score_ph,foc_score,classes,status = self.test_result(student,date,period)
+                return JsonResponse({"score_swp":score_swp,"score_ph":score_ph,"score_foc":foc_score,"class":classes,"status":status,"code":cort},status=200)
             elif cort == 'cure':
                 amount , score , voice_score = self.cure_result(student,date,period)
                 return JsonResponse({"amount":amount,"score":score,"voice_score":voice_score,"code":cort},status=200)

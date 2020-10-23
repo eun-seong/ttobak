@@ -579,7 +579,7 @@ OR
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/swp_test/answer",
+      url: "link/to/api/diagnose/answer",
       dataType: "json",
       type : "POST",
       data : { 
@@ -685,7 +685,7 @@ OR
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/foc_cure/answer",
+      url: "link/to/api/diagnose/answer",
       dataType: "json",
       type : "POST",
       data : { 
@@ -740,7 +740,7 @@ OR
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/diagnose/ask",
+      url: "link/to/api/cure/ask",
       dataType: "json",
       type : "POST",
       data : { 
@@ -750,10 +750,10 @@ OR
       }
     });   
 
- **answer(1) - read(poem,text,selfpoem,selftext) **
+answer(1) - read(poem,text,selfpoem,selftext) 
 ----
 * **URL**
-	/diagnose/answer
+	/cure/answer
 
 * **Method:**
 	  `POST`
@@ -792,7 +792,7 @@ OR
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/diagnose/answer",
+      url: "link/to/api/cure/answer",
       dataType: "json",
       type : "POST",
       data : { 
@@ -812,7 +812,7 @@ OR
  **answer(2) - count, vowelsound, consocommon, consosound , common**
 ----
 * **URL**
-	/diagnose/answer
+	/cure/answer
 
 * **Method:**
 	  `POST`
@@ -851,7 +851,7 @@ OR
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/diagnose/answer",
+      url: "link/to/api/cure/answer",
       dataType: "json",
       type : "POST",
       data : { 
@@ -869,7 +869,7 @@ OR
  answer(3) - vowelword, consoword 
 ----
 * **URL**
-	/diagnose/answer
+	/cure/answer
 
 * **Method:**
 	  `POST`
@@ -905,7 +905,7 @@ OR
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/diagnose/answer",
+      url: "link/to/api/cure/answer",
       dataType: "json",
       type : "POST",
       data : { 
@@ -925,7 +925,7 @@ OR
  answer(4) - consomatch 
 ----
 * **URL**
-	/diagnose/answer
+	/cure/answer
 
 * **Method:**
 	  `POST`
@@ -961,7 +961,7 @@ OR
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/diagnose/answer",
+      url: "link/to/api/cure/answer",
       dataType: "json",
       type : "POST",
       data : { 
@@ -977,11 +977,46 @@ OR
 	         console.log(r)
       }
     });   
+    
+save
+----
+* **URL**
+	/cure/save
 
+* **Method:**
+	  `POST`
+*  **URL Params**
+   **Required:**
+   **Optional:**
+
+* **Data Params**
+	   `s_id = [integer]` 
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ current: {[read],[treatment]} ,"code":1 }`
+ 
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당 학습자가 존재하지 않습니다.","code": 2 }`
+  
+* **Sample Call:**
+  ```javascript
+    $.ajax({
+      url: "link/to/api/cure/save",
+      dataType: "json",
+      type : "POST",
+      data : { 
+	     "s_id" : 1
+		},success : function(r) {
+	         console.log(r)
+      }
+    });   
 
 ## Part6 - Statistics
 
- **get**
+ **ask**
 ----
 * **URL**
 	/statistic/ask
@@ -1018,7 +1053,7 @@ for cure statistics*
 * **Sample Call:**
   ```javascript
     $.ajax({
-      url: "link/to/api/statistics/get",
+      url: "link/to/api/statistics/ask",
       dataType: "json",
       type : "POST",
       data : { 
