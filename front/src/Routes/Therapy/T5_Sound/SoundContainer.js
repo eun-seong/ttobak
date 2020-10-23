@@ -164,6 +164,8 @@ export default class extends React.Component {
                 this.setState({
                     showPopup: true,
                 })
+            } else {
+                this.props.history.replace('/main/main');
             }
         } catch (e) {
             console.log(e);

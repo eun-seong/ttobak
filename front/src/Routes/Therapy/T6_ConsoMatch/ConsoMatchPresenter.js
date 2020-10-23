@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import GameBackground from 'Components/GameBackground';
 import PausePopup from 'Components/PausePopup';
 import DonePopup from 'Components/DonePopup';
+import DailyPopup from 'Components/DailyPopup';
 import FrameBox from './FrameBox';
 
 const Div = styled.div`
@@ -58,6 +59,11 @@ const ConsoMatch = ({ props }) => {
                 props.showDonePopup ?
                     <DonePopup
                         onRestartButtonHandle={props.onRestartButtonHandle} />
+                    : null
+            }
+            {
+                props.showDailyPopup ?
+                    <DailyPopup />
                     : null
             }
         </Div>

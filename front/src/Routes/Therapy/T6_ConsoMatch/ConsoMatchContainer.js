@@ -26,6 +26,7 @@ export default class extends React.Component {
             isImageLoaded: false,
             showPopup: false,
             showDonePopup: false,
+            showDailyPopup: false,
             percent: 0,
         };
 
@@ -52,6 +53,7 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
+        this.imagesPreloading(this.picture);
         if (this.learning_type !== 'daily') this.newRequest();
         else {
             this.setState({
@@ -62,7 +64,6 @@ export default class extends React.Component {
                 ]
             })
         }
-        this.imagesPreloading(this.picture);
     }
 
     componentWillUnmount() {
@@ -85,6 +86,7 @@ export default class extends React.Component {
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
+                this.currentIndex = 0;
                 this.answer = data.answer;
                 this.cure = data.cure;
 
@@ -136,6 +138,10 @@ export default class extends React.Component {
             this.setState({
                 showDonePopup: true,
             })
+        } else {
+            this.setState({
+                showDailyPopup: true,
+            })
         }
     }
 
@@ -180,6 +186,7 @@ export default class extends React.Component {
                     this.gameDone();
                     break;
                 default:
+                    this.props.history.replace('/main/main')
                     break;
             }
         } catch (e) {
@@ -222,8 +229,8 @@ export default class extends React.Component {
                 img.onload = () => {
                     this.setState({
                         percent: (++this.numOfLoadedImage / this.totalImages) * 100
-                    })
-                    console.log(this.state.percent, this.numOfLoadedImage, this.totalImages);
+                    });
+
                     if (this.numOfLoadedImage === this.totalImages) {
                         this.setState({
                             isImageLoaded: true,
@@ -256,7 +263,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { PicBoxList, Worm, isImageLoaded, showPopup, percent, gameState } = this.state;
+        const { PicBoxList, Worm, isImageLoaded, showPopup, percent, gameState, showDailyPopup, showDonePopup } = this.state;
 
         if (isImageLoaded) {
             return (
@@ -270,6 +277,8 @@ export default class extends React.Component {
                     onContinueButtonHandle={this.onContinueButtonHandle}
                     onPauseButtonHandle={this.onPauseButtonHandle}
                     onRestartButtonHandle={this.onRestartButtonHandle}
+                    showDailyPopup={showDailyPopup}
+                    showDonePopup={showDonePopup}
                     gameState={gameState}
                 />);
         }
