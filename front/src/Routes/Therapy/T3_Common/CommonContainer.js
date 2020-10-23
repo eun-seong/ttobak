@@ -28,6 +28,8 @@ export default class extends React.Component {
             isAnimate: [false, false, false, false],
             isImageLoaded: false,
             showPopup: false,
+            showDonePopup: false,
+            showDailyPopup: false,
             percent: 0,
         };
 
@@ -63,6 +65,7 @@ export default class extends React.Component {
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
+                this.currentIndex = 0;
                 this.cure = data.cure;
                 this.setCurrent(0);
             }
@@ -160,7 +163,7 @@ export default class extends React.Component {
 
     playSound = () => {
         this.setState({
-            gameState: true,
+            gameState: false,
             TTobaki: TTobak.ttobak1_2
         });
 
@@ -177,6 +180,7 @@ export default class extends React.Component {
     onBoxTouchHandle = async (index) => {
         const { gameState } = this.state;
         if (!gameState) return;
+
         this.setState({
             TTobaki: TTobak.ttobak2_2
         })
@@ -214,7 +218,16 @@ export default class extends React.Component {
     }
 
     gameDone = () => {
-        console.log('done!!');
+        console.log('game doen!');
+        if (this.learning_type !== 'daily') {
+            this.setState({
+                showDonePopup: true,
+            })
+        } else {
+            this.setState({
+                showDailyPopup: true,
+            })
+        }
     }
 
     imagesPreloading = (picture) => {
@@ -243,6 +256,14 @@ export default class extends React.Component {
         })
     }
 
+    onRestartButtonHandle = () => {
+        this.setState({
+            showDonePopup: false,
+        })
+        this.newRequest();
+        setTimeout(() => this.playSound(), 2000);
+    }
+
     onPauseButtonHandle = () => {
         this.setState({
             showPopup: true,
@@ -250,7 +271,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { boxTextList, isAnimate, TTobaki, isImageLoaded, showPopup, percent } = this.state;
+        const { boxTextList, isAnimate, TTobaki, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent, gameState } = this.state;
 
         if (isImageLoaded) {
             return (<CommonPresenter
@@ -261,9 +282,13 @@ export default class extends React.Component {
                 onBoxTouchHandle={this.onBoxTouchHandle}
                 BoxImg={T3.t3_textbox}
                 isAnimate={isAnimate}
-                showPopup={showPopup}
                 onContinueButtonHandle={this.onContinueButtonHandle}
+                onRestartButtonHandle={this.onRestartButtonHandle}
                 onPauseButtonHandle={this.onPauseButtonHandle}
+                showPopup={showPopup}
+                showDailyPopup={showDailyPopup}
+                showDonePopup={showDonePopup}
+                gameState={gameState}
             />);
         }
         else {

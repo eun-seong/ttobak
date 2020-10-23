@@ -37,7 +37,10 @@ const TextComponent = styled.div`
 
 const Card = ({ src, text, textSize, cardSize, index, onCardTouchHandle, gameState }) => {
     return (
-        <CardComponent cardSize={cardSize} onTouchEnd={() => onCardTouchHandle(index)} onTouchStart={() => { gameState && sound.play() }}>
+        <CardComponent
+            cardSize={cardSize}
+            onTouchEnd={() => onCardTouchHandle(index)}
+            onTouchStart={() => { gameState && sound.play() }}>
             <ImgComponent src={src}>
                 <TextComponent textSize={textSize}>{text || 'ㅅ'}</TextComponent>
             </ImgComponent>

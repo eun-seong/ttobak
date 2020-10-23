@@ -27,6 +27,8 @@ export default class extends React.Component {
             CardTextList: null,
             isImageLoaded: false,
             showPopup: false,
+            showDonePopup: false,
+            showDailyPopup: false,
             percent: 0,
         };
 
@@ -58,6 +60,7 @@ export default class extends React.Component {
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
+                this.currentIndex = 0;
                 this.cure = data.cure;
                 this.pictursPreloading(this.cure);
                 this.currentCure = this.cure[this.currentIndex];
@@ -85,10 +88,21 @@ export default class extends React.Component {
     }
 
     gameDone = () => {
-        console.log('done!');
+        console.log('game doen!');
+        if (this.learning_type !== 'daily') {
+            this.setState({
+                showDonePopup: true,
+            })
+        } else {
+            this.setState({
+                showDailyPopup: true,
+            })
+        }
     }
 
     onCardTouchHandle = async (id) => {
+        if (!this.state.gameState) return;
+
         try {
             const { s_id, is_review } = this.state;
             const { data } = await T_Api2.answer(
@@ -164,6 +178,14 @@ export default class extends React.Component {
         })
     }
 
+    onRestartButtonHandle = () => {
+        this.setState({
+            showDonePopup: false,
+        })
+        this.newRequest();
+        setTimeout(() => this.playSound(), 2000);
+    }
+
     onPauseButtonHandle = () => {
         this.setState({
             showPopup: true,
@@ -171,7 +193,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { CardTextList, picBox, isImageLoaded, showPopup, percent } = this.state;
+        const { CardTextList, picBox, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent } = this.state;
 
         if (isImageLoaded) {
             return (<ConsoCommonPresenter
@@ -180,9 +202,12 @@ export default class extends React.Component {
                 CardTextList={CardTextList || ['ㄱ', 'ㄴ']}
                 picBox={picBox || T7.t7_excpic}
                 onCardTouchHandle={this.onCardTouchHandle}
-                showPopup={showPopup}
                 onContinueButtonHandle={this.onContinueButtonHandle}
+                onRestartButtonHandle={this.onRestartButtonHandle}
                 onPauseButtonHandle={this.onPauseButtonHandle}
+                showPopup={showPopup}
+                showDailyPopup={showDailyPopup}
+                showDonePopup={showDonePopup}
             />);
         }
         else {

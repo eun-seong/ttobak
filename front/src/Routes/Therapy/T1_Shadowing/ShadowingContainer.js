@@ -54,15 +54,7 @@ export default class extends React.Component {
         }
         this.imagesPreloading(this.picture);
 
-        window.addEventListener("android", async (e) => {
-            console.log(e.detail);
-            this.setState({
-                isRecording: false,
-            })
-            this.recording_end_sound.play();
-            this.audioResult = e.detail;
-            this.audioListener();
-        });
+        window.addEventListener("android", this.androidResponse);
     }
 
     componentWillUnmount() {
@@ -70,6 +62,17 @@ export default class extends React.Component {
             this.currentAudio.pause();
             this.currentAudio = null;
         }
+        window.removeEventListener("android", this.androidResponse)
+    }
+
+    androidResponse = async (e) => {
+        console.log(e.detail);
+        this.setState({
+            isRecording: false,
+        })
+        this.recording_end_sound.play();
+        this.audioResult = e.detail;
+        this.audioListener();
     }
 
     newRequest = async () => {
@@ -161,12 +164,12 @@ export default class extends React.Component {
             });
             this.currentAudio.play();
             this.currentAudio.addEventListener('ended', () => {
-                console.log('이제 따라 읽어볼까요?');
                 this.setState({
                     TTobaki: TTobak.ttobak1_1,
                     isRecording: true,
                 });
                 setTimeout(() => {
+                    console.log('이제 따라 읽어볼까요?');
                     this.recording_start_sound.play();
                     window.BRIDGE.recordAudio('m', this.currentCure.cure_text);
                 }, 1000);

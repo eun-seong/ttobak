@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import GameBackground from 'Components/GameBackground';
 import PausePopup from 'Components/PausePopup';
+import DonePopup from 'Components/DonePopup';
+import DailyPopup from 'Components/DailyPopup';
 
 import BoxComponent from './BoxComponent';
 
@@ -42,7 +44,8 @@ const Common = ({ props }) => {
                             index={index}
                             BoxImg={props.BoxImg}
                             isAnimate={props.isAnimate[index]}
-                            onBoxTouchHandle={props.onBoxTouchHandle} />
+                            onBoxTouchHandle={props.onBoxTouchHandle}
+                            gameState={props.gameState} />
                     );
                 })}
             </Boxes>
@@ -50,6 +53,17 @@ const Common = ({ props }) => {
                 props.showPopup ?
                     <PausePopup
                         onContinueButtonHandle={props.onContinueButtonHandle} />
+                    : null
+            }
+            {
+                props.showDonePopup ?
+                    <DonePopup
+                        onRestartButtonHandle={props.onRestartButtonHandle} />
+                    : null
+            }
+            {
+                props.showDailyPopup ?
+                    <DailyPopup />
                     : null
             }
         </Div>

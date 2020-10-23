@@ -1,5 +1,8 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
+import effectSound from 'tic.mp3';
+
+const sound = new Audio(effectSound);
 
 const Box = styled.div`
     display: flex;
@@ -40,9 +43,13 @@ const Text = styled.div`
 `;
 
 
-const BoxComponent = ({ text, BoxImg, isAnimate, onBoxTouchHandle, index }) => {
+const BoxComponent = ({ text, BoxImg, isAnimate, onBoxTouchHandle, index, gameState }) => {
     return (
-        <Box src={BoxImg} isAnimate={isAnimate} onTouchEnd={() => onBoxTouchHandle(index)}>
+        <Box
+            src={BoxImg}
+            isAnimate={isAnimate}
+            onTouchEnd={() => onBoxTouchHandle(index)}
+            onTouchStart={() => { gameState && sound.play() }}>
             <Text>{text || 'ㄱ'}</Text>
         </Box>
     );

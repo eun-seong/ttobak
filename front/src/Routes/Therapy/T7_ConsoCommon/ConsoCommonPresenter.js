@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import FrameBox from './FrameBox';
 import GameBackground from 'Components/GameBackground';
 import PausePopup from 'Components/PausePopup';
+import DonePopup from 'Components/DonePopup';
+import DailyPopup from 'Components/DailyPopup';
 import CardComp from 'Components/Card';
 
 const Div = styled.div`
@@ -57,6 +59,17 @@ const ConsoCommon = ({ props }) => {
                 props.showPopup ?
                     <PausePopup
                         onContinueButtonHandle={props.onContinueButtonHandle} />
+                    : null
+            }
+            {
+                props.showDonePopup ?
+                    <DonePopup
+                        onRestartButtonHandle={props.onRestartButtonHandle} />
+                    : null
+            }
+            {
+                props.showDailyPopup ?
+                    <DailyPopup />
                     : null
             }
         </Div>
