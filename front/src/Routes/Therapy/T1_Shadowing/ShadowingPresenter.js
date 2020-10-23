@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import GameBackground from 'Components/GameBackground';
 import PausePopup from 'Components/PausePopup';
+import DonePopup from 'Components/DonePopup';
+import DailyPopup from 'Components/DailyPopup';
 
 import TextBoxComponent from './TextBoxComponent';
 
@@ -37,6 +39,17 @@ const Shadowing = ({ props }) => {
                 props.showPopup ?
                     <PausePopup
                         onContinueButtonHandle={props.onContinueButtonHandle} />
+                    : null
+            }
+            {
+                props.showDonePopup ?
+                    <DonePopup
+                        onRestartButtonHandle={props.onRestartButtonHandle} />
+                    : null
+            }
+            {
+                props.showDailyPopup ?
+                    <DailyPopup />
                     : null
             }
         </Div>

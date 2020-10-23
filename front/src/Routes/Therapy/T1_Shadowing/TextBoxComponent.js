@@ -13,7 +13,7 @@ const TextBox = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
-    font-size: 2rem;
+    font-size: 2.5rem;
     background-image: url(${props => props.src});
     background-repeat: no-repeat;
     background-size: auto 100%;

@@ -228,7 +228,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { TTobaki, CardTextList, isImageLoaded, showPopup, showDonePopup, percent, gameState } = this.state;
+        const { TTobaki, CardTextList, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent, gameState } = this.state;
         if (isImageLoaded) {
             return (<SoundPresenter
                 Background={T5.t5_background}
@@ -237,11 +237,12 @@ export default class extends React.Component {
                 Card={[Characters.card1, Characters.card2]}
                 CardTextList={CardTextList || ['아', '에']}
                 onCardTouchHandle={this.onCardTouchHandle}
-                showPopup={showPopup}
                 onContinueButtonHandle={this.onContinueButtonHandle}
-                onPauseButtonHandle={this.onPauseButtonHandle}
-                showDonePopup={showDonePopup}
                 onRestartButtonHandle={this.onRestartButtonHandle}
+                onPauseButtonHandle={this.onPauseButtonHandle}
+                showPopup={showPopup}
+                showDailyPopup={showDailyPopup}
+                showDonePopup={showDonePopup}
                 gameState={gameState}
             />);
         }

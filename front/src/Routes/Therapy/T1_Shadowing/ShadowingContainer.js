@@ -1,5 +1,7 @@
 import React from 'react';
 import ShadowingPresenter from './ShadowingPresenter';
+import recording_end from 'recording_end.mp3';
+import recording_start from 'recording_start.mp3';
 
 import { T1, TTobak } from 'images';
 import { T1_Api, soundURL } from 'api';
@@ -10,6 +12,8 @@ export default class extends React.Component {
         super();
         this.idx_text = match.params.type;
         this.learning_type = match.params.learning_type;
+        this.recording_start_sound = new Audio(recording_start);
+        this.recording_end_sound = new Audio(recording_end);
         this.cure = null;
         this.currentCure = null;
         this.currentIndex = 0;
@@ -26,6 +30,8 @@ export default class extends React.Component {
             TTobaki: TTobak.ttobak1_1,
             isImageLoaded: false,
             showPopup: false,
+            showDonePopup: false,
+            showDailyPopup: false,
             percent: 0,
         }
 
@@ -53,6 +59,7 @@ export default class extends React.Component {
             this.setState({
                 isRecording: false,
             })
+            this.recording_end_sound.play();
             this.audioResult = e.detail;
             this.audioListener();
         });
@@ -74,6 +81,7 @@ export default class extends React.Component {
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
+                this.currentIndex = 0;
                 this.cure = data.cure;
                 this.currentCure = data.cure[this.currentIndex];
                 this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
@@ -127,11 +135,11 @@ export default class extends React.Component {
                             TTobaki: TTobak.ttobak1_1,
                             cureText: this.currentCure.cure_text
                         });
-                    }, 2000);
+                    }, 3000);
 
                     setTimeout(() => {
                         this.playSound();
-                    }, 3500);
+                    }, 5500);
 
                 } else if (data.code === 2) {
                     this.gameDone();
@@ -158,13 +166,25 @@ export default class extends React.Component {
                     TTobaki: TTobak.ttobak1_1,
                     isRecording: true,
                 });
-                window.BRIDGE.recordAudio('m', this.currentCure.cure_text);
+                setTimeout(() => {
+                    this.recording_start_sound.play();
+                    window.BRIDGE.recordAudio('m', this.currentCure.cure_text);
+                }, 1000);
             });
         }
     }
 
     gameDone = () => {
-        console.log('done!!');
+        console.log('game doen!');
+        if (this.learning_type !== 'daily') {
+            this.setState({
+                showDonePopup: true,
+            })
+        } else {
+            this.setState({
+                showDailyPopup: true,
+            })
+        }
     }
 
     imagesPreloading = (picture) => {
@@ -195,6 +215,14 @@ export default class extends React.Component {
         })
     }
 
+    onRestartButtonHandle = () => {
+        this.setState({
+            showDonePopup: false,
+        })
+        this.newRequest();
+        setTimeout(() => this.playSound(), 2000);
+    }
+
     onPauseButtonHandle = () => {
         this.setState({
             showPopup: true,
@@ -202,7 +230,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { type, cureText, TTobaki, isRecording, isImageLoaded, showPopup, percent } = this.state;
+        const { type, cureText, TTobaki, isRecording, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent } = this.state;
 
         if (isImageLoaded) {
             return (<ShadowingPresenter
@@ -212,8 +240,12 @@ export default class extends React.Component {
                 type={type}
                 text={cureText}
                 isRecording={isRecording}
-                showPopup={showPopup}
                 onContinueButtonHandle={this.onContinueButtonHandle}
+                onRestartButtonHandle={this.onRestartButtonHandle}
+                onPauseButtonHandle={this.onPauseButtonHandle}
+                showPopup={showPopup}
+                showDailyPopup={showDailyPopup}
+                showDonePopup={showDonePopup}
                 onPauseButtonHandle={this.onPauseButtonHandle}
             />);
         }

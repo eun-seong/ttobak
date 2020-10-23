@@ -37,6 +37,8 @@ export default class extends React.Component {
             TTobaki: TTobak.ttobak1_1,
             isImageLoaded: false,
             showPopup: false,
+            showDonePopup: false,
+            showDailyPopup: false,
             percent: 0,
         };
 
@@ -69,6 +71,7 @@ export default class extends React.Component {
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
+                this.currentIndex = 0;
                 this.cure = data.cure;
                 this.currentCure = data.cure[this.currentIndex];
                 this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
@@ -110,7 +113,7 @@ export default class extends React.Component {
         });
     }
 
-    gameDone = async () => {
+    answer = async () => {
         this.setState({
             TTobaki: TTobak.ttobak2_1
         })
@@ -127,7 +130,10 @@ export default class extends React.Component {
         console.log(data);
 
         if (this.currentIndex < this.cure.length - 1) this.currentIndex++;
-        else return;
+        else {
+            this.gameDone();
+            return;
+        }
 
         this.currentIndex = this.currentIndex;
         this.currentCure = this.cure[this.currentIndex];
@@ -170,8 +176,7 @@ export default class extends React.Component {
         if (this.timeOut) clearTimeout(this.timeOut);
 
         this.timeOut = setTimeout(() => {
-            console.log('setTimeout');
-            this.gameDone();
+            this.answer();
         }, 3000);
 
         this.setState({
@@ -181,6 +186,19 @@ export default class extends React.Component {
                 applesInBasket: applesInBasket.concat(randomApple),
             },
         });
+    }
+
+    gameDone = () => {
+        console.log('game doen!');
+        if (this.learning_type !== 'daily') {
+            this.setState({
+                showDonePopup: true,
+            })
+        } else {
+            this.setState({
+                showDailyPopup: true,
+            })
+        }
     }
 
     onTreeTouchStartHandle = e => {
@@ -242,6 +260,28 @@ export default class extends React.Component {
         })
     }
 
+    onRestartButtonHandle = () => {
+        this.setState({
+            showDonePopup: false,
+        })
+        this.newRequest();
+        setTimeout(() => {
+            this.setState({
+                gameState: false,
+                timeOut: null,
+                isDragging: false,
+                touchPosition: [],
+                TTobaki: TTobak.ttobak1_1,
+                Apple: {
+                    randomApple: T2.t2_Apples[Math.floor(Math.random() * 4)],
+                    applesInBasket: [],
+                    numOfApples: 0,
+                },
+            });
+        }, 2000);
+        setTimeout(() => this.playSound(), 4000);
+    }
+
     onPauseButtonHandle = () => {
         this.setState({
             showPopup: true,
@@ -249,7 +289,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { isDragging, touchPosition, Apple, answer, TTobaki, isImageLoaded, showPopup, percent } = this.state;
+        const { isDragging, touchPosition, Apple, answer, TTobaki, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent } = this.state;
         if (isImageLoaded) {
             return (
                 <DndProvider backend={TouchBackend}>
@@ -266,9 +306,12 @@ export default class extends React.Component {
                         dropApple={this.dropApple}
                         Apple={Apple}
                         answer={answer}
-                        showPopup={showPopup}
                         onContinueButtonHandle={this.onContinueButtonHandle}
+                        onRestartButtonHandle={this.onRestartButtonHandle}
                         onPauseButtonHandle={this.onPauseButtonHandle}
+                        showPopup={showPopup}
+                        showDailyPopup={showDailyPopup}
+                        showDonePopup={showDonePopup}
                     />
                 </DndProvider>
             );
