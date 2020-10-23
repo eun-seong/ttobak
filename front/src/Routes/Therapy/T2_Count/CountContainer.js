@@ -22,7 +22,7 @@ export default class extends React.Component {
         this.timeOut = null;
         this.numOfLoadedImage = 0;
         this.picture = { T2, TTobak };
-        this.totalImages = Object.keys(T2).length + Object.keys(TTobak).length;
+        this.totalImages = Object.keys(T2).length + Object.keys(TTobak).length + 4;
 
         this.state = {
             s_id: parseInt(match.params.s_id) || 4,
@@ -36,6 +36,7 @@ export default class extends React.Component {
             },
             TTobaki: TTobak.ttobak1_1,
             isImageLoaded: false,
+            showPopup: false,
         };
 
         if (this.learning_type === 'daily') {
@@ -47,8 +48,8 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
-        this.imagesPreloading(this.picture);
         if (this.learning_type !== 'daily') this.newRequest();
+        this.imagesPreloading(this.picture);
     }
 
     componentWillUnmount() {
@@ -198,9 +199,6 @@ export default class extends React.Component {
         for (let i in picture) {
             for (let prop in picture[i]) {
                 if (typeof (picture[i][prop]) === 'object') {
-                    this.totalImages += picture[i][prop].length;
-                    this.totalImages--;
-
                     let arr = picture[i][prop];
                     for (let i in arr) {
                         let img = new Image();
@@ -235,8 +233,20 @@ export default class extends React.Component {
         }
     }
 
+    onContinueButtonHandle = () => {
+        this.setState({
+            showPopup: false,
+        })
+    }
+
+    onPauseButtonHandle = () => {
+        this.setState({
+            showPopup: true,
+        })
+    }
+
     render() {
-        const { isDragging, touchPosition, Apple, answer, TTobaki, isImageLoaded } = this.state;
+        const { isDragging, touchPosition, Apple, answer, TTobaki, isImageLoaded, showPopup } = this.state;
         if (isImageLoaded) {
             return (
                 <DndProvider backend={TouchBackend}>
@@ -253,6 +263,9 @@ export default class extends React.Component {
                         dropApple={this.dropApple}
                         Apple={Apple}
                         answer={answer}
+                        showPopup={showPopup}
+                        onContinueButtonHandle={this.onContinueButtonHandle}
+                        onPauseButtonHandle={this.onPauseButtonHandle}
                     />
                 </DndProvider>
             );

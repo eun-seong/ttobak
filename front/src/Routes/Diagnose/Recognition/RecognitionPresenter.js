@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import GameBackground from 'Components/GameBackground';
+import NextPopup from 'Components/NextPopup';
 
 import AnswerComp from './AnswerComp';
 
@@ -17,6 +18,13 @@ const Recognition = ({ props }) => {
         <div>
             <TTobakComponent src={props.TTobaki} alt='또박이' onTouchEnd={props.TTobakiTouch} />
             <AnswerComp Box={props.Box} Clicked={props.Clicked} isAnimate={props.isAnimate} />
+            {
+                props.showPopup ?
+                    <NextPopup
+                        onPopupButtonHandle={props.onPopupButtonHandle}
+                        buttonText={'다음 검사'} />
+                    : null
+            }
         </div>
     );
 }

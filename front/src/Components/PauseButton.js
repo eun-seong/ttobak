@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Images from 'images';
 
@@ -10,11 +9,9 @@ const PauseButtonStyled = styled.img`
     left: 10px;
 `;
 
-function PauseButton({ link }) {
+function PauseButton({ onPauseButtonHandle }) {
     return (
-        <Link to={link}>
-            <PauseButtonStyled src={Images.bt_pause} alt='일시정지' />
-        </Link>
+        <PauseButtonStyled src={Images.bt_pause} alt='일시정지' onTouchEnd={onPauseButtonHandle} />
     )
 }
 

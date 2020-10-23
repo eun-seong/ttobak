@@ -24,6 +24,7 @@ export default class extends React.Component {
             PicBoxList: null,
             Worm: Characters.worm2_2,
             isImageLoaded: false,
+            showPopup: false,
         };
 
         if (this.learning_type === 'daily') {
@@ -45,7 +46,6 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
-        this.imagesPreloading(this.picture);
         if (this.learning_type !== 'daily') this.newRequest();
         else {
             this.setState({
@@ -56,6 +56,7 @@ export default class extends React.Component {
                 ]
             })
         }
+        this.imagesPreloading(this.picture);
     }
 
     componentWillUnmount() {
@@ -192,44 +193,35 @@ export default class extends React.Component {
     imagesPreloading = (picture) => {
         for (let i in picture) {
             for (let prop in picture[i]) {
-                if (typeof (picture[i][prop]) === 'object') {
-                    this.totalImages += picture[i][prop].length;
-                    this.totalImages--;
-
-                    let arr = picture[i][prop];
-                    for (let i in arr) {
-                        let img = new Image();
-                        img.src = arr[i];
-                        ++this.numOfLoadedImage;
-                        img.onload = () => {
-                            if (this.numOfLoadedImage === this.totalImages) {
-                                this.setState({
-                                    isImageLoaded: true,
-                                })
-                                setTimeout(() => this.playSound(), 1000);
-                            }
-                        };
+                let img = new Image();
+                img.src = picture[i][prop];
+                ++this.numOfLoadedImage;
+                img.onload = () => {
+                    if (this.numOfLoadedImage === this.totalImages) {
+                        this.setState({
+                            isImageLoaded: true,
+                        })
+                        setTimeout(() => this.playSound(), 1000);
                     }
-
-                } else {
-                    let img = new Image();
-                    img.src = picture[i][prop];
-                    ++this.numOfLoadedImage;
-                    img.onload = () => {
-                        if (this.numOfLoadedImage === this.totalImages) {
-                            this.setState({
-                                isImageLoaded: true,
-                            })
-                            setTimeout(() => this.playSound(), 1000);
-                        }
-                    };
-                }
+                };
             }
         }
     }
 
+    onContinueButtonHandle = () => {
+        this.setState({
+            showPopup: false,
+        })
+    }
+
+    onPauseButtonHandle = () => {
+        this.setState({
+            showPopup: true,
+        })
+    }
+
     render() {
-        const { PicBoxList, Worm, isImageLoaded } = this.state;
+        const { PicBoxList, Worm, isImageLoaded, showPopup } = this.state;
 
         if (isImageLoaded) {
             return (<ConsoMatchPresenter
@@ -238,6 +230,9 @@ export default class extends React.Component {
                 onWormTouchHandle={this.onWormTouchHandle}
                 frameList={PicBoxList || [T6.t6_excpic, T6.t6_excpic, T6.t6_excpic]}
                 onFrameTouchHandle={this.onFrameTouchHandle}
+                showPopup={showPopup}
+                onContinueButtonHandle={this.onContinueButtonHandle}
+                onPauseButtonHandle={this.onPauseButtonHandle}
             />);
         }
         else {

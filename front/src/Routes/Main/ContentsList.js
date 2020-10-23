@@ -71,28 +71,7 @@ const ContentsList = [
         url: '/therapy/common',
         title: '음운 | 공통소리 찾기',
         explain: '단어를 듣고 같은 자음을 찾아 봐요',
-    },
-    {
-        name: 'sweep',
-        img: MainTherapy[9],
-        url: '/diagnose/sweep',
-        title: '의미 | 청각처리 속도',
-        explain: '소리가 올라가는 것인지 내려가는 것인지 맞혀 봐요',
-    },
-    {
-        name: 'recognition',
-        img: MainTherapy[10],
-        url: '/diagnose/recognition',
-        title: '의미 | 어음청취력',
-        explain: '단어를 듣고 첫 글자 자음을 맞혀 봐요',
-    },
-    {
-        name: 'attention',
-        img: MainTherapy[11],
-        url: '/diagnose/attention',
-        title: '의미 | 선택적 집중력',
-        explain: '다른 사람의 말을 집중해서 들어  봐요',
-    },
+    }
 ]
 
 export default ContentsList;

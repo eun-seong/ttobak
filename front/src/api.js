@@ -47,7 +47,7 @@ export const D1_Api = {
             "s_id": s_id,
             "idx_txt": idx_txt.swp
         }),
-    answer: (s_id, ques_id, ori_answer, stu_answer, is_review) =>
+    answer: (s_id, ques_id, ori_answer, stu_answer) =>
         api.post(url.diagnose_answer, {
             "s_id": s_id,
             "ques_id": ques_id,
@@ -55,7 +55,7 @@ export const D1_Api = {
             "ori_answer2": ori_answer[1],
             "stu_answer1": stu_answer[0],
             "stu_answer2": stu_answer[1],
-            "is_review": is_review,
+            "is_review": 'F',
             "idx_txt": idx_txt.swp
         }),
 };

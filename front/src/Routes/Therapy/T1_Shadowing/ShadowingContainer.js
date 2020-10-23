@@ -24,6 +24,7 @@ export default class extends React.Component {
             isRecording: false,
             TTobaki: TTobak.ttobak1_1,
             isImageLoaded: false,
+            showPopup: false,
         }
 
         if (this.learning_type === 'daily') {
@@ -33,7 +34,6 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
-        this.imagesPreloading();
         if (this.learning_type !== 'daily') this.newRequest();
         else {
             this.currentCure = this.cure[this.currentIndex];
@@ -44,6 +44,7 @@ export default class extends React.Component {
                 cureText: this.currentCure.cure_text
             };
         }
+        this.imagesPreloading();
 
         window.addEventListener("android", async (e) => {
             console.log(e.detail);
@@ -177,15 +178,28 @@ export default class extends React.Component {
                         this.setState({
                             isImageLoaded: true,
                             TTobaki: TTobak.ttobak1_1,
-                        })
+                        });
+                        this.playSound();
                     }
                 };
             }
         }
     }
 
+    onContinueButtonHandle = () => {
+        this.setState({
+            showPopup: false,
+        })
+    }
+
+    onPauseButtonHandle = () => {
+        this.setState({
+            showPopup: true,
+        })
+    }
+
     render() {
-        const { type, cureText, TTobaki, isRecording, isImageLoaded } = this.state;
+        const { type, cureText, TTobaki, isRecording, isImageLoaded, showPopup } = this.state;
 
         if (isImageLoaded) {
             return (<ShadowingPresenter
@@ -195,6 +209,9 @@ export default class extends React.Component {
                 type={type}
                 text={cureText}
                 isRecording={isRecording}
+                showPopup={showPopup}
+                onContinueButtonHandle={this.onContinueButtonHandle}
+                onPauseButtonHandle={this.onPauseButtonHandle}
             />);
         }
         else {

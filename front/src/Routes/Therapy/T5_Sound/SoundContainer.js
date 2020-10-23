@@ -25,6 +25,7 @@ export default class extends React.Component {
             gameState: false,
             CardTextList: null,
             isImageLoaded: false,
+            showPopup: false,
         }
 
         if (this.learning_type === 'daily') {
@@ -36,13 +37,13 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
-        this.imagesPreloading(this.picture);
         if (this.learning_type !== 'daily') this.newRequest();
         else {
             this.setState({
                 CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
             })
         }
+        this.imagesPreloading(this.picture);
     }
 
     componentWillUnmount() {
@@ -164,46 +165,36 @@ export default class extends React.Component {
     imagesPreloading = (picture) => {
         for (let i in picture) {
             for (let prop in picture[i]) {
-                if (typeof (picture[i][prop]) === 'object') {
-                    this.totalImages += picture[i][prop].length;
-                    this.totalImages--;
-
-                    let arr = picture[i][prop];
-                    for (let i in arr) {
-                        let img = new Image();
-                        img.src = arr[i];
-                        ++this.numOfLoadedImage;
-                        img.onload = () => {
-                            if (this.numOfLoadedImage === this.totalImages) {
-                                this.setState({
-                                    isImageLoaded: true,
-                                    TTobaki: TTobak.ttobak1_1,
-                                })
-                                setTimeout(() => this.playSound(), 1000);
-                            }
-                        };
+                let img = new Image();
+                img.src = picture[i][prop];
+                ++this.numOfLoadedImage;
+                img.onload = () => {
+                    if (this.numOfLoadedImage === this.totalImages) {
+                        this.setState({
+                            isImageLoaded: true,
+                            TTobaki: TTobak.ttobak1_1,
+                        })
+                        setTimeout(() => this.playSound(), 1000);
                     }
-
-                } else {
-                    let img = new Image();
-                    img.src = picture[i][prop];
-                    ++this.numOfLoadedImage;
-                    img.onload = () => {
-                        if (this.numOfLoadedImage === this.totalImages) {
-                            this.setState({
-                                isImageLoaded: true,
-                                TTobaki: TTobak.ttobak1_1,
-                            })
-                            setTimeout(() => this.playSound(), 1000);
-                        }
-                    };
-                }
+                };
             }
         }
     }
 
+    onContinueButtonHandle = () => {
+        this.setState({
+            showPopup: false,
+        })
+    }
+
+    onPauseButtonHandle = () => {
+        this.setState({
+            showPopup: true,
+        })
+    }
+
     render() {
-        const { TTobaki, CardTextList, isImageLoaded } = this.state;
+        const { TTobaki, CardTextList, isImageLoaded, showPopup } = this.state;
         if (isImageLoaded) {
             return (<SoundPresenter
                 Background={T5.t5_background}
@@ -212,6 +203,9 @@ export default class extends React.Component {
                 Card={[Characters.card1, Characters.card2]}
                 CardTextList={CardTextList || ['아', '에']}
                 onCardTouchHandle={this.onCardTouchHandle}
+                showPopup={showPopup}
+                onContinueButtonHandle={this.onContinueButtonHandle}
+                onPauseButtonHandle={this.onPauseButtonHandle}
             />);
         }
         else {

@@ -26,6 +26,7 @@ export default class extends React.Component {
             picBox: null,
             CardTextList: null,
             isImageLoaded: false,
+            showPopup: false,
         };
 
         if (this.learning_type === 'daily') {
@@ -37,7 +38,6 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
-        this.imagesPreloading(this.picture);
         if (this.learning_type !== 'daily') this.newRequest();
         else {
             this.setState({
@@ -45,6 +45,7 @@ export default class extends React.Component {
                 CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2]
             })
         }
+        this.imagesPreloading(this.picture);
     }
 
     newRequest = async () => {
@@ -138,44 +139,35 @@ export default class extends React.Component {
     imagesPreloading = (picture) => {
         for (let i in picture) {
             for (let prop in picture[i]) {
-                if (typeof (picture[i][prop]) === 'object') {
-                    this.totalImages += picture[i][prop].length;
-                    this.totalImages--;
-
-                    let arr = picture[i][prop];
-                    for (let i in arr) {
-                        let img = new Image();
-                        img.src = arr[i];
-                        ++this.numOfLoadedImage;
-                        img.onload = () => {
-                            if (this.numOfLoadedImage === this.totalImages) {
-                                this.setState({
-                                    isImageLoaded: true,
-                                })
-                                setTimeout(() => this.playSound(), 1000);
-                            }
-                        };
+                let img = new Image();
+                img.src = picture[i][prop];
+                ++this.numOfLoadedImage;
+                img.onload = () => {
+                    if (this.numOfLoadedImage === this.totalImages) {
+                        this.setState({
+                            isImageLoaded: true,
+                        })
+                        setTimeout(() => this.playSound(), 1000);
                     }
-
-                } else {
-                    let img = new Image();
-                    img.src = picture[i][prop];
-                    ++this.numOfLoadedImage;
-                    img.onload = () => {
-                        if (this.numOfLoadedImage === this.totalImages) {
-                            this.setState({
-                                isImageLoaded: true,
-                            })
-                            setTimeout(() => this.playSound(), 1000);
-                        }
-                    };
-                }
+                };
             }
         }
     }
 
+    onContinueButtonHandle = () => {
+        this.setState({
+            showPopup: false,
+        })
+    }
+
+    onPauseButtonHandle = () => {
+        this.setState({
+            showPopup: true,
+        })
+    }
+
     render() {
-        const { CardTextList, picBox, isImageLoaded } = this.state;
+        const { CardTextList, picBox, isImageLoaded, showPopup } = this.state;
 
         if (isImageLoaded) {
             return (<ConsoCommonPresenter
@@ -184,6 +176,9 @@ export default class extends React.Component {
                 CardTextList={CardTextList || ['ㄱ', 'ㄴ']}
                 picBox={picBox || T7.t7_excpic}
                 onCardTouchHandle={this.onCardTouchHandle}
+                showPopup={showPopup}
+                onContinueButtonHandle={this.onContinueButtonHandle}
+                onPauseButtonHandle={this.onPauseButtonHandle}
             />);
         }
         else {

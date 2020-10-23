@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import GameBackground from 'Components/GameBackground';
+import PausePopup from 'Components/PausePopup';
 import FrameBox from './FrameBox';
 
 const Div = styled.div`
@@ -45,13 +46,19 @@ const ConsoMatch = ({ props }) => {
                 })}
             </Frames>
             <WormComponent src={props.Worm} alt='또박이' onTouchEnd={props.onWormTouchHandle} />
+            {
+                props.showPopup ?
+                    <PausePopup
+                        onContinueButtonHandle={props.onContinueButtonHandle} />
+                    : null
+            }
         </Div>
     );
 }
 
-const Game = ({ Background, ...props }) => {
+const Game = ({ Background, onPauseButtonHandle, ...props }) => {
     return (
-        <GameBackground BackgroundImg={Background}
+        <GameBackground BackgroundImg={Background} onPauseButtonHandle={onPauseButtonHandle}
             Children={
                 <ConsoMatch props={props} />
             }>

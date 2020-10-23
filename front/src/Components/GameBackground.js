@@ -11,11 +11,11 @@ const BackgroundDiv = styled.div`
     height: 100vh;
 `;
 
-const GameBackground = ({ BackgroundImg, Children }) => {
+const GameBackground = ({ BackgroundImg, Children, onPauseButtonHandle }) => {
     return (
         <BackgroundDiv src={BackgroundImg}>
             {Children}
-            <PauseButton link={'/main/main'} />
+            <PauseButton onPauseButtonHandle={onPauseButtonHandle} />
         </BackgroundDiv>
     );
 }

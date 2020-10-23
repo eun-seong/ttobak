@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import FrameBox from './FrameBox';
 import GameBackground from 'Components/GameBackground';
+import PausePopup from 'Components/PausePopup';
 import CardComp from 'Components/Card';
 
 const Div = styled.div`
@@ -52,13 +53,19 @@ const ConsoCommon = ({ props }) => {
                     onCardTouchHandle={props.onCardTouchHandle}
                     index={1} />
             </CardParent>
+            {
+                props.showPopup ?
+                    <PausePopup
+                        onContinueButtonHandle={props.onContinueButtonHandle} />
+                    : null
+            }
         </Div>
     );
 }
 
-const Game = ({ Background, ...props }) => {
+const Game = ({ Background, onPauseButtonHandle, ...props }) => {
     return (
-        <GameBackground BackgroundImg={Background}
+        <GameBackground BackgroundImg={Background} onPauseButtonHandle={onPauseButtonHandle}
             Children={
                 <ConsoCommon props={props} />
             }>

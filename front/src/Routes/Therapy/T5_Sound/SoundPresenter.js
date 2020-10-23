@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import GameBackground from 'Components/GameBackground';
+import PausePopup from 'Components/PausePopup';
 import CardComp from 'Components/Card';
 
 /* styled-components */
@@ -54,13 +55,19 @@ const Sound = ({ props }) => {
                     index={1}
                     onCardTouchHandle={props.onCardTouchHandle} />
             </CardParent>
+            {
+                props.showPopup ?
+                    <PausePopup
+                        onContinueButtonHandle={props.onContinueButtonHandle} />
+                    : null
+            }
         </Div>
     );
 }
 
-const Game = ({ Background, ...props }) => {
+const Game = ({ Background, onPauseButtonHandle, ...props }) => {
     return (
-        <GameBackground BackgroundImg={Background}
+        <GameBackground BackgroundImg={Background} onPauseButtonHandle={onPauseButtonHandle}
             Children={
                 <Sound props={props} />
             }>

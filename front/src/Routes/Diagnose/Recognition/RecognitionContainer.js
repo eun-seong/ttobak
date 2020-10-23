@@ -16,7 +16,9 @@ class Recognition extends React.PureComponent {
             stdAnswer: null,                            // 학생 답
             answerIndex: 0,
             isAnimate: [false, false],
+            showPopup: false,
         };
+
         this.phs = null;
         this.answers = null;
         this.phSound = null;
@@ -58,7 +60,6 @@ class Recognition extends React.PureComponent {
                     gameState: false,
                     Box: [D2.d2_Box1_1, D2.d2_Box2_1],
                     stdAnswer: null,
-                    answerIndex: null,
                     TTobaki: TTobak.ttobak1_1,
                     answerIndex: (this.currentDiag[0].ques_id === this.currentDiag[2].ques_id ? 0 : 1),
                 });
@@ -192,41 +193,56 @@ class Recognition extends React.PureComponent {
             console.log(data);
 
             if (data.code === 1) {
-                if (this.currentIndex < this.answers.length) this.currentIndex++;
-                else {
-                    this.diagDone();
-                    return;
+                // TODO 수정
+                if (data.to_next === true || data.to_next_freq === true) {
+                    this.newRequest();
+                    console.log('next');
                 }
-
-                this.currentDiag = [
-                    this.getListFilter('ques_id', this.answers[this.currentIndex][0]),
-                    this.getListFilter('ques_id', this.answers[this.currentIndex][1]),
-                    this.getListFilter('ques_id', this.answers[this.currentIndex][2]),
-                ];
-
-                this.setListener();
-                setTimeout(() => {
+                else if (data.to_next === '모든 문제를 풀었습니다') {
+                    // TODO 다음 검사로
                     this.setState({
-                        gameState: false,
-                        Box: [D2.d2_Box1_1, D2.d2_Box2_1],
-                        stdAnswer: null,
-                        answerIndex: null,
-                        TTobaki: TTobak.ttobak3_1,
-                        answerIndex: (this.currentDiag[0].ques_id === this.currentDiag[2].ques_id ? 0 : 1),
+                        showPopup: true,
                     });
-                }, 2000);
+                } else {
+                    if (this.currentIndex < this.answers.length - 1) this.currentIndex++;
+                    else {
+                        this.newRequest();
+                        return;
+                    }
 
-                setTimeout(() => {
-                    this.playSound();
-                }, 3000);
+                    this.currentDiag = [
+                        this.getListFilter('ques_id', this.answers[this.currentIndex][0]),
+                        this.getListFilter('ques_id', this.answers[this.currentIndex][1]),
+                        this.getListFilter('ques_id', this.answers[this.currentIndex][2]),
+                    ];
+
+                    this.setListener();
+                    setTimeout(() => {
+                        this.setState({
+                            gameState: false,
+                            Box: [D2.d2_Box1_1, D2.d2_Box2_1],
+                            stdAnswer: null,
+                            TTobaki: TTobak.ttobak3_1,
+                            answerIndex: (this.currentDiag[0].ques_id === this.currentDiag[2].ques_id ? 0 : 1),
+                        });
+                    }, 2000);
+
+                    setTimeout(() => {
+                        this.playSound();
+                    }, 3000);
+                }
             }
         } catch (e) {
             console.log(e);
         }
     }
 
+    onPopupButtonHandle = () => {
+        this.props.history.replace('/diagnose/attention');
+    }
+
     render() {
-        const { Box, TTobaki, isAnimate } = this.state;
+        const { Box, TTobaki, isAnimate, showPopup } = this.state;
 
         return (
             <RecognitionPresenter
@@ -236,6 +252,8 @@ class Recognition extends React.PureComponent {
                 Box={Box}
                 Clicked={this.onBoxTouchHandle}
                 isAnimate={isAnimate}
+                showPopup={showPopup}
+                onPopupButtonHandle={this.onPopupButtonHandle}
             />);
     }
 }

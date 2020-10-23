@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import GameBackground from 'Components/GameBackground';
+import NextPopup from 'Components/NextPopup';
 
 import AnswerBoxComp from './AnswerBox';
 
@@ -71,6 +72,13 @@ const Sweep = ({ props }) => {
                         onTouchEnd={() => props.onTouchEnd(props.DOWN)} />
                 </ButtonComponent>
             </Component>
+            {
+                props.showPopup ?
+                    <NextPopup
+                        onPopupButtonHandle={props.onPopupButtonHandle}
+                        buttonText={'다음 검사'} />
+                    : null
+            }
         </Div>
     );
 }

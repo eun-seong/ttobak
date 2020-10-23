@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import GameBackground from 'Components/GameBackground';
+import PausePopup from 'Components/PausePopup';
 
 import TextBoxComponent from './TextBoxComponent';
 
@@ -32,13 +33,19 @@ const Shadowing = ({ props }) => {
             <TextBox>
                 <TextBoxComponent src={props.TextBox} type={props.type} text={props.text} isRecording={props.isRecording} />
             </TextBox>
+            {
+                props.showPopup ?
+                    <PausePopup
+                        onContinueButtonHandle={props.onContinueButtonHandle} />
+                    : null
+            }
         </Div>
     );
 }
 
-const Game = ({ Background, ...props }) => {
+const Game = ({ Background, onPauseButtonHandle, ...props }) => {
     return (
-        <GameBackground BackgroundImg={Background}
+        <GameBackground BackgroundImg={Background} onPauseButtonHandle={onPauseButtonHandle}
             Children={
                 <Shadowing props={props} />
             }>

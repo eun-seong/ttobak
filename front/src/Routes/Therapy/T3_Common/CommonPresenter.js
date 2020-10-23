@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import GameBackground from 'Components/GameBackground';
+import PausePopup from 'Components/PausePopup';
+
 import BoxComponent from './BoxComponent';
 
 const Div = styled.div`
@@ -44,13 +46,19 @@ const Common = ({ props }) => {
                     );
                 })}
             </Boxes>
+            {
+                props.showPopup ?
+                    <PausePopup
+                        onContinueButtonHandle={props.onContinueButtonHandle} />
+                    : null
+            }
         </Div>
     );
 }
 
-const Game = ({ Background, ...props }) => {
+const Game = ({ Background, onPauseButtonHandle, ...props }) => {
     return (
-        <GameBackground BackgroundImg={Background}
+        <GameBackground BackgroundImg={Background} onPauseButtonHandle={onPauseButtonHandle}
             Children={
                 <Common props={props} />
             }>

@@ -26,6 +26,8 @@ export default class extends React.Component {
             gameState: false,
             boxTextList: null,
             isAnimate: [false, false, false, false],
+            isImageLoaded: false,
+            showPopup: false,
         };
 
         if (this.learning_type === 'daily') {
@@ -35,11 +37,11 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
-        this.imagesPreloading();
         if (this.learning_type !== 'daily') this.newRequest();
         else {
             this.setCurrent(0);
         }
+        this.imagesPreloading(this.picture);
     }
 
     componentWillUnmount() {
@@ -215,46 +217,37 @@ export default class extends React.Component {
     imagesPreloading = (picture) => {
         for (let i in picture) {
             for (let prop in picture[i]) {
-                if (typeof (picture[i][prop]) === 'object') {
-                    this.totalImages += picture[i][prop].length;
-                    this.totalImages--;
+                let img = new Image();
+                img.src = picture[i][prop];
+                ++this.numOfLoadedImage;
 
-                    let arr = picture[i][prop];
-                    for (let i in arr) {
-                        let img = new Image();
-                        img.src = arr[i];
-                        ++this.numOfLoadedImage;
-                        img.onload = () => {
-                            if (this.numOfLoadedImage === this.totalImages) {
-                                this.setState({
-                                    isImageLoaded: true,
-                                    TTobaki: TTobak.ttobak1_1,
-                                })
-                                setTimeout(() => this.playSound(), 1000);
-                            }
-                        };
+                img.onload = () => {
+                    if (this.numOfLoadedImage === this.totalImages) {
+                        this.setState({
+                            isImageLoaded: true,
+                            TTobaki: TTobak.ttobak1_1,
+                        })
+                        setTimeout(() => this.playSound(), 1000);
                     }
-
-                } else {
-                    let img = new Image();
-                    img.src = picture[i][prop];
-                    ++this.numOfLoadedImage;
-                    img.onload = () => {
-                        if (this.numOfLoadedImage === this.totalImages) {
-                            this.setState({
-                                isImageLoaded: true,
-                                TTobaki: TTobak.ttobak1_1,
-                            })
-                            setTimeout(() => this.playSound(), 1000);
-                        }
-                    };
-                }
+                };
             }
         }
     }
 
+    onContinueButtonHandle = () => {
+        this.setState({
+            showPopup: false,
+        })
+    }
+
+    onPauseButtonHandle = () => {
+        this.setState({
+            showPopup: true,
+        })
+    }
+
     render() {
-        const { boxTextList, isAnimate, TTobaki, isImageLoaded } = this.state;
+        const { boxTextList, isAnimate, TTobaki, isImageLoaded, showPopup } = this.state;
 
         if (isImageLoaded) {
             return (<CommonPresenter
@@ -265,6 +258,9 @@ export default class extends React.Component {
                 onBoxTouchHandle={this.onBoxTouchHandle}
                 BoxImg={T3.t3_textbox}
                 isAnimate={isAnimate}
+                showPopup={showPopup}
+                onContinueButtonHandle={this.onContinueButtonHandle}
+                onPauseButtonHandle={this.onPauseButtonHandle}
             />);
         }
         else {

@@ -4,12 +4,23 @@ import { D1_Api, soundURL } from 'api';
 import { D1, TTobak } from 'images';
 import { withRouter } from 'react-router-dom';
 
+import LoadingComp from 'Components/LoadingComp';
+
 const UP = 'up';
 const DOWN = 'down';
 
 class Sweep extends React.PureComponent {
     constructor(props) {
         super();
+        this.buttonSound = null;                           // up_sweep, down_sweep 소리 경로
+        this.currentIndex = 0;
+        this.oriAnswer = null;
+        this.ques_id = null;
+        this.ques_path = null;
+        this.numOfLoadedImage = 0;
+        this.picture = { D1, TTobak };
+        this.totalImages = Object.keys(D1).length + Object.keys(TTobak).length;
+
         this.state = {
             s_id: parseInt(props.match.params.s_id) || 4,
             is_review: props.match.params.is_review,
@@ -19,26 +30,25 @@ class Sweep extends React.PureComponent {
             stdAnswer: [],                              // 학습자 정답
             Answer: [],                                 // 정답 상자
             TTobaki: TTobak.ttobak1_1,                  // 또박이 이미지 상태
+            swpSound: null,
+            isImageLoaded: false,
+            showPopup: false,
         };
-
-        this.buttonSound = null;                           // up_sweep, down_sweep 소리 경로
-        this.currentIndex = 0;
-        this.swpSound = null;
-        this.oriAnswer = null;
-        this.ques_id = null;
-        this.ques_path = null;
     }
 
     async componentDidMount() {
         this.newRequest();
-        setTimeout(() => this.playSound(), 1000);
+        this.imagesPreloading(this.picture);
     }
 
     componentWillUnmount() {
-        for (var i = 0; i < 2; i++) {
-            this.swpSound[i].pause();
-            this.swpSound[i] = null;
+        if (!!this.state.swpSound) {
+            this.state.swpSound[0].pause();
+            this.state.swpSound[1].pause();
         }
+        this.setState({
+            swpSound: null,
+        })
     }
 
     newRequest = async () => {
@@ -55,8 +65,9 @@ class Sweep extends React.PureComponent {
                 this.ques_id = ques_id;
                 this.ques_path = [ques_path2, ques_path1];
                 this.oriAnswer = answers;
-                this.buttonSound = [new Audio(soundURL + ques_path2), new Audio(soundURL + ques_path1)];
+                this.buttonSound = [new Audio(soundURL + this.ques_path[0]), new Audio(soundURL + this.ques_path[1])];
                 this.setListener();
+                setTimeout(() => this.playSound(), 3000);
             }
             else console.log('data message: ' + data.message);
         } catch (e) {
@@ -66,16 +77,20 @@ class Sweep extends React.PureComponent {
 
     setListener = () => {
         try {
-            this.swpSound = [
-                (UP === this.oriAnswer[this.currentIndex][0] ? new Audio(soundURL + this.ques_path[0]) : new Audio(soundURL + this.ques_path[1])),
-                (UP === this.oriAnswer[this.currentIndex][1] ? new Audio(soundURL + this.ques_path[0]) : new Audio(soundURL + this.ques_path[1]))
-            ];
-            this.swpSound[0].addEventListener('ended', () => {
+            this.setState({
+                swpSound: [
+                    (UP === this.oriAnswer[this.currentIndex][0] ? new Audio(soundURL + this.ques_path[0]) : new Audio(soundURL + this.ques_path[1])),
+                    (UP === this.oriAnswer[this.currentIndex][1] ? new Audio(soundURL + this.ques_path[0]) : new Audio(soundURL + this.ques_path[1]))
+                ],
+            })
+
+            this.state.swpSound[0].addEventListener('ended', () => {
                 setTimeout(() => {
-                    if (!!this.swpSound[1]) this.swpSound[1].play();
+                    if (!!this.state.swpSound[1]) this.state.swpSound[1].play();
                 }, 900)
             });
-            this.swpSound[1].addEventListener('ended', () => {
+
+            this.state.swpSound[1].addEventListener('ended', () => {
                 this.setState({
                     gameState: true,
                     TTobaki: TTobak.ttobak1_1
@@ -88,6 +103,7 @@ class Sweep extends React.PureComponent {
 
     onTouchStart = (id) => {
         const { Answer, stdAnswer, gameState } = this.state;
+        if (!gameState) return;
 
         switch (id) {
             case DOWN:
@@ -112,6 +128,8 @@ class Sweep extends React.PureComponent {
 
     onTouchEnd = (id) => {
         const { gameState } = this.state;
+        if (!gameState) return;
+
         switch (id) {
             case DOWN:
                 // console.log('down-up');
@@ -139,41 +157,45 @@ class Sweep extends React.PureComponent {
     }
 
     playSound = () => {
-        if (this.currentIndex > 4) {
-            this.newRequest();
-            return;
-        }
         this.setState({
             gameState: false,
-        })
+        });
 
-        if (!!this.swpSound[0]) this.swpSound[0].play();
+        if (!!this.state.swpSound[0]) this.state.swpSound[0].play();
     }
 
     finished = async () => {
         console.log('finished');
-        const { s_id, stdAnswer, is_review } = this.state;
+        this.setState({
+            gameState: false,
+        });
+
+        const { s_id, stdAnswer } = this.state;
         const answer = [this.oriAnswer[this.currentIndex][0], this.oriAnswer[this.currentIndex][1]];
         this.setState({
             TTobaki: TTobak.ttobak2_1,
         });
 
         try {
-            const { data } = await D1_Api.answer(s_id, this.ques_id, answer, stdAnswer, is_review);
+            const { data } = await D1_Api.answer(s_id, this.ques_id, answer, stdAnswer);
             console.log(data);
 
             if (data.code === 1) {
                 if (data.to_next === true || data.to_next_freq === true) {
                     this.newRequest();
-                    setTimeout(() => {
-                        this.playSound();
-                    }, 1000);
+                    console.log('next');
                 }
                 else if (data.to_next === '모든 문제를 풀었습니다') {
                     // TODO 다음 검사로
-                    console.log('next diagnose');
+                    this.setState({
+                        showPopup: true,
+                    });
                 } else {
-                    this.currentIndex++;
+                    if (this.currentIndex < this.oriAnswer.length - 1) this.currentIndex++;
+                    else {
+                        this.newRequest();
+                        return;
+                    }
                     setTimeout(() => {
                         this.setState({
                             gameState: false,
@@ -198,22 +220,50 @@ class Sweep extends React.PureComponent {
         }
     }
 
-    render() {
-        const { UpButton, DownButton, Answer, TTobaki } = this.state;
+    imagesPreloading = (picture) => {
+        for (let i in picture) {
+            for (let prop in picture[i]) {
+                let img = new Image();
+                img.src = picture[i][prop];
+                ++this.numOfLoadedImage;
+                img.onload = () => {
+                    if (this.numOfLoadedImage === this.totalImages) {
+                        this.setState({
+                            isImageLoaded: true,
+                        })
+                    }
+                }
+            }
+        }
+    }
 
-        return (
-            <SweepPresenter
-                Background={D1.d1_background}
-                UP={UP} DOWN={DOWN}
-                onTouchStart={this.onTouchStart}
-                onTouchEnd={this.onTouchEnd}
-                UpButton={UpButton}
-                DownButton={DownButton}
-                Answer={Answer}
-                TTobak={TTobaki}
-                TTobakiTouch={this.TTobakiTouch}
-                AnswerBox={D1.d1_box}
-            />);
+    onPopupButtonHandle = () => {
+        this.props.history.replace('/diagnose/recognition');
+    }
+
+    render() {
+        const { UpButton, DownButton, Answer, TTobaki, isImageLoaded, showPopup } = this.state;
+
+        if (isImageLoaded) {
+            return (
+                <SweepPresenter
+                    Background={D1.d1_background}
+                    UP={UP} DOWN={DOWN}
+                    onTouchStart={this.onTouchStart}
+                    onTouchEnd={this.onTouchEnd}
+                    UpButton={UpButton}
+                    DownButton={DownButton}
+                    Answer={Answer}
+                    TTobak={TTobaki}
+                    TTobakiTouch={this.TTobakiTouch}
+                    AnswerBox={D1.d1_box}
+                    showPopup={showPopup}
+                    onPopupButtonHandle={this.onPopupButtonHandle}
+                />);
+        }
+        else {
+            return <LoadingComp />
+        }
     }
 }
 
