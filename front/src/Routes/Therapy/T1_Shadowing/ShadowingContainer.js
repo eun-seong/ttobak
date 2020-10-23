@@ -16,6 +16,7 @@ export default class extends React.Component {
         this.currentAudio = null;
         this.audioResult = null;
         this.picture = { T1, TTobak };
+        this.totalImages = Object.keys(this.picture.T1).length + Object.keys(this.picture.TTobak).length;
         this.numOfLoadedImage = 0;
 
         this.state = {
@@ -25,6 +26,7 @@ export default class extends React.Component {
             TTobaki: TTobak.ttobak1_1,
             isImageLoaded: false,
             showPopup: false,
+            percent: 0,
         }
 
         if (this.learning_type === 'daily') {
@@ -44,7 +46,7 @@ export default class extends React.Component {
                 cureText: this.currentCure.cure_text
             };
         }
-        this.imagesPreloading();
+        this.imagesPreloading(this.picture);
 
         window.addEventListener("android", async (e) => {
             console.log(e.detail);
@@ -155,7 +157,7 @@ export default class extends React.Component {
                 this.setState({
                     TTobaki: TTobak.ttobak1_1,
                     isRecording: true,
-                })
+                });
                 window.BRIDGE.recordAudio('m', this.currentCure.cure_text);
             });
         }
@@ -165,26 +167,27 @@ export default class extends React.Component {
         console.log('done!!');
     }
 
-    imagesPreloading = () => {
-        let totalImages = Object.keys(this.picture.T1).length + Object.keys(this.picture.TTobak).length;
-
-        for (let i in this.picture) {
-            for (let prop in this.picture[i]) {
+    imagesPreloading = (picture) => {
+        for (let i in picture) {
+            for (let prop in picture[i]) {
                 let img = new Image();
-                img.src = this.picture[i][prop];
-                ++this.numOfLoadedImage;
+                img.src = picture[i][prop];
                 img.onload = () => {
-                    if (this.numOfLoadedImage === totalImages) {
+                    this.setState({
+                        percent: (++this.numOfLoadedImage / this.totalImages) * 100
+                    })
+                    if (this.numOfLoadedImage === this.totalImages) {
                         this.setState({
                             isImageLoaded: true,
                             TTobaki: TTobak.ttobak1_1,
-                        });
-                        this.playSound();
+                        })
+                        setTimeout(() => this.playSound(), 1000);
                     }
                 };
             }
         }
     }
+
 
     onContinueButtonHandle = () => {
         this.setState({
@@ -199,7 +202,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { type, cureText, TTobaki, isRecording, isImageLoaded, showPopup } = this.state;
+        const { type, cureText, TTobaki, isRecording, isImageLoaded, showPopup, percent } = this.state;
 
         if (isImageLoaded) {
             return (<ShadowingPresenter
@@ -215,7 +218,7 @@ export default class extends React.Component {
             />);
         }
         else {
-            return <LoadingComp />
+            return <LoadingComp percent={percent} />
         }
     }
 }

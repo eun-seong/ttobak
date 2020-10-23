@@ -22,7 +22,7 @@ export default class extends React.Component {
         this.timeOut = null;
         this.numOfLoadedImage = 0;
         this.picture = { T2, TTobak };
-        this.totalImages = Object.keys(T2).length + Object.keys(TTobak).length + 4;
+        this.totalImages = Object.keys(T2).length + Object.keys(TTobak).length + 3;
 
         this.state = {
             s_id: parseInt(match.params.s_id) || 4,
@@ -37,6 +37,7 @@ export default class extends React.Component {
             TTobaki: TTobak.ttobak1_1,
             isImageLoaded: false,
             showPopup: false,
+            percent: 0,
         };
 
         if (this.learning_type === 'daily') {
@@ -203,12 +204,13 @@ export default class extends React.Component {
                     for (let i in arr) {
                         let img = new Image();
                         img.src = arr[i];
-                        ++this.numOfLoadedImage;
                         img.onload = () => {
+                            this.setState({
+                                percent: (++this.numOfLoadedImage / this.totalImages) * 100
+                            })
                             if (this.numOfLoadedImage === this.totalImages) {
                                 this.setState({
                                     isImageLoaded: true,
-                                    TTobaki: TTobak.ttobak1_1,
                                 })
                                 setTimeout(() => this.playSound(), 1000);
                             }
@@ -218,12 +220,13 @@ export default class extends React.Component {
                 } else {
                     let img = new Image();
                     img.src = picture[i][prop];
-                    ++this.numOfLoadedImage;
                     img.onload = () => {
+                        this.setState({
+                            percent: (++this.numOfLoadedImage / this.totalImages) * 100
+                        })
                         if (this.numOfLoadedImage === this.totalImages) {
                             this.setState({
                                 isImageLoaded: true,
-                                TTobaki: TTobak.ttobak1_1,
                             })
                             setTimeout(() => this.playSound(), 1000);
                         }
@@ -246,7 +249,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { isDragging, touchPosition, Apple, answer, TTobaki, isImageLoaded, showPopup } = this.state;
+        const { isDragging, touchPosition, Apple, answer, TTobaki, isImageLoaded, showPopup, percent } = this.state;
         if (isImageLoaded) {
             return (
                 <DndProvider backend={TouchBackend}>
@@ -271,7 +274,7 @@ export default class extends React.Component {
             );
         }
         else {
-            return <LoadingComp />
+            return <LoadingComp percent={percent} />
         }
     }
 }

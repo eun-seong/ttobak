@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import GameBackground from 'Components/GameBackground';
 import PausePopup from 'Components/PausePopup';
+import DonePopup from 'Components/DonePopup';
 import CardComp from 'Components/Card';
 
 /* styled-components */
@@ -45,7 +46,8 @@ const Sound = ({ props }) => {
                     cardSize={cardSize}
                     text={props.CardTextList[0]}
                     index={0}
-                    onCardTouchHandle={props.onCardTouchHandle} />
+                    onCardTouchHandle={props.onCardTouchHandle}
+                    gameState={props.gameState} />
                 <CardComp
                     src={props.Card[1]}
                     alt='카드2'
@@ -53,12 +55,19 @@ const Sound = ({ props }) => {
                     cardSize={cardSize}
                     text={props.CardTextList[1]}
                     index={1}
-                    onCardTouchHandle={props.onCardTouchHandle} />
+                    onCardTouchHandle={props.onCardTouchHandle}
+                    gameState={props.gameState} />
             </CardParent>
             {
                 props.showPopup ?
                     <PausePopup
                         onContinueButtonHandle={props.onContinueButtonHandle} />
+                    : null
+            }
+            {
+                props.showDonePopup ?
+                    <DonePopup
+                        onRestartButtonHandle={props.onRestartButtonHandle} />
                     : null
             }
         </Div>

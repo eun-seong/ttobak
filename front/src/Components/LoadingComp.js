@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MainRoot } from 'images';
-
+import { Progress } from 'semantic-ui-react'
 
 const BackgroundDiv = styled.div`
     display: flex;
@@ -14,16 +14,19 @@ const BackgroundDiv = styled.div`
     height: 100vh;
 `;
 
-const Text = styled.div`
-    justify-content: center;
-    font-size: 3rem;
-    font-weight: bold;
+const ProgressDiv = styled.div`
+    width: 500px;
+    font-size: 1rem;
 `;
 
-const LoadingComp = () => {
+const LoadingComp = ({ percent }) => {
     return (
         <BackgroundDiv >
-            <Text>로딩 중...</Text>
+            <ProgressDiv>
+                <Progress percent={percent} success={percent === 100} indicating>
+                    {percent === 100 ? '로딩 완료' : '로딩 중...'}
+                </Progress>
+            </ProgressDiv>
         </BackgroundDiv>
     );
 }

@@ -9,7 +9,7 @@ export default class extends React.Component {
     constructor({ match, location }) {
         super();
         this.learning_type = match.params.learning_type;
-        this.type = match.params.type;
+        this.type = match.params.type + 'sound';
         this.cure = null;
         this.currentCure = null;
         this.currentIndex = 0;
@@ -26,6 +26,8 @@ export default class extends React.Component {
             CardTextList: null,
             isImageLoaded: false,
             showPopup: false,
+            showDonePopup: false,
+            percent: 0,
         }
 
         if (this.learning_type === 'daily') {
@@ -47,8 +49,10 @@ export default class extends React.Component {
     }
 
     componentWillUnmount() {
-        this.currentAudio.pause();
-        this.currentAudio = null;
+        if (!!this.currentAudio) {
+            this.currentAudio.pause();
+            this.currentAudio = null;
+        }
     }
 
     newRequest = async () => {
@@ -56,10 +60,11 @@ export default class extends React.Component {
 
         try {
             const { s_id } = this.state;
-            const { data } = await T_Api2.ask(s_id, this.idx_text);
+            const { data } = await T_Api2.ask(s_id, this.type);
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
+                this.currentIndex = 0;
                 this.cure = data.cure;
                 this.currentCure = data.cure[this.currentIndex];
                 this.setAudio();
@@ -99,7 +104,7 @@ export default class extends React.Component {
     playSound = () => {
         if (!!this.currentAudio) {
             this.setState({
-                gameState: true,
+                gameState: false,
                 TTobaki: TTobak.ttobak1_2
             });
             this.currentAudio.play();
@@ -114,10 +119,11 @@ export default class extends React.Component {
     onCardTouchHandle = async (index) => {
         const { gameState } = this.state;
         if (!gameState) return;
+
         this.setState({
             gameState: false,
             TTobaki: TTobak.ttobak2_2
-        })
+        });
 
         try {
             const { s_id, is_review, CardTextList } = this.state;
@@ -128,14 +134,16 @@ export default class extends React.Component {
                 CardTextList[index],
                 this.currentCure.cure_id,
                 is_review,
-                this.idx_text
+                this.type
             );
             console.log(data);
 
             if (data.code === 1) {
                 if (this.currentIndex < this.cure.length - 1) this.currentIndex++;
                 else {
-                    this.gameDone();
+                    setTimeout(() => {
+                        this.gameDone();
+                    }, 1000);
                     return;
                 }
                 this.currentCure = this.cure[this.currentIndex];
@@ -152,6 +160,10 @@ export default class extends React.Component {
                 setTimeout(() => {
                     this.playSound();
                 }, 3000);
+            } else if (data.code === 2) {
+                this.setState({
+                    showPopup: true,
+                })
             }
         } catch (e) {
             console.log(e);
@@ -159,7 +171,12 @@ export default class extends React.Component {
     }
 
     gameDone = () => {
-        console.log('game doen!')
+        console.log('game doen!');
+        if (this.learning_type !== 'daily') {
+            this.setState({
+                showDonePopup: true,
+            })
+        }
     }
 
     imagesPreloading = (picture) => {
@@ -167,8 +184,10 @@ export default class extends React.Component {
             for (let prop in picture[i]) {
                 let img = new Image();
                 img.src = picture[i][prop];
-                ++this.numOfLoadedImage;
                 img.onload = () => {
+                    this.setState({
+                        percent: (++this.numOfLoadedImage / this.totalImages) * 100
+                    })
                     if (this.numOfLoadedImage === this.totalImages) {
                         this.setState({
                             isImageLoaded: true,
@@ -187,6 +206,14 @@ export default class extends React.Component {
         })
     }
 
+    onRestartButtonHandle = () => {
+        this.setState({
+            showDonePopup: false,
+        })
+        this.newRequest();
+        setTimeout(() => this.playSound(), 2000);
+    }
+
     onPauseButtonHandle = () => {
         this.setState({
             showPopup: true,
@@ -194,7 +221,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { TTobaki, CardTextList, isImageLoaded, showPopup } = this.state;
+        const { TTobaki, CardTextList, isImageLoaded, showPopup, showDonePopup, percent, gameState } = this.state;
         if (isImageLoaded) {
             return (<SoundPresenter
                 Background={T5.t5_background}
@@ -206,10 +233,13 @@ export default class extends React.Component {
                 showPopup={showPopup}
                 onContinueButtonHandle={this.onContinueButtonHandle}
                 onPauseButtonHandle={this.onPauseButtonHandle}
+                showDonePopup={showDonePopup}
+                onRestartButtonHandle={this.onRestartButtonHandle}
+                gameState={gameState}
             />);
         }
         else {
-            return <LoadingComp />
+            return <LoadingComp percent={percent} />
         }
     }
 }

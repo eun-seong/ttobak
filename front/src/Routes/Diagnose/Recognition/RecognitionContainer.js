@@ -193,44 +193,34 @@ class Recognition extends React.PureComponent {
             console.log(data);
 
             if (data.code === 1) {
-                // TODO 수정
-                if (data.to_next === true || data.to_next_freq === true) {
-                    this.newRequest();
-                    console.log('next');
-                }
-                else if (data.to_next === '모든 문제를 풀었습니다') {
-                    // TODO 다음 검사로
+                if (this.currentIndex < this.answers.length - 1) this.currentIndex++;
+                else {
                     this.setState({
                         showPopup: true,
                     });
-                } else {
-                    if (this.currentIndex < this.answers.length - 1) this.currentIndex++;
-                    else {
-                        this.newRequest();
-                        return;
-                    }
-
-                    this.currentDiag = [
-                        this.getListFilter('ques_id', this.answers[this.currentIndex][0]),
-                        this.getListFilter('ques_id', this.answers[this.currentIndex][1]),
-                        this.getListFilter('ques_id', this.answers[this.currentIndex][2]),
-                    ];
-
-                    this.setListener();
-                    setTimeout(() => {
-                        this.setState({
-                            gameState: false,
-                            Box: [D2.d2_Box1_1, D2.d2_Box2_1],
-                            stdAnswer: null,
-                            TTobaki: TTobak.ttobak3_1,
-                            answerIndex: (this.currentDiag[0].ques_id === this.currentDiag[2].ques_id ? 0 : 1),
-                        });
-                    }, 2000);
-
-                    setTimeout(() => {
-                        this.playSound();
-                    }, 3000);
+                    return;
                 }
+
+                this.currentDiag = [
+                    this.getListFilter('ques_id', this.answers[this.currentIndex][0]),
+                    this.getListFilter('ques_id', this.answers[this.currentIndex][1]),
+                    this.getListFilter('ques_id', this.answers[this.currentIndex][2]),
+                ];
+
+                this.setListener();
+                setTimeout(() => {
+                    this.setState({
+                        gameState: false,
+                        Box: [D2.d2_Box1_1, D2.d2_Box2_1],
+                        stdAnswer: null,
+                        TTobaki: TTobak.ttobak3_1,
+                        answerIndex: (this.currentDiag[0].ques_id === this.currentDiag[2].ques_id ? 0 : 1),
+                    });
+                }, 2000);
+
+                setTimeout(() => {
+                    this.playSound();
+                }, 3000);
             }
         } catch (e) {
             console.log(e);

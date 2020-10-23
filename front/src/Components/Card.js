@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import effectSound from 'tic.mp3';
+
+const sound = new Audio(effectSound);
 
 const CardComponent = styled.div`
     display: flex;
@@ -32,9 +35,9 @@ const TextComponent = styled.div`
     z-index: 2;
 `;
 
-const Card = ({ src, text, textSize, cardSize, index, onCardTouchHandle }) => {
+const Card = ({ src, text, textSize, cardSize, index, onCardTouchHandle, gameState }) => {
     return (
-        <CardComponent cardSize={cardSize} onTouchEnd={() => onCardTouchHandle(index)}>
+        <CardComponent cardSize={cardSize} onTouchEnd={() => onCardTouchHandle(index)} onTouchStart={() => { gameState && sound.play() }}>
             <ImgComponent src={src}>
                 <TextComponent textSize={textSize}>{text || 'ㅅ'}</TextComponent>
             </ImgComponent>

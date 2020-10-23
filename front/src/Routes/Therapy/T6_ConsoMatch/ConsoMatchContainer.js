@@ -25,6 +25,7 @@ export default class extends React.Component {
             Worm: Characters.worm2_2,
             isImageLoaded: false,
             showPopup: false,
+            percent: 0,
         };
 
         if (this.learning_type === 'daily') {
@@ -43,6 +44,10 @@ export default class extends React.Component {
                 })
             })
         }
+    }
+
+    componentDidCatch() {
+
     }
 
     async componentDidMount() {
@@ -82,6 +87,7 @@ export default class extends React.Component {
                 this.answer = data.answer;
                 this.cure = data.cure;
 
+                this.totalImages += this.cure.length;
                 this.pictursPreloading(this.cure);
                 this.setCurrent(0);
             }
@@ -184,6 +190,18 @@ export default class extends React.Component {
             for (let i in picture) {
                 let img = new Image();
                 img.src = soundURL + picture[i].cure_path2;
+                img.onload = () => {
+                    this.setState({
+                        percent: (++this.numOfLoadedImage / this.totalImages) * 100
+                    });
+
+                    if (this.numOfLoadedImage === this.totalImages) {
+                        this.setState({
+                            isImageLoaded: true,
+                        })
+                        setTimeout(() => this.playSound(), 1000);
+                    }
+                };
             }
         } catch (e) {
             console.log(e);
@@ -195,8 +213,11 @@ export default class extends React.Component {
             for (let prop in picture[i]) {
                 let img = new Image();
                 img.src = picture[i][prop];
-                ++this.numOfLoadedImage;
                 img.onload = () => {
+                    this.setState({
+                        percent: (++this.numOfLoadedImage / this.totalImages) * 100
+                    })
+                    console.log(this.state.percent, this.numOfLoadedImage, this.totalImages);
                     if (this.numOfLoadedImage === this.totalImages) {
                         this.setState({
                             isImageLoaded: true,
@@ -221,22 +242,23 @@ export default class extends React.Component {
     }
 
     render() {
-        const { PicBoxList, Worm, isImageLoaded, showPopup } = this.state;
+        const { PicBoxList, Worm, isImageLoaded, showPopup, percent } = this.state;
 
         if (isImageLoaded) {
-            return (<ConsoMatchPresenter
-                Background={T6.t6_background}
-                Worm={Worm}
-                onWormTouchHandle={this.onWormTouchHandle}
-                frameList={PicBoxList || [T6.t6_excpic, T6.t6_excpic, T6.t6_excpic]}
-                onFrameTouchHandle={this.onFrameTouchHandle}
-                showPopup={showPopup}
-                onContinueButtonHandle={this.onContinueButtonHandle}
-                onPauseButtonHandle={this.onPauseButtonHandle}
-            />);
+            return (
+                <ConsoMatchPresenter
+                    Background={T6.t6_background}
+                    Worm={Worm}
+                    onWormTouchHandle={this.onWormTouchHandle}
+                    frameList={PicBoxList || [T6.t6_excpic, T6.t6_excpic, T6.t6_excpic]}
+                    onFrameTouchHandle={this.onFrameTouchHandle}
+                    showPopup={showPopup}
+                    onContinueButtonHandle={this.onContinueButtonHandle}
+                    onPauseButtonHandle={this.onPauseButtonHandle}
+                />);
         }
         else {
-            return <LoadingComp />
+            return <LoadingComp percent={percent} />
         }
     }
 }

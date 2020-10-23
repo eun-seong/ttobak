@@ -27,6 +27,7 @@ export default class extends React.Component {
             CardTextList: null,
             isImageLoaded: false,
             showPopup: false,
+            percent: 0,
         };
 
         if (this.learning_type === 'daily') {
@@ -141,8 +142,11 @@ export default class extends React.Component {
             for (let prop in picture[i]) {
                 let img = new Image();
                 img.src = picture[i][prop];
-                ++this.numOfLoadedImage;
                 img.onload = () => {
+                    console.log(this.state.percent);
+                    this.setState({
+                        percent: (++this.numOfLoadedImage / this.totalImages) * 100
+                    })
                     if (this.numOfLoadedImage === this.totalImages) {
                         this.setState({
                             isImageLoaded: true,
@@ -167,7 +171,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { CardTextList, picBox, isImageLoaded, showPopup } = this.state;
+        const { CardTextList, picBox, isImageLoaded, showPopup, percent } = this.state;
 
         if (isImageLoaded) {
             return (<ConsoCommonPresenter
@@ -182,7 +186,7 @@ export default class extends React.Component {
             />);
         }
         else {
-            return <LoadingComp />
+            return <LoadingComp percent={percent} />
         }
     }
 }

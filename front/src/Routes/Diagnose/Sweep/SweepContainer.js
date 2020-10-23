@@ -33,6 +33,7 @@ class Sweep extends React.PureComponent {
             swpSound: null,
             isImageLoaded: false,
             showPopup: false,
+            percent: 0,
         };
     }
 
@@ -227,12 +228,16 @@ class Sweep extends React.PureComponent {
                 img.src = picture[i][prop];
                 ++this.numOfLoadedImage;
                 img.onload = () => {
+                    this.setState({
+                        percent: (++this.numOfLoadedImage / this.totalImages) * 100
+                    })
                     if (this.numOfLoadedImage === this.totalImages) {
                         this.setState({
                             isImageLoaded: true,
                         })
+                        setTimeout(() => this.playSound(), 1000);
                     }
-                }
+                };
             }
         }
     }
@@ -242,7 +247,7 @@ class Sweep extends React.PureComponent {
     }
 
     render() {
-        const { UpButton, DownButton, Answer, TTobaki, isImageLoaded, showPopup } = this.state;
+        const { UpButton, DownButton, Answer, TTobaki, isImageLoaded, showPopup, percent } = this.state;
 
         if (isImageLoaded) {
             return (
@@ -262,7 +267,7 @@ class Sweep extends React.PureComponent {
                 />);
         }
         else {
-            return <LoadingComp />
+            return <LoadingComp percent={percent} />
         }
     }
 }

@@ -83,7 +83,6 @@ export const T1 = {
 
 export const T2 = {
     t2_background: imageURL + 'img/t2_counting/t2_background.png',
-    t2_tree: imageURL + 'img/t2_counting/tree.png',
     t2_basket: imageURL + 'img/t2_counting/basket.png',
     t2_Apples: [
         imageURL + 'img/t2_counting/apple1.png',

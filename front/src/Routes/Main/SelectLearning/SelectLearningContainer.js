@@ -10,7 +10,6 @@ class Select extends React.Component {
         super();
         this.state = {
             s_id: 4,
-            isImageLoaded: !!location.state.isImageLoaded,
         }
         console.log(location);
     }
@@ -28,14 +27,12 @@ class Select extends React.Component {
         console.log(this.props.history);
         const { s_id, isImageLoaded } = this.state;
 
-        if (isImageLoaded)
-            return (
-                <SelectLearningPresenter
-                    ContentsList={ContentsList}
-                    goBack={this.goBack}
-                    s_id={s_id}
-                />);
-        else return <LoadingComp />
+        return (
+            <SelectLearningPresenter
+                ContentsList={ContentsList}
+                goBack={this.goBack}
+                s_id={s_id}
+            />);
     }
 }
 

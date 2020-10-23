@@ -28,6 +28,7 @@ export default class extends React.Component {
             isAnimate: [false, false, false, false],
             isImageLoaded: false,
             showPopup: false,
+            percent: 0,
         };
 
         if (this.learning_type === 'daily') {
@@ -46,8 +47,10 @@ export default class extends React.Component {
 
     componentWillUnmount() {
         for (var i = 0; i < 7; i++) {
-            this.currentAudio[i].pause();
-            this.currentAudio[i] = null;
+            if (!!this.currentAudio[i]) {
+                this.currentAudio[i].pause();
+                this.currentAudio[i] = null;
+            }
         }
     }
 
@@ -219,13 +222,13 @@ export default class extends React.Component {
             for (let prop in picture[i]) {
                 let img = new Image();
                 img.src = picture[i][prop];
-                ++this.numOfLoadedImage;
-
                 img.onload = () => {
+                    this.setState({
+                        percent: (++this.numOfLoadedImage / this.totalImages) * 100
+                    })
                     if (this.numOfLoadedImage === this.totalImages) {
                         this.setState({
                             isImageLoaded: true,
-                            TTobaki: TTobak.ttobak1_1,
                         })
                         setTimeout(() => this.playSound(), 1000);
                     }
@@ -247,7 +250,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { boxTextList, isAnimate, TTobaki, isImageLoaded, showPopup } = this.state;
+        const { boxTextList, isAnimate, TTobaki, isImageLoaded, showPopup, percent } = this.state;
 
         if (isImageLoaded) {
             return (<CommonPresenter
@@ -264,7 +267,7 @@ export default class extends React.Component {
             />);
         }
         else {
-            return <LoadingComp />
+            return <LoadingComp percent={percent} />
         }
     }
 }

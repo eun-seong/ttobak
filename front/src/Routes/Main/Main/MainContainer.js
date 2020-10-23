@@ -4,6 +4,7 @@ import MainPresenter from './MainPresenter';
 
 import { Daily_Api } from 'api';
 import ContentsList from '../ContentsList';
+import Images, { MainRoot, Pause } from 'images';
 
 class Main extends React.Component {
     constructor() {
@@ -16,6 +17,7 @@ class Main extends React.Component {
             daily_link: null,
         }
         this.numOfLoadedImage = 0;
+        this.pictures = { Images, MainRoot, Pause };
     }
 
     goBack = () => {
@@ -24,7 +26,7 @@ class Main extends React.Component {
 
     async componentDidMount() {
         this.request();
-        this.imagesPreloading();
+        this.imagesPreloading(this.pictures);
     }
 
     request = async () => {
@@ -35,13 +37,9 @@ class Main extends React.Component {
             if (data.code === 1) {
                 this.setState({
                     data: data,
-                    // daily_custom: data.daily_cure,
-                    // daily_link: ContentsList.filter(c => {
-                    //     return c.name === data.daily_cure;
-                    // })[0].url,
-                    daily_custom: 'consocommon',
+                    daily_custom: data.daily_cure,
                     daily_link: ContentsList.filter(c => {
-                        return c.name === 'consocommon';
+                        return c.name === data.daily_cure;
                     })[0].url,
                 });
             }
@@ -50,17 +48,27 @@ class Main extends React.Component {
         }
     }
 
-    imagesPreloading = () => {
-        for (var i = 0; i < ContentsList.length; i++) {
+    imagesPreloading = (picture) => {
+        for (let i = 0; i < ContentsList.length; i++) {
             let img = new Image();
             img.src = ContentsList[i].img;
-            img.onload = () => {
-                this.numOfLoadedImage++;
-                if (this.numOfLoadedImage === ContentsList.length)
-                    this.setState({
-                        isImageLoaded: true,
-                    })
-            };
+        }
+
+        for (let i in picture) {
+            for (let prop in picture[i]) {
+                if (typeof (picture[i][prop]) === 'object') {
+                    let arr = picture[i][prop];
+                    for (let i in arr) {
+                        let img = new Image();
+                        img.src = arr[i];
+                        ++this.numOfLoadedImage;
+                    }
+                } else {
+                    let img = new Image();
+                    img.src = picture[i][prop];
+                    ++this.numOfLoadedImage;
+                }
+            }
         }
     }
 

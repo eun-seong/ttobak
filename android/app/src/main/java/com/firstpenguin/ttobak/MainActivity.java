@@ -7,19 +7,15 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
-import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.Objects;
@@ -33,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private String fileName = null;
     private MediaRecorder recorder;
     private Context mContext;
+    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
         hideNavigationBar();
 
         /* WebView */
-        WebView webView = (WebView) findViewById(R.id.webView);
+        webView = (WebView) findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);//자바스크립트 허용
         WebView.setWebContentsDebuggingEnabled(true);
         webView.addJavascriptInterface(new AndroidBridge(), "BRIDGE");
         webView.setWebChromeClient(new WebChromeClient());//웹뷰에 크롬 사용 허용//이 부분이 없으면 크롬에서 alert가 뜨지 않음
 
-        webView.getSettings().setJavaScriptEnabled(true);//자바스크립트 허용
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
 
@@ -68,6 +65,30 @@ public class MainActivity extends AppCompatActivity {
         if (recorder != null) {
             recorder.release();
             recorder = null;
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        try {
+            Class.forName("android.webkit.WebView")
+                    .getMethod("onPause", (Class[]) null)
+                    .invoke(webView, (Object[]) null);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            Class.forName("android.webkit.WebView")
+                    .getMethod("onResume", (Class[]) null)
+                    .invoke(webView, (Object[]) null);
+        } catch(Exception e) {
+            e.printStackTrace();
         }
     }
 
