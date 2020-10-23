@@ -195,8 +195,7 @@ def insert_treatment_08_consocommon():
                     키위 커피 타조 태양 탬버린 토끼 토마토 파리 편지 포도 피아노 피터팬 허리 
                     호랑이 하마 연못 햄버거 꽃 꿈 꿩 꿀 땅콩 똥 떡 떡볶이 딸기 빨래 뻐꾸기 
                     뽀뽀 뿌리 쓰레기 씨앗 씨름 쌀 짬뽕 짝수 쪽지 찌개'''
-    data = data_text.split(' ')
-
+    data = [el for el in data_text.split(' ') if el.strip() != '']
     for level in range(1, 4):
         text_files = glob.glob('.' + default_path + 'text_{0:02d}_*'.format(level))
         text_files.sort()
@@ -215,6 +214,7 @@ def insert_treatment_08_consocommon():
 
                 idx = data.index(word) + 1
                 path = '/words/{}.{}.png'.format(idx, word)
+                print(path)
 
                 sql = '''INSERT INTO cure_master(cure_level, cure_path, cure_word, cure_word2, cure_text, idx_id) 
                             VALUES (%s, %s, %s, %s, %s, 8)'''
@@ -290,3 +290,5 @@ def insert_treatment_11_selfpoem():
 
     conn.commit()
 
+
+insert_treatment_08_consocommon()
