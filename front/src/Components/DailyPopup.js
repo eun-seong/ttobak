@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import { colors } from 'const';
 import { Pause } from 'images';
 
-const button_size = '80px';
-
 const Div = styled.div`
     position: fixed;
     display: flex;
@@ -43,20 +41,21 @@ const Content = styled.div`
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    flex: 1;
     width: 100%;
-    height: 100%;
+    height: auto;
 `;
 
-const Button = styled.div`
+const Button = styled(Link)`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: ${button_size};
+    width: 100px;
 `;
 
 const ButtonImg = styled.img`
-    width: ${button_size};
-    height: ${button_size};
+    width: 100px;
+    height: 100px;
 `;
 
 const ButtonText = styled.div`
@@ -66,20 +65,15 @@ const ButtonText = styled.div`
     text-align: center;
 `;
 
-const PausePopup = ({ onContinueButtonHandle }) => {
+const DailyPopup = () => {
     return (
         <Div>
             <DivInner>
+                <Title>{'오늘 학습이 끝났어요!'}</Title>
                 <Content>
-                    <Button onTouchEnd={onContinueButtonHandle}>
-                        <ButtonImg src={Pause.bt_continue} />
-                        <ButtonText>이어 하기</ButtonText>
-                    </Button>
-                    <Button>
-                        <Link to='/main/main'>
-                            <ButtonImg src={Pause.bt_stop} />
-                            <ButtonText>그만 하기</ButtonText>
-                        </Link>
+                    <Button to='/main/main'>
+                        <ButtonImg src={Pause.bt_stop} />
+                        <ButtonText>홈으로</ButtonText>
                     </Button>
                 </Content>
             </DivInner>
@@ -87,4 +81,4 @@ const PausePopup = ({ onContinueButtonHandle }) => {
     );
 }
 
-export default PausePopup;
+export default DailyPopup;

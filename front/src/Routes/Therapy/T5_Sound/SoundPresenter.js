@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import GameBackground from 'Components/GameBackground';
 import PausePopup from 'Components/PausePopup';
 import DonePopup from 'Components/DonePopup';
+import DailyPopup from 'Components/DailyPopup';
 import CardComp from 'Components/Card';
 
 /* styled-components */
@@ -68,6 +69,11 @@ const Sound = ({ props }) => {
                 props.showDonePopup ?
                     <DonePopup
                         onRestartButtonHandle={props.onRestartButtonHandle} />
+                    : null
+            }
+            {
+                props.showDailyPopup ?
+                    <DailyPopup />
                     : null
             }
         </Div>

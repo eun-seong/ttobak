@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import GameBackground from 'Components/GameBackground';
 import PausePopup from 'Components/PausePopup';
+import DonePopup from 'Components/DonePopup';
 import FrameBox from './FrameBox';
 
 const Div = styled.div`
@@ -41,6 +42,7 @@ const ConsoMatch = ({ props }) => {
                             frameSize={frameSize}
                             onFrameTouchHandle={props.onFrameTouchHandle}
                             index={index}
+                            gameState={props.gameState}
                         />
                     );
                 })}
@@ -50,6 +52,12 @@ const ConsoMatch = ({ props }) => {
                 props.showPopup ?
                     <PausePopup
                         onContinueButtonHandle={props.onContinueButtonHandle} />
+                    : null
+            }
+            {
+                props.showDonePopup ?
+                    <DonePopup
+                        onRestartButtonHandle={props.onRestartButtonHandle} />
                     : null
             }
         </Div>

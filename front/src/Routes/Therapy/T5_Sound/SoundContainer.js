@@ -27,6 +27,7 @@ export default class extends React.Component {
             isImageLoaded: false,
             showPopup: false,
             showDonePopup: false,
+            showDailyPopup: false,
             percent: 0,
         }
 
@@ -153,7 +154,6 @@ export default class extends React.Component {
                     this.setState({
                         CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
                         TTobaki: TTobak.ttobak1_1,
-                        gameState: true,
                     });
                 }, 2000);
 
@@ -175,6 +175,10 @@ export default class extends React.Component {
         if (this.learning_type !== 'daily') {
             this.setState({
                 showDonePopup: true,
+            })
+        } else {
+            this.setState({
+                showDailyPopup: true,
             })
         }
     }

@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { colors } from 'const';
 import { Pause } from 'images';
 
+const button_size = '80px';
+
 const Div = styled.div`
     position: fixed;
     display: flex;
@@ -41,20 +43,22 @@ const Content = styled.div`
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    flex: 1;
     width: 100%;
-    height: 100%;
+    height: auto;
 `;
+
 
 const Button = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100px;
+    width: ${button_size};
 `;
 
 const ButtonImg = styled.img`
-    width: 100px;
-    height: 100px;
+    width: ${button_size};
+    height: ${button_size};
 `;
 
 const ButtonText = styled.div`
@@ -68,6 +72,7 @@ const DonePopup = ({ onRestartButtonHandle }) => {
     return (
         <Div>
             <DivInner>
+                <Title>{'한 세트가 끝났어요!'}</Title>
                 <Content>
                     <Button onTouchEnd={onRestartButtonHandle}>
                         <ButtonImg src={Pause.bt_again} />

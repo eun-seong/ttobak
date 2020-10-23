@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { colors } from 'const';
 import { Pause } from 'images';
 
+const button_size = '80px';
+
 const Div = styled.div`
     position: fixed;
     display: flex;
@@ -50,12 +52,12 @@ const Button = styled(Link)`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100px;
+    width: ${button_size};
 `;
 
 const ButtonImg = styled.img`
-    width: 100px;
-    height: 100px;
+    width: ${button_size};
+    height: ${button_size};
 `;
 
 const ButtonText = styled.div`

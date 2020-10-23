@@ -25,6 +25,7 @@ export default class extends React.Component {
             Worm: Characters.worm2_2,
             isImageLoaded: false,
             showPopup: false,
+            showDonePopup: false,
             percent: 0,
         };
 
@@ -122,7 +123,7 @@ export default class extends React.Component {
     playSound = () => {
         if (!!this.currentAudio) {
             this.setState({
-                gameState: true,
+                gameState: false,
                 Worm: Characters.worm2_1,
             });
             this.currentAudio.play();
@@ -131,6 +132,11 @@ export default class extends React.Component {
 
     gameDone = () => {
         console.log('done!');
+        if (this.learning_type !== 'daily') {
+            this.setState({
+                showDonePopup: true,
+            })
+        }
     }
 
     onFrameTouchHandle = async (id) => {
@@ -235,6 +241,14 @@ export default class extends React.Component {
         })
     }
 
+    onRestartButtonHandle = () => {
+        this.setState({
+            showDonePopup: false,
+        })
+        this.newRequest();
+        setTimeout(() => this.playSound(), 2000);
+    }
+
     onPauseButtonHandle = () => {
         this.setState({
             showPopup: true,
@@ -242,7 +256,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { PicBoxList, Worm, isImageLoaded, showPopup, percent } = this.state;
+        const { PicBoxList, Worm, isImageLoaded, showPopup, percent, gameState } = this.state;
 
         if (isImageLoaded) {
             return (
@@ -255,6 +269,8 @@ export default class extends React.Component {
                     showPopup={showPopup}
                     onContinueButtonHandle={this.onContinueButtonHandle}
                     onPauseButtonHandle={this.onPauseButtonHandle}
+                    onRestartButtonHandle={this.onRestartButtonHandle}
+                    gameState={gameState}
                 />);
         }
         else {
