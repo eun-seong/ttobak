@@ -29,15 +29,40 @@ const InputBox = styled.input`
     color: #464646;
 `;
 
+let state = {
+    name: '',
+    email: '', 
+    pw: '', 
+    pw_check: ''
+};
+
+const setName = (e) => {
+    state['name'] = e.target.value;
+}
+
+const setEmail = (e) => {
+    state['email'] = e.target.value;
+}
+
+const setPw = (e) => {
+    state['pw'] = e.target.value;
+}
+
+const setPwCheck = (e) => {
+    state['pw_check'] = e.target.value;
+}
+
+
 function SignUpComp({ handleSubmit }) {
     return (
         <CompBox>
             <SignUpBox>
-                <InputBox type='text' placeholder='이메일' />
-                <InputBox type='password' placeholder='비밀번호' />
-                <InputBox type='password' placeholder='비밀번호 확인' />
+                <InputBox type='text' placeholder='닉네임' onChange={setName} />
+                <InputBox type='text' placeholder='이메일' onChange={setEmail} />
+                <InputBox type='password' placeholder='비밀번호' onChange={setPw} />
+                <InputBox type='password' placeholder='비밀번호 확인' onChange={setPwCheck} />
             </SignUpBox>
-            <SubmitButton onClick={handleSubmit} text={'회원 가입'} to='/root/addstd' />
+            <SubmitButton onClick={(e) => {e.preventDefault(); handleSubmit(e, state);}} text={'회원 가입'} to='/root/addstd' />
         </CompBox>
     );
 }
