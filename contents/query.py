@@ -209,12 +209,11 @@ def insert_treatment_08_consocommon():
 
                 word, ex1, ex2, ans = lines
 
-                if word == ex2:
+                if ans == ex2:
                     ex1, ex2 = ex2, ex1
 
                 idx = data.index(word) + 1
                 path = '/words/{}.{}.png'.format(idx, word)
-                print(path)
 
                 sql = '''INSERT INTO cure_master(cure_level, cure_path, cure_word, cure_word2, cure_text, idx_id) 
                             VALUES (%s, %s, %s, %s, %s, 8)'''
@@ -265,7 +264,7 @@ def insert_treatment_10_consosound():
 
                 sql = '''INSERT INTO cure_master(cure_level, cure_path, cure_word, cure_word2, idx_id)
                                     VALUES (%s, %s, %s, %s, 10)'''
-
+                
                 curs.execute(sql, (level, path, ex1, ex2))
 
     conn.commit()
@@ -291,4 +290,3 @@ def insert_treatment_11_selfpoem():
     conn.commit()
 
 
-insert_treatment_08_consocommon()
