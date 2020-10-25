@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import GameBackground from 'Components/GameBackground';
 import NextPopup from 'Components/NextPopup';
+import PausePopup from 'Components/PausePopup';
 
 import AnswerComp from './AnswerComp';
 
@@ -20,6 +21,12 @@ const Recognition = ({ props }) => {
             <AnswerComp Box={props.Box} Clicked={props.Clicked} isAnimate={props.isAnimate} />
             {
                 props.showPopup ?
+                    <PausePopup
+                        onContinueButtonHandle={props.onContinueButtonHandle} />
+                    : null
+            }
+            {
+                props.showNextPopup ?
                     <NextPopup
                         onPopupButtonHandle={props.onPopupButtonHandle}
                         buttonText={'다음 검사'} />

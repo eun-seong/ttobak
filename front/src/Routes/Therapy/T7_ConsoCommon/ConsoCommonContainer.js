@@ -14,14 +14,12 @@ export default class extends React.Component {
         this.cure = null;
         this.currentCure = null;
         this.currentIndex = 0;
-        this.ori_answer = null;
         this.numOfLoadedImage = 0;
         this.picture = { T7, Characters };
         this.totalImages = Object.keys(T7).length + Object.keys(Characters).length;
 
         this.state = {
             s_id: parseInt(match.params.s_id) || 4,
-            is_review: match.params.is_review,
             gameState: false,
             picBox: null,
             CardTextList: null,
@@ -36,7 +34,6 @@ export default class extends React.Component {
             console.log(location.state.data.cure);
             this.cure = location.state.data.cure;
             this.currentCure = this.cure[this.currentIndex];
-            this.ori_answer = [this.currentCure.cure_word, this.currentCure.cure_word2];
         }
     }
 
@@ -64,11 +61,16 @@ export default class extends React.Component {
                 this.cure = data.cure;
                 this.pictursPreloading(this.cure);
                 this.currentCure = this.cure[this.currentIndex];
-                this.ori_answer = [this.currentCure.cure_word, this.currentCure.cure_word2];
+                for (let i in this.cure) {
+                    this.cure[i].answer = Math.floor(Math.random() * 2);
+                }
 
                 this.setState({
+                    gameState: true,
                     picBox: soundURL + this.currentCure.cure_path,
-                    CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2]
+                    CardTextList: this.currentCure.answer === 0 ?
+                        [this.currentCure.cure_word, this.currentCure.cure_word2] :
+                        [this.currentCure.cure_word2, this.currentCure.cure_word]
                 })
             }
             else console.log('data message: ' + data.message);
@@ -104,12 +106,20 @@ export default class extends React.Component {
         if (!this.state.gameState) return;
 
         try {
-            const { s_id, is_review } = this.state;
-            const { data } = await T_Api2.answer(
-                s_id, this.ori_answer[this.currentCure.cure_level - 1],
-                this.ori_answer[id],
+            const { s_id } = this.state;
+            console.log(
+                s_id,
+                this.currentCure.cure_word,
+                this.state.CardTextList[id],
                 this.currentCure.cure_id,
-                is_review,
+                this.learning_type === 'review' ? 'T' : 'F',
+                idx_text)
+            const { data } = await T_Api2.answer(
+                s_id,
+                this.currentCure.cure_word,
+                this.state.CardTextList[id],
+                this.currentCure.cure_id,
+                this.learning_type === 'review' ? 'T' : 'F',
                 idx_text
             );
             console.log(data);
@@ -120,13 +130,14 @@ export default class extends React.Component {
                     this.gameDone();
                     return;
                 }
-
                 this.currentCure = this.cure[this.currentIndex];
-                this.ori_answer = [this.currentCure.cure_word, this.currentCure.cure_word2];
 
                 this.setState({
+                    gameState: true,
                     picBox: soundURL + this.currentCure.cure_path,
-                    CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2]
+                    CardTextList: this.currentCure.answer === 0 ?
+                        [this.currentCure.cure_word, this.currentCure.cure_word2] :
+                        [this.currentCure.cure_word2, this.currentCure.cure_word]
                 })
             }
         } catch (e) {
@@ -157,7 +168,6 @@ export default class extends React.Component {
                 let img = new Image();
                 img.src = picture[i][prop];
                 img.onload = () => {
-                    console.log(this.state.percent);
                     this.setState({
                         percent: (++this.numOfLoadedImage / this.totalImages) * 100
                     })
@@ -165,7 +175,7 @@ export default class extends React.Component {
                         this.setState({
                             isImageLoaded: true,
                         })
-                        setTimeout(() => this.playSound(), 1000);
+                        // setTimeout(() => this.playSound(), 1000);
                     }
                 };
             }

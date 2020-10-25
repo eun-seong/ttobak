@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import GameBackground from 'Components/GameBackground';
 import NextPopup from 'Components/NextPopup';
+import PausePopup from 'Components/PausePopup';
 
 import AnswerBoxComp from './AnswerBox';
 
@@ -74,6 +75,12 @@ const Sweep = ({ props }) => {
             </Component>
             {
                 props.showPopup ?
+                    <PausePopup
+                        onContinueButtonHandle={props.onContinueButtonHandle} />
+                    : null
+            }
+            {
+                props.showNextPopup ?
                     <NextPopup
                         onPopupButtonHandle={props.onPopupButtonHandle}
                         buttonText={'다음 검사'} />
@@ -85,7 +92,7 @@ const Sweep = ({ props }) => {
 
 const Game = ({ Background, ...props }) => {
     return (
-        <GameBackground BackgroundImg={Background}
+        <GameBackground BackgroundImg={Background} onPauseButtonHandle={props.onPauseButtonHandle}
             Children={
                 <Sweep props={props} />
             }>

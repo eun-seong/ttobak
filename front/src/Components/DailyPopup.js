@@ -67,15 +67,15 @@ const ButtonText = styled.div`
     text-align: center;
 `;
 
-const DailyPopup = () => {
+const DailyPopup = ({ text }) => {
     return (
         <Div>
             <DivInner>
-                <Title>{'오늘 학습이 끝났어요!'}</Title>
+                <Title>{text || '오늘 학습이 끝났어요!'}</Title>
                 <Content>
                     <Button to='/main/main'>
                         <ButtonImg src={Pause.bt_stop} />
-                        <ButtonText>홈으로</ButtonText>
+                        <ButtonText>{!!text ? '다음' : '홈으로'}</ButtonText>
                     </Button>
                 </Content>
             </DivInner>

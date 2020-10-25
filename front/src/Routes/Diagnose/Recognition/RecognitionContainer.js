@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import { TTobak, D2 } from 'images';
 import { D2_Api, soundURL } from 'api';
+import LoadingComp from 'Components/LoadingComp';
 class Recognition extends React.PureComponent {
     constructor({ s_id }) {
         super();
@@ -16,7 +17,9 @@ class Recognition extends React.PureComponent {
             stdAnswer: null,                            // 학생 답
             answerIndex: 0,
             isAnimate: [false, false],
+            isImageLoaded: false,
             showPopup: false,
+            showNextPopup: true,
         };
 
         this.phs = null;
@@ -24,18 +27,23 @@ class Recognition extends React.PureComponent {
         this.phSound = null;
         this.answer = null;
         this.currentIndex = 0;
-        this.currentDiag = null;                    //
+        this.currentDiag = null;
+        this.numOfLoadedImage = 0;
+        this.picture = { D2, TTobak };
+        this.totalImages = Object.keys(D2).length + Object.keys(TTobak).length;
     }
 
     async componentDidMount() {
         this.newRequest();
-        setTimeout(() => this.playSound(), 1000);
+        this.imagesPreloading(this.picture);
     }
 
     componentWillUnmount() {
         for (var i = 0; i < this.phSound.length; i++) {
-            this.phSound[i].pause();
-            this.phSound[i] = null;
+            if (!!this.phSound[i]) {
+                this.phSound[i].pause();
+                this.phSound[i] = null;
+            }
         }
     }
 
@@ -227,24 +235,65 @@ class Recognition extends React.PureComponent {
         }
     }
 
+    imagesPreloading = (picture) => {
+        for (let i in picture) {
+            for (let prop in picture[i]) {
+                let img = new Image();
+                img.src = picture[i][prop];
+                img.onload = () => {
+                    this.setState({
+                        percent: (++this.numOfLoadedImage / this.totalImages) * 100
+                    });
+
+                    if (this.numOfLoadedImage === this.totalImages) {
+                        this.setState({
+                            isImageLoaded: true,
+                        })
+                        setTimeout(() => this.playSound(), 1000);
+                    }
+                };
+            }
+        }
+    }
+
     onPopupButtonHandle = () => {
         this.props.history.replace('/diagnose/attention');
     }
 
-    render() {
-        const { Box, TTobaki, isAnimate, showPopup } = this.state;
+    onContinueButtonHandle = () => {
+        this.setState({
+            showPopup: false,
+        })
+    }
 
-        return (
-            <RecognitionPresenter
-                Background={D2.d2_background}
-                TTobaki={TTobaki}
-                TTobakiTouch={this.TTobakiTouch}
-                Box={Box}
-                Clicked={this.onBoxTouchHandle}
-                isAnimate={isAnimate}
-                showPopup={showPopup}
-                onPopupButtonHandle={this.onPopupButtonHandle}
-            />);
+    onPauseButtonHandle = () => {
+        this.setState({
+            showPopup: true,
+        })
+    }
+
+    render() {
+        const { Box, TTobaki, isAnimate, showPopup, showNextPopup, percent, isImageLoaded } = this.state;
+
+        if (isImageLoaded) {
+            return (
+                <RecognitionPresenter
+                    Background={D2.d2_background}
+                    TTobaki={TTobaki}
+                    TTobakiTouch={this.TTobakiTouch}
+                    Box={Box}
+                    Clicked={this.onBoxTouchHandle}
+                    isAnimate={isAnimate}
+                    showPopup={showPopup}
+                    showNextPopup={showNextPopup}
+                    onPopupButtonHandle={this.onPopupButtonHandle}
+                    onContinueButtonHandle={this.onContinueButtonHandle}
+                    onPauseButtonHandle={this.onPauseButtonHandle}
+                />);
+        }
+        else {
+            return <LoadingComp percent={percent} />
+        }
     }
 }
 

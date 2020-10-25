@@ -249,7 +249,6 @@ export default class extends React.Component {
                 showPopup={showPopup}
                 showDailyPopup={showDailyPopup}
                 showDonePopup={showDonePopup}
-                onPauseButtonHandle={this.onPauseButtonHandle}
             />);
         }
         else {

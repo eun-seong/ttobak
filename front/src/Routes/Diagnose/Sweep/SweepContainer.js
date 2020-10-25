@@ -32,8 +32,9 @@ class Sweep extends React.PureComponent {
             TTobaki: TTobak.ttobak1_1,                  // 또박이 이미지 상태
             swpSound: null,
             isImageLoaded: false,
-            showPopup: false,
             percent: 0,
+            showPopup: false,
+            showNextPopup: false,
         };
     }
 
@@ -169,17 +170,26 @@ class Sweep extends React.PureComponent {
         console.log('finished');
         this.setState({
             gameState: false,
+            TTobaki: TTobak.ttobak2_1,
         });
 
         const { s_id, stdAnswer } = this.state;
         const answer = [this.oriAnswer[this.currentIndex][0], this.oriAnswer[this.currentIndex][1]];
-        this.setState({
-            TTobaki: TTobak.ttobak2_1,
-        });
 
         try {
             const { data } = await D1_Api.answer(s_id, this.ques_id, answer, stdAnswer);
             console.log(data);
+
+            setTimeout(() => {
+                this.setState({
+                    gameState: false,
+                    Answer: [],
+                    sweep: [],
+                    path: [],
+                    stdAnswer: [],
+                    TTobaki: TTobak.ttobak1_1,
+                });
+            }, 1500);
 
             if (data.code === 1) {
                 if (data.to_next === true || data.to_next_freq === true) {
@@ -189,7 +199,7 @@ class Sweep extends React.PureComponent {
                 else if (data.to_next === '모든 문제를 풀었습니다') {
                     // TODO 다음 검사로
                     this.setState({
-                        showPopup: true,
+                        showNextPopup: true,
                     });
                 } else {
                     if (this.currentIndex < this.oriAnswer.length - 1) this.currentIndex++;
@@ -197,16 +207,6 @@ class Sweep extends React.PureComponent {
                         this.newRequest();
                         return;
                     }
-                    setTimeout(() => {
-                        this.setState({
-                            gameState: false,
-                            Answer: [],
-                            sweep: [],
-                            path: [],
-                            stdAnswer: [],
-                            TTobaki: TTobak.ttobak1_1,
-                        });
-                    }, 1500);
 
                     this.setListener();
 
@@ -226,11 +226,11 @@ class Sweep extends React.PureComponent {
             for (let prop in picture[i]) {
                 let img = new Image();
                 img.src = picture[i][prop];
-                ++this.numOfLoadedImage;
                 img.onload = () => {
                     this.setState({
                         percent: (++this.numOfLoadedImage / this.totalImages) * 100
-                    })
+                    });
+
                     if (this.numOfLoadedImage === this.totalImages) {
                         this.setState({
                             isImageLoaded: true,
@@ -246,8 +246,20 @@ class Sweep extends React.PureComponent {
         this.props.history.replace('/diagnose/recognition');
     }
 
+    onContinueButtonHandle = () => {
+        this.setState({
+            showPopup: false,
+        })
+    }
+
+    onPauseButtonHandle = () => {
+        this.setState({
+            showPopup: true,
+        })
+    }
+
     render() {
-        const { UpButton, DownButton, Answer, TTobaki, isImageLoaded, showPopup, percent } = this.state;
+        const { UpButton, DownButton, Answer, TTobaki, isImageLoaded, showPopup, showNextPopup, percent } = this.state;
 
         if (isImageLoaded) {
             return (
@@ -263,7 +275,10 @@ class Sweep extends React.PureComponent {
                     TTobakiTouch={this.TTobakiTouch}
                     AnswerBox={D1.d1_box}
                     showPopup={showPopup}
+                    showNextPopup={showNextPopup}
                     onPopupButtonHandle={this.onPopupButtonHandle}
+                    onContinueButtonHandle={this.onContinueButtonHandle}
+                    onPauseButtonHandle={this.onPauseButtonHandle}
                 />);
         }
         else {

@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
 
-        //        webView.loadUrl("http://172.30.1.53:3000/main/test");//웹뷰 실행
-        webView.loadUrl("http://172.30.1.53:3000/therapy/shadowing/poem");//웹뷰 실행
+        webView.loadUrl("http://13.125.100.8/main/main");//웹뷰 실행
+//        webView.loadUrl("http://172.30.1.53:3000/therapy/shadowing/poem");//웹뷰 실행
 
 
         /* Recording */
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             Class.forName("android.webkit.WebView")
                     .getMethod("onPause", (Class[]) null)
                     .invoke(webView, (Object[]) null);
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             Class.forName("android.webkit.WebView")
                     .getMethod("onResume", (Class[]) null)
                     .invoke(webView, (Object[]) null);
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -67,19 +67,15 @@ const ButtonText = styled.div`
     text-align: center;
 `;
 
-const NextPopup = ({ text, onPopupButtonHandle, buttonText }) => {
+const NextPopup = ({ onPopupButtonHandle }) => {
     return (
         <Div>
             <DivInner>
-                <Title>{text || '잘 했어요!'}</Title>
+                <Title>잘 했어요!</Title>
                 <Content>
                     <Button onTouchEnd={onPopupButtonHandle}>
                         <ButtonImg src={Pause.bt_continue} />
-                        <ButtonText>{buttonText || '이어 하기'}</ButtonText>
-                    </Button>
-                    <Button to='/main/main'>
-                        <ButtonImg src={Pause.bt_stop} />
-                        <ButtonText>그만 하기</ButtonText>
+                        <ButtonText>다음</ButtonText>
                     </Button>
                 </Content>
             </DivInner>

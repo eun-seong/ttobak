@@ -66,10 +66,11 @@ const ButtonText = styled.div`
     text-align: center;
 `;
 
-const PausePopup = ({ onContinueButtonHandle }) => {
+const PausePopup = ({ onContinueButtonHandle, text }) => {
     return (
         <Div>
             <DivInner>
+                {!!text ? <Title>{text}</Title> : null}
                 <Content>
                     <Button onTouchEnd={onContinueButtonHandle}>
                         <ButtonImg src={Pause.bt_continue} />
