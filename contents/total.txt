@@ -1,0 +1,4029 @@
+diagnose/02_recognition/text_01_0001_0001 귀
+diagnose/02_recognition/text_01_0002_0001 남
+diagnose/02_recognition/text_01_0003_0001 해
+diagnose/02_recognition/text_01_0004_0001 밀
+diagnose/02_recognition/text_01_0005_0001 옷
+diagnose/02_recognition/text_01_0006_0001 잔
+diagnose/02_recognition/text_01_0007_0001 댁
+diagnose/02_recognition/text_01_0008_0001 겁
+diagnose/02_recognition/text_01_0009_0001 시
+diagnose/02_recognition/text_01_0010_0001 병
+diagnose/02_recognition/text_01_0011_0001 소
+diagnose/02_recognition/text_01_0012_0001 점
+diagnose/02_recognition/text_01_0013_0001 키
+diagnose/02_recognition/text_01_0014_0001 앞
+diagnose/02_recognition/text_01_0015_0001 무
+diagnose/02_recognition/text_01_0016_0001 논
+diagnose/02_recognition/text_01_0017_0001 자
+diagnose/02_recognition/text_01_0018_0001 글
+diagnose/02_recognition/text_01_0019_0001 용
+diagnose/02_recognition/text_01_0020_0001 겉
+diagnose/02_recognition/text_01_0021_0001 다
+diagnose/02_recognition/text_01_0022_0001 뜰
+diagnose/02_recognition/text_01_0023_0001 피
+diagnose/02_recognition/text_01_0024_0001 상
+diagnose/02_recognition/text_01_0025_0001 네
+diagnose/02_recognition/text_01_0026_0001 벌
+diagnose/02_recognition/text_01_0027_0001 추
+diagnose/02_recognition/text_01_0028_0001 만
+diagnose/02_recognition/text_01_0029_0001 죄
+diagnose/02_recognition/text_01_0030_0001 일
+diagnose/02_recognition/text_01_0031_0001 구
+diagnose/02_recognition/text_01_0032_0001 삼
+diagnose/02_recognition/text_01_0033_0001 도
+diagnose/02_recognition/text_01_0034_0001 알
+diagnose/02_recognition/text_01_0035_0001 꽃
+diagnose/02_recognition/text_01_0036_0001 연
+diagnose/02_recognition/text_01_0037_0001 달
+diagnose/02_recognition/text_01_0038_0001 혀
+diagnose/02_recognition/text_01_0039_0001 녹
+diagnose/02_recognition/text_01_0040_0001 김
+diagnose/02_recognition/text_01_0041_0001 약
+diagnose/02_recognition/text_01_0042_0001 덕
+diagnose/02_recognition/text_01_0043_0001 조
+diagnose/02_recognition/text_01_0044_0001 군
+diagnose/02_recognition/text_01_0045_0001 잎
+diagnose/02_recognition/text_01_0046_0001 폐
+diagnose/02_recognition/text_01_0047_0001 꿈
+diagnose/02_recognition/text_01_0048_0001 터
+diagnose/02_recognition/text_01_0049_0001 샘
+diagnose/02_recognition/text_01_0050_0001 능
+diagnose/02_recognition/text_02_0001_0001 난
+diagnose/02_recognition/text_02_0002_0001 위
+diagnose/02_recognition/text_02_0003_0001 죽
+diagnose/02_recognition/text_02_0004_0001 더
+diagnose/02_recognition/text_02_0005_0001 값
+diagnose/02_recognition/text_02_0006_0001 모
+diagnose/02_recognition/text_02_0007_0001 금
+diagnose/02_recognition/text_02_0008_0001 효
+diagnose/02_recognition/text_02_0009_0001 성
+diagnose/02_recognition/text_02_0010_0001 빛
+diagnose/02_recognition/text_02_0011_0001 서
+diagnose/02_recognition/text_02_0012_0001 날
+diagnose/02_recognition/text_02_0013_0001 깨
+diagnose/02_recognition/text_02_0014_0001 잠
+diagnose/02_recognition/text_02_0015_0001 표
+diagnose/02_recognition/text_02_0016_0001 눈
+diagnose/02_recognition/text_02_0017_0001 길
+diagnose/02_recognition/text_02_0018_0001 코
+diagnose/02_recognition/text_02_0019_0001 숯
+diagnose/02_recognition/text_02_0020_0001 오
+diagnose/02_recognition/text_02_0021_0001 강
+diagnose/02_recognition/text_02_0022_0001 외
+diagnose/02_recognition/text_02_0023_0001 장
+diagnose/02_recognition/text_02_0024_0001 대
+diagnose/02_recognition/text_02_0025_0001 육
+diagnose/02_recognition/text_02_0026_0001 미
+diagnose/02_recognition/text_02_0027_0001 솔
+diagnose/02_recognition/text_02_0028_0001 벼
+diagnose/02_recognition/text_02_0029_0001 담
+diagnose/02_recognition/text_02_0030_0001 처
+diagnose/02_recognition/text_02_0031_0001 강
+diagnose/02_recognition/text_02_0032_0001 띠
+diagnose/02_recognition/text_02_0033_0001 전
+diagnose/02_recognition/text_02_0034_0001 늘
+diagnose/02_recognition/text_02_0035_0001 양
+diagnose/02_recognition/text_02_0036_0001 회
+diagnose/02_recognition/text_02_0037_0001 겹
+diagnose/02_recognition/text_02_0038_0001 인
+diagnose/02_recognition/text_02_0039_0001 답
+diagnose/02_recognition/text_02_0040_0001 노
+diagnose/02_recognition/text_02_0041_0001 불
+diagnose/02_recognition/text_02_0042_0001 목
+diagnose/02_recognition/text_02_0043_0001 계
+diagnose/02_recognition/text_02_0044_0001 실
+diagnose/02_recognition/text_02_0045_0001 애
+diagnose/02_recognition/text_02_0046_0001 널
+diagnose/02_recognition/text_02_0047_0001 안
+diagnose/02_recognition/text_02_0048_0001 쑥
+diagnose/02_recognition/text_02_0049_0001 종
+diagnose/02_recognition/text_02_0050_0001 음
+diagnose/02_recognition/text_03_0001_0001 국
+diagnose/02_recognition/text_03_0002_0001 마
+diagnose/02_recognition/text_03_0003_0001 봄
+diagnose/02_recognition/text_03_0004_0001 이
+diagnose/02_recognition/text_03_0005_0001 농
+diagnose/02_recognition/text_03_0006_0001 학
+diagnose/02_recognition/text_03_0007_0001 들
+diagnose/02_recognition/text_03_0008_0001 간
+diagnose/02_recognition/text_03_0009_0001 컵
+diagnose/02_recognition/text_03_0010_0001 새
+diagnose/02_recognition/text_03_0011_0001 등
+diagnose/02_recognition/text_03_0012_0001 개
+diagnose/02_recognition/text_03_0013_0001 징
+diagnose/02_recognition/text_03_0014_0001 손
+diagnose/02_recognition/text_03_0015_0001 유
+diagnose/02_recognition/text_03_0016_0001 밤
+diagnose/02_recognition/text_03_0017_0001 예
+diagnose/02_recognition/text_03_0018_0001 십
+diagnose/02_recognition/text_03_0019_0001 얼
+diagnose/02_recognition/text_03_0020_0001 쥐
+diagnose/02_recognition/text_03_0021_0001 또
+diagnose/02_recognition/text_03_0022_0001 파
+diagnose/02_recognition/text_03_0023_0001 너
+diagnose/02_recognition/text_03_0024_0001 맛
+diagnose/02_recognition/text_03_0025_0001 끼
+diagnose/02_recognition/text_03_0026_0001 틀
+diagnose/02_recognition/text_03_0027_0001 나
+diagnose/02_recognition/text_03_0028_0001 곳
+diagnose/02_recognition/text_03_0029_0001 운
+diagnose/02_recognition/text_03_0030_0001 덤
+diagnose/02_recognition/text_03_0031_0001 주
+diagnose/02_recognition/text_03_0032_0001 침
+diagnose/02_recognition/text_03_0033_0001 억
+diagnose/02_recognition/text_03_0034_0001 후
+diagnose/02_recognition/text_03_0035_0001 당
+diagnose/02_recognition/text_03_0036_0001 매
+diagnose/02_recognition/text_03_0037_0001 신
+diagnose/02_recognition/text_03_0038_0001 뼈
+diagnose/02_recognition/text_03_0039_0001 낫
+diagnose/02_recognition/text_03_0040_0001 교
+diagnose/02_recognition/text_03_0041_0001 발
+diagnose/02_recognition/text_03_0042_0001 저
+diagnose/02_recognition/text_03_0043_0001 굴
+diagnose/02_recognition/text_03_0044_0001 꾀
+diagnose/02_recognition/text_03_0045_0001 살
+diagnose/02_recognition/text_03_0046_0001 님
+diagnose/02_recognition/text_03_0047_0001 왕
+diagnose/02_recognition/text_03_0048_0001 곰
+diagnose/02_recognition/text_03_0049_0001 면
+diagnose/02_recognition/text_03_0050_0001 열
+diagnose/02_recognition/text_04_0001_0001 산
+diagnose/02_recognition/text_04_0002_0001 두
+diagnose/02_recognition/text_04_0003_0001 공
+diagnose/02_recognition/text_04_0004_0001 말
+diagnose/02_recognition/text_04_0005_0001 넋
+diagnose/02_recognition/text_04_0006_0001 방
+diagnose/02_recognition/text_04_0007_0001 힘
+diagnose/02_recognition/text_04_0008_0001 야
+diagnose/02_recognition/text_04_0009_0001 짐
+diagnose/02_recognition/text_04_0010_0001 그
+diagnose/02_recognition/text_04_0011_0001 차
+diagnose/02_recognition/text_04_0012_0001 읍
+diagnose/02_recognition/text_04_0013_0001 수
+diagnose/02_recognition/text_04_0014_0001 돌
+diagnose/02_recognition/text_04_0015_0001 넷
+diagnose/02_recognition/text_04_0016_0001 검
+diagnose/02_recognition/text_04_0017_0001 놀
+diagnose/02_recognition/text_04_0018_0001 한
+diagnose/02_recognition/text_04_0019_0001 포
+diagnose/02_recognition/text_04_0020_0001 의
+diagnose/02_recognition/text_04_0021_0001 섬
+diagnose/02_recognition/text_04_0022_0001 은
+diagnose/02_recognition/text_04_0023_0001 때
+diagnose/02_recognition/text_04_0024_0001 사
+diagnose/02_recognition/text_04_0025_0001 집
+diagnose/02_recognition/text_04_0026_0001 배
+diagnose/02_recognition/text_04_0027_0001 솜
+diagnose/02_recognition/text_04_0028_0001 화
+diagnose/02_recognition/text_04_0029_0001 절
+diagnose/02_recognition/text_04_0030_0001 뇌
+diagnose/02_recognition/text_04_0031_0001 귤
+diagnose/02_recognition/text_04_0032_0001 여
+diagnose/02_recognition/text_04_0033_0001 칼
+diagnose/02_recognition/text_04_0034_0001 씨
+diagnose/02_recognition/text_04_0035_0001 돈
+diagnose/02_recognition/text_04_0036_0001 엿
+diagnose/02_recognition/text_04_0037_0001 꿀
+diagnose/02_recognition/text_04_0038_0001 막
+diagnose/02_recognition/text_04_0039_0001 비
+diagnose/02_recognition/text_04_0040_0001 궁
+diagnose/02_recognition/text_04_0041_0001 단
+diagnose/02_recognition/text_04_0042_0001 요
+diagnose/02_recognition/text_04_0043_0001 빵
+diagnose/02_recognition/text_04_0044_0001 늪
+diagnose/02_recognition/text_04_0045_0001 옥
+diagnose/02_recognition/text_04_0046_0001 재
+diagnose/02_recognition/text_04_0047_0001 탈
+diagnose/02_recognition/text_04_0048_0001 기
+diagnose/02_recognition/text_04_0049_0001 멋
+diagnose/02_recognition/text_04_0050_0001 우
+diagnose/03_attention/text_01_0001_0001 엄마랑 동물원에 갔습니다
+diagnose/03_attention/text_01_0002_0001 기차를 타고 여행을 떠나요
+diagnose/03_attention/text_01_0003_0001 집 안이 너무 조용해요
+diagnose/03_attention/text_01_0004_0001 수박은 너무 달콤해요
+diagnose/03_attention/text_01_0005_0001 동화책을 읽고 싶어요
+diagnose/03_attention/text_01_0006_0001 개미는 오늘도 열심히 일합니다
+diagnose/03_attention/text_01_0007_0001 다람쥐가 밤을 먹고 있어요
+diagnose/03_attention/text_01_0008_0001 바른 자세로 공부합시다
+diagnose/03_attention/text_01_0009_0001 바람이 불어오니 시원하네요
+diagnose/03_attention/text_01_0010_0001 선생님께 인사를 드려요
+diagnose/03_attention/text_02_0001_0001 강아지가 공원에서 신나게 뛰어다녀요
+diagnose/03_attention/text_02_0002_0001 종이에 베여서 피가 많이 나요
+diagnose/03_attention/text_02_0003_0001 바다를 바라보니 마음이 편안해요
+diagnose/03_attention/text_02_0004_0001 생쥐는 사자보다 작고 연약해요
+diagnose/03_attention/text_02_0005_0001 어부가 한가롭게 바다에서 낚시를 해요
+diagnose/03_attention/text_02_0006_0001 낮잠을 잠깐 자도 피곤합니다
+diagnose/03_attention/text_02_0007_0001 어른들께 예의바르게 인사를 드립시다
+diagnose/03_attention/text_02_0008_0001 깊은 산골에 도깨비가 살고 있어요
+diagnose/03_attention/text_02_0009_0001 너무 시끄러워서 고막이 터질 것 같아요
+diagnose/03_attention/text_02_0010_0001 뜨거운 주전자에 손이 데일 수 있어요
+diagnose/03_attention/text_03_0001_0001 도화지에 크레파스로 자동차 그림을 그렸어요
+diagnose/03_attention/text_03_0002_0001 배우는 실감나게 연기를 정말 잘했어요
+diagnose/03_attention/text_03_0003_0001 다람쥐는 날카로운 발톱으로 나무를 잘 타요
+diagnose/03_attention/text_03_0004_0001 내가 상을 받았다는 것이 실감이 나지 않아요
+diagnose/03_attention/text_03_0005_0001 같은 말을 여러 차례 반복해서 학습합시다
+diagnose/03_attention/text_03_0006_0001 토끼는 소나 말처럼 되새김질을 하지 못해요
+diagnose/03_attention/text_03_0007_0001 안개가 자욱이 끼어서 앞이 보이지 않아요
+diagnose/03_attention/text_03_0008_0001 지도에서 동서남북 표시로 위치를 알 수 있어요
+diagnose/03_attention/text_03_0009_0001 김치에는 옛 어른들의 지혜가 담겨 있답니다
+diagnose/03_attention/text_03_0010_0001 과학관에서 다양한 체험을 하는 것이 재밌었어요
+diagnose/03_attention/text_04_0001_0001 공장에서는 신발이나 자동차같이 공업 제품들을 생산합니다
+diagnose/03_attention/text_04_0002_0001 이 곳은 출입이 금지된 구역이니 돌아가 주세요
+diagnose/03_attention/text_04_0003_0001 소설을 읽을 때에는 작가의 배경에 대한 지식이 필요합니다
+diagnose/03_attention/text_04_0004_0001 역사 속에는 옛날 조상들의 삶의 모습이 담겨있어요
+diagnose/03_attention/text_04_0005_0001 다른 사람들의 말을 경청하는 습관을 가집시다
+diagnose/03_attention/text_04_0006_0001 다른 사람의 기분은 아랑곳하지 않고 자리에 앉았어요
+diagnose/03_attention/text_04_0007_0001 친구들과 함께 딱지치기하며 놀았던 그 때가 아직도 생생합니다
+diagnose/03_attention/text_04_0008_0001 골고루 음식을 섭취해야 다양한 영양소를 얻을 수 있어요
+diagnose/03_attention/text_04_0009_0001 소란스러운 분위기 속에 나는 열심히 책을 읽고 있었습니다
+diagnose/03_attention/text_04_0010_0001 그렇게 막연하게만 이야기하지 말고 확실하게 말해줘
+diagnose/03_attention/text_05_0001_0001 성장기의 청소년들은 근육과 골격이 급속도로 발달합니다
+diagnose/03_attention/text_05_0002_0001 우리나라는 높은 수준의 경제성장을 통해 선진국이 되었습니다
+diagnose/03_attention/text_05_0003_0001 건전한 비판은 좋지만 무분별한 비난은 거절합니다
+diagnose/03_attention/text_05_0004_0001 둘도 없는 친구 사이에 싸움이 일어났지만 곧 화해했어요
+diagnose/03_attention/text_05_0005_0001 주장을 할 때에는 항상 근거를 들어야 합니다
+diagnose/03_attention/text_05_0006_0001 소비를 하는 것은 좋지만 무분별한 낭비는 좋지 않아요
+diagnose/03_attention/text_05_0007_0001 아빠가 자동차의 속도를 일정하게 유지하기 시작했어요
+diagnose/03_attention/text_05_0008_0001 최대한 병이 손상되지 않게 조심스럽게 뚜껑을 열었다
+diagnose/03_attention/text_05_0009_0001 태풍으로 인해 수도관이 터져서 물이 나오지 않습니다
+diagnose/03_attention/text_05_0010_0001 바람은 씨앗을 먼 곳으로 옮기는 매체 가운데 하나이다
+treatment/01_poem/poem_01_0001_0001 친구들아 친구들아
+treatment/01_poem/poem_01_0001_0002 안녕 안녕
+treatment/01_poem/poem_01_0001_0003 친구들도 반갑다고
+treatment/01_poem/poem_01_0001_0004 안녕 안녕
+treatment/01_poem/poem_01_0001_0005 선생님 선생님
+treatment/01_poem/poem_01_0001_0006 안녕하세요
+treatment/01_poem/poem_01_0001_0007 만나서 반갑구나
+treatment/01_poem/poem_01_0001_0008 안녕 안녕
+treatment/01_poem/poem_01_0002_0001 개굴 개굴
+treatment/01_poem/poem_01_0002_0002 개구리가 웁니다
+treatment/01_poem/poem_01_0002_0003 삐약 삐약
+treatment/01_poem/poem_01_0002_0004 병아리가 노래합니다
+treatment/01_poem/poem_01_0002_0005 음매 음매
+treatment/01_poem/poem_01_0002_0006 송아지가 반갑다고 인사합니다
+treatment/01_poem/poem_01_0002_0007 야옹 야옹
+treatment/01_poem/poem_01_0002_0008 고양이도 반갑다고 대답합니다
+treatment/01_poem/poem_01_0003_0001 송아지 낮잠에 푹 들었어요
+treatment/01_poem/poem_01_0003_0002 지나가던 잠자리가 툭툭 건드려도
+treatment/01_poem/poem_01_0003_0003 몰라요 몰라요 잠을 자네요
+treatment/01_poem/poem_01_0003_0004 뭐가 그리 졸린지
+treatment/01_poem/poem_01_0003_0005 마을 사람 노래불러도
+treatment/01_poem/poem_01_0003_0006 몰라요 몰라요 잠을 자네요
+treatment/01_poem/poem_01_0004_0001 어느 더운 여름날
+treatment/01_poem/poem_01_0004_0002 위잉 위잉
+treatment/01_poem/poem_01_0004_0003 선풍기가 돌아가요
+treatment/01_poem/poem_01_0004_0004 빙글빙글 돌아가는
+treatment/01_poem/poem_01_0004_0005 선풍기 날개
+treatment/01_poem/poem_01_0004_0006 어지러워요
+treatment/01_poem/poem_01_0004_0007 선풍기 지쳐서
+treatment/01_poem/poem_01_0004_0008 툭 멈췄어요
+treatment/01_poem/poem_01_0004_0009 갑자기 땀이 주르륵
+treatment/01_poem/poem_01_0005_0001 호호 불어서
+treatment/01_poem/poem_01_0005_0002 따끈따끈할 때
+treatment/01_poem/poem_01_0005_0003 입안에 쏙
+treatment/01_poem/poem_01_0005_0004 따뜻하고 달콤한
+treatment/01_poem/poem_01_0005_0005 맛있는 군고구마
+treatment/01_poem/poem_01_0006_0001 아이고 덥다 더워
+treatment/01_poem/poem_01_0006_0002 아이스크림 먹고 싶어요
+treatment/01_poem/poem_01_0006_0003 엄마 엄마
+treatment/01_poem/poem_01_0006_0004 아이스크림 먹고 싶어요
+treatment/01_poem/poem_01_0006_0005 아까도 먹었자나
+treatment/01_poem/poem_01_0006_0006 오늘은 그만
+treatment/01_poem/poem_01_0006_0007 그래도 그래도
+treatment/01_poem/poem_01_0006_0008 아이스크림 먹고싶어요
+treatment/01_poem/poem_01_0007_0001 매일매일 하루하루
+treatment/01_poem/poem_01_0007_0002 차곡차곡 적었어요
+treatment/01_poem/poem_01_0007_0003 오늘은 맛있는거 먹었어요
+treatment/01_poem/poem_01_0007_0004 오늘은 친구랑 싸웠어요
+treatment/01_poem/poem_01_0007_0005 좋은일도 슬픈일도
+treatment/01_poem/poem_01_0007_0006 함께 있는 일기장
+treatment/01_poem/poem_01_0008_0001 나무야 나무야
+treatment/01_poem/poem_01_0008_0002 너는 키가 왜 이리 크니
+treatment/01_poem/poem_01_0008_0003 나무야 나무야
+treatment/01_poem/poem_01_0008_0004 키가 커서 참 좋겠다
+treatment/01_poem/poem_01_0008_0005 나도 나도
+treatment/01_poem/poem_01_0008_0006 빨리 빨리 키 크고 싶다
+treatment/01_poem/poem_01_0008_0007 어서 어서
+treatment/01_poem/poem_01_0008_0008 키 큰 어른이 되고 싶다
+treatment/01_poem/poem_01_0009_0001 조용한 아침에
+treatment/01_poem/poem_01_0009_0002 살랑살랑 떨어지는 단풍
+treatment/01_poem/poem_01_0009_0003 빨간색 노란색
+treatment/01_poem/poem_01_0009_0004 아이고 예쁘다
+treatment/01_poem/poem_01_0009_0005 예쁜거 주워서
+treatment/01_poem/poem_01_0009_0006 친구한테 줘야지
+treatment/01_poem/poem_01_0010_0001 펑펑 눈이 옵니다
+treatment/01_poem/poem_01_0010_0002 하늘에서 새하얀 가루가 내립니다
+treatment/01_poem/poem_01_0010_0003 손으로 만져보니
+treatment/01_poem/poem_01_0010_0004 차갑습니다
+treatment/01_poem/poem_01_0010_0005 꼭꼭 뭉쳐서
+treatment/01_poem/poem_01_0010_0006 눈사람을 만들어 봅니다
+treatment/01_poem/poem_01_0010_0007 아주아주 자그마한
+treatment/01_poem/poem_01_0010_0008 눈사람을 만들어 봅니다
+treatment/01_poem/poem_01_0011_0001 누가 누가 먼저 클까
+treatment/01_poem/poem_01_0011_0002 너무너무 궁금해요
+treatment/01_poem/poem_01_0011_0003 하루 종일 기다리면
+treatment/01_poem/poem_01_0011_0004 꼬리가 나오겠지
+treatment/01_poem/poem_01_0011_0005 언제쯤이면 콩이 달릴까
+treatment/01_poem/poem_01_0011_0006 키가 더 자라나면
+treatment/01_poem/poem_01_0011_0007 강낭콩을 볼 수 있겠지
+treatment/01_poem/poem_01_0012_0001 옹기종기 책들이
+treatment/01_poem/poem_01_0012_0002 모여서 이야기한다
+treatment/01_poem/poem_01_0012_0003 나를 읽어봐
+treatment/01_poem/poem_01_0012_0004 방긋 웃는다
+treatment/01_poem/poem_01_0012_0005 알았어 너를 읽을게
+treatment/01_poem/poem_01_0013_0001 내가 쓴 글씨는
+treatment/01_poem/poem_01_0013_0002 구불구불 지렁이 같고
+treatment/01_poem/poem_01_0013_0003 언니가 쓴 글씨는
+treatment/01_poem/poem_01_0013_0004 반듯하니 그림같네
+treatment/01_poem/poem_01_0013_0005 나도 열심히 연습해서
+treatment/01_poem/poem_01_0013_0006 언니처럼 잘 써야지
+treatment/01_poem/poem_01_0014_0001 쨍쨍하던 하늘에서
+treatment/01_poem/poem_01_0014_0002 비가 내리기 시작합니다
+treatment/01_poem/poem_01_0014_0003 땅 속에 지렁이도
+treatment/01_poem/poem_01_0014_0004 개울가에 개구리도
+treatment/01_poem/poem_01_0014_0005 오랜만에 봄비를 맞고
+treatment/01_poem/poem_01_0014_0006 신나게 춤을 춥니다
+treatment/01_poem/poem_01_0015_0001 밤하늘에 달이 홀로 떠 있습니다
+treatment/01_poem/poem_01_0015_0002 조용하게 외로이
+treatment/01_poem/poem_01_0015_0003 자세히 보니 별들도 있습니다
+treatment/01_poem/poem_01_0015_0004 달 옆에서 밤하늘을 밝힙니다
+treatment/01_poem/poem_01_0015_0005 함께 다같이
+treatment/01_poem/poem_01_0016_0001 해바라기야
+treatment/01_poem/poem_01_0016_0002 너는 무엇 때문에
+treatment/01_poem/poem_01_0016_0003 해를 따라다니니
+treatment/01_poem/poem_01_0016_0004 나는
+treatment/01_poem/poem_01_0016_0005 따뜻한 햇님이 좋단다
+treatment/01_poem/poem_01_0016_0006 무슨 일이 있어도
+treatment/01_poem/poem_01_0016_0007 방긋 웃는
+treatment/01_poem/poem_01_0016_0008 커다란 햇님이 좋단다
+treatment/01_poem/poem_01_0017_0001 친구랑 색종이 한 장 때문에
+treatment/01_poem/poem_01_0017_0002 친구랑 음료수 한 모금 때문에
+treatment/01_poem/poem_01_0017_0003 말싸움을 했다
+treatment/01_poem/poem_01_0017_0004 너가 잘못했어
+treatment/01_poem/poem_01_0017_0005 아니야 너가 잘못했어
+treatment/01_poem/poem_01_0017_0006 씩씩대던 우리는
+treatment/01_poem/poem_01_0017_0007 선생님 앞에서
+treatment/01_poem/poem_01_0017_0008 화해를 했다
+treatment/01_poem/poem_01_0017_0009 내가 잘못했어
+treatment/01_poem/poem_01_0017_0010 아니야 내가 잘못했어
+treatment/01_poem/poem_01_0018_0001 기다란 것이
+treatment/01_poem/poem_01_0018_0002 앞에는 까만 게 달려서
+treatment/01_poem/poem_01_0018_0003 글씨를 쓸 수 있고
+treatment/01_poem/poem_01_0018_0004 뒤에는 지우개가 달려서
+treatment/01_poem/poem_01_0018_0005 잘못 쓴 것을 지울 수 있네
+treatment/01_poem/poem_01_0018_0006 누가 이런 걸 만들었을까
+treatment/01_poem/poem_01_0018_0007 봐도 봐도 신기한
+treatment/01_poem/poem_01_0018_0008 기다란 연필
+treatment/01_poem/poem_01_0019_0001 하얀 도화지로
+treatment/01_poem/poem_01_0019_0002 모두모두 모여라
+treatment/01_poem/poem_01_0019_0003 호랑이도 코끼리도 기린도
+treatment/01_poem/poem_01_0019_0004 모두모두 모여라
+treatment/01_poem/poem_01_0020_0001 동글동글 알맹이
+treatment/01_poem/poem_01_0020_0002 보라색 동그라미
+treatment/01_poem/poem_01_0020_0003 껍질 속에 숨겨진
+treatment/01_poem/poem_01_0020_0004 달콤한 알맹이
+treatment/01_poem/poem_01_0020_0005 터지고 쭈글쭈글해도
+treatment/01_poem/poem_01_0020_0006 모두모두 포도 알맹이
+treatment/01_poem/poem_02_0001_0001 가늘고 긴 막대기 끝에
+treatment/01_poem/poem_02_0001_0002 모가 기다란 것이
+treatment/01_poem/poem_02_0001_0003 삐쭉삐쭉 솟아있는 내 칫솔
+treatment/01_poem/poem_02_0001_0004 치약을 묻혀서
+treatment/01_poem/poem_02_0001_0005 구석구석
+treatment/01_poem/poem_02_0001_0006 음식물을 닦아내는
+treatment/01_poem/poem_02_0001_0007 고마운 칫솔
+treatment/01_poem/poem_02_0001_0008 어째서일까
+treatment/01_poem/poem_02_0001_0009 헝클어진 칫솔이
+treatment/01_poem/poem_02_0001_0010 안타까운 것은
+treatment/01_poem/poem_02_0002_0001 네모나고 조그만 화면 속에
+treatment/01_poem/poem_02_0002_0002 오밀조밀 모여있는 아이콘들
+treatment/01_poem/poem_02_0002_0003 이걸 누르면 재미난 동영상이
+treatment/01_poem/poem_02_0002_0004 이걸 누르면 뿅뿅뿅뿅 게임이
+treatment/01_poem/poem_02_0002_0005 이것저것 하다 보면
+treatment/01_poem/poem_02_0002_0006 쏜살같이 지나가는 시간
+treatment/01_poem/poem_02_0002_0007 스마트폰 그만해라
+treatment/01_poem/poem_02_0002_0008 어느새 들려오는 엄마 목소리
+treatment/01_poem/poem_02_0002_0009 아쉽지만 내려놓은 스마트폰
+treatment/01_poem/poem_02_0003_0001 짧은 다리 부지런히 움직이며
+treatment/01_poem/poem_02_0003_0002 어디론가 향하는 개미떼
+treatment/01_poem/poem_02_0003_0003 입에는 각자 좁쌀 하나씩 물고
+treatment/01_poem/poem_02_0003_0004 줄을 지어 차례대로
+treatment/01_poem/poem_02_0003_0005 어디론가 향하는 개미떼
+treatment/01_poem/poem_02_0003_0006 어디로 가고 있나
+treatment/01_poem/poem_02_0003_0007 궁금해서 따라가 보면
+treatment/01_poem/poem_02_0003_0008 저멀리 보이는 개미집
+treatment/01_poem/poem_02_0003_0009 집이 가까워질수록
+treatment/01_poem/poem_02_0003_0010 빨라지는 개미들
+treatment/01_poem/poem_02_0004_0001 엄마가 해주시는
+treatment/01_poem/poem_02_0004_0002 콩자반 호박나물 멸치볶음
+treatment/01_poem/poem_02_0004_0003 내가 좋아하는 고기반찬
+treatment/01_poem/poem_02_0004_0004 밥상에 하나 없네
+treatment/01_poem/poem_02_0004_0005 엄마한테 고기반찬 투정부리니
+treatment/01_poem/poem_02_0004_0006 돌아오는 건 엄마의 잔소리
+treatment/01_poem/poem_02_0004_0007 골고루 먹어야 키가 큰단다
+treatment/01_poem/poem_02_0004_0008 그래도 먹고 싶어
+treatment/01_poem/poem_02_0004_0009 고기반찬
+treatment/01_poem/poem_02_0005_0001 두툼한 종이 뭉치 속에
+treatment/01_poem/poem_02_0005_0002 섞여 있는 그림과 글자들
+treatment/01_poem/poem_02_0005_0003 한장 한장 넘길 때마다
+treatment/01_poem/poem_02_0005_0004 조금씩 감겨오는 눈꺼풀
+treatment/01_poem/poem_02_0005_0005 잠이 온다 잠이 와
+treatment/01_poem/poem_02_0005_0006 꾸벅꾸벅 떨어지는 고개
+treatment/01_poem/poem_02_0005_0007 정신을 차려보려 하지만
+treatment/01_poem/poem_02_0005_0008 더는 넘어가지 않는 책장
+treatment/01_poem/poem_02_0006_0001 우리 누나는 나보다 한 살 많습니다
+treatment/01_poem/poem_02_0006_0002 한 살밖에 안 많으면서
+treatment/01_poem/poem_02_0006_0003 나한테 언제 크냐며 놀립니다
+treatment/01_poem/poem_02_0006_0004 키도 조금밖에 안크고
+treatment/01_poem/poem_02_0006_0005 덩치도 나랑 비슷하면서
+treatment/01_poem/poem_02_0006_0006 나한테는 어른인 것처럼 말합니다
+treatment/01_poem/poem_02_0006_0007 내가 음식을 조금만 흘려도
+treatment/01_poem/poem_02_0006_0008 익살스럽게 웃으며 놀려댑니다
+treatment/01_poem/poem_02_0006_0009 누나가 얄밉습니다
+treatment/01_poem/poem_02_0006_0010 누나가 너무 얄밉습니다
+treatment/01_poem/poem_02_0007_0001 선생님이 내 주신 학교 숙제
+treatment/01_poem/poem_02_0007_0002 여기서부터 여기까지 풀어오세요
+treatment/01_poem/poem_02_0007_0003 친구들과 신나게 놀다보니
+treatment/01_poem/poem_02_0007_0004 점점 어두워지는 밖
+treatment/01_poem/poem_02_0007_0005 아 맞다 숙제가 있었구나
+treatment/01_poem/poem_02_0007_0006 까맣게 잊고 있던 책을 펼처보니
+treatment/01_poem/poem_02_0007_0007 산더미 같은 숙제
+treatment/01_poem/poem_02_0007_0008 해도 해도 끝이 보이지 않네
+treatment/01_poem/poem_02_0007_0009 아 아까 놀지 말고 미리 할 걸
+treatment/01_poem/poem_02_0007_0010 후회해도 후회해도 소용없네
+treatment/01_poem/poem_02_0008_0001 너무 오래되어 빛이 바랜 앨범
+treatment/01_poem/poem_02_0008_0002 누렇게 변한 그 앨범에
+treatment/01_poem/poem_02_0008_0003 할아버지와 아빠가 있다
+treatment/01_poem/poem_02_0008_0004 아니 아저씨와 초등학생이 있다
+treatment/01_poem/poem_02_0008_0005 이때는 이렇게 지냈었지
+treatment/01_poem/poem_02_0008_0006 아 애들 귀여운 것좀 봐
+treatment/01_poem/poem_02_0008_0007 신이 나서 얘기하시는 아빠
+treatment/01_poem/poem_02_0008_0008 어른들에게도 어린 시절이 있었구나
+treatment/01_poem/poem_02_0008_0009 봐도 봐도 신기한
+treatment/01_poem/poem_02_0008_0010 앨범 속 아빠 모습
+treatment/01_poem/poem_02_0009_0001 매일마다 나를 반겨주는
+treatment/01_poem/poem_02_0009_0002 내 옆자리 짝꿍
+treatment/01_poem/poem_02_0009_0003 선생님이 부르시면
+treatment/01_poem/poem_02_0009_0004 항상 개미만한 목소리로 대답하는
+treatment/01_poem/poem_02_0009_0005 부끄럼 많은 내 짝꿍
+treatment/01_poem/poem_02_0009_0006 내가 조금만 장난을 쳐도 삐지는
+treatment/01_poem/poem_02_0009_0007 소심한 내 옆자리 짝꿍
+treatment/01_poem/poem_02_0009_0008 그래도 내가 미술 준비물 안 가져왔을 때
+treatment/01_poem/poem_02_0009_0009 같이 쓰자며 붓을 내미는
+treatment/01_poem/poem_02_0009_0010 착한 내 옆자리 짝꿍
+treatment/01_poem/poem_02_0010_0001 마음이 중요한 것이에요
+treatment/01_poem/poem_02_0010_0002 무슨 일을 하더라도
+treatment/01_poem/poem_02_0010_0003 최선을 다해 열심히 하겠다는
+treatment/01_poem/poem_02_0010_0004 그 마음
+treatment/01_poem/poem_02_0010_0005 마음이 중요한 것이에요
+treatment/01_poem/poem_02_0010_0006 어떤 꾸지람을 듣더라도
+treatment/01_poem/poem_02_0010_0007 솔직하게 말할 수 있는
+treatment/01_poem/poem_02_0010_0008 그 마음
+treatment/01_poem/poem_02_0010_0009 마음이 중요한 것이에요
+treatment/01_poem/poem_02_0010_0010 자기 잘못을 인정하고
+treatment/01_poem/poem_02_0010_0011 반성할 줄 아는
+treatment/01_poem/poem_02_0010_0012 그 마음
+treatment/01_poem/poem_02_0011_0001 어젯밤 꾼 꿈에서는요
+treatment/01_poem/poem_02_0011_0002 아주 커다란 공룡이 나왔어요
+treatment/01_poem/poem_02_0011_0003 이빨도 뾰족뾰족 뿔도 뾰족뾰족
+treatment/01_poem/poem_02_0011_0004 아주 크고 무서운 공룡이었어요
+treatment/01_poem/poem_02_0011_0005 공룡이 성큼성큼 다가왔어요
+treatment/01_poem/poem_02_0011_0006 너무 무서워서 벌벌 떨었어요
+treatment/01_poem/poem_02_0011_0007 아니야 난 너와 친구가 되고 싶어
+treatment/01_poem/poem_02_0011_0008 공룡이 나를 태우고 힘껏 달렸어요
+treatment/01_poem/poem_02_0011_0009 너무 신나고 재밌었어요
+treatment/01_poem/poem_02_0012_0001 화단에 수줍게 피어있는
+treatment/01_poem/poem_02_0012_0002 나팔꽃 한 송이
+treatment/01_poem/poem_02_0012_0003 어디에서 날아와서
+treatment/01_poem/poem_02_0012_0004 혼자 피어 있는 걸까
+treatment/01_poem/poem_02_0012_0005 옆에 친구들도 없이
+treatment/01_poem/poem_02_0012_0006 혼자 피어 있는
+treatment/01_poem/poem_02_0012_0007 나팔꽃 한 송이
+treatment/01_poem/poem_02_0012_0008 나팔꽃이 쓸쓸할까봐
+treatment/01_poem/poem_02_0012_0009 어느새 살랑살랑 날아온
+treatment/01_poem/poem_02_0012_0010 나비 한 마리
+treatment/01_poem/poem_02_0012_0011 외로운 나팔꽃의
+treatment/01_poem/poem_02_0012_0012 친구가 되어주는
+treatment/01_poem/poem_02_0012_0013 아름다운 나비 한 마리
+treatment/01_poem/poem_02_0013_0001 책상에 앉기만 하면
+treatment/01_poem/poem_02_0013_0002 왜 스르륵 잠이 올까
+treatment/01_poem/poem_02_0013_0003 앉은지 얼마 되지도 않았는데
+treatment/01_poem/poem_02_0013_0004 고개가 기울어진다
+treatment/01_poem/poem_02_0013_0005 책상에 앉기만 하면
+treatment/01_poem/poem_02_0013_0006 왜 기운이 없어질까
+treatment/01_poem/poem_02_0013_0007 맛있는 밥 먹고 왔는데도
+treatment/01_poem/poem_02_0013_0008 힘이 없고 나른하다
+treatment/01_poem/poem_02_0013_0009 컴퓨터 책상에 앉으면
+treatment/01_poem/poem_02_0013_0010 눈도 똘망똘망
+treatment/01_poem/poem_02_0013_0011 신이 난다
+treatment/01_poem/poem_02_0013_0012 신기하다
+treatment/01_poem/poem_02_0014_0001 저는 초등학교 삼학년입니다
+treatment/01_poem/poem_02_0014_0002 열 살이나 되었지요
+treatment/01_poem/poem_02_0014_0003 매운 것도 잘 먹고요
+treatment/01_poem/poem_02_0014_0004 공부도 열심히 하고요
+treatment/01_poem/poem_02_0014_0005 친구들과도 사이좋게 놀아요
+treatment/01_poem/poem_02_0014_0006 이렇게 잘하는데
+treatment/01_poem/poem_02_0014_0007 어른이 되면 안될까요
+treatment/01_poem/poem_02_0014_0008 빨리 어른이 되고 싶어요
+treatment/01_poem/poem_02_0014_0009 어서 어서 어른이 되고 싶어요
+treatment/01_poem/poem_02_0015_0001 회사에서 돌아오신 우리 아빠
+treatment/01_poem/poem_02_0015_0002 어깨가 축 늘어져 있네
+treatment/01_poem/poem_02_0015_0003 다녀오셨어요 인사하면
+treatment/01_poem/poem_02_0015_0004 그래도 밝게 받아주시는 우리 아빠
+treatment/01_poem/poem_02_0015_0005 엄마의 잔소리를 들어가며
+treatment/01_poem/poem_02_0015_0006 된장찌개를 먹는 우리 아빠
+treatment/01_poem/poem_02_0015_0007 뒷 모습이 왠지 모르게 안쓰러운
+treatment/01_poem/poem_02_0015_0008 하나밖에 없는 우리 아빠
+treatment/01_poem/poem_02_0016_0001 커다랗고 네모난 버스
+treatment/01_poem/poem_02_0016_0002 삑 소리와 함께 버스에 타면
+treatment/01_poem/poem_02_0016_0003 버스 기사님이 반갑게 인사하시네
+treatment/01_poem/poem_02_0016_0004 버스 안에는 사람도 많다
+treatment/01_poem/poem_02_0016_0005 등산복을 입은 할머니와 할아버지
+treatment/01_poem/poem_02_0016_0006 배낭을 맨 형 누나들
+treatment/01_poem/poem_02_0016_0007 애기와 함께 탄 아주머니
+treatment/01_poem/poem_02_0016_0008 정장 입은 아저씨
+treatment/01_poem/poem_02_0016_0009 이 모든 사람들은
+treatment/01_poem/poem_02_0016_0010 어디로 가고 있는 걸까
+treatment/01_poem/poem_02_0017_0001 째깍째깍 소리내며
+treatment/01_poem/poem_02_0017_0002 하루종일 움직이는 시계
+treatment/01_poem/poem_02_0017_0003 매일매일 움직이면
+treatment/01_poem/poem_02_0017_0004 지칠 법도 한데
+treatment/01_poem/poem_02_0017_0005 쉼없이 움직이는
+treatment/01_poem/poem_02_0017_0006 부지런한 시계
+treatment/01_poem/poem_02_0017_0007 언제 멈추나
+treatment/01_poem/poem_02_0017_0008 뚫어져라 보고 있으면
+treatment/01_poem/poem_02_0017_0009 내 눈만 아프다
+treatment/01_poem/poem_02_0017_0010 무슨 일이 있어도
+treatment/01_poem/poem_02_0017_0011 빙글빙글 돌아가는
+treatment/01_poem/poem_02_0017_0012 신기한 우리 집 시계
+treatment/01_poem/poem_02_0018_0001 어제 밥상에 올라온 멸치볶음
+treatment/01_poem/poem_02_0018_0002 짭쪼름한 맛에 고소한 멸치볶음
+treatment/01_poem/poem_02_0018_0003 옆에 있는 화려한 반찬보다도
+treatment/01_poem/poem_02_0018_0004 은은하게 바다 냄새를 풍기는
+treatment/01_poem/poem_02_0018_0005 짭쪼름한 맛에 고소한 멸치볶음
+treatment/01_poem/poem_02_0018_0006 밥을 다 먹고 나도
+treatment/01_poem/poem_02_0018_0007 이에 꼭 하나씩 남아있는
+treatment/01_poem/poem_02_0018_0008 짭쪼름한 맛에 고소한 멸치볶음
+treatment/01_poem/poem_02_0019_0001 하늘에서 주룩주룩 비가 내리네
+treatment/01_poem/poem_02_0019_0002 점점 더 거세지는 빗방울
+treatment/01_poem/poem_02_0019_0003 이제는 후두둑 후두둑 비가 내리네
+treatment/01_poem/poem_02_0019_0004 아 맞다 우산 안 가져왔는데
+treatment/01_poem/poem_02_0019_0005 친구야 같이 쓰자 우산
+treatment/01_poem/poem_02_0019_0006 그 때 다가오는 옆집에 사는 영민이
+treatment/01_poem/poem_02_0019_0007 우산대 하나 꼭 잡고
+treatment/01_poem/poem_02_0019_0008 한 걸음 한 걸음
+treatment/01_poem/poem_02_0019_0009 자그마한 우산 아래
+treatment/01_poem/poem_02_0019_0010 걸어가는 아이들
+treatment/01_poem/poem_02_0019_0011 우산 바깥은 조금 젖어도
+treatment/01_poem/poem_02_0019_0012 같이 가는 아이들
+treatment/01_poem/poem_02_0020_0001 하늘을 순식간에 날아가는 비행기
+treatment/01_poem/poem_02_0020_0002 저 비행기는 무얼 먹고 자랐길래
+treatment/01_poem/poem_02_0020_0003 저렇게 빨리 지나갈까
+treatment/01_poem/poem_02_0020_0004 새보다도 더 빠르게
+treatment/01_poem/poem_02_0020_0005 기차보다도 더 빠르게
+treatment/01_poem/poem_02_0020_0006 하늘을 날아가는 비행기
+treatment/01_poem/poem_02_0020_0007 나도 비행기처럼
+treatment/01_poem/poem_02_0020_0008 하늘을 날아다니고 싶다
+treatment/01_poem/poem_02_0020_0009 이 세상 어디든지
+treatment/01_poem/poem_02_0020_0010 날아다니고 싶다
+treatment/01_poem/poem_02_0021_0001 내가 기르는 고슴도치는요
+treatment/01_poem/poem_02_0021_0002 삐쭉 삐쭉 가시는 많지만
+treatment/01_poem/poem_02_0021_0003 귀엽고 사랑스러운 애랍니다
+treatment/01_poem/poem_02_0021_0004 손으로 등을 만지면 따끔따끔
+treatment/01_poem/poem_02_0021_0005 선인장처럼 등에 난 가시
+treatment/01_poem/poem_02_0021_0006 그래도 배 쪽은 부드러워요
+treatment/01_poem/poem_02_0021_0007 먹이를 주면 쪼르륵 달려와
+treatment/01_poem/poem_02_0021_0008 배부르게 먹고 가는 고슴도치
+treatment/01_poem/poem_02_0021_0009 나는 우리 고슴도치가
+treatment/01_poem/poem_02_0021_0010 참 좋습니다
+treatment/01_poem/poem_02_0022_0001 달팽아 달팽아
+treatment/01_poem/poem_02_0022_0002 너는 왜 집을 지고 다니니
+treatment/01_poem/poem_02_0022_0003 집이 얼마나 무거운데
+treatment/01_poem/poem_02_0022_0004 너네 집을 지고 다니니
+treatment/01_poem/poem_02_0022_0005 집을 가지고 다니면
+treatment/01_poem/poem_02_0022_0006 얼마나 좋은데
+treatment/01_poem/poem_02_0022_0007 무서운 곤충들이 나타나면
+treatment/01_poem/poem_02_0022_0008 쏙 내 집 안에 숨으면 되는걸
+treatment/01_poem/poem_02_0022_0009 느릿느릿 달팽이
+treatment/01_poem/poem_02_0022_0010 너는 왜 이렇게 느리니
+treatment/01_poem/poem_02_0022_0011 세상 멋진 풍경 구경하느라
+treatment/01_poem/poem_02_0022_0012 느릿느릿 천천히 간단다
+treatment/01_poem/poem_03_0001_0001 두둥실 달님이 떠오른다
+treatment/01_poem/poem_03_0001_0002 아침에는 어디로 갔는지
+treatment/01_poem/poem_03_0001_0003 찾아도 찾아도 안보이던 달님이
+treatment/01_poem/poem_03_0001_0004 수줍게 고개를 들이민다
+treatment/01_poem/poem_03_0001_0005 자기를 찾았냐는 듯이
+treatment/01_poem/poem_03_0001_0006 방금 전까지만 해도
+treatment/01_poem/poem_03_0001_0007 눈 앞에 어둠밖에 없던 것이
+treatment/01_poem/poem_03_0001_0008 조금씩 조금씩 밝아진다
+treatment/01_poem/poem_03_0001_0009 수줍어하던 달님이
+treatment/01_poem/poem_03_0001_0010 방긋 미소를 짓고 있다
+treatment/01_poem/poem_03_0001_0011 귀뚤귀뚤 귀뚜라미가
+treatment/01_poem/poem_03_0001_0012 조용하던 밤에
+treatment/01_poem/poem_03_0001_0013 노래를 부른다
+treatment/01_poem/poem_03_0001_0014 귀뚤귀뚤 귀뚤귀뚤
+treatment/01_poem/poem_03_0001_0015 달님이 숨죽여 노래를 듣는다
+treatment/01_poem/poem_03_0002_0001 옆집 살던 진수가
+treatment/01_poem/poem_03_0002_0002 서울로 이사를 간단다
+treatment/01_poem/poem_03_0002_0003 매일 같이 학교가고
+treatment/01_poem/poem_03_0002_0004 매일 같이 밥먹고
+treatment/01_poem/poem_03_0002_0005 매일 같이 놀던 진수가
+treatment/01_poem/poem_03_0002_0006 서울로 이사를 간단다
+treatment/01_poem/poem_03_0002_0007 커다란 트럭이
+treatment/01_poem/poem_03_0002_0008 우리집 앞에 멈춰선다
+treatment/01_poem/poem_03_0002_0009 피아노도 냉장고도
+treatment/01_poem/poem_03_0002_0010 책상도 침대도
+treatment/01_poem/poem_03_0002_0011 물건들을 남김없이 가져간다
+treatment/01_poem/poem_03_0002_0012 천둥번개 치며
+treatment/01_poem/poem_03_0002_0013 비가 무척 많이 오던 날
+treatment/01_poem/poem_03_0002_0014 우산 같이 쓰고 온 추억
+treatment/01_poem/poem_03_0002_0015 아저씨들은 추억도 가져가려고 한다
+treatment/01_poem/poem_03_0002_0016 나는 작은 손으로
+treatment/01_poem/poem_03_0002_0017 진수와의 추억을 잡아당긴다
+treatment/01_poem/poem_03_0002_0018 추억을 내 마음으로 가져간다
+treatment/01_poem/poem_03_0003_0001 마트에서 파는 사과
+treatment/01_poem/poem_03_0003_0002 빨갛게 익은 사과
+treatment/01_poem/poem_03_0003_0003 붉은 빛이 돌면서
+treatment/01_poem/poem_03_0003_0004 맛있게 생긴 사과
+treatment/01_poem/poem_03_0003_0005 할머니가 사과나무에서 따주신
+treatment/01_poem/poem_03_0003_0006 불그스름한 사과
+treatment/01_poem/poem_03_0003_0007 벌레가 한입 깨물고 간 사과
+treatment/01_poem/poem_03_0003_0008 초록색과 주황색이 섞인 사과
+treatment/01_poem/poem_03_0003_0009 나는 마트에서 파는 사과보다
+treatment/01_poem/poem_03_0003_0010 할머니가 따주신
+treatment/01_poem/poem_03_0003_0011 벌레먹은 사과가 좋아요
+treatment/01_poem/poem_03_0003_0012 할머니가 손녀 주려고
+treatment/01_poem/poem_03_0003_0013 사과나무에서 두 팔 벌려 따신
+treatment/01_poem/poem_03_0003_0014 벌레 먹은 사과가 훨씬 좋아요
+treatment/01_poem/poem_03_0004_0001 개굴개굴 개굴개굴
+treatment/01_poem/poem_03_0004_0002 우리집 앞 커다란 호수에서
+treatment/01_poem/poem_03_0004_0003 청개구리 요란하게 노래불러요
+treatment/01_poem/poem_03_0004_0004 낮에는 뭐하다가
+treatment/01_poem/poem_03_0004_0005 깜깜한 밤이 되어야
+treatment/01_poem/poem_03_0004_0006 시끄럽게 노래부르니
+treatment/01_poem/poem_03_0004_0007 아들 손자 며느리 다 모아서
+treatment/01_poem/poem_03_0004_0008 개굴개굴 개굴개굴
+treatment/01_poem/poem_03_0004_0009 각기 다른 목소리로
+treatment/01_poem/poem_03_0004_0010 청개구리 모두 모여 합창을 해요
+treatment/01_poem/poem_03_0004_0011 참나무에 붙어있던 매미들도
+treatment/01_poem/poem_03_0004_0012 청개구리 합창단에 끼어들어요
+treatment/01_poem/poem_03_0004_0013 어느 무더운 여름날
+treatment/01_poem/poem_03_0004_0014 함께 노래부르는
+treatment/01_poem/poem_03_0004_0015 매미와 청개구리들
+treatment/01_poem/poem_03_0005_0001 아무 것도 하지 않아도
+treatment/01_poem/poem_03_0005_0002 언제나 흐르고 있는 강물
+treatment/01_poem/poem_03_0005_0003 아무리 막아보려 해도
+treatment/01_poem/poem_03_0005_0004 멈추지 않고 흐르는 강물
+treatment/01_poem/poem_03_0005_0005 때로는 조심스럽게
+treatment/01_poem/poem_03_0005_0006 때로는 강인하게
+treatment/01_poem/poem_03_0005_0007 흐르는 속도는 다르지만
+treatment/01_poem/poem_03_0005_0008 언제나 흐르고 있는 강물
+treatment/01_poem/poem_03_0005_0009 저 푸르른 강물은
+treatment/01_poem/poem_03_0005_0010 산에서부터 흘러 흘러
+treatment/01_poem/poem_03_0005_0011 온갖 물고기들을 키워내고
+treatment/01_poem/poem_03_0005_0012 드넓은 바다로 향합니다
+treatment/01_poem/poem_03_0005_0013 좁디좁은 샘에서 시작해
+treatment/01_poem/poem_03_0005_0014 끝이 보이지 않는
+treatment/01_poem/poem_03_0005_0015 새파란 바다로 향합니다
+treatment/01_poem/poem_03_0006_0001 시험은 오월에 볼거야
+treatment/01_poem/poem_03_0006_0002 선생님이 시험 날짜를 알려주셨어요
+treatment/01_poem/poem_03_0006_0003 아직은 삼월이니
+treatment/01_poem/poem_03_0006_0004 시간이 많이 남았구나
+treatment/01_poem/poem_03_0006_0005 사월에는 동물원으로 소풍을 간대요
+treatment/01_poem/poem_03_0006_0006 친구들과 같이 김밥도 먹고
+treatment/01_poem/poem_03_0006_0007 신기한 동물도 구경하다 보니
+treatment/01_poem/poem_03_0006_0008 어느새 시험이 이틀 남았어요
+treatment/01_poem/poem_03_0006_0009 이를 어쩌지
+treatment/01_poem/poem_03_0006_0010 시험 공부 하나도 안 했는데
+treatment/01_poem/poem_03_0006_0011 책을 한장 펼쳐보니
+treatment/01_poem/poem_03_0006_0012 금새 졸음이 쏟아지네요
+treatment/01_poem/poem_03_0006_0013 정신을 차려보니
+treatment/01_poem/poem_03_0006_0014 선생님이 시험지를 나눠주셨어요
+treatment/01_poem/poem_03_0006_0015 검은 것은 글씨이고 하얀 것은 종이에요
+treatment/01_poem/poem_03_0006_0016 문제가 무슨 뜻인지도 모르겠어요
+treatment/01_poem/poem_03_0006_0017 선생님이 시험지를 채점해서 주셨어요
+treatment/01_poem/poem_03_0006_0018 시험지에 붉은색 비가 내려요
+treatment/01_poem/poem_03_0006_0019 이번 시험은 망쳤어요
+treatment/01_poem/poem_03_0006_0020 이번 시험도 또 망쳤어요
+treatment/01_poem/poem_03_0007_0001 윗집에서 치는 피아노 소리가
+treatment/01_poem/poem_03_0007_0002 우리집까지 들려온다
+treatment/01_poem/poem_03_0007_0003 젓가락 행진곡
+treatment/01_poem/poem_03_0007_0004 몇 마디 못 치고 틀린다
+treatment/01_poem/poem_03_0007_0005 내 실력을 보여주지
+treatment/01_poem/poem_03_0007_0006 피아노 앞에 앉았다
+treatment/01_poem/poem_03_0007_0007 운명 교향곡을 연주한다
+treatment/01_poem/poem_03_0007_0008 네 마디 치다가 못 치겠다
+treatment/01_poem/poem_03_0007_0009 일년 전에는 잘 쳤는데
+treatment/01_poem/poem_03_0007_0010 피아노 학원 다닐 때
+treatment/01_poem/poem_03_0007_0011 더 열심히 연습할 걸 그랬다
+treatment/01_poem/poem_03_0008_0001 기다리고 기다리던
+treatment/01_poem/poem_03_0008_0002 비가 옵니다
+treatment/01_poem/poem_03_0008_0003 하늘에 구멍 뚫린듯
+treatment/01_poem/poem_03_0008_0004 새벽부터 쉬지 않고 쏟아집니다
+treatment/01_poem/poem_03_0008_0005 앞집 선아네 아주머니도
+treatment/01_poem/poem_03_0008_0006 옆집 경수네 아저씨도
+treatment/01_poem/poem_03_0008_0007 집 앞에 나와 서서는
+treatment/01_poem/poem_03_0008_0008 우산도 안 쓰고
+treatment/01_poem/poem_03_0008_0009 비와 인사합니다
+treatment/01_poem/poem_03_0008_0010 한 방울도 귀하지요
+treatment/01_poem/poem_03_0008_0011 몇 달 동안 애태우던 비
+treatment/01_poem/poem_03_0008_0012 밭에 논에 도랑에 잘도 옵니다
+treatment/01_poem/poem_03_0008_0013 마을 사람 모두 모여
+treatment/01_poem/poem_03_0008_0014 밝은 얼굴로 비 얘기합니다
+treatment/01_poem/poem_03_0009_0001 다 똑같은 구름인데
+treatment/01_poem/poem_03_0009_0002 모양도 크기도 서로 다릅니다
+treatment/01_poem/poem_03_0009_0003 하늘 높이 흘러가는
+treatment/01_poem/poem_03_0009_0004 새하얀 뭉게구름
+treatment/01_poem/poem_03_0009_0005 얇디얇은 실이 뭉쳐
+treatment/01_poem/poem_03_0009_0006 솜사탕처럼 생긴 새털구름
+treatment/01_poem/poem_03_0009_0007 솔솔 부는 바람타고
+treatment/01_poem/poem_03_0009_0008 둥실둥실 떠가는 구름들
+treatment/01_poem/poem_03_0009_0009 햇님과도 인사하고
+treatment/01_poem/poem_03_0009_0010 하늘 보는 나랑도 인사하고
+treatment/01_poem/poem_03_0009_0011 뭐가 그리 바쁜지
+treatment/01_poem/poem_03_0009_0012 멀리 멀리 흘러가는 구름들
+treatment/01_poem/poem_03_0010_0001 너 방 청소해라
+treatment/01_poem/poem_03_0010_0002 스마트폰 그만 만져라
+treatment/01_poem/poem_03_0010_0003 밥 먹을 때는 조용히 해라
+treatment/01_poem/poem_03_0010_0004 끊이지 않는 엄마의 잔소리
+treatment/01_poem/poem_03_0010_0005 왜 공부를 안하니
+treatment/01_poem/poem_03_0010_0006 게임 끄고 공부해라
+treatment/01_poem/poem_03_0010_0007 그만 자고 일어나라
+treatment/01_poem/poem_03_0010_0008 계속되는 잔소리에
+treatment/01_poem/poem_03_0010_0009 짜증 섞인 내 목소리
+treatment/01_poem/poem_03_0010_0010 알았어요 엄마
+treatment/01_poem/poem_03_0010_0011 하면 되잖아요
+treatment/01_poem/poem_03_0010_0012 이러면 안 되는데
+treatment/01_poem/poem_03_0010_0013 엄마에게 소리 지르면 안 되는데
+treatment/01_poem/poem_03_0010_0014 엄마도 나 잘되라고
+treatment/01_poem/poem_03_0010_0015 하시는 걸텐데
+treatment/01_poem/poem_03_0010_0016 엄마 죄송해요
+treatment/01_poem/poem_03_0010_0017 엄마에게 사과를 하면
+treatment/01_poem/poem_03_0010_0018 괜찮다고 따뜻하게 안아주시는
+treatment/01_poem/poem_03_0010_0019 우리 엄마
+treatment/01_poem/poem_03_0011_0001 어느 화창한 가을날
+treatment/01_poem/poem_03_0011_0002 해는 저 높이 떠오르고
+treatment/01_poem/poem_03_0011_0003 가을 산은 빨갛게 노랗게
+treatment/01_poem/poem_03_0011_0004 예쁜 옷으로 꽃단장했네
+treatment/01_poem/poem_03_0011_0005 밤나무에는 주먹만한 밤이
+treatment/01_poem/poem_03_0011_0006 송이송이 열려 있네
+treatment/01_poem/poem_03_0011_0007 길 가던 다람쥐가
+treatment/01_poem/poem_03_0011_0008 냄새 맡고 군침을 삼키네
+treatment/01_poem/poem_03_0011_0009 울긋불긋 예쁘게 달려있던
+treatment/01_poem/poem_03_0011_0010 단풍잎 은행잎
+treatment/01_poem/poem_03_0011_0011 가을 바람에 하나 둘 떨어지네
+treatment/01_poem/poem_03_0011_0012 가을 세상을
+treatment/01_poem/poem_03_0011_0013 화사하게 비추고
+treatment/01_poem/poem_03_0011_0014 자기 몫을 다 했다는 듯이
+treatment/01_poem/poem_03_0011_0015 웃는 얼굴로 떨어지네
+treatment/01_poem/poem_03_0012_0001 이 더운 여름에
+treatment/01_poem/poem_03_0012_0002 민희는 감기에 걸렸어요
+treatment/01_poem/poem_03_0012_0003 민희가 그렇게 좋아하던
+treatment/01_poem/poem_03_0012_0004 달콤한 아이스크림도 못 먹고
+treatment/01_poem/poem_03_0012_0005 시원한 수박도 못 먹고
+treatment/01_poem/poem_03_0012_0006 끙끙 앓다가
+treatment/01_poem/poem_03_0012_0007 두꺼운 이불 속에서
+treatment/01_poem/poem_03_0012_0008 잠이 들었어요
+treatment/01_poem/poem_03_0012_0009 꿈에는 무서운 괴물이 나왔어요
+treatment/01_poem/poem_03_0012_0010 너무 무서워서 도망만 다니다가
+treatment/01_poem/poem_03_0012_0011 결국 괴물한테 붙잡혔어요
+treatment/01_poem/poem_03_0012_0012 식은 땀을 흘리던 민희는
+treatment/01_poem/poem_03_0012_0013 꿈에서 깨고 말았어요
+treatment/01_poem/poem_03_0012_0014 잠에서 깨고 보니
+treatment/01_poem/poem_03_0012_0015 감기가 말끔히 나았어요
+treatment/01_poem/poem_03_0012_0016 꿈에 나온 괴물이
+treatment/01_poem/poem_03_0012_0017 감기를 쫓아줬나봐요
+treatment/01_poem/poem_03_0013_0001 주르륵 흘러내리는 것은
+treatment/01_poem/poem_03_0013_0002 눈물도 아니고 땀도 아니다
+treatment/01_poem/poem_03_0013_0003 이 것은 다름 아닌 콧물이다
+treatment/01_poem/poem_03_0013_0004 감기에 걸린 것도 아닌데
+treatment/01_poem/poem_03_0013_0005 왜 갑자기 콧물이 나지
+treatment/01_poem/poem_03_0013_0006 생각을 하자마자
+treatment/01_poem/poem_03_0013_0007 입안에 매운 향이 감돈다
+treatment/01_poem/poem_03_0013_0008 매운 떡볶이 때문이다
+treatment/01_poem/poem_03_0013_0009 휴지를 뽑아서 코를 닦는다
+treatment/01_poem/poem_03_0013_0010 얼마 지나지 않아
+treatment/01_poem/poem_03_0013_0011 무언가 주르륵 흘러내린다
+treatment/01_poem/poem_03_0013_0012 아 또 콧물이다
+treatment/01_poem/poem_03_0014_0001 무더운 여름에도
+treatment/01_poem/poem_03_0014_0002 몸이 오들오들 떨리는 겨울에도
+treatment/01_poem/poem_03_0014_0003 항상 푸른 빛의 소나무
+treatment/01_poem/poem_03_0014_0004 소나무의 커다란 그늘 아래에서
+treatment/01_poem/poem_03_0014_0005 잠깐 땀을 식힐 때면
+treatment/01_poem/poem_03_0014_0006 이렇게 고마운 나무가 없다
+treatment/01_poem/poem_03_0014_0007 높은 산 좁은 바위 틈새에서
+treatment/01_poem/poem_03_0014_0008 굳세게 서 있는 소나무
+treatment/01_poem/poem_03_0014_0009 좁은 틈새에서 얼마나 힘들었을까
+treatment/01_poem/poem_03_0014_0010 고마운 마음에
+treatment/01_poem/poem_03_0014_0011 등을 한 번 두드려 주어도
+treatment/01_poem/poem_03_0014_0012 눈 하나 깜짝 않고
+treatment/01_poem/poem_03_0014_0013 그 자리를 지키는
+treatment/01_poem/poem_03_0014_0014 푸른 소나무
+treatment/01_poem/poem_03_0015_0001 동해 바닷가를 찾을 때면
+treatment/01_poem/poem_03_0015_0002 저 멀리부터 들리는
+treatment/01_poem/poem_03_0015_0003 철썩철썩
+treatment/01_poem/poem_03_0015_0004 시원한 파도소리
+treatment/01_poem/poem_03_0015_0005 파도소리에는
+treatment/01_poem/poem_03_0015_0006 온갖 동물들의
+treatment/01_poem/poem_03_0015_0007 움직임이 실려있다
+treatment/01_poem/poem_03_0015_0008 바닷가에 덩그러니 놓여있는
+treatment/01_poem/poem_03_0015_0009 소라껍데기 주워서
+treatment/01_poem/poem_03_0015_0010 귀에 갖다대면
+treatment/01_poem/poem_03_0015_0011 짭조름한 바다 향과 함께
+treatment/01_poem/poem_03_0015_0012 메아리치는 파도 소리
+treatment/01_poem/poem_03_0015_0013 집에서도 듣고 싶은
+treatment/01_poem/poem_03_0015_0014 들으면 들을수록
+treatment/01_poem/poem_03_0015_0015 더 듣고 싶은
+treatment/01_poem/poem_03_0015_0016 시원한 파도소리
+treatment/01_poem/poem_03_0016_0001 꼼지락 꼼지락
+treatment/01_poem/poem_03_0016_0002 발가락이 내 말을 듣지 않고
+treatment/01_poem/poem_03_0016_0003 자기 멋대로 움직인다
+treatment/01_poem/poem_03_0016_0004 가만히 있어봐
+treatment/01_poem/poem_03_0016_0005 마음속으로 소리친다
+treatment/01_poem/poem_03_0016_0006 발가락은 부끄러운 듯이
+treatment/01_poem/poem_03_0016_0007 살짝 고개를 숙인다
+treatment/01_poem/poem_03_0016_0008 내 짝 지민이가
+treatment/01_poem/poem_03_0016_0009 날 보며 웃을 때마다
+treatment/01_poem/poem_03_0016_0010 발가락이 내 말을 듣지 않는다
+treatment/01_poem/poem_03_0016_0011 내 마음이 그대로
+treatment/01_poem/poem_03_0016_0012 발가락한테 전해졌나보다
+treatment/01_poem/poem_03_0017_0001 엄마랑 있으면
+treatment/01_poem/poem_03_0017_0002 몸에 안 좋다고
+treatment/01_poem/poem_03_0017_0003 특별한 날에만 해 주시는
+treatment/01_poem/poem_03_0017_0004 맛있는 라면
+treatment/01_poem/poem_03_0017_0005 오늘은 엄마가 여행을 갔어요
+treatment/01_poem/poem_03_0017_0006 아빠가 배가 고프다며
+treatment/01_poem/poem_03_0017_0007 라면을 끓이셨어요
+treatment/01_poem/poem_03_0017_0008 파도 송송 썰어 넣고
+treatment/01_poem/poem_03_0017_0009 계란도 하나 풀어 넣으니
+treatment/01_poem/poem_03_0017_0010 맛있는 라면이 완성되었어요
+treatment/01_poem/poem_03_0017_0011 가끔씩만 먹을 수 있는
+treatment/01_poem/poem_03_0017_0012 꼬불꼬불 면발의
+treatment/01_poem/poem_03_0017_0013 맛있는 라면
+treatment/01_poem/poem_03_0018_0001 어느 날
+treatment/01_poem/poem_03_0018_0002 햇살이 내리쬐던 날
+treatment/01_poem/poem_03_0018_0003 즐거운 체육시간
+treatment/01_poem/poem_03_0018_0004 밖에서 열심히 달리기를 했어요
+treatment/01_poem/poem_03_0018_0005 결승선을 통과하던 순간
+treatment/01_poem/poem_03_0018_0006 이마에서 주르륵
+treatment/01_poem/poem_03_0018_0007 타고 내려온 땀
+treatment/01_poem/poem_03_0018_0008 아무리 부채질을 해 봐도
+treatment/01_poem/poem_03_0018_0009 가시지 않는
+treatment/01_poem/poem_03_0018_0010 뜨거운 기운
+treatment/01_poem/poem_03_0018_0011 때마침 불어오는
+treatment/01_poem/poem_03_0018_0012 시원한 바람
+treatment/01_poem/poem_03_0018_0013 내 땀방울까지
+treatment/01_poem/poem_03_0018_0014 같이 가져가주는
+treatment/01_poem/poem_03_0018_0015 고마운 바람
+treatment/01_poem/poem_03_0019_0001 폴짝 폴짝
+treatment/01_poem/poem_03_0019_0002 줄을 한 바퀴 돌리고
+treatment/01_poem/poem_03_0019_0003 하나 둘 셋 넷
+treatment/01_poem/poem_03_0019_0004 내 앞에 줄을 넘는다
+treatment/01_poem/poem_03_0019_0005 줄을 재빠르게 돌리고
+treatment/01_poem/poem_03_0019_0006 더 빠르게 넘는다
+treatment/01_poem/poem_03_0019_0007 다섯 여섯 일곱 여덟
+treatment/01_poem/poem_03_0019_0008 멈추지 않고 계속 넘는다
+treatment/01_poem/poem_03_0019_0009 그냥 넘는 건 재미없어
+treatment/01_poem/poem_03_0019_0010 왼쪽 발만 들었다가
+treatment/01_poem/poem_03_0019_0011 오른 발만 들었다가
+treatment/01_poem/poem_03_0019_0012 아이쿠 줄에 걸렸네
+treatment/01_poem/poem_03_0020_0001 부드러운 바람에
+treatment/01_poem/poem_03_0020_0002 빙글빙글 돌아간다
+treatment/01_poem/poem_03_0020_0003 자기한테 오는
+treatment/01_poem/poem_03_0020_0004 부드러운 바람을 느끼면서
+treatment/01_poem/poem_03_0020_0005 솔솔 불며 장난치던 바람이
+treatment/01_poem/poem_03_0020_0006 어느새 그쳤다
+treatment/01_poem/poem_03_0020_0007 빙글빙글 돌아가던 바람개비도
+treatment/01_poem/poem_03_0020_0008 천천히 속도를 줄인다
+treatment/01_poem/poem_03_0020_0009 가만히 있는 바람개비에
+treatment/01_poem/poem_03_0020_0010 입으로 바람을 후우 불어본다
+treatment/01_poem/poem_03_0020_0011 내 근심과 걱정을 날려보내게
+treatment/01_poem/poem_03_0020_0012 시원한 바람을 불어본다
+treatment/03_count/text_0001_0001 밥
+treatment/03_count/text_0002_0001 감
+treatment/03_count/text_0003_0001 입
+treatment/03_count/text_0004_0001 숲
+treatment/03_count/text_0005_0001 길
+treatment/03_count/text_0006_0001 별
+treatment/03_count/text_0007_0001 눈물
+treatment/03_count/text_0008_0001 수박
+treatment/03_count/text_0009_0001 사랑
+treatment/03_count/text_0010_0001 학교
+treatment/03_count/text_0011_0001 단어
+treatment/03_count/text_0012_0001 포도
+treatment/03_count/text_0013_0001 고민
+treatment/03_count/text_0014_0001 성공
+treatment/03_count/text_0015_0001 행복
+treatment/03_count/text_0016_0001 친구
+treatment/03_count/text_0017_0001 엄마
+treatment/03_count/text_0018_0001 국수
+treatment/03_count/text_0019_0001 파도
+treatment/03_count/text_0020_0001 날개
+treatment/03_count/text_0021_0001 동화책
+treatment/03_count/text_0022_0001 컴퓨터
+treatment/03_count/text_0023_0001 냉장고
+treatment/03_count/text_0024_0001 비행기
+treatment/03_count/text_0025_0001 한라산
+treatment/03_count/text_0026_0001 러시아
+treatment/03_count/text_0027_0001 유리창
+treatment/03_count/text_0028_0001 자전거
+treatment/03_count/text_0029_0001 쇠구슬
+treatment/03_count/text_0030_0001 거북이
+treatment/03_count/text_0031_0001 개나리
+treatment/03_count/text_0032_0001 앵무새
+treatment/03_count/text_0033_0001 다람쥐
+treatment/03_count/text_0034_0001 구구단
+treatment/03_count/text_0035_0001 무지개
+treatment/03_count/text_0036_0001 도깨비불
+treatment/03_count/text_0037_0001 비빔국수
+treatment/03_count/text_0038_0001 스파게티
+treatment/03_count/text_0039_0001 국어사전
+treatment/03_count/text_0040_0001 유리그릇
+treatment/03_count/text_0041_0001 주렁주렁
+treatment/03_count/text_0042_0001 또박또박
+treatment/03_count/text_0043_0001 초등학생
+treatment/03_count/text_0044_0001 편지봉투
+treatment/03_count/text_0045_0001 오토바이
+treatment/03_count/text_0046_0001 피노키오
+treatment/03_count/text_0047_0001 허수아비
+treatment/03_count/text_0048_0001 제기차기
+treatment/03_count/text_0049_0001 술래잡기
+treatment/03_count/text_0050_0001 배추김치
+treatment/03_count/text_0051_0001 아이스크림
+treatment/03_count/text_0052_0001 엘리베이터
+treatment/03_count/text_0053_0001 로봇청소기
+treatment/03_count/text_0054_0001 무선충전기
+treatment/03_count/text_0055_0001 빨래건조대
+treatment/03_count/text_0056_0001 자유이용권
+treatment/03_count/text_0057_0001 레몬에이드
+treatment/03_count/text_0058_0001 롤러코스터
+treatment/03_count/text_0059_0001 도깨비시장
+treatment/03_count/text_0060_0001 도레미파솔
+treatment/04_common/text_01_0001_0001 고기
+treatment/04_common/text_01_0001_0002 고모
+treatment/04_common/text_01_0001_0003 고향
+treatment/04_common/text_01_0001_0004 고
+treatment/04_common/text_01_0001_0005 가
+treatment/04_common/text_01_0001_0006 모
+treatment/04_common/text_01_0001_0007 도
+treatment/04_common/text_01_0001_0008 고
+treatment/04_common/text_01_0002_0001 포도나무
+treatment/04_common/text_01_0002_0002 포장마차
+treatment/04_common/text_01_0002_0003 포크레인
+treatment/04_common/text_01_0002_0004 포
+treatment/04_common/text_01_0002_0005 도
+treatment/04_common/text_01_0002_0006 크
+treatment/04_common/text_01_0002_0007 마
+treatment/04_common/text_01_0002_0008 포
+treatment/04_common/text_01_0003_0001 대한민국
+treatment/04_common/text_01_0003_0002 대추나무
+treatment/04_common/text_01_0003_0003 대장장이
+treatment/04_common/text_01_0003_0004 한
+treatment/04_common/text_01_0003_0005 대
+treatment/04_common/text_01_0003_0006 이
+treatment/04_common/text_01_0003_0007 매
+treatment/04_common/text_01_0003_0008 대
+treatment/04_common/text_01_0004_0001 배구선수
+treatment/04_common/text_01_0004_0002 배드민턴
+treatment/04_common/text_01_0004_0003 배추벌레
+treatment/04_common/text_01_0004_0004 레
+treatment/04_common/text_01_0004_0005 수
+treatment/04_common/text_01_0004_0006 배
+treatment/04_common/text_01_0004_0007 드
+treatment/04_common/text_01_0004_0008 배
+treatment/04_common/text_01_0005_0001 동그라미
+treatment/04_common/text_01_0005_0002 동산
+treatment/04_common/text_01_0005_0003 동물놀이
+treatment/04_common/text_01_0005_0004 이
+treatment/04_common/text_01_0005_0005 산
+treatment/04_common/text_01_0005_0006 동
+treatment/04_common/text_01_0005_0007 봉
+treatment/04_common/text_01_0005_0008 동
+treatment/04_common/text_01_0006_0001 개나리
+treatment/04_common/text_01_0006_0002 개구리
+treatment/04_common/text_01_0006_0003 개미
+treatment/04_common/text_01_0006_0004 나
+treatment/04_common/text_01_0006_0005 개
+treatment/04_common/text_01_0006_0006 리
+treatment/04_common/text_01_0006_0007 미
+treatment/04_common/text_01_0006_0008 개
+treatment/04_common/text_01_0007_0001 호랑이
+treatment/04_common/text_01_0007_0002 호수
+treatment/04_common/text_01_0007_0003 호루라기
+treatment/04_common/text_01_0007_0004 이
+treatment/04_common/text_01_0007_0005 제
+treatment/04_common/text_01_0007_0006 수
+treatment/04_common/text_01_0007_0007 호
+treatment/04_common/text_01_0007_0008 호
+treatment/04_common/text_01_0008_0001 허수아비
+treatment/04_common/text_01_0008_0002 허리
+treatment/04_common/text_01_0008_0003 허세
+treatment/04_common/text_01_0008_0004 허
+treatment/04_common/text_01_0008_0005 비
+treatment/04_common/text_01_0008_0006 세
+treatment/04_common/text_01_0008_0007 아
+treatment/04_common/text_01_0008_0008 허
+treatment/04_common/text_01_0009_0001 오락가락
+treatment/04_common/text_01_0009_0002 오징어
+treatment/04_common/text_01_0009_0003 오이
+treatment/04_common/text_01_0009_0004 락
+treatment/04_common/text_01_0009_0005 징
+treatment/04_common/text_01_0009_0006 이
+treatment/04_common/text_01_0009_0007 오
+treatment/04_common/text_01_0010_0001 한국
+treatment/04_common/text_01_0010_0002 한자
+treatment/04_common/text_01_0010_0003 한글
+treatment/04_common/text_01_0010_0004 한
+treatment/04_common/text_01_0010_0005 단
+treatment/04_common/text_01_0010_0006 안
+treatment/04_common/text_01_0010_0007 국
+treatment/04_common/text_01_0010_0008 한
+treatment/04_common/text_01_0011_0001 대나무
+treatment/04_common/text_01_0011_0002 대한민국
+treatment/04_common/text_01_0011_0003 대학교
+treatment/04_common/text_01_0011_0004 국
+treatment/04_common/text_01_0011_0005 배
+treatment/04_common/text_01_0011_0006 대
+treatment/04_common/text_01_0011_0007 재
+treatment/04_common/text_01_0011_0008 대
+treatment/04_common/text_01_0012_0001 머리
+treatment/04_common/text_01_0012_0002 머루
+treatment/04_common/text_01_0012_0003 머슴
+treatment/04_common/text_01_0012_0004 버
+treatment/04_common/text_01_0012_0005 머
+treatment/04_common/text_01_0012_0006 저
+treatment/04_common/text_01_0012_0007 거
+treatment/04_common/text_01_0012_0008 머
+treatment/04_common/text_01_0013_0001 강남
+treatment/04_common/text_01_0013_0002 강가
+treatment/04_common/text_01_0013_0003 강도
+treatment/04_common/text_01_0013_0004 남
+treatment/04_common/text_01_0013_0005 도
+treatment/04_common/text_01_0013_0006 강
+treatment/04_common/text_01_0013_0007 당
+treatment/04_common/text_01_0013_0008 강
+treatment/04_common/text_01_0014_0001 홍삼
+treatment/04_common/text_01_0014_0002 홍길동
+treatment/04_common/text_01_0014_0003 홍시
+treatment/04_common/text_01_0014_0004 길
+treatment/04_common/text_01_0014_0005 동
+treatment/04_common/text_01_0014_0006 송
+treatment/04_common/text_01_0014_0007 홍
+treatment/04_common/text_01_0014_0008 홍
+treatment/04_common/text_01_0015_0001 현금
+treatment/04_common/text_01_0015_0002 현재
+treatment/04_common/text_01_0015_0003 현수막
+treatment/04_common/text_01_0015_0004 막
+treatment/04_common/text_01_0015_0005 연
+treatment/04_common/text_01_0015_0006 젼
+treatment/04_common/text_01_0015_0007 현
+treatment/04_common/text_01_0015_0008 현
+treatment/04_common/text_01_0016_0001 도라지
+treatment/04_common/text_01_0016_0002 도사
+treatment/04_common/text_01_0016_0003 도레미파
+treatment/04_common/text_01_0016_0004 모
+treatment/04_common/text_01_0016_0005 소
+treatment/04_common/text_01_0016_0006 도
+treatment/04_common/text_01_0016_0007 보
+treatment/04_common/text_01_0016_0008 도
+treatment/04_common/text_01_0017_0001 생고기
+treatment/04_common/text_01_0017_0002 생명
+treatment/04_common/text_01_0017_0003 생활수준
+treatment/04_common/text_01_0017_0004 생
+treatment/04_common/text_01_0017_0005 쟁
+treatment/04_common/text_01_0017_0006 댕
+treatment/04_common/text_01_0017_0007 맹
+treatment/04_common/text_01_0017_0008 생
+treatment/04_common/text_01_0018_0001 박쥐
+treatment/04_common/text_01_0018_0002 박장대소
+treatment/04_common/text_01_0018_0003 박하사탕
+treatment/04_common/text_01_0018_0004 박
+treatment/04_common/text_01_0018_0005 탕
+treatment/04_common/text_01_0018_0006 하
+treatment/04_common/text_01_0018_0007 작
+treatment/04_common/text_01_0018_0008 박
+treatment/04_common/text_01_0019_0001 원숭이
+treatment/04_common/text_01_0019_0002 원상복귀
+treatment/04_common/text_01_0019_0003 원시인
+treatment/04_common/text_01_0019_0004 원
+treatment/04_common/text_01_0019_0005 전
+treatment/04_common/text_01_0019_0006 명
+treatment/04_common/text_01_0019_0007 인
+treatment/04_common/text_01_0019_0008 원
+treatment/04_common/text_01_0020_0001 불나방
+treatment/04_common/text_01_0020_0002 불쏘시개
+treatment/04_common/text_01_0020_0003 불가사리
+treatment/04_common/text_01_0020_0004 물
+treatment/04_common/text_01_0020_0005 줄
+treatment/04_common/text_01_0020_0006 불
+treatment/04_common/text_01_0020_0007 풀
+treatment/04_common/text_01_0020_0008 불
+treatment/04_common/text_01_0021_0001 집중
+treatment/04_common/text_01_0021_0002 집들이
+treatment/04_common/text_01_0021_0003 집게벌레
+treatment/04_common/text_01_0021_0004 집
+treatment/04_common/text_01_0021_0005 중
+treatment/04_common/text_01_0021_0006 레
+treatment/04_common/text_01_0021_0007 게
+treatment/04_common/text_01_0021_0008 집
+treatment/04_common/text_02_0001_0001 기러기
+treatment/04_common/text_02_0001_0002 드라이기
+treatment/04_common/text_02_0001_0003 냉난방기
+treatment/04_common/text_02_0001_0004 기
+treatment/04_common/text_02_0001_0005 치
+treatment/04_common/text_02_0001_0006 리
+treatment/04_common/text_02_0001_0007 이
+treatment/04_common/text_02_0001_0008 기
+treatment/04_common/text_02_0002_0001 오리
+treatment/04_common/text_02_0002_0002 소리
+treatment/04_common/text_02_0002_0003 병아리
+treatment/04_common/text_02_0002_0004 리
+treatment/04_common/text_02_0002_0005 이
+treatment/04_common/text_02_0002_0006 병
+treatment/04_common/text_02_0002_0007 아
+treatment/04_common/text_02_0002_0008 리
+treatment/04_common/text_02_0003_0001 원인
+treatment/04_common/text_02_0003_0002 한국인
+treatment/04_common/text_02_0003_0003 허리케인
+treatment/04_common/text_02_0003_0004 진
+treatment/04_common/text_02_0003_0005 민
+treatment/04_common/text_02_0003_0006 빈
+treatment/04_common/text_02_0003_0007 인
+treatment/04_common/text_02_0003_0008 인
+treatment/04_common/text_02_0004_0001 신혼부부
+treatment/04_common/text_02_0004_0002 정부
+treatment/04_common/text_02_0004_0003 고모부
+treatment/04_common/text_02_0004_0004 푸
+treatment/04_common/text_02_0004_0005 주
+treatment/04_common/text_02_0004_0006 부
+treatment/04_common/text_02_0004_0007 추
+treatment/04_common/text_02_0004_0008 부
+treatment/04_common/text_02_0005_0001 반드시
+treatment/04_common/text_02_0005_0002 택시
+treatment/04_common/text_02_0005_0003 낚시
+treatment/04_common/text_02_0005_0004 미
+treatment/04_common/text_02_0005_0005 시
+treatment/04_common/text_02_0005_0006 디
+treatment/04_common/text_02_0005_0007 비
+treatment/04_common/text_02_0005_0008 시
+treatment/04_common/text_02_0006_0001 운동장
+treatment/04_common/text_02_0006_0002 정거장
+treatment/04_common/text_02_0006_0003 수영장
+treatment/04_common/text_02_0006_0004 운
+treatment/04_common/text_02_0006_0005 거
+treatment/04_common/text_02_0006_0006 장
+treatment/04_common/text_02_0006_0007 영
+treatment/04_common/text_02_0006_0008 장
+treatment/04_common/text_02_0007_0001 건강
+treatment/04_common/text_02_0007_0002 두만강
+treatment/04_common/text_02_0007_0003 한강
+treatment/04_common/text_02_0007_0004 강
+treatment/04_common/text_02_0007_0005 망
+treatment/04_common/text_02_0007_0006 팡
+treatment/04_common/text_02_0007_0007 항
+treatment/04_common/text_02_0007_0008 강
+treatment/04_common/text_02_0008_0001 텔레비전
+treatment/04_common/text_02_0008_0002 사전
+treatment/04_common/text_02_0008_0003 처방전
+treatment/04_common/text_02_0008_0004 천
+treatment/04_common/text_02_0008_0005 전
+treatment/04_common/text_02_0008_0006 번
+treatment/04_common/text_02_0008_0007 레
+treatment/04_common/text_02_0008_0008 전
+treatment/04_common/text_02_0009_0001 자격증
+treatment/04_common/text_02_0009_0002 갈증
+treatment/04_common/text_02_0009_0003 학생증
+treatment/04_common/text_02_0009_0004 장
+treatment/04_common/text_02_0009_0005 증
+treatment/04_common/text_02_0009_0006 방
+treatment/04_common/text_02_0009_0007 생
+treatment/04_common/text_02_0009_0008 증
+treatment/04_common/text_02_0010_0001 디자이너
+treatment/04_common/text_02_0010_0002 트레이너
+treatment/04_common/text_02_0010_0003 건너
+treatment/04_common/text_02_0010_0004 디
+treatment/04_common/text_02_0010_0005 트
+treatment/04_common/text_02_0010_0006 너
+treatment/04_common/text_02_0010_0007 이
+treatment/04_common/text_02_0010_0008 너
+treatment/04_common/text_02_0011_0001 상대편
+treatment/04_common/text_02_0011_0002 송편
+treatment/04_common/text_02_0011_0003 불편
+treatment/04_common/text_02_0011_0004 상
+treatment/04_common/text_02_0011_0005 푼
+treatment/04_common/text_02_0011_0006 번
+treatment/04_common/text_02_0011_0007 편
+treatment/04_common/text_02_0011_0008 편
+treatment/04_common/text_02_0012_0001 라면
+treatment/04_common/text_02_0012_0002 짜장면
+treatment/04_common/text_02_0012_0003 명장면
+treatment/04_common/text_02_0012_0004 짜
+treatment/04_common/text_02_0012_0005 편
+treatment/04_common/text_02_0012_0006 연
+treatment/04_common/text_02_0012_0007 면
+treatment/04_common/text_02_0012_0008 면
+treatment/04_common/text_02_0013_0001 국회의원
+treatment/04_common/text_02_0013_0002 대학원
+treatment/04_common/text_02_0013_0003 유치원
+treatment/04_common/text_02_0013_0004 대
+treatment/04_common/text_02_0013_0005 의
+treatment/04_common/text_02_0013_0006 원
+treatment/04_common/text_02_0013_0007 국
+treatment/04_common/text_02_0013_0008 원
+treatment/04_common/text_02_0014_0001 생활방식
+treatment/04_common/text_02_0014_0002 방학식
+treatment/04_common/text_02_0014_0003 음식
+treatment/04_common/text_02_0014_0004 식
+treatment/04_common/text_02_0014_0005 음
+treatment/04_common/text_02_0014_0006 활
+treatment/04_common/text_02_0014_0007 방
+treatment/04_common/text_02_0014_0008 식
+treatment/04_common/text_02_0015_0001 폭풍해일
+treatment/04_common/text_02_0015_0002 토요일
+treatment/04_common/text_02_0015_0003 온종일
+treatment/04_common/text_02_0015_0004 운
+treatment/04_common/text_02_0015_0005 요
+treatment/04_common/text_02_0015_0006 폭
+treatment/04_common/text_02_0015_0007 일
+treatment/04_common/text_02_0015_0008 일
+treatment/04_common/text_02_0016_0001 태양광선
+treatment/04_common/text_02_0016_0002 신선
+treatment/04_common/text_02_0016_0003 국내선
+treatment/04_common/text_02_0016_0004 신
+treatment/04_common/text_02_0016_0005 선
+treatment/04_common/text_02_0016_0006 광
+treatment/04_common/text_02_0016_0007 양
+treatment/04_common/text_02_0016_0008 선
+treatment/04_common/text_02_0017_0001 무지개
+treatment/04_common/text_02_0017_0002 지우개
+treatment/04_common/text_02_0017_0003 된장찌개
+treatment/04_common/text_02_0017_0004 찌
+treatment/04_common/text_02_0017_0005 애
+treatment/04_common/text_02_0017_0006 개
+treatment/04_common/text_02_0017_0007 대
+treatment/04_common/text_02_0017_0008 개
+treatment/04_common/text_02_0018_0001 화장실
+treatment/04_common/text_02_0018_0002 덩실덩실
+treatment/04_common/text_02_0018_0003 보건실
+treatment/04_common/text_02_0018_0004 덩
+treatment/04_common/text_02_0018_0005 빌
+treatment/04_common/text_02_0018_0006 밀
+treatment/04_common/text_02_0018_0007 실
+treatment/04_common/text_02_0018_0008 실
+treatment/04_common/text_02_0019_0001 소설
+treatment/04_common/text_02_0019_0002 연설
+treatment/04_common/text_02_0019_0003 전설
+treatment/04_common/text_02_0019_0004 연
+treatment/04_common/text_02_0019_0005 설
+treatment/04_common/text_02_0019_0006 전
+treatment/04_common/text_02_0019_0007 벌
+treatment/04_common/text_02_0019_0008 설
+treatment/04_common/text_02_0020_0001 직속부하
+treatment/04_common/text_02_0020_0002 은하
+treatment/04_common/text_02_0020_0003 축하
+treatment/04_common/text_02_0020_0004 축
+treatment/04_common/text_02_0020_0005 부
+treatment/04_common/text_02_0020_0006 속
+treatment/04_common/text_02_0020_0007 하
+treatment/04_common/text_02_0020_0008 하
+treatment/04_common/text_03_0001_0001 불개미
+treatment/04_common/text_03_0001_0002 소개팅
+treatment/04_common/text_03_0001_0003 무지개
+treatment/04_common/text_03_0001_0004 개
+treatment/04_common/text_03_0001_0005 소
+treatment/04_common/text_03_0001_0006 지
+treatment/04_common/text_03_0001_0007 배
+treatment/04_common/text_03_0001_0008 개
+treatment/04_common/text_03_0002_0001 형제자매
+treatment/04_common/text_03_0002_0002 애매모호
+treatment/04_common/text_03_0002_0003 매미
+treatment/04_common/text_03_0002_0004 미
+treatment/04_common/text_03_0002_0005 버
+treatment/04_common/text_03_0002_0006 배
+treatment/04_common/text_03_0002_0007 매
+treatment/04_common/text_03_0003_0001 장미꽃
+treatment/04_common/text_03_0003_0002 이미지
+treatment/04_common/text_03_0003_0003 미술관
+treatment/04_common/text_03_0003_0004 관
+treatment/04_common/text_03_0003_0005 지
+treatment/04_common/text_03_0003_0006 미
+treatment/04_common/text_03_0003_0007 장
+treatment/04_common/text_03_0003_0008 미
+treatment/04_common/text_03_0004_0001 지진
+treatment/04_common/text_03_0004_0002 진달래
+treatment/04_common/text_03_0004_0003 사진기
+treatment/04_common/text_03_0004_0004 달
+treatment/04_common/text_03_0004_0005 빈
+treatment/04_common/text_03_0004_0006 민
+treatment/04_common/text_03_0004_0007 진
+treatment/04_common/text_03_0004_0008 진
+treatment/04_common/text_03_0005_0001 오랜만
+treatment/04_common/text_03_0005_0002 라디오
+treatment/04_common/text_03_0005_0003 오징어
+treatment/04_common/text_03_0005_0004 랜
+treatment/04_common/text_03_0005_0005 오
+treatment/04_common/text_03_0005_0006 우
+treatment/04_common/text_03_0005_0007 어
+treatment/04_common/text_03_0005_0008 오
+treatment/04_common/text_03_0006_0001 교육
+treatment/04_common/text_03_0006_0002 체육시간
+treatment/04_common/text_03_0006_0003 육십오
+treatment/04_common/text_03_0006_0004 시
+treatment/04_common/text_03_0006_0005 교
+treatment/04_common/text_03_0006_0006 육
+treatment/04_common/text_03_0006_0007 오
+treatment/04_common/text_03_0006_0008 육
+treatment/04_common/text_03_0007_0001 강아지
+treatment/04_common/text_03_0007_0002 금강산
+treatment/04_common/text_03_0007_0003 건강
+treatment/04_common/text_03_0007_0004 산
+treatment/04_common/text_03_0007_0005 군
+treatment/04_common/text_03_0007_0006 방
+treatment/04_common/text_03_0007_0007 강
+treatment/04_common/text_03_0007_0008 강
+treatment/04_common/text_03_0008_0001 아버지
+treatment/04_common/text_03_0008_0002 휴지
+treatment/04_common/text_03_0008_0003 지하철
+treatment/04_common/text_03_0008_0004 휴
+treatment/04_common/text_03_0008_0005 디
+treatment/04_common/text_03_0008_0006 피
+treatment/04_common/text_03_0008_0007 지
+treatment/04_common/text_03_0008_0008 지
+treatment/04_common/text_03_0009_0001 단어
+treatment/04_common/text_03_0009_0002 횡단보도
+treatment/04_common/text_03_0009_0003 단풍
+treatment/04_common/text_03_0009_0004 도
+treatment/04_common/text_03_0009_0005 잔
+treatment/04_common/text_03_0009_0006 단
+treatment/04_common/text_03_0009_0007 던
+treatment/04_common/text_03_0009_0008 단
+treatment/04_common/text_03_0010_0001 매일
+treatment/04_common/text_03_0010_0002 스타일
+treatment/04_common/text_03_0010_0003 일본
+treatment/04_common/text_03_0010_0004 스
+treatment/04_common/text_03_0010_0005 일
+treatment/04_common/text_03_0010_0006 진
+treatment/04_common/text_03_0010_0007 칠
+treatment/04_common/text_03_0010_0008 일
+treatment/04_common/text_03_0011_0001 화장실
+treatment/04_common/text_03_0011_0002 대중문화
+treatment/04_common/text_03_0011_0003 화분
+treatment/04_common/text_03_0011_0004 중
+treatment/04_common/text_03_0011_0005 휴
+treatment/04_common/text_03_0011_0006 바
+treatment/04_common/text_03_0011_0007 화
+treatment/04_common/text_03_0011_0008 화
+treatment/04_common/text_03_0012_0001 극장
+treatment/04_common/text_03_0012_0002 남극
+treatment/04_common/text_03_0012_0003 연극
+treatment/04_common/text_03_0012_0004 장
+treatment/04_common/text_03_0012_0005 블
+treatment/04_common/text_03_0012_0006 극
+treatment/04_common/text_03_0012_0007 연
+treatment/04_common/text_03_0012_0008 극
+treatment/04_common/text_03_0013_0001 태권도
+treatment/04_common/text_03_0013_0002 태극기
+treatment/04_common/text_03_0013_0003 상태
+treatment/04_common/text_03_0013_0004 도
+treatment/04_common/text_03_0013_0005 태
+treatment/04_common/text_03_0013_0006 상
+treatment/04_common/text_03_0013_0007 권
+treatment/04_common/text_03_0013_0008 태
+treatment/04_common/text_03_0014_0001 비닐봉투
+treatment/04_common/text_03_0014_0002 봉사
+treatment/04_common/text_03_0014_0003 눈봉우리
+treatment/04_common/text_03_0014_0004 리
+treatment/04_common/text_03_0014_0005 봉
+treatment/04_common/text_03_0014_0006 비
+treatment/04_common/text_03_0014_0007 투
+treatment/04_common/text_03_0014_0008 봉
+treatment/04_common/text_03_0015_0001 저녁
+treatment/04_common/text_03_0015_0002 먼저
+treatment/04_common/text_03_0015_0003 여기저기
+treatment/04_common/text_03_0015_0004 저
+treatment/04_common/text_03_0015_0005 먼
+treatment/04_common/text_03_0015_0006 여
+treatment/04_common/text_03_0015_0007 비
+treatment/04_common/text_03_0015_0008 저
+treatment/04_common/text_03_0016_0001 세수
+treatment/04_common/text_03_0016_0002 연세
+treatment/04_common/text_03_0016_0003 신세대
+treatment/04_common/text_03_0016_0004 대
+treatment/04_common/text_03_0016_0005 재
+treatment/04_common/text_03_0016_0006 배
+treatment/04_common/text_03_0016_0007 세
+treatment/04_common/text_03_0016_0008 세
+treatment/04_common/text_03_0017_0001 피자
+treatment/04_common/text_03_0017_0002 그림자
+treatment/04_common/text_03_0017_0003 자연
+treatment/04_common/text_03_0017_0004 바
+treatment/04_common/text_03_0017_0005 아
+treatment/04_common/text_03_0017_0006 자
+treatment/04_common/text_03_0017_0007 차
+treatment/04_common/text_03_0017_0008 자
+treatment/04_common/text_03_0018_0001 언니
+treatment/04_common/text_03_0018_0002 챔피언
+treatment/04_common/text_03_0018_0003 언제나
+treatment/04_common/text_03_0018_0004 제
+treatment/04_common/text_03_0018_0005 컨
+treatment/04_common/text_03_0018_0006 언
+treatment/04_common/text_03_0018_0007 천
+treatment/04_common/text_03_0018_0008 언
+treatment/04_common/text_03_0019_0001 구경꾼
+treatment/04_common/text_03_0019_0002 개구리
+treatment/04_common/text_03_0019_0003 지구본
+treatment/04_common/text_03_0019_0004 꾼
+treatment/04_common/text_03_0019_0005 컬
+treatment/04_common/text_03_0019_0006 구
+treatment/04_common/text_03_0019_0007 리
+treatment/04_common/text_03_0019_0008 구
+treatment/04_common/text_03_0020_0001 완성
+treatment/04_common/text_03_0020_0002 성격
+treatment/04_common/text_03_0020_0003 중요성
+treatment/04_common/text_03_0020_0004 요
+treatment/04_common/text_03_0020_0005 성
+treatment/04_common/text_03_0020_0006 완
+treatment/04_common/text_03_0020_0007 큼
+treatment/04_common/text_03_0020_0008 성
+treatment/05_vowelword/text_01_0001_0001 아아아아
+treatment/05_vowelword/text_01_0002_0001 어어어어
+treatment/05_vowelword/text_01_0003_0001 오오오오
+treatment/05_vowelword/text_01_0004_0001 우우우우
+treatment/05_vowelword/text_01_0005_0001 으으으으
+treatment/05_vowelword/text_01_0006_0001 이이이이
+treatment/05_vowelword/text_01_0007_0001 애애애애
+treatment/05_vowelword/text_01_0008_0001 에에에에
+treatment/05_vowelword/text_01_0009_0001 으으오오
+treatment/05_vowelword/text_01_0010_0001 이이으으
+treatment/05_vowelword/text_01_0011_0001 에에이이
+treatment/05_vowelword/text_01_0012_0001 오오아아
+treatment/05_vowelword/text_01_0013_0001 어어오오
+treatment/05_vowelword/text_01_0014_0001 이이애애
+treatment/05_vowelword/text_01_0015_0001 우우오오
+treatment/05_vowelword/text_01_0016_0001 어어아아
+treatment/05_vowelword/text_01_0017_0001 으으에에
+treatment/05_vowelword/text_01_0018_0001 오오애애
+treatment/05_vowelword/text_01_0019_0001 우우우오
+treatment/05_vowelword/text_01_0020_0001 애애아으
+treatment/05_vowelword/text_01_0021_0001 어어으애
+treatment/05_vowelword/text_01_0022_0001 오이이오
+treatment/05_vowelword/text_01_0023_0001 애어어어
+treatment/05_vowelword/text_01_0024_0001 으에에으
+treatment/05_vowelword/text_01_0025_0001 어으으오
+treatment/05_vowelword/text_01_0026_0001 우에이이
+treatment/05_vowelword/text_01_0027_0001 에애으으
+treatment/05_vowelword/text_01_0028_0001 오우에이
+treatment/05_vowelword/text_01_0029_0001 으에어아
+treatment/05_vowelword/text_01_0030_0001 에아아이
+treatment/05_vowelword/text_01_0031_0001 에으으오
+treatment/05_vowelword/text_01_0032_0001 으아어우
+treatment/05_vowelword/text_01_0033_0001 애이어어
+treatment/05_vowelword/text_01_0034_0001 우우에오
+treatment/05_vowelword/text_01_0035_0001 우이어우
+treatment/05_vowelword/text_01_0036_0001 이아에어
+treatment/05_vowelword/text_01_0037_0001 아이에이
+treatment/05_vowelword/text_02_0001_0001 여여여여
+treatment/05_vowelword/text_02_0002_0001 요요요요
+treatment/05_vowelword/text_02_0003_0001 유유유유
+treatment/05_vowelword/text_02_0004_0001 얘얘얘얘
+treatment/05_vowelword/text_02_0005_0001 예예예예
+treatment/05_vowelword/text_02_0006_0001 유유예예
+treatment/05_vowelword/text_02_0007_0001 얘얘요요
+treatment/05_vowelword/text_02_0008_0001 예예얘얘
+treatment/05_vowelword/text_02_0009_0001 유유요요
+treatment/05_vowelword/text_02_0010_0001 예예여여
+treatment/05_vowelword/text_02_0011_0001 여여예예
+treatment/05_vowelword/text_02_0012_0001 얘얘예예
+treatment/05_vowelword/text_02_0013_0001 예예요요
+treatment/05_vowelword/text_02_0014_0001 요요여여
+treatment/05_vowelword/text_02_0015_0001 유유얘얘
+treatment/05_vowelword/text_02_0016_0001 여여여유
+treatment/05_vowelword/text_02_0017_0001 요요여예
+treatment/05_vowelword/text_02_0018_0001 유유예얘
+treatment/05_vowelword/text_02_0019_0001 유여여요
+treatment/05_vowelword/text_02_0020_0001 얘여여유
+treatment/05_vowelword/text_02_0021_0001 유요요예
+treatment/05_vowelword/text_02_0022_0001 여얘얘여
+treatment/05_vowelword/text_02_0023_0001 여유예예
+treatment/05_vowelword/text_02_0024_0001 요요예예
+treatment/05_vowelword/text_02_0025_0001 여얘유유
+treatment/05_vowelword/text_02_0026_0001 여얘유여
+treatment/05_vowelword/text_02_0027_0001 유여얘여
+treatment/05_vowelword/text_02_0028_0001 예여예예
+treatment/05_vowelword/text_02_0029_0001 유예여얘
+treatment/05_vowelword/text_02_0030_0001 요예얘요
+treatment/05_vowelword/text_02_0031_0001 얘여유예
+treatment/05_vowelword/text_02_0032_0001 유유유얘
+treatment/05_vowelword/text_02_0033_0001 예유여요
+treatment/05_vowelword/text_02_0034_0001 여요예유
+treatment/05_vowelword/text_02_0035_0001 여요요여
+treatment/05_vowelword/text_03_0001_0001 왜왜왜왜
+treatment/05_vowelword/text_03_0002_0001 워워워워
+treatment/05_vowelword/text_03_0003_0001 웨웨웨웨
+treatment/05_vowelword/text_03_0004_0001 외외외외
+treatment/05_vowelword/text_03_0005_0001 위위위위
+treatment/05_vowelword/text_03_0006_0001 의의의의
+treatment/05_vowelword/text_03_0007_0001 위위웨웨
+treatment/05_vowelword/text_03_0008_0001 왜왜의의
+treatment/05_vowelword/text_03_0009_0001 왜왜워워
+treatment/05_vowelword/text_03_0010_0001 위위외외
+treatment/05_vowelword/text_03_0011_0001 워워의의
+treatment/05_vowelword/text_03_0012_0001 의의외외
+treatment/05_vowelword/text_03_0013_0001 워워외외
+treatment/05_vowelword/text_03_0014_0001 의의웨웨
+treatment/05_vowelword/text_03_0015_0001 워워웨웨
+treatment/05_vowelword/text_03_0016_0001 워워위위
+treatment/05_vowelword/text_03_0017_0001 웨웨의외
+treatment/05_vowelword/text_03_0018_0001 의의왜의
+treatment/05_vowelword/text_03_0019_0001 의의웨워
+treatment/05_vowelword/text_03_0020_0001 웨의의의
+treatment/05_vowelword/text_03_0021_0001 외왜왜웨
+treatment/05_vowelword/text_03_0022_0001 외웨웨왜
+treatment/05_vowelword/text_03_0023_0001 위워워왜
+treatment/05_vowelword/text_03_0024_0001 위의워워
+treatment/05_vowelword/text_03_0025_0001 의웨웨웨
+treatment/05_vowelword/text_03_0026_0001 웨웨의워
+treatment/05_vowelword/text_03_0027_0001 워워외위
+treatment/05_vowelword/text_03_0028_0001 워위외웨
+treatment/05_vowelword/text_03_0029_0001 의위워위
+treatment/05_vowelword/text_03_0030_0001 워의의위
+treatment/05_vowelword/text_03_0031_0001 워워웨왜
+treatment/05_vowelword/text_03_0032_0001 웨외위워
+treatment/05_vowelword/text_03_0033_0001 외웨외위
+treatment/05_vowelword/text_03_0034_0001 위워위워
+treatment/05_vowelword/text_03_0035_0001 웨웨오오
+treatment/05_vowelword/text_03_0036_0001 외외유유
+treatment/05_vowelword/text_03_0037_0001 유유의의
+treatment/05_vowelword/text_03_0038_0001 오오유유
+treatment/05_vowelword/text_03_0039_0001 애애얘얘
+treatment/05_vowelword/text_03_0040_0001 왜왜어어
+treatment/05_vowelword/text_03_0041_0001 오오왜왜
+treatment/05_vowelword/text_03_0042_0001 의의요요
+treatment/05_vowelword/text_03_0043_0001 외외요요
+treatment/05_vowelword/text_03_0044_0001 와와어어
+treatment/05_vowelword/text_03_0045_0001 유유야왜
+treatment/05_vowelword/text_03_0046_0001 워워아워
+treatment/05_vowelword/text_03_0047_0001 우우어얘
+treatment/05_vowelword/text_03_0048_0001 이웨웨에
+treatment/05_vowelword/text_03_0049_0001 여여여예
+treatment/05_vowelword/text_03_0050_0001 얘우우외
+treatment/05_vowelword/text_03_0051_0001 유외외이
+treatment/05_vowelword/text_03_0052_0001 요오이이
+treatment/05_vowelword/text_03_0053_0001 우여이이
+treatment/05_vowelword/text_03_0054_0001 으의야야
+treatment/05_vowelword/text_03_0055_0001 얘우유예
+treatment/05_vowelword/text_03_0056_0001 야유애여
+treatment/05_vowelword/text_03_0057_0001 에얘애어
+treatment/05_vowelword/text_03_0058_0001 예웨유요
+treatment/05_vowelword/text_03_0059_0001 예왜웨위
+treatment/05_vowelword/text_03_0060_0001 이이으어
+treatment/05_vowelword/text_03_0061_0001 우왜유에
+treatment/05_vowelword/text_03_0062_0001 웨위의외
+treatment/05_vowelword/text_03_0063_0001 야우의얘
+treatment/06_vowelsound/text_01_0001_0001 아
+treatment/06_vowelsound/text_01_0001_0002 아
+treatment/06_vowelsound/text_01_0001_0003 어
+treatment/06_vowelsound/text_01_0002_0001 아
+treatment/06_vowelsound/text_01_0002_0002 오
+treatment/06_vowelsound/text_01_0002_0003 아
+treatment/06_vowelsound/text_01_0003_0001 아
+treatment/06_vowelsound/text_01_0003_0002 우
+treatment/06_vowelsound/text_01_0003_0003 아
+treatment/06_vowelsound/text_01_0004_0001 아
+treatment/06_vowelsound/text_01_0004_0002 으
+treatment/06_vowelsound/text_01_0004_0003 아
+treatment/06_vowelsound/text_01_0005_0001 아
+treatment/06_vowelsound/text_01_0005_0002 아
+treatment/06_vowelsound/text_01_0005_0003 이
+treatment/06_vowelsound/text_01_0006_0001 아
+treatment/06_vowelsound/text_01_0006_0002 애
+treatment/06_vowelsound/text_01_0006_0003 아
+treatment/06_vowelsound/text_01_0007_0001 아
+treatment/06_vowelsound/text_01_0007_0002 에
+treatment/06_vowelsound/text_01_0007_0003 아
+treatment/06_vowelsound/text_01_0008_0001 어
+treatment/06_vowelsound/text_01_0008_0002 어
+treatment/06_vowelsound/text_01_0008_0003 오
+treatment/06_vowelsound/text_01_0009_0001 어
+treatment/06_vowelsound/text_01_0009_0002 우
+treatment/06_vowelsound/text_01_0009_0003 어
+treatment/06_vowelsound/text_01_0010_0001 어
+treatment/06_vowelsound/text_01_0010_0002 어
+treatment/06_vowelsound/text_01_0010_0003 으
+treatment/06_vowelsound/text_01_0011_0001 어
+treatment/06_vowelsound/text_01_0011_0002 이
+treatment/06_vowelsound/text_01_0011_0003 어
+treatment/06_vowelsound/text_01_0012_0001 어
+treatment/06_vowelsound/text_01_0012_0002 애
+treatment/06_vowelsound/text_01_0012_0003 어
+treatment/06_vowelsound/text_01_0013_0001 어
+treatment/06_vowelsound/text_01_0013_0002 에
+treatment/06_vowelsound/text_01_0013_0003 어
+treatment/06_vowelsound/text_01_0014_0001 오
+treatment/06_vowelsound/text_01_0014_0002 오
+treatment/06_vowelsound/text_01_0014_0003 우
+treatment/06_vowelsound/text_01_0015_0001 오
+treatment/06_vowelsound/text_01_0015_0002 으
+treatment/06_vowelsound/text_01_0015_0003 오
+treatment/06_vowelsound/text_01_0016_0001 오
+treatment/06_vowelsound/text_01_0016_0002 이
+treatment/06_vowelsound/text_01_0016_0003 오
+treatment/06_vowelsound/text_01_0017_0001 오
+treatment/06_vowelsound/text_01_0017_0002 애
+treatment/06_vowelsound/text_01_0017_0003 오
+treatment/06_vowelsound/text_01_0018_0001 오
+treatment/06_vowelsound/text_01_0018_0002 오
+treatment/06_vowelsound/text_01_0018_0003 에
+treatment/06_vowelsound/text_01_0019_0001 우
+treatment/06_vowelsound/text_01_0019_0002 우
+treatment/06_vowelsound/text_01_0019_0003 으
+treatment/06_vowelsound/text_01_0020_0001 우
+treatment/06_vowelsound/text_01_0020_0002 우
+treatment/06_vowelsound/text_01_0020_0003 이
+treatment/06_vowelsound/text_01_0021_0001 우
+treatment/06_vowelsound/text_01_0021_0002 우
+treatment/06_vowelsound/text_01_0021_0003 애
+treatment/06_vowelsound/text_01_0022_0001 우
+treatment/06_vowelsound/text_01_0022_0002 에
+treatment/06_vowelsound/text_01_0022_0003 우
+treatment/06_vowelsound/text_01_0023_0001 으
+treatment/06_vowelsound/text_01_0023_0002 으
+treatment/06_vowelsound/text_01_0023_0003 이
+treatment/06_vowelsound/text_01_0024_0001 으
+treatment/06_vowelsound/text_01_0024_0002 애
+treatment/06_vowelsound/text_01_0024_0003 으
+treatment/06_vowelsound/text_01_0025_0001 으
+treatment/06_vowelsound/text_01_0025_0002 에
+treatment/06_vowelsound/text_01_0025_0003 으
+treatment/06_vowelsound/text_01_0026_0001 이
+treatment/06_vowelsound/text_01_0026_0002 이
+treatment/06_vowelsound/text_01_0026_0003 애
+treatment/06_vowelsound/text_01_0027_0001 이
+treatment/06_vowelsound/text_01_0027_0002 에
+treatment/06_vowelsound/text_01_0027_0003 이
+treatment/06_vowelsound/text_01_0028_0001 애
+treatment/06_vowelsound/text_01_0028_0002 에
+treatment/06_vowelsound/text_01_0028_0003 애
+treatment/06_vowelsound/text_02_0001_0001 여
+treatment/06_vowelsound/text_02_0001_0002 여
+treatment/06_vowelsound/text_02_0001_0003 요
+treatment/06_vowelsound/text_02_0002_0001 여
+treatment/06_vowelsound/text_02_0002_0002 여
+treatment/06_vowelsound/text_02_0002_0003 유
+treatment/06_vowelsound/text_02_0003_0001 여
+treatment/06_vowelsound/text_02_0003_0002 여
+treatment/06_vowelsound/text_02_0003_0003 얘
+treatment/06_vowelsound/text_02_0004_0001 여
+treatment/06_vowelsound/text_02_0004_0002 여
+treatment/06_vowelsound/text_02_0004_0003 예
+treatment/06_vowelsound/text_02_0005_0001 요
+treatment/06_vowelsound/text_02_0005_0002 요
+treatment/06_vowelsound/text_02_0005_0003 유
+treatment/06_vowelsound/text_02_0006_0001 요
+treatment/06_vowelsound/text_02_0006_0002 얘
+treatment/06_vowelsound/text_02_0006_0003 요
+treatment/06_vowelsound/text_02_0007_0001 요
+treatment/06_vowelsound/text_02_0007_0002 요
+treatment/06_vowelsound/text_02_0007_0003 예
+treatment/06_vowelsound/text_02_0008_0001 유
+treatment/06_vowelsound/text_02_0008_0002 유
+treatment/06_vowelsound/text_02_0008_0003 얘
+treatment/06_vowelsound/text_02_0009_0001 유
+treatment/06_vowelsound/text_02_0009_0002 예
+treatment/06_vowelsound/text_02_0009_0003 유
+treatment/06_vowelsound/text_02_0010_0001 얘
+treatment/06_vowelsound/text_02_0010_0002 예
+treatment/06_vowelsound/text_02_0010_0003 얘
+treatment/06_vowelsound/text_03_0001_0001 왜
+treatment/06_vowelsound/text_03_0001_0002 왜
+treatment/06_vowelsound/text_03_0001_0003 워
+treatment/06_vowelsound/text_03_0002_0001 왜
+treatment/06_vowelsound/text_03_0002_0002 왜
+treatment/06_vowelsound/text_03_0002_0003 웨
+treatment/06_vowelsound/text_03_0003_0001 왜
+treatment/06_vowelsound/text_03_0003_0002 외
+treatment/06_vowelsound/text_03_0003_0003 왜
+treatment/06_vowelsound/text_03_0004_0001 왜
+treatment/06_vowelsound/text_03_0004_0002 왜
+treatment/06_vowelsound/text_03_0004_0003 위
+treatment/06_vowelsound/text_03_0005_0001 왜
+treatment/06_vowelsound/text_03_0005_0002 의
+treatment/06_vowelsound/text_03_0005_0003 왜
+treatment/06_vowelsound/text_03_0006_0001 워
+treatment/06_vowelsound/text_03_0006_0002 워
+treatment/06_vowelsound/text_03_0006_0003 웨
+treatment/06_vowelsound/text_03_0007_0001 워
+treatment/06_vowelsound/text_03_0007_0002 워
+treatment/06_vowelsound/text_03_0007_0003 외
+treatment/06_vowelsound/text_03_0008_0001 워
+treatment/06_vowelsound/text_03_0008_0002 워
+treatment/06_vowelsound/text_03_0008_0003 위
+treatment/06_vowelsound/text_03_0009_0001 워
+treatment/06_vowelsound/text_03_0009_0002 워
+treatment/06_vowelsound/text_03_0009_0003 의
+treatment/06_vowelsound/text_03_0010_0001 웨
+treatment/06_vowelsound/text_03_0010_0002 외
+treatment/06_vowelsound/text_03_0010_0003 웨
+treatment/06_vowelsound/text_03_0011_0001 웨
+treatment/06_vowelsound/text_03_0011_0002 웨
+treatment/06_vowelsound/text_03_0011_0003 위
+treatment/06_vowelsound/text_03_0012_0001 웨
+treatment/06_vowelsound/text_03_0012_0002 의
+treatment/06_vowelsound/text_03_0012_0003 웨
+treatment/06_vowelsound/text_03_0013_0001 외
+treatment/06_vowelsound/text_03_0013_0002 외
+treatment/06_vowelsound/text_03_0013_0003 위
+treatment/06_vowelsound/text_03_0014_0001 외
+treatment/06_vowelsound/text_03_0014_0002 의
+treatment/06_vowelsound/text_03_0014_0003 외
+treatment/06_vowelsound/text_03_0015_0001 위
+treatment/06_vowelsound/text_03_0015_0002 의
+treatment/06_vowelsound/text_03_0015_0003 위
+treatment/06_vowelsound/text_04_0001_0001 우
+treatment/06_vowelsound/text_04_0001_0002 웨
+treatment/06_vowelsound/text_04_0001_0003 우
+treatment/06_vowelsound/text_04_0002_0001 애
+treatment/06_vowelsound/text_04_0002_0002 요
+treatment/06_vowelsound/text_04_0002_0003 애
+treatment/06_vowelsound/text_04_0003_0001 워
+treatment/06_vowelsound/text_04_0003_0002 워
+treatment/06_vowelsound/text_04_0003_0003 위
+treatment/06_vowelsound/text_04_0004_0001 유
+treatment/06_vowelsound/text_04_0004_0002 유
+treatment/06_vowelsound/text_04_0004_0003 위
+treatment/06_vowelsound/text_04_0005_0001 이
+treatment/06_vowelsound/text_04_0005_0002 애
+treatment/06_vowelsound/text_04_0005_0003 이
+treatment/06_vowelsound/text_04_0006_0001 어
+treatment/06_vowelsound/text_04_0006_0002 어
+treatment/06_vowelsound/text_04_0006_0003 위
+treatment/06_vowelsound/text_04_0007_0001 유
+treatment/06_vowelsound/text_04_0007_0002 웨
+treatment/06_vowelsound/text_04_0007_0003 유
+treatment/06_vowelsound/text_04_0008_0001 여
+treatment/06_vowelsound/text_04_0008_0002 여
+treatment/06_vowelsound/text_04_0008_0003 요
+treatment/06_vowelsound/text_04_0009_0001 왜
+treatment/06_vowelsound/text_04_0009_0002 위
+treatment/06_vowelsound/text_04_0009_0003 왜
+treatment/06_vowelsound/text_04_0010_0001 아
+treatment/06_vowelsound/text_04_0010_0002 외
+treatment/06_vowelsound/text_04_0010_0003 아
+treatment/06_vowelsound/text_04_0011_0001 에
+treatment/06_vowelsound/text_04_0011_0002 외
+treatment/06_vowelsound/text_04_0011_0003 에
+treatment/06_vowelsound/text_04_0012_0001 오
+treatment/06_vowelsound/text_04_0012_0002 예
+treatment/06_vowelsound/text_04_0012_0003 오
+treatment/06_vowelsound/text_04_0013_0001 얘
+treatment/06_vowelsound/text_04_0013_0002 워
+treatment/06_vowelsound/text_04_0013_0003 얘
+treatment/06_vowelsound/text_04_0014_0001 아
+treatment/06_vowelsound/text_04_0014_0002 아
+treatment/06_vowelsound/text_04_0014_0003 우
+treatment/06_vowelsound/text_04_0015_0001 우
+treatment/06_vowelsound/text_04_0015_0002 워
+treatment/06_vowelsound/text_04_0015_0003 우
+treatment/06_vowelsound/text_04_0016_0001 아
+treatment/06_vowelsound/text_04_0016_0002 요
+treatment/06_vowelsound/text_04_0016_0003 아
+treatment/06_vowelsound/text_04_0017_0001 에
+treatment/06_vowelsound/text_04_0017_0002 에
+treatment/06_vowelsound/text_04_0017_0003 웨
+treatment/06_vowelsound/text_04_0018_0001 요
+treatment/06_vowelsound/text_04_0018_0002 요
+treatment/06_vowelsound/text_04_0018_0003 웨
+treatment/06_vowelsound/text_04_0019_0001 아
+treatment/06_vowelsound/text_04_0019_0002 아
+treatment/06_vowelsound/text_04_0019_0003 위
+treatment/06_vowelsound/text_04_0020_0001 어
+treatment/06_vowelsound/text_04_0020_0002 이
+treatment/06_vowelsound/text_04_0020_0003 어
+treatment/06_vowelsound/text_04_0021_0001 아
+treatment/06_vowelsound/text_04_0021_0002 얘
+treatment/06_vowelsound/text_04_0021_0003 아
+treatment/06_vowelsound/text_04_0022_0001 요
+treatment/06_vowelsound/text_04_0022_0002 얘
+treatment/06_vowelsound/text_04_0022_0003 요
+treatment/06_vowelsound/text_04_0023_0001 아
+treatment/06_vowelsound/text_04_0023_0002 으
+treatment/06_vowelsound/text_04_0023_0003 아
+treatment/06_vowelsound/text_04_0024_0001 얘
+treatment/06_vowelsound/text_04_0024_0002 의
+treatment/06_vowelsound/text_04_0024_0003 얘
+treatment/06_vowelsound/text_04_0025_0001 에
+treatment/06_vowelsound/text_04_0025_0002 워
+treatment/06_vowelsound/text_04_0025_0003 에
+treatment/06_vowelsound/text_04_0026_0001 애
+treatment/06_vowelsound/text_04_0026_0002 애
+treatment/06_vowelsound/text_04_0026_0003 의
+treatment/06_vowelsound/text_04_0027_0001 예
+treatment/06_vowelsound/text_04_0027_0002 워
+treatment/06_vowelsound/text_04_0027_0003 예
+treatment/06_vowelsound/text_04_0028_0001 우
+treatment/06_vowelsound/text_04_0028_0002 우
+treatment/06_vowelsound/text_04_0028_0003 왜
+treatment/06_vowelsound/text_04_0029_0001 으
+treatment/06_vowelsound/text_04_0029_0002 이
+treatment/06_vowelsound/text_04_0029_0003 으
+treatment/06_vowelsound/text_04_0030_0001 이
+treatment/06_vowelsound/text_04_0030_0002 이
+treatment/06_vowelsound/text_04_0030_0003 위
+treatment/06_vowelsound/text_04_0031_0001 여
+treatment/06_vowelsound/text_04_0031_0002 여
+treatment/06_vowelsound/text_04_0031_0003 얘
+treatment/06_vowelsound/text_04_0032_0001 이
+treatment/06_vowelsound/text_04_0032_0002 얘
+treatment/06_vowelsound/text_04_0032_0003 이
+treatment/06_vowelsound/text_04_0033_0001 왜
+treatment/06_vowelsound/text_04_0033_0002 왜
+treatment/06_vowelsound/text_04_0033_0003 웨
+treatment/06_vowelsound/text_04_0034_0001 요
+treatment/06_vowelsound/text_04_0034_0002 요
+treatment/06_vowelsound/text_04_0034_0003 유
+treatment/06_vowelsound/text_04_0035_0001 요
+treatment/06_vowelsound/text_04_0035_0002 요
+treatment/06_vowelsound/text_04_0035_0003 외
+treatment/06_vowelsound/text_04_0036_0001 애
+treatment/06_vowelsound/text_04_0036_0002 애
+treatment/06_vowelsound/text_04_0036_0003 예
+treatment/06_vowelsound/text_04_0037_0001 얘
+treatment/06_vowelsound/text_04_0037_0002 예
+treatment/06_vowelsound/text_04_0037_0003 얘
+treatment/06_vowelsound/text_04_0038_0001 우
+treatment/06_vowelsound/text_04_0038_0002 우
+treatment/06_vowelsound/text_04_0038_0003 이
+treatment/06_vowelsound/text_04_0039_0001 위
+treatment/06_vowelsound/text_04_0039_0002 위
+treatment/06_vowelsound/text_04_0039_0003 의
+treatment/06_vowelsound/text_04_0040_0001 얘
+treatment/06_vowelsound/text_04_0040_0002 얘
+treatment/06_vowelsound/text_04_0040_0003 위
+treatment/06_vowelsound/text_04_0041_0001 이
+treatment/06_vowelsound/text_04_0041_0002 이
+treatment/06_vowelsound/text_04_0041_0003 유
+treatment/06_vowelsound/text_04_0042_0001 애
+treatment/06_vowelsound/text_04_0042_0002 애
+treatment/06_vowelsound/text_04_0042_0003 여
+treatment/06_vowelsound/text_04_0043_0001 어
+treatment/06_vowelsound/text_04_0043_0002 예
+treatment/06_vowelsound/text_04_0043_0003 어
+treatment/06_vowelsound/text_04_0044_0001 왜
+treatment/06_vowelsound/text_04_0044_0002 왜
+treatment/06_vowelsound/text_04_0044_0003 워
+treatment/06_vowelsound/text_04_0045_0001 으
+treatment/06_vowelsound/text_04_0045_0002 으
+treatment/06_vowelsound/text_04_0045_0003 웨
+treatment/06_vowelsound/text_04_0046_0001 이
+treatment/06_vowelsound/text_04_0046_0002 에
+treatment/06_vowelsound/text_04_0046_0003 이
+treatment/06_vowelsound/text_04_0047_0001 우
+treatment/06_vowelsound/text_04_0047_0002 의
+treatment/06_vowelsound/text_04_0047_0003 우
+treatment/06_vowelsound/text_04_0048_0001 여
+treatment/06_vowelsound/text_04_0048_0002 여
+treatment/06_vowelsound/text_04_0048_0003 의
+treatment/06_vowelsound/text_04_0049_0001 에
+treatment/06_vowelsound/text_04_0049_0002 위
+treatment/06_vowelsound/text_04_0049_0003 에
+treatment/06_vowelsound/text_04_0050_0001 오
+treatment/06_vowelsound/text_04_0050_0002 웨
+treatment/06_vowelsound/text_04_0050_0003 오
+treatment/06_vowelsound/text_05_0001_0001 거기
+treatment/06_vowelsound/text_05_0001_0002 거기
+treatment/06_vowelsound/text_05_0001_0003 고기
+treatment/06_vowelsound/text_05_0002_0001 도리
+treatment/06_vowelsound/text_05_0002_0002 다리
+treatment/06_vowelsound/text_05_0002_0003 도리
+treatment/06_vowelsound/text_05_0003_0001 사진
+treatment/06_vowelsound/text_05_0003_0002 사진
+treatment/06_vowelsound/text_05_0003_0003 수진
+treatment/06_vowelsound/text_05_0004_0001 조기
+treatment/06_vowelsound/text_05_0004_0002 조기
+treatment/06_vowelsound/text_05_0004_0003 주기
+treatment/06_vowelsound/text_05_0005_0001 투구
+treatment/06_vowelsound/text_05_0005_0002 투구
+treatment/06_vowelsound/text_05_0005_0003 투기
+treatment/06_vowelsound/text_05_0006_0001 이자
+treatment/06_vowelsound/text_05_0006_0002 의자
+treatment/06_vowelsound/text_05_0006_0003 이자
+treatment/06_vowelsound/text_05_0007_0001 가루
+treatment/06_vowelsound/text_05_0007_0002 가루
+treatment/06_vowelsound/text_05_0007_0003 그루
+treatment/06_vowelsound/text_05_0008_0001 머루
+treatment/06_vowelsound/text_05_0008_0002 마루
+treatment/06_vowelsound/text_05_0008_0003 머루
+treatment/06_vowelsound/text_05_0009_0001 거미
+treatment/06_vowelsound/text_05_0009_0002 개미
+treatment/06_vowelsound/text_05_0009_0003 거미
+treatment/06_vowelsound/text_05_0010_0001 소리
+treatment/06_vowelsound/text_05_0010_0002 소리
+treatment/06_vowelsound/text_05_0010_0003 사리
+treatment/06_vowelsound/text_05_0011_0001 커피
+treatment/06_vowelsound/text_05_0011_0002 커피
+treatment/06_vowelsound/text_05_0011_0003 코피
+treatment/06_vowelsound/text_05_0012_0001 수박
+treatment/06_vowelsound/text_05_0012_0002 수박
+treatment/06_vowelsound/text_05_0012_0003 소박
+treatment/06_vowelsound/text_05_0013_0001 우의
+treatment/06_vowelsound/text_05_0013_0002 예의
+treatment/06_vowelsound/text_05_0013_0003 우의
+treatment/06_vowelsound/text_05_0014_0001 머리
+treatment/06_vowelsound/text_05_0014_0002 무리
+treatment/06_vowelsound/text_05_0014_0003 머리
+treatment/06_vowelsound/text_05_0015_0001 이해
+treatment/06_vowelsound/text_05_0015_0002 이해
+treatment/06_vowelsound/text_05_0015_0003 오해
+treatment/06_vowelsound/text_05_0016_0001 사설
+treatment/06_vowelsound/text_05_0016_0002 소설
+treatment/06_vowelsound/text_05_0016_0003 사설
+treatment/06_vowelsound/text_05_0017_0001 추리
+treatment/06_vowelsound/text_05_0017_0002 체리
+treatment/06_vowelsound/text_05_0017_0003 추리
+treatment/06_vowelsound/text_05_0018_0001 아기
+treatment/06_vowelsound/text_05_0018_0002 아기
+treatment/06_vowelsound/text_05_0018_0003 우기
+treatment/06_vowelsound/text_05_0019_0001 사건
+treatment/06_vowelsound/text_05_0019_0002 사건
+treatment/06_vowelsound/text_05_0019_0003 수건
+treatment/06_vowelsound/text_05_0020_0001 여수
+treatment/06_vowelsound/text_05_0020_0002 야수
+treatment/06_vowelsound/text_05_0020_0003 여수
+treatment/06_vowelsound/text_05_0021_0001 도구
+treatment/06_vowelsound/text_05_0021_0002 대구
+treatment/06_vowelsound/text_05_0021_0003 도구
+treatment/06_vowelsound/text_05_0022_0001 사양
+treatment/06_vowelsound/text_05_0022_0002 서양
+treatment/06_vowelsound/text_05_0022_0003 사양
+treatment/06_vowelsound/text_05_0023_0001 배추
+treatment/06_vowelsound/text_05_0023_0002 배추
+treatment/06_vowelsound/text_05_0023_0003 부추
+treatment/06_vowelsound/text_05_0024_0001 버스
+treatment/06_vowelsound/text_05_0024_0002 버스
+treatment/06_vowelsound/text_05_0024_0003 부스
+treatment/06_vowelsound/text_05_0025_0001 파도
+treatment/06_vowelsound/text_05_0025_0002 파도
+treatment/06_vowelsound/text_05_0025_0003 포도
+treatment/06_vowelsound/text_05_0026_0001 마음
+treatment/06_vowelsound/text_05_0026_0002 마음
+treatment/06_vowelsound/text_05_0026_0003 무음
+treatment/06_vowelsound/text_05_0027_0001 저장
+treatment/06_vowelsound/text_05_0027_0002 저장
+treatment/06_vowelsound/text_05_0027_0003 주장
+treatment/06_vowelsound/text_05_0028_0001 진심
+treatment/06_vowelsound/text_05_0028_0002 진심
+treatment/06_vowelsound/text_05_0028_0003 조심
+treatment/06_vowelsound/text_05_0029_0001 구리
+treatment/06_vowelsound/text_05_0029_0002 구리
+treatment/06_vowelsound/text_05_0029_0003 거리
+treatment/06_vowelsound/text_05_0030_0001 조미
+treatment/06_vowelsound/text_05_0030_0002 재미
+treatment/06_vowelsound/text_05_0030_0003 조미
+treatment/06_vowelsound/text_05_0031_0001 우리
+treatment/06_vowelsound/text_05_0031_0002 요리
+treatment/06_vowelsound/text_05_0031_0003 우리
+treatment/06_vowelsound/text_05_0032_0001 사장
+treatment/06_vowelsound/text_05_0032_0002 사장
+treatment/06_vowelsound/text_05_0032_0003 새장
+treatment/06_vowelsound/text_05_0033_0001 의리
+treatment/06_vowelsound/text_05_0033_0002 유리
+treatment/06_vowelsound/text_05_0033_0003 의리
+treatment/06_vowelsound/text_05_0034_0001 대장
+treatment/06_vowelsound/text_05_0034_0002 도장
+treatment/06_vowelsound/text_05_0034_0003 대장
+treatment/06_vowelsound/text_05_0035_0001 우산
+treatment/06_vowelsound/text_05_0035_0002 우산
+treatment/06_vowelsound/text_05_0035_0003 유산
+treatment/06_vowelsound/text_05_0036_0001 처가
+treatment/06_vowelsound/text_05_0036_0002 처가
+treatment/06_vowelsound/text_05_0036_0003 추가
+treatment/06_vowelsound/text_05_0037_0001 후자
+treatment/06_vowelsound/text_05_0037_0002 효자
+treatment/06_vowelsound/text_05_0037_0003 후자
+treatment/06_vowelsound/text_05_0038_0001 화보
+treatment/06_vowelsound/text_05_0038_0002 후보
+treatment/06_vowelsound/text_05_0038_0003 화보
+treatment/06_vowelsound/text_05_0039_0001 초소
+treatment/06_vowelsound/text_05_0039_0002 채소
+treatment/06_vowelsound/text_05_0039_0003 초소
+treatment/06_vowelsound/text_05_0040_0001 죄인
+treatment/06_vowelsound/text_05_0040_0002 주인
+treatment/06_vowelsound/text_05_0040_0003 죄인
+treatment/06_vowelsound/text_05_0041_0001 긍정
+treatment/06_vowelsound/text_05_0041_0002 긍정
+treatment/06_vowelsound/text_05_0041_0003 강정
+treatment/06_vowelsound/text_05_0042_0001 밤비
+treatment/06_vowelsound/text_05_0042_0002 봄비
+treatment/06_vowelsound/text_05_0042_0003 밤비
+treatment/06_vowelsound/text_05_0043_0001 발레
+treatment/06_vowelsound/text_05_0043_0002 발레
+treatment/06_vowelsound/text_05_0043_0003 벌레
+treatment/06_vowelsound/text_05_0044_0001 쟁기
+treatment/06_vowelsound/text_05_0044_0002 장기
+treatment/06_vowelsound/text_05_0044_0003 쟁기
+treatment/06_vowelsound/text_05_0045_0001 봉송
+treatment/06_vowelsound/text_05_0045_0002 방송
+treatment/06_vowelsound/text_05_0045_0003 봉송
+treatment/06_vowelsound/text_05_0046_0001 성품
+treatment/06_vowelsound/text_05_0046_0002 상품
+treatment/06_vowelsound/text_05_0046_0003 성품
+treatment/06_vowelsound/text_05_0047_0001 정상
+treatment/06_vowelsound/text_05_0047_0002 증상
+treatment/06_vowelsound/text_05_0047_0003 정상
+treatment/06_vowelsound/text_05_0048_0001 긴장
+treatment/06_vowelsound/text_05_0048_0002 긴장
+treatment/06_vowelsound/text_05_0048_0003 간장
+treatment/06_vowelsound/text_05_0049_0001 면세
+treatment/06_vowelsound/text_05_0049_0002 만세
+treatment/06_vowelsound/text_05_0049_0003 면세
+treatment/06_vowelsound/text_05_0050_0001 상인
+treatment/06_vowelsound/text_05_0050_0002 성인
+treatment/06_vowelsound/text_05_0050_0003 상인
+treatment/06_vowelsound/text_05_0051_0001 생선
+treatment/06_vowelsound/text_05_0051_0002 생선
+treatment/06_vowelsound/text_05_0051_0003 상선
+treatment/06_vowelsound/text_05_0052_0001 장비
+treatment/06_vowelsound/text_05_0052_0002 정비
+treatment/06_vowelsound/text_05_0052_0003 장비
+treatment/06_vowelsound/text_05_0053_0001 순수
+treatment/06_vowelsound/text_05_0053_0002 순수
+treatment/06_vowelsound/text_05_0053_0003 산수
+treatment/06_vowelsound/text_05_0054_0001 속도
+treatment/06_vowelsound/text_05_0054_0002 속도
+treatment/06_vowelsound/text_05_0054_0003 식도
+treatment/06_vowelsound/text_05_0055_0001 변수
+treatment/06_vowelsound/text_05_0055_0002 분수
+treatment/06_vowelsound/text_05_0055_0003 변수
+treatment/06_vowelsound/text_05_0056_0001 온기
+treatment/06_vowelsound/text_05_0056_0002 연기
+treatment/06_vowelsound/text_05_0056_0003 온기
+treatment/06_vowelsound/text_05_0057_0001 황사
+treatment/06_vowelsound/text_05_0057_0002 행사
+treatment/06_vowelsound/text_05_0057_0003 황사
+treatment/06_vowelsound/text_05_0058_0001 연고
+treatment/06_vowelsound/text_05_0058_0002 연고
+treatment/06_vowelsound/text_05_0058_0003 인고
+treatment/06_vowelsound/text_05_0059_0001 손수
+treatment/06_vowelsound/text_05_0059_0002 손수
+treatment/06_vowelsound/text_05_0059_0003 선수
+treatment/06_vowelsound/text_05_0060_0001 문제
+treatment/06_vowelsound/text_05_0060_0002 문제
+treatment/06_vowelsound/text_05_0060_0003 면제
+treatment/07_consomatch/text_0001_0001 가방
+treatment/07_consomatch/text_0002_0001 가위
+treatment/07_consomatch/text_0003_0001 개구리
+treatment/07_consomatch/text_0004_0001 개미
+treatment/07_consomatch/text_0005_0001 고래
+treatment/07_consomatch/text_0006_0001 나무
+treatment/07_consomatch/text_0007_0001 나비
+treatment/07_consomatch/text_0008_0001 남자
+treatment/07_consomatch/text_0009_0001 너구리
+treatment/07_consomatch/text_0010_0001 날개
+treatment/07_consomatch/text_0011_0001 대나무
+treatment/07_consomatch/text_0012_0001 도끼
+treatment/07_consomatch/text_0013_0001 동전
+treatment/07_consomatch/text_0014_0001 두더지
+treatment/07_consomatch/text_0015_0001 둥지
+treatment/07_consomatch/text_0016_0001 라면
+treatment/07_consomatch/text_0017_0001 리코더
+treatment/07_consomatch/text_0018_0001 만두
+treatment/07_consomatch/text_0019_0001 망원경
+treatment/07_consomatch/text_0020_0001 모기
+treatment/07_consomatch/text_0021_0001 모자
+treatment/07_consomatch/text_0022_0001 미끄럼틀
+treatment/07_consomatch/text_0023_0001 바다
+treatment/07_consomatch/text_0024_0001 바지
+treatment/07_consomatch/text_0025_0001 반지
+treatment/07_consomatch/text_0026_0001 배꼽
+treatment/07_consomatch/text_0027_0001 버스
+treatment/07_consomatch/text_0028_0001 사과
+treatment/07_consomatch/text_0029_0001 사탕
+treatment/07_consomatch/text_0030_0001 서점
+treatment/07_consomatch/text_0031_0001 손목
+treatment/07_consomatch/text_0032_0001 쇠똥구리
+treatment/07_consomatch/text_0033_0001 열쇠
+treatment/07_consomatch/text_0034_0001 오렌지
+treatment/07_consomatch/text_0035_0001 오리
+treatment/07_consomatch/text_0036_0001 우산
+treatment/07_consomatch/text_0037_0001 운동장
+treatment/07_consomatch/text_0038_0001 자두
+treatment/07_consomatch/text_0039_0001 잠자리
+treatment/07_consomatch/text_0040_0001 조개
+treatment/07_consomatch/text_0041_0001 주전자
+treatment/07_consomatch/text_0042_0001 지우개
+treatment/07_consomatch/text_0043_0001 책
+treatment/07_consomatch/text_0044_0001 청소기
+treatment/07_consomatch/text_0045_0001 축구
+treatment/07_consomatch/text_0046_0001 치약
+treatment/07_consomatch/text_0047_0001 칫솔
+treatment/07_consomatch/text_0048_0001 카메라
+treatment/07_consomatch/text_0049_0001 캥거루
+treatment/07_consomatch/text_0050_0001 코끼리
+treatment/07_consomatch/text_0051_0001 키위
+treatment/07_consomatch/text_0052_0001 커피
+treatment/07_consomatch/text_0053_0001 타조
+treatment/07_consomatch/text_0054_0001 태양
+treatment/07_consomatch/text_0055_0001 탬버린
+treatment/07_consomatch/text_0056_0001 토끼
+treatment/07_consomatch/text_0057_0001 토마토
+treatment/07_consomatch/text_0058_0001 파리
+treatment/07_consomatch/text_0059_0001 편지
+treatment/07_consomatch/text_0060_0001 포도
+treatment/07_consomatch/text_0061_0001 피아노
+treatment/07_consomatch/text_0062_0001 피터팬
+treatment/07_consomatch/text_0063_0001 허리
+treatment/07_consomatch/text_0064_0001 호랑이
+treatment/07_consomatch/text_0065_0001 하마
+treatment/07_consomatch/text_0066_0001 연못
+treatment/07_consomatch/text_0067_0001 햄버거
+treatment/07_consomatch/text_0068_0001 꽃
+treatment/07_consomatch/text_0069_0001 꿈
+treatment/07_consomatch/text_0070_0001 꿩
+treatment/07_consomatch/text_0071_0001 꿀
+treatment/07_consomatch/text_0072_0001 땅콩
+treatment/07_consomatch/text_0073_0001 똥
+treatment/07_consomatch/text_0074_0001 떡
+treatment/07_consomatch/text_0075_0001 떡볶이
+treatment/07_consomatch/text_0076_0001 딸기
+treatment/07_consomatch/text_0077_0001 빨래
+treatment/07_consomatch/text_0078_0001 뻐꾸기
+treatment/07_consomatch/text_0079_0001 뽀뽀
+treatment/07_consomatch/text_0080_0001 뿌리
+treatment/07_consomatch/text_0081_0001 쓰레기
+treatment/07_consomatch/text_0082_0001 씨앗
+treatment/07_consomatch/text_0083_0001 씨름
+treatment/07_consomatch/text_0084_0001 쌀
+treatment/07_consomatch/text_0085_0001 짬뽕
+treatment/07_consomatch/text_0086_0001 짝수
+treatment/07_consomatch/text_0087_0001 쪽지
+treatment/07_consomatch/text_0088_0001 찌개
+treatment/08_consocommon/text_01_0001_0001 가방
+treatment/08_consocommon/text_01_0001_0002 ㄱ
+treatment/08_consocommon/text_01_0001_0003 ㅂ
+treatment/08_consocommon/text_01_0001_0004 ㄱ
+treatment/08_consocommon/text_01_0002_0001 가위
+treatment/08_consocommon/text_01_0002_0002 ㄱ
+treatment/08_consocommon/text_01_0002_0003 ㅈ
+treatment/08_consocommon/text_01_0002_0004 ㄱ
+treatment/08_consocommon/text_01_0003_0001 개구리
+treatment/08_consocommon/text_01_0003_0002 ㄱ
+treatment/08_consocommon/text_01_0003_0003 ㄸ
+treatment/08_consocommon/text_01_0003_0004 ㄱ
+treatment/08_consocommon/text_01_0004_0001 개미
+treatment/08_consocommon/text_01_0004_0002 ㄱ
+treatment/08_consocommon/text_01_0004_0003 ㅉ
+treatment/08_consocommon/text_01_0004_0004 ㄱ
+treatment/08_consocommon/text_01_0005_0001 고래
+treatment/08_consocommon/text_01_0005_0002 ㄱ
+treatment/08_consocommon/text_01_0005_0003 ㄲ
+treatment/08_consocommon/text_01_0005_0004 ㄱ
+treatment/08_consocommon/text_01_0006_0001 나무
+treatment/08_consocommon/text_01_0006_0002 ㄴ
+treatment/08_consocommon/text_01_0006_0003 ㄸ
+treatment/08_consocommon/text_01_0006_0004 ㄴ
+treatment/08_consocommon/text_01_0007_0001 나비
+treatment/08_consocommon/text_01_0007_0002 ㅈ
+treatment/08_consocommon/text_01_0007_0003 ㄴ
+treatment/08_consocommon/text_01_0007_0004 ㄴ
+treatment/08_consocommon/text_01_0008_0001 남자
+treatment/08_consocommon/text_01_0008_0002 ㄴ
+treatment/08_consocommon/text_01_0008_0003 ㄹ
+treatment/08_consocommon/text_01_0008_0004 ㄴ
+treatment/08_consocommon/text_01_0009_0001 너구리
+treatment/08_consocommon/text_01_0009_0002 ㄴ
+treatment/08_consocommon/text_01_0009_0003 ㅎ
+treatment/08_consocommon/text_01_0009_0004 ㄴ
+treatment/08_consocommon/text_01_0010_0001 날개
+treatment/08_consocommon/text_01_0010_0002 ㄴ
+treatment/08_consocommon/text_01_0010_0003 ㅆ
+treatment/08_consocommon/text_01_0010_0004 ㄴ
+treatment/08_consocommon/text_01_0011_0001 대나무
+treatment/08_consocommon/text_01_0011_0002 ㄷ
+treatment/08_consocommon/text_01_0011_0003 ㅅ
+treatment/08_consocommon/text_01_0011_0004 ㄷ
+treatment/08_consocommon/text_01_0012_0001 도끼
+treatment/08_consocommon/text_01_0012_0002 ㅅ
+treatment/08_consocommon/text_01_0012_0003 ㄷ
+treatment/08_consocommon/text_01_0012_0004 ㄷ
+treatment/08_consocommon/text_01_0013_0001 동전
+treatment/08_consocommon/text_01_0013_0002 ㄷ
+treatment/08_consocommon/text_01_0013_0003 ㄱ
+treatment/08_consocommon/text_01_0013_0004 ㄷ
+treatment/08_consocommon/text_01_0014_0001 두더지
+treatment/08_consocommon/text_01_0014_0002 ㅎ
+treatment/08_consocommon/text_01_0014_0003 ㄷ
+treatment/08_consocommon/text_01_0014_0004 ㄷ
+treatment/08_consocommon/text_01_0015_0001 둥지
+treatment/08_consocommon/text_01_0015_0002 ㄷ
+treatment/08_consocommon/text_01_0015_0003 ㅉ
+treatment/08_consocommon/text_01_0015_0004 ㄷ
+treatment/08_consocommon/text_01_0016_0001 라면
+treatment/08_consocommon/text_01_0016_0002 ㄹ
+treatment/08_consocommon/text_01_0016_0003 ㅍ
+treatment/08_consocommon/text_01_0016_0004 ㄹ
+treatment/08_consocommon/text_01_0017_0001 리코더
+treatment/08_consocommon/text_01_0017_0002 ㄹ
+treatment/08_consocommon/text_01_0017_0003 ㅈ
+treatment/08_consocommon/text_01_0017_0004 ㄹ
+treatment/08_consocommon/text_01_0018_0001 만두
+treatment/08_consocommon/text_01_0018_0002 ㅁ
+treatment/08_consocommon/text_01_0018_0003 ㅎ
+treatment/08_consocommon/text_01_0018_0004 ㅁ
+treatment/08_consocommon/text_01_0019_0001 망원경
+treatment/08_consocommon/text_01_0019_0002 ㄲ
+treatment/08_consocommon/text_01_0019_0003 ㅁ
+treatment/08_consocommon/text_01_0019_0004 ㅁ
+treatment/08_consocommon/text_01_0020_0001 모기
+treatment/08_consocommon/text_01_0020_0002 ㅁ
+treatment/08_consocommon/text_01_0020_0003 ㅋ
+treatment/08_consocommon/text_01_0020_0004 ㅁ
+treatment/08_consocommon/text_01_0021_0001 모자
+treatment/08_consocommon/text_01_0021_0002 ㅁ
+treatment/08_consocommon/text_01_0021_0003 ㅌ
+treatment/08_consocommon/text_01_0021_0004 ㅁ
+treatment/08_consocommon/text_01_0022_0001 미끄럼틀
+treatment/08_consocommon/text_01_0022_0002 ㄹ
+treatment/08_consocommon/text_01_0022_0003 ㅁ
+treatment/08_consocommon/text_01_0022_0004 ㅁ
+treatment/08_consocommon/text_01_0023_0001 바다
+treatment/08_consocommon/text_01_0023_0002 ㄴ
+treatment/08_consocommon/text_01_0023_0003 ㅂ
+treatment/08_consocommon/text_01_0023_0004 ㅂ
+treatment/08_consocommon/text_01_0024_0001 바지
+treatment/08_consocommon/text_01_0024_0002 ㅁ
+treatment/08_consocommon/text_01_0024_0003 ㅂ
+treatment/08_consocommon/text_01_0024_0004 ㅂ
+treatment/08_consocommon/text_01_0025_0001 반지
+treatment/08_consocommon/text_01_0025_0002 ㅉ
+treatment/08_consocommon/text_01_0025_0003 ㅂ
+treatment/08_consocommon/text_01_0025_0004 ㅂ
+treatment/08_consocommon/text_01_0026_0001 배꼽
+treatment/08_consocommon/text_01_0026_0002 ㅂ
+treatment/08_consocommon/text_01_0026_0003 ㅊ
+treatment/08_consocommon/text_01_0026_0004 ㅂ
+treatment/08_consocommon/text_01_0027_0001 버스
+treatment/08_consocommon/text_01_0027_0002 ㅍ
+treatment/08_consocommon/text_01_0027_0003 ㅂ
+treatment/08_consocommon/text_01_0027_0004 ㅂ
+treatment/08_consocommon/text_01_0028_0001 사과
+treatment/08_consocommon/text_01_0028_0002 ㅅ
+treatment/08_consocommon/text_01_0028_0003 ㄷ
+treatment/08_consocommon/text_01_0028_0004 ㅅ
+treatment/08_consocommon/text_01_0029_0001 사탕
+treatment/08_consocommon/text_01_0029_0002 ㅆ
+treatment/08_consocommon/text_01_0029_0003 ㅅ
+treatment/08_consocommon/text_01_0029_0004 ㅅ
+treatment/08_consocommon/text_01_0030_0001 서점
+treatment/08_consocommon/text_01_0030_0002 ㅅ
+treatment/08_consocommon/text_01_0030_0003 ㅆ
+treatment/08_consocommon/text_01_0030_0004 ㅅ
+treatment/08_consocommon/text_01_0031_0001 손목
+treatment/08_consocommon/text_01_0031_0002 ㅅ
+treatment/08_consocommon/text_01_0031_0003 ㅈ
+treatment/08_consocommon/text_01_0031_0004 ㅅ
+treatment/08_consocommon/text_01_0032_0001 쇠똥구리
+treatment/08_consocommon/text_01_0032_0002 ㅅ
+treatment/08_consocommon/text_01_0032_0003 ㄲ
+treatment/08_consocommon/text_01_0032_0004 ㅅ
+treatment/08_consocommon/text_01_0033_0001 자두
+treatment/08_consocommon/text_01_0033_0002 ㅊ
+treatment/08_consocommon/text_01_0033_0003 ㅈ
+treatment/08_consocommon/text_01_0033_0004 ㅈ
+treatment/08_consocommon/text_01_0034_0001 잠자리
+treatment/08_consocommon/text_01_0034_0002 ㄹ
+treatment/08_consocommon/text_01_0034_0003 ㅈ
+treatment/08_consocommon/text_01_0034_0004 ㅈ
+treatment/08_consocommon/text_01_0035_0001 조개
+treatment/08_consocommon/text_01_0035_0002 ㅈ
+treatment/08_consocommon/text_01_0035_0003 ㄸ
+treatment/08_consocommon/text_01_0035_0004 ㅈ
+treatment/08_consocommon/text_01_0036_0001 주전자
+treatment/08_consocommon/text_01_0036_0002 ㅈ
+treatment/08_consocommon/text_01_0036_0003 ㅂ
+treatment/08_consocommon/text_01_0036_0004 ㅈ
+treatment/08_consocommon/text_01_0037_0001 지우개
+treatment/08_consocommon/text_01_0037_0002 ㅆ
+treatment/08_consocommon/text_01_0037_0003 ㅈ
+treatment/08_consocommon/text_01_0037_0004 ㅈ
+treatment/08_consocommon/text_01_0038_0001 책
+treatment/08_consocommon/text_01_0038_0002 ㅊ
+treatment/08_consocommon/text_01_0038_0003 ㅃ
+treatment/08_consocommon/text_01_0038_0004 ㅊ
+treatment/08_consocommon/text_01_0039_0001 청소기
+treatment/08_consocommon/text_01_0039_0002 ㅊ
+treatment/08_consocommon/text_01_0039_0003 ㅍ
+treatment/08_consocommon/text_01_0039_0004 ㅊ
+treatment/08_consocommon/text_01_0040_0001 축구
+treatment/08_consocommon/text_01_0040_0002 ㅍ
+treatment/08_consocommon/text_01_0040_0003 ㅊ
+treatment/08_consocommon/text_01_0040_0004 ㅊ
+treatment/08_consocommon/text_01_0041_0001 치약
+treatment/08_consocommon/text_01_0041_0002 ㅋ
+treatment/08_consocommon/text_01_0041_0003 ㅊ
+treatment/08_consocommon/text_01_0041_0004 ㅊ
+treatment/08_consocommon/text_01_0042_0001 칫솔
+treatment/08_consocommon/text_01_0042_0002 ㅉ
+treatment/08_consocommon/text_01_0042_0003 ㅊ
+treatment/08_consocommon/text_01_0042_0004 ㅊ
+treatment/08_consocommon/text_01_0043_0001 카메라
+treatment/08_consocommon/text_01_0043_0002 ㅎ
+treatment/08_consocommon/text_01_0043_0003 ㅋ
+treatment/08_consocommon/text_01_0043_0004 ㅋ
+treatment/08_consocommon/text_01_0044_0001 캥거루
+treatment/08_consocommon/text_01_0044_0002 ㅋ
+treatment/08_consocommon/text_01_0044_0003 ㄲ
+treatment/08_consocommon/text_01_0044_0004 ㅋ
+treatment/08_consocommon/text_01_0045_0001 코끼리
+treatment/08_consocommon/text_01_0045_0002 ㅋ
+treatment/08_consocommon/text_01_0045_0003 ㅈ
+treatment/08_consocommon/text_01_0045_0004 ㅋ
+treatment/08_consocommon/text_01_0046_0001 키위
+treatment/08_consocommon/text_01_0046_0002 ㅌ
+treatment/08_consocommon/text_01_0046_0003 ㅋ
+treatment/08_consocommon/text_01_0046_0004 ㅋ
+treatment/08_consocommon/text_01_0047_0001 커피
+treatment/08_consocommon/text_01_0047_0002 ㅋ
+treatment/08_consocommon/text_01_0047_0003 ㄷ
+treatment/08_consocommon/text_01_0047_0004 ㅋ
+treatment/08_consocommon/text_01_0048_0001 타조
+treatment/08_consocommon/text_01_0048_0002 ㅅ
+treatment/08_consocommon/text_01_0048_0003 ㅌ
+treatment/08_consocommon/text_01_0048_0004 ㅌ
+treatment/08_consocommon/text_01_0049_0001 태양
+treatment/08_consocommon/text_01_0049_0002 ㅂ
+treatment/08_consocommon/text_01_0049_0003 ㅌ
+treatment/08_consocommon/text_01_0049_0004 ㅌ
+treatment/08_consocommon/text_01_0050_0001 탬버린
+treatment/08_consocommon/text_01_0050_0002 ㅌ
+treatment/08_consocommon/text_01_0050_0003 ㄸ
+treatment/08_consocommon/text_01_0050_0004 ㅌ
+treatment/08_consocommon/text_01_0051_0001 토끼
+treatment/08_consocommon/text_01_0051_0002 ㅌ
+treatment/08_consocommon/text_01_0051_0003 ㅉ
+treatment/08_consocommon/text_01_0051_0004 ㅌ
+treatment/08_consocommon/text_01_0052_0001 토마토
+treatment/08_consocommon/text_01_0052_0002 ㅌ
+treatment/08_consocommon/text_01_0052_0003 ㅋ
+treatment/08_consocommon/text_01_0052_0004 ㅌ
+treatment/08_consocommon/text_01_0053_0001 파리
+treatment/08_consocommon/text_01_0053_0002 ㄸ
+treatment/08_consocommon/text_01_0053_0003 ㅍ
+treatment/08_consocommon/text_01_0053_0004 ㅍ
+treatment/08_consocommon/text_01_0054_0001 편지
+treatment/08_consocommon/text_01_0054_0002 ㅅ
+treatment/08_consocommon/text_01_0054_0003 ㅍ
+treatment/08_consocommon/text_01_0054_0004 ㅍ
+treatment/08_consocommon/text_01_0055_0001 포도
+treatment/08_consocommon/text_01_0055_0002 ㅍ
+treatment/08_consocommon/text_01_0055_0003 ㄴ
+treatment/08_consocommon/text_01_0055_0004 ㅍ
+treatment/08_consocommon/text_01_0056_0001 피아노
+treatment/08_consocommon/text_01_0056_0002 ㅃ
+treatment/08_consocommon/text_01_0056_0003 ㅍ
+treatment/08_consocommon/text_01_0056_0004 ㅍ
+treatment/08_consocommon/text_01_0057_0001 피터팬
+treatment/08_consocommon/text_01_0057_0002 ㄹ
+treatment/08_consocommon/text_01_0057_0003 ㅍ
+treatment/08_consocommon/text_01_0057_0004 ㅍ
+treatment/08_consocommon/text_01_0058_0001 허리
+treatment/08_consocommon/text_01_0058_0002 ㅅ
+treatment/08_consocommon/text_01_0058_0003 ㅎ
+treatment/08_consocommon/text_01_0058_0004 ㅎ
+treatment/08_consocommon/text_01_0059_0001 호랑이
+treatment/08_consocommon/text_01_0059_0002 ㅎ
+treatment/08_consocommon/text_01_0059_0003 ㅃ
+treatment/08_consocommon/text_01_0059_0004 ㅎ
+treatment/08_consocommon/text_01_0060_0001 하마
+treatment/08_consocommon/text_01_0060_0002 ㅊ
+treatment/08_consocommon/text_01_0060_0003 ㅎ
+treatment/08_consocommon/text_01_0060_0004 ㅎ
+treatment/08_consocommon/text_01_0061_0001 햄버거
+treatment/08_consocommon/text_01_0061_0002 ㅂ
+treatment/08_consocommon/text_01_0061_0003 ㅎ
+treatment/08_consocommon/text_01_0061_0004 ㅎ
+treatment/08_consocommon/text_01_0062_0001 꽃
+treatment/08_consocommon/text_01_0062_0002 ㄲ
+treatment/08_consocommon/text_01_0062_0003 ㅆ
+treatment/08_consocommon/text_01_0062_0004 ㄲ
+treatment/08_consocommon/text_01_0063_0001 꿈
+treatment/08_consocommon/text_01_0063_0002 ㄲ
+treatment/08_consocommon/text_01_0063_0003 ㅋ
+treatment/08_consocommon/text_01_0063_0004 ㄲ
+treatment/08_consocommon/text_01_0064_0001 꿩
+treatment/08_consocommon/text_01_0064_0002 ㅁ
+treatment/08_consocommon/text_01_0064_0003 ㄲ
+treatment/08_consocommon/text_01_0064_0004 ㄲ
+treatment/08_consocommon/text_01_0065_0001 꿀
+treatment/08_consocommon/text_01_0065_0002 ㄲ
+treatment/08_consocommon/text_01_0065_0003 ㅌ
+treatment/08_consocommon/text_01_0065_0004 ㄲ
+treatment/08_consocommon/text_01_0066_0001 땅콩
+treatment/08_consocommon/text_01_0066_0002 ㄸ
+treatment/08_consocommon/text_01_0066_0003 ㅃ
+treatment/08_consocommon/text_01_0066_0004 ㄸ
+treatment/08_consocommon/text_01_0067_0001 똥
+treatment/08_consocommon/text_01_0067_0002 ㅉ
+treatment/08_consocommon/text_01_0067_0003 ㄸ
+treatment/08_consocommon/text_01_0067_0004 ㄸ
+treatment/08_consocommon/text_01_0068_0001 떡
+treatment/08_consocommon/text_01_0068_0002 ㄸ
+treatment/08_consocommon/text_01_0068_0003 ㅌ
+treatment/08_consocommon/text_01_0068_0004 ㄸ
+treatment/08_consocommon/text_01_0069_0001 떡볶이
+treatment/08_consocommon/text_01_0069_0002 ㄸ
+treatment/08_consocommon/text_01_0069_0003 ㅉ
+treatment/08_consocommon/text_01_0069_0004 ㄸ
+treatment/08_consocommon/text_01_0070_0001 딸기
+treatment/08_consocommon/text_01_0070_0002 ㅎ
+treatment/08_consocommon/text_01_0070_0003 ㄸ
+treatment/08_consocommon/text_01_0070_0004 ㄸ
+treatment/08_consocommon/text_01_0071_0001 빨래
+treatment/08_consocommon/text_01_0071_0002 ㅉ
+treatment/08_consocommon/text_01_0071_0003 ㅃ
+treatment/08_consocommon/text_01_0071_0004 ㅃ
+treatment/08_consocommon/text_01_0072_0001 뻐꾸기
+treatment/08_consocommon/text_01_0072_0002 ㅃ
+treatment/08_consocommon/text_01_0072_0003 ㅆ
+treatment/08_consocommon/text_01_0072_0004 ㅃ
+treatment/08_consocommon/text_01_0073_0001 뽀뽀
+treatment/08_consocommon/text_01_0073_0002 ㄷ
+treatment/08_consocommon/text_01_0073_0003 ㅃ
+treatment/08_consocommon/text_01_0073_0004 ㅃ
+treatment/08_consocommon/text_01_0074_0001 뿌리
+treatment/08_consocommon/text_01_0074_0002 ㅌ
+treatment/08_consocommon/text_01_0074_0003 ㅃ
+treatment/08_consocommon/text_01_0074_0004 ㅃ
+treatment/08_consocommon/text_01_0075_0001 쓰레기
+treatment/08_consocommon/text_01_0075_0002 ㅆ
+treatment/08_consocommon/text_01_0075_0003 ㄲ
+treatment/08_consocommon/text_01_0075_0004 ㅆ
+treatment/08_consocommon/text_01_0076_0001 씨앗
+treatment/08_consocommon/text_01_0076_0002 ㅉ
+treatment/08_consocommon/text_01_0076_0003 ㅆ
+treatment/08_consocommon/text_01_0076_0004 ㅆ
+treatment/08_consocommon/text_01_0077_0001 씨름
+treatment/08_consocommon/text_01_0077_0002 ㅆ
+treatment/08_consocommon/text_01_0077_0003 ㄱ
+treatment/08_consocommon/text_01_0077_0004 ㅆ
+treatment/08_consocommon/text_01_0078_0001 쌀
+treatment/08_consocommon/text_01_0078_0002 ㅌ
+treatment/08_consocommon/text_01_0078_0003 ㅆ
+treatment/08_consocommon/text_01_0078_0004 ㅆ
+treatment/08_consocommon/text_01_0079_0001 짬뽕
+treatment/08_consocommon/text_01_0079_0002 ㅊ
+treatment/08_consocommon/text_01_0079_0003 ㅉ
+treatment/08_consocommon/text_01_0079_0004 ㅉ
+treatment/08_consocommon/text_01_0080_0001 짝수
+treatment/08_consocommon/text_01_0080_0002 ㅉ
+treatment/08_consocommon/text_01_0080_0003 ㅅ
+treatment/08_consocommon/text_01_0080_0004 ㅉ
+treatment/08_consocommon/text_01_0081_0001 쪽지
+treatment/08_consocommon/text_01_0081_0002 ㅉ
+treatment/08_consocommon/text_01_0081_0003 ㅂ
+treatment/08_consocommon/text_01_0081_0004 ㅉ
+treatment/08_consocommon/text_01_0082_0001 찌개
+treatment/08_consocommon/text_01_0082_0002 ㅊ
+treatment/08_consocommon/text_01_0082_0003 ㅉ
+treatment/08_consocommon/text_01_0082_0004 ㅉ
+treatment/08_consocommon/text_02_0001_0001 가방
+treatment/08_consocommon/text_02_0001_0002 ㅏ
+treatment/08_consocommon/text_02_0001_0003 ㅐ
+treatment/08_consocommon/text_02_0001_0004 ㅏ
+treatment/08_consocommon/text_02_0002_0001 가위
+treatment/08_consocommon/text_02_0002_0002 ㅏ
+treatment/08_consocommon/text_02_0002_0003 ㅒ
+treatment/08_consocommon/text_02_0002_0004 ㅏ
+treatment/08_consocommon/text_02_0003_0001 개구리
+treatment/08_consocommon/text_02_0003_0002 ㅠ
+treatment/08_consocommon/text_02_0003_0003 ㅐ
+treatment/08_consocommon/text_02_0003_0004 ㅐ
+treatment/08_consocommon/text_02_0004_0001 개미
+treatment/08_consocommon/text_02_0004_0002 ㅖ
+treatment/08_consocommon/text_02_0004_0003 ㅐ
+treatment/08_consocommon/text_02_0004_0004 ㅐ
+treatment/08_consocommon/text_02_0005_0001 고래
+treatment/08_consocommon/text_02_0005_0002 ㅗ
+treatment/08_consocommon/text_02_0005_0003 ㅞ
+treatment/08_consocommon/text_02_0005_0004 ㅗ
+treatment/08_consocommon/text_02_0006_0001 나무
+treatment/08_consocommon/text_02_0006_0002 ㅒ
+treatment/08_consocommon/text_02_0006_0003 ㅏ
+treatment/08_consocommon/text_02_0006_0004 ㅏ
+treatment/08_consocommon/text_02_0007_0001 나비
+treatment/08_consocommon/text_02_0007_0002 ㅢ
+treatment/08_consocommon/text_02_0007_0003 ㅏ
+treatment/08_consocommon/text_02_0007_0004 ㅏ
+treatment/08_consocommon/text_02_0008_0001 남자
+treatment/08_consocommon/text_02_0008_0002 ㅟ
+treatment/08_consocommon/text_02_0008_0003 ㅏ
+treatment/08_consocommon/text_02_0008_0004 ㅏ
+treatment/08_consocommon/text_02_0009_0001 너구리
+treatment/08_consocommon/text_02_0009_0002 ㅏ
+treatment/08_consocommon/text_02_0009_0003 ㅓ
+treatment/08_consocommon/text_02_0009_0004 ㅓ
+treatment/08_consocommon/text_02_0010_0001 날개
+treatment/08_consocommon/text_02_0010_0002 ㅡ
+treatment/08_consocommon/text_02_0010_0003 ㅏ
+treatment/08_consocommon/text_02_0010_0004 ㅏ
+treatment/08_consocommon/text_02_0011_0001 대나무
+treatment/08_consocommon/text_02_0011_0002 ㅑ
+treatment/08_consocommon/text_02_0011_0003 ㅐ
+treatment/08_consocommon/text_02_0011_0004 ㅐ
+treatment/08_consocommon/text_02_0012_0001 도끼
+treatment/08_consocommon/text_02_0012_0002 ㅔ
+treatment/08_consocommon/text_02_0012_0003 ㅗ
+treatment/08_consocommon/text_02_0012_0004 ㅗ
+treatment/08_consocommon/text_02_0013_0001 동전
+treatment/08_consocommon/text_02_0013_0002 ㅗ
+treatment/08_consocommon/text_02_0013_0003 ㅘ
+treatment/08_consocommon/text_02_0013_0004 ㅗ
+treatment/08_consocommon/text_02_0014_0001 두더지
+treatment/08_consocommon/text_02_0014_0002 ㅜ
+treatment/08_consocommon/text_02_0014_0003 ㅣ
+treatment/08_consocommon/text_02_0014_0004 ㅜ
+treatment/08_consocommon/text_02_0015_0001 둥지
+treatment/08_consocommon/text_02_0015_0002 ㅜ
+treatment/08_consocommon/text_02_0015_0003 ㅟ
+treatment/08_consocommon/text_02_0015_0004 ㅜ
+treatment/08_consocommon/text_02_0016_0001 라면
+treatment/08_consocommon/text_02_0016_0002 ㅏ
+treatment/08_consocommon/text_02_0016_0003 ㅑ
+treatment/08_consocommon/text_02_0016_0004 ㅏ
+treatment/08_consocommon/text_02_0017_0001 리코더
+treatment/08_consocommon/text_02_0017_0002 ㅕ
+treatment/08_consocommon/text_02_0017_0003 ㅣ
+treatment/08_consocommon/text_02_0017_0004 ㅣ
+treatment/08_consocommon/text_02_0018_0001 만두
+treatment/08_consocommon/text_02_0018_0002 ㅘ
+treatment/08_consocommon/text_02_0018_0003 ㅏ
+treatment/08_consocommon/text_02_0018_0004 ㅏ
+treatment/08_consocommon/text_02_0019_0001 망원경
+treatment/08_consocommon/text_02_0019_0002 ㅓ
+treatment/08_consocommon/text_02_0019_0003 ㅏ
+treatment/08_consocommon/text_02_0019_0004 ㅏ
+treatment/08_consocommon/text_02_0020_0001 모기
+treatment/08_consocommon/text_02_0020_0002 ㅡ
+treatment/08_consocommon/text_02_0020_0003 ㅗ
+treatment/08_consocommon/text_02_0020_0004 ㅗ
+treatment/08_consocommon/text_02_0021_0001 모자
+treatment/08_consocommon/text_02_0021_0002 ㅣ
+treatment/08_consocommon/text_02_0021_0003 ㅗ
+treatment/08_consocommon/text_02_0021_0004 ㅗ
+treatment/08_consocommon/text_02_0022_0001 미끄럼틀
+treatment/08_consocommon/text_02_0022_0002 ㅣ
+treatment/08_consocommon/text_02_0022_0003 ㅓ
+treatment/08_consocommon/text_02_0022_0004 ㅣ
+treatment/08_consocommon/text_02_0023_0001 바다
+treatment/08_consocommon/text_02_0023_0002 ㅛ
+treatment/08_consocommon/text_02_0023_0003 ㅏ
+treatment/08_consocommon/text_02_0023_0004 ㅏ
+treatment/08_consocommon/text_02_0024_0001 바지
+treatment/08_consocommon/text_02_0024_0002 ㅛ
+treatment/08_consocommon/text_02_0024_0003 ㅏ
+treatment/08_consocommon/text_02_0024_0004 ㅏ
+treatment/08_consocommon/text_02_0025_0001 반지
+treatment/08_consocommon/text_02_0025_0002 ㅖ
+treatment/08_consocommon/text_02_0025_0003 ㅏ
+treatment/08_consocommon/text_02_0025_0004 ㅏ
+treatment/08_consocommon/text_02_0026_0001 배꼽
+treatment/08_consocommon/text_02_0026_0002 ㅐ
+treatment/08_consocommon/text_02_0026_0003 ㅒ
+treatment/08_consocommon/text_02_0026_0004 ㅐ
+treatment/08_consocommon/text_02_0027_0001 버스
+treatment/08_consocommon/text_02_0027_0002 ㅔ
+treatment/08_consocommon/text_02_0027_0003 ㅓ
+treatment/08_consocommon/text_02_0027_0004 ㅓ
+treatment/08_consocommon/text_02_0028_0001 사과
+treatment/08_consocommon/text_02_0028_0002 ㅏ
+treatment/08_consocommon/text_02_0028_0003 ㅕ
+treatment/08_consocommon/text_02_0028_0004 ㅏ
+treatment/08_consocommon/text_02_0029_0001 사탕
+treatment/08_consocommon/text_02_0029_0002 ㅒ
+treatment/08_consocommon/text_02_0029_0003 ㅏ
+treatment/08_consocommon/text_02_0029_0004 ㅏ
+treatment/08_consocommon/text_02_0030_0001 서점
+treatment/08_consocommon/text_02_0030_0002 ㅓ
+treatment/08_consocommon/text_02_0030_0003 ㅔ
+treatment/08_consocommon/text_02_0030_0004 ㅓ
+treatment/08_consocommon/text_02_0031_0001 손목
+treatment/08_consocommon/text_02_0031_0002 ㅗ
+treatment/08_consocommon/text_02_0031_0003 ㅔ
+treatment/08_consocommon/text_02_0031_0004 ㅗ
+treatment/08_consocommon/text_02_0032_0001 쇠똥구리
+treatment/08_consocommon/text_02_0032_0002 ㅚ
+treatment/08_consocommon/text_02_0032_0003 ㅢ
+treatment/08_consocommon/text_02_0032_0004 ㅚ
+treatment/08_consocommon/text_02_0033_0001 열쇠
+treatment/08_consocommon/text_02_0033_0002 ㅡ
+treatment/08_consocommon/text_02_0033_0003 ㅕ
+treatment/08_consocommon/text_02_0033_0004 ㅕ
+treatment/08_consocommon/text_02_0034_0001 오렌지
+treatment/08_consocommon/text_02_0034_0002 ㅘ
+treatment/08_consocommon/text_02_0034_0003 ㅗ
+treatment/08_consocommon/text_02_0034_0004 ㅗ
+treatment/08_consocommon/text_02_0035_0001 오리
+treatment/08_consocommon/text_02_0035_0002 ㅕ
+treatment/08_consocommon/text_02_0035_0003 ㅗ
+treatment/08_consocommon/text_02_0035_0004 ㅗ
+treatment/08_consocommon/text_02_0036_0001 우산
+treatment/08_consocommon/text_02_0036_0002 ㅜ
+treatment/08_consocommon/text_02_0036_0003 ㅐ
+treatment/08_consocommon/text_02_0036_0004 ㅜ
+treatment/08_consocommon/text_02_0037_0001 운동장
+treatment/08_consocommon/text_02_0037_0002 ㅘ
+treatment/08_consocommon/text_02_0037_0003 ㅜ
+treatment/08_consocommon/text_02_0037_0004 ㅜ
+treatment/08_consocommon/text_02_0038_0001 자두
+treatment/08_consocommon/text_02_0038_0002 ㅏ
+treatment/08_consocommon/text_02_0038_0003 ㅔ
+treatment/08_consocommon/text_02_0038_0004 ㅏ
+treatment/08_consocommon/text_02_0039_0001 잠자리
+treatment/08_consocommon/text_02_0039_0002 ㅙ
+treatment/08_consocommon/text_02_0039_0003 ㅏ
+treatment/08_consocommon/text_02_0039_0004 ㅏ
+treatment/08_consocommon/text_02_0040_0001 조개
+treatment/08_consocommon/text_02_0040_0002 ㅗ
+treatment/08_consocommon/text_02_0040_0003 ㅢ
+treatment/08_consocommon/text_02_0040_0004 ㅗ
+treatment/08_consocommon/text_02_0041_0001 주전자
+treatment/08_consocommon/text_02_0041_0002 ㅑ
+treatment/08_consocommon/text_02_0041_0003 ㅜ
+treatment/08_consocommon/text_02_0041_0004 ㅜ
+treatment/08_consocommon/text_02_0042_0001 지우개
+treatment/08_consocommon/text_02_0042_0002 ㅏ
+treatment/08_consocommon/text_02_0042_0003 ㅣ
+treatment/08_consocommon/text_02_0042_0004 ㅣ
+treatment/08_consocommon/text_02_0043_0001 책
+treatment/08_consocommon/text_02_0043_0002 ㅕ
+treatment/08_consocommon/text_02_0043_0003 ㅐ
+treatment/08_consocommon/text_02_0043_0004 ㅐ
+treatment/08_consocommon/text_02_0044_0001 청소기
+treatment/08_consocommon/text_02_0044_0002 ㅓ
+treatment/08_consocommon/text_02_0044_0003 ㅞ
+treatment/08_consocommon/text_02_0044_0004 ㅓ
+treatment/08_consocommon/text_02_0045_0001 축구
+treatment/08_consocommon/text_02_0045_0002 ㅡ
+treatment/08_consocommon/text_02_0045_0003 ㅜ
+treatment/08_consocommon/text_02_0045_0004 ㅜ
+treatment/08_consocommon/text_02_0046_0001 치약
+treatment/08_consocommon/text_02_0046_0002 ㅣ
+treatment/08_consocommon/text_02_0046_0003 ㅠ
+treatment/08_consocommon/text_02_0046_0004 ㅣ
+treatment/08_consocommon/text_02_0047_0001 칫솔
+treatment/08_consocommon/text_02_0047_0002 ㅣ
+treatment/08_consocommon/text_02_0047_0003 ㅔ
+treatment/08_consocommon/text_02_0047_0004 ㅣ
+treatment/08_consocommon/text_02_0048_0001 카메라
+treatment/08_consocommon/text_02_0048_0002 ㅐ
+treatment/08_consocommon/text_02_0048_0003 ㅏ
+treatment/08_consocommon/text_02_0048_0004 ㅏ
+treatment/08_consocommon/text_02_0049_0001 캥거루
+treatment/08_consocommon/text_02_0049_0002 ㅐ
+treatment/08_consocommon/text_02_0049_0003 ㅓ
+treatment/08_consocommon/text_02_0049_0004 ㅐ
+treatment/08_consocommon/text_02_0050_0001 코끼리
+treatment/08_consocommon/text_02_0050_0002 ㅞ
+treatment/08_consocommon/text_02_0050_0003 ㅗ
+treatment/08_consocommon/text_02_0050_0004 ㅗ
+treatment/08_consocommon/text_02_0051_0001 키위
+treatment/08_consocommon/text_02_0051_0002 ㅖ
+treatment/08_consocommon/text_02_0051_0003 ㅣ
+treatment/08_consocommon/text_02_0051_0004 ㅣ
+treatment/08_consocommon/text_02_0052_0001 커피
+treatment/08_consocommon/text_02_0052_0002 ㅜ
+treatment/08_consocommon/text_02_0052_0003 ㅓ
+treatment/08_consocommon/text_02_0052_0004 ㅓ
+treatment/08_consocommon/text_02_0053_0001 타조
+treatment/08_consocommon/text_02_0053_0002 ㅔ
+treatment/08_consocommon/text_02_0053_0003 ㅏ
+treatment/08_consocommon/text_02_0053_0004 ㅏ
+treatment/08_consocommon/text_02_0054_0001 태양
+treatment/08_consocommon/text_02_0054_0002 ㅢ
+treatment/08_consocommon/text_02_0054_0003 ㅐ
+treatment/08_consocommon/text_02_0054_0004 ㅐ
+treatment/08_consocommon/text_02_0055_0001 탬버린
+treatment/08_consocommon/text_02_0055_0002 ㅐ
+treatment/08_consocommon/text_02_0055_0003 ㅔ
+treatment/08_consocommon/text_02_0055_0004 ㅐ
+treatment/08_consocommon/text_02_0056_0001 토끼
+treatment/08_consocommon/text_02_0056_0002 ㅗ
+treatment/08_consocommon/text_02_0056_0003 ㅑ
+treatment/08_consocommon/text_02_0056_0004 ㅗ
+treatment/08_consocommon/text_02_0057_0001 토마토
+treatment/08_consocommon/text_02_0057_0002 ㅟ
+treatment/08_consocommon/text_02_0057_0003 ㅗ
+treatment/08_consocommon/text_02_0057_0004 ㅗ
+treatment/08_consocommon/text_02_0058_0001 파리
+treatment/08_consocommon/text_02_0058_0002 ㅓ
+treatment/08_consocommon/text_02_0058_0003 ㅏ
+treatment/08_consocommon/text_02_0058_0004 ㅏ
+treatment/08_consocommon/text_02_0059_0001 편지
+treatment/08_consocommon/text_02_0059_0002 ㅕ
+treatment/08_consocommon/text_02_0059_0003 ㅗ
+treatment/08_consocommon/text_02_0059_0004 ㅕ
+treatment/08_consocommon/text_02_0060_0001 포도
+treatment/08_consocommon/text_02_0060_0002 ㅗ
+treatment/08_consocommon/text_02_0060_0003 ㅡ
+treatment/08_consocommon/text_02_0060_0004 ㅗ
+treatment/08_consocommon/text_02_0061_0001 피아노
+treatment/08_consocommon/text_02_0061_0002 ㅣ
+treatment/08_consocommon/text_02_0061_0003 ㅙ
+treatment/08_consocommon/text_02_0061_0004 ㅣ
+treatment/08_consocommon/text_02_0062_0001 피터팬
+treatment/08_consocommon/text_02_0062_0002 ㅕ
+treatment/08_consocommon/text_02_0062_0003 ㅣ
+treatment/08_consocommon/text_02_0062_0004 ㅣ
+treatment/08_consocommon/text_02_0063_0001 허리
+treatment/08_consocommon/text_02_0063_0002 ㅙ
+treatment/08_consocommon/text_02_0063_0003 ㅓ
+treatment/08_consocommon/text_02_0063_0004 ㅓ
+treatment/08_consocommon/text_02_0064_0001 호랑이
+treatment/08_consocommon/text_02_0064_0002 ㅗ
+treatment/08_consocommon/text_02_0064_0003 ㅛ
+treatment/08_consocommon/text_02_0064_0004 ㅗ
+treatment/08_consocommon/text_02_0065_0001 하마
+treatment/08_consocommon/text_02_0065_0002 ㅠ
+treatment/08_consocommon/text_02_0065_0003 ㅏ
+treatment/08_consocommon/text_02_0065_0004 ㅏ
+treatment/08_consocommon/text_02_0066_0001 연못
+treatment/08_consocommon/text_02_0066_0002 ㅐ
+treatment/08_consocommon/text_02_0066_0003 ㅕ
+treatment/08_consocommon/text_02_0066_0004 ㅕ
+treatment/08_consocommon/text_02_0067_0001 햄버거
+treatment/08_consocommon/text_02_0067_0002 ㅐ
+treatment/08_consocommon/text_02_0067_0003 ㅏ
+treatment/08_consocommon/text_02_0067_0004 ㅐ
+treatment/08_consocommon/text_02_0068_0001 꽃
+treatment/08_consocommon/text_02_0068_0002 ㅒ
+treatment/08_consocommon/text_02_0068_0003 ㅗ
+treatment/08_consocommon/text_02_0068_0004 ㅗ
+treatment/08_consocommon/text_02_0069_0001 꿈
+treatment/08_consocommon/text_02_0069_0002 ㅜ
+treatment/08_consocommon/text_02_0069_0003 ㅚ
+treatment/08_consocommon/text_02_0069_0004 ㅜ
+treatment/08_consocommon/text_02_0070_0001 꿩
+treatment/08_consocommon/text_02_0070_0002 ㅕ
+treatment/08_consocommon/text_02_0070_0003 ㅝ
+treatment/08_consocommon/text_02_0070_0004 ㅝ
+treatment/08_consocommon/text_02_0071_0001 꿀
+treatment/08_consocommon/text_02_0071_0002 ㅜ
+treatment/08_consocommon/text_02_0071_0003 ㅠ
+treatment/08_consocommon/text_02_0071_0004 ㅜ
+treatment/08_consocommon/text_02_0072_0001 땅콩
+treatment/08_consocommon/text_02_0072_0002 ㅏ
+treatment/08_consocommon/text_02_0072_0003 ㅞ
+treatment/08_consocommon/text_02_0072_0004 ㅏ
+treatment/08_consocommon/text_02_0073_0001 똥
+treatment/08_consocommon/text_02_0073_0002 ㅘ
+treatment/08_consocommon/text_02_0073_0003 ㅗ
+treatment/08_consocommon/text_02_0073_0004 ㅗ
+treatment/08_consocommon/text_02_0074_0001 떡
+treatment/08_consocommon/text_02_0074_0002 ㅡ
+treatment/08_consocommon/text_02_0074_0003 ㅓ
+treatment/08_consocommon/text_02_0074_0004 ㅓ
+treatment/08_consocommon/text_02_0075_0001 떡볶이
+treatment/08_consocommon/text_02_0075_0002 ㅓ
+treatment/08_consocommon/text_02_0075_0003 ㅚ
+treatment/08_consocommon/text_02_0075_0004 ㅓ
+treatment/08_consocommon/text_02_0076_0001 딸기
+treatment/08_consocommon/text_02_0076_0002 ㅏ
+treatment/08_consocommon/text_02_0076_0003 ㅣ
+treatment/08_consocommon/text_02_0076_0004 ㅏ
+treatment/08_consocommon/text_02_0077_0001 빨래
+treatment/08_consocommon/text_02_0077_0002 ㅡ
+treatment/08_consocommon/text_02_0077_0003 ㅏ
+treatment/08_consocommon/text_02_0077_0004 ㅏ
+treatment/08_consocommon/text_02_0078_0001 뻐꾸기
+treatment/08_consocommon/text_02_0078_0002 ㅔ
+treatment/08_consocommon/text_02_0078_0003 ㅓ
+treatment/08_consocommon/text_02_0078_0004 ㅓ
+treatment/08_consocommon/text_02_0079_0001 뽀뽀
+treatment/08_consocommon/text_02_0079_0002 ㅝ
+treatment/08_consocommon/text_02_0079_0003 ㅗ
+treatment/08_consocommon/text_02_0079_0004 ㅗ
+treatment/08_consocommon/text_02_0080_0001 뿌리
+treatment/08_consocommon/text_02_0080_0002 ㅜ
+treatment/08_consocommon/text_02_0080_0003 ㅐ
+treatment/08_consocommon/text_02_0080_0004 ㅜ
+treatment/08_consocommon/text_02_0081_0001 쓰레기
+treatment/08_consocommon/text_02_0081_0002 ㅚ
+treatment/08_consocommon/text_02_0081_0003 ㅡ
+treatment/08_consocommon/text_02_0081_0004 ㅡ
+treatment/08_consocommon/text_02_0082_0001 씨앗
+treatment/08_consocommon/text_02_0082_0002 ㅣ
+treatment/08_consocommon/text_02_0082_0003 ㅝ
+treatment/08_consocommon/text_02_0082_0004 ㅣ
+treatment/08_consocommon/text_02_0083_0001 씨름
+treatment/08_consocommon/text_02_0083_0002 ㅘ
+treatment/08_consocommon/text_02_0083_0003 ㅣ
+treatment/08_consocommon/text_02_0083_0004 ㅣ
+treatment/08_consocommon/text_02_0084_0001 쌀
+treatment/08_consocommon/text_02_0084_0002 ㅏ
+treatment/08_consocommon/text_02_0084_0003 ㅛ
+treatment/08_consocommon/text_02_0084_0004 ㅏ
+treatment/08_consocommon/text_02_0085_0001 짬뽕
+treatment/08_consocommon/text_02_0085_0002 ㅏ
+treatment/08_consocommon/text_02_0085_0003 ㅚ
+treatment/08_consocommon/text_02_0085_0004 ㅏ
+treatment/08_consocommon/text_02_0086_0001 짝수
+treatment/08_consocommon/text_02_0086_0002 ㅜ
+treatment/08_consocommon/text_02_0086_0003 ㅏ
+treatment/08_consocommon/text_02_0086_0004 ㅏ
+treatment/08_consocommon/text_02_0087_0001 쪽지
+treatment/08_consocommon/text_02_0087_0002 ㅛ
+treatment/08_consocommon/text_02_0087_0003 ㅗ
+treatment/08_consocommon/text_02_0087_0004 ㅗ
+treatment/08_consocommon/text_02_0088_0001 찌개
+treatment/08_consocommon/text_02_0088_0002 ㅠ
+treatment/08_consocommon/text_02_0088_0003 ㅣ
+treatment/08_consocommon/text_02_0088_0004 ㅣ
+treatment/08_consocommon/text_03_0001_0001 남자
+treatment/08_consocommon/text_03_0001_0002 ㅁ
+treatment/08_consocommon/text_03_0001_0003 ㅂ
+treatment/08_consocommon/text_03_0001_0004 ㅁ
+treatment/08_consocommon/text_03_0002_0001 날개
+treatment/08_consocommon/text_03_0002_0002 ㅁ
+treatment/08_consocommon/text_03_0002_0003 ㄹ
+treatment/08_consocommon/text_03_0002_0004 ㄹ
+treatment/08_consocommon/text_03_0003_0001 동전
+treatment/08_consocommon/text_03_0003_0002 ㅂ
+treatment/08_consocommon/text_03_0003_0003 ㅇ
+treatment/08_consocommon/text_03_0003_0004 ㅇ
+treatment/08_consocommon/text_03_0004_0001 둥지
+treatment/08_consocommon/text_03_0004_0002 ㅇ
+treatment/08_consocommon/text_03_0004_0003 ㄹ
+treatment/08_consocommon/text_03_0004_0004 ㅇ
+treatment/08_consocommon/text_03_0005_0001 만두
+treatment/08_consocommon/text_03_0005_0002 ㄴ
+treatment/08_consocommon/text_03_0005_0003 ㄹ
+treatment/08_consocommon/text_03_0005_0004 ㄴ
+treatment/08_consocommon/text_03_0006_0001 망원경
+treatment/08_consocommon/text_03_0006_0002 ㅇ
+treatment/08_consocommon/text_03_0006_0003 ㄴ
+treatment/08_consocommon/text_03_0006_0004 ㅇ
+treatment/08_consocommon/text_03_0007_0001 반지
+treatment/08_consocommon/text_03_0007_0002 ㄴ
+treatment/08_consocommon/text_03_0007_0003 ㄹ
+treatment/08_consocommon/text_03_0007_0004 ㄴ
+treatment/08_consocommon/text_03_0008_0001 손목
+treatment/08_consocommon/text_03_0008_0002 ㅇ
+treatment/08_consocommon/text_03_0008_0003 ㄴ
+treatment/08_consocommon/text_03_0008_0004 ㄴ
+treatment/08_consocommon/text_03_0009_0001 운동장
+treatment/08_consocommon/text_03_0009_0002 ㄹ
+treatment/08_consocommon/text_03_0009_0003 ㄴ
+treatment/08_consocommon/text_03_0009_0004 ㄴ
+treatment/08_consocommon/text_03_0010_0001 잠자리
+treatment/08_consocommon/text_03_0010_0002 ㅁ
+treatment/08_consocommon/text_03_0010_0003 ㄴ
+treatment/08_consocommon/text_03_0010_0004 ㅁ
+treatment/08_consocommon/text_03_0011_0001 청소기
+treatment/08_consocommon/text_03_0011_0002 ㄱ
+treatment/08_consocommon/text_03_0011_0003 ㅇ
+treatment/08_consocommon/text_03_0011_0004 ㅇ
+treatment/08_consocommon/text_03_0012_0001 캥거루
+treatment/08_consocommon/text_03_0012_0002 ㄱ
+treatment/08_consocommon/text_03_0012_0003 ㅇ
+treatment/08_consocommon/text_03_0012_0004 ㅇ
+treatment/08_consocommon/text_03_0013_0001 탬버린
+treatment/08_consocommon/text_03_0013_0002 ㅁ
+treatment/08_consocommon/text_03_0013_0003 ㄹ
+treatment/08_consocommon/text_03_0013_0004 ㄹ
+treatment/08_consocommon/text_03_0014_0001 편지
+treatment/08_consocommon/text_03_0014_0002 ㄴ
+treatment/08_consocommon/text_03_0014_0003 ㄹ
+treatment/08_consocommon/text_03_0014_0004 ㄴ
+treatment/08_consocommon/text_03_0015_0001 햄버거
+treatment/08_consocommon/text_03_0015_0002 ㅇ
+treatment/08_consocommon/text_03_0015_0003 ㅁ
+treatment/08_consocommon/text_03_0015_0004 ㅁ
+treatment/08_consocommon/text_03_0016_0001 꿈
+treatment/08_consocommon/text_03_0016_0002 ㄱ
+treatment/08_consocommon/text_03_0016_0003 ㅁ
+treatment/08_consocommon/text_03_0016_0004 ㅁ
+treatment/08_consocommon/text_03_0017_0001 꿩
+treatment/08_consocommon/text_03_0017_0002 ㅇ
+treatment/08_consocommon/text_03_0017_0003 ㄱ
+treatment/08_consocommon/text_03_0017_0004 ㅇ
+treatment/08_consocommon/text_03_0018_0001 꿀
+treatment/08_consocommon/text_03_0018_0002 ㄹ
+treatment/08_consocommon/text_03_0018_0003 ㄴ
+treatment/08_consocommon/text_03_0018_0004 ㄹ
+treatment/08_consocommon/text_03_0019_0001 땅콩
+treatment/08_consocommon/text_03_0019_0002 ㅇ
+treatment/08_consocommon/text_03_0019_0003 ㄹ
+treatment/08_consocommon/text_03_0019_0004 ㅇ
+treatment/08_consocommon/text_03_0020_0001 똥
+treatment/08_consocommon/text_03_0020_0002 ㅁ
+treatment/08_consocommon/text_03_0020_0003 ㅇ
+treatment/08_consocommon/text_03_0020_0004 ㅇ
+treatment/08_consocommon/text_03_0021_0001 떡
+treatment/08_consocommon/text_03_0021_0002 ㄹ
+treatment/08_consocommon/text_03_0021_0003 ㄱ
+treatment/08_consocommon/text_03_0021_0004 ㄱ
+treatment/08_consocommon/text_03_0022_0001 떡볶이
+treatment/08_consocommon/text_03_0022_0002 ㄱ
+treatment/08_consocommon/text_03_0022_0003 ㄹ
+treatment/08_consocommon/text_03_0022_0004 ㄱ
+treatment/08_consocommon/text_03_0023_0001 딸기
+treatment/08_consocommon/text_03_0023_0002 ㄹ
+treatment/08_consocommon/text_03_0023_0003 ㄱ
+treatment/08_consocommon/text_03_0023_0004 ㄹ
+treatment/08_consocommon/text_03_0024_0001 빨래
+treatment/08_consocommon/text_03_0024_0002 ㄴ
+treatment/08_consocommon/text_03_0024_0003 ㄹ
+treatment/08_consocommon/text_03_0024_0004 ㄹ
+treatment/08_consocommon/text_03_0025_0001 쌀
+treatment/08_consocommon/text_03_0025_0002 ㅂ
+treatment/08_consocommon/text_03_0025_0003 ㄹ
+treatment/08_consocommon/text_03_0025_0004 ㄹ
+treatment/08_consocommon/text_03_0026_0001 짬뽕
+treatment/08_consocommon/text_03_0026_0002 ㅁ
+treatment/08_consocommon/text_03_0026_0003 ㅂ
+treatment/08_consocommon/text_03_0026_0004 ㅁ
+treatment/08_consocommon/text_03_0027_0001 짝수
+treatment/08_consocommon/text_03_0027_0002 ㄱ
+treatment/08_consocommon/text_03_0027_0003 ㅂ
+treatment/08_consocommon/text_03_0027_0004 ㄱ
+treatment/08_consocommon/text_03_0028_0001 쪽지
+treatment/08_consocommon/text_03_0028_0002 ㄹ
+treatment/08_consocommon/text_03_0028_0003 ㄱ
+treatment/08_consocommon/text_03_0028_0004 ㄱ
+treatment/09_consoword/text_01_0001_0001 강산
+treatment/09_consoword/text_01_0002_0001 가방
+treatment/09_consoword/text_01_0003_0001 가지
+treatment/09_consoword/text_01_0004_0001 강아지
+treatment/09_consoword/text_01_0005_0001 구름
+treatment/09_consoword/text_01_0006_0001 그네
+treatment/09_consoword/text_01_0007_0001 그늘
+treatment/09_consoword/text_01_0008_0001 구멍
+treatment/09_consoword/text_01_0009_0001 귀지
+treatment/09_consoword/text_01_0010_0001 경례
+treatment/09_consoword/text_01_0011_0001 가위
+treatment/09_consoword/text_01_0012_0001 개구리
+treatment/09_consoword/text_01_0013_0001 개미
+treatment/09_consoword/text_01_0014_0001 고래
+treatment/09_consoword/text_01_0015_0001 나무
+treatment/09_consoword/text_01_0016_0001 나비
+treatment/09_consoword/text_01_0017_0001 남자
+treatment/09_consoword/text_01_0018_0001 누나
+treatment/09_consoword/text_01_0019_0001 남산
+treatment/09_consoword/text_01_0020_0001 너구리
+treatment/09_consoword/text_01_0021_0001 날개
+treatment/09_consoword/text_01_0022_0001 대나무
+treatment/09_consoword/text_01_0023_0001 다람쥐
+treatment/09_consoword/text_01_0024_0001 당나귀
+treatment/09_consoword/text_01_0025_0001 대야
+treatment/09_consoword/text_01_0026_0001 동그라미
+treatment/09_consoword/text_01_0027_0001 동시
+treatment/09_consoword/text_01_0028_0001 돼지
+treatment/09_consoword/text_01_0029_0001 도끼
+treatment/09_consoword/text_01_0030_0001 동전
+treatment/09_consoword/text_01_0031_0001 돌고래
+treatment/09_consoword/text_01_0032_0001 두더지
+treatment/09_consoword/text_01_0033_0001 둥지
+treatment/09_consoword/text_01_0034_0001 라면
+treatment/09_consoword/text_01_0035_0001 러시아
+treatment/09_consoword/text_01_0036_0001 라디오
+treatment/09_consoword/text_01_0037_0001 레몬
+treatment/09_consoword/text_01_0038_0001 로봇
+treatment/09_consoword/text_01_0039_0001 리코더
+treatment/09_consoword/text_01_0040_0001 만두
+treatment/09_consoword/text_01_0041_0001 마음
+treatment/09_consoword/text_01_0042_0001 마지막
+treatment/09_consoword/text_01_0043_0001 마차
+treatment/09_consoword/text_01_0044_0001 머리
+treatment/09_consoword/text_01_0045_0001 무쌈
+treatment/09_consoword/text_01_0046_0001 망원경
+treatment/09_consoword/text_01_0047_0001 모기
+treatment/09_consoword/text_01_0048_0001 모래
+treatment/09_consoword/text_01_0049_0001 명절
+treatment/09_consoword/text_01_0050_0001 무지개
+treatment/09_consoword/text_01_0051_0001 모자
+treatment/09_consoword/text_01_0052_0001 미끄럼틀
+treatment/09_consoword/text_01_0053_0001 바다
+treatment/09_consoword/text_01_0054_0001 바지
+treatment/09_consoword/text_01_0055_0001 반지
+treatment/09_consoword/text_01_0056_0001 바람
+treatment/09_consoword/text_01_0057_0001 버섯
+treatment/09_consoword/text_01_0058_0001 버튼
+treatment/09_consoword/text_01_0059_0001 부부
+treatment/09_consoword/text_01_0060_0001 부산
+treatment/09_consoword/text_01_0061_0001 봉사
+treatment/09_consoword/text_01_0062_0001 비밀
+treatment/09_consoword/text_01_0063_0001 방귀
+treatment/09_consoword/text_01_0064_0001 배꼽
+treatment/09_consoword/text_01_0065_0001 버스
+treatment/09_consoword/text_01_0066_0001 사과
+treatment/09_consoword/text_01_0067_0001 사탕
+treatment/09_consoword/text_01_0068_0001 서점
+treatment/09_consoword/text_01_0069_0001 손목
+treatment/09_consoword/text_01_0070_0001 시계
+treatment/09_consoword/text_01_0071_0001 사진
+treatment/09_consoword/text_01_0072_0001 선물
+treatment/09_consoword/text_01_0073_0001 선생님
+treatment/09_consoword/text_01_0074_0001 생명
+treatment/09_consoword/text_01_0075_0001 세상
+treatment/09_consoword/text_01_0076_0001 셔츠
+treatment/09_consoword/text_01_0077_0001 소나무
+treatment/09_consoword/text_01_0078_0001 쇠똥구리
+treatment/09_consoword/text_01_0079_0001 열쇠
+treatment/09_consoword/text_01_0080_0001 오렌지
+treatment/09_consoword/text_01_0081_0001 영어
+treatment/09_consoword/text_01_0082_0001 우비
+treatment/09_consoword/text_01_0083_0001 옥구슬
+treatment/09_consoword/text_01_0084_0001 양산
+treatment/09_consoword/text_01_0085_0001 언니
+treatment/09_consoword/text_01_0086_0001 의자
+treatment/09_consoword/text_01_0087_0001 오리
+treatment/09_consoword/text_01_0088_0001 아빠
+treatment/09_consoword/text_01_0089_0001 우산
+treatment/09_consoword/text_01_0090_0001 운동장
+treatment/09_consoword/text_01_0091_0001 자두
+treatment/09_consoword/text_01_0092_0001 잠자리
+treatment/09_consoword/text_01_0093_0001 조개
+treatment/09_consoword/text_01_0094_0001 자동차
+treatment/09_consoword/text_01_0095_0001 자전거
+treatment/09_consoword/text_01_0096_0001 점심
+treatment/09_consoword/text_01_0097_0001 종소리
+treatment/09_consoword/text_01_0098_0001 주말
+treatment/09_consoword/text_01_0099_0001 제주도
+treatment/09_consoword/text_01_0100_0001 재료
+treatment/09_consoword/text_01_0101_0001 중국
+treatment/09_consoword/text_01_0102_0001 주전자
+treatment/09_consoword/text_01_0103_0001 지우개
+treatment/09_consoword/text_01_0104_0001 책
+treatment/09_consoword/text_01_0105_0001 청소기
+treatment/09_consoword/text_01_0106_0001 축구
+treatment/09_consoword/text_01_0107_0001 창가
+treatment/09_consoword/text_01_0108_0001 참외
+treatment/09_consoword/text_01_0109_0001 초시계
+treatment/09_consoword/text_01_0110_0001 추억
+treatment/09_consoword/text_01_0111_0001 청소
+treatment/09_consoword/text_01_0112_0001 초파리
+treatment/09_consoword/text_01_0113_0001 치약
+treatment/09_consoword/text_01_0114_0001 철가방
+treatment/09_consoword/text_01_0115_0001 칫솔
+treatment/09_consoword/text_01_0116_0001 카메라
+treatment/09_consoword/text_01_0117_0001 캥거루
+treatment/09_consoword/text_01_0118_0001 카멜레온
+treatment/09_consoword/text_01_0119_0001 코피
+treatment/09_consoword/text_01_0120_0001 쿠키
+treatment/09_consoword/text_01_0121_0001 캐릭터
+treatment/09_consoword/text_01_0122_0001 코끼리
+treatment/09_consoword/text_01_0123_0001 키위
+treatment/09_consoword/text_01_0124_0001 커피
+treatment/09_consoword/text_01_0125_0001 타조
+treatment/09_consoword/text_01_0126_0001 태양
+treatment/09_consoword/text_01_0127_0001 탬버린
+treatment/09_consoword/text_01_0128_0001 투표
+treatment/09_consoword/text_01_0129_0001 터널
+treatment/09_consoword/text_01_0130_0001 탁자
+treatment/09_consoword/text_01_0131_0001 통나무
+treatment/09_consoword/text_01_0132_0001 팅커벨
+treatment/09_consoword/text_01_0133_0001 토끼
+treatment/09_consoword/text_01_0134_0001 토마토
+treatment/09_consoword/text_01_0135_0001 파리
+treatment/09_consoword/text_01_0136_0001 편지
+treatment/09_consoword/text_01_0137_0001 포도
+treatment/09_consoword/text_01_0138_0001 피아노
+treatment/09_consoword/text_01_0139_0001 피터팬
+treatment/09_consoword/text_01_0140_0001 허리
+treatment/09_consoword/text_01_0141_0001 호랑이
+treatment/09_consoword/text_01_0142_0001 형님
+treatment/09_consoword/text_01_0143_0001 흉내
+treatment/09_consoword/text_01_0144_0001 홍시
+treatment/09_consoword/text_01_0145_0001 학교
+treatment/09_consoword/text_01_0146_0001 햇살
+treatment/09_consoword/text_01_0147_0001 헝겊
+treatment/09_consoword/text_01_0148_0001 휴지
+treatment/09_consoword/text_01_0149_0001 하마
+treatment/09_consoword/text_01_0150_0001 연못
+treatment/09_consoword/text_01_0151_0001 햄버거
+treatment/09_consoword/text_01_0152_0001 꽃다발
+treatment/09_consoword/text_01_0153_0001 꿀단지
+treatment/09_consoword/text_01_0154_0001 깨소금
+treatment/09_consoword/text_01_0155_0001 땅콩
+treatment/09_consoword/text_01_0156_0001 떡볶이
+treatment/09_consoword/text_01_0157_0001 딸기
+treatment/09_consoword/text_01_0158_0001 빨래
+treatment/09_consoword/text_01_0159_0001 뻐꾸기
+treatment/09_consoword/text_01_0160_0001 뽀뽀
+treatment/09_consoword/text_01_0161_0001 뿌리
+treatment/09_consoword/text_01_0162_0001 쓰레기
+treatment/09_consoword/text_01_0163_0001 씨앗
+treatment/09_consoword/text_01_0164_0001 씨름
+treatment/09_consoword/text_01_0165_0001 짬뽕
+treatment/09_consoword/text_01_0166_0001 짝수
+treatment/09_consoword/text_01_0167_0001 쪽지
+treatment/09_consoword/text_01_0168_0001 찌개
+treatment/09_consoword/text_02_0001_0001 단바드
+treatment/09_consoword/text_02_0002_0001 아산솔
+treatment/09_consoword/text_02_0003_0001 팀부현
+treatment/09_consoword/text_02_0004_0001 칸푸르
+treatment/09_consoword/text_02_0005_0001 캘커트
+treatment/09_consoword/text_02_0006_0001 치타굉
+treatment/09_consoword/text_02_0007_0001 파이잩
+treatment/09_consoword/text_02_0008_0001 알라하
+treatment/09_consoword/text_02_0009_0001 구와하
+treatment/09_consoword/text_02_0010_0001 가푸릌
+treatment/09_consoword/text_02_0011_0001 사가릇
+treatment/09_consoword/text_02_0012_0001 아콜라
+treatment/09_consoword/text_02_0013_0001 난데드
+treatment/09_consoword/text_02_0014_0001 와랑갈
+treatment/09_consoword/text_02_0015_0001 잘라뤼
+treatment/09_consoword/text_02_0016_0001 푸리긏
+treatment/09_consoword/text_02_0017_0001 러크낮
+treatment/09_consoword/text_02_0018_0001 모레낲
+treatment/09_consoword/text_02_0019_0001 펀자브
+treatment/09_consoword/text_02_0020_0001 르가온
+treatment/09_consoword/text_02_0021_0001 알리가
+treatment/09_consoword/text_02_0022_0001 알모라
+treatment/09_consoword/text_02_0023_0001 필리비
+treatment/09_consoword/text_02_0024_0001 통크부
+treatment/09_consoword/text_02_0025_0001 지메릍
+treatment/09_consoword/text_02_0026_0001 코타깆
+treatment/09_consoword/text_02_0027_0001 파맀다
+treatment/09_consoword/text_02_0028_0001 오카라
+treatment/09_consoword/text_02_0029_0001 암발라
+treatment/09_consoword/text_02_0030_0001 우자인
+treatment/09_consoword/text_02_0031_0001 인도르
+treatment/09_consoword/text_02_0032_0001 발람퍼
+treatment/09_consoword/text_02_0033_0001 놔가릇
+treatment/09_consoword/text_02_0034_0001 샌딜라
+treatment/09_consoword/text_02_0035_0001 하투와
+treatment/09_consoword/text_02_0036_0001 칼얀퍼
+treatment/09_consoword/text_02_0037_0001 만잔퍼
+treatment/09_consoword/text_02_0038_0001 마니사
+treatment/09_consoword/text_02_0039_0001 람사가
+treatment/09_consoword/text_02_0040_0001 시르카
+treatment/09_consoword/text_02_0041_0001 아있닌
+treatment/09_consoword/text_02_0042_0001 바라삿
+treatment/09_consoword/text_02_0043_0001 나와디
+treatment/09_consoword/text_02_0044_0001 앙카라
+treatment/09_consoword/text_02_0045_0001 핚브라
+treatment/09_consoword/text_02_0046_0001 나이로비
+treatment/09_consoword/text_02_0047_0001 잔비바르
+treatment/09_consoword/text_02_0048_0001 다르에스
+treatment/09_consoword/text_02_0049_0001 엘도레트
+treatment/09_consoword/text_02_0050_0001 숨바왕가
+treatment/09_consoword/text_02_0051_0001 키상가니
+treatment/09_consoword/text_02_0052_0001 무트와라
+treatment/09_consoword/text_02_0053_0001 루붐바시
+treatment/09_consoword/text_02_0054_0001 모잠비크
+treatment/09_consoword/text_02_0055_0001 켈리마네
+treatment/09_consoword/text_02_0056_0001 짐바브웨
+treatment/09_consoword/text_02_0057_0001 블라와요
+treatment/09_consoword/text_02_0058_0001 시모이우
+treatment/09_consoword/text_02_0059_0001 프랜시스
+treatment/09_consoword/text_02_0060_0001 토호얀두
+treatment/09_consoword/text_02_0061_0001 가보로네
+treatment/09_consoword/text_02_0062_0001 블럼폰탄
+treatment/09_consoword/text_02_0063_0001 퀸스타운
+treatment/09_consoword/text_02_0064_0001 피터마리
+treatment/09_consoword/text_02_0065_0001 맘스베리
+treatment/09_consoword/text_02_0066_0001 허머너스
+treatment/09_consoword/text_02_0067_0001 모쉘베이
+treatment/09_consoword/text_02_0068_0001 왈비스만
+treatment/09_consoword/text_02_0069_0001 빈트후크
+treatment/09_consoword/text_02_0070_0001 보츠와나
+treatment/09_consoword/text_02_0071_0001 수와레즈
+treatment/09_consoword/text_02_0072_0001 리빙스톤
+treatment/09_consoword/text_02_0073_0001 적도기니
+treatment/09_consoword/text_02_0074_0001 리브리빌
+treatment/09_consoword/text_02_0075_0001 포트장틸
+treatment/09_consoword/text_02_0076_0001 애볼로와
+treatment/09_consoword/text_02_0077_0001 음반디카
+treatment/09_consoword/text_02_0078_0001 베닌시티
+treatment/09_consoword/text_02_0079_0001 나티팅구
+treatment/09_consoword/text_02_0080_0001 은자메나
+treatment/09_consoword/text_02_0081_0001 알파시르
+treatment/09_consoword/text_02_0082_0001 키상가니
+treatment/09_consoword/text_02_0083_0001 엘도레트
+treatment/09_consoword/text_02_0084_0001 마라차구
+treatment/09_consoword/text_02_0085_0001 디레다와
+treatment/09_consoword/text_02_0086_0001 에리가보
+treatment/09_consoword/text_02_0087_0001 갈카크요
+treatment/09_consoword/text_02_0088_0001 모가디슈
+treatment/09_consoword/text_02_0089_0001 알파시르
+treatment/09_consoword/text_02_0090_0001 푸자이라
+treatment/09_consoword/text_02_0091_0001 쿠웨이트
+treatment/09_consoword/text_02_0092_0001 쿠세이르
+treatment/09_consoword/text_02_0093_0001 카프러스
+treatment/09_consoword/text_02_0094_0001 케르만샤
+treatment/09_consoword/text_02_0095_0001 키르쿠크
+treatment/09_consoword/text_02_0096_0001 베이루트
+treatment/09_consoword/text_02_0097_0001 아르다빌
+treatment/09_consoword/text_02_0098_0001 비르잔드
+treatment/09_consoword/text_02_0099_0001 메니스탄
+treatment/09_consoword/text_02_0100_0001 베르테로스
+treatment/09_consoword/text_02_0101_0001 에스토니아
+treatment/09_consoword/text_02_0102_0001 클라이페다
+treatment/09_consoword/text_02_0103_0001 비드고슈치
+treatment/09_consoword/text_02_0104_0001 그다인스크
+treatment/09_consoword/text_02_0105_0001 스몰렌스트
+treatment/09_consoword/text_02_0106_0001 아르자마스
+treatment/09_consoword/text_02_0107_0001 블라디미르
+treatment/09_consoword/text_02_0108_0001 볼고그라드
+treatment/09_consoword/text_02_0109_0001 아스트라한
+treatment/09_consoword/text_02_0110_0001 마하치칼라
+treatment/09_consoword/text_02_0111_0001 밍개체비르
+treatment/09_consoword/text_02_0112_0001 아슈하바트
+treatment/09_consoword/text_02_0113_0001 바하왈푸르
+treatment/09_consoword/text_02_0114_0001 구지란왈라
+treatment/09_consoword/text_02_0115_0001 파이자바드
+treatment/09_consoword/text_02_0116_0001 비자야와다
+treatment/09_consoword/text_02_0117_0001 코임바토르
+treatment/09_consoword/text_02_0118_0001 울란바토르
+treatment/09_consoword/text_02_0119_0001 자랄라바트
+treatment/09_consoword/text_02_0120_0001 코파르니혼
+treatment/09_consoword/text_02_0121_0001 투르순조타
+treatment/09_consoword/text_02_0122_0001 쿠루곤탭파
+treatment/09_consoword/text_02_0123_0001 아보타바드
+treatment/09_consoword/text_02_0124_0001 텔리아간즈
+treatment/09_consoword/text_02_0125_0001 고라크푸르
+treatment/09_consoword/text_02_0126_0001 카우리아리
+treatment/09_consoword/text_02_0127_0001 잠셰드푸르
+treatment/09_consoword/text_02_0128_0001 서머셋이스트
+treatment/09_consoword/text_02_0129_0001 포트알프레드
+treatment/09_consoword/text_02_0130_0001 보퍼드웨스트
+treatment/09_consoword/text_02_0131_0001 그루트폰테인
+treatment/09_consoword/text_02_0132_0001 스와코푸문트
+treatment/09_consoword/text_02_0133_0001 빅토리아필시
+treatment/09_consoword/text_02_0134_0001 레이크옴부로
+treatment/09_consoword/text_02_0135_0001 캄팔라호이마
+treatment/09_consoword/text_02_0136_0001 가르바하레이
+treatment/09_consoword/text_02_0137_0001 벨레드웨이네
+treatment/09_consoword/text_02_0138_0001 반다르아비스
+treatment/09_consoword/text_02_0139_0001 스파크스달리
+treatment/09_consoword/text_02_0140_0001 파르디잔디스
+treatment/09_consoword/text_02_0141_0001 달레고르스크
+treatment/09_consoword/text_02_0142_0001 레소자보츠크
+treatment/09_consoword/text_02_0143_0001 울리아스타이
+treatment/09_consoword/text_02_0144_0001 아제르바이잔
+treatment/09_consoword/text_02_0145_0001 술라이미마야
+treatment/09_consoword/text_02_0146_0001 트크바르첼리
+treatment/09_consoword/text_02_0147_0001 퍄티고르스크
+treatment/09_consoword/text_02_0148_0001 부두놀리놉카
+treatment/09_consoword/text_02_0149_0001 키슬로보츠크
+treatment/09_consoword/text_02_0150_0001 스타리오스콜
+treatment/09_consoword/text_02_0151_0001 우차네클런치
+treatment/09_consoword/text_02_0152_0001 주콥카리브니
+treatment/09_consoword/text_02_0153_0001 체르니스톰니
+treatment/09_consoword/text_02_0154_0001 칼루가알렉신
+treatment/10_consosound/text_01_0001_0001 뭐
+treatment/10_consosound/text_01_0001_0002 눠
+treatment/10_consosound/text_01_0001_0003 뭐
+treatment/10_consosound/text_01_0002_0001 므
+treatment/10_consosound/text_01_0002_0002 므
+treatment/10_consosound/text_01_0002_0003 으
+treatment/10_consosound/text_01_0003_0001 메
+treatment/10_consosound/text_01_0003_0002 레
+treatment/10_consosound/text_01_0003_0003 메
+treatment/10_consosound/text_01_0004_0001 놰
+treatment/10_consosound/text_01_0004_0002 왜
+treatment/10_consosound/text_01_0004_0003 놰
+treatment/10_consosound/text_01_0005_0001 누
+treatment/10_consosound/text_01_0005_0002 루
+treatment/10_consosound/text_01_0005_0003 누
+treatment/10_consosound/text_01_0006_0001 우
+treatment/10_consosound/text_01_0006_0002 루
+treatment/10_consosound/text_01_0006_0003 우
+treatment/10_consosound/text_02_0001_0001 뱌
+treatment/10_consosound/text_02_0001_0002 뱌
+treatment/10_consosound/text_02_0001_0003 댜
+treatment/10_consosound/text_02_0002_0001 버
+treatment/10_consosound/text_02_0002_0002 버
+treatment/10_consosound/text_02_0002_0003 거
+treatment/10_consosound/text_02_0003_0001 뵤
+treatment/10_consosound/text_02_0003_0002 뾰
+treatment/10_consosound/text_02_0003_0003 뵤
+treatment/10_consosound/text_02_0004_0001 뵤
+treatment/10_consosound/text_02_0004_0002 뵤
+treatment/10_consosound/text_02_0004_0003 뚀
+treatment/10_consosound/text_02_0005_0001 보
+treatment/10_consosound/text_02_0005_0002 보
+treatment/10_consosound/text_02_0005_0003 꼬
+treatment/10_consosound/text_02_0006_0001 붜
+treatment/10_consosound/text_02_0006_0002 풔
+treatment/10_consosound/text_02_0006_0003 붜
+treatment/10_consosound/text_02_0007_0001 봬
+treatment/10_consosound/text_02_0007_0002 봬
+treatment/10_consosound/text_02_0007_0003 퇘
+treatment/10_consosound/text_02_0008_0001 벼
+treatment/10_consosound/text_02_0008_0002 켜
+treatment/10_consosound/text_02_0008_0003 벼
+treatment/10_consosound/text_02_0009_0001 뎨
+treatment/10_consosound/text_02_0009_0002 뎨
+treatment/10_consosound/text_02_0009_0003 계
+treatment/10_consosound/text_02_0010_0001 드
+treatment/10_consosound/text_02_0010_0002 드
+treatment/10_consosound/text_02_0010_0003 쁘
+treatment/10_consosound/text_02_0011_0001 두
+treatment/10_consosound/text_02_0011_0002 뚜
+treatment/10_consosound/text_02_0011_0003 두
+treatment/10_consosound/text_02_0012_0001 더
+treatment/10_consosound/text_02_0012_0002 꺼
+treatment/10_consosound/text_02_0012_0003 더
+treatment/10_consosound/text_02_0013_0001 됴
+treatment/10_consosound/text_02_0013_0002 표
+treatment/10_consosound/text_02_0013_0003 됴
+treatment/10_consosound/text_02_0014_0001 디
+treatment/10_consosound/text_02_0014_0002 디
+treatment/10_consosound/text_02_0014_0003 티
+treatment/10_consosound/text_02_0015_0001 뎨
+treatment/10_consosound/text_02_0015_0002 켸
+treatment/10_consosound/text_02_0015_0003 뎨
+treatment/10_consosound/text_02_0016_0001 기
+treatment/10_consosound/text_02_0016_0002 기
+treatment/10_consosound/text_02_0016_0003 삐
+treatment/10_consosound/text_02_0017_0001 가
+treatment/10_consosound/text_02_0017_0002 따
+treatment/10_consosound/text_02_0017_0003 가
+treatment/10_consosound/text_02_0018_0001 괴
+treatment/10_consosound/text_02_0018_0002 괴
+treatment/10_consosound/text_02_0018_0003 꾀
+treatment/10_consosound/text_02_0019_0001 궈
+treatment/10_consosound/text_02_0019_0002 궈
+treatment/10_consosound/text_02_0019_0003 풔
+treatment/10_consosound/text_02_0020_0001 괴
+treatment/10_consosound/text_02_0020_0002 괴
+treatment/10_consosound/text_02_0020_0003 퇴
+treatment/10_consosound/text_02_0021_0001 게
+treatment/10_consosound/text_02_0021_0002 케
+treatment/10_consosound/text_02_0021_0003 게
+treatment/10_consosound/text_02_0022_0001 뺴
+treatment/10_consosound/text_02_0022_0002 떄
+treatment/10_consosound/text_02_0022_0003 뺴
+treatment/10_consosound/text_02_0023_0001 뻬
+treatment/10_consosound/text_02_0023_0002 께
+treatment/10_consosound/text_02_0023_0003 뻬
+treatment/10_consosound/text_02_0024_0001 뿨
+treatment/10_consosound/text_02_0024_0002 뿨
+treatment/10_consosound/text_02_0024_0003 풔
+treatment/10_consosound/text_02_0025_0001 쀠
+treatment/10_consosound/text_02_0025_0002 쀠
+treatment/10_consosound/text_02_0025_0003 튀
+treatment/10_consosound/text_02_0026_0001 쀄
+treatment/10_consosound/text_02_0026_0002 쀄
+treatment/10_consosound/text_02_0026_0003 퀘
+treatment/10_consosound/text_02_0027_0001 뜨
+treatment/10_consosound/text_02_0027_0002 뜨
+treatment/10_consosound/text_02_0027_0003 끄
+treatment/10_consosound/text_02_0028_0001 똬
+treatment/10_consosound/text_02_0028_0002 똬
+treatment/10_consosound/text_02_0028_0003 퐈
+treatment/10_consosound/text_02_0029_0001 뛰
+treatment/10_consosound/text_02_0029_0002 뛰
+treatment/10_consosound/text_02_0029_0003 튀
+treatment/10_consosound/text_02_0030_0001 떠
+treatment/10_consosound/text_02_0030_0002 커
+treatment/10_consosound/text_02_0030_0003 떠
+treatment/10_consosound/text_02_0031_0001 꼬
+treatment/10_consosound/text_02_0031_0002 포
+treatment/10_consosound/text_02_0031_0003 꼬
+treatment/10_consosound/text_02_0032_0001 꺄
+treatment/10_consosound/text_02_0032_0002 꺄
+treatment/10_consosound/text_02_0032_0003 탸
+treatment/10_consosound/text_02_0033_0001 꾜
+treatment/10_consosound/text_02_0033_0002 꾜
+treatment/10_consosound/text_02_0033_0003 쿄
+treatment/10_consosound/text_02_0034_0001 프
+treatment/10_consosound/text_02_0034_0002 트
+treatment/10_consosound/text_02_0034_0003 프
+treatment/10_consosound/text_02_0035_0001 퍄
+treatment/10_consosound/text_02_0035_0002 퍄
+treatment/10_consosound/text_02_0035_0003 캬
+treatment/10_consosound/text_02_0036_0001 타
+treatment/10_consosound/text_02_0036_0002 타
+treatment/10_consosound/text_02_0036_0003 카
+treatment/10_consosound/text_03_0001_0001 제
+treatment/10_consosound/text_03_0001_0002 세
+treatment/10_consosound/text_03_0001_0003 제
+treatment/10_consosound/text_03_0002_0001 줘
+treatment/10_consosound/text_03_0002_0002 줘
+treatment/10_consosound/text_03_0002_0003 쭤
+treatment/10_consosound/text_03_0003_0001 줘
+treatment/10_consosound/text_03_0003_0002 쒀
+treatment/10_consosound/text_03_0003_0003 줘
+treatment/10_consosound/text_03_0004_0001 줴
+treatment/10_consosound/text_03_0004_0002 췌
+treatment/10_consosound/text_03_0004_0003 줴
+treatment/10_consosound/text_03_0005_0001 좨
+treatment/10_consosound/text_03_0005_0002 홰
+treatment/10_consosound/text_03_0005_0003 좨
+treatment/10_consosound/text_03_0006_0001 시
+treatment/10_consosound/text_03_0006_0002 찌
+treatment/10_consosound/text_03_0006_0003 시
+treatment/10_consosound/text_03_0007_0001 사
+treatment/10_consosound/text_03_0007_0002 싸
+treatment/10_consosound/text_03_0007_0003 사
+treatment/10_consosound/text_03_0008_0001 세
+treatment/10_consosound/text_03_0008_0002 체
+treatment/10_consosound/text_03_0008_0003 세
+treatment/10_consosound/text_03_0009_0001 쇄
+treatment/10_consosound/text_03_0009_0002 쇄
+treatment/10_consosound/text_03_0009_0003 홰
+treatment/10_consosound/text_03_0010_0001 쮜
+treatment/10_consosound/text_03_0010_0002 쒸
+treatment/10_consosound/text_03_0010_0003 쮜
+treatment/10_consosound/text_03_0011_0001 쩌
+treatment/10_consosound/text_03_0011_0002 처
+treatment/10_consosound/text_03_0011_0003 쩌
+treatment/10_consosound/text_03_0012_0001 쯔
+treatment/10_consosound/text_03_0012_0002 쯔
+treatment/10_consosound/text_03_0012_0003 흐
+treatment/10_consosound/text_03_0013_0001 쐐
+treatment/10_consosound/text_03_0013_0002 쐐
+treatment/10_consosound/text_03_0013_0003 쵀
+treatment/10_consosound/text_03_0014_0001 씌
+treatment/10_consosound/text_03_0014_0002 씌
+treatment/10_consosound/text_03_0014_0003 희
+treatment/10_consosound/text_03_0015_0001 쵀
+treatment/10_consosound/text_03_0015_0002 홰
+treatment/10_consosound/text_03_0015_0003 쵀
+treatment/10_consosound/text_04_0001_0001 뎌
+treatment/10_consosound/text_04_0001_0002 껴
+treatment/10_consosound/text_04_0001_0003 뎌
+treatment/10_consosound/text_04_0002_0001 쇄
+treatment/10_consosound/text_04_0002_0002 쵀
+treatment/10_consosound/text_04_0002_0003 쇄
+treatment/10_consosound/text_04_0003_0001 포
+treatment/10_consosound/text_04_0003_0002 토
+treatment/10_consosound/text_04_0003_0003 포
+treatment/10_consosound/text_04_0004_0001 얘
+treatment/10_consosound/text_04_0004_0002 햬
+treatment/10_consosound/text_04_0004_0003 얘
+treatment/10_consosound/text_04_0005_0001 뵈
+treatment/10_consosound/text_04_0005_0002 뵈
+treatment/10_consosound/text_04_0005_0003 뙤
+treatment/10_consosound/text_04_0006_0001 뫄
+treatment/10_consosound/text_04_0006_0002 뽜
+treatment/10_consosound/text_04_0006_0003 뫄
+treatment/10_consosound/text_04_0007_0001 매
+treatment/10_consosound/text_04_0007_0002 쌔
+treatment/10_consosound/text_04_0007_0003 매
+treatment/10_consosound/text_04_0008_0001 쀄
+treatment/10_consosound/text_04_0008_0002 쀄
+treatment/10_consosound/text_04_0008_0003 쒜
+treatment/10_consosound/text_04_0009_0001 오
+treatment/10_consosound/text_04_0009_0002 코
+treatment/10_consosound/text_04_0009_0003 오
+treatment/10_consosound/text_04_0010_0001 튀
+treatment/10_consosound/text_04_0010_0002 튀
+treatment/10_consosound/text_04_0010_0003 쉬
+treatment/10_consosound/text_04_0011_0001 뱌
+treatment/10_consosound/text_04_0011_0002 캬
+treatment/10_consosound/text_04_0011_0003 뱌
+treatment/10_consosound/text_04_0012_0001 뻬
+treatment/10_consosound/text_04_0012_0002 테
+treatment/10_consosound/text_04_0012_0003 뻬
+treatment/10_consosound/text_04_0013_0001 걔
+treatment/10_consosound/text_04_0013_0002 걔
+treatment/10_consosound/text_04_0013_0003 챼
+treatment/10_consosound/text_04_0014_0001 뢰
+treatment/10_consosound/text_04_0014_0002 뢰
+treatment/10_consosound/text_04_0014_0003 최
+treatment/10_consosound/text_04_0015_0001 롸
+treatment/10_consosound/text_04_0015_0002 솨
+treatment/10_consosound/text_04_0015_0003 롸
+treatment/10_consosound/text_04_0016_0001 드
+treatment/10_consosound/text_04_0016_0002 뜨
+treatment/10_consosound/text_04_0016_0003 드
+treatment/10_consosound/text_04_0017_0001 나
+treatment/10_consosound/text_04_0017_0002 나
+treatment/10_consosound/text_04_0017_0003 아
+treatment/10_consosound/text_04_0018_0001 괘
+treatment/10_consosound/text_04_0018_0002 괘
+treatment/10_consosound/text_04_0018_0003 쇄
+treatment/10_consosound/text_04_0019_0001 뷰
+treatment/10_consosound/text_04_0019_0002 뷰
+treatment/10_consosound/text_04_0019_0003 뀨
+treatment/10_consosound/text_04_0020_0001 뾰
+treatment/10_consosound/text_04_0020_0002 쬬
+treatment/10_consosound/text_04_0020_0003 뾰
+treatment/10_consosound/text_04_0021_0001 걔
+treatment/10_consosound/text_04_0021_0002 뺴
+treatment/10_consosound/text_04_0021_0003 걔
+treatment/10_consosound/text_04_0022_0001 끄
+treatment/10_consosound/text_04_0022_0002 끄
+treatment/10_consosound/text_04_0022_0003 쯔
+treatment/10_consosound/text_04_0023_0001 크
+treatment/10_consosound/text_04_0023_0002 즈
+treatment/10_consosound/text_04_0023_0003 크
+treatment/10_consosound/text_04_0024_0001 돠
+treatment/10_consosound/text_04_0024_0002 돠
+treatment/10_consosound/text_04_0024_0003 콰
+treatment/10_consosound/text_04_0025_0001 다
+treatment/10_consosound/text_04_0025_0002 다
+treatment/10_consosound/text_04_0025_0003 하
+treatment/10_consosound/text_04_0026_0001 뜨
+treatment/10_consosound/text_04_0026_0002 프
+treatment/10_consosound/text_04_0026_0003 뜨
+treatment/10_consosound/text_04_0027_0001 줘
+treatment/10_consosound/text_04_0027_0002 쒀
+treatment/10_consosound/text_04_0027_0003 줘
+treatment/10_consosound/text_04_0028_0001 퓨
+treatment/10_consosound/text_04_0028_0002 휴
+treatment/10_consosound/text_04_0028_0003 퓨
+treatment/10_consosound/text_04_0029_0001 뷔
+treatment/10_consosound/text_04_0029_0002 뷔
+treatment/10_consosound/text_04_0029_0003 쥐
+treatment/10_consosound/text_04_0030_0001 눼
+treatment/10_consosound/text_04_0030_0002 쉐
+treatment/10_consosound/text_04_0030_0003 눼
+treatment/10_consosound/text_04_0031_0001 어
+treatment/10_consosound/text_04_0031_0002 어
+treatment/10_consosound/text_04_0031_0003 저
+treatment/10_consosound/text_04_0032_0001 꺄
+treatment/10_consosound/text_04_0032_0002 꺄
+treatment/10_consosound/text_04_0032_0003 탸
+treatment/10_consosound/text_04_0033_0001 코
+treatment/10_consosound/text_04_0033_0002 코
+treatment/10_consosound/text_04_0033_0003 초
+treatment/10_consosound/text_04_0034_0001 꾸
+treatment/10_consosound/text_04_0034_0002 추
+treatment/10_consosound/text_04_0034_0003 꾸
+treatment/10_consosound/text_04_0035_0001 뤄
+treatment/10_consosound/text_04_0035_0002 궈
+treatment/10_consosound/text_04_0035_0003 뤄
+treatment/10_consosound/text_04_0036_0001 묘
+treatment/10_consosound/text_04_0036_0002 묘
+treatment/10_consosound/text_04_0036_0003 뵤
+treatment/10_consosound/text_04_0037_0001 몌
+treatment/10_consosound/text_04_0037_0002 톄
+treatment/10_consosound/text_04_0037_0003 몌
+treatment/10_consosound/text_04_0038_0001 띄
+treatment/10_consosound/text_04_0038_0002 띄
+treatment/10_consosound/text_04_0038_0003 씌
+treatment/10_consosound/text_04_0039_0001 벼
+treatment/10_consosound/text_04_0039_0002 펴
+treatment/10_consosound/text_04_0039_0003 벼
+treatment/10_consosound/text_04_0040_0001 애
+treatment/10_consosound/text_04_0040_0002 쌔
+treatment/10_consosound/text_04_0040_0003 애
+treatment/10_consosound/text_04_0041_0001 표
+treatment/10_consosound/text_04_0041_0002 죠
+treatment/10_consosound/text_04_0041_0003 표
+treatment/10_consosound/text_04_0042_0001 와
+treatment/10_consosound/text_04_0042_0002 와
+treatment/10_consosound/text_04_0042_0003 퐈
+treatment/10_consosound/text_04_0043_0001 버
+treatment/10_consosound/text_04_0043_0002 버
+treatment/10_consosound/text_04_0043_0003 써
+treatment/10_consosound/text_04_0044_0001 듸
+treatment/10_consosound/text_04_0044_0002 쯰
+treatment/10_consosound/text_04_0044_0003 듸
+treatment/10_consosound/text_04_0045_0001 섀
+treatment/10_consosound/text_04_0045_0002 섀
+treatment/10_consosound/text_04_0045_0003 쨰
+treatment/10_consosound/text_04_0046_0001 뉘
+treatment/10_consosound/text_04_0046_0002 뀌
+treatment/10_consosound/text_04_0046_0003 뉘
+treatment/10_consosound/text_04_0047_0001 쵀
+treatment/10_consosound/text_04_0047_0002 홰
+treatment/10_consosound/text_04_0047_0003 쵀
+treatment/10_consosound/text_04_0048_0001 게
+treatment/10_consosound/text_04_0048_0002 게
+treatment/10_consosound/text_04_0048_0003 떼
+treatment/10_consosound/text_04_0049_0001 돠
+treatment/10_consosound/text_04_0049_0002 쏴
+treatment/10_consosound/text_04_0049_0003 돠
+treatment/10_consosound/text_04_0050_0001 뫼
+treatment/10_consosound/text_04_0050_0002 죄
+treatment/10_consosound/text_04_0050_0003 뫼
+treatment/10_consosound/text_05_0001_0001 악
+treatment/10_consosound/text_05_0001_0002 악
+treatment/10_consosound/text_05_0001_0003 안
+treatment/10_consosound/text_05_0002_0001 앆
+treatment/10_consosound/text_05_0002_0002 앆
+treatment/10_consosound/text_05_0002_0003 안
+treatment/10_consosound/text_05_0003_0001 앜
+treatment/10_consosound/text_05_0003_0002 앜
+treatment/10_consosound/text_05_0003_0003 안
+treatment/10_consosound/text_05_0004_0001 악
+treatment/10_consosound/text_05_0004_0002 악
+treatment/10_consosound/text_05_0004_0003 앋
+treatment/10_consosound/text_05_0005_0001 악
+treatment/10_consosound/text_05_0005_0002 악
+treatment/10_consosound/text_05_0005_0003 앝
+treatment/10_consosound/text_05_0006_0001 악
+treatment/10_consosound/text_05_0006_0002 앗
+treatment/10_consosound/text_05_0006_0003 악
+treatment/10_consosound/text_05_0007_0001 악
+treatment/10_consosound/text_05_0007_0002 악
+treatment/10_consosound/text_05_0007_0003 았
+treatment/10_consosound/text_05_0008_0001 악
+treatment/10_consosound/text_05_0008_0002 악
+treatment/10_consosound/text_05_0008_0003 앚
+treatment/10_consosound/text_05_0009_0001 악
+treatment/10_consosound/text_05_0009_0002 앛
+treatment/10_consosound/text_05_0009_0003 악
+treatment/10_consosound/text_05_0010_0001 악
+treatment/10_consosound/text_05_0010_0002 앟
+treatment/10_consosound/text_05_0010_0003 악
+treatment/10_consosound/text_05_0011_0001 앆
+treatment/10_consosound/text_05_0011_0002 앆
+treatment/10_consosound/text_05_0011_0003 앋
+treatment/10_consosound/text_05_0012_0001 앆
+treatment/10_consosound/text_05_0012_0002 앆
+treatment/10_consosound/text_05_0012_0003 앝
+treatment/10_consosound/text_05_0013_0001 앆
+treatment/10_consosound/text_05_0013_0002 앗
+treatment/10_consosound/text_05_0013_0003 앆
+treatment/10_consosound/text_05_0014_0001 앆
+treatment/10_consosound/text_05_0014_0002 았
+treatment/10_consosound/text_05_0014_0003 앆
+treatment/10_consosound/text_05_0015_0001 앆
+treatment/10_consosound/text_05_0015_0002 앆
+treatment/10_consosound/text_05_0015_0003 앚
+treatment/10_consosound/text_05_0016_0001 앆
+treatment/10_consosound/text_05_0016_0002 앆
+treatment/10_consosound/text_05_0016_0003 앛
+treatment/10_consosound/text_05_0017_0001 앆
+treatment/10_consosound/text_05_0017_0002 앆
+treatment/10_consosound/text_05_0017_0003 앟
+treatment/10_consosound/text_05_0018_0001 앜
+treatment/10_consosound/text_05_0018_0002 앜
+treatment/10_consosound/text_05_0018_0003 앋
+treatment/10_consosound/text_05_0019_0001 앜
+treatment/10_consosound/text_05_0019_0002 앝
+treatment/10_consosound/text_05_0019_0003 앜
+treatment/10_consosound/text_05_0020_0001 앜
+treatment/10_consosound/text_05_0020_0002 앗
+treatment/10_consosound/text_05_0020_0003 앜
+treatment/10_consosound/text_05_0021_0001 앜
+treatment/10_consosound/text_05_0021_0002 았
+treatment/10_consosound/text_05_0021_0003 앜
+treatment/10_consosound/text_05_0022_0001 앜
+treatment/10_consosound/text_05_0022_0002 앜
+treatment/10_consosound/text_05_0022_0003 앚
+treatment/10_consosound/text_05_0023_0001 앜
+treatment/10_consosound/text_05_0023_0002 앜
+treatment/10_consosound/text_05_0023_0003 앛
+treatment/10_consosound/text_05_0024_0001 앜
+treatment/10_consosound/text_05_0024_0002 앜
+treatment/10_consosound/text_05_0024_0003 앟
+treatment/10_consosound/text_05_0025_0001 악
+treatment/10_consosound/text_05_0025_0002 악
+treatment/10_consosound/text_05_0025_0003 알
+treatment/10_consosound/text_05_0026_0001 앆
+treatment/10_consosound/text_05_0026_0002 알
+treatment/10_consosound/text_05_0026_0003 앆
+treatment/10_consosound/text_05_0027_0001 앜
+treatment/10_consosound/text_05_0027_0002 앜
+treatment/10_consosound/text_05_0027_0003 알
+treatment/10_consosound/text_05_0028_0001 악
+treatment/10_consosound/text_05_0028_0002 악
+treatment/10_consosound/text_05_0028_0003 암
+treatment/10_consosound/text_05_0029_0001 앆
+treatment/10_consosound/text_05_0029_0002 암
+treatment/10_consosound/text_05_0029_0003 앆
+treatment/10_consosound/text_05_0030_0001 앜
+treatment/10_consosound/text_05_0030_0002 앜
+treatment/10_consosound/text_05_0030_0003 암
+treatment/10_consosound/text_05_0031_0001 악
+treatment/10_consosound/text_05_0031_0002 압
+treatment/10_consosound/text_05_0031_0003 악
+treatment/10_consosound/text_05_0032_0001 악
+treatment/10_consosound/text_05_0032_0002 악
+treatment/10_consosound/text_05_0032_0003 앞
+treatment/10_consosound/text_05_0033_0001 앆
+treatment/10_consosound/text_05_0033_0002 앆
+treatment/10_consosound/text_05_0033_0003 압
+treatment/10_consosound/text_05_0034_0001 앆
+treatment/10_consosound/text_05_0034_0002 앞
+treatment/10_consosound/text_05_0034_0003 앆
+treatment/10_consosound/text_05_0035_0001 앜
+treatment/10_consosound/text_05_0035_0002 압
+treatment/10_consosound/text_05_0035_0003 앜
+treatment/10_consosound/text_05_0036_0001 앜
+treatment/10_consosound/text_05_0036_0002 앜
+treatment/10_consosound/text_05_0036_0003 앞
+treatment/10_consosound/text_05_0037_0001 악
+treatment/10_consosound/text_05_0037_0002 앙
+treatment/10_consosound/text_05_0037_0003 악
+treatment/10_consosound/text_05_0038_0001 앆
+treatment/10_consosound/text_05_0038_0002 앙
+treatment/10_consosound/text_05_0038_0003 앆
+treatment/10_consosound/text_05_0039_0001 앜
+treatment/10_consosound/text_05_0039_0002 앜
+treatment/10_consosound/text_05_0039_0003 앙
+treatment/10_consosound/text_05_0040_0001 안
+treatment/10_consosound/text_05_0040_0002 안
+treatment/10_consosound/text_05_0040_0003 앋
+treatment/10_consosound/text_05_0041_0001 안
+treatment/10_consosound/text_05_0041_0002 앝
+treatment/10_consosound/text_05_0041_0003 안
+treatment/10_consosound/text_05_0042_0001 안
+treatment/10_consosound/text_05_0042_0002 앗
+treatment/10_consosound/text_05_0042_0003 안
+treatment/10_consosound/text_05_0043_0001 안
+treatment/10_consosound/text_05_0043_0002 았
+treatment/10_consosound/text_05_0043_0003 안
+treatment/10_consosound/text_05_0044_0001 안
+treatment/10_consosound/text_05_0044_0002 앚
+treatment/10_consosound/text_05_0044_0003 안
+treatment/10_consosound/text_05_0045_0001 안
+treatment/10_consosound/text_05_0045_0002 안
+treatment/10_consosound/text_05_0045_0003 앛
+treatment/10_consosound/text_05_0046_0001 안
+treatment/10_consosound/text_05_0046_0002 앟
+treatment/10_consosound/text_05_0046_0003 안
+treatment/10_consosound/text_05_0047_0001 안
+treatment/10_consosound/text_05_0047_0002 안
+treatment/10_consosound/text_05_0047_0003 알
+treatment/10_consosound/text_05_0048_0001 안
+treatment/10_consosound/text_05_0048_0002 암
+treatment/10_consosound/text_05_0048_0003 안
+treatment/10_consosound/text_05_0049_0001 안
+treatment/10_consosound/text_05_0049_0002 안
+treatment/10_consosound/text_05_0049_0003 압
+treatment/10_consosound/text_05_0050_0001 안
+treatment/10_consosound/text_05_0050_0002 안
+treatment/10_consosound/text_05_0050_0003 앞
+treatment/10_consosound/text_05_0051_0001 안
+treatment/10_consosound/text_05_0051_0002 안
+treatment/10_consosound/text_05_0051_0003 앙
+treatment/10_consosound/text_05_0052_0001 앋
+treatment/10_consosound/text_05_0052_0002 알
+treatment/10_consosound/text_05_0052_0003 앋
+treatment/10_consosound/text_05_0053_0001 앝
+treatment/10_consosound/text_05_0053_0002 알
+treatment/10_consosound/text_05_0053_0003 앝
+treatment/10_consosound/text_05_0054_0001 앗
+treatment/10_consosound/text_05_0054_0002 알
+treatment/10_consosound/text_05_0054_0003 앗
+treatment/10_consosound/text_05_0055_0001 았
+treatment/10_consosound/text_05_0055_0002 알
+treatment/10_consosound/text_05_0055_0003 았
+treatment/10_consosound/text_05_0056_0001 앚
+treatment/10_consosound/text_05_0056_0002 알
+treatment/10_consosound/text_05_0056_0003 앚
+treatment/10_consosound/text_05_0057_0001 앛
+treatment/10_consosound/text_05_0057_0002 앛
+treatment/10_consosound/text_05_0057_0003 알
+treatment/10_consosound/text_05_0058_0001 앟
+treatment/10_consosound/text_05_0058_0002 앟
+treatment/10_consosound/text_05_0058_0003 알
+treatment/10_consosound/text_05_0059_0001 앋
+treatment/10_consosound/text_05_0059_0002 암
+treatment/10_consosound/text_05_0059_0003 앋
+treatment/10_consosound/text_05_0060_0001 앝
+treatment/10_consosound/text_05_0060_0002 앝
+treatment/10_consosound/text_05_0060_0003 암
+treatment/10_consosound/text_05_0061_0001 앗
+treatment/10_consosound/text_05_0061_0002 암
+treatment/10_consosound/text_05_0061_0003 앗
+treatment/10_consosound/text_05_0062_0001 았
+treatment/10_consosound/text_05_0062_0002 았
+treatment/10_consosound/text_05_0062_0003 암
+treatment/10_consosound/text_05_0063_0001 앚
+treatment/10_consosound/text_05_0063_0002 암
+treatment/10_consosound/text_05_0063_0003 앚
+treatment/10_consosound/text_05_0064_0001 앛
+treatment/10_consosound/text_05_0064_0002 앛
+treatment/10_consosound/text_05_0064_0003 암
+treatment/10_consosound/text_05_0065_0001 앟
+treatment/10_consosound/text_05_0065_0002 암
+treatment/10_consosound/text_05_0065_0003 앟
+treatment/10_consosound/text_05_0066_0001 앋
+treatment/10_consosound/text_05_0066_0002 앋
+treatment/10_consosound/text_05_0066_0003 압
+treatment/10_consosound/text_05_0067_0001 앋
+treatment/10_consosound/text_05_0067_0002 앞
+treatment/10_consosound/text_05_0067_0003 앋
+treatment/10_consosound/text_05_0068_0001 앝
+treatment/10_consosound/text_05_0068_0002 압
+treatment/10_consosound/text_05_0068_0003 앝
+treatment/10_consosound/text_05_0069_0001 앝
+treatment/10_consosound/text_05_0069_0002 앞
+treatment/10_consosound/text_05_0069_0003 앝
+treatment/10_consosound/text_05_0070_0001 앗
+treatment/10_consosound/text_05_0070_0002 압
+treatment/10_consosound/text_05_0070_0003 앗
+treatment/10_consosound/text_05_0071_0001 앗
+treatment/10_consosound/text_05_0071_0002 앞
+treatment/10_consosound/text_05_0071_0003 앗
+treatment/10_consosound/text_05_0072_0001 았
+treatment/10_consosound/text_05_0072_0002 았
+treatment/10_consosound/text_05_0072_0003 압
+treatment/10_consosound/text_05_0073_0001 았
+treatment/10_consosound/text_05_0073_0002 앞
+treatment/10_consosound/text_05_0073_0003 았
+treatment/10_consosound/text_05_0074_0001 앚
+treatment/10_consosound/text_05_0074_0002 압
+treatment/10_consosound/text_05_0074_0003 앚
+treatment/10_consosound/text_05_0075_0001 앚
+treatment/10_consosound/text_05_0075_0002 앚
+treatment/10_consosound/text_05_0075_0003 앞
+treatment/10_consosound/text_05_0076_0001 앛
+treatment/10_consosound/text_05_0076_0002 앛
+treatment/10_consosound/text_05_0076_0003 압
+treatment/10_consosound/text_05_0077_0001 앛
+treatment/10_consosound/text_05_0077_0002 앞
+treatment/10_consosound/text_05_0077_0003 앛
+treatment/10_consosound/text_05_0078_0001 앟
+treatment/10_consosound/text_05_0078_0002 압
+treatment/10_consosound/text_05_0078_0003 앟
+treatment/10_consosound/text_05_0079_0001 앟
+treatment/10_consosound/text_05_0079_0002 앟
+treatment/10_consosound/text_05_0079_0003 앞
+treatment/10_consosound/text_05_0080_0001 앋
+treatment/10_consosound/text_05_0080_0002 앙
+treatment/10_consosound/text_05_0080_0003 앋
+treatment/10_consosound/text_05_0081_0001 앝
+treatment/10_consosound/text_05_0081_0002 앙
+treatment/10_consosound/text_05_0081_0003 앝
+treatment/10_consosound/text_05_0082_0001 앗
+treatment/10_consosound/text_05_0082_0002 앗
+treatment/10_consosound/text_05_0082_0003 앙
+treatment/10_consosound/text_05_0083_0001 았
+treatment/10_consosound/text_05_0083_0002 앙
+treatment/10_consosound/text_05_0083_0003 았
+treatment/10_consosound/text_05_0084_0001 앚
+treatment/10_consosound/text_05_0084_0002 앙
+treatment/10_consosound/text_05_0084_0003 앚
+treatment/10_consosound/text_05_0085_0001 앛
+treatment/10_consosound/text_05_0085_0002 앙
+treatment/10_consosound/text_05_0085_0003 앛
+treatment/10_consosound/text_05_0086_0001 앟
+treatment/10_consosound/text_05_0086_0002 앟
+treatment/10_consosound/text_05_0086_0003 앙
+treatment/10_consosound/text_05_0087_0001 알
+treatment/10_consosound/text_05_0087_0002 알
+treatment/10_consosound/text_05_0087_0003 암
+treatment/10_consosound/text_05_0088_0001 알
+treatment/10_consosound/text_05_0088_0002 압
+treatment/10_consosound/text_05_0088_0003 알
+treatment/10_consosound/text_05_0089_0001 알
+treatment/10_consosound/text_05_0089_0002 알
+treatment/10_consosound/text_05_0089_0003 앞
+treatment/10_consosound/text_05_0090_0001 알
+treatment/10_consosound/text_05_0090_0002 알
+treatment/10_consosound/text_05_0090_0003 앙
+treatment/10_consosound/text_05_0091_0001 암
+treatment/10_consosound/text_05_0091_0002 암
+treatment/10_consosound/text_05_0091_0003 압
+treatment/10_consosound/text_05_0092_0001 암
+treatment/10_consosound/text_05_0092_0002 암
+treatment/10_consosound/text_05_0092_0003 앞
+treatment/10_consosound/text_05_0093_0001 암
+treatment/10_consosound/text_05_0093_0002 암
+treatment/10_consosound/text_05_0093_0003 앙
+treatment/10_consosound/text_05_0094_0001 압
+treatment/10_consosound/text_05_0094_0002 앙
+treatment/10_consosound/text_05_0094_0003 압
+treatment/10_consosound/text_05_0095_0001 앞
+treatment/10_consosound/text_05_0095_0002 앞
+treatment/10_consosound/text_05_0095_0003 앙
+treatment/10_consosound/text_06_0001_0001 수채
+treatment/10_consosound/text_06_0001_0002 부채
+treatment/10_consosound/text_06_0001_0003 수채
+treatment/10_consosound/text_06_0002_0001 숙제
+treatment/10_consosound/text_06_0002_0002 숙제
+treatment/10_consosound/text_06_0002_0003 국제
+treatment/10_consosound/text_06_0003_0001 먼지
+treatment/10_consosound/text_06_0003_0002 먼지
+treatment/10_consosound/text_06_0003_0003 번지
+treatment/10_consosound/text_06_0004_0001 인구
+treatment/10_consosound/text_06_0004_0002 친구
+treatment/10_consosound/text_06_0004_0003 인구
+treatment/10_consosound/text_06_0005_0001 자랑
+treatment/10_consosound/text_06_0005_0002 파랑
+treatment/10_consosound/text_06_0005_0003 자랑
+treatment/10_consosound/text_06_0006_0001 다방
+treatment/10_consosound/text_06_0006_0002 가방
+treatment/10_consosound/text_06_0006_0003 다방
+treatment/10_consosound/text_06_0007_0001 대양
+treatment/10_consosound/text_06_0007_0002 태양
+treatment/10_consosound/text_06_0007_0003 대양
+treatment/10_consosound/text_06_0008_0001 가마
+treatment/10_consosound/text_06_0008_0002 하마
+treatment/10_consosound/text_06_0008_0003 가마
+treatment/10_consosound/text_06_0009_0001 오목
+treatment/10_consosound/text_06_0009_0002 오목
+treatment/10_consosound/text_06_0009_0003 고목
+treatment/10_consosound/text_06_0010_0001 단지
+treatment/10_consosound/text_06_0010_0002 반지
+treatment/10_consosound/text_06_0010_0003 단지
+treatment/10_consosound/text_06_0011_0001 머리
+treatment/10_consosound/text_06_0011_0002 허리
+treatment/10_consosound/text_06_0011_0003 머리
+treatment/10_consosound/text_06_0012_0001 딸기
+treatment/10_consosound/text_06_0012_0002 딸기
+treatment/10_consosound/text_06_0012_0003 찰기
+treatment/10_consosound/text_06_0013_0001 짝수
+treatment/10_consosound/text_06_0013_0002 짝수
+treatment/10_consosound/text_06_0013_0003 악수
+treatment/10_consosound/text_06_0014_0001 쪽지
+treatment/10_consosound/text_06_0014_0002 쪽지
+treatment/10_consosound/text_06_0014_0003 복지
+treatment/10_consosound/text_06_0015_0001 고을
+treatment/10_consosound/text_06_0015_0002 노을
+treatment/10_consosound/text_06_0015_0003 고을
+treatment/10_consosound/text_06_0016_0001 종전
+treatment/10_consosound/text_06_0016_0002 동전
+treatment/10_consosound/text_06_0016_0003 종전
+treatment/10_consosound/text_06_0017_0001 삐약
+treatment/10_consosound/text_06_0017_0002 치약
+treatment/10_consosound/text_06_0017_0003 삐약
+treatment/10_consosound/text_06_0018_0001 주부
+treatment/10_consosound/text_06_0018_0002 두부
+treatment/10_consosound/text_06_0018_0003 주부
+treatment/10_consosound/text_06_0019_0001 변수
+treatment/10_consosound/text_06_0019_0002 연수
+treatment/10_consosound/text_06_0019_0003 변수
+treatment/10_consosound/text_06_0020_0001 구리
+treatment/10_consosound/text_06_0020_0002 구리
+treatment/10_consosound/text_06_0020_0003 무리
+treatment/10_consosound/text_06_0021_0001 지수
+treatment/10_consosound/text_06_0021_0002 지수
+treatment/10_consosound/text_06_0021_0003 치수
+treatment/10_consosound/text_06_0022_0001 모자
+treatment/10_consosound/text_06_0022_0002 모자
+treatment/10_consosound/text_06_0022_0003 포자
+treatment/10_consosound/text_06_0023_0001 노래
+treatment/10_consosound/text_06_0023_0002 노래
+treatment/10_consosound/text_06_0023_0003 고래
+treatment/10_consosound/text_06_0024_0001 고기
+treatment/10_consosound/text_06_0024_0002 고기
+treatment/10_consosound/text_06_0024_0003 모기
+treatment/10_consosound/text_06_0025_0001 구비
+treatment/10_consosound/text_06_0025_0002 수비
+treatment/10_consosound/text_06_0025_0003 구비
+treatment/10_consosound/text_06_0026_0001 피자
+treatment/10_consosound/text_06_0026_0002 피자
+treatment/10_consosound/text_06_0026_0003 비자
+treatment/10_consosound/text_06_0027_0001 티비
+treatment/10_consosound/text_06_0027_0002 티비
+treatment/10_consosound/text_06_0027_0003 시비
+treatment/10_consosound/text_06_0028_0001 먹성
+treatment/10_consosound/text_06_0028_0002 적성
+treatment/10_consosound/text_06_0028_0003 먹성
+treatment/10_consosound/text_06_0029_0001 등기
+treatment/10_consosound/text_06_0029_0002 승기
+treatment/10_consosound/text_06_0029_0003 등기
+treatment/10_consosound/text_06_0030_0001 간수
+treatment/10_consosound/text_06_0030_0002 간수
+treatment/10_consosound/text_06_0030_0003 만수
+treatment/10_consosound/text_06_0031_0001 문어
+treatment/10_consosound/text_06_0031_0002 문어
+treatment/10_consosound/text_06_0031_0003 묻어
+treatment/10_consosound/text_06_0032_0001 암기
+treatment/10_consosound/text_06_0032_0002 악기
+treatment/10_consosound/text_06_0032_0003 암기
+treatment/10_consosound/text_06_0033_0001 옥수
+treatment/10_consosound/text_06_0033_0002 온수
+treatment/10_consosound/text_06_0033_0003 옥수
+treatment/10_consosound/text_06_0034_0001 절기
+treatment/10_consosound/text_06_0034_0002 전기
+treatment/10_consosound/text_06_0034_0003 절기
+treatment/10_consosound/text_06_0035_0001 독기
+treatment/10_consosound/text_06_0035_0002 돌기
+treatment/10_consosound/text_06_0035_0003 독기
+treatment/10_consosound/text_06_0036_0001 국수
+treatment/10_consosound/text_06_0036_0002 국수
+treatment/10_consosound/text_06_0036_0003 군수
+treatment/10_consosound/text_06_0037_0001 송어
+treatment/10_consosound/text_06_0037_0002 송어
+treatment/10_consosound/text_06_0037_0003 속어
+treatment/10_consosound/text_06_0038_0001 엄마
+treatment/10_consosound/text_06_0038_0002 엄마
+treatment/10_consosound/text_06_0038_0003 얼마
+treatment/10_consosound/text_06_0039_0001 신학
+treatment/10_consosound/text_06_0039_0002 실학
+treatment/10_consosound/text_06_0039_0003 신학
+treatment/10_consosound/text_06_0040_0001 목수
+treatment/10_consosound/text_06_0040_0002 목수
+treatment/10_consosound/text_06_0040_0003 몰수
+treatment/10_consosound/text_06_0041_0001 간사
+treatment/10_consosound/text_06_0041_0002 감사
+treatment/10_consosound/text_06_0041_0003 간사
+treatment/10_consosound/text_06_0042_0001 홀수
+treatment/10_consosound/text_06_0042_0002 홀수
+treatment/10_consosound/text_06_0042_0003 혼수
+treatment/10_consosound/text_06_0043_0001 낚시
+treatment/10_consosound/text_06_0043_0002 낚시
+treatment/10_consosound/text_06_0043_0003 난시
+treatment/10_consosound/text_06_0044_0001 각색
+treatment/10_consosound/text_06_0044_0002 갈색
+treatment/10_consosound/text_06_0044_0003 각색
+treatment/10_consosound/text_06_0045_0001 금장
+treatment/10_consosound/text_06_0045_0002 극장
+treatment/10_consosound/text_06_0045_0003 금장
+treatment/10_consosound/text_06_0046_0001 강소
+treatment/10_consosound/text_06_0046_0002 감소
+treatment/10_consosound/text_06_0046_0003 강소
+treatment/10_consosound/text_06_0047_0001 연어
+treatment/10_consosound/text_06_0047_0002 영어
+treatment/10_consosound/text_06_0047_0003 연어
+treatment/10_consosound/text_06_0048_0001 닭장
+treatment/10_consosound/text_06_0048_0002 답장
+treatment/10_consosound/text_06_0048_0003 닭장
+treatment/10_consosound/text_06_0049_0001 신비
+treatment/10_consosound/text_06_0049_0002 신비
+treatment/10_consosound/text_06_0049_0003 식비
+treatment/10_consosound/text_06_0050_0001 한자
+treatment/10_consosound/text_06_0050_0002 한자
+treatment/10_consosound/text_06_0050_0003 학자
