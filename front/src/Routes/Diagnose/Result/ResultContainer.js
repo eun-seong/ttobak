@@ -1,13 +1,23 @@
 import React from 'react';
 import ResultPresenter from './ResultPresenter';
 
+import { Statistics_Api } from 'api';
+
 export default class extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {
+            s_id: 4,
+        }
+    }
+
+    async componentDidMount() {
+        const data = Statistics_Api.ask(this.state.s_id, 'test', 'day');
+        console.log(data);
+    }
 
     render() {
-        /*
-        presenter로 가는 모든 스테이트 값 렌더링
-        예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
-        */
 
         return (
             <ResultPresenter

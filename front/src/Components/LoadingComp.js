@@ -19,14 +19,25 @@ const ProgressDiv = styled.div`
     font-size: 1rem;
 `;
 
+const Text = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+`;
+
 const LoadingComp = ({ percent }) => {
     return (
         <BackgroundDiv >
-            <ProgressDiv>
-                <Progress percent={percent} success={percent === 100} indicating>
-                    {percent === 100 ? '로딩 완료' : '로딩 중...'}
-                </Progress>
-            </ProgressDiv>
+            {!!percent ?
+                <ProgressDiv>
+                    <Progress percent={percent} success={percent === 100} indicating>
+                        {percent === 100 ? '로딩 완료' : '로딩 중...'}
+                    </Progress>
+                </ProgressDiv> :
+                <Text>잠시만 기다려주세요</Text>
+            }
         </BackgroundDiv>
     );
 }

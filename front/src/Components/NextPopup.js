@@ -67,7 +67,7 @@ const ButtonText = styled.div`
     text-align: center;
 `;
 
-const NextPopup = ({ onPopupButtonHandle }) => {
+const NextPopup = ({ onPopupButtonHandle, buttonText }) => {
     return (
         <Div>
             <DivInner>
@@ -75,7 +75,7 @@ const NextPopup = ({ onPopupButtonHandle }) => {
                 <Content>
                     <Button onTouchEnd={onPopupButtonHandle}>
                         <ButtonImg src={Pause.bt_continue} />
-                        <ButtonText>다음</ButtonText>
+                        <ButtonText>{buttonText || '다음'}</ButtonText>
                     </Button>
                 </Content>
             </DivInner>

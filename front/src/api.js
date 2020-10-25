@@ -12,6 +12,7 @@ const url = {
     therapy_ask: 'cure/ask',
     therapy_answer: 'cure/answer',
     audio_segscore: 'segscore',
+    statistics: '/statistic/get',
 }
 
 const idx_txt = {
@@ -171,5 +172,14 @@ export const T_Api4 = {
             'is_review': is_review
         }),
 };
+
+export const Statistics_Api = {
+    ask: (s_id, type, period) =>
+        api.post(url.statistics, {
+            's_id': s_id,
+            "cure_or_test": type,
+            "period": period
+        })
+}
 
 export default api;

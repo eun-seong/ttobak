@@ -72,7 +72,7 @@ export default class extends React.Component {
         })
         this.recording_end_sound.play();
         this.audioResult = e.detail;
-        this.audioListener();
+        this.andriodListener();
     }
 
     newRequest = async () => {
@@ -100,7 +100,7 @@ export default class extends React.Component {
         }
     }
 
-    audioListener = async () => {
+    andriodListener = async () => {
         this.setState({
             TTobaki: TTobak.ttobak2_1,
         });
@@ -166,11 +166,13 @@ export default class extends React.Component {
             this.currentAudio.addEventListener('ended', () => {
                 this.setState({
                     TTobaki: TTobak.ttobak1_1,
-                    isRecording: true,
                 });
                 setTimeout(() => {
                     console.log('이제 따라 읽어볼까요?');
                     this.recording_start_sound.play();
+                    this.setState({
+                        isRecording: true,
+                    });
                     window.BRIDGE.recordAudio('m', this.currentCure.cure_text);
                 }, 1000);
             });
