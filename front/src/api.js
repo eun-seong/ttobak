@@ -12,7 +12,8 @@ const url = {
     therapy_ask: 'cure/ask',
     therapy_answer: 'cure/answer',
     audio_segscore: 'segscore',
-    statistics: '/statistic/get',
+    diag_result: '/statistic/get',
+    statistic_ask: 'statistic/get',
 }
 
 const idx_txt = {
@@ -48,7 +49,7 @@ export const D1_Api = {
             's_id': s_id,
             'idx_txt': idx_txt.swp
         }),
-    answer: (s_id, ques_id, ori_answer, stu_answer) =>
+    answer: (s_id, ques_id, ori_answer, stu_answer, is_review) =>
         api.post(url.diagnose_answer, {
             's_id': s_id,
             'ques_id': ques_id,
@@ -104,6 +105,12 @@ export const Daily_Api = {
             's_id': s_id,
         }),
 }
+
+export const T_ask_api = (s_id) =>
+    api.post(url.therapy_ask, {
+        "s_id": s_id,
+        "idx_txt": idx_txt,
+    })
 
 export const T1_Api = {
     ask: (s_id, idx_txt) =>
@@ -180,6 +187,15 @@ export const Statistics_Api = {
             "cure_or_test": type,
             "period": period
         })
+}
+
+export const Stat_Api = {
+    ask: (s_id, is_cure, period) =>
+        api.post(url.statistic_ask, {
+            "s_id": s_id,
+            "cure_or_test": (is_cure ? 'cure' : 'test'),
+            "period": period,
+        }),
 }
 
 export default api;
