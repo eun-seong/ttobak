@@ -34,7 +34,7 @@ const Text = styled(Link)`
     font-size: 0.8rem;
 `;
 
-const UserInfo = ({ goBack }) => {
+const UserInfo = ({ handleSubmit, goBack }) => {
     return (
         <Container>
             <HeaderComp title={'회원 정보'} goBack={goBack} />
@@ -43,8 +43,8 @@ const UserInfo = ({ goBack }) => {
                 <Button text={'비밀번호 변경'} to='/user/chpassword' />
             </Contents>
             <TextButton>
-                <Text to=''>회원 탈퇴</Text>
-                <Text to=''>로그아웃</Text>
+                <Text onClick={(e) => {handleSubmit(e, '회원탈퇴');}}>회원 탈퇴</Text>
+                <Text onClick={(e) => {handleSubmit(e, '로그아웃');}}>로그아웃</Text>
             </TextButton>
         </Container>
     );

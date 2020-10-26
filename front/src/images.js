@@ -34,6 +34,7 @@ export const MainRoot = {
     root_background: imageURL + 'img/root_sign/root_background.png',
     icon_background: imageURL + 'img/Icon/icon_background.png',
     IconList: [
+        imageURL + 'img/Icon/icon0.png',
         imageURL + 'img/Icon/icon1.png',
         imageURL + 'img/Icon/icon2.png',
         imageURL + 'img/Icon/icon3.png'

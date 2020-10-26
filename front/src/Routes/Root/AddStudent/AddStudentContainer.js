@@ -3,7 +3,7 @@ import AddStudentPresenter from './AddStudentPresenter';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { student_add } from '../../../Sessions/action.js';
+import { student_add } from 'Sessions/action.js';
 import moment from 'moment';
 
 class AddStudent extends React.Component {
@@ -49,9 +49,9 @@ class AddStudent extends React.Component {
 
         gender = (gender === '남자' ? 'male' : 'female');
         birth = moment(birth).format('YYYY-MM-DD');
-        console.log(user, name, birth, gender);
-        dispatch(student_add(name, birth, gender, icon+1, user.u_id));
-        dispatch(student_add(name, birth, gender, icon+1, 20));
+        
+        console.log(user);
+        dispatch(student_add(name, birth, gender, icon, user.u_id));
 
         return true;
     }
@@ -60,7 +60,7 @@ class AddStudent extends React.Component {
         console.log(user);
         if(!('u_id' in user.user)) {
             alert('잘못된 접근입니다.');
-            this.props.history.push('/');
+            this.props.history.push('/root/signin');
         }
     }
 

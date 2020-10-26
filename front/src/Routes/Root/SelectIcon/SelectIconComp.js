@@ -14,9 +14,9 @@ const Icons = styled.div`
 function SelectIconComp() {
     return (
         <Icons>
-            <Link to={'/root/addstd/0'}><ProfileIcon iconNum={0} size={'120px'} /></Link>
             <Link to={'/root/addstd/1'}><ProfileIcon iconNum={1} size={'120px'} /></Link>
             <Link to={'/root/addstd/2'}><ProfileIcon iconNum={2} size={'120px'} /></Link>
+            <Link to={'/root/addstd/3'}><ProfileIcon iconNum={3} size={'120px'} /></Link>
         </Icons>
     );
 }

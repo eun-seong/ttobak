@@ -1,5 +1,5 @@
 import React from 'react';
-import SelectIconPersentainer from './SelectIconPersentainer';
+import SelectIconPresenter from './SelectIconPresenter';
 import { Root_Api } from 'api';
 import { withRouter } from 'react-router-dom';
 
@@ -9,10 +9,6 @@ class SelectIcon extends React.Component {
     api 가져오기
     error 처리 등 모든 것
      */
-    state = {
-        id: null,
-        password: null,
-    }
 
     goBack = () => {
         this.props.history.goBack();
@@ -23,12 +19,10 @@ class SelectIcon extends React.Component {
         presenter로 가는 모든 스테이트 값 렌더링
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
-        const { id, password } = this.state;
 
         return (<
-            SelectIconPersentainer
+            SelectIconPresenter
             handleSubmit={this.handleSubmit}
-            id={this.setId} password={this.setPassword}
             goBack={this.goBack}
         />);
     }

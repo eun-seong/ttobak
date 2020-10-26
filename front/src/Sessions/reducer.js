@@ -4,6 +4,7 @@ import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAILURE } from '.
 import { USER_MODIFY_REQUEST, USER_MODIFY_SUCCESS, USER_MODIFY_FAILURE } from './action.js';
 import { USER_DELETE_REQUEST, USER_DELETE_SUCCESS, USER_DELETE_FAILURE } from './action.js';
 import { USER_GET_REQUEST, USER_GET_SUCCESS, USER_GET_FAILURE } from './action.js';
+import { USER_LOGOUT } from './action.js';
 import { STUDENT_ADD_REQUEST, STUDENT_ADD_SUCCESS, STUDENT_ADD_FAILURE } from './action.js';
 import { STUDENT_MODIFY_REQUEST, STUDENT_MODIFY_SUCCESS, STUDENT_MODIFY_FAILURE } from './action.js';
 import { STUDENT_DELETE_REQUEST, STUDENT_DELETE_SUCCESS, STUDENT_DELETE_FAILURE } from './action.js';
@@ -30,7 +31,7 @@ const userReducer = (state = defaultState, action) => {
         ...state,
         fetchingUpdate: false,
         isLoggedIn: true,
-        user: {'u_id': action.result.data.u_id}, 
+        user: {'u_id': action.result.data.usr_id}, 
         response: action.error || action.result
       };
     case USER_REGISTER_FAILURE:
@@ -50,7 +51,7 @@ const userReducer = (state = defaultState, action) => {
         ...state,
         fetchingUpdate: false,
         isLoggedIn: true,
-        user: {'u_id': action.result.data.u_id},
+        user: {'u_id': action.result.data.usr_id},
         response: action.error || action.result
       };
     case USER_SIGNIN_FAILURE:
@@ -192,6 +193,14 @@ const userReducer = (state = defaultState, action) => {
         fetchingUpdate: false, 
         response: action.error || action.result
       };
+    case USER_LOGOUT:
+      return {
+        ...state, 
+        isLoggedIn: false, 
+        fetchingUpdate: false,
+        user: {}, 
+        student: {}
+      }
     default:
       return state;
   }

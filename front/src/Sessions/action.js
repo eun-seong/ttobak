@@ -23,6 +23,8 @@ export const USER_GET_REQUEST = 'USER_GET_REQUEST';
 export const USER_GET_SUCCESS = 'USER_GET_SUCCESS';
 export const USER_GET_FAILURE = 'USER_GET_FAILURE';
 
+export const USER_LOGOUT = 'USER_LOGOUT';
+
 export const STUDENT_ADD = 'STUDENT_ADD';
 export const STUDENT_ADD_REQUEST = 'STUDENT_ADD_REQUEST';
 export const STUDENT_ADD_SUCCESS = 'STUDENT_ADD_SUCCESS';
@@ -54,7 +56,7 @@ export const user_register = (email, pw, name) => {
 export const user_signin = (email, pw) => {
   return {
     type: USER_SIGNIN,
-    promise: { method: 'post', url: 'user/signin', data: { email, pw } }
+    promise: { method: 'post', url: 'user/sign_in', data: { email, pw } }
   };
 };
 
@@ -78,6 +80,12 @@ export const user_get = (u_id) => {
     promise: { method: 'post', url: 'user/get', data: { u_id } }
   };
 };
+
+export const user_logout = (u_id) => {
+  return {
+    type: USER_LOGOUT
+  }
+}
 
 export const student_add = (name, birth, gender, ic_id, u_id) => {
   return {

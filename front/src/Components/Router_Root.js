@@ -5,6 +5,8 @@ import Signup from 'Routes/Root/SignUp';
 import ForgotPassword from 'Routes/Root/ForgotPassword';
 import AddStudent from 'Routes/Root/AddStudent';
 import SelectIcon from 'Routes/Root/SelectIcon';
+import SelectStudent from 'Routes/Root/SelectStudent';
+
 
 import Diagnose from './Router_Diagnose';
 import Therapy from './Router_Therapy';
@@ -19,6 +21,8 @@ export default () => (
             <Route path='/root/forgotpassword' exact component={ForgotPassword} />
             <Route path='/root/addstd/:icon' exact component={AddStudent} />
             <Route path='/root/addstd' exact component={AddStudent} />
+            <Route path='/root/selectstd/:student' exact component={SelectStudent} />
+            <Route path='/root/selectstd' exact component={SelectStudent} />
             <Route path='/root/selecticon' exact component={SelectIcon} />
 
 
