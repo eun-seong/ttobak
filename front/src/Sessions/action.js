@@ -79,14 +79,14 @@ export const user_get = (u_id) => {
   };
 };
 
-export const student_add = (name, birth, gender, u_id) => {
+export const student_add = (name, birth, gender, ic_id, u_id) => {
   return {
     type: STUDENT_ADD,
-    promise: { method: 'post', url: 'student/add', data: { name, birth, gender, u_id } }
+    promise: { method: 'post', url: 'student/add', data: { name, birth, gender, ic_id, u_id } }
   };
 };
 
-export const studnet_modify = (name, birth, gender, s_id, u_id) => {
+export const student_modify = (name, birth, gender, s_id, u_id) => {
   return {
     type: STUDENT_MODIFY,
     promise: { method: 'post', url: 'student/modify', data: { name, birth, gender, s_id, u_id } }

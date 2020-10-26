@@ -32,8 +32,7 @@ class SignUp extends React.Component {
     goBack = () => {
         this.props.history.goBack();
     };
-
-    render() {
+    componentDidUpdate() {
         const { user } = this.props;
         const { history } = this.props;
         console.log(user);
@@ -46,6 +45,9 @@ class SignUp extends React.Component {
         if(user.response.data && user.response.data.code == 2) {
             alert('이미 존재하는 이메일입니다.');
         }
+    }
+    render() {
+        
 
         /*
         presenter로 가는 모든 스테이트 값 렌더링

@@ -8,8 +8,6 @@ import { MainRoot } from 'images';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-let date = new Date();
-
 const CompBox = styled.div`
     display: flex;
     height: 100%;
@@ -44,7 +42,25 @@ const SelectIcon = styled.img`
     height: 100px;
 `;
 
-function AddStudentComp({ iconNum }) {
+let state = {
+    name: '',
+    birth: '',
+    gender: ''
+};
+
+const setName = (e) => {
+    state['name'] = e.target.value;
+}
+
+const setBirth = (e) => {
+    state['birth'] = e.target.value;
+}
+
+const setGender = (e) => {
+    state['gender'] = e.target.value;
+}
+
+function AddStudentComp({ iconNum, handleSubmit }) {
     // console.log(iconNum);
     let icon = <SelectIcon src={MainRoot.IconList[iconNum]} alt='프로필 사진' />
     if (!MainRoot.IconList[iconNum]) icon = <SelectIcon />
@@ -56,14 +72,12 @@ function AddStudentComp({ iconNum }) {
                     {icon}
                 </Link>
                 <InputComp>
-                    <InputBoxComp text={'이름'} />
-                    <DatePicker
-                      selected={date}
-                    />
-                    <InputBoxComp text={'성별'} />
+                    <InputBoxComp text={'닉네임'} placeholder={'개미'} handler={setName} />
+                    <InputBoxComp text={'생일'} placeholder={'20100813'} handler={setBirth} />
+                    <InputBoxComp text={'성별'} placeholder={'남자'} handler={setGender} />
                 </InputComp>
             </StudentBox>
-            <SubmitButton text={'검사 시작'} to='/' />
+            <SubmitButton text={'검사 시작'} onClick={(e) => {handleSubmit(e, state);}} to='/' />
         </CompBox>
     );
 }
