@@ -38,7 +38,7 @@ const Recognition = ({ props }) => {
 
 const Game = ({ Background, ...props }) => {
     return (
-        <GameBackground BackgroundImg={Background}
+        <GameBackground BackgroundImg={Background} onPauseButtonHandle={props.onPauseButtonHandle}
             Children={
                 <Recognition props={props} />
             }>

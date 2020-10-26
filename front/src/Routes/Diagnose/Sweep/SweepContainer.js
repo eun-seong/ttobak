@@ -17,6 +17,7 @@ class Sweep extends React.PureComponent {
         this.oriAnswer = null;
         this.ques_id = null;
         this.ques_path = null;
+        this.currentIndex = 0;
         this.numOfLoadedImage = 0;
         this.picture = { D1, TTobak };
         this.totalImages = Object.keys(D1).length + Object.keys(TTobak).length;
@@ -34,13 +35,13 @@ class Sweep extends React.PureComponent {
             isImageLoaded: false,
             percent: 0,
             showPopup: false,
-            showNextPopup: false,
+            showNextPopup: true,
         };
     }
 
     async componentDidMount() {
-        this.newRequest();
         this.imagesPreloading(this.picture);
+        this.newRequest();
     }
 
     componentWillUnmount() {
@@ -63,7 +64,7 @@ class Sweep extends React.PureComponent {
 
             if (data.code === 1) {
                 const { answers, swp: { ques_id, ques_path1, ques_path2 } } = data;
-
+                this.currentIndex = 0;
                 this.ques_id = ques_id;
                 this.ques_path = [ques_path2, ques_path1];
                 this.oriAnswer = answers;
@@ -167,7 +168,6 @@ class Sweep extends React.PureComponent {
     }
 
     finished = async () => {
-        console.log('finished');
         this.setState({
             gameState: false,
             TTobaki: TTobak.ttobak2_1,
@@ -196,7 +196,7 @@ class Sweep extends React.PureComponent {
                     this.newRequest();
                     console.log('next');
                 }
-                else if (data.to_next === '모든 문제를 풀었습니다') {
+                else if (data.is_stop || data.to_next === '모든 단계를 풀었습니다.') {
                     // TODO 다음 검사로
                     this.setState({
                         showNextPopup: true,
@@ -235,7 +235,6 @@ class Sweep extends React.PureComponent {
                         this.setState({
                             isImageLoaded: true,
                         })
-                        setTimeout(() => this.playSound(), 1000);
                     }
                 };
             }

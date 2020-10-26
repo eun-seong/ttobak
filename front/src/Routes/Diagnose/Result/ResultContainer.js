@@ -6,6 +6,7 @@ import { Statistics_Api } from 'api';
 export default class extends React.Component {
     constructor() {
         super();
+        this.result = null;
 
         this.state = {
             s_id: 4,
@@ -13,8 +14,12 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
-        const data = Statistics_Api.ask(this.state.s_id, 'test', 'day');
-        console.log(data);
+        Statistics_Api.ask(this.state.s_id, 'test', 'day')
+            .then((result) => {
+                console.log(result);
+                this.result = result.data;
+            });
+
     }
 
     render() {

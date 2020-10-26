@@ -80,6 +80,13 @@ class Attention extends React.Component {
         try {
             if (this.audioResult.status === 'Success') {
                 const { s_id } = this.state;
+                console.log(
+                    s_id,
+                    this.currentCure.ques_id,
+                    this.audioResult.score,
+                    this.audioResult.phone_score,
+                    this.audioResult.speed_score,
+                    this.audioResult.rhythm_score)
                 const { data } = await D3_Api.answer(
                     s_id,
                     this.currentCure.ques_id,
@@ -146,7 +153,7 @@ class Attention extends React.Component {
                     this.setState({
                         isRecording: true,
                     });
-                    window.BRIDGE.recordAudio('m', this.currentCure.ques_text);
+                    window.BRIDGE.recordAudio('m', this.currentCure.ques_char);
                 }, 1000);
             });
         }
@@ -166,7 +173,7 @@ class Attention extends React.Component {
                         this.setState({
                             isImageLoaded: true,
                         })
-                        // setTimeout(() => this.playSound(), 1000);
+                        setTimeout(() => this.playSound(), 2000);
                     }
                 };
             }

@@ -182,10 +182,12 @@ class Recognition extends React.PureComponent {
 
     diagDone = () => {
         console.log('diagnose done!');
+        this.setState({
+            showNextPopup: true,
+        });
     }
 
     finished = async (id) => {
-        console.log('finished');
         this.setState({
             TTobaki: TTobak.ttobak2_1,
         })
@@ -203,9 +205,7 @@ class Recognition extends React.PureComponent {
             if (data.code === 1) {
                 if (this.currentIndex < this.answers.length - 1) this.currentIndex++;
                 else {
-                    this.setState({
-                        showPopup: true,
-                    });
+                    this.diagDone();
                     return;
                 }
 
