@@ -62,7 +62,7 @@ function SignUpComp({ handleSubmit }) {
                 <InputBox type='password' placeholder='비밀번호' onChange={setPw} />
                 <InputBox type='password' placeholder='비밀번호 확인' onChange={setPwCheck} />
             </SignUpBox>
-            <SubmitButton onClick={(e) => {e.preventDefault(); handleSubmit(e, state);}} text={'회원 가입'} to='/root/addstd' />
+            <SubmitButton onClick={(e) => {handleSubmit(e, state);}} text={'회원 가입'} to='/root/addstd' />
         </CompBox>
     );
 }

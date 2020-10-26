@@ -17,8 +17,10 @@ export default () => (
             <Route path='/root/signin' exact component={Signin} />
             <Route path='/root/signup' exact component={Signup} />
             <Route path='/root/forgotpassword' exact component={ForgotPassword} />
+            <Route path='/root/addstd/:icon' exact component={AddStudent} />
             <Route path='/root/addstd' exact component={AddStudent} />
             <Route path='/root/selecticon' exact component={SelectIcon} />
+
 
             <Route path='/diagnose' component={Diagnose} />
             <Route path='/therapy' component={Therapy} />

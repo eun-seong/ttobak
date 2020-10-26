@@ -5,6 +5,11 @@ import SubmitButton from 'Components/Button';
 import InputBoxComp from './InputBoxComp';
 import { MainRoot } from 'images';
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+let date = new Date();
+
 const CompBox = styled.div`
     display: flex;
     height: 100%;
@@ -52,7 +57,9 @@ function AddStudentComp({ iconNum }) {
                 </Link>
                 <InputComp>
                     <InputBoxComp text={'이름'} />
-                    <InputBoxComp text={'생년월일'} />
+                    <DatePicker
+                      selected={date}
+                    />
                     <InputBoxComp text={'성별'} />
                 </InputComp>
             </StudentBox>

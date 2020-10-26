@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const soundURL = 'https://ttobakaudio.s3-ap-northeast-2.amazonaws.com';
 
-const api = axios.create({
+export const api = axios.create({
     baseURL: "http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/api/"
 });
 
@@ -87,7 +87,6 @@ export const Root_Api = {
             "u_id": u_id
         }),
 };
-
 
 export const D1_Api = {
     ask: (s_id) =>
