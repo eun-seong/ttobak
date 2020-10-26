@@ -197,14 +197,15 @@ class Sweep extends React.PureComponent {
                     console.log('next');
                 }
                 else if (data.is_stop || data.to_next === '모든 단계를 풀었습니다.') {
-                    // TODO 다음 검사로
                     this.setState({
                         showNextPopup: true,
                     });
                 } else {
                     if (this.currentIndex < this.oriAnswer.length - 1) this.currentIndex++;
                     else {
-                        this.newRequest();
+                        this.setState({
+                            showNextPopup: true,
+                        });
                         return;
                     }
 

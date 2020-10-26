@@ -104,16 +104,12 @@ export default class extends React.Component {
 
     onCardTouchHandle = async (id) => {
         if (!this.state.gameState) return;
+        this.setState({
+            gameState: false,
+        })
 
         try {
             const { s_id } = this.state;
-            console.log(
-                s_id,
-                this.currentCure.cure_word,
-                this.state.CardTextList[id],
-                this.currentCure.cure_id,
-                this.learning_type === 'review' ? 'T' : 'F',
-                idx_text)
             const { data } = await T_Api2.answer(
                 s_id,
                 this.currentCure.cure_word,
@@ -203,7 +199,7 @@ export default class extends React.Component {
     }
 
     render() {
-        const { CardTextList, picBox, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent } = this.state;
+        const { CardTextList, picBox, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent, gameState } = this.state;
 
         if (isImageLoaded) {
             return (<ConsoCommonPresenter
@@ -218,6 +214,7 @@ export default class extends React.Component {
                 showPopup={showPopup}
                 showDailyPopup={showDailyPopup}
                 showDonePopup={showDonePopup}
+                gameState={gameState}
             />);
         }
         else {

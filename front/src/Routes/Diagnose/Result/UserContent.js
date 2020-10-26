@@ -6,7 +6,6 @@ import StdLevel from 'Components/StdLevel';
 const Component = styled.div`
     display: flex;
     flex-direction: row;
-    width: 60vw;
     justify-content: space-between;
 `;
 
@@ -14,7 +13,8 @@ const StdInfo = styled.div`
     display: flex;
     flex-direction: column;
     width: 20vw;
-    margin: 10px;
+    margin: 10px 30px 10px 10px;
+    padding: 15px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -41,7 +41,8 @@ const DiagTitle = styled.div`
 const DiagResult = styled.div`
     display: flex;
     flex-direction: column;
-    width:35vw;
+    align-items: flex-end;
+    justify-content: center;
 `;
 
 const Diag = styled.div`
@@ -51,7 +52,7 @@ const Diag = styled.div`
     margin: 2.5px 0;
 `;
 
-const ResultContent = ({ student }) => {
+const ResultContent = ({ student, result }) => {
     document.body.style.overflow = 'visible';
 
     return (
@@ -62,6 +63,12 @@ const ResultContent = ({ student }) => {
             </StdInfo>
             <DiagResult>
                 <Diag>
+                    <DiagTitle>총 문제 개수 : {result['총 문제 갯수']}개</DiagTitle>
+                </Diag>
+                <Diag>
+                    <DiagTitle>총 맞은 개수 : {result['총 맞은 갯수']}개</DiagTitle>
+                </Diag>
+                {/* <Diag>
                     <DiagTitle>청각처리 검사</DiagTitle>
                     <StdLevel text={'우수'} fontSize={'0.8rem'} />
                 </Diag>
@@ -72,7 +79,7 @@ const ResultContent = ({ student }) => {
                 <Diag>
                     <DiagTitle>선택적 집중력 검사</DiagTitle>
                     <StdLevel text={'우수'} fontSize={'0.8rem'} />
-                </Diag>
+                </Diag> */}
             </DiagResult>
         </Component>
     );

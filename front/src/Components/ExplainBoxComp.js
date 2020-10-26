@@ -6,7 +6,7 @@ const ExplainBox = styled.div`
     border-radius: 15px;
     background-color: #FFFFFF;
     border: 2px solid #DFD7C4;
-    padding: 15px;
+    padding: 20px 25px;
     margin-bottom: ${props => props.margin || '0px'};
 `;
 

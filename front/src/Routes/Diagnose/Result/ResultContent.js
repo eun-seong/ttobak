@@ -39,28 +39,27 @@ const ResultExplain = styled.div`
     font-size: 0.9rem;
 `;
 
-const ResultContent = ({ student }) => {
+const ResultContent = ({ student, result, diagnose }) => {
+    console.log(result);
     document.body.style.overflow = "visible"
 
     return (
         <Component>
             <DiagHeader>
                 <DiagSummary>
-                    <DiagTitle>어음청취력 검사</DiagTitle>
-                    <StdLevel text={level.level2.text} />
+                    <DiagTitle>{diagnose.title}</DiagTitle>
+                    {/* <StdLevel text={level.level2.text} /> */}
                 </DiagSummary>
                 <DiagExplain>
-                    간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명
-                    간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명
-                    간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명 간략한 설명
+                    {diagnose.explain}
                 </DiagExplain>
             </DiagHeader>
             <ResultExplain>
-                검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명
-                검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명
-                검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명
-                검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명
-                검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명 검사 결과 설명
+                {
+                    (diagnose.title === '선택적집중력') ?
+                        <div>총 문제 수는 {result['총 문제 수']}개로, 평균 발음 정확도는 {result['평균 발음 정확도']}% 입니다.</div> :
+                        <div>총 문제 수는 {result['총 문제 수']}개로, 맞춘 문제의 수는 {result['맞은 갯수']}개입니다.</div>
+                }
             </ResultExplain>
         </Component>
     );

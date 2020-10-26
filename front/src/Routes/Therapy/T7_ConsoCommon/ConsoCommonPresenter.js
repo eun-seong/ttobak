@@ -46,6 +46,7 @@ const ConsoCommon = ({ props }) => {
                     cardSize={cardSize}
                     text={props.CardTextList[0]}
                     onCardTouchHandle={props.onCardTouchHandle}
+                    gameState={props.gameState}
                     index={0} />
                 <CardComp
                     src={props.Card[1]}
@@ -53,6 +54,7 @@ const ConsoCommon = ({ props }) => {
                     cardSize={cardSize}
                     text={props.CardTextList[1]}
                     onCardTouchHandle={props.onCardTouchHandle}
+                    gameState={props.gameState}
                     index={1} />
             </CardParent>
             {
