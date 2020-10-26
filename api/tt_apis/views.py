@@ -31,7 +31,10 @@ class MakeUser(View):
             usr_pw= bcrypt.hashpw(data['pw'].encode("UTF-8"),bcrypt.gensalt()).decode("UTF-8")
         ).save()
 
-        return JsonResponse({"message":"성공적으로 회원가입 되었습니다.","code":1},status=200)
+        user = User.objects.latest('usr_id')
+
+
+        return JsonResponse({"message":"성공적으로 회원가입 되었습니다.","u_id":user.usr_id,"code":1},status=200)
 
 
 
@@ -93,8 +96,24 @@ class UserGet(View):
 
         if User.objects.filter(usr_id = uk).exists():
             user = User.objects.get(usr_id=uk)
-
-            return JsonResponse({"name":user.usr_name,"email":user.usr_email,"code":1},status=200)
+            student = []
+            sids = []
+            if UsrStu.objects.filter(usr_id = uk).exists():
+                usrstu = UsrStu.objects.filter(usr_id = uk)
+                if usrstu.count() == 1 :
+                    sid = Student.objects.get(stu_id = usrstu[0].stu_id)
+                    sdat = sz.StudentSerializer(instance = sid)
+                    student = sdat.data
+                else :
+                    for u in usrstu:
+                        sids.append(u.stu_id)
+                    for s in sids:
+                        stu = Student.objects.get(pk=s)
+                        student.append(stu)
+                    sdat = sz.StudentSerializer(data=student,many=True)
+                    sdat.is_valid()
+                    student = sdat.data
+            return JsonResponse({"name":user.usr_name,"email":user.usr_email,"code":1,"students":student},status=200)
 
         return JsonResponse({"message":"존재하지 않는 회원입니다.","code":2},status=200)
 
@@ -111,10 +130,10 @@ class StuAdd(View):
                 stu_birth = data['birth'],
                 stu_gender = data['gender']
             ).save()
-
+            stu = Student.objects.latest('stu_id')
             UsrStu.objects.create(
                 usr = user,
-                stu = Student.objects.latest('stu_id')
+                stu = stu
             )
             icon = Icon.objects.get(pk = data['ic_id'])
 
@@ -123,7 +142,7 @@ class StuAdd(View):
                 ic = icon
             )
 
-            return JsonResponse({"message":"성공적으로 추가되었습니다.","code":1},status=200)
+            return JsonResponse({"message":"성공적으로 추가되었습니다.","stu_id":stu.stu_id,"code":1},status=200)
 
         return JsonResponse({"message":"존재하지 않는 회원입니다.","code":2},status=200)
 
@@ -478,7 +497,34 @@ class TestAns(View):
         else :
             return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":3},status=200)
 
-
+class TestResult(View):
+    @csrf_exempt
+    def post(self,request):
+        data = json.loads(request.body)
+        s_id = data['s_id']
+        if Student.objects.filter(pk=s_id).exists():
+            student = Student.objects.get(pk=s_id)
+            date = datetime.datetime.now()
+            date = date.strftime("%Y-%m-%d")
+            results ={}
+            swp = {}
+            ph = {}
+            foc = {}
+            if StuTest.objects.filter(stu=student,date = date,is_review='F').exists():
+                results['총 문제 갯수'] = StuTest.objects.filter(stu=student,date=date,is_review='F').count()
+                results['총 맞은 갯수'] = StuTest.objects.filter(stu=student,date=date,is_review='F',is_correct='T').count()
+                swp['총 문제 수'] = StuTest.objects.filter(stu=student,date=date,test_txt='swp',is_review='F').count()
+                swp['맞은 갯수'] = StuTest.objects.filter(stu=student,date=date,test_txt='swp',is_review='F',is_correct ='T').count()
+                ph ['총 문제 수'] = StuTest.objects.filter(stu=student,date=date,test_txt='ph',is_review='F').count()
+                ph['맞은 갯수'] = StuTest.objects.filter(stu=student,date=date,test_txt='ph',is_review='F',is_correct='T').count()
+                foc['총 문제 수 '] = StuTest.objects.filter(stu=student,date=date,test_txt='foc',is_review='F').count()
+                foc['평균 발음 정확도'] = StuTest.objects.filter(stu=student,date=date,test_txt='foc').aggregate(Avg('full_score'))['full_score__avg']
+                results['청각처리속도'] = swp
+                results['음운청취력'] = ph
+                results['선택적집중력'] = foc
+            return JsonResponse({"results":results,"code":1},status=200)
+        else:
+            return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":2},status=200)
 
 # class SwpGet(View):
 #     @csrf_exempt

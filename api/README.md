@@ -700,6 +700,43 @@ OR
 		},success : function(r) {
 	         console.log(r)
       }
+    });
+
+ **result**
+----
+* **URL**
+	/diagnose/result
+
+* **Method:**
+	  `POST`
+*  **URL Params**
+   **Required:**
+   **Optional:**
+
+* **Data Params**
+	   `s_id = [integer]` 
+		  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ "result":{"총 문제 갯수":[integer],"총 맞은 갯수":[integer],"청각처리속도" : {"총 문제 수" : [integer],"맞은 갯수": [integer]},"음운청취력": {"총 문제 수": [integer],"맞은 갯수":[integer]},"선택적 집중력" :{"총 문제 수":[integer],"맞은 갯수":[integer]}} "code":1}`
+    
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당하는 학습자가 존재하지 않습니다.","code": 2 }`
+
+* **Sample Call:**
+  ```javascript
+    $.ajax({
+      url: "link/to/api/diagnose/result",
+      dataType: "json",
+      type : "POST",
+      data : { 
+	     "s_id" : 1
+		},success : function(r) {
+	         console.log(r)
+      }
     });   
 
 ## Part6 - Treatment
