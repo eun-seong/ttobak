@@ -28,12 +28,18 @@ export default class extends React.Component {
             showDonePopup: false,
             showDailyPopup: false,
             percent: 0,
+            currentIndex: 0,
+            totalNum: 0,
         };
 
         if (this.learning_type === 'daily') {
             console.log(location.state.data.cure);
             this.cure = location.state.data.cure;
             this.currentCure = this.cure[this.currentIndex];
+            this.state = {
+                ...this.state,
+                totalNum: this.cure.length,
+            }
         }
     }
 
@@ -70,7 +76,8 @@ export default class extends React.Component {
                     picBox: soundURL + this.currentCure.cure_path,
                     CardTextList: this.currentCure.answer === 0 ?
                         [this.currentCure.cure_word, this.currentCure.cure_word2] :
-                        [this.currentCure.cure_word2, this.currentCure.cure_word]
+                        [this.currentCure.cure_word2, this.currentCure.cure_word],
+                    totalNum: this.cure.length,
                 })
             }
             else console.log('data message: ' + data.message);
@@ -133,7 +140,8 @@ export default class extends React.Component {
                     picBox: soundURL + this.currentCure.cure_path,
                     CardTextList: this.currentCure.answer === 0 ?
                         [this.currentCure.cure_word, this.currentCure.cure_word2] :
-                        [this.currentCure.cure_word2, this.currentCure.cure_word]
+                        [this.currentCure.cure_word2, this.currentCure.cure_word],
+                    currentIndex: this.currentIndex + 1
                 })
             }
         } catch (e) {
@@ -199,7 +207,8 @@ export default class extends React.Component {
     }
 
     render() {
-        const { CardTextList, picBox, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent, gameState } = this.state;
+        const { CardTextList, picBox, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent, gameState,
+            currentIndex, totalNum } = this.state;
 
         if (isImageLoaded) {
             return (<ConsoCommonPresenter
@@ -215,6 +224,8 @@ export default class extends React.Component {
                 showDailyPopup={showDailyPopup}
                 showDonePopup={showDonePopup}
                 gameState={gameState}
+                currentIndex={currentIndex}
+                totalNum={totalNum}
             />);
         }
         else {

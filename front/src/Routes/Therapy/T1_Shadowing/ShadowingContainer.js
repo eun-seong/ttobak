@@ -33,11 +33,17 @@ export default class extends React.Component {
             showDonePopup: false,
             showDailyPopup: false,
             percent: 0,
+            currentIndex: 0,
+            totalNum: 0,
         }
 
         if (this.learning_type === 'daily') {
             console.log(location.state.data.read);
             this.cure = location.state.data.read;
+            this.state = {
+                ...this.state,
+                totalNum: this.cure.length,
+            }
         }
     }
 
@@ -92,7 +98,8 @@ export default class extends React.Component {
                     this.currentCure.cure_text = this.currentCure.cure_word;
                 this.setState({
                     TTobaki: TTobak.ttobak1_1,
-                    cureText: this.currentCure.cure_text
+                    cureText: this.currentCure.cure_text,
+                    totalNum: this.cure.length,
                 });
             }
         } catch (e) {
@@ -136,7 +143,8 @@ export default class extends React.Component {
                     setTimeout(() => {
                         this.setState({
                             TTobaki: TTobak.ttobak1_1,
-                            cureText: this.currentCure.cure_text
+                            cureText: this.currentCure.cure_text,
+                            currentIndex: this.currentIndex + 1
                         });
                     }, 3000);
 
@@ -235,7 +243,9 @@ export default class extends React.Component {
     }
 
     render() {
-        const { type, cureText, TTobaki, isRecording, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent } = this.state;
+        const { type, cureText, TTobaki, isRecording, isImageLoaded,
+            showPopup, showDonePopup, showDailyPopup, percent,
+            currentIndex, totalNum } = this.state;
 
         if (isImageLoaded) {
             return (<ShadowingPresenter
@@ -251,6 +261,8 @@ export default class extends React.Component {
                 showPopup={showPopup}
                 showDailyPopup={showDailyPopup}
                 showDonePopup={showDonePopup}
+                currentIndex={currentIndex}
+                totalNum={totalNum}
             />);
         }
         else {

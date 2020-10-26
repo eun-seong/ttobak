@@ -29,6 +29,8 @@ export default class extends React.Component {
             showDonePopup: false,
             showDailyPopup: false,
             percent: 0,
+            currentIndex: 0,
+            totalNum: 0,
         }
 
         if (this.learning_type === 'daily') {
@@ -36,6 +38,10 @@ export default class extends React.Component {
             this.cure = location.state.data.cure;
             this.currentCure = this.cure[this.currentIndex];
             this.setAudio();
+            this.state = {
+                ...this.state,
+                totalNum: this.cure.length,
+            }
         }
     }
 
@@ -69,8 +75,10 @@ export default class extends React.Component {
                 this.cure = data.cure;
                 this.currentCure = data.cure[this.currentIndex];
                 this.setAudio();
+
                 this.setState({
                     CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
+                    totalNum: this.cure.length,
                 })
             }
             else console.log('data message: ' + data.message);
@@ -154,6 +162,7 @@ export default class extends React.Component {
                     this.setState({
                         CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
                         TTobaki: TTobak.ttobak1_1,
+                        currentIndex: this.currentIndex + 1
                     });
                 }, 2000);
 
@@ -228,7 +237,8 @@ export default class extends React.Component {
     }
 
     render() {
-        const { TTobaki, CardTextList, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent, gameState } = this.state;
+        const { TTobaki, CardTextList, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent, gameState,
+            currentIndex, totalNum } = this.state;
         if (isImageLoaded) {
             return (<SoundPresenter
                 Background={T5.t5_background}
@@ -244,6 +254,8 @@ export default class extends React.Component {
                 showDailyPopup={showDailyPopup}
                 showDonePopup={showDonePopup}
                 gameState={gameState}
+                currentIndex={currentIndex}
+                totalNum={totalNum}
             />);
         }
         else {

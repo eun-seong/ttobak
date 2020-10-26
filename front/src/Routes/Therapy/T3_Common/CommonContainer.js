@@ -31,11 +31,17 @@ export default class extends React.Component {
             showDonePopup: false,
             showDailyPopup: false,
             percent: 0,
+            currentIndex: 0,
+            totalNum: 0,
         };
 
         if (this.learning_type === 'daily') {
             console.log(location.state.data.cure);
             this.cure = location.state.data.cure;
+            this.state = {
+                ...this.state,
+                totalNum: this.cure.length,
+            }
         }
     }
 
@@ -68,6 +74,10 @@ export default class extends React.Component {
                 this.currentIndex = 0;
                 this.cure = data.cure;
                 this.setCurrent(0);
+
+                this.setState({
+                    totalNum: this.cure.length,
+                })
             }
             else console.log('data message: ' + data.message);
         } catch (e) {
@@ -96,6 +106,7 @@ export default class extends React.Component {
                     this.cure[this.currentIndex].com_e3,
                     this.cure[this.currentIndex].com_e4],
                 TTobaki: TTobak.ttobak1_1,
+                currentIndex: this.currentIndex + 1
             })
         }, timeout);
     }
@@ -271,7 +282,8 @@ export default class extends React.Component {
     }
 
     render() {
-        const { boxTextList, isAnimate, TTobaki, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent, gameState } = this.state;
+        const { boxTextList, isAnimate, TTobaki, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent, gameState,
+            currentIndex, totalNum } = this.state;
 
         if (isImageLoaded) {
             return (<CommonPresenter
@@ -289,6 +301,8 @@ export default class extends React.Component {
                 showDailyPopup={showDailyPopup}
                 showDonePopup={showDonePopup}
                 gameState={gameState}
+                currentIndex={currentIndex}
+                totalNum={totalNum}
             />);
         }
         else {

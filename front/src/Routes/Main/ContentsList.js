@@ -1,5 +1,4 @@
 import { MainTherapy } from 'images';
-import { imageURL } from 'images';
 
 const ContentsList = [
     {

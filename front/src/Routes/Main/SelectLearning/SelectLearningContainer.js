@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 
 import SelectLearningPresenter from './SelectLearningPresenter';
 import ContentsList from '../ContentsList';
-import LoadingComp from 'Components/LoadingComp';
 
 class Select extends React.Component {
     constructor({ location }) {
@@ -25,7 +24,7 @@ class Select extends React.Component {
 
     render() {
         console.log(this.props.history);
-        const { s_id, isImageLoaded } = this.state;
+        const { s_id } = this.state;
 
         return (
             <SelectLearningPresenter

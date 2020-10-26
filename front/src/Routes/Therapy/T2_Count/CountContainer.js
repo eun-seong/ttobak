@@ -5,6 +5,7 @@ import { TouchBackend } from 'react-dnd-touch-backend';
 import LoadingComp from 'Components/LoadingComp';
 import { T2, TTobak } from 'images';
 import { T_Api2, soundURL } from 'api';
+import twinkle from 'twinkle.mp3';
 
 import CountPresenter from './CountPresenter';
 
@@ -14,6 +15,7 @@ export default class extends React.Component {
     constructor({ match, location }) {
         super();
         this.learning_type = match.params.learning_type;
+        this.effect_sound = new Audio(twinkle);
         this.cure = null;
         this.cureLength = 0;
         this.currentIndex = 0;
@@ -40,6 +42,8 @@ export default class extends React.Component {
             showDonePopup: false,
             showDailyPopup: false,
             percent: 0,
+            currentIndex: 0,
+            totalNum: 0,
         };
 
         if (this.learning_type === 'daily') {
@@ -47,6 +51,10 @@ export default class extends React.Component {
             this.cure = location.state.data.cure;
             this.currentCure = this.cure[this.currentIndex];
             this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
+            this.state = {
+                ...this.state,
+                totalNum: this.cure.length,
+            }
         }
     }
 
@@ -64,7 +72,7 @@ export default class extends React.Component {
 
     newRequest = async () => {
         console.log('new request');
-        const { s_id, is_review } = this.state;
+        const { s_id } = this.state;
 
         try {
             const { data } = await T_Api2.ask(s_id, idx_txt);
@@ -75,6 +83,10 @@ export default class extends React.Component {
                 this.cure = data.cure;
                 this.currentCure = data.cure[this.currentIndex];
                 this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
+
+                this.setState({
+                    totalNum: this.cure.length,
+                })
             }
             else console.log('data message: ' + data.message);
         } catch (e) {
@@ -114,6 +126,7 @@ export default class extends React.Component {
     }
 
     answer = async () => {
+        this.effect_sound.play();
         this.setState({
             TTobaki: TTobak.ttobak2_1
         })
@@ -135,7 +148,6 @@ export default class extends React.Component {
             return;
         }
 
-        this.currentIndex = this.currentIndex;
         this.currentCure = this.cure[this.currentIndex];
         this.currentAudio = new Audio(soundURL + this.cure[this.currentIndex].cure_path);
 
@@ -151,6 +163,7 @@ export default class extends React.Component {
                     applesInBasket: [],
                     numOfApples: 0,
                 },
+                currentIndex: this.currentIndex + 1
             });
         }, 1000);
 
@@ -289,7 +302,8 @@ export default class extends React.Component {
     }
 
     render() {
-        const { isDragging, touchPosition, Apple, answer, TTobaki, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent } = this.state;
+        const { isDragging, touchPosition, Apple, answer, TTobaki, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent,
+            currentIndex, totalNum } = this.state;
         if (isImageLoaded) {
             return (
                 <DndProvider backend={TouchBackend}>
@@ -312,6 +326,8 @@ export default class extends React.Component {
                         showPopup={showPopup}
                         showDailyPopup={showDailyPopup}
                         showDonePopup={showDonePopup}
+                        currentIndex={currentIndex}
+                        totalNum={totalNum}
                     />
                 </DndProvider>
             );

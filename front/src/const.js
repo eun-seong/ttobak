@@ -14,6 +14,7 @@ const level = {
 }
 
 export const colors = {
+    background: '#FDF5DB',
     border_purple: '#AC9BC9',
     main_header_yellow: '#F6DB57',
     main_header_blue: '#62AAF5',

@@ -72,7 +72,12 @@ const Common = ({ props }) => {
 
 const Game = ({ Background, onPauseButtonHandle, ...props }) => {
     return (
-        <GameBackground BackgroundImg={Background} onPauseButtonHandle={onPauseButtonHandle}
+
+        <GameBackground
+            BackgroundImg={Background}
+            onPauseButtonHandle={onPauseButtonHandle}
+            currentIndex={props.currentIndex}
+            totalNum={props.totalNum}
             Children={
                 <Common props={props} />
             }>

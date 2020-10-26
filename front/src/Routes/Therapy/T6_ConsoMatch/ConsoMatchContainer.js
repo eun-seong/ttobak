@@ -28,6 +28,8 @@ export default class extends React.Component {
             showDonePopup: false,
             showDailyPopup: false,
             percent: 0,
+            currentIndex: 0,
+            totalNum: 0,
         };
 
         if (this.learning_type === 'daily') {
@@ -45,6 +47,10 @@ export default class extends React.Component {
                     Worm: Characters.worm2_2,
                 })
             })
+            this.state = {
+                ...this.state,
+                totalNum: this.cure.length,
+            }
         }
     }
 
@@ -93,6 +99,10 @@ export default class extends React.Component {
                 this.totalImages += this.cure.length;
                 this.pictursPreloading(this.cure);
                 this.setCurrent(0);
+
+                this.setState({
+                    totalNum: this.cure.length,
+                })
             }
             else console.log('data message: ' + data.message);
         } catch (e) {
@@ -117,7 +127,8 @@ export default class extends React.Component {
                     soundURL + this.getListFilter('cure_tid', this.currentCure[0]).cure_path2,
                     soundURL + this.getListFilter('cure_tid', this.currentCure[1]).cure_path2,
                     soundURL + this.getListFilter('cure_tid', this.currentCure[2]).cure_path2,
-                ]
+                ],
+                currentIndex: this.currentIndex + 1
             })
         }, timeout);
     }
@@ -263,7 +274,8 @@ export default class extends React.Component {
     }
 
     render() {
-        const { PicBoxList, Worm, isImageLoaded, showPopup, percent, gameState, showDailyPopup, showDonePopup } = this.state;
+        const { PicBoxList, Worm, isImageLoaded, showPopup, percent, gameState, showDailyPopup, showDonePopup,
+            currentIndex, totalNum } = this.state;
 
         if (isImageLoaded) {
             return (
@@ -280,6 +292,8 @@ export default class extends React.Component {
                     showDailyPopup={showDailyPopup}
                     showDonePopup={showDonePopup}
                     gameState={gameState}
+                    currentIndex={currentIndex}
+                    totalNum={totalNum}
                 />);
         }
         else {
