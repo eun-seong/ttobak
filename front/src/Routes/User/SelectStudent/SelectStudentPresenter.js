@@ -2,17 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import { MainRoot } from 'images';
 import RootBackGround from 'Components/RootBackGround';
-import SelectIconComp from './SelectIconComp';
+import SelectStudentComp from './SelectStudentComp';
 
-function SelectIcon({ goBack }) {
+function SelectStudent({ students, goBack }) {
     return (
         <RootBackGround
             background={MainRoot.icon_background}
-            title={'아이콘 선택'}
-            Content={SelectIconComp}
+            title={'학습자 선택'}
+            Content={() => SelectStudentComp({students})}
             goBack={goBack}>
         </RootBackGround>
     );
 }
 
-export default SelectIcon;
+export default SelectStudent;

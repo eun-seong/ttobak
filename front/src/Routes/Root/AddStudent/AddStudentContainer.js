@@ -47,11 +47,11 @@ class AddStudent extends React.Component {
             return false;
         }
 
-        gender = (gender === '남자' ? 'male' : 'female');
+        gender = (gender === '남자' ? 'm' : 'f');
         birth = moment(birth).format('YYYY-MM-DD');
         
         console.log(user);
-        dispatch(student_add(name, birth, gender, icon, user.u_id));
+        dispatch(student_add(name, birth, gender, icon, user.user.u_id));
 
         return true;
     }
@@ -67,7 +67,7 @@ class AddStudent extends React.Component {
     componentDidUpdate() {
         const { user } = this.props;
         console.log(user);
-        if('s_id' in user.student) {
+        if(('s_id' in user.student) && ('u_id' in user.user))  {
             alert('사용자 추가를 성공했습니다.');
             this.props.history.push('/');
         }

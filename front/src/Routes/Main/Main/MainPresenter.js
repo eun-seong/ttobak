@@ -30,10 +30,10 @@ const SubComp = styled.div`
     height: 100%;
 `;
 
-const Main = ({ data, isImageLoaded, daily_custom, daily_link }) => {
+const Main = ({ data, student, isImageLoaded, daily_custom, daily_link }) => {
     return (
         <Container>
-            <StdBox />
+            <StdBox student={student}/>
             <Component>
                 <ButtonBox
                     text={'맞춤 학습'} width={'56vw'}

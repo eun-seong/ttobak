@@ -46,12 +46,12 @@ const Name = styled.div`
     text-align: center;
 `;
 
-const StdBox = () => {
+const StdBox = ({student}) => {
     return (
         <StdComp>
             <Bar to={'/user/stdinfo'}>
-                <ProfileIcon size={'33px'} iconNum={1} />
-                <Name>이지호</Name>
+                <ProfileIcon size={'33px'} iconNum={student['ic_id']} />
+                <Name>{student['name']}</Name>
             </Bar>
             <Setting to='/user/setting'>설정</Setting>
         </StdComp >

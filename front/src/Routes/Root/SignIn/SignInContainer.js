@@ -36,6 +36,7 @@ class SignIn extends React.Component {
         
         if('u_id' in user.user) {
             this.props.history.push('/root/selectStd');
+            return;
         }
 
         if(!user.fetchingUpdate && user.response.data && user.response.data.code !== 1) {

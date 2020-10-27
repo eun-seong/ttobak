@@ -30,7 +30,7 @@ const TextButton = styled.div`
     justify-content: space-around;
 `;
 
-const Text = styled(Link)`
+const Text = styled.div`
     font-size: 0.8rem;
 `;
 

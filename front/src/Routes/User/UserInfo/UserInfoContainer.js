@@ -44,6 +44,7 @@ class UserInfo extends React.Component {
 
         return (
             <UserInfoPresenter
+                handleSubmit={this.handleSubmit}
                 goBack={this.goBack}
             />);
     }

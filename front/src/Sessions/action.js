@@ -60,24 +60,24 @@ export const user_signin = (email, pw) => {
   };
 };
 
-export const user_modify = (email, pw, name, u_id) => {
+export const user_modify = (email, pw, name, id) => {
   return {
     type: USER_MODIFY,
-    promise: { method: 'post', url: 'user/modify', data: { email, pw, name, u_id } }
+    promise: { method: 'post', url: 'user/modify', data: { email, pw, name, id } }
   };
 };
 
-export const user_delete = (u_id) => {
+export const user_delete = (id) => {
   return {
     type: USER_DELETE,
-    promise: { method: 'post', url: 'user/delete', data: { u_id } }
+    promise: { method: 'post', url: 'user/delete', data: { id } }
   };
 };
 
-export const user_get = (u_id) => {
+export const user_get = (id) => {
   return {
     type: USER_GET,
-    promise: { method: 'post', url: 'user/get', data: { u_id } }
+    promise: { method: 'post', url: 'user/get', data: { id } }
   };
 };
 
@@ -94,10 +94,10 @@ export const student_add = (name, birth, gender, ic_id, u_id) => {
   };
 };
 
-export const student_modify = (name, birth, gender, s_id, u_id) => {
+export const student_modify = (name, birth, gender, ic_id, s_id, u_id) => {
   return {
     type: STUDENT_MODIFY,
-    promise: { method: 'post', url: 'student/modify', data: { name, birth, gender, s_id, u_id } }
+    promise: { method: 'post', url: 'student/modify', data: { name, birth, gender, ic_id, s_id, u_id } }
   };
 };
 

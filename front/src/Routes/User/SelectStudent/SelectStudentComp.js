@@ -40,9 +40,9 @@ const Plus = styled.img`
     height: 90%;
 `;
 
-function SelectStudentComp({students, handler}) {
+function SelectStudentComp({students}) {
     const icons = students.map(el => {
-        return (<Link to={''} key={el['s_id']} onClick={(e) => {handler(e, el['s_id']);}}><Icon><ProfileIcon iconNum={el['ic_id']} size={'120px'} /><Text>{el['name']}</Text></Icon></Link>);
+        return (<Link to={'/user/stdmanaging/' + el['s_id']} key={el['s_id']}><Icon><ProfileIcon iconNum={el['ic_id']} size={'120px'} /><Text>{el['name']}</Text></Icon></Link>);
     });
     return (
         <Icons>

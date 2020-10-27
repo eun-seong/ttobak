@@ -5,9 +5,6 @@ import SubmitButton from 'Components/Button';
 import InputBoxComp from './InputBoxComp';
 import { MainRoot } from 'images';
 
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-
 const CompBox = styled.div`
     display: flex;
     height: 100%;
@@ -40,6 +37,12 @@ const SelectIcon = styled.img`
     background-color: grey;
     width: 100px;
     height: 100px;
+`;
+
+const Div = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: space-evenly;
 `;
 
 let state = {
@@ -77,7 +80,10 @@ function AddStudentComp({ iconNum, handleSubmit }) {
                     <InputBoxComp text={'성별'} placeholder={'남자'} handler={setGender} />
                 </InputComp>
             </StudentBox>
-            <SubmitButton text={'검사 시작'} onClick={(e) => {handleSubmit(e, state);}} to='/' />
+            <Div>
+                <SubmitButton text={'저장'} onClick={(e) => {handleSubmit(e, state);}} to='/' />
+                <SubmitButton text={'삭제'} onClick={(e) => {handleSubmit(e, state);}} to='/' />
+            </Div>
         </CompBox>
     );
 }

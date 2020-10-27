@@ -17,23 +17,15 @@ class SelectStudent extends React.Component {
         dispatch: PropTypes.func.isRequired,
     };
 
-
     goBack = () => {
         this.props.history.goBack();
     };
 
-    handleSubmit = (e, s_id) => {
-        e.preventDefault();
-
-        const { user } = this.props;
-        const {dispatch} = this.props;
-
-        dispatch(student_get(s_id, user.user.u_id));
-    }
-
     componentDidMount() {
         const { user } = this.props;
         const {dispatch} = this.props;
+
+        console.log(user.user);
 
         if(!('u_id' in user.user)) {
             alert('잘못된 접근입니다.');
@@ -44,30 +36,16 @@ class SelectStudent extends React.Component {
         dispatch(user_get(user.user.u_id));
     }
 
-    componentDidUpdate() {
-        const { user } = this.props;
-
-        if('s_id' in user.student) {
-            this.props.history.push('/');
-            return;
-        }
-        if(user.response.data && user.response.data.code !== 1) {
-            alert('존재하지 않는 회원입니다.');
-            return;
-        }
-    }
-
     render() {
         /*
         presenter로 가는 모든 스테이트 값 렌더링
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
         const { user } = this.props;
-        console.log(user);
+        
         return (<
             SelectStudentPresenter
             students={user.user.students || []}
-            handler={this.handleSubmit}
             goBack={this.goBack}
         />);
     }

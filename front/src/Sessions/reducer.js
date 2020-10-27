@@ -108,7 +108,9 @@ const userReducer = (state = defaultState, action) => {
         ...state,
         fetchingUpdate: false,
         isLoggedIn: true,
-        user: { ...(state.user), 'name': action.result.data.name, 'email': action.result.data.email }, 
+        user: { 'u_id': action.result.data.u_id, 'name': action.result.data.name, 'email': action.result.data.email, 'students': action.result.data.students.map(
+          el => {return {'s_id': el.stu_id, 'name': el.stu_name, 'gender': el.stu_gender, 'birth': el.stu_birth, 'ic_id': el.ic_id};}
+        )}, 
         response: action.error || action.result
       };
     case USER_GET_FAILURE:
@@ -127,7 +129,7 @@ const userReducer = (state = defaultState, action) => {
         ...state,
         fetchingUpdate: false,
         isLoggedIn: true,
-        student: {'s_id': action.result.data.s_id}, 
+        student: {'s_id': action.result.data.stu_id}, 
         response: action.error || action.result
       };
     case STUDENT_ADD_FAILURE:
@@ -184,7 +186,7 @@ const userReducer = (state = defaultState, action) => {
         ...state,
         fetchingUpdate: false,
         isLoggedIn: true,
-        student: { ...(state.student), 'name': action.result.data.name, 'birth': action.result.data.birth, 'gender': action.result.data.gender, 'icon': action.result.data.icon }, 
+        student: { 's_id': action.result.data.stu_id, 'name': action.result.data.name, 'birth': action.result.data.birth, 'gender': action.result.data.gender, 'ic_id': action.result.data.ic_id }, 
         response: action.error || action.result
       };
     case STUDENT_GET_FAILURE:
