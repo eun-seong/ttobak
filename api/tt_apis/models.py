@@ -40,6 +40,7 @@ class Student(models.Model):
     stu_gender = models.CharField(max_length=5)
     regi_date = models.DateField(auto_now_add = True)
     modi_date = models.DateField(auto_now = True)
+    ic = models.ForeignKey('Icon',on_delete=models.PROTECT,null=True,db_column = 'ic_id')
 
     class Meta:
         db_table = 'student'

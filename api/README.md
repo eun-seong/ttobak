@@ -719,7 +719,7 @@ OR
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ "result":{"총 문제 갯수":[integer],"총 맞은 갯수":[integer],"청각처리속도" : {"총 문제 수" : [integer],"맞은 갯수": [integer]},"음운청취력": {"총 문제 수": [integer],"맞은 갯수":[integer]},"선택적 집중력" :{"총 문제 수":[integer],"맞은 갯수":[integer]}} "code":1}`
+    **Content:** `{ "result":{"총 문제 개수":[integer],"총 맞은 개수":[integer],"청각처리속도" : {"총 문제 개수" : [integer],"맞은 개수": [integer]},"음운청취력": {"총 문제 개수": [integer],"맞은 개수":[integer]},"선택적 집중력" :{"총 문제 개수":[integer],"맞은 개수":[integer]}} "code":1}`
     
   OR
 
@@ -978,12 +978,12 @@ answer(1) - read(poem,text,selfpoem,selftext)
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ is_correct=[True/False],"code":1 }`
+    **Content:** `{ is_correct=[True/False],correct_voice= path,"code":1 }`
  
   OR
   
   * **Code:** 200 <br />
-    **Content:** `{ is_correct = [True/False],, "message" : "모든 문제를 학습하였습니다.","code": 2 }`
+    **Content:** `{ is_correct = [True/False],correct_voice= path, "message" : "모든 문제를 학습하였습니다.","code": 2 }`
 
   OR
 

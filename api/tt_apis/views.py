@@ -113,7 +113,7 @@ class UserGet(View):
                     sdat = sz.StudentSerializer(data=student,many=True)
                     sdat.is_valid()
                     student = sdat.data
-            return JsonResponse({"name":user.usr_name,"email":user.usr_email,"code":1,"students":student},status=200)
+            return JsonResponse({"u_id":user.usr_id,"name":user.usr_name,"email":user.usr_email,"code":1,"students":student},status=200)
 
         return JsonResponse({"message":"존재하지 않는 회원입니다.","code":2},status=200)
 
@@ -125,22 +125,24 @@ class StuAdd(View):
 
         if User.objects.filter(usr_id = uk).exists():
             user = User.objects.get(pk = uk)
+            icon = Icon.objects.get(pk = data['ic_id'])
             Student.objects.create(
                 stu_name = data['name'],
                 stu_birth = data['birth'],
-                stu_gender = data['gender']
+                stu_gender = data['gender'],
+                ic = icon
             ).save()
             stu = Student.objects.latest('stu_id')
             UsrStu.objects.create(
                 usr = user,
                 stu = stu
             )
-            icon = Icon.objects.get(pk = data['ic_id'])
+            
 
-            StuIc.objects.create(
-                stu = Student.objects.latest('stu_id'),
-                ic = icon
-            )
+            # StuIc.objects.create(
+            #     stu = Student.objects.latest('stu_id'),
+            #     ic = icon
+            # )
 
             return JsonResponse({"message":"성공적으로 추가되었습니다.","stu_id":stu.stu_id,"code":1},status=200)
 
@@ -161,6 +163,7 @@ class StuModify(View):
                 student.stu_name = data['name']
                 student.stu_birth = data['birth']
                 student.stu_gender = data['gender']
+                student.ic_id = data['ic_id']
 
                 student.save()
 
@@ -200,7 +203,7 @@ class StuGet(View):
 
                 student = Student.objects.get(pk=sk)
 
-                return JsonResponse({"name":student.stu_name,"birth":student.stu_birth,"gender":student.stu_gender,"code":1},status=200)
+                return JsonResponse({"stu_id":student.stu_id,"name":student.stu_name,"birth":student.stu_birth,"gender":student.stu_gender,"ic_id":student.ic_id,"code":1,},status=200)
             return JsonResponse({"message":"존재하지 않는 학습자 입니다.","code":2},status=200)
         return JsonResponse({"message":"존재하지 않는 회원입니다.","code":3},status=200)
 
@@ -505,23 +508,65 @@ class TestResult(View):
         if Student.objects.filter(pk=s_id).exists():
             student = Student.objects.get(pk=s_id)
             date = datetime.datetime.now()
+            # date = '2020-10-25'
             date = date.strftime("%Y-%m-%d")
             results ={}
             swp = {}
             ph = {}
             foc = {}
             if StuTest.objects.filter(stu=student,date = date,is_review='F').exists():
-                results['총 문제 갯수'] = StuTest.objects.filter(stu=student,date=date,is_review='F').count()
-                results['총 맞은 갯수'] = StuTest.objects.filter(stu=student,date=date,is_review='F',is_correct='T').count()
-                swp['총 문제 수'] = StuTest.objects.filter(stu=student,date=date,test_txt='swp',is_review='F').count()
-                swp['맞은 갯수'] = StuTest.objects.filter(stu=student,date=date,test_txt='swp',is_review='F',is_correct ='T').count()
-                ph ['총 문제 수'] = StuTest.objects.filter(stu=student,date=date,test_txt='ph',is_review='F').count()
-                ph['맞은 갯수'] = StuTest.objects.filter(stu=student,date=date,test_txt='ph',is_review='F',is_correct='T').count()
-                foc['총 문제 수 '] = StuTest.objects.filter(stu=student,date=date,test_txt='foc',is_review='F').count()
+                results['총 문제 개수'] = StuTest.objects.filter(stu=student,date=date,is_review='F').count()
+                results['총 맞은 개수'] = StuTest.objects.filter(stu=student,date=date,is_review='F',is_correct='T').count()
+                swp['총 문제 개수'] = StuTest.objects.filter(stu=student,date=date,test_txt='swp',is_review='F').count()
+                swp['맞은 개수'] = StuTest.objects.filter(stu=student,date=date,test_txt='swp',is_review='F',is_correct ='T').count()
+                ph ['총 문제 개수'] = StuTest.objects.filter(stu=student,date=date,test_txt='ph',is_review='F').count()
+                ph['맞은 개수'] = StuTest.objects.filter(stu=student,date=date,test_txt='ph',is_review='F',is_correct='T').count()
+                foc['총 문제 개수 '] = StuTest.objects.filter(stu=student,date=date,test_txt='foc',is_review='F').count()
                 foc['평균 발음 정확도'] = StuTest.objects.filter(stu=student,date=date,test_txt='foc').aggregate(Avg('full_score'))['full_score__avg']
                 results['청각처리속도'] = swp
                 results['음운청취력'] = ph
                 results['선택적집중력'] = foc
+                levels = [1,1,1]
+                slevels = [1,1,1]
+                every_swp = StuTest.objects.filter(stu=student,test_txt = 'swp',is_correct = 'T',date=date,is_review='F')
+                if every_swp.count() ==0:
+                    levels[1] = 1
+                for s in every_swp:
+                    sw = TestMaster.objects.get(pk=s.ques_id)
+                    freq = sw.ques_int
+                    if freq == 500:
+                        if slevels[0] <= sw.ques_level +1:
+                            slevels[0] = sw.ques_level +1
+                    elif freq == 1000:
+                        if slevels[1] <= sw.ques_level +1:
+                            slevels[1] = sw.ques_level +1
+                    elif freq == 2000:
+                        if slevels[2] <= sw.ques_level +1:
+                            slevels[2] = sw.ques_level +1
+                levels[0] = min(slevels)
+                every_ph = StuTest.objects.filter(stu=student,test_txt = 'ph',date=date,is_review='F')
+                c_ph = len([p for p in every_ph if p.is_correct == 'T'])
+                pscore = (c_ph/25) * 100
+                if pscore >= 96:
+                    levels[1]= 6
+                elif pscore >= 86:
+                    levels[1] =5
+                elif pscore >= 70:
+                    levels[1] = 4
+                elif pscore >= 50:
+                    levels[1] = 3
+                elif pscore >= 33:
+                    levles[1] = 2
+                levels[2] = TestCurrent.objects.get(stu = student).focus_lev +1
+                tot_lev = min(levels)
+                if tot_lev >=5:
+                    status = '경미'
+                elif tot_lev >=3:
+                    status = '저위험군'
+                elif tot_lev >=1:
+                    status = '고위험군'
+                results['status'] = status
+                
             return JsonResponse({"results":results,"code":1},status=200)
         else:
             return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":2},status=200)
@@ -821,7 +866,75 @@ class CureGet(View):
            cures = self.serialized(rand_cures,curr_idx)
            cures.is_valid()
            return cures.data,answer
-    
+
+    def get_tutorial(self,student,idx_txt):
+        idx_id = CureIdx.objects.get(idx_txt = idx_txt).idx_id
+        voices = []
+        if idx_id == 3:
+            sound = [10,11,12]
+            for s in sound:
+                voices.append(Voice.objects.get(voc_id = s))
+            sdat = sz.VoiceSerializer(data=voices,many=True)
+            sdat.is_valid()
+            sample_ques = CureMaster.objects.get(pk=1916)
+            sample_ques = sz.CountSerializer(instance = sample_ques)
+            return sdat.data,sample_ques.data
+        if idx_id == 5:
+            sound = [10,22,35,40,38,23]
+            for s in sound:
+                voices.append(Voice.objects.get(voc_id=s))
+            sdat = sz.VoiceSerializer(data=voices,many = True)
+            sdat.is_valid()
+            sample_ques = CureMaster.objects.get(pk=1948)
+            sample_ques = sz.CountSerializer(instance = sample_ques)
+            return sdat.data,sample_ques.data
+        if idx_id == 6:
+            sound = [10,24,25]
+            for s in sound:
+                voices.append(Voice.objects.get(voc_id=s))
+            sdat = sz.VoiceSerializer(data=voices,many=True)
+            sdat.is_valid()
+            sample_ques = CureMaster.objects.get(pk = 2083)
+            sample_ques = sz.VowelsoundSerializer(instance = sample_ques)
+            return sdat.data,sample_ques.data
+        if idx_id == 7:
+            sound = [10,26,41]
+            for s in sound:
+                voices.append(Voice.objects.get(voc_id=s))
+            sdat = sz.VoiceSerializer(data=voices,many=True)
+            sdat.is_valid()
+            sample_ques = CureMaster.objects.get(pk=2246)
+            sample_ques = sz.ConsomatchSerializer(instance = sample_ques)
+            return sdat.data, sample_ques.data
+        if idx_id == 8:
+            sound = [27,28]
+            for s in sound:
+                voices.append(Voice.objects.get(voc_id=s))
+            sdat = sz.VoiceSerializer(data=voices,many=True)
+            sdat.is_valid()
+            sample_ques = CureMaster.objects.get(pk=4317)
+            sample_ques = sz.ConsocommonSerializer(instance = sample_ques)
+            return sdat.data,sample_ques.data
+        if idx_id ==9:
+            sound = [29,35,40,38,30]
+            for s in sound:
+                voices.append(Voice.objects.get(voc_id=s))
+            sdat = sz.CountSerializer(data=voices,many=True)
+            sdat.is_valid()
+            sample_ques = CureMaster.objects.get(pk=2724)
+            sample_ques = sz.ConsocommonSerializer(instance = sample_ques)
+            return sdat.data,sample_ques.data
+        if idx_id == 10:
+            sound = [10,31,32]
+            for s in sound:
+                voices.append(Voice.objects.get(voc_id=s))
+            sdat = sz.VoiceSerializer(data=voices,many=True)
+            sdat.is_valid()
+            sample_ques = CureMaster.objects.get(pk=3046)
+            sample_ques = sz.ConsosoundSerializer(instance = sample_ques)
+            return sdat.data,sample_ques.data
+            
+
     @csrf_exempt
     def post(self,request):
         data = json.loads(request.body)
@@ -843,17 +956,80 @@ class CureGet(View):
                     read_level = 1,
                     curr_level = 1,
                     cur_read_id = 1259,
-                    cur_curr = 'count'
+                    cur_curr = 'count',
+                    cur_curr_last1 = 0,
+                    cur_curr_last2 = 0,
+                    cur_curr_last3 = 0
                 ).save()
             stucur = StuCurrent.objects.get(stu_id=s_id)
             read_idx = CureIdx.objects.get(idx_txt=stucur.cur_read).idx_id
             read_id = stucur.cur_read_id
             read_level = stucur.read_level
             read, read_voice = self.get_read(read_idx,read_id,read_level)
+            code = 1
+            tut_voice = []
+            sample_ques = []
+            if stucur.cur_curr == 'common':
+                sound = []
+                voices = []
+                if stucur.curr_level == 1:
+                    if not StuCure.objects.filter(stu_id = s_id,com_cure__com_id__range=(61,80)).exists():
+                        sound = [13,14,12]
+                        for s in sound:
+                            voices.append(Voice.objects.get(pk=s))
+                        sdat = sz.VoiceSerializer(data=voices,many=True)
+                        sdat.is_valid()
+                        sample_ques = ComCure.objects.get(pk = 61)
+                        sample_ques = sz.CommonSerializer(instance=sample_ques).data
+                        tut_voice = sdat.data
+                        StuCure.objects.create(
+                            stu = student,
+                            com_cure = ComCure.objects.get(pk=61)
+                        )
+                        code = 'tutorial'
+                elif stucur.curr_level == 2:
+                    if not StuCure.objects.filter(stu_id = s_id,com_cure__com_id__range=(81,100)).exists():
+                        sound = [16,17,18]
+                        for s in sound:
+                            voices.append(Voice.objects.get(pk=s))
+                        sdat = sz.VoiceSerializer(data=voices,many=True)
+                        sdat.is_valid()
+                        sample_ques = ComCure.objects.get(pk = 81)
+                        sample_ques = sz.CommonSerializer(instance=sample_ques).data
+                        tut_voice = sdat.data
+                        StuCure.objects.create(
+                            stu = student,
+                            com_cure = ComCure.objects.get(pk=81)
+                        )      
+                        code= 'tutorial'           
+                elif stucur.curr_level == 3:
+                    if not StuCure.objects.filter(stu_id = s_id,com_cure__com_id__range=(101,120)).exists():
+                        sound = sound = [19,20,21]
+                        for s in sound:
+                            voices.append(Voice.objects.get(pk=s))
+                        sdat = sz.VoiceSerializer(data=voices,many=True)
+                        sdat.is_valid()
+                        sample_ques = ComCure.objects.get(pk = 101)
+                        sample_ques = sz.CommonSerializer(instance=sample_ques).data
+                        tut_voice = sdat.data
+                        StuCure.objects.create(
+                            stu = student,
+                            com_cure = ComCure.objects.get(pk=101)
+                        )     
+                        code = 'tutorial'  
+            else:
+                if not StuCure.objects.filter(stu_id = s_id , cure_txt = stucur.cur_curr).exists():
+                    tut_voice , sample_ques = self.get_tutorial(student,stucur.cur_curr)
+                    StuCure.objects.create(
+                        stu = student,
+                        cure_txt = stucur.cur_curr
+                    ).save()
+                    code = 'tutorial'
+                # return JsonResponse({"read":read,"read_voice":read_voice,"tut_voice":tut_voice,"sample_ques":sample_ques,"daily_cure":stucur.cur_curr,"daily_read":stucur.cur_read,"code":"tutorial"},status=200)
             curr_idx = CureIdx.objects.get(idx_txt=stucur.cur_curr).idx_id
             curr_level = stucur.curr_level
             cure , answer = self.get_cure(curr_idx,curr_level)
-            return JsonResponse({"read":read,"read_voice": read_voice,"cure":cure,"daily_cure": stucur.cur_curr,"daily_read": stucur.cur_read, "answers": answer , "code":1},status=200)        
+            return JsonResponse({"read":read,"read_voice": read_voice,"cure":cure,"daily_cure": stucur.cur_curr,"daily_read": stucur.cur_read, "tut_voice":tut_voice,"sample_ques":sample_ques,"answers": answer , "code":code},status=200)        
         return JsonResponse({"message": "존재하지 않는 학습자입니다.","code":2},status=200)
 
 class CureAns(View):
@@ -888,15 +1064,21 @@ class CureAns(View):
         cure_txt = CureIdx.objects.get(pk=idx_id).idx_txt
         class_txt = 'A'
         is_pass = False
-        is_review = data['is_review'] 
+        is_review = data['is_review']
+        class_voice = Voice.objects.get(pk = 35)
         if score >= 85:
             is_pass = True
+            class_voice = Voice.objects.get(pk = 33)
         elif score >= 75 :
             class_txt = 'B'
         elif score >= 65:
             clsss_txt = 'C'
         elif score >= 55:
             class_txt = 'D'
+        if rhythm_score <=0:
+            class_voice = Voice.objects.get(pk=40)
+        if speed_score <=0 :
+            class_voice = Voice.objects.get(pk=38)
         StuCure.objects.create(
             stu = student,
             full_score = score,
@@ -908,7 +1090,8 @@ class CureAns(View):
             cure_txt = cure_txt
         ).save()
         cure_id = int(cure_id)+1
-        return cure_id, class_txt, is_pass
+        class_voice = sz.VoiceSerializer(instance=class_voice)
+        return cure_id, class_txt, is_pass, class_voice.data
 
     def answer_alternative(self,student,data,idx_id):
         ori_answer = data['ori_answer']
@@ -918,8 +1101,10 @@ class CureAns(View):
         cure_txt = CureIdx.objects.get(pk=idx_id).idx_txt
         is_review = data['is_review']
         is_correct = 'F'
+        correct_voice = Voice.objects.get(pk=36)
         if ori_answer == stu_answer:
             is_correct = 'T'
+            correct_voice = Voice.objects.get(pk=34)
         StuCure.objects.create(
             stu = student,
             is_correct = is_correct,
@@ -930,7 +1115,8 @@ class CureAns(View):
             cure_txt = cure_txt
         ).save()
         s = self.update_current(data,student,cure_txt,idx_id)
-        return is_correct , s
+        correct_voice = sz.VoiceSerializer(instance = correct_voice)
+        return is_correct , s , correct_voice.data
 
     def update_current(self,data,student,idx_txt,idx_id):
         s_id = student.stu_id
@@ -1004,8 +1190,10 @@ class CureAns(View):
         ori_answer = data['ori_answer']
         stu_answer = data['stu_answer']
         is_correct = 'F'
+        correct_voice = Voice.objects.get(pk=36)
         if ori_answer == stu_answer :
             is_correct = 'T'
+            correct_voice = Voice.objects.get(pk=34)
         is_review  = data['is_review']
         StuCure.objects.create(
             stu = student,
@@ -1016,9 +1204,10 @@ class CureAns(View):
             ori_answer = ori_answer,
             stu_answer = stu_answer
         ).save()
+        correct_voice = sz.VoiceSerializer(instance = correct_voice)
         s = self.update_current(data,student,idx_txt,idx_id)
                    
-        return is_correct , s
+        return is_correct , s,correct_voice.data
         
     def answer_sound(self,student,data,idx_id,idx_txt):
         score = data['full_score']
@@ -1029,14 +1218,20 @@ class CureAns(View):
         class_txt = 'A'
         is_pass = False
         is_review = data['is_review']
+        class_voice = Voice.objects.get(pk = 35)
         if score >= 85:
             is_pass = True
+            class_voice = Voice.objects.get(pk = 33)
         elif score >= 75:
             class_txt = 'B'
         elif score >= 65:
             class_txt = 'C'
         elif score >= 55:
             class_txt = 'D'
+        if rhythm_score <=0:
+            class_voice = Voice.objects.get(pk=40)
+        if speed_score <=0 :
+            class_voice = Voice.objects.get(pk=38)
         StuCure.objects.create(
             stu = student,
             full_score = score,
@@ -1048,7 +1243,8 @@ class CureAns(View):
             cure_txt = idx_txt
         ).save()
         s = self.update_sound(data,student,idx_txt,idx_id)
-        return is_pass , class_txt, s
+        class_voice = sz.VoiceSerializer(instance=class_voice)
+        return is_pass , class_txt, s , class_voice.data
 
     def update_sound(self,data,student,idx_txt,idx_id):
         s_id = student.stu_id
@@ -1104,8 +1300,10 @@ class CureAns(View):
         ori_answer = data['ori_answer']
         stu_answer = data['stu_answer']
         is_correct = 'F'
+        correct_voice = Voice.objects.get(pk=36)
         if ori_answer == stu_answer:
             is_correct = 'T'
+            correct_voice = Voice.objects.get(pk = 34)
         is_review = data['is_review']
         StuCure.objects.create(
             stu = student,
@@ -1118,10 +1316,10 @@ class CureAns(View):
             ori_answer = ori_answer,
             stu_answer = stu_answer
         ).save()
-
+        correct_voice = sz.VoiceSerializer(instance=correct_voice)
         s = self.update_consomatch(data,student,idx_txt,idx_id)
 
-        return is_correct,s
+        return is_correct,s,correct_voice.data
    
     def update_consomatch(self,data,student,idx_txt,idx_id):
         s_id = student.stu_id
@@ -1171,36 +1369,36 @@ class CureAns(View):
             if Student.objects.filter(pk=s_id).exists():
                 student = Student.objects.get(pk=s_id)
                 if idx_id == 1 or idx_id == 2 or idx_id == 11 or idx_id == 12: # read
-                    new_read_id , class_txt , is_pass = self.ans_read(student,data,idx_id)
+                    new_read_id , class_txt , is_pass,class_voice = self.ans_read(student,data,idx_id)
                     s = self.update_read(s_id,new_read_id,idx_id)
                     if s:
-                        return JsonResponse({"is_okay":is_pass,"class": class_txt,"code":1},status=200)
+                        return JsonResponse({"is_okay":is_pass,"class": class_txt,"class_voice":class_voice,"code":1},status=200)
                     else:
-                        return JsonResponse({"is_okay":is_pass,"class": class_txt,"message": "더 이상 학습할 문제가 없습니다.","code":2},status=200)
+                        return JsonResponse({"is_okay":is_pass,"class": class_txt,"class_voice":class_voice,"message": "더 이상 학습할 문제가 없습니다.","code":2},status=200)
                 elif idx_id == 3 or idx_id == 6 or idx_id == 8 or idx_id == 10:
-                    is_correct, s = self.answer_alternative(student,data,idx_id)
+                    is_correct, s ,correct_voice = self.answer_alternative(student,data,idx_id)
                     if s:
-                        return JsonResponse({"is_correct":is_correct,"code":1},status=200)
+                        return JsonResponse({"is_correct":is_correct,"correct_voice":correct_voice,"code":1},status=200)
                     else:
-                        return JsonResponse({"is_correct":is_correct,"code":2,"message":"모든 문제를 학습하였습니다."},status=200)
+                        return JsonResponse({"is_correct":is_correct,"correct_voice":correct_voice,"code":2,"message":"모든 문제를 학습하였습니다."},status=200)
                 elif idx_id == 4:
-                    is_correct,s = self.answer_common(student,data,idx_id,idx_txt)
+                    is_correct,s ,correct_voice= self.answer_common(student,data,idx_id,idx_txt)
                     if s:
-                        return JsonResponse({"is_corret":is_correct,"code":1},status=200)
+                        return JsonResponse({"is_corret":is_correct,"correct_voice":correct_voice,"code":1},status=200)
                     else:
-                        return JsonResponse({"is_correct":is_correct,"code":2,"message":"모든 문제를 학습하였습니다."},status=200)
+                        return JsonResponse({"is_correct":is_correct,"correct_voice":correct_voice,"code":2,"message":"모든 문제를 학습하였습니다."},status=200)
                 elif idx_id == 5 or idx_id == 9:
-                    is_pass,class_txt, s = self.answer_sound(student,data,idx_id,idx_txt)
+                    is_pass,class_txt, s, class_voice = self.answer_sound(student,data,idx_id,idx_txt)
                     if s:
-                        return JsonResponse({"is_pass":is_pass,"class":class_txt,"code":1},status=200)
+                        return JsonResponse({"is_pass":is_pass,"class":class_txt,"class_voice":class_voice,"code":1},status=200)
                     else:
-                        return JsonResponse({"is_pass":is_pass,"class":class_txt,"code":2,"message":"모든 문제를 학습하였습니다."},status=200)
+                        return JsonResponse({"is_pass":is_pass,"class":class_txt,"class_voice":class_voice,"code":2,"message":"모든 문제를 학습하였습니다."},status=200)
                 elif idx_id == 7:
-                    is_correct, s = self.answer_consomatch(student,data,idx_id,idx_txt)
+                    is_correct, s, correct_voice = self.answer_consomatch(student,data,idx_id,idx_txt)
                     if s:
-                        return JsonResponse({"is_correct":is_correct,"code":1},status=200)
+                        return JsonResponse({"is_correct":is_correct,"correct_voice":correct_voice,"code":1},status=200)
                     else:
-                        return JsonResponse({"is_correct":is_correct,"code":2,"message":"모든 문제를 학습하였습니다."},status=200)
+                        return JsonResponse({"is_correct":is_correct,"correct_voice":correct_voice,"code":2,"message":"모든 문제를 학습하였습니다."},status=200)
             else:
                 return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":3},status=200)
 
@@ -1417,8 +1615,26 @@ class Statistic(View):
                 did = StuCure.objects.filter(stu=student,date__year = year,date__month= t).count()
                 amount[t] = did
                 voice_score[t] =StuCure.objects.filter(stu=student,date__year = year,date__month= t).exclude(full_score__isnull=True).aggregate(Avg('full_score'))['full_score__avg']
-
-        return amount,score,voice_score       
+        classes = ['미흡','미흡','미흡']
+        cscore = [0,0,0]
+        for i in times:
+            if score[i] == None:
+                cscore[1] += 0 
+            else :
+                cscore[1] = cscore[1] + score[i]
+            if voice_score[i] == None:
+                cscore[2] += 0 
+            else :
+                cscore[2] = cscore[2] + voice_score[i]
+            cscore[0] += amount[i]
+        for idx,c in enumerate(cscore):
+            if (c/7) >= 85:
+                classes[idx] = '우수'
+            elif (c/7) >= 70:
+                classes[idx]  ='보통'
+            else:
+                classes[idx] = '미흠' 
+        return amount,score,voice_score,classes   
 
 
     def post(self,request):
@@ -1435,7 +1651,7 @@ class Statistic(View):
                 score_swp,score_ph,foc_score,classes,status = self.test_result(student,date,period)
                 return JsonResponse({"score_swp":score_swp,"score_ph":score_ph,"score_foc":foc_score,"class":classes,"status":status,"code":cort},status=200)
             elif cort == 'cure':
-                amount , score , voice_score = self.cure_result(student,date,period)
-                return JsonResponse({"amount":amount,"score":score,"voice_score":voice_score,"code":cort},status=200)
+                amount , score , voice_score,classes = self.cure_result(student,date,period)
+                return JsonResponse({"amount":amount,"score":score,"voice_score":voice_score,"class":classes,"code":cort},status=200)
         else:
             return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":2},status=200)

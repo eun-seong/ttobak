@@ -72,4 +72,4 @@ class VoiceSerializer(serializers.ModelSerializer):
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = tmodel.Student
-        fields = ("stu_id","stu_name","stu_gender","stu_birth")
+        fields = ("stu_id","stu_name","stu_gender","stu_birth","ic_id")
