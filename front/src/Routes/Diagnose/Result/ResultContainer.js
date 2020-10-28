@@ -1,7 +1,31 @@
 import React from 'react';
 import ResultPresenter from './ResultPresenter';
 
-export default class extends React.Component {
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+class Result extends React.Component {
+
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
+    componentDidMount() {
+        const { user } = this.props;
+        
+        if(!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if(!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
+    }
 
     render() {
         /*
@@ -14,3 +38,9 @@ export default class extends React.Component {
             />);
     }
 }
+
+function mapStateToProps(state) {
+    return { user: state.user }
+  }
+  
+  export default connect(mapStateToProps)(withRouter(Result));

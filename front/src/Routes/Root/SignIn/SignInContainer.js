@@ -38,7 +38,7 @@ class SignIn extends React.Component {
         
         if('u_id' in user.user) {
             window.localStorage.setItem('uid', user.user.u_id);
-            this.props.history.push('/root/selectStd');
+            this.props.history.push('/root/selectstd');
             return;
         }
 

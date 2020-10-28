@@ -4,12 +4,20 @@ import { D1_Api, soundURL } from 'api';
 import { D1, TTobak } from 'images';
 import { withRouter } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import LoadingComp from 'Components/LoadingComp';
 
 const UP = 'up';
 const DOWN = 'down';
 
 class Sweep extends React.PureComponent {
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
     constructor(props) {
         super();
         this.buttonSound = null;                           // up_sweep, down_sweep 소리 경로
@@ -37,6 +45,18 @@ class Sweep extends React.PureComponent {
     }
 
     async componentDidMount() {
+        const { user } = this.props;
+        
+        if(!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if(!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
         this.newRequest();
         this.imagesPreloading(this.picture);
     }
@@ -267,4 +287,8 @@ class Sweep extends React.PureComponent {
     }
 }
 
-export default withRouter(Sweep);
+function mapStateToProps(state) {
+    return { user: state.user }
+}
+
+export default connect(mapStateToProps)(withRouter(Sweep));

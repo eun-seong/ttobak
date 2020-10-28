@@ -2,9 +2,17 @@ import React from 'react';
 import RecognitionPresenter from './RecognitionPresenter';
 import { withRouter } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import { TTobak, D2 } from 'images';
 import { D2_Api, soundURL } from 'api';
 class Recognition extends React.PureComponent {
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
     constructor({ s_id }) {
         super();
         this.state = {
@@ -28,6 +36,18 @@ class Recognition extends React.PureComponent {
     }
 
     async componentDidMount() {
+        const { user } = this.props;
+        
+        if(!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if(!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
         this.newRequest();
         setTimeout(() => this.playSound(), 1000);
     }
@@ -259,4 +279,8 @@ class Recognition extends React.PureComponent {
 }
 
 
-export default withRouter(Recognition);
+function mapStateToProps(state) {
+    return { user: state.user }
+  }
+  
+  export default connect(mapStateToProps)(withRouter(Recognition));

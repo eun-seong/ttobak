@@ -1,6 +1,10 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { DndProvider } from 'react-dnd'
 import { TouchBackend } from 'react-dnd-touch-backend';
+
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import LoadingComp from 'Components/LoadingComp';
 import { T2, TTobak } from 'images';
@@ -10,7 +14,12 @@ import CountPresenter from './CountPresenter';
 
 const idx_txt = 'count';
 
-export default class extends React.Component {
+class Count extends React.Component {
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
     constructor({ match, location }) {
         super();
         this.learning_type = match.params.learning_type;
@@ -48,6 +57,18 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
+        const { user } = this.props;
+        
+        if(!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if(!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
         if (this.learning_type !== 'daily') this.newRequest();
         this.imagesPreloading(this.picture);
     }
@@ -275,3 +296,9 @@ export default class extends React.Component {
         }
     }
 }
+
+function mapStateToProps(state) {
+    return { user: state.user }
+}
+
+export default connect(mapStateToProps)(withRouter(Count));

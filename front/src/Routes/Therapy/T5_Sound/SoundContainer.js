@@ -1,11 +1,20 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import SoundPresenter from './SoundPresenter';
+
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { T5, TTobak, Characters } from 'images';
 import { T_Api2, soundURL } from 'api';
 import LoadingComp from 'Components/LoadingComp';
 
-export default class extends React.Component {
+class Sound extends React.Component {
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
     constructor({ match, location }) {
         super();
         this.learning_type = match.params.learning_type;
@@ -37,6 +46,18 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
+        const { user } = this.props;
+        
+        if(!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if(!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
         if (this.learning_type !== 'daily') this.newRequest();
         else {
             this.setState({
@@ -213,3 +234,9 @@ export default class extends React.Component {
         }
     }
 }
+
+function mapStateToProps(state) {
+    return { user: state.user }
+}
+
+export default connect(mapStateToProps)(withRouter(Sound));

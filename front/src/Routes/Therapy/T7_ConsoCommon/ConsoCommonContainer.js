@@ -1,13 +1,23 @@
 import React from 'react';
 import ConsoCommonPresenter from './ConsoCommonPresenter';
 
+import { withRouter } from 'react-router-dom';
+
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import LoadingComp from 'Components/LoadingComp';
 import { T7, Characters } from 'images';
 import { T_Api2, soundURL } from 'api';
 
 const idx_text = 'consocommon';
 
-export default class extends React.Component {
+class ConsoCommon extends React.Component {
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
     constructor({ match, location }) {
         super();
         this.learning_type = match.params.learning_type;
@@ -38,6 +48,18 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
+        const { user } = this.props;
+        
+        if(!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if(!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
         if (this.learning_type !== 'daily') this.newRequest();
         else {
             this.setState({
@@ -186,3 +208,9 @@ export default class extends React.Component {
         }
     }
 }
+
+function mapStateToProps(state) {
+    return { user: state.user }
+}
+
+export default connect(mapStateToProps)(withRouter(ConsoCommon));

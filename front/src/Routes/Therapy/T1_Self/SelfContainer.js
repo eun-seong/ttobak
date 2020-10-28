@@ -1,10 +1,19 @@
 import React from 'react';
 import SelfPresenter from './SelfPresenter';
 
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import { T1, TTobak } from 'images';
 import { T1_Api, soundURL } from 'api';
 
-export default class extends React.Component {
+class Self extends React.Component {
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
     constructor({ match, location }) {
         super();
         this.idx_text = match.params.type;
@@ -28,6 +37,19 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
+        const { user } = this.props;
+        
+        if(!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if(!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
+
         this.newRequest();
         setTimeout(() => window.BRIDGE.recordAudio('m', this.currentCure.cure_text), 1000);
 
@@ -159,3 +181,9 @@ export default class extends React.Component {
         />);
     }
 }
+
+function mapStateToProps(state) {
+    return { user: state.user }
+}
+
+export default connect(mapStateToProps)(withRouter(Self));
