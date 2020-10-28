@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import SubmitButton from 'Components/Button';
+import SubmitButton from './SubmitButton';
 import InputBoxComp from './InputBoxComp';
 import { MainRoot } from 'images';
 
@@ -45,6 +45,10 @@ const Div = styled.div`
     align-items: space-evenly;
 `;
 
+const Space = styled.div`
+    width: 50px;
+`;
+
 let state = {
     name: '',
     birth: '',
@@ -67,6 +71,7 @@ function AddStudentComp({ student, iconNum, handleSubmit }) {
     // console.log(iconNum);
     let icon = <SelectIcon src={iconNum ? MainRoot.IconList[iconNum] : MainRoot.IconList[student.ic_id]} alt='프로필 사진' />;
     state = {name: student.name, birth: student.birth.replaceAll('-', ''), gender: (student.gender === 'm' ? '남자' : '여자')};
+    console.log(state);
 
     return (
         <CompBox>
@@ -75,14 +80,14 @@ function AddStudentComp({ student, iconNum, handleSubmit }) {
                     {icon}
                 </Link>
                 <InputComp>
-                    <InputBoxComp text={'닉네임'} placeholder={state.name} handler={setName} />
-                    <InputBoxComp text={'생일'} placeholder={state.birth} handler={setBirth} />
-                    <InputBoxComp text={'성별'} placeholder={state.gender} handler={setGender} />
+                    <InputBoxComp key={state.name} text={'닉네임'} placeholder={state.name} handler={setName} />
+                    <InputBoxComp key={state.birth} text={'생일'} placeholder={state.birth} handler={setBirth} />
+                    <InputBoxComp key={state.gender} text={'성별'} placeholder={state.gender} handler={setGender} />
                 </InputComp>
             </StudentBox>
             <Div>
-                <SubmitButton text={'저장'} onClick={(e) => {handleSubmit(e, 'save', state);}} to='/' />
-                <SubmitButton text={'삭제'} onClick={(e) => {handleSubmit(e, 'delete', state);}} to='/' />
+                <SubmitButton isDelete={false} text={'저장'} onClick={(e) => {handleSubmit(e, 'save', state);}} to='/' />
+                <SubmitButton isDelete={true} text={'삭제'} onClick={(e) => {handleSubmit(e, 'delete', state);}} to='/' />
             </Div>
         </CompBox>
     );

@@ -5,9 +5,6 @@ import SubmitButton from 'Components/Button';
 import InputBoxComp from './InputBoxComp';
 import { MainRoot } from 'images';
 
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-
 const CompBox = styled.div`
     display: flex;
     height: 100%;

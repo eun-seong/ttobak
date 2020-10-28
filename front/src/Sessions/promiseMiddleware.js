@@ -2,6 +2,11 @@ import { api } from '../api.js';
 
 export default () => {
   return next => action => {
+    if(!action.promise) {
+      const {type, ...rest} = action;
+      return next({...rest, type: `${type}_SUCCESS`});
+    }
+
     const { promise, type, ...rest } = action;
     next({ ...rest, type: `${type}_REQUEST` });
     return api.post(promise.url, promise.data)

@@ -4,12 +4,12 @@ import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAILURE } from '.
 import { USER_MODIFY_REQUEST, USER_MODIFY_SUCCESS, USER_MODIFY_FAILURE } from './action.js';
 import { USER_DELETE_REQUEST, USER_DELETE_SUCCESS, USER_DELETE_FAILURE } from './action.js';
 import { USER_GET_REQUEST, USER_GET_SUCCESS, USER_GET_FAILURE } from './action.js';
-import { USER_LOGOUT } from './action.js';
+import { USER_LOGOUT_SUCCESS } from './action.js';
 import { STUDENT_ADD_REQUEST, STUDENT_ADD_SUCCESS, STUDENT_ADD_FAILURE } from './action.js';
 import { STUDENT_MODIFY_REQUEST, STUDENT_MODIFY_SUCCESS, STUDENT_MODIFY_FAILURE } from './action.js';
 import { STUDENT_DELETE_REQUEST, STUDENT_DELETE_SUCCESS, STUDENT_DELETE_FAILURE } from './action.js';
 import { STUDENT_GET_REQUEST, STUDENT_GET_SUCCESS, STUDENT_GET_FAILURE } from './action.js';
-
+import { STUDENT_CHANGE_SUCCESS } from './action.js';
 
 const defaultState = {
   isLoggedIn: false,
@@ -31,13 +31,14 @@ const userReducer = (state = defaultState, action) => {
         ...state,
         fetchingUpdate: false,
         isLoggedIn: true,
-        user: {'u_id': action.result.data.usr_id}, 
+        user: {u_id: action.result.data.usr_id}, 
         response: action.error || action.result
       };
     case USER_REGISTER_FAILURE:
       return {
         ...state,
         fetchingUpdate: false, 
+        isLoggedIn: false,
         user: {}, 
         response: action.error || action.result
       };
@@ -51,13 +52,14 @@ const userReducer = (state = defaultState, action) => {
         ...state,
         fetchingUpdate: false,
         isLoggedIn: true,
-        user: {'u_id': action.result.data.usr_id},
+        user: {u_id: action.result.data.usr_id},
         response: action.error || action.result
       };
     case USER_SIGNIN_FAILURE:
       return {
         ...state,
         fetchingUpdate: false,
+        isLoggedIn: false,
         response: action.error || action.result
       };
     case USER_MODIFY_REQUEST:
@@ -69,8 +71,7 @@ const userReducer = (state = defaultState, action) => {
       return {
         ...state,
         fetchingUpdate: false,
-        isLoggedIn: false,
-        user: {}, 
+        user: {...state.user}, 
         response: action.error || action.result
       };
     case USER_MODIFY_FAILURE:
@@ -88,8 +89,7 @@ const userReducer = (state = defaultState, action) => {
       return {
         ...state,
         fetchingUpdate: false,
-        isLoggedIn: false,
-        user: {}, 
+        user: {...state.user}, 
         response: action.error || action.result
       };
     case USER_DELETE_FAILURE:
@@ -107,9 +107,8 @@ const userReducer = (state = defaultState, action) => {
       return {
         ...state,
         fetchingUpdate: false,
-        isLoggedIn: true,
-        user: { 'u_id': action.result.data.u_id, 'name': action.result.data.name, 'email': action.result.data.email, 'students': action.result.data.students.map(
-          el => {return {'s_id': el.stu_id, 'name': el.stu_name, 'gender': el.stu_gender, 'birth': el.stu_birth, 'ic_id': el.ic_id};}
+        user: { ...state.user, u_id: action.result.data.u_id, name: action.result.data.name, email: action.result.data.email, students: action.result.data.students.map(
+          el => {return {s_id: el.stu_id, name: el.stu_name, gender: el.stu_gender, birth: el.stu_birth, ic_id: el.ic_id};}
         )}, 
         response: action.error || action.result
       };
@@ -128,8 +127,7 @@ const userReducer = (state = defaultState, action) => {
       return {
         ...state,
         fetchingUpdate: false,
-        isLoggedIn: true,
-        student: {'s_id': action.result.data.stu_id}, 
+        student: {s_id: action.result.data.stu_id}, 
         response: action.error || action.result
       };
     case STUDENT_ADD_FAILURE:
@@ -147,7 +145,6 @@ const userReducer = (state = defaultState, action) => {
       return {
         ...state,
         fetchingUpdate: false,
-        isLoggedIn: true,
         student: {}, 
         response: action.error || action.result
       };
@@ -166,7 +163,6 @@ const userReducer = (state = defaultState, action) => {
       return {
         ...state,
         fetchingUpdate: false,
-        isLoggedIn: true,
         student: {}, 
         response: action.error || action.result
       };
@@ -185,8 +181,7 @@ const userReducer = (state = defaultState, action) => {
       return {
         ...state,
         fetchingUpdate: false,
-        isLoggedIn: true,
-        student: { 's_id': action.result.data.stu_id, 'name': action.result.data.name, 'birth': action.result.data.birth, 'gender': action.result.data.gender, 'ic_id': action.result.data.ic_id }, 
+        student: {...state.student, s_id: action.result.data.stu_id, name: action.result.data.name, birth: action.result.data.birth, gender: action.result.data.gender, ic_id: action.result.data.ic_id }, 
         response: action.error || action.result
       };
     case STUDENT_GET_FAILURE:
@@ -195,14 +190,20 @@ const userReducer = (state = defaultState, action) => {
         fetchingUpdate: false, 
         response: action.error || action.result
       };
-    case USER_LOGOUT:
+    case USER_LOGOUT_SUCCESS:
       return {
         ...state, 
         isLoggedIn: false, 
         fetchingUpdate: false,
         user: {}, 
         student: {}
-      }
+      };
+    case STUDENT_CHANGE_SUCCESS:
+      return {
+        ...state, 
+        fetchingUpdate: true, 
+        student: {s_id: action.data.s_id}
+      };
     default:
       return state;
   }

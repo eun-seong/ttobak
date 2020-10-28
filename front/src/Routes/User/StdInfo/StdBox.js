@@ -54,7 +54,7 @@ const StdBox = ({ student, goBack }) => {
                 <ProfileIcon size={'33px'} iconNum={student.ic_id} />
                 <Name>{student.name}</Name>
             </Bar>
-            <StdChange to='/user/stdsetting'>학습자 변경</StdChange>
+            <StdChange to='/user/stdchange'>학습자 변경</StdChange>
         </StdComp >
     );
 }

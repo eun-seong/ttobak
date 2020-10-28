@@ -68,7 +68,6 @@ class StdManaging extends React.Component {
         gender = (gender === '남자' ? 'm' : 'f');
         birth = moment(birth).format('YYYY-MM-DD');
         
-        console.log(user);
         if(op === 'save') {
             dispatch(student_modify(name, birth, gender, icon, student, user.user.u_id));
             alert('저장했습니다.');
@@ -76,6 +75,7 @@ class StdManaging extends React.Component {
         } else if(op === 'delete') {
             if(window.confirm('정말 삭제하시겠습니까?')) {
                 dispatch(student_delete(student, user.user.u_id));
+                alert('삭제했습니다.');
                 this.props.history.push('/user/setting');
             }
         }
@@ -91,8 +91,8 @@ class StdManaging extends React.Component {
         */
         
         const {user} = this.props;
+        console.log(user);
         if(!user.student.name) return null;
-
         return (
             <StdManagingPresenter
                 student={user.student}

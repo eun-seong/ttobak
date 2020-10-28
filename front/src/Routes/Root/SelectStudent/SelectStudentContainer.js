@@ -63,7 +63,6 @@ class SelectStudent extends React.Component {
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
         const { user } = this.props;
-        console.log(user);
         return (<
             SelectStudentPresenter
             students={user.user.students || []}

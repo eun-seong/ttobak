@@ -24,6 +24,7 @@ export const USER_GET_SUCCESS = 'USER_GET_SUCCESS';
 export const USER_GET_FAILURE = 'USER_GET_FAILURE';
 
 export const USER_LOGOUT = 'USER_LOGOUT';
+export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';
 
 export const STUDENT_ADD = 'STUDENT_ADD';
 export const STUDENT_ADD_REQUEST = 'STUDENT_ADD_REQUEST';
@@ -44,6 +45,9 @@ export const STUDENT_GET = 'STUDENT_GET';
 export const STUDENT_GET_REQUEST = 'STUDENT_GET_REQUEST';
 export const STUDENT_GET_SUCCESS = 'STUDENT_GET_SUCCESS';
 export const STUDENT_GET_FAILURE = 'STUDENT_GET_FAILURE';
+
+export const STUDENT_CHANGE = 'STUDENT_CHANGE';
+export const STUDENT_CHANGE_SUCCESS = 'STUDENT_CHANGE_SUCCESS';
 
 
 export const user_register = (email, pw, name) => {
@@ -83,7 +87,8 @@ export const user_get = (id) => {
 
 export const user_logout = (u_id) => {
   return {
-    type: USER_LOGOUT
+    type: USER_LOGOUT, 
+    data: {}
   }
 }
 
@@ -115,4 +120,9 @@ export const student_get = (s_id, u_id) => {
   };
 };
 
-
+export const student_change = (s_id) => {
+  return {
+    type: STUDENT_CHANGE, 
+    data: {'s_id': s_id}
+  };
+}
