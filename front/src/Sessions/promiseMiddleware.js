@@ -1,5 +1,7 @@
 import { api } from '../api.js';
 import { USER_AUTOLOGIN } from './action';
+import { USER_LOGOUT } from './action';
+import { USER_DELETE } from './action';
 
 export default () => {
   return next => action => {
@@ -13,13 +15,19 @@ export default () => {
         } else {
           return next({...rest, type: `${type}_FAILURE`});
         }
+      } else if(type === USER_LOGOUT) {
+        window.localStorage.removeItem('uid');
+        return next({...rest, type: `${type}_SUCCESS`});
       } else {
         return next({...rest, type: `${type}_SUCCESS`});
       }
-      
     }
 
     const { promise, type, ...rest } = action;
+    if(type === USER_DELETE) {
+      window.localStorage.removeItem('uid');
+    }
+
     next({ ...rest, type: `${type}_REQUEST` });
     return api.post(promise.url, promise.data)
       .then(result => {
