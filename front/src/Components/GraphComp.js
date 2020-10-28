@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import level from 'const';
-import { VictoryChart, VictoryBar, VictoryAxis, VictoryLine, VictoryTheme } from "victory";
+import { VictoryChart, VictoryBar, VictoryAxis, VictoryLine, VictoryTheme, VictoryContainer } from "victory";
 
 const DateFormat = (d) => {
 	if(d.includes('~')) {
@@ -94,7 +94,16 @@ function GraphComp({ isCure, title, target, classLevel, tickle, axis }) {
     	<GraphMain>
     		<VictoryChart 
     			maxDomain={{ y:tickle * 25}}
-    			width={500}
+				width={500}
+				containerComponent={
+					<VictoryContainer 
+						style={{
+							pointerEvents: "auto",
+							userSelect: "auto",
+							touchAction: "auto"
+						}}
+					/>
+				}
     			>
     			<VictoryAxis
     				offsetX={40}
