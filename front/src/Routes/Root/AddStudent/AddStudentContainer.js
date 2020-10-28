@@ -68,8 +68,8 @@ class AddStudent extends React.Component {
         const { user } = this.props;
         console.log(user);
         if(('s_id' in user.student) && ('u_id' in user.user))  {
-            alert('사용자 추가를 성공했습니다.');
-            this.props.history.push('/');
+            alert('사용자 추가를 성공했습니다. 검사 페이지로 이동합니다.');
+            this.props.history.push('/diagnose/sweep');
         }
 
         if(user.response.data && user.response.data.code == 2) {

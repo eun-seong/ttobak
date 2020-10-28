@@ -30,7 +30,6 @@ class Sweep extends React.PureComponent {
         this.totalImages = Object.keys(D1).length + Object.keys(TTobak).length;
 
         this.state = {
-            s_id: parseInt(props.match.params.s_id) || 4,
             is_review: props.match.params.is_review,
             gameState: false,                           // 게임 상태
             UpButton: D1.d1_UpButton_UP,                // 버튼 이미지 상태
@@ -73,7 +72,8 @@ class Sweep extends React.PureComponent {
 
     newRequest = async () => {
         console.log('new request');
-        const { s_id } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
         try {
             const { data } = await D1_Api.ask(s_id);
@@ -190,7 +190,10 @@ class Sweep extends React.PureComponent {
             gameState: false,
         });
 
-        const { s_id, stdAnswer } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
+
+        const { stdAnswer } = this.state;
         const answer = [this.oriAnswer[this.currentIndex][0], this.oriAnswer[this.currentIndex][1]];
         this.setState({
             TTobaki: TTobak.ttobak2_1,

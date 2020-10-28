@@ -30,7 +30,6 @@ class ConsoCommon extends React.Component {
         this.totalImages = Object.keys(T7).length + Object.keys(Characters).length;
 
         this.state = {
-            s_id: parseInt(match.params.s_id) || 4,
             is_review: match.params.is_review,
             gameState: false,
             picBox: null,
@@ -72,7 +71,8 @@ class ConsoCommon extends React.Component {
 
     newRequest = async () => {
         console.log('new request');
-        const { s_id } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
         try {
             const { data } = await T_Api2.ask(s_id, idx_text);
@@ -111,7 +111,9 @@ class ConsoCommon extends React.Component {
 
     onCardTouchHandle = async (id) => {
         try {
-            const { s_id, is_review } = this.state;
+            const { is_review } = this.state;
+            const { user } = this.props;
+            const s_id = user.student.s_id;
             const { data } = await T_Api2.answer(
                 s_id, this.ori_answer[this.currentCure.cure_level - 1],
                 this.ori_answer[id],

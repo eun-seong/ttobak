@@ -17,7 +17,6 @@ class Select extends React.Component {
     constructor({ location }) {
         super();
         this.state = {
-            s_id: 4,
             isImageLoaded: !!location.state.isImageLoaded,
         }
         console.log(location);
@@ -46,7 +45,9 @@ class Select extends React.Component {
 
     render() {
         console.log(this.props.history);
-        const { s_id, isImageLoaded } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
+        const { isImageLoaded } = this.state;
 
         if (isImageLoaded)
             return (

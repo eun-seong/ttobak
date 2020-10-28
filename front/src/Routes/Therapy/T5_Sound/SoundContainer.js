@@ -28,7 +28,6 @@ class Sound extends React.Component {
         this.totalImages = Object.keys(T5).length + Object.keys(TTobak).length + Object.keys(Characters).length;
 
         this.state = {
-            s_id: parseInt(match.params.s_id) || 4,
             is_review: match.params.is_review,
             TTobaki: TTobak.ttobak1_1,                  // 또박이 이미지 상태
             gameState: false,
@@ -76,7 +75,8 @@ class Sound extends React.Component {
         console.log('new request');
 
         try {
-            const { s_id } = this.state;
+            const { user } = this.props;
+            const s_id = user.student.s_id;
             const { data } = await T_Api2.ask(s_id, this.idx_text);
             console.log(data);
 
@@ -141,7 +141,9 @@ class Sound extends React.Component {
         })
 
         try {
-            const { s_id, is_review, CardTextList } = this.state;
+            const { user } = this.props;
+            const s_id = user.student.s_id;
+            const { is_review, CardTextList } = this.state;
             console.log(this.currentCure.answer, this.currentCure.cure_word, this.currentCure.cure_word2)
             const { data } = await T_Api2.answer(
                 s_id,

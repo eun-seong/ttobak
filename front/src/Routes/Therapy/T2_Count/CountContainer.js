@@ -34,7 +34,6 @@ class Count extends React.Component {
         this.totalImages = Object.keys(T2).length + Object.keys(TTobak).length + 4;
 
         this.state = {
-            s_id: parseInt(match.params.s_id) || 4,
             gameState: false,
             isDragging: false,
             touchPosition: [],
@@ -82,7 +81,9 @@ class Count extends React.Component {
 
     newRequest = async () => {
         console.log('new request');
-        const { s_id, is_review } = this.state;
+        const { is_review } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
         try {
             const { data } = await T_Api2.ask(s_id, idx_txt);
@@ -134,7 +135,9 @@ class Count extends React.Component {
         this.setState({
             TTobaki: TTobak.ttobak2_1
         })
-        const { s_id, Apple: { numOfApples }, is_review } = this.state;
+        const { Apple: { numOfApples }, is_review } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
         const { data } = await T_Api2.answer(
             s_id,

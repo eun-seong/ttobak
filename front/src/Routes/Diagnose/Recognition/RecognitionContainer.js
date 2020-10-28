@@ -13,10 +13,9 @@ class Recognition extends React.PureComponent {
         dispatch: PropTypes.func.isRequired,
     };
 
-    constructor({ s_id }) {
+    constructor() {
         super();
         this.state = {
-            s_id: s_id || 4,
             gameState: false,
             Box: [D2.d2_Box1_1, D2.d2_Box2_1],          // Box 이미지
             TTobaki: TTobak.ttobak3_1,
@@ -61,7 +60,8 @@ class Recognition extends React.PureComponent {
 
     newRequest = async () => {
         console.log('new request');
-        const { s_id } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
         try {
             const { data } = await D2_Api.ask(s_id);
@@ -201,7 +201,8 @@ class Recognition extends React.PureComponent {
         this.setState({
             TTobaki: TTobak.ttobak2_1,
         })
-        const { s_id } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
         const [ph, oriAnswer, stdAnswer] = [
             [this.currentDiag[0].ques_id, this.currentDiag[1].ques_id],
             this.currentDiag[0].ques_id === this.currentDiag[2].ques_id ? this.currentDiag[0].ques_char : this.currentDiag[1].ques_char,

@@ -28,7 +28,6 @@ class ConsoMatch extends React.Component {
         this.totalImages = Object.keys(T6).length + Object.keys(Characters).length;
 
         this.state = {
-            s_id: parseInt(match.params.s_id) || 4,
             gameState: false,
             PicBoxList: null,
             Worm: Characters.worm2_2,
@@ -93,7 +92,8 @@ class ConsoMatch extends React.Component {
 
     newRequest = async () => {
         console.log('new request');
-        const { s_id } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
         try {
             const { data } = await T_Api4.ask(s_id);
@@ -156,7 +156,8 @@ class ConsoMatch extends React.Component {
         });
 
         try {
-            const { s_id } = this.state;
+            const { user } = this.props;
+            const s_id = user.student.s_id;
             const cure_id = [
                 this.getListFilter('cure_tid', this.currentCure[0]).cure_id,
                 this.getListFilter('cure_tid', this.currentCure[1]).cure_id,

@@ -29,7 +29,6 @@ class Common extends React.Component {
         this.totalImages = Object.keys(T3).length + Object.keys(TTobak).length;
 
         this.state = {
-            s_id: parseInt(match.params.s_id) || 4,
             is_review: match.params.is_review,
             TTobaki: TTobak.ttobak1_1,
             gameState: false,
@@ -74,7 +73,8 @@ class Common extends React.Component {
 
     newRequest = async () => {
         console.log('new request');
-        const { s_id } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
         try {
             const { data } = await T_Api2.ask(s_id, idx_text);
@@ -200,7 +200,9 @@ class Common extends React.Component {
         })
 
         try {
-            const { s_id, boxTextList, is_review } = this.state;
+            const { user } = this.props;
+            const s_id = user.student.s_id;
+            const { boxTextList, is_review } = this.state;
             const { data } = await T_Api2.answer(
                 s_id,
                 this.cure[this.currentIndex].com_ans,

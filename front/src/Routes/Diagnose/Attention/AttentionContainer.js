@@ -14,11 +14,10 @@ class Attention extends React.Component {
         dispatch: PropTypes.func.isRequired,
     };
 
-    constructor(s_id) {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            gameState: false,
-            s_id: s_id || 4,                            // 학습자 아이디
+            gameState: false
         };
     }
 
@@ -38,7 +37,9 @@ class Attention extends React.Component {
     }
 
     Test = async () => {
-        const data = await D3_Api.ask(1, 4);
+        const { user } = this.props;
+
+        const data = await D3_Api.ask(1, user.student.s_id);
         console.log(data);
     }
 

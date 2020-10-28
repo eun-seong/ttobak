@@ -28,7 +28,6 @@ class Shadowing extends React.Component {
         this.numOfLoadedImage = 0;
 
         this.state = {
-            s_id: match.params.s_id || 4,
             cureText: null,
             isRecording: false,
             TTobaki: TTobak.ttobak1_1,
@@ -86,7 +85,8 @@ class Shadowing extends React.Component {
 
     newRequest = async () => {
         console.log('new request');
-        const { s_id } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
         try {
             const { data } = await T1_Api.ask(s_id, this.idx_text);
@@ -115,7 +115,8 @@ class Shadowing extends React.Component {
 
         try {
             if (this.audioResult.status === 'Success') {
-                const { s_id } = this.state;
+                const { user } = this.props;
+                const s_id = user.student.s_id;
                 const { data } = await T1_Api.answer(
                     s_id,
                     this.audioResult.score,
