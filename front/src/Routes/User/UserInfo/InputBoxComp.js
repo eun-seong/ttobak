@@ -51,7 +51,7 @@ const Line = styled.div`
     background-color: #d2d2d2;
 `;
 
-function InputBoxComp({ text, email }) {
+function InputBoxComp({ email }) {
     return (
         <InputComp>
             <Comp>

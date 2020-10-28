@@ -24,11 +24,13 @@ const InputBox = styled.input`
     /* opacity: 0%; */
 `;
 
+
+
 function InputBoxComp({ text, placeholder, handler }) {
     return (
         <InputComp>
             <Text>{text}</Text>
-            <InputBox type='text' placeholder={placeholder} onChange={(e) => {handler(e)}} />
+            <InputBox type='text' defaultValue={placeholder} onChange={handler} />
         </InputComp>
     );
 }

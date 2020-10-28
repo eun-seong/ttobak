@@ -63,26 +63,26 @@ const setGender = (e) => {
     state['gender'] = e.target.value;
 }
 
-function AddStudentComp({ iconNum, handleSubmit }) {
+function AddStudentComp({ student, iconNum, handleSubmit }) {
     // console.log(iconNum);
-    let icon = <SelectIcon src={MainRoot.IconList[iconNum]} alt='프로필 사진' />
-    if (!MainRoot.IconList[iconNum]) icon = <SelectIcon />
+    let icon = <SelectIcon src={iconNum ? MainRoot.IconList[iconNum] : MainRoot.IconList[student.ic_id]} alt='프로필 사진' />;
+    state = {name: student.name, birth: student.birth.replaceAll('-', ''), gender: (student.gender === 'm' ? '남자' : '여자')};
 
     return (
         <CompBox>
             <StudentBox>
-                <Link to='/root/selecticon'>
+                <Link to={'/user/selecticon/' + student.s_id}>
                     {icon}
                 </Link>
                 <InputComp>
-                    <InputBoxComp text={'닉네임'} placeholder={'개미'} handler={setName} />
-                    <InputBoxComp text={'생일'} placeholder={'20100813'} handler={setBirth} />
-                    <InputBoxComp text={'성별'} placeholder={'남자'} handler={setGender} />
+                    <InputBoxComp text={'닉네임'} placeholder={state.name} handler={setName} />
+                    <InputBoxComp text={'생일'} placeholder={state.birth} handler={setBirth} />
+                    <InputBoxComp text={'성별'} placeholder={state.gender} handler={setGender} />
                 </InputComp>
             </StudentBox>
             <Div>
-                <SubmitButton text={'저장'} onClick={(e) => {handleSubmit(e, state);}} to='/' />
-                <SubmitButton text={'삭제'} onClick={(e) => {handleSubmit(e, state);}} to='/' />
+                <SubmitButton text={'저장'} onClick={(e) => {handleSubmit(e, 'save', state);}} to='/' />
+                <SubmitButton text={'삭제'} onClick={(e) => {handleSubmit(e, 'delete', state);}} to='/' />
             </Div>
         </CompBox>
     );

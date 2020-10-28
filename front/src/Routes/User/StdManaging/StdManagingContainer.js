@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import StdManagingPresenter from './StdManagingPresenter';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { student_modify } from 'Sessions/action.js';
+import { student_modify, student_get, student_delete } from 'Sessions/action.js';
 import moment from 'moment';
 
 class StdManaging extends React.Component {
@@ -27,22 +27,24 @@ class StdManaging extends React.Component {
             return;
         }
 
-        // if(!user.user.u_id) {
-        //     alert('잘못된 접근입니다.');
-        //     this.props.history.push('/root/signin');
-        //     return;
-        // }
+        if(!user.user.u_id) {
+            alert('잘못된 접근입니다.');
+            this.props.history.push('/root/signin');
+            return;
+        }
 
-        // dispatch(student_get(student, user.user.u_id));
+        dispatch(student_get(student, user.user.u_id));
     }
 
-    handleSubmit = (e, {name, birth, gender}) => {
+
+    handleSubmit = (e, op, {name, birth, gender}) => {
+        console.log(name, birth, gender);
         e.preventDefault(); 
         const { user } = this.props;
         const {dispatch} = this.props;
 
         const student = this.props.match.params.student;
-        const icon = this.props.match.params.icon;
+        const icon = this.props.match.params.icon || user.student.ic_id;
         if(!icon) {
             alert('아이콘을 선택해주세요.');
             return false;
@@ -67,7 +69,16 @@ class StdManaging extends React.Component {
         birth = moment(birth).format('YYYY-MM-DD');
         
         console.log(user);
-        dispatch(student_modify(name, birth, gender, icon, user.user.u_id));
+        if(op === 'save') {
+            dispatch(student_modify(name, birth, gender, icon, student, user.user.u_id));
+            alert('저장했습니다.');
+            this.props.history.push('/user/setting');
+        } else if(op === 'delete') {
+            if(window.confirm('정말 삭제하시겠습니까?')) {
+                dispatch(student_delete(student, user.user.u_id));
+                this.props.history.push('/user/setting');
+            }
+        }
 
         return true;
     }
@@ -78,9 +89,15 @@ class StdManaging extends React.Component {
         presenter로 가는 모든 스테이트 값 렌더링
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
+        
+        const {user} = this.props;
+        if(!user.student.name) return null;
 
         return (
             <StdManagingPresenter
+                student={user.student}
+                iconNum={this.props.match.params.icon || undefined}
+                handleSubmit={this.handleSubmit}
                 goBack={this.goBack}
             />);
     }

@@ -11,12 +11,12 @@ const Icons = styled.div`
     align-items: center;
 `;
 
-function SelectIconComp() {
+function SelectIconComp({student}) {
     return (
         <Icons>
-            <Link to={'/root/addstd/1'}><ProfileIcon iconNum={1} size={'120px'} /></Link>
-            <Link to={'/root/addstd/2'}><ProfileIcon iconNum={2} size={'120px'} /></Link>
-            <Link to={'/root/addstd/3'}><ProfileIcon iconNum={3} size={'120px'} /></Link>
+            <Link to={'/user/stdmanaging/' + student + '/1'}><ProfileIcon iconNum={1} size={'120px'} /></Link>
+            <Link to={'/user/stdmanaging/' + student + '/2'}><ProfileIcon iconNum={2} size={'120px'} /></Link>
+            <Link to={'/root/stdmanaging/' + student + '/3'}><ProfileIcon iconNum={3} size={'120px'} /></Link>
         </Icons>
     );
 }

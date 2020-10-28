@@ -4,12 +4,12 @@ import { MainRoot } from 'images';
 import RootBackGround from 'Components/RootBackGround';
 import SelectIconComp from './SelectIconComp';
 
-function SelectIcon({ goBack }) {
+function SelectIcon({ student, goBack }) {
     return (
         <RootBackGround
             background={MainRoot.icon_background}
             title={'아이콘 선택'}
-            Content={SelectIconComp}
+            Content={() => SelectIconComp({student})}
             goBack={goBack}>
         </RootBackGround>
     );

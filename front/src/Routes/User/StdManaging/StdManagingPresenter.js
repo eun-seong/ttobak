@@ -21,12 +21,12 @@ const Div = styled.div`
 		align-items: center;
 `
 
-const StdManaging = ({ goBack }) => {
+const StdManaging = ({ student, handleSubmit, iconNum, goBack }) => {
 
     return (
         <Container>
             <HeaderComp title={'학습자 관리'} goBack={goBack} />
-            <Div><StdManagingComp /></Div>
+            <Div><StdManagingComp iconNum={iconNum} student={student} handleSubmit={handleSubmit}/></Div>
             
         </Container >
     );

@@ -34,12 +34,12 @@ const Text = styled.div`
     font-size: 0.8rem;
 `;
 
-const UserInfo = ({ handleSubmit, goBack }) => {
+const UserInfo = ({ email, handleSubmit, goBack }) => {
     return (
         <Container>
             <HeaderComp title={'회원 정보'} goBack={goBack} />
             <Contents>
-                <InputBoxComp />
+                <InputBoxComp email={email}/>
                 <Button text={'비밀번호 변경'} to='/user/chpassword' />
             </Contents>
             <TextButton>

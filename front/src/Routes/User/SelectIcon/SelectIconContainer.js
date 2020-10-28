@@ -1,7 +1,9 @@
 import React from 'react';
 import SelectIconPresenter from './SelectIconPresenter';
-import { Root_Api } from 'api';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { student_add } from 'Sessions/action.js';
 
 class SelectIcon extends React.Component {
     /* 
@@ -10,11 +12,17 @@ class SelectIcon extends React.Component {
     error 처리 등 모든 것
      */
 
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
     goBack = () => {
         this.props.history.goBack();
     };
 
     render() {
+        const student = this.props.match.params.student;
         /*
         presenter로 가는 모든 스테이트 값 렌더링
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
@@ -22,10 +30,15 @@ class SelectIcon extends React.Component {
 
         return (<
             SelectIconPresenter
+            student={student}
             handleSubmit={this.handleSubmit}
             goBack={this.goBack}
         />);
     }
 }
 
-export default withRouter(SelectIcon);
+function mapStateToProps(state) {
+    return { user: state.user }
+  }
+  
+export default connect(mapStateToProps)(withRouter(SelectIcon));
