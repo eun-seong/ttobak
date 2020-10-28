@@ -26,6 +26,10 @@ export const USER_GET_FAILURE = 'USER_GET_FAILURE';
 export const USER_LOGOUT = 'USER_LOGOUT';
 export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';
 
+export const USER_AUTOLOGIN = 'USER_AUTOLOGIN';
+export const USER_AUTOLOGIN_SUCCESS = 'USER_AUTOLOGIN_SUCCESS';
+export const USER_AUTOLOGIN_FAILURE = 'USER_AUTOLOGIN_FAILURE';
+
 export const STUDENT_ADD = 'STUDENT_ADD';
 export const STUDENT_ADD_REQUEST = 'STUDENT_ADD_REQUEST';
 export const STUDENT_ADD_SUCCESS = 'STUDENT_ADD_SUCCESS';
@@ -85,6 +89,13 @@ export const user_get = (id) => {
   };
 };
 
+export const user_autologin = () => {
+  return {
+    type: USER_AUTOLOGIN, 
+    data: {}
+  };
+}
+
 export const user_logout = (u_id) => {
   return {
     type: USER_LOGOUT, 
@@ -126,3 +137,4 @@ export const student_change = (s_id) => {
     data: {'s_id': s_id}
   };
 }
+

@@ -1,10 +1,22 @@
 import { api } from '../api.js';
+import { USER_AUTOLOGIN } from './action';
 
 export default () => {
   return next => action => {
     if(!action.promise) {
       const {type, ...rest} = action;
-      return next({...rest, type: `${type}_SUCCESS`});
+      if(type === USER_AUTOLOGIN) {
+        const u_id = window.localStorage.getItem('uid');
+        console.log(action);
+        if(u_id) {
+          return next({...rest, data: {u_id}, type: `${type}_SUCCESS`});
+        } else {
+          return next({...rest, type: `${type}_FAILURE`});
+        }
+      } else {
+        return next({...rest, type: `${type}_SUCCESS`});
+      }
+      
     }
 
     const { promise, type, ...rest } = action;

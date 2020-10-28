@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import SignInPresenter from './SignInPresenter';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { user_signin } from '../../../Sessions/action.js';
+import { user_autologin, user_signin } from 'Sessions/action.js';
 
 class SignIn extends React.Component {
     /* 
@@ -12,8 +12,11 @@ class SignIn extends React.Component {
     error 처리 등 모든 것
      */
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        const { dispatch } = this.props;
+
+        dispatch(user_autologin());
     }
 
     static propTypes = {
@@ -32,9 +35,9 @@ class SignIn extends React.Component {
     componentDidUpdate() {
         const { user } = this.props;
         const { history } = this.props;
-        console.log(user);
         
         if('u_id' in user.user) {
+            window.localStorage.setItem('uid', user.user.u_id);
             this.props.history.push('/root/selectStd');
             return;
         }

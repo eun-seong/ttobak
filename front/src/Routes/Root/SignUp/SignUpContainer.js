@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import SignUpPresenter from './SignUpPresenter';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { user_register } from '../../../Sessions/action.js';
+import { user_register } from 'Sessions/action.js';
 
 class SignUp extends React.Component {
     /* 
@@ -39,6 +39,7 @@ class SignUp extends React.Component {
         
         if('u_id' in user.user) {
             alert('회원 가입에 성공했습니다.');
+            window.localStorage.setItem('uid', user.user.u_id);
             this.props.history.push('/root/addstd');
         }
 

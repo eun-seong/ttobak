@@ -4,6 +4,7 @@ import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAILURE } from '.
 import { USER_MODIFY_REQUEST, USER_MODIFY_SUCCESS, USER_MODIFY_FAILURE } from './action.js';
 import { USER_DELETE_REQUEST, USER_DELETE_SUCCESS, USER_DELETE_FAILURE } from './action.js';
 import { USER_GET_REQUEST, USER_GET_SUCCESS, USER_GET_FAILURE } from './action.js';
+import { USER_AUTOLOGIN_SUCCESS, USER_AUTOLOGIN_FAILURE } from './action.js';
 import { USER_LOGOUT_SUCCESS } from './action.js';
 import { STUDENT_ADD_REQUEST, STUDENT_ADD_SUCCESS, STUDENT_ADD_FAILURE } from './action.js';
 import { STUDENT_MODIFY_REQUEST, STUDENT_MODIFY_SUCCESS, STUDENT_MODIFY_FAILURE } from './action.js';
@@ -190,6 +191,19 @@ const userReducer = (state = defaultState, action) => {
         fetchingUpdate: false, 
         response: action.error || action.result
       };
+    case USER_AUTOLOGIN_SUCCESS:
+      return {
+        ...state, 
+        isLoggedIn: true, 
+        fetchingUpdate: false, 
+        user: {u_id: action.data.u_id}
+      };
+    case USER_AUTOLOGIN_FAILURE:
+        return {
+          ...state, 
+          isLoggedIn: false, 
+          fetchingUpdate: false, 
+        };
     case USER_LOGOUT_SUCCESS:
       return {
         ...state, 
