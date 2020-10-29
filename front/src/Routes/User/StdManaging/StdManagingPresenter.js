@@ -26,8 +26,8 @@ const StdManaging = ({ student, handleSubmit, iconNum, goBack }) => {
     return (
         <Container>
             <HeaderComp title={'학습자 관리'} goBack={goBack} />
-            <Div><StdManagingComp iconNum={iconNum} student={student} handleSubmit={handleSubmit}/></Div>
-            
+            <Div><StdManagingComp iconNum={iconNum} student={student} handleSubmit={handleSubmit} /></Div>
+
         </Container >
     );
 }

@@ -30,12 +30,25 @@ const Setting = styled(Link)`
     background-color: #ffffff;
     border-radius: 40px;
     border: 1.5px solid #DFD7C4;
-    margin-left: 15px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 0.6rem;
+`;
+
+const Diagnose = styled(Link)`
+    height: 37px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 40px;
+    border: 1.5px solid #DFD7C4;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6rem;
+    margin: 0 10px;
 `;
 
 const Name = styled.div`
@@ -46,13 +59,14 @@ const Name = styled.div`
     text-align: center;
 `;
 
-const StdBox = ({student}) => {
+const StdBox = ({ student }) => {
     return (
         <StdComp>
             <Bar to={'/user/stdinfo'}>
                 <ProfileIcon size={'33px'} iconNum={student['ic_id']} />
                 <Name>{student['name']}</Name>
             </Bar>
+            <Diagnose to='/diagnose/sweep'>검사하기</Diagnose>
             <Setting to='/user/setting'>설정</Setting>
         </StdComp >
     );

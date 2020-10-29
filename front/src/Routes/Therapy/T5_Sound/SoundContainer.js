@@ -36,7 +36,7 @@ class Sound extends React.Component {
             showDonePopup: false,
             showDailyPopup: false,
             percent: 0,
-            currentIndex: 0,
+            currentIndex: 1,
             totalNum: 0,
         }
 
@@ -87,7 +87,7 @@ class Sound extends React.Component {
         try {
             const { user } = this.props;
             const s_id = user.student.s_id;
-            const { data } = await T_Api2.ask(s_id, this.idx_text);
+            const { data } = await T_Api2.ask(s_id, this.type);
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
@@ -158,7 +158,7 @@ class Sound extends React.Component {
             const { user } = this.props;
             const s_id = user.student.s_id;
             const { CardTextList } = this.state;
-            console.log(this.currentCure.answer, this.currentCure.cure_word, this.currentCure.cure_word2)
+
             const { data } = await T_Api2.answer(
                 s_id,
                 this.currentCure.answer === 1 ? this.currentCure.cure_word : this.currentCure.cure_word2,
@@ -217,6 +217,10 @@ class Sound extends React.Component {
     }
 
     imagesPreloading = (picture) => {
+        let timeoutPreloading = setTimeout(() => {
+            this.props.history.replace('/main/main');
+        }, 10000);
+
         for (let i in picture) {
             for (let prop in picture[i]) {
                 let img = new Image();
@@ -232,6 +236,7 @@ class Sound extends React.Component {
                             TTobaki: TTobak.ttobak1_1,
                         })
                         setTimeout(() => this.playSound(), 1000);
+                        clearTimeout(timeoutPreloading);
                     }
                 };
             }

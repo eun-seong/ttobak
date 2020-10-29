@@ -34,7 +34,7 @@ const TextBoxComponent = ({ text, src, type, isRecording }) => {
     return (
         <Component>
             <TextBox src={src}>
-                {text || type || '친구들아 친구들아'}
+                {text || '친구들아 친구들아'}
             </TextBox>
             <RecordingCircle isRecording={isRecording}></RecordingCircle>
         </Component>

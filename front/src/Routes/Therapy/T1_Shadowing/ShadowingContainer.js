@@ -1,7 +1,6 @@
 import React from 'react';
 import ShadowingPresenter from './ShadowingPresenter';
-import recording_end from 'recording_end.mp3';
-import recording_start from 'recording_start.mp3';
+import { SoundEffect } from 'images';
 
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -21,8 +20,8 @@ class Shadowing extends React.Component {
         super();
         this.idx_text = match.params.type;
         this.learning_type = match.params.learning_type;
-        this.recording_start_sound = new Audio(recording_start);
-        this.recording_end_sound = new Audio(recording_end);
+        this.recording_start_sound = new Audio(SoundEffect.recording_start);
+        this.recording_end_sound = new Audio(SoundEffect.recording_end);
         this.cure = null;
         this.currentCure = null;
         this.currentIndex = 0;
@@ -41,8 +40,9 @@ class Shadowing extends React.Component {
             showDonePopup: false,
             showDailyPopup: false,
             percent: 0,
-            currentIndex: 0,
+            currentIndex: 1,
             totalNum: 0,
+            isPlaying: false,
         }
 
         if (this.learning_type === 'daily') {
@@ -57,13 +57,13 @@ class Shadowing extends React.Component {
 
     async componentDidMount() {
         const { user } = this.props;
-        
-        if(!user.user.u_id) {
+
+        if (!user.user.u_id) {
             this.props.history.push('/root/signin');
             return;
         }
 
-        if(!user.student.s_id) {
+        if (!user.student.s_id) {
             this.props.history.push('/root/selectstd');
             return;
         }
@@ -80,7 +80,8 @@ class Shadowing extends React.Component {
         }
         this.imagesPreloading(this.picture);
 
-        window.addEventListener("android", this.androidResponse);
+        window.addEventListener('android', this.androidResponse);
+        window.addEventListener('androidStopRecording', this.stopRecording);
     }
 
     componentWillUnmount() {
@@ -88,17 +89,8 @@ class Shadowing extends React.Component {
             this.currentAudio.pause();
             this.currentAudio = null;
         }
-        window.removeEventListener("android", this.androidResponse)
-    }
-
-    androidResponse = async (e) => {
-        console.log(e.detail);
-        this.setState({
-            isRecording: false,
-        })
-        this.recording_end_sound.play();
-        this.audioResult = e.detail;
-        this.andriodListener();
+        window.removeEventListener('android', this.androidResponse);
+        window.removeEventListener('androidStopRecording', this.stopRecording);
     }
 
     newRequest = async () => {
@@ -126,6 +118,21 @@ class Shadowing extends React.Component {
         } catch (e) {
             console.log(e);
         }
+    }
+
+    androidResponse = async (e) => {
+        console.log(e.detail);
+        this.audioResult = e.detail;
+        this.andriodListener();
+    }
+
+    stopRecording = (e) => {
+        console.log(e.detail);
+        clearInterval(this.setRecording);
+        this.recording_end_sound.play();
+        this.setState({
+            isRecording: false,
+        });
     }
 
     andriodListener = async () => {
@@ -191,20 +198,23 @@ class Shadowing extends React.Component {
         if (!!this.currentAudio) {
             this.setState({
                 TTobaki: TTobak.ttobak3_2,
+                isPlaying: true,
             });
             this.currentAudio.play();
             this.currentAudio.addEventListener('ended', () => {
                 this.setState({
                     TTobaki: TTobak.ttobak1_1,
+                    isPlaying: false,
                 });
                 setTimeout(() => {
-                    console.log('이제 따라 읽어볼까요?');
                     this.recording_start_sound.play();
-                    this.setState({
-                        isRecording: true,
-                    });
+                    this.setRecording = setInterval(() => {
+                        this.setState({
+                            isRecording: !this.state.isRecording,
+                        });
+                    }, 500);
                     window.BRIDGE.recordAudio('m', this.currentCure.cure_text);
-                }, 1000);
+                }, 800);
             });
         }
     }
@@ -223,6 +233,10 @@ class Shadowing extends React.Component {
     }
 
     imagesPreloading = (picture) => {
+        let timeoutPreloading = setTimeout(() => {
+            this.props.history.replace('/main/main');
+        }, 10000);
+
         for (let i in picture) {
             for (let prop in picture[i]) {
                 let img = new Image();
@@ -237,12 +251,12 @@ class Shadowing extends React.Component {
                             TTobaki: TTobak.ttobak1_1,
                         })
                         setTimeout(() => this.playSound(), 1000);
+                        clearTimeout(timeoutPreloading);
                     }
                 };
             }
         }
     }
-
 
     onContinueButtonHandle = () => {
         this.setState({
@@ -264,19 +278,23 @@ class Shadowing extends React.Component {
         })
     }
 
+    onCompleteButtonHandle = () => {
+        if (this.state.isRecording) {
+            window.BRIDGE.requestStopRecording();
+        }
+    }
+
     render() {
-        const { type, cureText, TTobaki, isRecording, isImageLoaded,
+        const { cureText, TTobaki, isRecording, isImageLoaded, isPlaying,
             showPopup, showDonePopup, showDailyPopup, percent,
             currentIndex, totalNum } = this.state;
 
         if (isImageLoaded) {
             return (<ShadowingPresenter
-                Background={T1.t1_background}
-                TextBox={T1.t1_textbox}
-                TTobak={TTobaki}
-                type={type}
-                text={cureText}
-                isRecording={isRecording}
+                Background={T1.t1_background} TextBox={T1.t1_textbox} bt_complete={T1.bt_complete}
+                TTobak={TTobaki} isPlaying={isPlaying}
+                text={cureText} isRecording={isRecording}
+                onCompleteButtonHandle={this.onCompleteButtonHandle}
                 onContinueButtonHandle={this.onContinueButtonHandle}
                 onRestartButtonHandle={this.onRestartButtonHandle}
                 onPauseButtonHandle={this.onPauseButtonHandle}

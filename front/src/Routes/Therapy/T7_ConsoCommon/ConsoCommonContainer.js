@@ -37,7 +37,7 @@ class ConsoCommon extends React.Component {
             showDonePopup: false,
             showDailyPopup: false,
             percent: 0,
-            currentIndex: 0,
+            currentIndex: 1,
             totalNum: 0,
         };
 
@@ -87,6 +87,7 @@ class ConsoCommon extends React.Component {
             if (data.code === 'specified' || data.code === 1) {
                 this.currentIndex = 0;
                 this.cure = data.cure;
+                this.totalImages += this.cure.length;
                 this.pictursPreloading(this.cure);
                 this.currentCure = this.cure[this.currentIndex];
                 for (let i in this.cure) {
@@ -180,10 +181,26 @@ class ConsoCommon extends React.Component {
     }
 
     pictursPreloading = (picture) => {
+        let timeoutPreloading = setTimeout(() => {
+            this.props.history.replace('/main/main');
+        }, 10000);
+
         try {
             for (let i in picture) {
                 let img = new Image();
                 img.src = soundURL + picture[i].cure_path;
+                img.onload = () => {
+                    this.setState({
+                        percent: (++this.numOfLoadedImage / this.totalImages) * 100
+                    })
+                    if (this.numOfLoadedImage === this.totalImages) {
+                        this.setState({
+                            isImageLoaded: true,
+                        })
+                        clearTimeout(timeoutPreloading);
+                        // setTimeout(() => this.playSound(), 1000);
+                    }
+                };
             }
         } catch (e) {
             console.log(e);

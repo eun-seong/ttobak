@@ -9,9 +9,12 @@ import { connect } from 'react-redux';
 import LoadingComp from 'Components/LoadingComp';
 import { T2, TTobak } from 'images';
 import { T_Api2, soundURL } from 'api';
-import twinkle from 'twinkle.mp3';
+import { SoundEffect } from 'images';
 
 import CountPresenter from './CountPresenter';
+
+const touch_sound = new Audio(SoundEffect.touch_effect);
+const effect_sound = new Audio(SoundEffect.twinkle);
 
 const idx_txt = 'count';
 
@@ -24,7 +27,6 @@ class Count extends React.Component {
     constructor({ match, location }) {
         super();
         this.learning_type = match.params.learning_type;
-        this.effect_sound = new Audio(twinkle);
         this.cure = null;
         this.cureLength = 0;
         this.currentIndex = 0;
@@ -50,7 +52,7 @@ class Count extends React.Component {
             showDonePopup: false,
             showDailyPopup: false,
             percent: 0,
-            currentIndex: 0,
+            currentIndex: 1,
             totalNum: 0,
         };
 
@@ -147,7 +149,7 @@ class Count extends React.Component {
     }
 
     answer = async () => {
-        this.effect_sound.play();
+        effect_sound.play();
         this.setState({
             TTobaki: TTobak.ttobak2_1
         })
@@ -188,11 +190,11 @@ class Count extends React.Component {
                 },
                 currentIndex: this.currentIndex + 1
             });
-        }, 1000);
+        }, 1500);
 
         setTimeout(() => {
             this.playSound();
-        }, 2000);
+        }, 2500);
     }
 
     createRandomApple = () => {
@@ -238,6 +240,7 @@ class Count extends React.Component {
     }
 
     onTreeTouchStartHandle = e => {
+        touch_sound.play();
         this.setState({
             isDragging: true,
             touchPosition: [e.changedTouches[0].pageX, e.changedTouches[0].pageY],
@@ -251,6 +254,10 @@ class Count extends React.Component {
     }
 
     imagesPreloading = (picture) => {
+        let timeoutPreloading = setTimeout(() => {
+            this.props.history.replace('/main/main');
+        }, 10000);
+
         for (let i in picture) {
             for (let prop in picture[i]) {
                 if (typeof (picture[i][prop]) === 'object') {
@@ -267,6 +274,7 @@ class Count extends React.Component {
                                     isImageLoaded: true,
                                 })
                                 setTimeout(() => this.playSound(), 1000);
+                                clearTimeout(timeoutPreloading);
                             }
                         };
                     }
@@ -283,6 +291,7 @@ class Count extends React.Component {
                                 isImageLoaded: true,
                             })
                             setTimeout(() => this.playSound(), 1000);
+                            clearTimeout(timeoutPreloading);
                         }
                     };
                 }
@@ -324,8 +333,14 @@ class Count extends React.Component {
         })
     }
 
+    onCompleteButtonHandle = () => {
+        this.answer();
+        clearTimeout(this.timeOut);
+    }
+
     render() {
-        const { isDragging, touchPosition, Apple, answer, TTobaki, isImageLoaded, showPopup, showDonePopup, showDailyPopup, percent,
+        const { isDragging, touchPosition, Apple, answer, TTobaki, isImageLoaded,
+            showPopup, showDonePopup, showDailyPopup, percent,
             currentIndex, totalNum } = this.state;
         if (isImageLoaded) {
             return (
@@ -346,11 +361,13 @@ class Count extends React.Component {
                         onContinueButtonHandle={this.onContinueButtonHandle}
                         onRestartButtonHandle={this.onRestartButtonHandle}
                         onPauseButtonHandle={this.onPauseButtonHandle}
+                        onCompleteButtonHandle={this.onCompleteButtonHandle}
                         showPopup={showPopup}
                         showDailyPopup={showDailyPopup}
                         showDonePopup={showDonePopup}
                         currentIndex={currentIndex}
                         totalNum={totalNum}
+                        bt_complete={T2.bt_complete}
                     />
                 </DndProvider>
             );

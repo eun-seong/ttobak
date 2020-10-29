@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import effectSound from 'tic.mp3';
+import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
+import { SoundEffect } from 'images';
 
-const sound = new Audio(effectSound);
+const sound = new Audio(SoundEffect.touch_effect);
 
 const CardComponent = styled.div`
     display: flex;
@@ -10,6 +10,15 @@ const CardComponent = styled.div`
     height: 100%;
     max-width: 50vw;
     text-align: center;
+    ${props => {
+        if (props.isTouched) {
+            return css`filter: drop-shadow(0px 0px 2px #666666);`
+        }
+
+        if (!props.isTouched) {
+            return css`filter: drop-shadow(0px 0px 4px #666666);`
+        }
+    }}
 `;
 
 const ImgComponent = styled.div`
@@ -36,11 +45,24 @@ const TextComponent = styled.div`
 `;
 
 const Card = ({ src, text, textSize, cardSize, index, onCardTouchHandle, gameState }) => {
+    const [isTouched, setTouched] = useState(false);
+
     return (
         <CardComponent
             cardSize={cardSize}
-            onTouchEnd={() => onCardTouchHandle(index)}
-            onTouchStart={() => { gameState && sound.play() }}>
+            onTouchEnd={() => {
+                if (gameState) {
+                    setTouched(false);
+                    onCardTouchHandle(index);
+                }
+            }}
+            onTouchStart={() => {
+                if (gameState) {
+                    setTouched(true);
+                    sound.play();
+                }
+            }}
+            isTouched={isTouched}>
             <ImgComponent src={src}>
                 <TextComponent textSize={textSize}>{text || 'ㅅ'}</TextComponent>
             </ImgComponent>

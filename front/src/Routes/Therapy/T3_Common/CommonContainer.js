@@ -39,7 +39,7 @@ class Common extends React.Component {
             showDonePopup: false,
             showDailyPopup: false,
             percent: 0,
-            currentIndex: 0,
+            currentIndex: 1,
             totalNum: 0,
         };
 
@@ -55,13 +55,13 @@ class Common extends React.Component {
 
     async componentDidMount() {
         const { user } = this.props;
-        
-        if(!user.user.u_id) {
+
+        if (!user.user.u_id) {
             this.props.history.push('/root/signin');
             return;
         }
 
-        if(!user.student.s_id) {
+        if (!user.student.s_id) {
             this.props.history.push('/root/selectstd');
             return;
         }
@@ -265,6 +265,10 @@ class Common extends React.Component {
     }
 
     imagesPreloading = (picture) => {
+        let timeoutPreloading = setTimeout(() => {
+            this.props.history.replace('/main/main');
+        }, 10000);
+
         for (let i in picture) {
             for (let prop in picture[i]) {
                 let img = new Image();
@@ -278,6 +282,7 @@ class Common extends React.Component {
                             isImageLoaded: true,
                         })
                         setTimeout(() => this.playSound(), 1000);
+                        clearTimeout(timeoutPreloading);
                     }
                 };
             }

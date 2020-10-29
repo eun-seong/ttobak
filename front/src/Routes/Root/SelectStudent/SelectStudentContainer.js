@@ -26,17 +26,17 @@ class SelectStudent extends React.Component {
         e.preventDefault();
 
         const { user } = this.props;
-        const {dispatch} = this.props;
+        const { dispatch } = this.props;
 
         dispatch(student_get(s_id, user.user.u_id));
     }
 
     componentDidMount() {
         const { user } = this.props;
-        const {dispatch} = this.props;
+        const { dispatch } = this.props;
         console.log(user.user.u_id);
 
-        if(!user.user.u_id) {
+        if (!user.user.u_id) {
             alert('잘못된 접근입니다.');
             this.props.history.push('/root/signin');
             return;
@@ -48,11 +48,11 @@ class SelectStudent extends React.Component {
     componentDidUpdate() {
         const { user } = this.props;
 
-        if(user.student.s_id) {
+        if (user.student.s_id) {
             this.props.history.push('/');
             return;
         }
-        if(user.response.data && user.response.data.code !== 1) {
+        if (user.response.data && user.response.data.code !== 1) {
             alert('존재하지 않는 회원입니다.');
             return;
         }
@@ -74,7 +74,7 @@ class SelectStudent extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { user: state.user }
+    return { user: state.user }
 }
 
 export default connect(mapStateToProps)(withRouter(SelectStudent));

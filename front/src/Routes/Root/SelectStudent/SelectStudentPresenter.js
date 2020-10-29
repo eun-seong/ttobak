@@ -9,7 +9,7 @@ function SelectStudent({ students, handler, goBack }) {
         <RootBackGround
             background={MainRoot.icon_background}
             title={'학습자 선택'}
-            Content={() => SelectStudentComp({students, handler})}
+            Content={() => SelectStudentComp({ students, handler })}
             goBack={goBack}>
         </RootBackGround>
     );

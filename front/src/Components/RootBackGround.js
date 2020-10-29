@@ -2,13 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 
 import BackButton from 'Components/BackButton';
+import Alert from 'Components/Alert';
 
 const Component = styled.div`
     width: 100vw;
     height: 100vh;
+    background-image: url(${props => props.src});
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 5px;
 `;
 
 const Box = styled.div`
@@ -60,22 +65,11 @@ const Contents = styled.div`
     z-index: 2;
 `;
 
-const BackgroundImg = styled.img`
-    width: 100%;
-    margin: auto auto;
-    bottom:0;
-`;
-
-function RootBackGround({ background, title, Content, subTitle, goBack }) {
-    // let tempSubTitle = null;
-    // if (subTitle !== undefined) tempSubTitle = <SubTitle>{subTitle}</SubTitle>
-    // let BackButton = <PauseButton link={'/'} back={true} />;
-    // if (signin) BackButton = null;
-
-    console.log(!goBack || 'true');
+function RootBackGround({ background, title, Content, subTitle, goBack, showPopup, onButtonTouchEnd, text }) {
     console.log(goBack);
+
     return (
-        <Component>
+        <Component src={background}>
             {/* TODO 이전으로 */}
             {!goBack || <BackButton link={'/'} goBack={goBack} />}
             <Box>
@@ -87,7 +81,11 @@ function RootBackGround({ background, title, Content, subTitle, goBack }) {
                     <Content />
                 </Contents>
             </Box>
-            <BackgroundImg src={background} alt='배경화면' />
+            {
+                showPopup ?
+                    <Alert text={text} onButtonTouchEnd={onButtonTouchEnd} /> :
+                    null
+            }
         </Component>
     );
 }

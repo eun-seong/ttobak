@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
-import effectSound from 'tic.mp3';
+import { SoundEffect } from 'images';
 
-const sound = new Audio(effectSound);
+const sound = new Audio(SoundEffect.touch_effect);
 
 const Box = styled.div`
     display: flex;

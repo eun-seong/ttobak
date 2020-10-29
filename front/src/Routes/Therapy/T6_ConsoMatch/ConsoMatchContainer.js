@@ -36,7 +36,7 @@ class ConsoMatch extends React.Component {
             showDonePopup: false,
             showDailyPopup: false,
             percent: 0,
-            currentIndex: 0,
+            currentIndex: 1,
             totalNum: 0,
         };
 
@@ -57,7 +57,7 @@ class ConsoMatch extends React.Component {
             })
             this.state = {
                 ...this.state,
-                totalNum: this.cure.length,
+                totalNum: this.answer.length,
             }
         }
     }
@@ -149,7 +149,8 @@ class ConsoMatch extends React.Component {
                     soundURL + this.getListFilter('cure_tid', this.currentCure[1]).cure_path2,
                     soundURL + this.getListFilter('cure_tid', this.currentCure[2]).cure_path2,
                 ],
-                currentIndex: this.currentIndex + 1
+                currentIndex: this.currentIndex + 1,
+                Worm: Characters.worm2_2,
             })
         }, timeout);
     }
@@ -182,6 +183,7 @@ class ConsoMatch extends React.Component {
         if (!gameState) return;
         this.setState({
             gameState: false,
+            Worm: Characters.worm3_1,
         });
 
         try {
@@ -232,6 +234,10 @@ class ConsoMatch extends React.Component {
     }
 
     pictursPreloading = (picture) => {
+        let timeoutPreloading = setTimeout(() => {
+            this.props.history.replace('/main/main');
+        }, 10000);
+
         try {
             for (let i in picture) {
                 let img = new Image();
@@ -246,6 +252,7 @@ class ConsoMatch extends React.Component {
                             isImageLoaded: true,
                         })
                         setTimeout(() => this.playSound(), 1000);
+                        clearTimeout(timeoutPreloading);
                     }
                 };
             }

@@ -4,7 +4,7 @@ import { MainRoot } from 'images';
 import RootBackGround from 'Components/RootBackGround';
 import SignInComp from './SignInComp';
 
-function SignIn({ handleSubmit}) {
+function SignIn({ handleSubmit }) {
     return (
         <RootBackGround
             background={MainRoot.root_background}

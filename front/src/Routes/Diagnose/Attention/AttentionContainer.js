@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 
 import LoadingComp from 'Components/LoadingComp';
 import AttentionPresenter from './AttentionPresenter';
-import recording_end from 'recording_end.mp3';
-import recording_start from 'recording_start.mp3';
+import { SoundEffect } from 'images';
 
 import { D3, TTobak } from 'images';
 import { D3_Api, soundURL } from 'api';
@@ -19,8 +18,8 @@ class Attention extends React.Component {
 
     constructor() {
         super();
-        this.recording_start_sound = new Audio(recording_start);
-        this.recording_end_sound = new Audio(recording_end);
+        this.recording_start_sound = new Audio(SoundEffect.recording_start);
+        this.recording_end_sound = new Audio(SoundEffect.recording_end);
         this.numOfLoadedImage = 0;
         this.picture = { D3, TTobak };
         this.totalImages = Object.keys(D3).length + Object.keys(TTobak).length;

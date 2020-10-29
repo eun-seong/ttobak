@@ -48,7 +48,7 @@ const ConsoMatch = ({ props }) => {
                     );
                 })}
             </Frames>
-            <WormComponent src={props.Worm} alt='또박이' onTouchEnd={props.onWormTouchHandle} />
+            <WormComponent src={props.Worm} alt='worm' onTouchEnd={props.onWormTouchHandle} />
             {
                 props.showPopup ?
                     <PausePopup

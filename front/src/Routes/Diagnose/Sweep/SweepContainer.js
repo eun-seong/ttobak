@@ -42,7 +42,7 @@ class Sweep extends React.PureComponent {
             percent: 0,
             showPopup: false,
             showNextPopup: false,
-            currentIndex: 0,
+            currentIndex: 1,
             totalNum: 0,
         };
     }
@@ -50,17 +50,16 @@ class Sweep extends React.PureComponent {
     async componentDidMount() {
         const { user } = this.props;
 
-        // if (!user.user.u_id) {
-        //     this.props.history.push('/root/signin');
-        //     return;
-        // }
+        if (!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
 
-        // if (!user.student.s_id) {
-        //     this.props.history.push('/root/selectstd');
-        //     return;
-        // }
+        if (!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
 
-        this.newRequest();
         this.imagesPreloading(this.picture);
         this.newRequest();
     }
@@ -81,7 +80,8 @@ class Sweep extends React.PureComponent {
         const s_id = user.student.s_id;
 
         try {
-            const { data } = await D1_Api.ask(4);
+            // console.log(s_id);
+            const { data } = await D1_Api.ask(s_id);
             console.log(data);
 
             if (data.code === 1) {
@@ -93,7 +93,7 @@ class Sweep extends React.PureComponent {
                 this.buttonSound = [new Audio(soundURL + this.ques_path[0]), new Audio(soundURL + this.ques_path[1])];
                 this.setState({
                     totalNum: this.oriAnswer.length,
-                })
+                });
                 this.setListener();
                 setTimeout(() => this.playSound(), 3000);
             }
@@ -206,6 +206,7 @@ class Sweep extends React.PureComponent {
         const answer = [this.oriAnswer[this.currentIndex][0], this.oriAnswer[this.currentIndex][1]];
 
         try {
+            console.log(s_id, this.ques_id, answer, stdAnswer)
             const { data } = await D1_Api.answer(s_id, this.ques_id, answer, stdAnswer);
             console.log(data);
 

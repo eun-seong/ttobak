@@ -7,6 +7,7 @@ import DonePopup from 'Components/DonePopup';
 import DailyPopup from 'Components/DailyPopup';
 
 import TextBoxComponent from './TextBoxComponent';
+import { T1, TTobak } from 'images';
 
 const Div = styled.div`
     display: flex;
@@ -28,12 +29,29 @@ const TextBox = styled.div`
     margin-bottom: 5%;
 `;
 
+const CompleteButton = styled.img`
+    position: absolute;
+    width: 9%;
+    top: 15vh;
+    right: 10px;
+`;
+
+const Bubble = styled.img`
+    position:absolute;
+    width: 5%;
+    top: 10%;
+    left: 37%;
+    display: ${props => props.isPlaying ? 'block' : 'none'};
+`;
+
 const Shadowing = ({ props }) => {
     return (
         <Div>
+            <Bubble src={TTobak.speech_bubble} alt='bubble' isPlaying={props.isPlaying} />
+            <CompleteButton src={T1.bt_complete} alt='complete' onTouchEnd={props.onCompleteButtonHandle} />
             <TTobakComponent src={props.TTobak} alt='또박이' />
             <TextBox>
-                <TextBoxComponent src={props.TextBox} type={props.type} text={props.text} isRecording={props.isRecording} />
+                <TextBoxComponent src={props.TextBox} text={props.text} isRecording={props.isRecording} />
             </TextBox>
             {
                 props.showPopup ?

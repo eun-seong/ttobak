@@ -23,9 +23,17 @@ const TTobakComponent = styled.img`
     z-index: 0;
 `;
 
+const Complete = styled.img`
+    position: absolute;
+    width:9%;
+    bottom: 10px;
+    left: 10px;
+`;
+
 const Counting = ({ props }) => {
     return (
         <Div>
+            <Complete src={props.bt_complete} alt='complete' onTouchEnd={props.onCompleteButtonHandle} />
             <Apple
                 isTreeDragging={props.isDragging}
                 touchPosition={props.touchPosition}

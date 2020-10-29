@@ -9,11 +9,11 @@ function SignUp({ handleSubmit, goBack }) {
             background={MainRoot.root_background}
             title={'또박이 회원 가입'}
             Content={() => {
-            	return (
-            		<SignUpComp 
-            			handleSubmit={handleSubmit}
-            		/>
-            	);
+                return (
+                    <SignUpComp
+                        handleSubmit={handleSubmit}
+                    />
+                );
             }}
             goBack={goBack}>
         </RootBackGround>

@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private MediaRecorder recorder;
     private Context mContext;
     private WebView webView;
+    private String gender_;
+    private String transcript_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +118,28 @@ public class MainActivity extends AppCompatActivity {
         recorder.stop();
         recorder.release();
         recorder = null;
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                webView.evaluateJavascript(
+                        "var event = new CustomEvent(\"androidStopRecording\", {\n" +
+                                "    detail: {\n" +
+                                "        isRecording:" + false + "\n" +
+                                "    }\n" +
+                                "});\n" +
+                                "window.dispatchEvent(event);\n"
+                        , new ValueCallback<String>() {
+                            @Override
+                            public void onReceiveValue(String value) {
+                                Log.d(TAG, "onReceiveValue: " + value);
+                            }
+                        });
+            }
+        });
+
+        request(gender_, transcript_);
+        Log.d(TAG, "run: " + gender_ + " " + transcript_);
     }
 
     private void request(String gender, String transcript) {
@@ -157,14 +182,20 @@ public class MainActivity extends AppCompatActivity {
         @JavascriptInterface
         public void recordAudio(final String gender, final String transcript) {
             startRecording();
+            gender_ = gender;
+            transcript_ = transcript;
+
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    stopRecording();
-                    request(gender, transcript);
-                    Log.d(TAG, "run: " + gender + " " + transcript);
+                    if (recorder != null) stopRecording();
                 }
-            }, 3000);
+            }, 12000);
+        }
+
+        @JavascriptInterface
+        public void requestStopRecording() {
+            stopRecording();
         }
     }
 

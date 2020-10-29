@@ -2,7 +2,7 @@ export const imageURL = 'https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/';
 
 const Images = {
     bt_pause: imageURL + 'img/button/bt_pause.png',
-    bt_back: imageURL + 'img/Icon/bt_back.png'
+    bt_back: imageURL + 'img/Icon/bt_back.png',
 }
 
 /* 또박이 */
@@ -18,7 +18,8 @@ export const TTobak = {
     ttobak3_1: imageURL + 'img/ttobak/ttobak3-1.png',
     ttobak3_2: imageURL + 'img/ttobak/ttobak3-2.png',
     ttobak3_3: imageURL + 'img/ttobak/ttobak3-3.png',
-    ttobak3_4: imageURL + 'img/ttobak/ttobak3-4.png'
+    ttobak3_4: imageURL + 'img/ttobak/ttobak3-4.png',
+    speech_bubble: imageURL + 'img/ttobak/speech_buble.png',
 }
 
 export const Characters = {
@@ -27,6 +28,14 @@ export const Characters = {
     worm1: imageURL + 'img/characters/worm1.png',
     worm2_1: imageURL + 'img/characters/worm2_1.png',
     worm2_2: imageURL + 'img/characters/worm2_2.png',
+    worm3_1: imageURL + 'img/characters/worm3_1.png',
+}
+
+export const SoundEffect = {
+    recording_end: imageURL + 'effect/recording_end.mp3',
+    recording_start: imageURL + 'effect/recording_start.mp3',
+    touch_effect: imageURL + 'effect/tic.mp3',
+    twinkle: imageURL + 'effect/twinkle.mp3',
 }
 
 /* 루트 */
@@ -78,11 +87,13 @@ export const D3 = {
 }
 
 export const T1 = {
+    bt_complete: imageURL + 'img/button/bt_complete.png',
     t1_background: imageURL + 'img/t1_shadowing/t1_background.png',
     t1_textbox: imageURL + 'img/t1_shadowing/textbox.png',
 }
 
 export const T2 = {
+    bt_complete: imageURL + 'img/button/bt_complete.png',
     t2_background: imageURL + 'img/t2_counting/t2_background.png',
     t2_basket: imageURL + 'img/t2_counting/basket.png',
     t2_Apples: [

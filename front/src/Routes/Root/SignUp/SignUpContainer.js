@@ -17,11 +17,11 @@ class SignUp extends React.Component {
         dispatch: PropTypes.func.isRequired,
     };
 
-    handleSubmit = (e, {name, email, pw, pw_check}) => {
-        e.preventDefault(); 
+    handleSubmit = (e, { name, email, pw, pw_check }) => {
+        e.preventDefault();
         const { user } = this.props;
-        const {dispatch} = this.props;
-        if(pw !== pw_check) {
+        const { dispatch } = this.props;
+        if (pw !== pw_check) {
             alert('비밀번호와 비밀번호 확인이 같지 않습니다.');
             return false;
         }
@@ -36,27 +36,26 @@ class SignUp extends React.Component {
         const { user } = this.props;
         const { history } = this.props;
         console.log(user);
-        
-        if(user.user.u_id) {
+
+        if (user.user.u_id) {
             alert('회원 가입에 성공했습니다.');
             window.localStorage.setItem('uid', user.user.u_id);
             this.props.history.push('/root/addstd');
         }
 
-        if(user.response.data && user.response.data.code == 2) {
+        if (user.response.data && user.response.data.code == 2) {
             alert('이미 존재하는 이메일입니다.');
         }
     }
     render() {
-        
+
 
         /*
         presenter로 가는 모든 스테이트 값 렌더링
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
 
-        return (<
-            SignUpPresenter
+        return (<SignUpPresenter
             handleSubmit={this.handleSubmit}
             goBack={this.goBack}
         />);
@@ -64,7 +63,7 @@ class SignUp extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { user: state.user }
+    return { user: state.user }
 }
 
 export default connect(mapStateToProps)(withRouter(SignUp));
