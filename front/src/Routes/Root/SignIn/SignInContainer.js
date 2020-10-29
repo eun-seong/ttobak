@@ -36,7 +36,8 @@ class SignIn extends React.Component {
         const { user } = this.props;
         const { history } = this.props;
         
-        if('u_id' in user.user) {
+        if(user.user.u_id) {
+            console.log(user.user.u_id === 'undefined');
             window.localStorage.setItem('uid', user.user.u_id);
             this.props.history.push('/root/selectstd');
             return;

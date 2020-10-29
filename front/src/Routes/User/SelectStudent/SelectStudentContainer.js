@@ -27,7 +27,7 @@ class SelectStudent extends React.Component {
 
         console.log(user.user);
 
-        if(!('u_id' in user.user)) {
+        if(!user.user.u_id) {
             alert('잘못된 접근입니다.');
             this.props.history.push('/root/signin');
             return;
