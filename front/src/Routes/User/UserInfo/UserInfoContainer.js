@@ -17,9 +17,15 @@ class UserInfo extends React.Component {
         const {user} = this.props;
         const {dispatch} = this.props;
         if(text === '회원탈퇴') {
-            dispatch(user_delete(user.user.u_id));
+            if(window.confirm('정말 탈퇴하시겠습니까?')) {
+                dispatch(user_delete(user.user.u_id));
+                this.props.history.push('/root/signin');
+            }
         } else if(text === '로그아웃') {
-            dispatch(user_logout(user.user.u_id));
+            if(window.confirm('정말 로그아웃하시겠습니까?')) {
+                dispatch(user_logout(user.user.u_id));
+                this.props.history.push('/root/signin');
+            }
         }
     };
 

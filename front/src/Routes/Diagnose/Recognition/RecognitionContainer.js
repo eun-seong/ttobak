@@ -49,6 +49,7 @@ class Recognition extends React.PureComponent {
         }
 
         if(!user.student.s_id) {
+            console.log(user);
             this.props.history.push('/root/selectstd');
             return;
         }

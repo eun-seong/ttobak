@@ -40,7 +40,7 @@ const UserInfo = ({ email, handleSubmit, goBack }) => {
             <HeaderComp title={'회원 정보'} goBack={goBack} />
             <Contents>
                 <InputBoxComp email={email}/>
-                <Button text={'비밀번호 변경'} to='/user/chpassword' />
+                <Button text={'비밀번호 변경'} to='/user/pwchange' />
             </Contents>
             <TextButton>
                 <Text onClick={(e) => {handleSubmit(e, '회원탈퇴');}}>회원 탈퇴</Text>

@@ -1,6 +1,5 @@
 import React from 'react';
 import SelectIconPresenter from './SelectIconPresenter';
-import { Root_Api } from 'api';
 import { withRouter } from 'react-router-dom';
 
 class SelectIcon extends React.Component {
