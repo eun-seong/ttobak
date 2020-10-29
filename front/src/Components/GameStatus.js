@@ -19,6 +19,7 @@ const Div = styled.div`
 const Text = styled.div`
     font-size: 1.3rem;
     text-align: center;
+    font-weight: bold;
 `;
 
 const GameStatus = ({ currentIndex, totalNum }) => {

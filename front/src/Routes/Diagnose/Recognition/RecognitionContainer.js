@@ -27,6 +27,8 @@ class Recognition extends React.PureComponent {
             isImageLoaded: false,
             showPopup: false,
             showNextPopup: true,
+            currentIndex: 1,
+            totalNum: 0,
         };
 
         this.phs = null;
@@ -42,13 +44,13 @@ class Recognition extends React.PureComponent {
 
     async componentDidMount() {
         const { user } = this.props;
-        
-        if(!user.user.u_id) {
+
+        if (!user.user.u_id) {
             this.props.history.push('/root/signin');
             return;
         }
 
-        if(!user.student.s_id) {
+        if (!user.student.s_id) {
             this.props.history.push('/root/selectstd');
             return;
         }
@@ -90,6 +92,7 @@ class Recognition extends React.PureComponent {
                     stdAnswer: null,
                     TTobaki: TTobak.ttobak1_1,
                     answerIndex: (this.currentDiag[0].ques_id === this.currentDiag[2].ques_id ? 0 : 1),
+                    totalNum: this.answers.length,
                 });
                 this.setListener();
             }
@@ -220,7 +223,7 @@ class Recognition extends React.PureComponent {
         ];
 
         try {
-            const { data } = await D2_Api.answer(s_id, oriAnswer, stdAnswer, ph, 'T');
+            const { data } = await D2_Api.answer(s_id, oriAnswer, stdAnswer, ph);
             console.log(data);
 
             if (data.code === 1) {
@@ -244,6 +247,7 @@ class Recognition extends React.PureComponent {
                         stdAnswer: null,
                         TTobaki: TTobak.ttobak3_1,
                         answerIndex: (this.currentDiag[0].ques_id === this.currentDiag[2].ques_id ? 0 : 1),
+                        currentIndex: this.currentIndex + 1,
                     });
                 }, 2000);
 
@@ -310,6 +314,8 @@ class Recognition extends React.PureComponent {
                     onPopupButtonHandle={this.onPopupButtonHandle}
                     onContinueButtonHandle={this.onContinueButtonHandle}
                     onPauseButtonHandle={this.onPauseButtonHandle}
+                    currentIndex={this.state.currentIndex}
+                    totalNum={this.state.totalNum}
                 />);
         }
         else {
@@ -321,6 +327,6 @@ class Recognition extends React.PureComponent {
 
 function mapStateToProps(state) {
     return { user: state.user }
-  }
-  
-  export default connect(mapStateToProps)(withRouter(Recognition));
+}
+
+export default connect(mapStateToProps)(withRouter(Recognition));

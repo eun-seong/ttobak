@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import PausePopup from 'Components/PausePopup';
 import DonePopup from 'Components/DonePopup';

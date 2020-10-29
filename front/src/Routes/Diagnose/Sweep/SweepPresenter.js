@@ -92,7 +92,11 @@ const Sweep = ({ props }) => {
 
 const Game = ({ Background, ...props }) => {
     return (
-        <GameBackground BackgroundImg={Background} onPauseButtonHandle={props.onPauseButtonHandle}
+        <GameBackground
+            BackgroundImg={Background}
+            onPauseButtonHandle={props.onPauseButtonHandle}
+            currentIndex={props.currentIndex}
+            totalNum={props.totalNum}
             Children={
                 <Sweep props={props} />
             }>

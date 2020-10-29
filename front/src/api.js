@@ -4,7 +4,7 @@ export const soundURL = 'https://ttobakaudio.s3-ap-northeast-2.amazonaws.com';
 
 
 export const api = axios.create({
-    baseURL: "http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/api/"
+    baseURL: 'http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/api/'
 });
 
 const url = {
@@ -38,40 +38,40 @@ const idx_txt = {
 
 export const Root_Api = {
     user_register: (email, pw, name) =>
-        api.post("user/register", {
+        api.post('user/register', {
             'email': email,
             'pw': pw,
             'name': name
         }),
     user_signin: (email, pw) =>
-        api.post("user/signin", {
-            "email": email,
-            "pw": pw
+        api.post('user/signin', {
+            'email': email,
+            'pw': pw
         }),
     user_modify: (email, pw, name, u_id) =>
-        api.post("user/modify", {
-            "email": email,
-            "pw": pw,
-            "name": name,
-            "id": u_id
+        api.post('user/modify', {
+            'email': email,
+            'pw': pw,
+            'name': name,
+            'id': u_id
         }),
     user_delete: (u_id) =>
-        api.post("user/delete", {
-            "id": u_id
+        api.post('user/delete', {
+            'id': u_id
         }),
     user_get: (u_id) =>
-        api.post("user/get", {
-            "id": u_id
+        api.post('user/get', {
+            'id': u_id
         }),
     student_add: (name, birth, gender, u_id) =>
-        api.post("student/add", {
+        api.post('student/add', {
             'u_id': u_id,
             'name': name,
             'birth': birth,
             'gender': gender
         }),
     student_modify: (name, birth, gender, s_id, u_id) =>
-        api.post("student/modify", {
+        api.post('student/modify', {
             's_id': s_id,
             'u_id': u_id,
             'name': name,
@@ -79,14 +79,14 @@ export const Root_Api = {
             'gender': gender
         }),
     student_delete: (s_id, u_id) =>
-        api.post("student/delete", {
-            "s_id": s_id,
-            "u_id": u_id
+        api.post('student/delete', {
+            's_id': s_id,
+            'u_id': u_id
         }),
     student_get: (s_id, u_id) =>
-        api.post("student/get", {
-            "s_id": s_id,
-            "u_id": u_id
+        api.post('student/get', {
+            's_id': s_id,
+            'u_id': u_id
         }),
 };
 
@@ -96,7 +96,7 @@ export const D1_Api = {
             's_id': s_id,
             'idx_txt': idx_txt.swp
         }),
-    answer: (s_id, ques_id, ori_answer, stu_answer, is_review) =>
+    answer: (s_id, ques_id, ori_answer, stu_answer) =>
         api.post(url.diagnose_answer, {
             's_id': s_id,
             'ques_id': ques_id,
@@ -115,14 +115,14 @@ export const D2_Api = {
             's_id': s_id,
             'idx_txt': idx_txt.ph,
         }),
-    answer: (s_id, oriAnswer, stdAnswer, ph, is_review) =>
+    answer: (s_id, oriAnswer, stdAnswer, ph) =>
         api.post(url.diagnose_answer, {
             's_id': s_id,
             'ques_id': ph[0],
             'ques_id2': ph[1],
             'ori_answer': oriAnswer,
             'stu_answer': stdAnswer,
-            'is_review': is_review,
+            'is_review': 'F',
             'idx_txt': idx_txt.ph
         }),
 };

@@ -41,22 +41,24 @@ class Sweep extends React.PureComponent {
             isImageLoaded: false,
             percent: 0,
             showPopup: false,
-            showNextPopup: true,
+            showNextPopup: false,
+            currentIndex: 0,
+            totalNum: 0,
         };
     }
 
     async componentDidMount() {
         const { user } = this.props;
 
-        if (!user.user.u_id) {
-            this.props.history.push('/root/signin');
-            return;
-        }
+        // if (!user.user.u_id) {
+        //     this.props.history.push('/root/signin');
+        //     return;
+        // }
 
-        if (!user.student.s_id) {
-            this.props.history.push('/root/selectstd');
-            return;
-        }
+        // if (!user.student.s_id) {
+        //     this.props.history.push('/root/selectstd');
+        //     return;
+        // }
 
         this.newRequest();
         this.imagesPreloading(this.picture);
@@ -79,7 +81,7 @@ class Sweep extends React.PureComponent {
         const s_id = user.student.s_id;
 
         try {
-            const { data } = await D1_Api.ask(s_id);
+            const { data } = await D1_Api.ask(4);
             console.log(data);
 
             if (data.code === 1) {
@@ -89,6 +91,9 @@ class Sweep extends React.PureComponent {
                 this.ques_path = [ques_path2, ques_path1];
                 this.oriAnswer = answers;
                 this.buttonSound = [new Audio(soundURL + this.ques_path[0]), new Audio(soundURL + this.ques_path[1])];
+                this.setState({
+                    totalNum: this.oriAnswer.length,
+                })
                 this.setListener();
                 setTimeout(() => this.playSound(), 3000);
             }
@@ -105,6 +110,7 @@ class Sweep extends React.PureComponent {
                     (UP === this.oriAnswer[this.currentIndex][0] ? new Audio(soundURL + this.ques_path[0]) : new Audio(soundURL + this.ques_path[1])),
                     (UP === this.oriAnswer[this.currentIndex][1] ? new Audio(soundURL + this.ques_path[0]) : new Audio(soundURL + this.ques_path[1]))
                 ],
+                currentIndex: this.currentIndex + 1,
             })
 
             this.state.swpSound[0].addEventListener('ended', () => {
@@ -215,7 +221,7 @@ class Sweep extends React.PureComponent {
             }, 1500);
 
             if (data.code === 1) {
-                if (data.to_next === true || data.to_next_freq === true) {
+                if (data.to_next || data.to_next_freq) {
                     this.newRequest();
                     console.log('next');
                 }
@@ -223,6 +229,11 @@ class Sweep extends React.PureComponent {
                     this.setState({
                         showNextPopup: true,
                     });
+                } else if (!data.to_next && !data.to_next_freq) {
+                    this.setState({
+                        showNextPopup: true,
+                    });
+                    return;
                 } else {
                     if (this.currentIndex < this.oriAnswer.length - 1) this.currentIndex++;
                     else {
@@ -302,6 +313,8 @@ class Sweep extends React.PureComponent {
                     onPopupButtonHandle={this.onPopupButtonHandle}
                     onContinueButtonHandle={this.onContinueButtonHandle}
                     onPauseButtonHandle={this.onPauseButtonHandle}
+                    currentIndex={this.state.currentIndex}
+                    totalNum={this.state.totalNum}
                 />);
         }
         else {

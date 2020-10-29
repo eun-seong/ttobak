@@ -39,6 +39,8 @@ class Attention extends React.Component {
             showNextPopup: false,
             isRecording: false,
             TTobak: TTobak.ttobak1_1,
+            currentIndex: 1,
+            totalNum: 0,
         };
     }
 
@@ -90,6 +92,9 @@ class Attention extends React.Component {
             this.currentIndex = 0;
             this.currentCure = this.cure[this.currentIndex];
             this.currentAudio = new Audio(soundURL + this.currentCure.ques_path1);
+            this.setState({
+                totalNum: this.cure.length,
+            })
         }
     }
 
@@ -140,6 +145,7 @@ class Attention extends React.Component {
                         setTimeout(() => {
                             this.setState({
                                 TTobaki: TTobak.ttobak1_1,
+                                currentIndex: this.currentIndex + 1,
                             });
                         }, 3000);
 
@@ -237,6 +243,8 @@ class Attention extends React.Component {
                 onPopupButtonHandle={this.onPopupButtonHandle}
                 onContinueButtonHandle={this.onContinueButtonHandle}
                 onPauseButtonHandle={this.onPauseButtonHandle}
+                currentIndex={this.state.currentIndex}
+                totalNum={this.state.totalNum}
             />);
         }
         else {
