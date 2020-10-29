@@ -89,7 +89,7 @@ export const D3_Api = {
     answer: (s_id, ques_id, full_score, phone_score, speed_score, rhythm_score) =>
         api.post(url.diagnose_answer, {
             's_id': s_id,
-            'idx_txt': idx_txt,
+            'idx_txt': idx_txt.foc,
             'ques_id': ques_id,
             'full_score': full_score,
             'phone_score': phone_score,
