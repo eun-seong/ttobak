@@ -1,6 +1,10 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { DndProvider } from 'react-dnd'
 import { TouchBackend } from 'react-dnd-touch-backend';
+
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import LoadingComp from 'Components/LoadingComp';
 import { T2, TTobak } from 'images';
@@ -11,7 +15,12 @@ import CountPresenter from './CountPresenter';
 
 const idx_txt = 'count';
 
-export default class extends React.Component {
+class Count extends React.Component {
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
     constructor({ match, location }) {
         super();
         this.learning_type = match.params.learning_type;
@@ -27,7 +36,6 @@ export default class extends React.Component {
         this.totalImages = Object.keys(T2).length + Object.keys(TTobak).length + 3;
 
         this.state = {
-            s_id: parseInt(match.params.s_id) || 4,
             gameState: false,
             isDragging: false,
             touchPosition: [],
@@ -59,6 +67,18 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
+        const { user } = this.props;
+
+        if (!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if (!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
         if (this.learning_type !== 'daily') this.newRequest();
         this.imagesPreloading(this.picture);
     }
@@ -72,7 +92,8 @@ export default class extends React.Component {
 
     newRequest = async () => {
         console.log('new request');
-        const { s_id } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
         try {
             const { data } = await T_Api2.ask(s_id, idx_txt);
@@ -130,14 +151,16 @@ export default class extends React.Component {
         this.setState({
             TTobaki: TTobak.ttobak2_1
         })
-        const { s_id, Apple: { numOfApples }, is_review } = this.state;
+        const { Apple: { numOfApples } } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
         const { data } = await T_Api2.answer(
             s_id,
             this.cure[this.currentIndex].cure_word.length.toString(),
             numOfApples.toString(),
             this.cure[this.currentIndex].cure_id,
-            is_review,
+            this.learning_type === 'review' ? 'T' : 'F',
             idx_txt
         );
         console.log(data);
@@ -337,3 +360,9 @@ export default class extends React.Component {
         }
     }
 }
+
+function mapStateToProps(state) {
+    return { user: state.user }
+}
+
+export default connect(mapStateToProps)(withRouter(Count));

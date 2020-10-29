@@ -6,11 +6,19 @@ import { Daily_Api } from 'api';
 import ContentsList from '../ContentsList';
 import Images, { MainRoot, Pause } from 'images';
 
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { student_get, user_get } from 'Sessions/action.js';
+
 class Main extends React.Component {
-    constructor() {
-        super();
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
+    constructor(props) {
+        super(props);
         this.state = {
-            s_id: 4,
             data: null,
             isImageLoaded: false,
             daily_custom: null,
@@ -18,6 +26,22 @@ class Main extends React.Component {
         }
         this.numOfLoadedImage = 0;
         this.pictures = { Images, MainRoot, Pause };
+
+        const { user } = this.props;
+        const { dispatch } = this.props;
+
+        if (!('u_id' in user.user)) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if (!('s_id' in user.student)) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
+        dispatch(user_get(user.user.u_id));
+        dispatch(student_get(user.student.s_id, user.user.u_id));
     }
 
     goBack = () => {
@@ -25,13 +49,17 @@ class Main extends React.Component {
     }
 
     async componentDidMount() {
+        const { user } = this.props;
+        if (!('s_id' in user.student)) return;
+
         this.request();
         this.imagesPreloading(this.pictures);
     }
 
     request = async () => {
+        const { user } = this.props;
         try {
-            const { data } = await Daily_Api.ask(this.state.s_id);
+            const { data } = await Daily_Api.ask(user.student.s_id);
             console.log(data);
 
             if (data.code === 1) {
@@ -74,17 +102,28 @@ class Main extends React.Component {
 
     render() {
         const { data, isImageLoaded, daily_custom, daily_link } = this.state;
-        console.log(this.props.history);
+        const { user } = this.props;
 
+        if (!('s_id' in user.student && 'name' in user.student)) {
+            return null;
+        }
         return (
             <MainPresenter
                 goBack={this.goBack}
+                student={user.student}
                 data={data}
                 isImageLoaded={isImageLoaded}
                 daily_custom={daily_custom}
                 daily_link={daily_link}
-            />);
+            />
+        );
+
+
     }
 }
 
-export default withRouter(Main);
+function mapStateToProps(state) {
+    return { user: state.user }
+}
+
+export default connect(mapStateToProps)(withRouter(Main));

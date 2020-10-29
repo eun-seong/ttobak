@@ -37,7 +37,7 @@ const Settings = ({ goBack }) => {
             <ButtonContainer>
                 <Link to='/user/userinfo'><ButtonBox>회원 정보</ButtonBox></Link>
                 <Link to='/user/stdstatistics'><ButtonBox>학습자 통계</ButtonBox></Link>
-                <Link to='/user/stdmanaging'><ButtonBox>학습자 관리</ButtonBox></Link>
+                <Link to='/user/selectstd'><ButtonBox>학습자 관리</ButtonBox></Link>
             </ButtonContainer>
         </Container>
     );

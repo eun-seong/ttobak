@@ -45,16 +45,16 @@ const Name = styled.div`
     text-align: center;
 `;
 
-const StdBox = ({ goBack }) => {
+const StdBox = ({ student, goBack }) => {
     console.log('stdinfo - stdbox');
     return (
         <StdComp>
             <BackButton goBack={goBack} size={'43px'} />
             <Bar>
-                <ProfileIcon size={'33px'} iconNum={1} />
-                <Name>이지호</Name>
+                <ProfileIcon size={'33px'} iconNum={student.ic_id} />
+                <Name>{student.name}</Name>
             </Bar>
-            <StdChange to='/user/stdsetting'>학습자 변경</StdChange>
+            <StdChange to='/user/stdchange'>학습자 변경</StdChange>
         </StdComp >
     );
 }

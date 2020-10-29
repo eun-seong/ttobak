@@ -29,14 +29,14 @@ const InfoBox = styled.div`
     justify-content: space-between;
 `;
 
-const StdInfo = ({ goBack }) => {
+const StdInfo = ({ student, goBack }) => {
     const { color, text } = level.level3;
 
     return (
         <Container>
             {/* TODO
             학습자 페이지 UI 변경 */}
-            <BoxContainer><StdBox goBack={goBack} /></BoxContainer>
+            <BoxContainer><StdBox student={student} goBack={goBack} /></BoxContainer>
             <InfoBox>
                 <ExplainBoxComp Content={<StdInfoComp title={'총 학습량'} />} />
                 <ExplainBoxComp

@@ -2,14 +2,21 @@ import React from 'react';
 import RecognitionPresenter from './RecognitionPresenter';
 import { withRouter } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import { TTobak, D2 } from 'images';
 import { D2_Api, soundURL } from 'api';
 import LoadingComp from 'Components/LoadingComp';
 class Recognition extends React.PureComponent {
-    constructor({ s_id }) {
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
+    constructor() {
         super();
         this.state = {
-            s_id: s_id || 4,
             gameState: false,
             Box: [D2.d2_Box1_1, D2.d2_Box2_1],          // Box 이미지
             TTobaki: TTobak.ttobak3_1,
@@ -34,6 +41,18 @@ class Recognition extends React.PureComponent {
     }
 
     async componentDidMount() {
+        const { user } = this.props;
+        
+        if(!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if(!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
         this.newRequest();
         this.imagesPreloading(this.picture);
     }
@@ -49,7 +68,8 @@ class Recognition extends React.PureComponent {
 
     newRequest = async () => {
         console.log('new request');
-        const { s_id } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
         try {
             const { data } = await D2_Api.ask(s_id);
@@ -191,7 +211,8 @@ class Recognition extends React.PureComponent {
         this.setState({
             TTobaki: TTobak.ttobak2_1,
         })
-        const { s_id } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
         const [ph, oriAnswer, stdAnswer] = [
             [this.currentDiag[0].ques_id, this.currentDiag[1].ques_id],
             this.currentDiag[0].ques_id === this.currentDiag[2].ques_id ? this.currentDiag[0].ques_char : this.currentDiag[1].ques_char,
@@ -298,4 +319,8 @@ class Recognition extends React.PureComponent {
 }
 
 
-export default withRouter(Recognition);
+function mapStateToProps(state) {
+    return { user: state.user }
+  }
+  
+  export default connect(mapStateToProps)(withRouter(Recognition));

@@ -4,12 +4,20 @@ import { D1_Api, soundURL } from 'api';
 import { D1, TTobak } from 'images';
 import { withRouter } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import LoadingComp from 'Components/LoadingComp';
 
 const UP = 'up';
 const DOWN = 'down';
 
 class Sweep extends React.PureComponent {
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
     constructor(props) {
         super();
         this.buttonSound = null;                           // up_sweep, down_sweep 소리 경로
@@ -23,8 +31,6 @@ class Sweep extends React.PureComponent {
         this.totalImages = Object.keys(D1).length + Object.keys(TTobak).length;
 
         this.state = {
-            s_id: parseInt(props.match.params.s_id) || 4,
-            is_review: props.match.params.is_review,
             gameState: false,                           // 게임 상태
             UpButton: D1.d1_UpButton_UP,                // 버튼 이미지 상태
             DownButton: D1.d1_DownButton_UP,            // 버튼 이미지 상태
@@ -40,6 +46,19 @@ class Sweep extends React.PureComponent {
     }
 
     async componentDidMount() {
+        const { user } = this.props;
+
+        if (!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if (!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
+        this.newRequest();
         this.imagesPreloading(this.picture);
         this.newRequest();
     }
@@ -56,7 +75,8 @@ class Sweep extends React.PureComponent {
 
     newRequest = async () => {
         console.log('new request');
-        const { s_id } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
         try {
             const { data } = await D1_Api.ask(s_id);
@@ -173,7 +193,10 @@ class Sweep extends React.PureComponent {
             TTobaki: TTobak.ttobak2_1,
         });
 
-        const { s_id, stdAnswer } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
+
+        const { stdAnswer } = this.state;
         const answer = [this.oriAnswer[this.currentIndex][0], this.oriAnswer[this.currentIndex][1]];
 
         try {
@@ -287,4 +310,8 @@ class Sweep extends React.PureComponent {
     }
 }
 
-export default withRouter(Sweep);
+function mapStateToProps(state) {
+    return { user: state.user }
+}
+
+export default connect(mapStateToProps)(withRouter(Sweep));

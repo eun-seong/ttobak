@@ -1,11 +1,20 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import SoundPresenter from './SoundPresenter';
+
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { T5, TTobak, Characters } from 'images';
 import { T_Api2, soundURL } from 'api';
 import LoadingComp from 'Components/LoadingComp';
 
-export default class extends React.Component {
+class Sound extends React.Component {
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
     constructor({ match, location }) {
         super();
         this.learning_type = match.params.learning_type;
@@ -19,8 +28,6 @@ export default class extends React.Component {
         this.totalImages = Object.keys(T5).length + Object.keys(TTobak).length + Object.keys(Characters).length;
 
         this.state = {
-            s_id: parseInt(match.params.s_id) || 4,
-            is_review: match.params.is_review,
             TTobaki: TTobak.ttobak1_1,                  // 또박이 이미지 상태
             gameState: false,
             CardTextList: null,
@@ -46,6 +53,18 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
+        const { user } = this.props;
+
+        if (!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if (!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
         if (this.learning_type !== 'daily') this.newRequest();
         else {
             this.setState({
@@ -66,8 +85,9 @@ export default class extends React.Component {
         console.log('new request');
 
         try {
-            const { s_id } = this.state;
-            const { data } = await T_Api2.ask(s_id, this.type);
+            const { user } = this.props;
+            const s_id = user.student.s_id;
+            const { data } = await T_Api2.ask(s_id, this.idx_text);
             console.log(data);
 
             if (data.code === 'specified' || data.code === 1) {
@@ -135,14 +155,16 @@ export default class extends React.Component {
         });
 
         try {
-            const { s_id, is_review, CardTextList } = this.state;
+            const { user } = this.props;
+            const s_id = user.student.s_id;
+            const { CardTextList } = this.state;
             console.log(this.currentCure.answer, this.currentCure.cure_word, this.currentCure.cure_word2)
             const { data } = await T_Api2.answer(
                 s_id,
                 this.currentCure.answer === 1 ? this.currentCure.cure_word : this.currentCure.cure_word2,
                 CardTextList[index],
                 this.currentCure.cure_id,
-                is_review,
+                this.learning_type === 'review' ? 'T' : 'F',
                 this.type
             );
             console.log(data);
@@ -263,3 +285,9 @@ export default class extends React.Component {
         }
     }
 }
+
+function mapStateToProps(state) {
+    return { user: state.user }
+}
+
+export default connect(mapStateToProps)(withRouter(Sound));

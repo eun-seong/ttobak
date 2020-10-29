@@ -56,50 +56,38 @@ const TabButton = styled.div`
     width: 80px;
     height: 30px;
     border-radius: 10px;
-    background-color: #FFFFFF;
+    background-color: ${props => props.selected ? '#b38878' : 'white'};
 `;
 
 
 
-const StdStatistics = ({ goBack, state, Stat, isReady, isCure, period }) => {
-		if(!isReady) return (<Container></Container>);
-		let targets = (isCure ? [state.amount, state.score, state.voice_score] : [state.score_swp, state.score_swp, state.score_foc]);
-		let tickles = targets.map(element => Math.ceil(Math.max(...Object.values(element))/20));
+const StdStatistics = ({ goBack, student, state, Stat, isReady, isCure, period }) => {
+	if(!isReady) return (<Container></Container>);
+	let targets = (isCure ? [state.amount, state.score, state.voice_score] : [state.score_swp, state.score_swp, state.score_foc]);
+	let tickles = targets.map(element => Math.ceil(Math.max(...Object.values(element))/20));
+
+	let graphs = [0, 1, 2];
 
     return (
         <Container>
             <HeaderComp title={'학습자 통계'} goBack={goBack} />
             <MainContainer>
             	<TabContainer>
-	            	<TabButton onClick={() => Stat(4, true, 'day')}>일간</TabButton>
-	            	<TabButton onClick={() => Stat(4, true, 'week')}>주간</TabButton>
-	            	<TabButton onClick={() => Stat(4, true, 'month')}>월간</TabButton>
-	            	<TabButton onClick={() => Stat(4, false, 'day')}>검사</TabButton>
+	            	<TabButton selected={period === 'day'} onClick={() => Stat(true, 'day')}>일간</TabButton>
+	            	<TabButton selected={period === 'week'} onClick={() => Stat(true, 'week')}>주간</TabButton>
+	            	<TabButton selected={period === 'month'} onClick={() => Stat(true, 'month')}>월간</TabButton>
 	            </TabContainer>
-	            <GraphComp 
-	            	isCure={isCure}
-	            	title={(isCure ? GraphVariable['cure'][0]['title'] : GraphVariable['test'][0]['title'])}
-	            	target={targets[0]}
-	            	classLevel={state.class}
-	            	tickle={tickles[0]}
-	            	axis={(isCure ? GraphVariable['cure'][0]['y_axis'] : GraphVariable['test'][0]['y_axis'])}
-	            />
-	            <GraphComp 
-	            	isCure={isCure}
-	            	title={(isCure ? GraphVariable['cure'][1]['title'] : GraphVariable['test'][1]['title'])}
-	            	target={targets[1]}
-	            	classLevel={state.class}
-	            	tickle={tickles[1]}
-	            	axis={(isCure ? GraphVariable['cure'][1]['y_axis'] : GraphVariable['test'][1]['y_axis'])}
-	            />
-	            <GraphComp 
-	            	isCure={isCure}
-	            	title={(isCure ? GraphVariable['cure'][2]['title'] : GraphVariable['test'][2]['title'])}
-	            	target={targets[2]}
-	            	classLevel={state.class}
-	            	tickle={tickles[2]}
-	            	axis={(isCure ? GraphVariable['cure'][2]['y_axis'] : GraphVariable['test'][2]['y_axis'])}
-	            />
+				{[0, 1, 2].map((idx) => {
+					return (<GraphComp
+						key={idx} 
+						isCure={isCure}
+						title={(isCure ? GraphVariable['cure'][idx]['title'] : GraphVariable['test'][idx]['title'])}
+						target={targets[idx]}
+						classLevel={state.class[idx]}
+						tickle={tickles[idx]}
+						axis={(isCure ? GraphVariable['cure'][idx]['y_axis'] : GraphVariable['test'][idx]['y_axis'])}
+					/>);
+				})}
             </MainContainer>
         </Container >
     );

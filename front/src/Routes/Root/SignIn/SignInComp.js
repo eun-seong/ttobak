@@ -38,17 +38,30 @@ const SignUpBt = styled(Link)`
     margin-top: 5px;
 `;
 
-function SignInComp({ handleSubmit, setId, setPassword }) {
+let state = {
+    email: '', 
+    pw: '', 
+};
+
+const setEmail = (e) => {
+    state['email'] = e.target.value;
+}
+
+const setPw = (e) => {
+    state['pw'] = e.target.value;
+}
+
+function SignInComp({ handleSubmit}) {
     return (
         <CompBox>
             <SignInBox>
-                <InputBox type='text' placeholder='이메일' />
-                <InputBox type='password' placeholder='비밀번호' />
+                <InputBox type='text' placeholder='이메일' onChange={setEmail}/>
+                <InputBox type='password' placeholder='비밀번호' onChange={setPw}/>
                 <ForgotPassword>
                     <Link to='/root/forgotpassword'>비밀번호를 잊으셨나요?</Link>
                 </ForgotPassword>
             </SignInBox>
-            <SubmitButton onClick={handleSubmit} text={'확인'} to='/' />
+            <SubmitButton onClick={(e) => {handleSubmit(e, state);}} text={'확인'} to='/' />
             <SignUpBt to='/root/signup'>회원 가입</SignUpBt>
         </CompBox>
     );

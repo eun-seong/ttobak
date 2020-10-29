@@ -3,11 +3,20 @@ import ShadowingPresenter from './ShadowingPresenter';
 import recording_end from 'recording_end.mp3';
 import recording_start from 'recording_start.mp3';
 
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import { T1, TTobak } from 'images';
 import { T1_Api, soundURL } from 'api';
 import LoadingComp from 'Components/LoadingComp';
 
-export default class extends React.Component {
+class Shadowing extends React.Component {
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
     constructor({ match, location }) {
         super();
         this.idx_text = match.params.type;
@@ -24,7 +33,6 @@ export default class extends React.Component {
         this.numOfLoadedImage = 0;
 
         this.state = {
-            s_id: match.params.s_id || 4,
             cureText: null,
             isRecording: false,
             TTobaki: TTobak.ttobak1_1,
@@ -48,6 +56,18 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
+        const { user } = this.props;
+        
+        if(!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if(!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
         if (this.learning_type !== 'daily') this.newRequest();
         else {
             this.currentCure = this.cure[this.currentIndex];
@@ -83,7 +103,8 @@ export default class extends React.Component {
 
     newRequest = async () => {
         console.log('new request');
-        const { s_id } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
         try {
             const { data } = await T1_Api.ask(s_id, this.idx_text);
@@ -114,7 +135,8 @@ export default class extends React.Component {
 
         try {
             if (this.audioResult.status === 'Success') {
-                const { s_id } = this.state;
+                const { user } = this.props;
+                const s_id = user.student.s_id;
                 const { data } = await T1_Api.answer(
                     s_id,
                     this.audioResult.score,
@@ -270,3 +292,9 @@ export default class extends React.Component {
         }
     }
 }
+
+function mapStateToProps(state) {
+    return { user: state.user }
+}
+
+export default connect(mapStateToProps)(withRouter(Shadowing));

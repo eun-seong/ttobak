@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import HeaderComp from 'Components/HeaderComp';
+import StdManagingComp from './StdManagingComp';
 
 /* styled-components */
 const Container = styled.div`
@@ -11,12 +12,22 @@ const Container = styled.div`
     height: 100vh;
 `;
 
-const StdManaging = ({ goBack }) => {
+const Div = styled.div`
+		width: 100%;
+		height: calc(100% - 90px);
+		padding: 3%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+`
+
+const StdManaging = ({ student, handleSubmit, iconNum, goBack }) => {
 
     return (
         <Container>
             <HeaderComp title={'학습자 관리'} goBack={goBack} />
-            Student Managing
+            <Div><StdManagingComp iconNum={iconNum} student={student} handleSubmit={handleSubmit}/></Div>
+            
         </Container >
     );
 }

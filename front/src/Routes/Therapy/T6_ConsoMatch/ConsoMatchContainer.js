@@ -1,11 +1,20 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import ConsoMatchPresenter from './ConsoMatchPresenter';
+
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import LoadingComp from 'Components/LoadingComp';
 import { T6, Characters } from 'images';
 import { T_Api4, soundURL } from 'api';
 
-export default class extends React.Component {
+class ConsoMatch extends React.Component {
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
     constructor({ match, location }) {
         super();
         this.learning_type = match.params.learning_type;
@@ -19,7 +28,6 @@ export default class extends React.Component {
         this.totalImages = Object.keys(T6).length + Object.keys(Characters).length;
 
         this.state = {
-            s_id: parseInt(match.params.s_id) || 4,
             gameState: false,
             PicBoxList: null,
             Worm: Characters.worm2_2,
@@ -60,6 +68,18 @@ export default class extends React.Component {
 
     async componentDidMount() {
         this.imagesPreloading(this.picture);
+        const { user } = this.props;
+
+        if (!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if (!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
         if (this.learning_type !== 'daily') this.newRequest();
         else {
             this.setState({
@@ -85,7 +105,8 @@ export default class extends React.Component {
 
     newRequest = async () => {
         console.log('new request');
-        const { s_id } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
         try {
             const { data } = await T_Api4.ask(s_id);
@@ -164,7 +185,8 @@ export default class extends React.Component {
         });
 
         try {
-            const { s_id } = this.state;
+            const { user } = this.props;
+            const s_id = user.student.s_id;
             const cure_id = [
                 this.getListFilter('cure_tid', this.currentCure[0]).cure_id,
                 this.getListFilter('cure_tid', this.currentCure[1]).cure_id,
@@ -301,3 +323,9 @@ export default class extends React.Component {
         }
     }
 }
+
+function mapStateToProps(state) {
+    return { user: state.user }
+}
+
+export default connect(mapStateToProps)(withRouter(ConsoMatch));

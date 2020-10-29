@@ -1,7 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import SignInPresenter from './SignInPresenter';
-import { Root_Api } from 'api';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { user_autologin, user_signin } from 'Sessions/action.js';
 
 class SignIn extends React.Component {
     /* 
@@ -9,46 +11,58 @@ class SignIn extends React.Component {
     api 가져오기
     error 처리 등 모든 것
      */
-    state = {
-        id: null,
-        password: null,
 
+    constructor(props) {
+        super(props);
+        const { dispatch } = this.props;
+
+        dispatch(user_autologin());
     }
 
-    handleSubmit = async () => {
-        console.log(this.state);
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
 
-        const { id, password } = this.state;
-        const data = await Root_Api.signin(id, password);
-        if (data.code === 1) {
-            console.log(data.message);
+
+    handleSubmit = (e, {email, pw}) => {
+        e.preventDefault(); 
+        const { user } = this.props;
+        const {dispatch} = this.props;
+
+        dispatch(user_signin(email, pw));
+    }
+    componentDidUpdate() {
+        const { user } = this.props;
+        const { history } = this.props;
+        
+        if('u_id' in user.user) {
+            window.localStorage.setItem('uid', user.user.u_id);
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
+        if(!user.fetchingUpdate && user.response.data && user.response.data.code !== 1) {
+            alert('이메일과 비밀번호를 다시 확인해주세요.');
         }
     }
 
-    setId = ({ id }) => {
-        this.setState({
-            id: id
-        })
-    }
-
-    setPassword = ({ password }) => {
-        this.setState({
-            password: password
-        })
-    }
 
     render() {
         /*
         presenter로 가는 모든 스테이트 값 렌더링
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
-        const { id, password } = this.state;
 
         return (<
             SignInPresenter
             handleSubmit={this.handleSubmit}
-            id={this.setId} password={this.setPassword}
         />);
     }
 }
-export default withRouter(SignIn);
+
+function mapStateToProps(state) {
+  return { user: state.user }
+}
+
+export default connect(mapStateToProps)(withRouter(SignIn));

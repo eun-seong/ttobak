@@ -1,13 +1,22 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { T3, TTobak } from 'images';
 import CommonPresenter from './CommonPresenter';
+
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import LoadingComp from 'Components/LoadingComp';
 import { T_Api2, soundURL } from 'api';
 
 const idx_text = 'common';
 
-export default class extends React.Component {
+class Common extends React.Component {
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
     constructor({ match, location }) {
         super();
         this.learning_type = match.params.learning_type;
@@ -20,7 +29,6 @@ export default class extends React.Component {
         this.totalImages = Object.keys(T3).length + Object.keys(TTobak).length;
 
         this.state = {
-            s_id: parseInt(match.params.s_id) || 4,
             is_review: match.params.is_review,
             TTobaki: TTobak.ttobak1_1,
             gameState: false,
@@ -46,6 +54,18 @@ export default class extends React.Component {
     }
 
     async componentDidMount() {
+        const { user } = this.props;
+        
+        if(!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if(!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
         if (this.learning_type !== 'daily') this.newRequest();
         else {
             this.setCurrent(0);
@@ -64,7 +84,8 @@ export default class extends React.Component {
 
     newRequest = async () => {
         console.log('new request');
-        const { s_id } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
         try {
             const { data } = await T_Api2.ask(s_id, idx_text);
@@ -197,7 +218,9 @@ export default class extends React.Component {
         })
 
         try {
-            const { s_id, boxTextList, is_review } = this.state;
+            const { user } = this.props;
+            const s_id = user.student.s_id;
+            const { boxTextList, is_review } = this.state;
             const { data } = await T_Api2.answer(
                 s_id,
                 this.cure[this.currentIndex].com_ans,
@@ -310,3 +333,9 @@ export default class extends React.Component {
         }
     }
 }
+
+function mapStateToProps(state) {
+    return { user: state.user }
+}
+
+export default connect(mapStateToProps)(withRouter(Common));

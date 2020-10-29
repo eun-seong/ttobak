@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import level from 'const';
-import { VictoryChart, VictoryBar, VictoryAxis, VictoryLine, VictoryTheme } from "victory";
+import { VictoryChart, VictoryBar, VictoryAxis, VictoryLine, VictoryTheme, VictoryContainer } from "victory";
 
 const DateFormat = (d) => {
 	if(d.includes('~')) {
@@ -43,7 +43,9 @@ const GraphMain = styled.div`
 const Badge = styled.div`
 		width: 40px;
 		height: 20px;
-		background-color: green;
+		background-color: ${
+			props => Object.entries(level).find(el => el[1].text === props.level)[1]['color']
+		};
 		border-radius: 5px;
 		display: flex;
 		justify-content: center;
@@ -81,19 +83,27 @@ function GraphComp({ isCure, title, target, classLevel, tickle, axis }) {
 	for(var i=0;i<=4;i++) {
 		axis_arr.push((tickle*i*5));
 	}
-	console.log(axis_arr);
 
 	return (
 		<GraphContainer>
     	<GraphHeader>
-    		<Badge>{classLevel}</Badge>
+    		<Badge level={classLevel}>{classLevel}</Badge>
     		<Title>{title}</Title>
     		<Detail>상세 내용 보기</Detail>
     	</GraphHeader>
     	<GraphMain>
     		<VictoryChart 
     			maxDomain={{ y:tickle * 25}}
-    			width={500}
+				width={500}
+				containerComponent={
+					<VictoryContainer 
+						style={{
+							pointerEvents: "auto",
+							userSelect: "auto",
+							touchAction: "auto"
+						}}
+					/>
+				}
     			>
     			<VictoryAxis
     				offsetX={40}

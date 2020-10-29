@@ -50,10 +50,8 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
 
-        webView.loadUrl("http://13.125.100.8/main/main");//웹뷰 실행
-//        webView.loadUrl("http://172.30.1.53:3000/diagnose/sweep");//웹뷰 실행
-//        webView.loadUrl("http://172.20.10.3:3000/diagnose/sweep");//웹뷰 실행
-
+//        webView.loadUrl("http://13.125.100.8/main/main");//웹뷰 실행
+        webView.loadUrl("http://172.30.1.53:3000/diagnose/sweep");//웹뷰 실행
 
         /* Recording */
         fileName = Objects.requireNonNull(getExternalCacheDir()).getAbsolutePath();

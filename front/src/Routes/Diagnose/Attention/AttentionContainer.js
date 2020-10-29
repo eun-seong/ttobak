@@ -1,15 +1,22 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import LoadingComp from 'Components/LoadingComp';
 import AttentionPresenter from './AttentionPresenter';
 import recording_end from 'recording_end.mp3';
 import recording_start from 'recording_start.mp3';
-
-import LoadingComp from 'Components/LoadingComp';
 
 import { D3, TTobak } from 'images';
 import { D3_Api, soundURL } from 'api';
 
 class Attention extends React.Component {
+    static propTypes = {
+        user: PropTypes.objectOf(PropTypes.any).isRequired,
+        dispatch: PropTypes.func.isRequired,
+    };
+
     constructor() {
         super();
         this.recording_start_sound = new Audio(recording_start);
@@ -36,6 +43,18 @@ class Attention extends React.Component {
     }
 
     async componentDidMount() {
+        const { user } = this.props;
+
+        if (!user.user.u_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        if (!user.student.s_id) {
+            this.props.history.push('/root/selectstd');
+            return;
+        }
+
         this.newRequest();
         this.imagesPreloading(this.picture);
 
@@ -61,7 +80,9 @@ class Attention extends React.Component {
     }
 
     newRequest = async () => {
-        const { data } = await D3_Api.ask(this.state.s_id);
+        const { user } = this.props;
+
+        const data = await D3_Api.ask(1, user.student.s_id);
         console.log(data);
 
         if (data.code === 1) {
@@ -224,4 +245,8 @@ class Attention extends React.Component {
     }
 }
 
-export default withRouter(Attention);
+function mapStateToProps(state) {
+    return { user: state.user }
+}
+
+export default connect(mapStateToProps)(withRouter(Attention));
