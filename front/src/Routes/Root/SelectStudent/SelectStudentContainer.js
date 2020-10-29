@@ -34,8 +34,9 @@ class SelectStudent extends React.Component {
     componentDidMount() {
         const { user } = this.props;
         const {dispatch} = this.props;
+        console.log(user.user.u_id);
 
-        if(!('u_id' in user.user)) {
+        if(!user.user.u_id) {
             alert('잘못된 접근입니다.');
             this.props.history.push('/root/signin');
             return;
@@ -47,7 +48,7 @@ class SelectStudent extends React.Component {
     componentDidUpdate() {
         const { user } = this.props;
 
-        if('s_id' in user.student) {
+        if(user.student.s_id) {
             this.props.history.push('/');
             return;
         }

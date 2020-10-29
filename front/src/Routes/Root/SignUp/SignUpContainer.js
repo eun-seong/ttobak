@@ -37,7 +37,7 @@ class SignUp extends React.Component {
         const { history } = this.props;
         console.log(user);
         
-        if('u_id' in user.user) {
+        if(user.user.u_id) {
             alert('회원 가입에 성공했습니다.');
             window.localStorage.setItem('uid', user.user.u_id);
             this.props.history.push('/root/addstd');

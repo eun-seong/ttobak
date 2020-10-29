@@ -30,12 +30,12 @@ class Main extends React.Component {
         const { user } = this.props;
         const { dispatch } = this.props;
 
-        if (!('u_id' in user.user)) {
+        if (!user.user.u_id) {
             this.props.history.push('/root/signin');
             return;
         }
 
-        if (!('s_id' in user.student)) {
+        if (!user.student.s_id) {
             this.props.history.push('/root/selectstd');
             return;
         }
@@ -50,7 +50,7 @@ class Main extends React.Component {
 
     async componentDidMount() {
         const { user } = this.props;
-        if (!('s_id' in user.student)) return;
+        if (!user.student.s_id) return;
 
         this.request();
         this.imagesPreloading(this.pictures);
@@ -104,7 +104,7 @@ class Main extends React.Component {
         const { data, isImageLoaded, daily_custom, daily_link } = this.state;
         const { user } = this.props;
 
-        if (!('s_id' in user.student && 'name' in user.student)) {
+        if (!(user.student.s_id && user.student.name)) {
             return null;
         }
         return (

@@ -58,7 +58,7 @@ class AddStudent extends React.Component {
     componentDidMount() {
         const { user } = this.props;
         console.log(user);
-        if(!('u_id' in user.user)) {
+        if(!user.user.u_id) {
             alert('잘못된 접근입니다.');
             this.props.history.push('/root/signin');
         }
@@ -67,7 +67,7 @@ class AddStudent extends React.Component {
     componentDidUpdate() {
         const { user } = this.props;
         console.log(user);
-        if(('s_id' in user.student) && ('u_id' in user.user))  {
+        if(user.student.s_id && user.user.u_id)  {
             alert('사용자 추가를 성공했습니다. 검사 페이지로 이동합니다.');
             this.props.history.push('/diagnose/sweep');
         }
