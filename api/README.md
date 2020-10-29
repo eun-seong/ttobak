@@ -738,6 +738,53 @@ OR
 	         console.log(r)
       }
     });   
+  
+  
+ **tutorial answer**
+----
+* **URL**
+	/diagnose/answer
+
+* **Method:**
+	  `POST`
+*  **URL Params**
+   **Required:**
+   **Optional:**
+
+* **Data Params**
+	   `s_id = [integer] | idx_txt = [character] | tutorial = "true"` 
+		  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ "is_okay" : True/False} "code":1}`
+    
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당하는 검사가 존재하지 않습니다.","code": 2 }`
+      
+   OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당하는 학습자가 존재하지 않습니다.","code": 3 }`
+
+
+* **Sample Call:**
+  ```javascript
+    $.ajax({
+      url: "link/to/api/diagnose/answer",
+      dataType: "json",
+      type : "POST",
+      data : { 
+	     "s_id" : 1,
+	     "idx_txt" : "swp",
+	     "tutorial" : "true"
+		},success : function(r) {
+	         console.log(r)
+      }
+    });   
+  
 
 ## Part6 - Treatment
 
@@ -1050,7 +1097,53 @@ save
 	         console.log(r)
       }
     });   
+    
+**tutorial answer**
+----
+* **URL**
+	/cure/answer
 
+* **Method:**
+	  `POST`
+*  **URL Params**
+   **Required:**
+   **Optional:**
+
+* **Data Params**
+	   `s_id = [integer] | idx_txt = [character] | tutorial = "true" | ques_id = [integer]` 
+		  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ "is_okay" : True/False} "code":1}`
+    
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당하는 학습이 존재하지 않습니다.","code": "err" }`
+      
+   OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당하는 학습자가 존재하지 않습니다.","code": 3 }`
+
+
+* **Sample Call:**
+  ```javascript
+    $.ajax({
+      url: "link/to/api/cure/answer",
+      dataType: "json",
+      type : "POST",
+      data : { 
+	     "s_id" : 1,
+	     "idx_txt" : "count",
+	     "tutorial" : "true",
+	     "ques_id" : 77
+		},success : function(r) {
+	         console.log(r)
+      }
+    });   
+    
 ## Part6 - Statistics
 
  **ask**

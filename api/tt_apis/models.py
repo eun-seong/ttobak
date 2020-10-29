@@ -41,7 +41,8 @@ class Student(models.Model):
     regi_date = models.DateField(auto_now_add = True)
     modi_date = models.DateField(auto_now = True)
     ic = models.ForeignKey('Icon',on_delete=models.PROTECT,null=True,db_column = 'ic_id')
-
+    activated = models.CharField(max_length=1,null=True)
+    
     class Meta:
         db_table = 'student'
 
@@ -52,6 +53,7 @@ class User(models.Model):
     usr_pw = models.CharField(max_length=255)
     regi_date = models.DateField(auto_now_add=True)
     modi_date = models.DateField(auto_now=True)
+    activated = models.CharField(max_length=1,null=True)
 
     class Meta:
         db_table = 'user'

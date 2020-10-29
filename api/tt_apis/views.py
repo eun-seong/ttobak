@@ -59,7 +59,7 @@ class UserModify(View):
         data = json.loads(request.body)
         uk = data['id']
 
-        if User.objects.filter(usr_id = uk).exists():
+        if User.objects.filter(usr_id = uk).exclude(activated='F').exists():
             user = User.objects.get(usr_id=uk)
 
             if user.usr_email != data['email']:
@@ -83,8 +83,11 @@ class UserDelete(View):
 
         if User.objects.filter(usr_id = uk).exists():
             user = User.objects.get(usr_id=uk)
-            user.delete()
-            ##Should add process to delete student and the all related tables' instance. Will be added after creating all the APIs.
+            user.usr_email = ''
+            user.usr_name = ''
+            user.usr_pw = ''
+            user.activated = 'F'
+            user.save()
             return JsonResponse({"message":"성공적으로 삭제되었습니다.","code":1},status=200)
         return JsonResponse({"message":"존재하지 않는 회원입니다.","code":2},status=200)
 
@@ -102,14 +105,16 @@ class UserGet(View):
                 usrstu = UsrStu.objects.filter(usr_id = uk)
                 if usrstu.count() == 1 :
                     sid = Student.objects.get(stu_id = usrstu[0].stu_id)
-                    sdat = sz.StudentSerializer(instance = sid)
-                    student = sdat.data
+                    if not sid.activated == 'F':
+                        sdat = sz.StudentSerializer(instance = sid)
+                        student = sdat.data
                 else :
                     for u in usrstu:
                         sids.append(u.stu_id)
                     for s in sids:
                         stu = Student.objects.get(pk=s)
-                        student.append(stu)
+                        if not stu.activated == 'F':
+                            student.append(stu)
                     sdat = sz.StudentSerializer(data=student,many=True)
                     sdat.is_valid()
                     student = sdat.data
@@ -156,7 +161,7 @@ class StuModify(View):
         sk = data['s_id']
 
         if User.objects.filter(usr_id = uk).exists():
-            if Student.objects.filter(stu_id = sk).exists():
+            if Student.objects.filter(stu_id = sk).exclude(activated = 'F').exists():
                 student = Student.objects.get(pk=sk)
                 # icon = Icon.objects.get(pk=ic_id)
                 # stu_ic = StuIc.objects.get(stu_id=sk)
@@ -181,12 +186,11 @@ class StuDel(View):
         
         if User.objects.filter(usr_id=uk).exists():
             if Student.objects.filter(stu_id = sk).exists():
-
-                tmp = UsrStu.objects.get(usr = uk, stu = sk)
-                tmp.delete()
-                ##The deletion of test / study tables' instances related to designated student should be proceed. Will be added.
                 student = Student.objects.get(pk=sk)
-                student.delete()
+                student.stu_name = ''
+                # student.stu_birth = ''
+                student.activated = 'F'
+                student.save()
                 return JsonResponse({"message":"성공적으로 삭제되었습니다.","code":1},status=200)
             return JsonResponse({"message":"존재하지 않는 학습자입니다.","code":2},status=200)
         return JsonResponse({"message":"존재하지 않는 회원입니다.","code":3},status=200)
@@ -198,8 +202,8 @@ class StuGet(View):
         uk = data['u_id']
         sk = data['s_id']
 
-        if User.objects.filter(usr_id = uk).exists():
-            if Student.objects.filter(stu_id=sk).exists():
+        if User.objects.filter(usr_id = uk).exclude(activated='F').exists():
+            if Student.objects.filter(stu_id=sk).exclude(activated='F').exists():
 
                 student = Student.objects.get(pk=sk)
 
@@ -316,7 +320,7 @@ class TestGet(View):
         s_id = data['s_id']
         if Student.objects.filter(pk=s_id).exists():
             student = Student.objects.get(pk=s_id)
-            if not TestCurrent.objects.filter(stu_id = s_id):
+            if not TestCurrent.objects.filter(stu_id = s_id).exists():
                 TestCurrent.objects.create(
                     stu = student,
                     swp_freq = 500,
@@ -330,10 +334,10 @@ class TestGet(View):
             testcur = TestCurrent.objects.get(stu_id = s_id)
             idx_txt = data['idx_txt']
             if not StuTest.objects.filter(stu_id = s_id , test_txt = idx_txt).exists():
-                StuTest.objects.create(
-                    stu = student,
-                    test_txt = idx_txt
-                ).save()
+                # StuTest.objects.create(
+                #     stu = student,
+                #     test_txt = idx_txt
+                # ).save()
                 voice , sample_ques = self.get_tutorial(idx_txt)
                 return JsonResponse({"voice":voice,"sample_ques":sample_ques,"code":"tutorial"},status=200)
             if TestIdx.objects.filter(idx_txt = idx_txt):
@@ -469,18 +473,26 @@ class TestAns(View):
                     testcur.save()
         return is_pass, to_next_level , is_stop
             
-
+    def ans_tutorial(self,student,idx_txt):
+        StuTest.objects.create(
+            stu = student,
+            test_txt = idx_txt
+        ).save
+        return True
 
     @csrf_exempt
     def post(self,request):
         data = json.loads(request.body)
         s_id = data['s_id']
-        ques_id = data['ques_id']
         if Student.objects.filter(pk=s_id).exists():
             student = Student.objects.get(stu_id = s_id)
             idx_txt = data['idx_txt']
             if TestIdx.objects.filter(idx_txt = idx_txt).exists():
                 idx_id = TestIdx.objects.get(idx_txt=idx_txt).idx_id
+                if 'tutorial' in data:
+                    is_okay = self.ans_tutorial(student,idx_txt)
+                    return JsonResponse({"is_okay":is_okay,"code":1},status = 200)
+                ques_id = data['ques_id']
                 if idx_id == 1:
                     swp = TestMaster.objects.get(pk = ques_id)
                     is_correct ,  to_next_level, to_next_freq  = self.ans_swp(student,data,idx_id,swp)
@@ -982,10 +994,10 @@ class CureGet(View):
                         sample_ques = ComCure.objects.get(pk = 61)
                         sample_ques = sz.CommonSerializer(instance=sample_ques).data
                         tut_voice = sdat.data
-                        StuCure.objects.create(
-                            stu = student,
-                            com_cure = ComCure.objects.get(pk=61)
-                        )
+                        # StuCure.objects.create(
+                        #     stu = student,
+                        #     com_cure = ComCure.objects.get(pk=61)
+                        # )
                         code = 'tutorial'
                 elif stucur.curr_level == 2:
                     if not StuCure.objects.filter(stu_id = s_id,com_cure__com_id__range=(81,100)).exists():
@@ -997,10 +1009,10 @@ class CureGet(View):
                         sample_ques = ComCure.objects.get(pk = 81)
                         sample_ques = sz.CommonSerializer(instance=sample_ques).data
                         tut_voice = sdat.data
-                        StuCure.objects.create(
-                            stu = student,
-                            com_cure = ComCure.objects.get(pk=81)
-                        )      
+                        # StuCure.objects.create(
+                        #     stu = student,
+                        #     com_cure = ComCure.objects.get(pk=81)
+                        # )      
                         code= 'tutorial'           
                 elif stucur.curr_level == 3:
                     if not StuCure.objects.filter(stu_id = s_id,com_cure__com_id__range=(101,120)).exists():
@@ -1012,18 +1024,18 @@ class CureGet(View):
                         sample_ques = ComCure.objects.get(pk = 101)
                         sample_ques = sz.CommonSerializer(instance=sample_ques).data
                         tut_voice = sdat.data
-                        StuCure.objects.create(
-                            stu = student,
-                            com_cure = ComCure.objects.get(pk=101)
-                        )     
+                        # StuCure.objects.create(
+                        #     stu = student,
+                        #     com_cure = ComCure.objects.get(pk=101)
+                        # )     
                         code = 'tutorial'  
             else:
                 if not StuCure.objects.filter(stu_id = s_id , cure_txt = stucur.cur_curr).exists():
                     tut_voice , sample_ques = self.get_tutorial(student,stucur.cur_curr)
-                    StuCure.objects.create(
-                        stu = student,
-                        cure_txt = stucur.cur_curr
-                    ).save()
+                    # StuCure.objects.create(
+                    #     stu = student,
+                    #     cure_txt = stucur.cur_curr
+                    # ).save()
                     code = 'tutorial'
                 # return JsonResponse({"read":read,"read_voice":read_voice,"tut_voice":tut_voice,"sample_ques":sample_ques,"daily_cure":stucur.cur_curr,"daily_read":stucur.cur_read,"code":"tutorial"},status=200)
             curr_idx = CureIdx.objects.get(idx_txt=stucur.cur_curr).idx_id
@@ -1065,10 +1077,12 @@ class CureAns(View):
         class_txt = 'A'
         is_pass = False
         is_review = data['is_review']
+        retry = True
         class_voice = Voice.objects.get(pk = 35)
         if score >= 85:
             is_pass = True
             class_voice = Voice.objects.get(pk = 33)
+            retry = False
         elif score >= 75 :
             class_txt = 'B'
         elif score >= 65:
@@ -1091,7 +1105,7 @@ class CureAns(View):
         ).save()
         cure_id = int(cure_id)+1
         class_voice = sz.VoiceSerializer(instance=class_voice)
-        return cure_id, class_txt, is_pass, class_voice.data
+        return cure_id, class_txt, is_pass, class_voice.data , retry
 
     def answer_alternative(self,student,data,idx_id):
         ori_answer = data['ori_answer']
@@ -1357,6 +1371,21 @@ class CureAns(View):
                 return False                   
         stucur.save()
         return True
+    
+    def answer_tutorial(self,student,data):
+        idx_txt = data['idx_txt']
+        if idx_txt == "common":
+            ques_id = data['ques_id']
+            StuCure.objects.create(
+                stu = student,
+                com_cure = ComCure.objects.get(pk = ques_id)
+            ).save()
+        else:
+            StuCure.objects.create(
+                stu = student,
+                cure_txt = idx_txt
+            ).save()
+        return True
 
     @csrf_exempt
     def post(self,request):
@@ -1368,13 +1397,17 @@ class CureAns(View):
             idx_id = i.idx_id
             if Student.objects.filter(pk=s_id).exists():
                 student = Student.objects.get(pk=s_id)
+                if 'tutorial' in data:
+                    is_okay = self.answer_tutorial(student,data)
+                    return JsonResponse({"is_okay":is_okay,"code":1},status=200)
+                    
                 if idx_id == 1 or idx_id == 2 or idx_id == 11 or idx_id == 12: # read
-                    new_read_id , class_txt , is_pass,class_voice = self.ans_read(student,data,idx_id)
+                    new_read_id , class_txt , is_pass,class_voice, retry = self.ans_read(student,data,idx_id)
                     s = self.update_read(s_id,new_read_id,idx_id)
                     if s:
-                        return JsonResponse({"is_okay":is_pass,"class": class_txt,"class_voice":class_voice,"code":1},status=200)
+                        return JsonResponse({"is_okay":is_pass,"class": class_txt,"class_voice":class_voice,"retry":retry,"code":1},status=200)
                     else:
-                        return JsonResponse({"is_okay":is_pass,"class": class_txt,"class_voice":class_voice,"message": "더 이상 학습할 문제가 없습니다.","code":2},status=200)
+                        return JsonResponse({"is_okay":is_pass,"class": class_txt,"class_voice":class_voice,"retry":retry,"message": "더 이상 학습할 문제가 없습니다.","code":2},status=200)
                 elif idx_id == 3 or idx_id == 6 or idx_id == 8 or idx_id == 10:
                     is_correct, s ,correct_voice = self.answer_alternative(student,data,idx_id)
                     if s:
@@ -1500,26 +1533,47 @@ class Statistic(View):
                     ph_score[t] = (ph_correct/ph_whole)*100
                 foc_score[t] = StuTest.objects.filter(stu=student,date__year = year,date__month= t,test_txt='foc').aggregate(Avg('full_score'))['full_score__avg']
         cscore = [0,0,0]
-        for i in times:
-            if swp_score[i] == None:
-                cscore[0] += 0 
-            else :
-                cscore[0] = cscore[0] + swp_score[i]
-            if ph_score[i] == None:
-                cscore[1] += 0 
-            else :
-                cscore[1] = cscore[1] + ph_score[i]
-            if foc_score[i] == None:
-                cscore[2] += 0 
-            else :
-                cscore[2] = cscore[2] + foc_score[i]
+        if period == "week":
+            for i in range(7):
+                if i != 6:
+                    t = times[i]
+                    t2 = times[i+1]
+                else:
+                    t = times[i]
+                    t2 = date.strftime('%Y-%m-%d')
+                if swp_score[t+'~'+t2] == None:
+                    cscore[0] += 0 
+                else :
+                    cscore[0] = cscore[0] + swp_score[t+'~'+t2]
+                if ph_score[t+'~'+t2] == None:
+                    cscore[1] += 0 
+                else :
+                    cscore[1] = cscore[1] + ph_score[t+'~'+t2]
+                if foc_score[t+'~'+t2] == None:
+                    cscore[2] += 0 
+                else :
+                    cscore[2] = cscore[2] + foc_score[t+'~'+t2]
+        else:
+            for i in times:
+                if swp_score[i] == None:
+                    cscore[0] += 0 
+                else :
+                    cscore[0] = cscore[0] + swp_score[i]
+                if ph_score[i] == None:
+                    cscore[1] += 0 
+                else :
+                    cscore[1] = cscore[1] + ph_score[i]
+                if foc_score[i] == None:
+                    cscore[2] += 0 
+                else :
+                    cscore[2] = cscore[2] + foc_score[i]
         for idx,c in enumerate(cscore):
             if (c/7) >= 85:
                 classes[idx] = '우수'
             elif (c/7) >= 75:
                 classes[idx]  ='보통'
             else:
-                classes[idx] = '미흠'
+                classes[idx] = '미흡'
         slevels = [1,1,1]
         every_swp = StuTest.objects.filter(stu=student,test_txt = 'swp',is_correct = 'T').order_by('-id')[:15]
         if every_swp.count() ==0:
@@ -1617,23 +1671,41 @@ class Statistic(View):
                 voice_score[t] =StuCure.objects.filter(stu=student,date__year = year,date__month= t).exclude(full_score__isnull=True).aggregate(Avg('full_score'))['full_score__avg']
         classes = ['미흡','미흡','미흡']
         cscore = [0,0,0]
-        for i in times:
-            if score[i] == None:
-                cscore[1] += 0 
-            else :
-                cscore[1] = cscore[1] + score[i]
-            if voice_score[i] == None:
-                cscore[2] += 0 
-            else :
-                cscore[2] = cscore[2] + voice_score[i]
-            cscore[0] += amount[i]
+        if period == "week":
+            for i in range(7):
+                if i != 6:
+                    t = times[i]
+                    t2 = times[i+1]
+                else:
+                    t = times[i]
+                    t2 = date.strftime('%Y-%m-%d')
+                if score[t+'~'+t2] == None:
+                    cscore[1] += 0 
+                else :
+                    cscore[1] = cscore[1] + score[t+'~'+t2]
+                if voice_score[t+'~'+t2] == None:
+                    cscore[2] += 0 
+                else :
+                    cscore[2] = cscore[2] + voice_score[t+'~'+t2]
+                cscore[0] += amount[t+'~'+t2]
+        else:
+            for i in times:
+                if score[i] == None:
+                    cscore[1] += 0 
+                else :
+                    cscore[1] = cscore[1] + score[i]
+                if voice_score[i] == None:
+                    cscore[2] += 0 
+                else :
+                    cscore[2] = cscore[2] + voice_score[i]
+                cscore[0] += amount[i]
         for idx,c in enumerate(cscore):
             if (c/7) >= 85:
                 classes[idx] = '우수'
             elif (c/7) >= 70:
                 classes[idx]  ='보통'
             else:
-                classes[idx] = '미흠' 
+                classes[idx] = '미흡' 
         return amount,score,voice_score,classes   
 
 
