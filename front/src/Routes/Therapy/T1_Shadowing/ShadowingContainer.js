@@ -1,14 +1,30 @@
 import React from 'react';
-import ShadowingPresenter from './ShadowingPresenter';
-import { SoundEffect } from 'images';
-
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import * as Sentry from '@sentry/browser';
 
-import { T1, TTobak } from 'images';
+import ShadowingPresenter from './ShadowingPresenter';
+import { T1, TTobak, SoundEffect } from 'images';
 import { T1_Api, soundURL } from 'api';
 import LoadingComp from 'Components/LoadingComp';
+
+const inistState = {
+    cureText: null,
+    isRecording: false,
+    TTobaki: TTobak.ttobak1_1,
+    isImageLoaded: false,
+    showPopup: false,
+    showDonePopup: false,
+    showDailyPopup: false,
+    percent: 0,
+    currentIndex: 1,
+    totalNum: 0,
+    isPlaying: false,
+    RecordingCircle: false,
+    err: false,
+    errorInfo: false,
+};
 
 class Shadowing extends React.Component {
     static propTypes = {
@@ -27,23 +43,11 @@ class Shadowing extends React.Component {
         this.currentIndex = 0;
         this.currentAudio = null;
         this.audioResult = null;
+        this.retryAudio = null;
         this.picture = { T1, TTobak };
         this.totalImages = Object.keys(this.picture.T1).length + Object.keys(this.picture.TTobak).length;
         this.numOfLoadedImage = 0;
-
-        this.state = {
-            cureText: null,
-            isRecording: false,
-            TTobaki: TTobak.ttobak1_1,
-            isImageLoaded: false,
-            showPopup: false,
-            showDonePopup: false,
-            showDailyPopup: false,
-            percent: 0,
-            currentIndex: 1,
-            totalNum: 0,
-            isPlaying: false,
-        }
+        this.state = inistState;
 
         if (this.learning_type === 'daily') {
             console.log(location.state.data.read);
@@ -56,6 +60,7 @@ class Shadowing extends React.Component {
     }
 
     async componentDidMount() {
+        new Error();
         const { user } = this.props;
 
         if (!user.user.u_id) {
@@ -89,8 +94,24 @@ class Shadowing extends React.Component {
             this.currentAudio.pause();
             this.currentAudio = null;
         }
+        if (!!this.retryAudio) {
+            this.retryAudio.pause();
+            this.retryAudio = null;
+        }
         window.removeEventListener('android', this.androidResponse);
         window.removeEventListener('androidStopRecording', this.stopRecording);
+    }
+
+    componentDidCatch(err, errorInfo) {
+        console.error(err);
+        this.setState(() => ({
+            err: true,
+            errorInfo: errorInfo,
+        }));
+
+        if (process.env.NODE_ENV === 'production') {
+            Sentry.captureException(err, { extra: errorInfo });
+        }
     }
 
     newRequest = async () => {
@@ -114,6 +135,7 @@ class Shadowing extends React.Component {
                     cureText: this.currentCure.cure_text,
                     totalNum: this.cure.length,
                 });
+                setTimeout(() => this.playSound(), 1000);
             }
         } catch (e) {
             console.log(e);
@@ -132,6 +154,7 @@ class Shadowing extends React.Component {
         this.recording_end_sound.play();
         this.setState({
             isRecording: false,
+            RecordingCircle: false,
         });
     }
 
@@ -157,6 +180,32 @@ class Shadowing extends React.Component {
                 console.log(data);
 
                 if (data.code === 1) {
+                    if (data.retry) {
+                        this.retryAudio = new Audio(soundURL + data.class_voice.voc_path);
+                        this.retryAudio.addEventListener('ended', () => {
+                            this.setState({
+                                TTobaki: TTobak.ttobak3_1,
+                            })
+                            setTimeout(() => {
+                                this.currentAudio.play();
+                                this.setState({
+                                    TTobaki: TTobak.ttobak3_2,
+                                    isPlaying: true,
+                                })
+                            }, 3000);
+                        });
+
+                        setTimeout(() => {
+                            if (!!this.retryAudio) {
+                                this.retryAudio.play();
+                                this.setState({
+                                    TTobaki: TTobak.ttobak3_2,
+                                });
+                            }
+                        }, 1000);
+                        return;
+                    }
+
                     if (this.currentIndex < this.cure.length - 1) {
                         this.currentIndex++;
                     } else {
@@ -200,7 +249,6 @@ class Shadowing extends React.Component {
                 TTobaki: TTobak.ttobak3_2,
                 isPlaying: true,
             });
-            this.currentAudio.play();
             this.currentAudio.addEventListener('ended', () => {
                 this.setState({
                     TTobaki: TTobak.ttobak1_1,
@@ -208,14 +256,21 @@ class Shadowing extends React.Component {
                 });
                 setTimeout(() => {
                     this.recording_start_sound.play();
+                    this.setState({
+                        isRecording: true,
+                        RecordingCircle: true,
+                    })
                     this.setRecording = setInterval(() => {
                         this.setState({
-                            isRecording: !this.state.isRecording,
+                            RecordingCircle: !this.state.RecordingCircle,
                         });
                     }, 500);
-                    window.BRIDGE.recordAudio('m', this.currentCure.cure_text);
+                    setTimeout(() => {
+                        window.BRIDGE.recordAudio(this.props.user.student.gender, this.currentCure.cure_text);
+                    }, 200);
                 }, 800);
             });
+            this.currentAudio.play();
         }
     }
 
@@ -250,7 +305,7 @@ class Shadowing extends React.Component {
                             isImageLoaded: true,
                             TTobaki: TTobak.ttobak1_1,
                         })
-                        setTimeout(() => this.playSound(), 1000);
+                        this.newRequest();
                         clearTimeout(timeoutPreloading);
                     }
                 };
@@ -285,15 +340,19 @@ class Shadowing extends React.Component {
     }
 
     render() {
-        const { cureText, TTobaki, isRecording, isImageLoaded, isPlaying,
+        const { cureText, TTobaki, RecordingCircle, isImageLoaded, isPlaying,
             showPopup, showDonePopup, showDailyPopup, percent,
             currentIndex, totalNum } = this.state;
+
+        if (this.state.err) {
+            return <div>error</div>;
+        }
 
         if (isImageLoaded) {
             return (<ShadowingPresenter
                 Background={T1.t1_background} TextBox={T1.t1_textbox} bt_complete={T1.bt_complete}
                 TTobak={TTobaki} isPlaying={isPlaying}
-                text={cureText} isRecording={isRecording}
+                text={cureText} RecordingCircle={RecordingCircle}
                 onCompleteButtonHandle={this.onCompleteButtonHandle}
                 onContinueButtonHandle={this.onContinueButtonHandle}
                 onRestartButtonHandle={this.onRestartButtonHandle}

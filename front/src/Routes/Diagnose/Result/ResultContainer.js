@@ -50,14 +50,12 @@ class Result extends React.Component {
             return;
         }
 
-        Result_Api.ask(this.state.s_id)
+        Result_Api.ask(user.student.s_id)
             .then(result => {
                 console.log(result.data.results);
-                let tmp_result = result.data.results;
-                tmp_result['선택적집중력']['총 문제 수'] = 0;
 
                 this.setState({
-                    result: tmp_result,
+                    result: result.data.results,
                 });
             });
     }
@@ -68,6 +66,8 @@ class Result extends React.Component {
         return (
             <ResultPresenter
                 result={result}
+                name={this.props.user.student.name}
+                birth={this.props.user.student.birth}
             />);
     }
 }

@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@sentry/browser": "^5.27.2",
+    "@sentry/react": "^5.27.2",
+    "@sentry/tracing": "^5.27.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -18,9 +21,9 @@
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "redux": "^4.0.5",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.0",
-    "redux": "^4.0.5",
     "styled-components": "^5.1.1",
     "styled-reset": "^4.2.2",
     "victory": "^35.3.1"

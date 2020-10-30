@@ -57,8 +57,8 @@ const ResultContent = ({ student, result, diagnose }) => {
             <ResultExplain>
                 {
                     (diagnose.title === '선택적집중력') ?
-                        <div>총 문제 수는 {result['총 문제 수']}개로, 평균 발음 정확도는 {result['평균 발음 정확도']}% 입니다.</div> :
-                        <div>총 문제 수는 {result['총 문제 수']}개로, 맞춘 문제의 수는 {result['맞은 갯수']}개입니다.</div>
+                        <div>총 문제 수는 {result['\"총 문제 개수 \"']}개로, 평균 발음 정확도는 {result['평균 발음 정확도']}% 입니다.</div> :
+                        <div>총 문제 수는 {result['총 문제 개수']}개로, 맞춘 문제의 수는 {result['맞은 개수']}개입니다.</div>
                 }
             </ResultExplain>
         </Component>

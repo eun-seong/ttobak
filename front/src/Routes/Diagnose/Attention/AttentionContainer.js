@@ -22,6 +22,7 @@ const initState = {
     currentIndex: 1,
     totalNum: 0,
     isPlaying: false,
+    RecordingCircle: false,
 };
 
 class Attention extends React.Component {
@@ -88,10 +89,12 @@ class Attention extends React.Component {
         this.recording_end_sound.play();
         this.setState({
             isRecording: false,
+            RecordingCircle: false,
         });
     }
 
     newRequest = async () => {
+        console.log('new request!');
         const { user } = this.props;
 
         const { data } = await D3_Api.ask(user.student.s_id, user.student.s_id);
@@ -132,19 +135,25 @@ class Attention extends React.Component {
                 TTobaki: TTobak.ttobak3_2,
             });
             setTimeout(() => {
-                if (!!this.sample_ques) this.sample_ques.play();
+                if (!!this.sample_ques) {
+                    this.sample_ques.play();
+                    this.setState({
+                        TTobaki: TTobak.ttobak3_2,
+                        isPlaying: true,
+                    });
+                }
             }, 1000);
         });
 
         this.sample_ques.addEventListener('ended', () => {
             this.setState({
                 TTobaki: TTobak.ttobak1_1,
+                isPlaying: false,
             });
             setTimeout(() => {
                 if (!!this.voice[1]) this.voice[1].play();
                 this.setState({
                     TTobaki: TTobak.ttobak3_2,
-                    isPlaying: true,
                 });
             }, 1000);
         });
@@ -156,12 +165,15 @@ class Attention extends React.Component {
             });
             setTimeout(() => {
                 this.recording_start_sound.play();
+                this.setState({
+                    isRecording: true,
+                })
                 this.setRecording = setInterval(() => {
                     this.setState({
-                        isRecording: !this.state.isRecording,
+                        RecordingCircle: !this.state.RecordingCircle,
                     });
                 }, 500);
-                window.BRIDGE.recordAudio('m', this.ques_char);
+                window.BRIDGE.recordAudio(this.props.user.student.gender, this.ques_char);
             }, 800);
         });
 
@@ -178,7 +190,7 @@ class Attention extends React.Component {
             const { data } = await D_tutorial.answer(this.props.user.student.s_id, idx_txt);
             console.log(data);
             this.setState({
-                initState,
+                gameState: false,
             });
             this.newRequest();
             this.sample_ques = null;
@@ -271,12 +283,15 @@ class Attention extends React.Component {
                 });
                 setTimeout(() => {
                     this.recording_start_sound.play();
+                    this.setState({
+                        isRecording: true,
+                    })
                     this.setRecording = setInterval(() => {
                         this.setState({
-                            isRecording: !this.state.isRecording,
+                            RecordingCircle: !this.state.RecordingCircle,
                         });
                     }, 500);
-                    window.BRIDGE.recordAudio('m', this.currentCure.cure_text);
+                    window.BRIDGE.recordAudio(this.props.user.student.gender, this.currentCure.ques_char);
                 }, 800);
             });
         }
@@ -333,13 +348,13 @@ class Attention extends React.Component {
     }
 
     render() {
-        const { isImageLoaded, showPopup, showNextPopup, percent, TTobak, isRecording, isPlaying } = this.state;
+        const { isImageLoaded, showPopup, showNextPopup, percent, TTobak, RecordingCircle, isPlaying } = this.state;
 
         if (isImageLoaded) {
             return (<AttentionPresenter
                 Background={D3.d3_background}
                 TTobak={TTobak}
-                isRecording={isRecording} isPlaying={isPlaying}
+                RecordingCircle={RecordingCircle} isPlaying={isPlaying}
                 showPopup={showPopup}
                 showNextPopup={showNextPopup}
                 onPopupButtonHandle={this.onPopupButtonHandle}

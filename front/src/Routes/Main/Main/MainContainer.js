@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom';
 import MainPresenter from './MainPresenter';
 
 import { Daily_Api } from 'api';
-import ContentsList from '../ContentsList';
 import Images, { MainRoot, Pause } from 'images';
+import ContentsList from '../ContentsList';
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -23,6 +23,7 @@ class Main extends React.Component {
             isImageLoaded: false,
             daily_custom: null,
             daily_link: null,
+            daily_complete: false,
         }
         this.numOfLoadedImage = 0;
         this.pictures = { Images, MainRoot, Pause };
@@ -60,16 +61,25 @@ class Main extends React.Component {
         const { user } = this.props;
         try {
             const { data } = await Daily_Api.ask(user.student.s_id);
+            const save = await Daily_Api.save(user.student.s_id);
             console.log(data);
+            console.log(save.data.current);
 
-            if (data.code === 1) {
-                this.setState({
-                    data: data,
-                    daily_custom: data.daily_cure,
-                    daily_link: ContentsList.filter(c => {
-                        return c.name === data.daily_cure;
-                    })[0].url,
-                });
+            if (data.code === 1 || data.code === 'tutorial') {
+                if (!!save.data.current) {
+                    const content = ContentsList.filter(c => {
+                        return c.name === save.data.current[1];
+                    })[0];
+
+                    this.setState({
+                        data: data,
+                        daily_custom: content,
+                        daily_link: content.url,
+                    });
+                }
+                else this.setState({
+                    daily_complete: true,
+                })
             }
         } catch (e) {
             console.log(e);
@@ -101,12 +111,13 @@ class Main extends React.Component {
     }
 
     render() {
-        const { data, isImageLoaded, daily_custom, daily_link } = this.state;
+        const { data, isImageLoaded, daily_custom, daily_link, daily_complete } = this.state;
         const { user } = this.props;
 
         if (!(user.student.s_id && user.student.name)) {
             return null;
         }
+
         return (
             <MainPresenter
                 goBack={this.goBack}
@@ -115,6 +126,7 @@ class Main extends React.Component {
                 isImageLoaded={isImageLoaded}
                 daily_custom={daily_custom}
                 daily_link={daily_link}
+                daily_complete={daily_complete}
             />
         );
 

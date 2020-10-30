@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 import LoadingComp from 'Components/LoadingComp';
 import { T2, TTobak } from 'images';
-import { T_Api2, soundURL } from 'api';
+import { T_Api2, soundURL, T_tutorial } from 'api';
 import { SoundEffect } from 'images';
 
 import CountPresenter from './CountPresenter';
@@ -17,6 +17,24 @@ const touch_sound = new Audio(SoundEffect.touch_effect);
 const effect_sound = new Audio(SoundEffect.twinkle);
 
 const idx_txt = 'count';
+const initState = {
+    gameState: false,
+    isDragging: false,
+    touchPosition: [],
+    Apple: {
+        randomApple: T2.t2_Apples[Math.floor(Math.random() * 4)],
+        applesInBasket: [],
+        numOfApples: 0,
+    },
+    TTobaki: TTobak.ttobak1_1,
+    isImageLoaded: false,
+    showPopup: false,
+    showDonePopup: false,
+    showDailyPopup: false,
+    percent: 0,
+    currentIndex: 1,
+    totalNum: 0,
+};
 
 class Count extends React.Component {
     static propTypes = {
@@ -24,7 +42,7 @@ class Count extends React.Component {
         dispatch: PropTypes.func.isRequired,
     };
 
-    constructor({ match, location }) {
+    constructor({ match }) {
         super();
         this.learning_type = match.params.learning_type;
         this.cure = null;
@@ -36,36 +54,7 @@ class Count extends React.Component {
         this.numOfLoadedImage = 0;
         this.picture = { T2, TTobak };
         this.totalImages = Object.keys(T2).length + Object.keys(TTobak).length + 3;
-
-        this.state = {
-            gameState: false,
-            isDragging: false,
-            touchPosition: [],
-            Apple: {
-                randomApple: T2.t2_Apples[Math.floor(Math.random() * 4)],
-                applesInBasket: [],
-                numOfApples: 0,
-            },
-            TTobaki: TTobak.ttobak1_1,
-            isImageLoaded: false,
-            showPopup: false,
-            showDonePopup: false,
-            showDailyPopup: false,
-            percent: 0,
-            currentIndex: 1,
-            totalNum: 0,
-        };
-
-        if (this.learning_type === 'daily') {
-            console.log(location.state.data.cure);
-            this.cure = location.state.data.cure;
-            this.currentCure = this.cure[this.currentIndex];
-            this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
-            this.state = {
-                ...this.state,
-                totalNum: this.cure.length,
-            }
-        }
+        this.state = initState;
     }
 
     async componentDidMount() {
@@ -81,7 +70,6 @@ class Count extends React.Component {
             return;
         }
 
-        if (this.learning_type !== 'daily') this.newRequest();
         this.imagesPreloading(this.picture);
     }
 
@@ -90,6 +78,25 @@ class Count extends React.Component {
             this.currentAudio.pause();
             this.currentAudio = null;
         }
+
+        this.currentCure = null;
+        this.sample_ques = null;
+        this.voice = null;
+    }
+
+    daily = () => {
+        if (this.props.location.state.data.code === 'tutorial') {
+            this.tutorial(this.props.location.state.data);
+            return;
+        }
+        this.cure = this.props.location.state.data.cure;
+        console.log(this.cure.length);
+        this.currentCure = this.cure[this.currentIndex];
+        this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
+        this.setState({
+            totalNum: this.cure.length,
+        });
+        setTimeout(() => this.playSound(), 1000);
     }
 
     newRequest = async () => {
@@ -109,12 +116,58 @@ class Count extends React.Component {
 
                 this.setState({
                     totalNum: this.cure.length,
-                })
+                });
+                setTimeout(() => this.playSound(), 1000);
             }
             else console.log('data message: ' + data.message);
         } catch (e) {
             console.log('error: ' + e);
         }
+    }
+
+    tutorial = (data) => {
+        this.setState({
+            gameState: 'tutorial',
+        });
+
+        this.currentCure = data.sample_ques;
+        this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
+
+        this.voice = [
+            new Audio(soundURL + data.tut_voice[0].voc_path),
+            new Audio(soundURL + data.tut_voice[1].voc_path),
+            new Audio(soundURL + data.tut_voice[2].voc_path),
+        ];
+
+        this.voice[0].addEventListener('ended', () => {
+            setTimeout(() => {
+                this.currentAudio.play();
+            }, 1000);
+        });
+
+        this.currentAudio.addEventListener('ended', () => {
+            setTimeout(() => {
+                this.voice[1].play();
+            }, 1000);
+        })
+
+        this.voice[2].addEventListener('ended', async () => {
+            const { data } = await T_tutorial.answer(this.props.user.student.s_id, idx_txt, this.currentCure.cure_id);
+            console.log(data);
+            this.setState({
+                initState,
+            });
+            if (this.learning_type === 'daily') this.daily();
+            else this.newRequest();
+
+            this.currentCure = null;
+            this.sample_ques = null;
+            this.voice = null;
+        });
+
+        setTimeout(() => {
+            this.voice[0].play();
+        }, 2000);
     }
 
     playSound = () => {
@@ -152,7 +205,11 @@ class Count extends React.Component {
         effect_sound.play();
         this.setState({
             TTobaki: TTobak.ttobak2_1
-        })
+        });
+        if (this.state.gameState === 'tutorial') {
+            this.voice[2].play();
+            return;
+        }
         const { Apple: { numOfApples } } = this.state;
         const { user } = this.props;
         const s_id = user.student.s_id;
@@ -272,13 +329,13 @@ class Count extends React.Component {
                             if (this.numOfLoadedImage === this.totalImages) {
                                 this.setState({
                                     isImageLoaded: true,
-                                })
-                                setTimeout(() => this.playSound(), 1000);
+                                });
+                                if (this.learning_type === 'daily') this.daily();
+                                else this.newRequest();
                                 clearTimeout(timeoutPreloading);
                             }
                         };
                     }
-
                 } else {
                     let img = new Image();
                     img.src = picture[i][prop];
@@ -290,7 +347,8 @@ class Count extends React.Component {
                             this.setState({
                                 isImageLoaded: true,
                             })
-                            setTimeout(() => this.playSound(), 1000);
+                            if (this.learning_type === 'daily') this.daily();
+                            else this.newRequest();
                             clearTimeout(timeoutPreloading);
                         }
                     };
@@ -365,8 +423,7 @@ class Count extends React.Component {
                         showPopup={showPopup}
                         showDailyPopup={showDailyPopup}
                         showDonePopup={showDonePopup}
-                        currentIndex={currentIndex}
-                        totalNum={totalNum}
+                        currentIndex={currentIndex} totalNum={totalNum}
                         bt_complete={T2.bt_complete}
                     />
                 </DndProvider>

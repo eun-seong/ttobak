@@ -73,7 +73,11 @@ class Sweep extends React.PureComponent {
         }
         this.setState({
             swpSound: null,
-        })
+        });
+        this.voice = null;
+        this.voice_desc = null;
+        this.swp = null;
+        this.buttonSound = null;
     }
 
     newRequest = async () => {
@@ -137,7 +141,7 @@ class Sweep extends React.PureComponent {
         const swpUp = (cnt) => {
             if (cnt >= 2) {
                 setTimeout(() => {
-                    this.voice[1].play();
+                    if (!!this.voice[1]) this.voice[1].play();
                     this.setState({
                         TTobaki: TTobak.ttobak3_2,
                         gameState: false,
@@ -146,7 +150,7 @@ class Sweep extends React.PureComponent {
                 return cnt;
             }
 
-            this.swp[0].play();
+            if (!!this.swp[0]) this.swp[0].play();
             this.setState({
                 UpButton: D1.d1_UpButton_DOWN,
             });
@@ -177,10 +181,15 @@ class Sweep extends React.PureComponent {
                 initState,
             });
             this.newRequest();
+
+            this.voice = null;
+            this.voice_desc = null;
+            this.swp = null;
+            this.buttonSound = null;
         })
 
         setTimeout(() => {
-            this.voice[0].play();
+            if (!!this.voice[0]) this.voice[0].play();
             this.setState({
                 TTobaki: TTobak.ttobak3_2,
                 gameState: false,
@@ -192,7 +201,7 @@ class Sweep extends React.PureComponent {
         const swpDown = (cnt) => {
             if (cnt >= 2) {
                 setTimeout(() => {
-                    this.voice[2].play();
+                    if (!!this.voice[2]) this.voice[2].play();
                     this.setState({
                         TTobaki: TTobak.ttobak3_2,
                         gameState: false,
@@ -201,7 +210,7 @@ class Sweep extends React.PureComponent {
                 return cnt;
             }
 
-            this.swp[1].play();
+            if (!!this.swp[1]) this.swp[1].play();
             this.setState({
                 DownButton: D1.d1_DownButton_DOWN,
             });
@@ -229,7 +238,7 @@ class Sweep extends React.PureComponent {
                     gameState: false,
                     tutorialState: this.voice_desc[3],
                 })
-                this.voice[3].play();
+                if (!!this.voice[3]) this.voice[3].play();
             }, 2000);
         }
     }

@@ -12,6 +12,7 @@ const url = {
     diagnose_answer: 'diagnose/answer',
     therapy_ask: 'cure/ask',
     therapy_answer: 'cure/answer',
+    therapy_save: 'cure/save',
     audio_segscore: 'segscore',
     diag_result: 'diagnose/result',
     statistic_ask: 'statistic/get',
@@ -160,13 +161,21 @@ export const Daily_Api = {
         api.post(url.therapy_ask, {
             's_id': s_id,
         }),
+    save: (s_id) =>
+        api.post(url.therapy_save, {
+            's_id': s_id,
+        })
 }
 
-export const T_ask_api = (s_id) =>
-    api.post(url.therapy_ask, {
-        's_id': s_id,
-        'idx_txt': idx_txt,
-    })
+export const T_tutorial = {
+    answer: (s_id, idx_txt, ques_id) =>
+        api.post(url.therapy_answer, {
+            "s_id": s_id,
+            "idx_txt": idx_txt,
+            "tutorial": "true",
+            "ques_id": ques_id
+        }),
+}
 
 export const T1_Api = {
     ask: (s_id, idx_txt) =>

@@ -37,20 +37,20 @@ class Self extends React.Component {
 
     async componentDidMount() {
         const { user } = this.props;
-        
-        if(!user.user.u_id) {
+
+        if (!user.user.u_id) {
             this.props.history.push('/root/signin');
             return;
         }
 
-        if(!user.student.s_id) {
+        if (!user.student.s_id) {
             this.props.history.push('/root/selectstd');
             return;
         }
 
 
         this.newRequest();
-        setTimeout(() => window.BRIDGE.recordAudio('m', this.currentCure.cure_text), 1000);
+        setTimeout(() => window.BRIDGE.recordAudio(this.props.user.student.gender, this.currentCure.cure_text), 1000);
 
         window.addEventListener("android", async (e) => {
             console.log(e.detail);
@@ -160,7 +160,7 @@ class Self extends React.Component {
                     TTobaki: TTobak.ttobak1_1,
                     isRecording: true,
                 })
-                window.BRIDGE.recordAudio('m', this.currentCure.cure_text);
+                window.BRIDGE.recordAudio(this.props.user.student.gender, this.currentCure.cure_text);
             });
         }
     }

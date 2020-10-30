@@ -25,16 +25,16 @@ const RecordingCircle = styled.div`
     width: 30px;
     height: 30px;
     border-radius: 100%;
-    background-color: ${props => props.isRecording ? '#fe4a2f' : '#a8aaa9'};
-    bottom: 10px;
-    left: 10px;
+    background-color: ${props => props.RecordingCircle ? '#fe4a2f' : '#a8aaa9'};
+    top: 15vh;
+    right: 20px;
 `;
 
 const CompleteButton = styled.img`
     position: absolute;
     width: 9%;
-    top: 15vh;
-    right: 10px;
+    top: 10px;
+    left: 10vw;
 `;
 
 const Bubble = styled.img`
@@ -50,7 +50,7 @@ const Attention = ({ props }) => {
         <Div>
             <Bubble src={TTobak.speech_bubble} alt='bubble' isPlaying={props.isPlaying} />
             <CompleteButton src={D3.bt_complete} alt='complete' onTouchEnd={props.onCompleteButtonHandle} />
-            <RecordingCircle isRecording={props.isRecording}></RecordingCircle>
+            <RecordingCircle RecordingCircle={props.RecordingCircle}></RecordingCircle>
             <TTobakComponent src={props.TTobak} alt='또박이' />
             {
                 props.showPopup ?

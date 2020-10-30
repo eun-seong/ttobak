@@ -52,21 +52,21 @@ const Diag = styled.div`
     margin: 2.5px 0;
 `;
 
-const ResultContent = ({ student, result }) => {
+const ResultContent = ({ student, result, name, birth }) => {
     document.body.style.overflow = 'visible';
 
     return (
         <Component>
             <StdInfo>
-                <StdName>이지호</StdName>
-                <StdBirth>1998년 11월 11일</StdBirth>
+                <StdName>{name || '홍길동'}</StdName>
+                <StdBirth>{birth || '1998년 11월 11일'}</StdBirth>
             </StdInfo>
             <DiagResult>
                 <Diag>
-                    <DiagTitle>총 문제 개수 : {result['총 문제 갯수']}개</DiagTitle>
+                    <DiagTitle>총 문제 개수 : {result['총 문제 개수']}개</DiagTitle>
                 </Diag>
                 <Diag>
-                    <DiagTitle>총 맞은 개수 : {result['총 맞은 갯수']}개</DiagTitle>
+                    <DiagTitle>총 맞은 개수 : {result['총 맞은 개수']}개</DiagTitle>
                 </Diag>
                 {/* <Diag>
                     <DiagTitle>청각처리 검사</DiagTitle>

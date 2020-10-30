@@ -51,7 +51,7 @@ const Shadowing = ({ props }) => {
             <CompleteButton src={T1.bt_complete} alt='complete' onTouchEnd={props.onCompleteButtonHandle} />
             <TTobakComponent src={props.TTobak} alt='또박이' />
             <TextBox>
-                <TextBoxComponent src={props.TextBox} text={props.text} isRecording={props.isRecording} />
+                <TextBoxComponent src={props.TextBox} text={props.text} isRecording={props.RecordingCircle} />
             </TextBox>
             {
                 props.showPopup ?

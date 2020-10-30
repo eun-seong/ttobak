@@ -69,6 +69,9 @@ class Recognition extends React.PureComponent {
                 this.phSound[i] = null;
             }
         }
+        this.sample_answer = null;
+        this.sample_ques = null;
+        this.voice = null;
     }
 
     newRequest = async () => {
@@ -130,13 +133,13 @@ class Recognition extends React.PureComponent {
 
         this.voice[0].addEventListener('ended', () => {
             setTimeout(() => {
-                this.sample_answer.play();
+                if (!!this.sample_answer) this.sample_answer.play();
             }, 1000);
         });
 
         this.sample_answer.addEventListener('ended', () => {
             setTimeout(() => {
-                this.voice[1].play();
+                if (!!this.voice[1]) this.voice[1].play();
             }, 1000);
         });
 
@@ -145,7 +148,7 @@ class Recognition extends React.PureComponent {
                 TTobaki: TTobak.ttobak1_1
             })
             setTimeout(() => {
-                this.sample_ques[0].play();
+                if (!!this.sample_ques[0]) this.sample_ques[0].play();
                 this.setState({
                     isAnimate: [true, false],
                     TTobaki: TTobak.ttobak3_2
@@ -158,7 +161,7 @@ class Recognition extends React.PureComponent {
                 TTobaki: TTobak.ttobak1_1
             })
             setTimeout(() => {
-                this.sample_ques[1].play();
+                if (!!this.sample_ques[1]) this.sample_ques[1].play();
                 this.setState({
                     isAnimate: [false, true],
                     TTobaki: TTobak.ttobak3_2
@@ -173,10 +176,14 @@ class Recognition extends React.PureComponent {
                 initState,
             });
             this.newRequest();
+
+            this.sample_answer = null;
+            this.sample_ques = null;
+            this.voice = null;
         });
 
         setTimeout(() => {
-            this.voice[0].play();
+            if (!!this.voice[0]) this.voice[0].play();
         }, 2000);
     }
 
@@ -185,7 +192,7 @@ class Recognition extends React.PureComponent {
             this.setState({
                 gameState: false,
             })
-            this.voice[2].play();
+            if (!!this.voice[2]) this.voice[2].play();
         }, 1000);
     }
 

@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private WebView webView;
     private String gender_;
     private String transcript_;
+    private boolean isStopped=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
 
 //        webView.loadUrl("http://13.125.100.8/main/main");//웹뷰 실행
-        webView.loadUrl("http://172.30.1.53:3000/diagnose/sweep");//웹뷰 실행
+        webView.loadUrl("http://172.30.1.53:3000/main/main");//웹뷰 실행
 
         /* Recording */
         fileName = Objects.requireNonNull(getExternalCacheDir()).getAbsolutePath();
@@ -115,7 +116,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void stopRecording() {
         Log.d(TAG, "stopRecording: ");
-        recorder.stop();
+
+        try {
+            recorder.stop();
+        } catch(RuntimeException stopException) {
+            // handle cleanup here
+        }
+
         recorder.release();
         recorder = null;
 
@@ -184,17 +191,19 @@ public class MainActivity extends AppCompatActivity {
             startRecording();
             gender_ = gender;
             transcript_ = transcript;
+            isStopped = false;
 
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if (recorder != null) stopRecording();
+                    if(!isStopped) stopRecording();
                 }
             }, 12000);
         }
 
         @JavascriptInterface
         public void requestStopRecording() {
+            isStopped=true;
             stopRecording();
         }
     }

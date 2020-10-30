@@ -21,7 +21,7 @@ const UserInfo = styled.div`
     
 `;
 
-const Result = ({ result }) => {
+const Result = ({ result, name, birth }) => {
     document.body.style.overflow = 'visible';
     console.log(result)
 
@@ -30,7 +30,7 @@ const Result = ({ result }) => {
             <HeaderComp title={'또박이 검사 결과'} />
             <ScrollBox>
                 <div>
-                    <ExplainBoxComp Content={<UserContent result={result} />} margin={'25px'} />
+                    <ExplainBoxComp Content={<UserContent result={result} name={name} birth={birth} />} margin={'25px'} />
                 </div>
                 <ExplainBoxComp Content={<ResultContent diagnose={Diagnose_explain.swp} result={result[Diagnose_explain.swp.title]} />} margin={'25px'} />
                 <ExplainBoxComp Content={<ResultContent diagnose={Diagnose_explain.recognition} result={result[Diagnose_explain.recognition.title]} />} margin={'25px'} />
