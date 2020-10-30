@@ -783,6 +783,44 @@ OR
 		},success : function(r) {
 	         console.log(r)
       }
+    }); 
+
+ **okay**
+----
+* **URL**
+	/diagnose/okay
+
+* **Method:**
+	  `POST`
+*  **URL Params**
+   **Required:**
+   **Optional:**
+
+* **Data Params**
+	   `s_id = [integer]` 
+		  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ "is_okay" : True/False} "code":1}`
+          
+   OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당하는 학습자가 존재하지 않습니다.","code": 2 }`
+
+
+* **Sample Call:**
+  ```javascript
+    $.ajax({
+      url: "link/to/api/diagnose/okay",
+      dataType: "json",
+      type : "POST",
+      data : { 
+	     "s_id" : 1
+		},success : function(r) {
+	         console.log(r)
+      }
     });   
   
 

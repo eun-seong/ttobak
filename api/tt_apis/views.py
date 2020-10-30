@@ -511,6 +511,28 @@ class TestAns(View):
                 return JsonResponse({"message":"해당하는 검사가 존재하지 않습니다.","code":2},status=200)
         else :
             return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":3},status=200)
+class TestProceed(View):
+    @csrf_exempt
+    def post(self,request):
+        data = json.loads(request.body)
+        s_id = data['s_id']
+        is_okay = False
+        if Student.objects.filter(pk=s_id).exists():
+            student = Student.objects.get(pk=s_id)
+            if StuTest.objects.filter(stu_id = s_id).exists():
+                today = datetime.datetime.now()
+                # today = datetime.datetime(2020,11,7)
+                recent = StuTest.objects.filter(stu_id = s_id).order_by('date')
+                recent = recent[0].date
+                point  = today + datetime.timedelta(weeks = -1)
+                point = point.date()
+                if point >= recent:
+                    is_okay = True
+            else:
+                is_okay = True
+            return JsonResponse({"is_okay":is_okay,"code":1},status=200)
+        else:
+            return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":2},status=200)
 
 class TestResult(View):
     @csrf_exempt
@@ -1451,7 +1473,7 @@ class CureSave(View):
             current.append(stucur.cur_curr)
             return JsonResponse({"current":current,"code":1},status=200)
         return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":2},satus=200)
-    
+   
 # class GetDaily(View):
 #     @csrt_exempt
 #     def post(self,request):
