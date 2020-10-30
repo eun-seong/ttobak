@@ -6,6 +6,7 @@ import Diagnose from './Router_Diagnose';
 import Therapy from './Router_Therapy';
 import Root from './Router_Root';
 import Main from './Router_Main';
+import PwChange from 'Routes/User/PwChange';
 import StdChange from 'Routes/User/StdChange';
 import StdInfo from 'Routes/User/StdInfo';
 import StdManaging from 'Routes/User/StdManaging';
@@ -21,6 +22,7 @@ export default () => (
             <Route path='/user/stdchange' exact component={StdChange} />
             <Route path='/user/stdinfo' exact component={StdInfo} />
             <Route path='/user/userinfo' exact component={UserInfo} />
+            <Route path='/user/pwchange' exact component={PwChange} />
             <Route path='/user/selectstd' exact component={SelectStudent} />
             <Route path='/user/selecticon/:student' exact component={SelectIcon} />
             <Route path='/user/stdstatistics' exact component={StdStatistics} />

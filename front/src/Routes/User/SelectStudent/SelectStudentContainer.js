@@ -1,6 +1,5 @@
 import React from 'react';
 import SelectStudentPresenter from './SelectStudentPresenter';
-import { Root_Api } from 'api';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';

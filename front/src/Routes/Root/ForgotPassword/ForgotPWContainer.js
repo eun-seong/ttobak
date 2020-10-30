@@ -1,6 +1,5 @@
 import React from 'react';
 import ForgotPWPresenter from './ForgotPWPresenter';
-import { Root_Api } from 'api';
 import { withRouter } from 'react-router-dom';
 
 class ForgetPassword extends React.Component {

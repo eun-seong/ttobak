@@ -76,6 +76,8 @@ export const user_modify = (email, pw, name, id) => {
 };
 
 export const user_delete = (id) => {
+  window.localStorage.removeItem('uid');
+
   return {
     type: USER_DELETE,
     promise: { method: 'post', url: 'user/delete', data: { id } }
@@ -90,13 +92,17 @@ export const user_get = (id) => {
 };
 
 export const user_autologin = () => {
+  const u_id = window.localStorage.getItem('uid');
+
   return {
     type: USER_AUTOLOGIN, 
-    data: {}
+    data: (u_id ? {u_id} : {})
   };
 }
 
 export const user_logout = (u_id) => {
+  window.localStorage.removeItem('uid');
+
   return {
     type: USER_LOGOUT, 
     data: {}
