@@ -83,6 +83,7 @@ export const D2 = {
 }
 
 export const D3 = {
+    bt_complete: imageURL + 'img/button/bt_complete.png',
     d3_background: imageURL + 'img/d3_attention/d3_background.png',
 }
 

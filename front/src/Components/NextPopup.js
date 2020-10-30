@@ -48,7 +48,7 @@ const Content = styled.div`
     height: auto;
 `;
 
-const Button = styled(Link)`
+const Button = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;

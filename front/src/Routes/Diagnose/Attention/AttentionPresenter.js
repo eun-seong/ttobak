@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import GameBackground from 'Components/GameBackground';
 import NextPopup from 'Components/NextPopup';
 import PausePopup from 'Components/PausePopup';
+import { D3, TTobak } from 'images';
 
 const Div = styled.div`
     display: flex;
@@ -25,19 +26,38 @@ const RecordingCircle = styled.div`
     height: 30px;
     border-radius: 100%;
     background-color: ${props => props.isRecording ? '#fe4a2f' : '#a8aaa9'};
-    right: 20px;
-    top: 20px;
+    bottom: 10px;
+    left: 10px;
+`;
+
+const CompleteButton = styled.img`
+    position: absolute;
+    width: 9%;
+    top: 15vh;
+    right: 10px;
+`;
+
+const Bubble = styled.img`
+    position:absolute;
+    width: 5%;
+    top: 40%;
+    left: 37%;
+    display: ${props => props.isPlaying ? 'block' : 'none'};
 `;
 
 const Attention = ({ props }) => {
     return (
         <Div>
+            <Bubble src={TTobak.speech_bubble} alt='bubble' isPlaying={props.isPlaying} />
+            <CompleteButton src={D3.bt_complete} alt='complete' onTouchEnd={props.onCompleteButtonHandle} />
             <RecordingCircle isRecording={props.isRecording}></RecordingCircle>
             <TTobakComponent src={props.TTobak} alt='또박이' />
             {
                 props.showPopup ?
                     <PausePopup
-                        onContinueButtonHandle={props.onContinueButtonHandle} />
+                        onContinueButtonHandle={props.onContinueButtonHandle}
+                        text={'그만 하기를 누르면 검사 진행 상황이 초기화됩니다.'}
+                        size={'1rem'} />
                     : null
             }
             {

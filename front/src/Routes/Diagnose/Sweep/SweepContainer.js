@@ -1,16 +1,32 @@
 import React from 'react';
-import SweepPresenter from './SweepPresenter';
-import { D1_Api, soundURL } from 'api';
-import { D1, TTobak } from 'images';
 import { withRouter } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { D1_Api, soundURL, D_tutorial } from 'api';
 import LoadingComp from 'Components/LoadingComp';
+import SweepPresenter from './SweepPresenter';
+import { D1, TTobak } from 'images';
 
+const idx_txt = 'swp';
 const UP = 'up';
 const DOWN = 'down';
+const initState = {
+    gameState: false,                           // 게임 상태
+    UpButton: D1.d1_UpButton_UP,                // 버튼 이미지 상태
+    DownButton: D1.d1_DownButton_UP,            // 버튼 이미지 상태
+    stdAnswer: [],                              // 학습자 정답
+    Answer: [],                                 // 정답 상자
+    TTobaki: TTobak.ttobak1_1,                  // 또박이 이미지 상태
+    swpSound: null,
+    isImageLoaded: false,
+    percent: 0,
+    showPopup: false,
+    showNextPopup: false,
+    currentIndex: 1,
+    totalNum: 0,
+    tutorialState: false,
+};
 
 class Sweep extends React.PureComponent {
     static propTypes = {
@@ -30,21 +46,7 @@ class Sweep extends React.PureComponent {
         this.picture = { D1, TTobak };
         this.totalImages = Object.keys(D1).length + Object.keys(TTobak).length;
 
-        this.state = {
-            gameState: false,                           // 게임 상태
-            UpButton: D1.d1_UpButton_UP,                // 버튼 이미지 상태
-            DownButton: D1.d1_DownButton_UP,            // 버튼 이미지 상태
-            stdAnswer: [],                              // 학습자 정답
-            Answer: [],                                 // 정답 상자
-            TTobaki: TTobak.ttobak1_1,                  // 또박이 이미지 상태
-            swpSound: null,
-            isImageLoaded: false,
-            percent: 0,
-            showPopup: false,
-            showNextPopup: false,
-            currentIndex: 1,
-            totalNum: 0,
-        };
+        this.state = initState;
     }
 
     async componentDidMount() {
@@ -84,22 +86,154 @@ class Sweep extends React.PureComponent {
             const { data } = await D1_Api.ask(s_id);
             console.log(data);
 
-            if (data.code === 1) {
-                const { answers, swp: { ques_id, ques_path1, ques_path2 } } = data;
-                this.currentIndex = 0;
-                this.ques_id = ques_id;
-                this.ques_path = [ques_path2, ques_path1];
-                this.oriAnswer = answers;
-                this.buttonSound = [new Audio(soundURL + this.ques_path[0]), new Audio(soundURL + this.ques_path[1])];
-                this.setState({
-                    totalNum: this.oriAnswer.length,
-                });
-                this.setListener();
-                setTimeout(() => this.playSound(), 3000);
+            switch (data.code) {
+                case 1:
+                    const { answers, swp: { ques_id, ques_path1, ques_path2 } } = data;
+                    this.currentIndex = 0;
+                    this.ques_id = ques_id;
+                    this.ques_path = [ques_path2, ques_path1];
+                    this.oriAnswer = answers;
+                    this.buttonSound = [new Audio(soundURL + this.ques_path[0]), new Audio(soundURL + this.ques_path[1])];
+                    this.setState({
+                        totalNum: this.oriAnswer.length,
+                    });
+                    this.setListener();
+                    setTimeout(() => this.playSound(), 3000);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 'tutorial':
+                    this.tutorial(data);
+                    break;
+                default:
+                    console.log('data message: ' + data.message);
+                    break;
             }
-            else console.log('data message: ' + data.message);
         } catch (e) {
             console.log('error: ' + e);
+        }
+    }
+
+    tutorial = (data) => {
+        this.voice = [];
+        this.voice_desc = [];
+        this.swp = [new Audio(soundURL + data.sample_ques.ques_path2), new Audio(soundURL + data.sample_ques.ques_path1)];
+        this.buttonSound = [new Audio(soundURL + data.sample_ques.ques_path2), new Audio(soundURL + data.sample_ques.ques_path1)];
+        for (let i = 0; i < 4; i++) {
+            this.voice.push(new Audio(soundURL + data.voice[i].voc_path));
+            this.voice_desc.push(data.voice[i].voc_desc);
+
+            this.voice[i].addEventListener('ended', () => {
+                this.setState({
+                    TTobaki: TTobak.ttobak1_1,
+                    gameState: 'tutorial',
+                    tutorialState: this.voice_desc[i],
+                });
+            });
+        }
+
+        const swpUp = (cnt) => {
+            if (cnt >= 2) {
+                setTimeout(() => {
+                    this.voice[1].play();
+                    this.setState({
+                        TTobaki: TTobak.ttobak3_2,
+                        gameState: false,
+                    })
+                }, 1000);
+                return cnt;
+            }
+
+            this.swp[0].play();
+            this.setState({
+                UpButton: D1.d1_UpButton_DOWN,
+            });
+            setTimeout(() => {
+                this.setState({
+                    UpButton: D1.d1_UpButton_UP,
+                });
+                setTimeout(() => {
+                    cnt = swpUp(++cnt);
+                }, 1000);
+            }, 500);
+        };
+
+        this.voice[0].addEventListener('ended', () => {
+            this.setState({
+                TTobaki: TTobak.ttobak1_1,
+            });
+
+            setTimeout(() => {
+                swpUp(0);
+            }, 1000);
+        })
+
+        this.voice[3].addEventListener('ended', async () => {
+            const { data } = await D_tutorial.answer(this.props.user.student.s_id, idx_txt);
+            console.log(data);
+            this.setState({
+                initState,
+            });
+            this.newRequest();
+        })
+
+        setTimeout(() => {
+            this.voice[0].play();
+            this.setState({
+                TTobaki: TTobak.ttobak3_2,
+                gameState: false,
+            })
+        }, 1500);
+
+        // this.voice = null;
+        // this.newRequest();
+    }
+
+    tutorialButtonEvent = (id) => {
+        const swpDown = (cnt) => {
+            if (cnt >= 2) {
+                setTimeout(() => {
+                    this.voice[2].play();
+                    this.setState({
+                        TTobaki: TTobak.ttobak3_2,
+                        gameState: false,
+                    })
+                }, 1200);
+                return cnt;
+            }
+
+            this.swp[1].play();
+            this.setState({
+                DownButton: D1.d1_DownButton_DOWN,
+            });
+            setTimeout(() => {
+                this.setState({
+                    DownButton: D1.d1_DownButton_UP,
+                });
+                setTimeout(() => {
+                    cnt = swpDown(++cnt);
+                }, 1000);
+            }, 500);
+        };
+
+        if (id === UP && this.state.tutorialState === this.voice_desc[1]) {
+            this.setState({
+                tutorialState: this.voice_desc[2],
+            })
+            setTimeout(() => {
+                swpDown(0);
+            }, 2000);
+        } else if (id === DOWN && this.state.tutorialState === this.voice_desc[2]) {
+            setTimeout(() => {
+                this.setState({
+                    TTobaki: TTobak.ttobak3_2,
+                    gameState: false,
+                    tutorialState: this.voice_desc[3],
+                })
+                this.voice[3].play();
+            }, 2000);
         }
     }
 
@@ -132,23 +266,22 @@ class Sweep extends React.PureComponent {
 
     onTouchStart = (id) => {
         const { Answer, stdAnswer, gameState } = this.state;
-        if (!gameState) return;
 
         switch (id) {
             case DOWN:
                 // console.log('down-down');
                 this.setState({
                     DownButton: D1.d1_DownButton_DOWN,
-                    Answer: Answer.concat(gameState ? D1.d1_AnswerDown : []),
-                    stdAnswer: stdAnswer.concat(gameState ? DOWN : [])
+                    Answer: Answer.concat(gameState === true ? D1.d1_AnswerDown : []),
+                    stdAnswer: stdAnswer.concat(gameState === true ? DOWN : [])
                 });
                 break;
             case UP:
                 // console.log('up-down');
                 this.setState({
                     UpButton: D1.d1_UpButton_DOWN,
-                    Answer: Answer.concat(gameState ? D1.d1_AnswerUp : []),
-                    stdAnswer: stdAnswer.concat(gameState ? UP : [])
+                    Answer: Answer.concat(gameState === true ? D1.d1_AnswerUp : []),
+                    stdAnswer: stdAnswer.concat(gameState === true ? UP : [])
                 });
                 break;
             default:
@@ -157,7 +290,6 @@ class Sweep extends React.PureComponent {
 
     onTouchEnd = (id) => {
         const { gameState } = this.state;
-        if (!gameState) return;
 
         switch (id) {
             case DOWN:
@@ -165,35 +297,44 @@ class Sweep extends React.PureComponent {
                 this.setState({
                     DownButton: D1.d1_DownButton_UP
                 });
-                if (gameState && !!this.buttonSound[1]) this.buttonSound[1].play();
+                if (gameState !== false && !!this.buttonSound[1]) this.buttonSound[1].play();
                 break;
             case UP:
                 // console.log('up-up');
                 this.setState({
                     UpButton: D1.d1_UpButton_UP
                 });
-                if (gameState && !!this.buttonSound[0]) this.buttonSound[0].play();
+                if (gameState !== false && !!this.buttonSound[0]) this.buttonSound[0].play();
                 break;
             default:
         }
-        if (this.state.Answer.length === 2) this.finished();
+
+        if (gameState === 'tutorial') {
+            this.tutorialButtonEvent(id);
+        }
+        else if (this.state.Answer.length === 2) this.finished();
     }
 
     TTobakiTouch = async () => {
-        if (this.state.gameState) {
+        if (this.state.gameState === true) {
             this.playSound();
         }
     }
 
     playSound = () => {
-        this.setState({
-            gameState: false,
-        });
+        if (!!this.state.swpSound[0]) {
+            this.setState({
+                gameState: false,
+                TTobaki: TTobak.ttobak3_2,
+            });
 
-        if (!!this.state.swpSound[0]) this.state.swpSound[0].play();
+            this.state.swpSound[0].play();
+        }
     }
 
     finished = async () => {
+        if (this.state.gameState === 'tutorial') return;
+
         this.setState({
             gameState: false,
             TTobaki: TTobak.ttobak2_1,
@@ -206,7 +347,6 @@ class Sweep extends React.PureComponent {
         const answer = [this.oriAnswer[this.currentIndex][0], this.oriAnswer[this.currentIndex][1]];
 
         try {
-            console.log(s_id, this.ques_id, answer, stdAnswer)
             const { data } = await D1_Api.answer(s_id, this.ques_id, answer, stdAnswer);
             console.log(data);
 
@@ -222,7 +362,7 @@ class Sweep extends React.PureComponent {
             }, 1500);
 
             if (data.code === 1) {
-                if (data.to_next || data.to_next_freq) {
+                if (data.to_next === true || data.to_next_freq === true) {
                     this.newRequest();
                     console.log('next');
                 }
@@ -230,11 +370,6 @@ class Sweep extends React.PureComponent {
                     this.setState({
                         showNextPopup: true,
                     });
-                } else if (!data.to_next && !data.to_next_freq) {
-                    this.setState({
-                        showNextPopup: true,
-                    });
-                    return;
                 } else {
                     if (this.currentIndex < this.oriAnswer.length - 1) this.currentIndex++;
                     else {

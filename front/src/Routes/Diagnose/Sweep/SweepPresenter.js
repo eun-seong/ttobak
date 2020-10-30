@@ -76,7 +76,9 @@ const Sweep = ({ props }) => {
             {
                 props.showPopup ?
                     <PausePopup
-                        onContinueButtonHandle={props.onContinueButtonHandle} />
+                        onContinueButtonHandle={props.onContinueButtonHandle}
+                        text={'그만 하기를 누르면 검사 진행 상황이 초기화됩니다.'}
+                        size={'1rem'} />
                     : null
             }
             {

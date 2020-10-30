@@ -146,6 +146,15 @@ export const D3_Api = {
         }),
 };
 
+export const D_tutorial = {
+    answer: (s_id, idx_txt) =>
+        api.post(url.diagnose_answer, {
+            "s_id": s_id,
+            "idx_txt": idx_txt,
+            "tutorial": "true"
+        })
+}
+
 export const Daily_Api = {
     ask: (s_id) =>
         api.post(url.therapy_ask, {

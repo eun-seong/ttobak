@@ -5,10 +5,24 @@ import { connect } from 'react-redux';
 
 import LoadingComp from 'Components/LoadingComp';
 import AttentionPresenter from './AttentionPresenter';
-import { SoundEffect } from 'images';
 
-import { D3, TTobak } from 'images';
-import { D3_Api, soundURL } from 'api';
+import { D3, TTobak, SoundEffect } from 'images';
+import { D3_Api, soundURL, D_tutorial } from 'api';
+
+const idx_txt = 'foc';
+const initState = {
+    gameState: false,
+    s_id: 4,
+    isImageLoaded: false,
+    percent: 0,
+    showPopup: false,
+    showNextPopup: false,
+    isRecording: false,
+    TTobak: TTobak.ttobak1_1,
+    currentIndex: 1,
+    totalNum: 0,
+    isPlaying: false,
+};
 
 class Attention extends React.Component {
     static propTypes = {
@@ -29,18 +43,7 @@ class Attention extends React.Component {
         this.currentAudio = null;
         this.audioResult = null;
 
-        this.state = {
-            gameState: false,
-            s_id: 4,
-            isImageLoaded: false,
-            percent: 0,
-            showPopup: false,
-            showNextPopup: false,
-            isRecording: false,
-            TTobak: TTobak.ttobak1_1,
-            currentIndex: 1,
-            totalNum: 0,
-        };
+        this.state = initState;
     }
 
     async componentDidMount() {
@@ -56,10 +59,10 @@ class Attention extends React.Component {
             return;
         }
 
-        this.newRequest();
         this.imagesPreloading(this.picture);
 
-        window.addEventListener("android", this.androidResponse);
+        window.addEventListener('android', this.androidResponse);
+        window.addEventListener('androidStopRecording', this.stopRecording);
     }
 
     componentWillUnmount() {
@@ -68,33 +71,119 @@ class Attention extends React.Component {
             this.currentAudio = null;
         }
         window.removeEventListener("android", this.androidResponse)
+        window.removeEventListener('androidStopRecording', this.stopRecording);
     }
 
     androidResponse = async (e) => {
         console.log(e.detail);
-        this.setState({
-            isRecording: false,
-        })
-        this.recording_end_sound.play();
         this.audioResult = e.detail;
         this.andriodListener();
+    }
+
+    stopRecording = (e) => {
+        console.log(e.detail);
+        clearInterval(this.setRecording);
+        this.recording_end_sound.play();
+        this.setState({
+            isRecording: false,
+        });
     }
 
     newRequest = async () => {
         const { user } = this.props;
 
-        const data = await D3_Api.ask(1, user.student.s_id);
+        const { data } = await D3_Api.ask(user.student.s_id, user.student.s_id);
         console.log(data);
 
-        if (data.code === 1) {
-            this.cure = data.focus;
-            this.currentIndex = 0;
-            this.currentCure = this.cure[this.currentIndex];
-            this.currentAudio = new Audio(soundURL + this.currentCure.ques_path1);
-            this.setState({
-                totalNum: this.cure.length,
-            })
+        switch (data.code) {
+            case 1:
+                this.cure = data.focus;
+                this.currentIndex = 0;
+                this.currentCure = this.cure[this.currentIndex];
+                this.currentAudio = new Audio(soundURL + this.currentCure.ques_path1);
+                this.setState({
+                    totalNum: this.cure.length,
+                })
+                setTimeout(() => this.playSound(), 2000);
+                break;
+            case 'tutorial':
+                this.tutorial(data);
+                break;
+            default:
+                break;
         }
+    }
+
+    tutorial = (data) => {
+        this.setState({
+            gameState: 'tutorial',
+        })
+        this.ques_char = data.sample_ques.ques_char;
+        this.sample_ques = new Audio(soundURL + data.sample_ques.ques_path1);
+        this.voice = [];
+        for (let i = 0; i < data.voice.length; i++) {
+            this.voice.push(new Audio(soundURL + data.voice[i].voc_path));
+        }
+
+        this.voice[0].addEventListener('ended', () => {
+            this.setState({
+                TTobaki: TTobak.ttobak3_2,
+            });
+            setTimeout(() => {
+                this.sample_ques.play();
+            }, 1000);
+        });
+
+        this.sample_ques.addEventListener('ended', () => {
+            this.setState({
+                TTobaki: TTobak.ttobak1_1,
+            });
+            setTimeout(() => {
+                this.voice[1].play();
+                this.setState({
+                    TTobaki: TTobak.ttobak3_2,
+                    isPlaying: true,
+                });
+            }, 1000);
+        });
+
+        this.voice[1].addEventListener('ended', () => {
+            this.setState({
+                TTobaki: TTobak.ttobak1_1,
+                isPlaying: false,
+            });
+            setTimeout(() => {
+                this.recording_start_sound.play();
+                this.setRecording = setInterval(() => {
+                    this.setState({
+                        isRecording: !this.state.isRecording,
+                    });
+                }, 500);
+                window.BRIDGE.recordAudio('m', this.currentCure.cure_text);
+            }, 800);
+        });
+
+        this.voice[2].addEventListener('ended', () => {
+            this.setState({
+                TTobaki: TTobak.ttobak1_1,
+            });
+            setTimeout(() => {
+                this.sample_ques.play();
+            }, 1000);
+        });
+
+        this.voice[3].addEventListener('ended', async () => {
+            const { data } = await D_tutorial.answer(this.props.user.student.s_id, idx_txt);
+            console.log(data);
+            this.setState({
+                initState,
+            });
+            this.newRequest();
+        });
+
+        setTimeout(() => {
+            this.voice[0].play();
+        }, 1000);
     }
 
     andriodListener = async () => {
@@ -104,16 +193,17 @@ class Attention extends React.Component {
 
         try {
             if (this.audioResult.status === 'Success') {
-                const { s_id } = this.state;
-                console.log(
-                    s_id,
-                    this.currentCure.ques_id,
-                    this.audioResult.score,
-                    this.audioResult.phone_score,
-                    this.audioResult.speed_score,
-                    this.audioResult.rhythm_score)
+                const { user } = this.props;
+                if (this.state.gameState === 'tutorial') {
+                    if (this.audioResult.score < 85) {
+                        this.voice[2].play();
+                    } else {
+                        this.voice[3].play();
+                    }
+                    return;
+                }
                 const { data } = await D3_Api.answer(
-                    s_id,
+                    user.student.s_id,
                     this.currentCure.ques_id,
                     this.audioResult.score,
                     this.audioResult.phone_score,
@@ -167,20 +257,23 @@ class Attention extends React.Component {
         if (!!this.currentAudio) {
             this.setState({
                 TTobaki: TTobak.ttobak3_2,
+                isPlaying: true,
             });
             this.currentAudio.play();
             this.currentAudio.addEventListener('ended', () => {
                 this.setState({
                     TTobaki: TTobak.ttobak1_1,
+                    isPlaying: false,
                 });
                 setTimeout(() => {
-                    console.log('이제 따라 읽어볼까요?');
                     this.recording_start_sound.play();
-                    this.setState({
-                        isRecording: true,
-                    });
-                    window.BRIDGE.recordAudio('m', this.currentCure.ques_char);
-                }, 1000);
+                    this.setRecording = setInterval(() => {
+                        this.setState({
+                            isRecording: !this.state.isRecording,
+                        });
+                    }, 500);
+                    window.BRIDGE.recordAudio('m', this.currentCure.cure_text);
+                }, 800);
             });
         }
     }
@@ -199,7 +292,7 @@ class Attention extends React.Component {
                         this.setState({
                             isImageLoaded: true,
                         })
-                        setTimeout(() => this.playSound(), 2000);
+                        this.newRequest();
                     }
                 };
             }
@@ -229,19 +322,26 @@ class Attention extends React.Component {
         })
     }
 
+    onCompleteButtonHandle = () => {
+        if (this.state.isRecording) {
+            window.BRIDGE.requestStopRecording();
+        }
+    }
+
     render() {
-        const { isImageLoaded, showPopup, showNextPopup, percent, TTobak, isRecording } = this.state;
+        const { isImageLoaded, showPopup, showNextPopup, percent, TTobak, isRecording, isPlaying } = this.state;
 
         if (isImageLoaded) {
             return (<AttentionPresenter
                 Background={D3.d3_background}
                 TTobak={TTobak}
-                isRecording={isRecording}
+                isRecording={isRecording} isPlaying={isPlaying}
                 showPopup={showPopup}
                 showNextPopup={showNextPopup}
                 onPopupButtonHandle={this.onPopupButtonHandle}
                 onContinueButtonHandle={this.onContinueButtonHandle}
                 onPauseButtonHandle={this.onPauseButtonHandle}
+                onCompleteButtonHandle={this.onCompleteButtonHandle}
                 currentIndex={this.state.currentIndex}
                 totalNum={this.state.totalNum}
             />);

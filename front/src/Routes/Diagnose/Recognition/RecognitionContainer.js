@@ -6,8 +6,25 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { TTobak, D2 } from 'images';
-import { D2_Api, soundURL } from 'api';
+import { D2_Api, soundURL, D_tutorial } from 'api';
 import LoadingComp from 'Components/LoadingComp';
+
+const idx_txt = 'ph';
+const initState = {
+    gameState: false,
+    Box: [D2.d2_Box1_1, D2.d2_Box2_1],          // Box 이미지
+    TTobaki: TTobak.ttobak3_1,
+    oriAnswer: null,                            // 정답
+    stdAnswer: null,                            // 학생 답
+    answerIndex: 0,
+    isAnimate: [false, false],
+    isImageLoaded: false,
+    showPopup: false,
+    showNextPopup: false,
+    currentIndex: 1,
+    totalNum: 0,
+};
+
 class Recognition extends React.PureComponent {
     static propTypes = {
         user: PropTypes.objectOf(PropTypes.any).isRequired,
@@ -16,20 +33,7 @@ class Recognition extends React.PureComponent {
 
     constructor() {
         super();
-        this.state = {
-            gameState: false,
-            Box: [D2.d2_Box1_1, D2.d2_Box2_1],          // Box 이미지
-            TTobaki: TTobak.ttobak3_1,
-            oriAnswer: null,                            // 정답
-            stdAnswer: null,                            // 학생 답
-            answerIndex: 0,
-            isAnimate: [false, false],
-            isImageLoaded: false,
-            showPopup: false,
-            showNextPopup: true,
-            currentIndex: 1,
-            totalNum: 0,
-        };
+        this.state = initState;
 
         this.phs = null;
         this.answers = null;
@@ -55,13 +59,12 @@ class Recognition extends React.PureComponent {
             return;
         }
 
-        this.newRequest();
         this.imagesPreloading(this.picture);
     }
 
     componentWillUnmount() {
-        for (var i = 0; i < this.phSound.length; i++) {
-            if (!!this.phSound[i]) {
+        if (!!this.phSound) {
+            for (var i = 0; i < this.phSound.length; i++) {
                 this.phSound[i].pause();
                 this.phSound[i] = null;
             }
@@ -77,28 +80,113 @@ class Recognition extends React.PureComponent {
             const { data } = await D2_Api.ask(s_id);
             console.log(data);
 
-            if (data.code === 1) {
-                this.answers = data.answers;
-                this.phs = data.phs;
-                this.currentIndex = 0;
-                this.currentDiag = [
-                    this.getListFilter('ques_id', this.answers[this.currentIndex][0]),
-                    this.getListFilter('ques_id', this.answers[this.currentIndex][1]),
-                    this.getListFilter('ques_id', this.answers[this.currentIndex][2]),
-                ];
-                this.setState({
-                    gameState: false,
-                    Box: [D2.d2_Box1_1, D2.d2_Box2_1],
-                    stdAnswer: null,
-                    TTobaki: TTobak.ttobak1_1,
-                    answerIndex: (this.currentDiag[0].ques_id === this.currentDiag[2].ques_id ? 0 : 1),
-                    totalNum: this.answers.length,
-                });
-                this.setListener();
+            switch (data.code) {
+                case 1:
+                    this.answers = data.answers;
+                    this.phs = data.phs;
+                    this.currentIndex = 0;
+                    this.currentDiag = [
+                        this.getListFilter('ques_id', this.answers[this.currentIndex][0]),
+                        this.getListFilter('ques_id', this.answers[this.currentIndex][1]),
+                        this.getListFilter('ques_id', this.answers[this.currentIndex][2]),
+                    ];
+                    this.setState({
+                        gameState: false,
+                        Box: [D2.d2_Box1_1, D2.d2_Box2_1],
+                        stdAnswer: null,
+                        TTobaki: TTobak.ttobak1_1,
+                        answerIndex: (this.currentDiag[0].ques_id === this.currentDiag[2].ques_id ? 0 : 1),
+                        totalNum: this.answers.length,
+                    });
+                    this.setListener();
+                    setTimeout(() => this.playSound(), 2000);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 'tutorial':
+                    this.tutorial(data);
+                    break;
+                default:
+                    break;
             }
         } catch (e) {
             console.log(e);
         }
+    }
+
+    tutorial = (data) => {
+        this.setState({
+            gameState: 'tutorial',
+        })
+        this.sample_answer = new Audio(soundURL + data.sample_ques[0].ques_path1);
+        this.sample_ques = [new Audio(soundURL + data.sample_ques[0].ques_path1), new Audio(soundURL + data.sample_ques[1].ques_path1)];
+        this.voice = [
+            new Audio(soundURL + data.voice[0].voc_path),
+            new Audio(soundURL + data.voice[1].voc_path),
+            new Audio(soundURL + data.voice[2].voc_path),
+        ];
+
+        this.voice[0].addEventListener('ended', () => {
+            setTimeout(() => {
+                this.sample_answer.play();
+            }, 1000);
+        });
+
+        this.sample_answer.addEventListener('ended', () => {
+            setTimeout(() => {
+                this.voice[1].play();
+            }, 1000);
+        });
+
+        this.voice[1].addEventListener('ended', () => {
+            this.setState({
+                TTobaki: TTobak.ttobak1_1
+            })
+            setTimeout(() => {
+                this.sample_ques[0].play();
+                this.setState({
+                    isAnimate: [true, false],
+                    TTobaki: TTobak.ttobak3_2
+                });
+            }, 1000);
+        });
+
+        this.sample_ques[0].addEventListener('ended', () => {
+            this.setState({
+                TTobaki: TTobak.ttobak1_1
+            })
+            setTimeout(() => {
+                this.sample_ques[1].play();
+                this.setState({
+                    isAnimate: [false, true],
+                    TTobaki: TTobak.ttobak3_2
+                });
+            }, 300);
+        });
+
+        this.voice[2].addEventListener('ended', async () => {
+            const { data } = await D_tutorial.answer(this.props.user.student.s_id, idx_txt);
+            console.log(data);
+            this.setState({
+                initState,
+            });
+            this.newRequest();
+        });
+
+        setTimeout(() => {
+            this.voice[0].play();
+        }, 2000);
+    }
+
+    tutorialBoxHandle = () => {
+        setTimeout(() => {
+            this.setState({
+                gameState: false,
+            })
+            this.voice[2].play();
+        }, 1000);
     }
 
     setListener = () => {
@@ -117,7 +205,7 @@ class Recognition extends React.PureComponent {
                     this.phSound[0].play();
                     this.setState({
                         isAnimate: [true, false],
-                        TTobaki: TTobak.ttobak3_2
+                        TTobaki: TTobak.ttobak3_2,
                     });
                 }
             }, 800);
@@ -150,7 +238,7 @@ class Recognition extends React.PureComponent {
     }
 
     TTobakiTouch = async () => {
-        if (!!this.state.gameState) {
+        if (this.state.gameState === true) {
             this.playSound();
             this.setState({
                 gameState: false,
@@ -161,7 +249,7 @@ class Recognition extends React.PureComponent {
 
     onBoxTouchHandle = async (id) => {
         const { Box, answerIndex, TTobaki, gameState } = this.state;
-        if (!gameState) return;
+        if (gameState === false) return;
 
         switch (id) {
             case 0:
@@ -182,6 +270,10 @@ class Recognition extends React.PureComponent {
                 break;
         }
 
+        if (gameState === 'tutorial') {
+            this.tutorialBoxHandle();
+            return;
+        }
         this.finished(id);
     }
 
@@ -274,7 +366,7 @@ class Recognition extends React.PureComponent {
                         this.setState({
                             isImageLoaded: true,
                         })
-                        setTimeout(() => this.playSound(), 1000);
+                        this.newRequest();
                     }
                 };
             }

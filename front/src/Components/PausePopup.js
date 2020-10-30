@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { colors } from 'const';
 import { Pause } from 'images';
@@ -34,8 +34,15 @@ const Title = styled.div`
     width: 100%;
     margin: 6% 0 0 0;
     text-align: center;
-    font-weight: bold;
-    font-size: 2rem;
+    ${props => {
+        if (!!props.size) return css`
+            font-size: ${props.size};
+        `;
+        else return css`
+            font-weight: bold;
+            font-size: 2rem;
+        `;
+    }}
 `;
 
 const Content = styled.div`
@@ -66,11 +73,11 @@ const ButtonText = styled.div`
     text-align: center;
 `;
 
-const PausePopup = ({ onContinueButtonHandle, text }) => {
+const PausePopup = ({ onContinueButtonHandle, text, size }) => {
     return (
         <Div>
             <DivInner>
-                {!!text ? <Title>{text}</Title> : null}
+                {!!text ? <Title size={size}>{text}</Title> : null}
                 <Content>
                     <Button onTouchEnd={onContinueButtonHandle}>
                         <ButtonImg src={Pause.bt_continue} />
