@@ -186,9 +186,6 @@ class Sweep extends React.PureComponent {
                 gameState: false,
             })
         }, 1500);
-
-        // this.voice = null;
-        // this.newRequest();
     }
 
     tutorialButtonEvent = (id) => {

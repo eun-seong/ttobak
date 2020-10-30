@@ -72,6 +72,8 @@ class Attention extends React.Component {
         }
         window.removeEventListener("android", this.androidResponse)
         window.removeEventListener('androidStopRecording', this.stopRecording);
+        this.sample_ques = null;
+        this.voice = null;
     }
 
     androidResponse = async (e) => {
@@ -130,7 +132,7 @@ class Attention extends React.Component {
                 TTobaki: TTobak.ttobak3_2,
             });
             setTimeout(() => {
-                this.sample_ques.play();
+                if (!!this.sample_ques) this.sample_ques.play();
             }, 1000);
         });
 
@@ -139,7 +141,7 @@ class Attention extends React.Component {
                 TTobaki: TTobak.ttobak1_1,
             });
             setTimeout(() => {
-                this.voice[1].play();
+                if (!!this.voice[1]) this.voice[1].play();
                 this.setState({
                     TTobaki: TTobak.ttobak3_2,
                     isPlaying: true,
@@ -159,7 +161,7 @@ class Attention extends React.Component {
                         isRecording: !this.state.isRecording,
                     });
                 }, 500);
-                window.BRIDGE.recordAudio('m', this.currentCure.cure_text);
+                window.BRIDGE.recordAudio('m', this.ques_char);
             }, 800);
         });
 
@@ -168,7 +170,7 @@ class Attention extends React.Component {
                 TTobaki: TTobak.ttobak1_1,
             });
             setTimeout(() => {
-                this.sample_ques.play();
+                if (!!this.sample_ques) this.sample_ques.play();
             }, 1000);
         });
 
@@ -179,10 +181,12 @@ class Attention extends React.Component {
                 initState,
             });
             this.newRequest();
+            this.sample_ques = null;
+            this.voice = null;
         });
 
         setTimeout(() => {
-            this.voice[0].play();
+            if (!!this.voice[0]) this.voice[0].play();
         }, 1000);
     }
 
@@ -196,9 +200,9 @@ class Attention extends React.Component {
                 const { user } = this.props;
                 if (this.state.gameState === 'tutorial') {
                     if (this.audioResult.score < 85) {
-                        this.voice[2].play();
+                        if (!!this.voice[2]) this.voice[2].play();
                     } else {
-                        this.voice[3].play();
+                        if (!!this.voice[3]) this.voice[3].play();
                     }
                     return;
                 }
