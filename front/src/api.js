@@ -244,7 +244,7 @@ export const T_Api4 = {
             'cure_id3': cure_id[2],
             'stu_answer': stu_answer,
             'ori_answer': ori_answer,
-            'is_review': is_review.
+            'is_review': is_review,
             'is_daily': is_daily,
         }),
 };

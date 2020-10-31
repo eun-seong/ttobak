@@ -6,7 +6,7 @@ import * as Sentry from '@sentry/browser';
 
 import ShadowingPresenter from './ShadowingPresenter';
 import { T1, TTobak, SoundEffect } from 'images';
-import { T1_Api, soundURL } from 'api';
+import { T1_Api, soundURL, T_tutorial } from 'api';
 import LoadingComp from 'Components/LoadingComp';
 
 const inistState = {
@@ -32,7 +32,7 @@ class Shadowing extends React.Component {
         dispatch: PropTypes.func.isRequired,
     };
 
-    constructor({ match, location }) {
+    constructor({ match }) {
         super();
         this.idx_text = match.params.type;
         this.learning_type = match.params.learning_type;
@@ -48,19 +48,9 @@ class Shadowing extends React.Component {
         this.totalImages = Object.keys(this.picture.T1).length + Object.keys(this.picture.TTobak).length;
         this.numOfLoadedImage = 0;
         this.state = inistState;
-
-        if (this.learning_type === 'daily') {
-            console.log(location.state.data.read);
-            this.cure = location.state.data.read;
-            this.state = {
-                ...this.state,
-                totalNum: this.cure.length,
-            }
-        }
     }
 
     async componentDidMount() {
-        new Error();
         const { user } = this.props;
 
         if (!user.user.u_id || !user.student.s_id) {
@@ -68,16 +58,6 @@ class Shadowing extends React.Component {
             return;
         }
 
-        if (this.learning_type !== 'daily') this.newRequest();
-        else {
-            this.currentCure = this.cure[this.currentIndex];
-            this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
-            if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
-                this.currentCure.cure_text = this.currentCure.cure_word;
-            this.state = {
-                cureText: this.currentCure.cure_text
-            };
-        }
         this.imagesPreloading(this.picture);
 
         window.addEventListener('android', this.androidResponse);
@@ -114,27 +94,61 @@ class Shadowing extends React.Component {
         const { user } = this.props;
         const s_id = user.student.s_id;
 
-        try {
-            const { data } = await T1_Api.ask(s_id, this.idx_text);
-            console.log(data);
+        const { data } = await T1_Api.ask(s_id, this.idx_text);
+        console.log(data);
 
-            if (data.code === 'specified' || data.code === 1) {
-                this.currentIndex = 0;
-                this.cure = data.cure;
-                this.currentCure = data.cure[this.currentIndex];
-                this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
-                if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
-                    this.currentCure.cure_text = this.currentCure.cure_word;
-                this.setState({
-                    TTobaki: TTobak.ttobak1_1,
-                    cureText: this.currentCure.cure_text,
-                    totalNum: this.cure.length,
-                });
-                setTimeout(() => this.playSound(), 1000);
-            }
-        } catch (e) {
-            console.log(e);
+        this.intro(data.read_voice);
+
+        if (data.code === 'specified' || data.code === 1) {
+            this.currentIndex = 0;
+            this.cure = data.cure;
+            this.currentCure = data.cure[this.currentIndex];
+            this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
+            if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
+                this.currentCure.cure_text = this.currentCure.cure_word;
+            this.setState({
+                TTobaki: TTobak.ttobak1_1,
+                cureText: this.currentCure.cure_text,
+                totalNum: this.cure.length,
+            });
         }
+    }
+
+    daily = () => {
+        console.log(this.props.location.state.data);
+        this.intro(this.props.location.state.data.read_voice);
+
+        this.cure = this.props.location.state.data.cure;
+        this.currentCure = this.cure[this.currentIndex];
+        this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
+        if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
+            this.currentCure.cure_text = this.currentCure.cure_word;
+
+        this.setState({
+            totalNum: this.cure.length,
+            cureText: this.currentCure.cure_text
+        });
+    }
+
+    intro = (data) => {
+        this.reac_voice = null;
+        this.read_voice = [
+            new Audio(soundURL + data[0].voc_path),
+            new Audio(soundURL + data[1].voc_path),
+            new Audio(soundURL + data[2].voc_path),
+            new Audio(soundURL + data[3].voc_path),
+            new Audio(soundURL + data[4].voc_path),
+        ];
+
+        this.read_voice[0].addEventListener('ended', () => {
+            setTimeout(() => this.playSound(), 1000);
+        });
+
+        this.read_voice[4].addEventListener('ended', () => {
+            this.nextStep();
+        });
+
+        this.read_voice[0].play();
     }
 
     androidResponse = async (e) => {
@@ -158,85 +172,87 @@ class Shadowing extends React.Component {
             TTobaki: TTobak.ttobak2_1,
         });
 
-        try {
-            if (this.audioResult.status === 'Success') {
-                const { user } = this.props;
-                const s_id = user.student.s_id;
-                const { data } = await T1_Api.answer(
-                    s_id,
-                    this.audioResult.score,
-                    this.audioResult.phone_score,
-                    this.audioResult.speed_score,
-                    this.audioResult.rhythm_score,
-                    this.learning_type === 'review' ? 'T' : 'F',
-                    this.currentCure.cure_id,
-                    this.idx_text,
-                    this.learning_type === 'daily' ? 'T' : 'F',
-                );
-                console.log(data);
+        if (this.audioResult.status === 'Success') {
+            const { user } = this.props;
+            const s_id = user.student.s_id;
+            const { data } = await T1_Api.answer(
+                s_id,
+                this.audioResult.score,
+                this.audioResult.phone_score,
+                this.audioResult.speed_score,
+                this.audioResult.rhythm_score,
+                this.learning_type === 'review' ? 'T' : 'F',
+                this.currentCure.cure_id,
+                this.idx_text,
+                this.learning_type === 'daily' ? 'T' : 'F',
+            );
+            console.log(data);
 
-                if (data.code === 1) {
-                    if (data.retry) {
-                        this.retryAudio = new Audio(soundURL + data.class_voice.voc_path);
-                        this.retryAudio.addEventListener('ended', () => {
-                            this.setState({
-                                TTobaki: TTobak.ttobak3_1,
-                            })
-                            setTimeout(() => {
-                                this.currentAudio.play();
-                                this.setState({
-                                    TTobaki: TTobak.ttobak3_2,
-                                    isPlaying: true,
-                                })
-                            }, 3000);
-                        });
-
-                        setTimeout(() => {
-                            if (!!this.retryAudio) {
-                                this.retryAudio.play();
-                                this.setState({
-                                    TTobaki: TTobak.ttobak3_2,
-                                });
-                            }
-                        }, 1000);
-                        return;
-                    }
-
-                    if (this.currentIndex < this.cure.length - 1) {
-                        this.currentIndex++;
-                    } else {
-                        this.gameDone();
-                        return;
-                    }
-                    this.currentCure = this.cure[this.currentIndex];
-                    this.currentAudio = null;
-                    this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
-                    if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
-                        this.currentCure.cure_text = this.currentCure.cure_word;
-
-                    setTimeout(() => {
+            if (data.code === 1) {
+                if (data.retry) {
+                    this.retryAudio = new Audio(soundURL + data.class_voice.voc_path);
+                    this.retryAudio.addEventListener('ended', () => {
                         this.setState({
-                            TTobaki: TTobak.ttobak1_1,
-                            cureText: this.currentCure.cure_text,
-                            currentIndex: this.currentIndex + 1
-                        });
-                    }, 3000);
+                            TTobaki: TTobak.ttobak3_1,
+                        })
+                        setTimeout(() => {
+                            this.currentAudio.play();
+                            this.setState({
+                                TTobaki: TTobak.ttobak3_2,
+                                isPlaying: true,
+                            })
+                        }, 3000);
+                    });
 
                     setTimeout(() => {
-                        this.playSound();
-                    }, 5500);
-
-                } else if (data.code === 2) {
-                    this.gameDone();
+                        if (!!this.retryAudio) {
+                            this.retryAudio.play();
+                            this.setState({
+                                TTobaki: TTobak.ttobak3_2,
+                            });
+                        }
+                    }, 1000);
+                    return;
+                } else {
+                    setTimeout(() => {
+                        this.read_voice[4].play();
+                    }, 1000);
                 }
-                else console.log(data.message);
 
-            } else {
-                console.log(this.audioResult.message);
+            } else if (data.code === 2) {
+                this.gameDone();
             }
-        } catch (e) {
-            console.log(e);
+            else console.log(data.message);
+
+        } else {
+            console.log(this.audioResult.message);
         }
+    }
+
+    nextStep = () => {
+        if (this.currentIndex < this.cure.length - 1) {
+            this.currentIndex++;
+        } else {
+            this.gameDone();
+            return;
+        }
+        this.currentCure = this.cure[this.currentIndex];
+        this.currentAudio = null;
+        this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
+        if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
+            this.currentCure.cure_text = this.currentCure.cure_word;
+
+        setTimeout(() => {
+            this.setState({
+                TTobaki: TTobak.ttobak1_1,
+                cureText: this.currentCure.cure_text,
+                currentIndex: this.currentIndex + 1
+            });
+        }, 2000);
+
+        setTimeout(() => {
+            this.playSound();
+        }, 4000);
     }
 
     playSound = () => {
@@ -300,9 +316,10 @@ class Shadowing extends React.Component {
                         this.setState({
                             isImageLoaded: true,
                             TTobaki: TTobak.ttobak1_1,
-                        })
-                        this.newRequest();
+                        });
                         clearTimeout(timeoutPreloading);
+                        if (this.learning_type !== 'daily') this.newRequest();
+                        else this.daily();
                     }
                 };
             }

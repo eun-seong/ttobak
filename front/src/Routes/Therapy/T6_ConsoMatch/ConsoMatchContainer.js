@@ -7,7 +7,21 @@ import { connect } from 'react-redux';
 
 import LoadingComp from 'Components/LoadingComp';
 import { T6, Characters } from 'images';
-import { T_Api4, soundURL } from 'api';
+import { T_Api4, soundURL, T_tutorial } from 'api';
+
+const idx_txt = 'consomatch';
+const initState = {
+    gameState: false,
+    PicBoxList: null,
+    Worm: Characters.worm2_2,
+    isImageLoaded: false,
+    showPopup: false,
+    showDonePopup: false,
+    showDailyPopup: false,
+    percent: 0,
+    currentIndex: 1,
+    totalNum: 0,
+};
 
 class ConsoMatch extends React.Component {
     static propTypes = {
@@ -15,7 +29,7 @@ class ConsoMatch extends React.Component {
         dispatch: PropTypes.func.isRequired,
     };
 
-    constructor({ match, location }) {
+    constructor({ match }) {
         super();
         this.learning_type = match.params.learning_type;
         this.cure = null;
@@ -27,39 +41,7 @@ class ConsoMatch extends React.Component {
         this.picture = { T6, Characters };
         this.totalImages = Object.keys(T6).length + Object.keys(Characters).length;
 
-        this.state = {
-            gameState: false,
-            PicBoxList: null,
-            Worm: Characters.worm2_2,
-            isImageLoaded: false,
-            showPopup: false,
-            showDonePopup: false,
-            showDailyPopup: false,
-            percent: 0,
-            currentIndex: 1,
-            totalNum: 0,
-        };
-
-        if (this.learning_type === 'daily') {
-            console.log(location.state.data.cure);
-            this.answer = location.state.data.answer;
-            this.cure = location.state.data.cure;
-
-            this.currentCure = this.answer[this.currentIndex];
-            console.log(soundURL + this.getListFilter('cure_tid', this.currentCure[0]).cure_path2);
-
-            this.currentAudio = new Audio(soundURL + this.getListFilter('cure_tid', this.currentCure[3][0]).cure_path);
-            this.currentAudio.addEventListener('ended', () => {
-                this.setState({
-                    gameState: true,
-                    Worm: Characters.worm2_2,
-                })
-            })
-            this.state = {
-                ...this.state,
-                totalNum: this.answer.length,
-            }
-        }
+        this.state = initState;
     }
 
     componentDidCatch() {
@@ -73,16 +55,6 @@ class ConsoMatch extends React.Component {
         if (!user.user.u_id || !user.student.s_id) {
             this.props.history.push('/root/signin');
             return;
-        }
-        if (this.learning_type !== 'daily') this.newRequest();
-        else {
-            this.setState({
-                PicBoxList: [
-                    soundURL + this.getListFilter('cure_tid', this.currentCure[0]).cure_path2,
-                    soundURL + this.getListFilter('cure_tid', this.currentCure[1]).cure_path2,
-                    soundURL + this.getListFilter('cure_tid', this.currentCure[2]).cure_path2,
-                ]
-            })
         }
     }
 
@@ -102,27 +74,118 @@ class ConsoMatch extends React.Component {
         const { user } = this.props;
         const s_id = user.student.s_id;
 
-        try {
-            const { data } = await T_Api4.ask(s_id);
-            console.log(data);
+        const { data } = await T_Api4.ask(s_id);
+        console.log(data);
 
-            if (data.code === 'specified' || data.code === 1) {
-                this.currentIndex = 0;
-                this.answer = data.answer;
-                this.cure = data.cure;
-
-                this.totalImages += this.cure.length;
-                this.pictursPreloading(this.cure);
-                this.setCurrent(0);
-
-                this.setState({
-                    totalNum: this.cure.length,
-                })
-            }
-            else console.log('data message: ' + data.message);
-        } catch (e) {
-            console.log('error: ' + e);
+        if (data.code === 'tutorial') {
+            this.tutorial(data);
+            return;
         }
+
+        if (data.code === 'specified' || data.code === 1) {
+            this.currentIndex = 0;
+            this.answer = data.answer;
+            this.cure = data.cure;
+
+            if (this.numOfLoadedImage !== this.totalImages) this.pictursPreloading(this.cure);
+            this.totalImages += this.cure.length;
+            this.setCurrent(0);
+
+            this.setState({
+                totalNum: this.cure.length,
+            })
+            setTimeout(() => this.playSound(), 2000);
+        }
+        else console.log('data message: ' + data.message);
+
+    }
+
+    daily = () => {
+        if (this.props.location.state.data.code === 'tutorial') {
+            this.tutorial(this.props.location.state.data);
+            return;
+        }
+
+        console.log(this.props.location.state.data);
+
+        this.answer = this.props.location.state.data.answer;
+        this.cure = this.props.location.state.data.cure;
+        this.currentCure = this.answer[this.currentIndex];
+
+        if (this.numOfLoadedImage !== this.totalImages) this.pictursPreloading(this.cure);
+
+        this.setState({
+            totalNum: this.answer.length,
+            PicBoxList: [
+                soundURL + this.getListFilter('cure_tid', this.currentCure[0]).cure_path2,
+                soundURL + this.getListFilter('cure_tid', this.currentCure[1]).cure_path2,
+                soundURL + this.getListFilter('cure_tid', this.currentCure[2]).cure_path2,
+            ]
+        });
+
+        this.currentAudio = new Audio(soundURL + this.getListFilter('cure_tid', this.currentCure[3][0]).cure_path);
+        this.currentAudio.addEventListener('ended', () => {
+            this.setState({
+                gameState: true,
+                Worm: Characters.worm2_2,
+            })
+        });
+        setTimeout(() => this.playSound(), 2000);
+    }
+
+    tutorial = (data) => {
+        this.voice = [
+            new Audio(soundURL + data.tut_voice[0].voc_path),
+            new Audio(soundURL + data.tut_voice[1].voc_path),
+            new Audio(soundURL + data.tut_voice[2].voc_path),
+        ];
+        this.currentCure = data.sample_ques;
+
+        this.setState({
+            PicBoxList: [
+                soundURL + this.currentCure.cure_path2,
+                soundURL + this.currentCure.cure_path2,
+                soundURL + this.currentCure.cure_path2,
+            ]
+        });
+
+        this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
+        this.currentAudio.addEventListener('ended', () => {
+            this.setState({
+                Worm: Characters.worm2_2,
+            });
+            setTimeout(() => {
+                this.voice[1].play();
+            }, 1000);
+        });
+
+        this.voice[0].addEventListener('ended', () => {
+            setTimeout(() => {
+                this.playSound();
+            }, 1000);
+        });
+
+        this.voice[1].addEventListener('ended', () => {
+            this.setState({
+                gameState: 'tutorial',
+                Worm: Characters.worm2_2,
+            });
+        });
+
+        this.voice[2].addEventListener('ended', async () => {
+            const { data } = await T_tutorial.answer(this.props.user.student.s_id, idx_txt, this.currentCure.cure_id);
+            console.log(data);
+            if (this.learning_type === 'daily') this.daily();
+            else this.newRequest();
+
+            this.currentAudio = null;
+            this.currentCure = null;
+            this.voice = null;
+        });
+
+        setTimeout(() => {
+            this.voice[0].play();
+        }, 2000);
     }
 
     setCurrent = (timeout) => {
@@ -174,54 +237,92 @@ class ConsoMatch extends React.Component {
 
     onFrameTouchHandle = async (id) => {
         const { gameState } = this.state;
+        if (gameState === 'tutorial') {
+            if (id === 0) {
+                this.setState({ gameState: false });
+                setTimeout(() => {
+                    this.voice[2].play();
+                }, 1000);
+            }
+            return;
+        }
         if (!gameState) return;
+
         this.setState({
             gameState: false,
-            Worm: Characters.worm3_1,
         });
 
-        try {
-            const { user } = this.props;
-            const s_id = user.student.s_id;
-            const cure_id = [
-                this.getListFilter('cure_tid', this.currentCure[0]).cure_id,
-                this.getListFilter('cure_tid', this.currentCure[1]).cure_id,
-                this.getListFilter('cure_tid', this.currentCure[2]).cure_id,
-            ];
-            const { data } = await T_Api4.answer(
-                s_id,
-                cure_id,
-                this.getListFilter('cure_tid', this.currentCure[id]).cure_word,
-                this.getListFilter('cure_tid', this.currentCure[3][0]).cure_word,
-                this.learning_type === 'review' ? 'T' : 'F',
-                this.learning_type === 'daily' ? 'T' : 'F',
-            );
-            console.log(data);
+        const { user } = this.props;
+        const s_id = user.student.s_id;
+        const cure_id = [
+            this.getListFilter('cure_tid', this.currentCure[0]).cure_id,
+            this.getListFilter('cure_tid', this.currentCure[1]).cure_id,
+            this.getListFilter('cure_tid', this.currentCure[2]).cure_id,
+        ];
+        const { data } = await T_Api4.answer(
+            s_id,
+            cure_id,
+            this.getListFilter('cure_tid', this.currentCure[id]).cure_word,
+            this.getListFilter('cure_tid', this.currentCure[3][0]).cure_word,
+            this.learning_type === 'review' ? 'T' : 'F',
+            this.learning_type === 'daily' ? 'T' : 'F',
+        );
+        console.log(data);
 
-            switch (data.code) {
-                case 1:
-                    if (this.currentIndex < this.answer.length - 1) this.currentIndex++;
-                    else {
-                        this.gameDone();
-                        return;
-                    }
-                    this.setCurrent(2000);
+        switch (data.code) {
+            case 1:
+                if (data.correct_voice.voc_desc === 'retry') {
+                    this.retry_script = new Audio(soundURL + data.correct_voice.voc_path);
+                    this.retry_script.addEventListener('ended', () => {
+                        this.setState({
+                            gameState: true,
+                            Worm: Characters.worm2_2,
+                        });
+                    });
 
                     setTimeout(() => {
-                        this.playSound();
-                    }, 3000);
-                    break;
-                case 2:
-                    console.log(data.message);
-                    this.gameDone();
-                    break;
-                default:
-                    this.props.history.replace('/main/main')
-                    break;
-            }
-        } catch (e) {
-            console.log(e);
+                        this.retry_script.play();
+                        this.setState({
+                            gameState: false,
+                            Worm: Characters.worm2_1,
+                        });
+                    }, 1000);
+                    return;
+                } else {
+                    this.setState({
+                        Worm: Characters.worm3_1,
+                    })
+                    this.good_script = new Audio(soundURL + data.correct_voice.voc_path);
+                    this.good_script.addEventListener('ended', () => this.nextStep());
+                    setTimeout(() => {
+                        this.good_script.play();
+                        this.setState({
+                            gameState: false,
+                        });
+                    }, 1000);
+                }
+                break;
+            case 2:
+                console.log(data.message);
+                this.gameDone();
+                break;
+            default:
+                this.props.history.replace('/main/main')
+                break;
         }
+    }
+
+    nextStep = () => {
+        if (this.currentIndex < this.answer.length - 1) this.currentIndex++;
+        else {
+            this.gameDone();
+            return;
+        }
+        this.setCurrent(1000);
+
+        setTimeout(() => {
+            this.playSound();
+        }, 2000);
     }
 
     onWormTouchHandle = () => {
@@ -270,7 +371,8 @@ class ConsoMatch extends React.Component {
                         this.setState({
                             isImageLoaded: true,
                         })
-                        setTimeout(() => this.playSound(), 1000);
+                        if (this.learning_type !== 'daily') this.newRequest();
+                        else this.daily();
                     }
                 };
             }

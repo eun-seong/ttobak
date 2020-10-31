@@ -7,9 +7,22 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import LoadingComp from 'Components/LoadingComp';
-import { T_Api2, soundURL } from 'api';
+import { T_Api2, soundURL, T_tutorial } from 'api';
 
-const idx_text = 'common';
+const idx_txt = 'common';
+const initState = {
+    TTobaki: TTobak.ttobak1_1,
+    gameState: false,
+    boxTextList: null,
+    isAnimate: [false, false, false, false],
+    isImageLoaded: false,
+    showPopup: false,
+    showDonePopup: false,
+    showDailyPopup: false,
+    percent: 0,
+    currentIndex: 1,
+    totalNum: 0,
+};
 
 class Common extends React.Component {
     static propTypes = {
@@ -17,7 +30,7 @@ class Common extends React.Component {
         dispatch: PropTypes.func.isRequired,
     };
 
-    constructor({ match, location }) {
+    constructor({ match }) {
         super();
         this.learning_type = match.params.learning_type;
         this.currentAudio = null;
@@ -28,29 +41,7 @@ class Common extends React.Component {
         this.picture = { T3, TTobak };
         this.totalImages = Object.keys(T3).length + Object.keys(TTobak).length;
 
-        this.state = {
-            is_review: match.params.is_review,
-            TTobaki: TTobak.ttobak1_1,
-            gameState: false,
-            boxTextList: null,
-            isAnimate: [false, false, false, false],
-            isImageLoaded: false,
-            showPopup: false,
-            showDonePopup: false,
-            showDailyPopup: false,
-            percent: 0,
-            currentIndex: 1,
-            totalNum: 0,
-        };
-
-        if (this.learning_type === 'daily') {
-            console.log(location.state.data.cure);
-            this.cure = location.state.data.cure;
-            this.state = {
-                ...this.state,
-                totalNum: this.cure.length,
-            }
-        }
+        this.state = initState;
     }
 
     async componentDidMount() {
@@ -61,20 +52,17 @@ class Common extends React.Component {
             return;
         }
 
-        if (this.learning_type !== 'daily') this.newRequest();
-        else {
-            this.setCurrent(0);
-        }
         this.imagesPreloading(this.picture);
     }
 
     componentWillUnmount() {
-        for (var i = 0; i < 7; i++) {
-            if (!!this.currentAudio[i]) {
+        if (!!this.currentAudio[i]) {
+            for (var i = 0; i < 7; i++) {
                 this.currentAudio[i].pause();
                 this.currentAudio[i] = null;
             }
         }
+        this.currentAudio = null;
     }
 
     newRequest = async () => {
@@ -82,23 +70,100 @@ class Common extends React.Component {
         const { user } = this.props;
         const s_id = user.student.s_id;
 
-        try {
-            const { data } = await T_Api2.ask(s_id, idx_text);
-            console.log(data);
+        const { data } = await T_Api2.ask(s_id, idx_txt);
+        console.log(data);
 
-            if (data.code === 'specified' || data.code === 1) {
-                this.currentIndex = 0;
-                this.cure = data.cure;
-                this.setCurrent(0);
-
-                this.setState({
-                    totalNum: this.cure.length,
-                })
-            }
-            else console.log('data message: ' + data.message);
-        } catch (e) {
-            console.log('error: ' + e);
+        if (data.code === 'tutorial') {
+            this.tutorial(data);
+            return;
         }
+
+        if (data.code === 'specified' || data.code === 1) {
+            this.currentIndex = 0;
+            this.cure = data.cure;
+            this.setCurrent(0);
+
+            this.setState({
+                totalNum: this.cure.length,
+            })
+            setTimeout(() => this.playSound(), 2000);
+        }
+        else console.log('data message: ' + data.message);
+    }
+
+    daily = () => {
+        if (this.props.location.state.data.code === 'tutorial') {
+            this.tutorial(this.props.location.state.data);
+            return;
+        }
+        console.log(this.props.location.state.data.cure);
+        this.cure = this.props.location.state.data.cure;
+        this.setState = {
+            totalNum: this.cure.length,
+        }
+        this.setCurrent(0);
+        setTimeout(() => this.playSound(), 2000);
+    }
+
+    tutorial = (data) => {
+        this.voice = [
+            new Audio(soundURL + data.tut_vocie[0].voc_path),
+            new Audio(soundURL + data.tut_vocie[1].voc_path),
+            new Audio(soundURL + data.tut_vocie[2].voc_path),
+        ];
+
+        this.currentCure = data.sample_ques;
+        this.currentAudio = [
+            new Audio(soundURL + this.currentCure.com_e1path),
+            new Audio(soundURL + this.currentCure.com_e2path),
+            new Audio(soundURL + this.currentCure.com_e3path),
+            new Audio(soundURL + this.currentCure.com_e4path),
+            new Audio(soundURL + this.currentCure.com_w1path),
+            new Audio(soundURL + this.currentCure.com_w2path),
+            new Audio(soundURL + this.currentCure.com_w3path),
+        ];
+
+        this.setListener(true);
+        this.setState({
+            boxTextList: [
+                this.currentCure.com_e1,
+                this.currentCure.com_e2,
+                this.currentCure.com_e3,
+                this.currentCure.com_e4],
+            TTobaki: TTobak.ttobak1_1,
+            currentIndex: this.currentIndex + 1
+        });
+
+        this.voice[0].addEventListener('ended', () => {
+            setTimeout(() => {
+                this.playSound();
+            }, 1000);
+        });
+
+        this.voice[1].addEventListener('ended', () => {
+            this.setState({
+                gameState: 'tutorial',
+                TTobaki: TTobak.ttobak1_1,
+            });
+        });
+
+        this.voice[2].addEventListener('ended', async () => {
+            const { data } = await T_tutorial.answer(this.props.user.student.s_id, idx_txt, this.currentCure.com_id);
+            console.log(data);
+            this.setState({
+                gameState: false,
+            });
+            if (this.learning_type === 'daily') this.daily();
+            else this.newRequest();
+
+            this.currentCure = null;
+            this.sample_ques = null;
+            this.voice = null;
+        });
+
+        setTimeout(() => {
+            this.voice[0].play();
+        }, 2000);
     }
 
     setCurrent = (timeout) => {
@@ -113,7 +178,7 @@ class Common extends React.Component {
             new Audio(soundURL + this.currentCure.com_w3path),
         ];
 
-        this.setListener();
+        this.setListener(false);
         setTimeout(() => {
             this.setState({
                 boxTextList: [
@@ -127,7 +192,7 @@ class Common extends React.Component {
         }, timeout);
     }
 
-    setListener = () => {
+    setListener = (isTutorial) => {
         this.currentAudio[0].addEventListener('ended', () => {
             this.listenerFunc(0, 500);
         });
@@ -167,10 +232,13 @@ class Common extends React.Component {
             }, 1000);
         });
         this.currentAudio[6].addEventListener('ended', () => {
-            this.setState({
+            if (isTutorial) setTimeout(() => {
+                this.voice[1].play();
+            }, 1000);
+            else this.setState({
                 gameState: true,
                 TTobaki: TTobak.ttobak1_1
-            })
+            });
         });
     }
 
@@ -201,16 +269,26 @@ class Common extends React.Component {
 
     onTTobakiTouchHandle = () => {
         const { gameState } = this.state;
-        if (gameState) this.playSound();
+        if (gameState === true) this.playSound();
     }
 
     onBoxTouchHandle = async (index) => {
-        const { gameState } = this.state;
-        if (!gameState) return;
+        const { gameState, boxTextList } = this.state;
+        if (gameState === 'tutorial') {
+            if (boxTextList[index] === this.currentCure.com_ans) {
+                this.setState({ gameState: false });
+                setTimeout(() => {
+                    this.voice[2].play();
+                }, 1000);
+            }
+            return;
+        }
+
+        if (gameState === false) return;
 
         this.setState({
-            TTobaki: TTobak.ttobak2_2
-        })
+            gameState: false,
+        });
 
         try {
             const { user } = this.props;
@@ -222,29 +300,62 @@ class Common extends React.Component {
                 boxTextList[index],
                 this.cure[this.currentIndex].com_id,
                 is_review,
-                idx_text,
+                idx_txt,
                 this.learning_type === 'daily' ? 'T' : 'F',
             );
             console.log(data);
 
             if (data.code === 1) {
-                if (this.currentIndex < this.cure.length - 1) {
-                    this.currentIndex++;
-                } else {
-                    this.gameDone();
+                if (data.correct_voice.voc_desc === 'retry') {
+                    this.retry_script = new Audio(soundURL + data.correct_voice.voc_path);
+                    this.retry_script.addEventListener('ended', () => {
+                        this.setState({
+                            TTobaki: TTobak.ttobak1_1,
+                            gameState: true,
+                        });
+                    });
+
+                    setTimeout(() => {
+                        this.retry_script.play();
+                        this.setState({
+                            TTobaki: TTobak.ttobak3_2,
+                            gameState: false,
+                        });
+                    }, 1000);
                     return;
+                } else {
+                    this.setState({
+                        TTobaki: TTobak.ttobak2_2,
+                    })
+                    this.good_script = new Audio(soundURL + data.correct_voice.voc_path);
+                    this.good_script.addEventListener('ended', () => this.nextStep());
+                    setTimeout(() => {
+                        this.good_script.play();
+                        this.setState({
+                            gameState: false,
+                        });
+                    }, 1000);
                 }
-
-                this.setCurrent(2000);
-
-                setTimeout(() => {
-                    this.playSound();
-                }, 4000);
-
             }
         } catch (e) {
             console.log(e);
         }
+    }
+
+    nextStep = () => {
+        if (this.currentIndex < this.cure.length - 1) {
+            this.currentIndex++;
+        } else {
+            this.gameDone();
+            return;
+        }
+
+        this.setCurrent(1000);
+
+        setTimeout(() => {
+            this.playSound();
+        }, 3000);
+
     }
 
     gameDone = () => {
@@ -277,8 +388,10 @@ class Common extends React.Component {
                         this.setState({
                             isImageLoaded: true,
                         })
-                        setTimeout(() => this.playSound(), 1000);
                         clearTimeout(timeoutPreloading);
+
+                        if (this.learning_type !== 'daily') this.newRequest();
+                        else this.daily();
                     }
                 };
             }

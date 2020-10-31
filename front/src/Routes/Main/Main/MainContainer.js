@@ -60,7 +60,7 @@ class Main extends React.Component {
             if (data.code === 1 || data.code === 'tutorial') {
                 if (!!save.data.current) {
                     const content = ContentsList.filter(c => {
-                        return c.name === save.data.current[0];
+                        return c.name === save.data.current;
                     })[0];
 
                     this.setState({

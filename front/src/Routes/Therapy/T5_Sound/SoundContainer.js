@@ -6,8 +6,21 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { T5, TTobak, Characters } from 'images';
-import { T_Api2, soundURL } from 'api';
+import { T_Api2, soundURL, T_tutorial } from 'api';
 import LoadingComp from 'Components/LoadingComp';
+
+const initState = {
+    TTobaki: TTobak.ttobak1_1,                  // 또박이 이미지 상태
+    gameState: false,
+    CardTextList: null,
+    isImageLoaded: false,
+    showPopup: false,
+    showDonePopup: false,
+    showDailyPopup: false,
+    percent: 0,
+    currentIndex: 1,
+    totalNum: 0,
+}
 
 class Sound extends React.Component {
     static propTypes = {
@@ -15,7 +28,7 @@ class Sound extends React.Component {
         dispatch: PropTypes.func.isRequired,
     };
 
-    constructor({ match, location }) {
+    constructor({ match }) {
         super();
         this.learning_type = match.params.learning_type;
         this.type = match.params.type + 'sound';
@@ -27,29 +40,7 @@ class Sound extends React.Component {
         this.picture = { T5, TTobak, Characters };
         this.totalImages = Object.keys(T5).length + Object.keys(TTobak).length + Object.keys(Characters).length;
 
-        this.state = {
-            TTobaki: TTobak.ttobak1_1,                  // 또박이 이미지 상태
-            gameState: false,
-            CardTextList: null,
-            isImageLoaded: false,
-            showPopup: false,
-            showDonePopup: false,
-            showDailyPopup: false,
-            percent: 0,
-            currentIndex: 1,
-            totalNum: 0,
-        }
-
-        if (this.learning_type === 'daily') {
-            console.log(location.state.data.cure);
-            this.cure = location.state.data.cure;
-            this.currentCure = this.cure[this.currentIndex];
-            this.setAudio();
-            this.state = {
-                ...this.state,
-                totalNum: this.cure.length,
-            }
-        }
+        this.state = initState;
     }
 
     async componentDidMount() {
@@ -60,12 +51,6 @@ class Sound extends React.Component {
             return;
         }
 
-        if (this.learning_type !== 'daily') this.newRequest();
-        else {
-            this.setState({
-                CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
-            })
-        }
         this.imagesPreloading(this.picture);
     }
 
@@ -74,35 +59,100 @@ class Sound extends React.Component {
             this.currentAudio.pause();
             this.currentAudio = null;
         }
+        this.currentAudio = null;
     }
 
     newRequest = async () => {
         console.log('new request');
 
-        try {
-            const { user } = this.props;
-            const s_id = user.student.s_id;
-            const { data } = await T_Api2.ask(s_id, this.type);
-            console.log(data);
+        const { user } = this.props;
+        const s_id = user.student.s_id;
+        const { data } = await T_Api2.ask(s_id, this.type);
+        console.log(data);
 
-            if (data.code === 'specified' || data.code === 1) {
-                this.currentIndex = 0;
-                this.cure = data.cure;
-                this.currentCure = data.cure[this.currentIndex];
-                this.setAudio();
-
-                this.setState({
-                    CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
-                    totalNum: this.cure.length,
-                })
-            }
-            else console.log('data message: ' + data.message);
-        } catch (e) {
-            console.log('error: ' + e);
+        if (data.code === 'tutorial') {
+            this.tutorial(data);
+            return;
         }
+
+        if (data.code === 'specified' || data.code === 1) {
+            this.currentIndex = 0;
+            this.cure = data.cure;
+            this.currentCure = data.cure[this.currentIndex];
+            this.setAudio();
+
+            this.setState({
+                CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
+                totalNum: this.cure.length,
+            });
+            setTimeout(() => this.playSound(), 2000);
+        }
+        else console.log('data message: ' + data.message);
     }
 
-    setAudio = () => {
+    daily = () => {
+        if (this.props.location.state.data.code === 'tutorial') {
+            this.tutorial(this.props.location.state.data);
+            return;
+        }
+
+        console.log(this.props.location.state.data.cure);
+        this.cure = this.props.location.state.data.cure;
+        this.currentCure = this.cure[this.currentIndex];
+        this.setAudio();
+
+        this.setState = {
+            totalNum: this.cure.length,
+            CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
+        };
+        setTimeout(() => this.playSound(), 2000);
+    }
+
+    tutorial = (data) => {
+        this.voice = [
+            new Audio(soundURL + data.tut_voice[0].voc_path),
+            new Audio(soundURL + data.tut_voice[1].voc_path),
+            new Audio(soundURL + data.tut_voice[2].voc_path),
+        ];
+        this.currentCure = data.sample_ques;
+        this.setAudio(true);
+
+        this.setState({
+            CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
+        });
+
+        this.voice[0].addEventListener('ended', () => {
+            setTimeout(() => {
+                this.playSound();
+            }, 1000);
+        });
+
+        this.voice[1].addEventListener('ended', () => {
+            this.setState({
+                gameState: 'tutorial',
+                TTobaki: TTobak.ttobak1_1,
+            });
+        });
+
+        this.voice[2].addEventListener('ended', async () => {
+            const { data } = await T_tutorial.answer(this.props.user.student.s_id, this.type, this.currentCure.cure_id);
+            console.log(data);
+            this.setState({
+                gameState: false,
+            });
+            if (this.learning_type === 'daily') this.daily();
+            else this.newRequest();
+
+            this.currentCure = null;
+            this.voice = null;
+        });
+
+        setTimeout(() => {
+            this.voice[0].play();
+        }, 2000);
+    }
+
+    setAudio = (isTutorial) => {
         if (this.type === 'consosound') {
             this.currentCure.answer = Math.floor(Math.random() * 2) + 1;
             this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
@@ -118,7 +168,11 @@ class Sound extends React.Component {
         }
 
         this.currentAudio.addEventListener('ended', () => {
-            this.setState({
+            if (isTutorial) {
+                setTimeout(() => {
+                    this.voice[1].play();
+                }, 1000);
+            } else this.setState({
                 gameState: true,
                 TTobaki: TTobak.ttobak1_1
             })
@@ -141,62 +195,95 @@ class Sound extends React.Component {
     }
 
     onCardTouchHandle = async (index) => {
-        const { gameState } = this.state;
+        const { gameState, CardTextList } = this.state;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
+
+        if (gameState === 'tutorial') {
+            if (CardTextList[index] === (this.currentCure.answer === 1 ? this.currentCure.cure_word : this.currentCure.cure_word2)) {
+                setTimeout(() => {
+                    this.voice[2].play();
+                }, 1000);
+            }
+            return;
+        }
         if (!gameState) return;
 
         this.setState({
             gameState: false,
-            TTobaki: TTobak.ttobak2_2
         });
 
-        try {
-            const { user } = this.props;
-            const s_id = user.student.s_id;
-            const { CardTextList } = this.state;
+        const { data } = await T_Api2.answer(
+            s_id,
+            this.currentCure.answer === 1 ? this.currentCure.cure_word : this.currentCure.cure_word2,
+            CardTextList[index],
+            this.currentCure.cure_id,
+            this.learning_type === 'review' ? 'T' : 'F',
+            this.type,
+            this.learning_type === 'daily' ? 'T' : 'F',
+        );
+        console.log(data);
 
-            const { data } = await T_Api2.answer(
-                s_id,
-                this.currentCure.answer === 1 ? this.currentCure.cure_word : this.currentCure.cure_word2,
-                CardTextList[index],
-                this.currentCure.cure_id,
-                this.learning_type === 'review' ? 'T' : 'F',
-                this.type,
-                this.learning_type === 'daily' ? 'T' : 'F',
-            );
-            console.log(data);
-
-            if (data.code === 1) {
-                if (this.currentIndex < this.cure.length - 1) this.currentIndex++;
-                else {
-                    setTimeout(() => {
-                        this.gameDone();
-                    }, 1000);
-                    return;
-                }
-                this.currentCure = this.cure[this.currentIndex];
-                this.setAudio();
-
-                setTimeout(() => {
+        if (data.code === 1) {
+            if (data.correct_voice.voc_desc === 'retry') {
+                this.retry_script = new Audio(soundURL + data.correct_voice.voc_path);
+                this.retry_script.addEventListener('ended', () => {
                     this.setState({
-                        CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
                         TTobaki: TTobak.ttobak1_1,
-                        currentIndex: this.currentIndex + 1
+                        gameState: true,
                     });
-                }, 2000);
+                });
 
                 setTimeout(() => {
-                    this.playSound();
-                }, 3000);
-            } else if (data.code === 2) {
-                this.setState({
-                    showPopup: true,
-                })
+                    this.retry_script.play();
+                    this.setState({
+                        TTobaki: TTobak.ttobak3_2,
+                        gameState: false,
+                    });
+                }, 1000);
+                return;
             } else {
-                this.props.history.replace('/main/main');
+                this.setState({
+                    TTobaki: TTobak.ttobak2_2,
+                })
+                this.good_script = new Audio(soundURL + data.correct_voice.voc_path);
+                this.good_script.addEventListener('ended', () => this.nextStep());
+                setTimeout(() => {
+                    this.good_script.play();
+                    this.setState({
+                        gameState: false,
+                    });
+                }, 1000);
             }
-        } catch (e) {
-            console.log(e);
+        } else if (data.code === 2) {
+            this.setState({
+                showPopup: true,
+            })
         }
+    }
+
+    nextStep = () => {
+        if (this.currentIndex < this.cure.length - 1) this.currentIndex++;
+        else {
+            setTimeout(() => {
+                this.gameDone();
+            }, 1000);
+            return;
+        }
+        this.currentCure = this.cure[this.currentIndex];
+        this.setAudio();
+
+        setTimeout(() => {
+            this.setState({
+                CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
+                TTobaki: TTobak.ttobak1_1,
+                currentIndex: this.currentIndex + 1
+            });
+        }, 1000);
+
+        setTimeout(() => {
+            this.playSound();
+        }, 2000);
     }
 
     gameDone = () => {
@@ -231,8 +318,9 @@ class Sound extends React.Component {
                             isImageLoaded: true,
                             TTobaki: TTobak.ttobak1_1,
                         })
-                        setTimeout(() => this.playSound(), 1000);
                         clearTimeout(timeoutPreloading);
+                        if (this.learning_type !== 'daily') this.newRequest();
+                        else this.daily();
                     }
                 };
             }

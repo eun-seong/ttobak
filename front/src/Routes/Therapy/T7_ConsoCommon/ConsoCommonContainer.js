@@ -8,9 +8,21 @@ import { connect } from 'react-redux';
 
 import LoadingComp from 'Components/LoadingComp';
 import { T7, Characters } from 'images';
-import { T_Api2, soundURL } from 'api';
+import { T_Api2, soundURL, T_tutorial } from 'api';
 
-const idx_text = 'consocommon';
+const idx_txt = 'consocommon';
+const initState = {
+    gameState: false,
+    picBox: null,
+    CardTextList: null,
+    isImageLoaded: false,
+    showPopup: false,
+    showDonePopup: false,
+    showDailyPopup: false,
+    percent: 0,
+    currentIndex: 1,
+    totalNum: 0,
+};
 
 class ConsoCommon extends React.Component {
     static propTypes = {
@@ -18,7 +30,7 @@ class ConsoCommon extends React.Component {
         dispatch: PropTypes.func.isRequired,
     };
 
-    constructor({ match, location }) {
+    constructor({ match }) {
         super();
         this.learning_type = match.params.learning_type;
         this.cure = null;
@@ -28,28 +40,7 @@ class ConsoCommon extends React.Component {
         this.picture = { T7, Characters };
         this.totalImages = Object.keys(T7).length + Object.keys(Characters).length;
 
-        this.state = {
-            gameState: false,
-            picBox: null,
-            CardTextList: null,
-            isImageLoaded: false,
-            showPopup: false,
-            showDonePopup: false,
-            showDailyPopup: false,
-            percent: 0,
-            currentIndex: 1,
-            totalNum: 0,
-        };
-
-        if (this.learning_type === 'daily') {
-            console.log(location.state.data.cure);
-            this.cure = location.state.data.cure;
-            this.currentCure = this.cure[this.currentIndex];
-            this.state = {
-                ...this.state,
-                totalNum: this.cure.length,
-            }
-        }
+        this.state = initState;
     }
 
     async componentDidMount() {
@@ -60,13 +51,6 @@ class ConsoCommon extends React.Component {
             return;
         }
 
-        if (this.learning_type !== 'daily') this.newRequest();
-        else {
-            this.setState({
-                picBox: soundURL + this.currentCure.cure_path,
-                CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2]
-            })
-        }
         this.imagesPreloading(this.picture);
     }
 
@@ -75,42 +59,91 @@ class ConsoCommon extends React.Component {
         const { user } = this.props;
         const s_id = user.student.s_id;
 
-        try {
-            const { data } = await T_Api2.ask(s_id, idx_text);
-            console.log(data);
+        const { data } = await T_Api2.ask(s_id, idx_txt);
+        console.log(data);
 
-            if (data.code === 'specified' || data.code === 1) {
-                this.currentIndex = 0;
-                this.cure = data.cure;
-                this.totalImages += this.cure.length;
-                this.pictursPreloading(this.cure);
-                this.currentCure = this.cure[this.currentIndex];
-                for (let i in this.cure) {
-                    this.cure[i].answer = Math.floor(Math.random() * 2);
-                }
-
-                this.setState({
-                    gameState: true,
-                    picBox: soundURL + this.currentCure.cure_path,
-                    CardTextList: this.currentCure.answer === 0 ?
-                        [this.currentCure.cure_word, this.currentCure.cure_word2] :
-                        [this.currentCure.cure_word2, this.currentCure.cure_word],
-                    totalNum: this.cure.length,
-                })
-            }
-            else console.log('data message: ' + data.message);
-        } catch (e) {
-            console.log('error: ' + e);
+        if (data.code === 'tutorial') {
+            this.tutorial(data);
+            return;
         }
+
+        if (data.code === 'specified' || data.code === 1) {
+            this.currentIndex = 0;
+            this.cure = data.cure;
+            this.totalImages += this.cure.length;
+            this.pictursPreloading(this.cure);
+            this.currentCure = this.cure[this.currentIndex];
+            for (let i in this.cure) {
+                this.cure[i].answer = Math.floor(Math.random() * 2);
+            }
+
+            this.setState({
+                gameState: true,
+                picBox: soundURL + this.currentCure.cure_path,
+                CardTextList: this.currentCure.answer === 0 ?
+                    [this.currentCure.cure_word, this.currentCure.cure_word2] :
+                    [this.currentCure.cure_word2, this.currentCure.cure_word],
+                totalNum: this.cure.length,
+            })
+        }
+        else console.log('data message: ' + data.message);
     }
 
+    daily = () => {
+        if (this.props.location.state.data.code === 'tutorial') {
+            this.tutorial(this.props.location.state.data);
+            return;
+        }
+
+        console.log(this.props.location.state.data.cure);
+        this.cure = this.props.location.state.data.cure;
+        this.currentCure = this.cure[this.currentIndex];
+        this.setState({
+            totalNum: this.cure.length,
+            picBox: soundURL + this.currentCure.cure_path,
+            CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2]
+        });
+    }
+
+    tutorial = (data) => {
+        this.voice = [
+            new Audio(soundURL + data.tut_voice[0].voc_path),
+            new Audio(soundURL + data.tut_voice[1].voc_path),
+        ];
+        this.currentCure = data.sample_ques;
+        this.setState({
+            picBox: soundURL + this.currentCure.cure_path,
+            CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2]
+        });
+
+        this.voice[0].addEventListener('ended', () => {
+            this.setState({
+                gameState: 'tutorial',
+            })
+        });
+
+        this.voice[1].addEventListener('ended', async () => {
+            const { data } = await T_tutorial.answer(this.props.user.student.s_id, idx_txt, this.currentCure.cure_id);
+            console.log(data);
+            this.setState({
+                gameState: false,
+            });
+            if (this.learning_type === 'daily') this.daily();
+            else this.newRequest();
+
+            this.voice = null;
+        });
+
+        setTimeout(() => {
+            this.voice[0].play();
+        }, 2000);
+    }
 
     playSound = () => {
         if (!!this.currentAudio) {
             this.setState({
                 gameState: false,
             });
-            // this.currentAudio.play();
         }
     }
 
@@ -128,46 +161,82 @@ class ConsoCommon extends React.Component {
     }
 
     onCardTouchHandle = async (id) => {
-        if (!this.state.gameState) return;
+        const { gameState } = this.state;
+        if (gameState === 'tutorial') {
+            if (id === 0) {
+                this.setState({ gameState: false });
+                setTimeout(() => {
+                    this.voice[1].play();
+                }, 1000);
+            }
+            return;
+        }
+
+        if (gameState === false) return;
+
         this.setState({
             gameState: false,
         })
 
-        try {
-            const { user } = this.props;
-            const s_id = user.student.s_id;
+        const { user } = this.props;
+        const s_id = user.student.s_id;
 
-            const { data } = await T_Api2.answer(
-                s_id,
-                this.currentCure.cure_word,
-                this.state.CardTextList[id],
-                this.currentCure.cure_id,
-                this.learning_type === 'review' ? 'T' : 'F',
-                idx_text,
-                this.learning_type === 'daily' ? 'T' : 'F',
-            );
-            console.log(data);
+        const { data } = await T_Api2.answer(
+            s_id,
+            this.currentCure.cure_word,
+            this.state.CardTextList[id],
+            this.currentCure.cure_id,
+            this.learning_type === 'review' ? 'T' : 'F',
+            idx_txt,
+            this.learning_type === 'daily' ? 'T' : 'F',
+        );
+        console.log(data);
 
-            if (data.code === 1) {
-                if (this.currentIndex < this.cure.length - 1) this.currentIndex++;
-                else {
-                    this.gameDone();
-                    return;
-                }
-                this.currentCure = this.cure[this.currentIndex];
+        if (data.code === 1) {
+            if (data.correct_voice.voc_desc === 'retry') {
+                this.retry_script = new Audio(soundURL + data.correct_voice.voc_path);
+                this.retry_script.addEventListener('ended', () => {
+                    this.setState({
+                        gameState: true,
+                    });
+                });
 
-                this.setState({
-                    gameState: true,
-                    picBox: soundURL + this.currentCure.cure_path,
-                    CardTextList: this.currentCure.answer === 0 ?
-                        [this.currentCure.cure_word, this.currentCure.cure_word2] :
-                        [this.currentCure.cure_word2, this.currentCure.cure_word],
-                    currentIndex: this.currentIndex + 1
-                })
+                setTimeout(() => {
+                    this.retry_script.play();
+                    this.setState({
+                        gameState: false,
+                    });
+                }, 1000);
+                return;
+            } else {
+                this.good_script = new Audio(soundURL + data.correct_voice.voc_path);
+                this.good_script.addEventListener('ended', () => this.nextStep());
+                setTimeout(() => {
+                    this.good_script.play();
+                    this.setState({
+                        gameState: false,
+                    });
+                }, 1000);
             }
-        } catch (e) {
-            console.log(e);
         }
+    }
+
+    nextStep = () => {
+        if (this.currentIndex < this.cure.length - 1) this.currentIndex++;
+        else {
+            this.gameDone();
+            return;
+        }
+        this.currentCure = this.cure[this.currentIndex];
+
+        this.setState({
+            gameState: true,
+            picBox: soundURL + this.currentCure.cure_path,
+            CardTextList: this.currentCure.answer === 0 ?
+                [this.currentCure.cure_word, this.currentCure.cure_word2] :
+                [this.currentCure.cure_word2, this.currentCure.cure_word],
+            currentIndex: this.currentIndex + 1
+        })
     }
 
     onTreeTouchEndHandle = () => {
@@ -194,7 +263,6 @@ class ConsoCommon extends React.Component {
                             isImageLoaded: true,
                         })
                         clearTimeout(timeoutPreloading);
-                        // setTimeout(() => this.playSound(), 1000);
                     }
                 };
             }
@@ -216,7 +284,8 @@ class ConsoCommon extends React.Component {
                         this.setState({
                             isImageLoaded: true,
                         })
-                        // setTimeout(() => this.playSound(), 1000);
+                        if (this.learning_type !== 'daily') this.newRequest();
+                        else this.daily();
                     }
                 };
             }

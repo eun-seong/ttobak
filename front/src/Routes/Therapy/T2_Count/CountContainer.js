@@ -99,25 +99,26 @@ class Count extends React.Component {
         const { user } = this.props;
         const s_id = user.student.s_id;
 
-        try {
-            const { data } = await T_Api2.ask(s_id, idx_txt);
-            console.log(data);
+        const { data } = await T_Api2.ask(s_id, idx_txt);
+        console.log(data);
 
-            if (data.code === 'specified' || data.code === 1) {
-                this.currentIndex = 0;
-                this.cure = data.cure;
-                this.currentCure = data.cure[this.currentIndex];
-                this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
-
-                this.setState({
-                    totalNum: this.cure.length,
-                });
-                setTimeout(() => this.playSound(), 1000);
-            }
-            else console.log('data message: ' + data.message);
-        } catch (e) {
-            console.log('error: ' + e);
+        if (data.code === 'tutorial') {
+            this.tutorial(data);
+            return;
         }
+
+        if (data.code === 'specified' || data.code === 1) {
+            this.currentIndex = 0;
+            this.cure = data.cure;
+            this.currentCure = data.cure[this.currentIndex];
+            this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
+
+            this.setState({
+                totalNum: this.cure.length,
+            });
+            setTimeout(() => this.playSound(), 1000);
+        }
+        else console.log('data message: ' + data.message);
     }
 
     tutorial = (data) => {
@@ -150,7 +151,7 @@ class Count extends React.Component {
             const { data } = await T_tutorial.answer(this.props.user.student.s_id, idx_txt, this.currentCure.cure_id);
             console.log(data);
             this.setState({
-                initState,
+                gameState: false,
             });
             if (this.learning_type === 'daily') this.daily();
             else this.newRequest();
