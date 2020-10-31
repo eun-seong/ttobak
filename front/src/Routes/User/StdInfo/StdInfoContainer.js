@@ -15,19 +15,16 @@ class StdInfo extends React.Component {
         const {dispatch} = this.props;
 
         if(!user.user.u_id || !user.student.s_id) {
-            alert('잘못된 접근입니다.');
-            this.props.history.push('/root/signin');
+            this.makeAlert('잘못된 접근입니다.', false, (() => {
+                this.props.history.push('/root/signin');
+            }));
             return;
         }
         
     }
 
-    goBack = e => {
-        this.preventDefault = true;
+    goBack = () => {
         this.props.history.goBack();
-        e.stopPropagation();
-        this.preventDefault = false;
-        e.nativeEvent.stopImmediatePropagation();
     }
 
     render() {

@@ -27,22 +27,6 @@ class Main extends React.Component {
         }
         this.numOfLoadedImage = 0;
         this.pictures = { Images, MainRoot, Pause };
-
-        const { user } = this.props;
-        const { dispatch } = this.props;
-
-        if (!user.user.u_id) {
-            this.props.history.push('/root/signin');
-            return;
-        }
-
-        if (!user.student.s_id) {
-            this.props.history.push('/root/selectstd');
-            return;
-        }
-
-        dispatch(user_get(user.user.u_id));
-        dispatch(student_get(user.student.s_id, user.user.u_id));
     }
 
     goBack = () => {
@@ -51,7 +35,15 @@ class Main extends React.Component {
 
     async componentDidMount() {
         const { user } = this.props;
-        if (!user.student.s_id) return;
+        const { dispatch } = this.props;
+        
+        if (!user.user.u_id || !user.student.s_id) {
+            this.props.history.push('/root/signin');
+            return;
+        }
+
+        dispatch(user_get(user.user.u_id));
+        dispatch(student_get(user.student.s_id, user.user.u_id));
 
         this.request();
         this.imagesPreloading(this.pictures);
@@ -114,7 +106,8 @@ class Main extends React.Component {
         const { data, isImageLoaded, daily_custom, daily_link, daily_complete } = this.state;
         const { user } = this.props;
 
-        if (!(user.student.s_id && user.student.name)) {
+        if (!user.student.s_id || !user.student.name) {
+            console.log('nnn', user);
             return null;
         }
 

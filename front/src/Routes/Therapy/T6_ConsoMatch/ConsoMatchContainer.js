@@ -70,16 +70,10 @@ class ConsoMatch extends React.Component {
         this.imagesPreloading(this.picture);
         const { user } = this.props;
 
-        if (!user.user.u_id) {
+        if (!user.user.u_id || !user.student.s_id) {
             this.props.history.push('/root/signin');
             return;
         }
-
-        if (!user.student.s_id) {
-            this.props.history.push('/root/selectstd');
-            return;
-        }
-
         if (this.learning_type !== 'daily') this.newRequest();
         else {
             this.setState({

@@ -38,16 +38,10 @@ class Self extends React.Component {
     async componentDidMount() {
         const { user } = this.props;
 
-        if (!user.user.u_id) {
+        if (!user.user.u_id || !user.student.s_id) {
             this.props.history.push('/root/signin');
             return;
         }
-
-        if (!user.student.s_id) {
-            this.props.history.push('/root/selectstd');
-            return;
-        }
-
 
         this.newRequest();
         setTimeout(() => window.BRIDGE.recordAudio(this.props.user.student.gender, this.currentCure.cure_text), 1000);

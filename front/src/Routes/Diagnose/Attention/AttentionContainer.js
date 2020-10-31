@@ -50,13 +50,8 @@ class Attention extends React.Component {
     async componentDidMount() {
         const { user } = this.props;
 
-        if (!user.user.u_id) {
+        if (!user.user.u_id || !user.student.s_id) {
             this.props.history.push('/root/signin');
-            return;
-        }
-
-        if (!user.student.s_id) {
-            this.props.history.push('/root/selectstd');
             return;
         }
 

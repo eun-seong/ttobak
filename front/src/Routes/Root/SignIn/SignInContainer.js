@@ -1,15 +1,19 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import Alert from 'Components/Alert';
 import SignInPresenter from './SignInPresenter';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { user_autologin, user_signin } from 'Sessions/action.js';
+import { user_autologin, user_signin, response_clear } from 'Sessions/action.js';
 
 class SignIn extends React.Component {
 
     constructor(props) {
         super(props);
         const { dispatch } = this.props;
+
+        this.enableAlert = false;
+        this.isSigninCalled = false;
 
         dispatch(user_autologin());
     }
@@ -25,30 +29,65 @@ class SignIn extends React.Component {
         const { user } = this.props;
         const { dispatch } = this.props;
 
+        if (!email || !pw ) {
+            this.makeAlert('빠진 부분 없이 입력해 주세요.', false, (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
+            return false;
+        }
+
         dispatch(user_signin(email, pw));
+        this.isSigninCalled = true;
     }
+    makeAlert(text, isConfirm, onSubmit, onCancel) {
+        this.enableAlert = true;
+        this.alertText = text;
+        this.isConfirm = isConfirm;
+        this.onSubmit = onSubmit;
+        this.onCancel = onCancel;
+
+        this.forceUpdate();
+    }
+
     componentDidUpdate() {
         const { user } = this.props;
+        const { dispatch } = this.props;
         const { history } = this.props;
 
         if (user.user.u_id) {
-            console.log(user.user.u_id === 'undefined');
-            window.localStorage.setItem('uid', user.user.u_id);
             this.props.history.push('/root/selectstd');
             return;
         }
 
-        if (!user.fetchingUpdate && user.response.data && user.response.data.code !== 1) {
-            alert('이메일과 비밀번호를 다시 확인해주세요.');
+        if (this.isSigninCalled && user.response.data && user.response.data.code !== 1) {
+            dispatch(response_clear());
+            this.makeAlert('이메일과 비밀번호를 다시 확인해주세요.', false, (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
+            this.isSigninCalled = false;
         }
     }
 
 
     render() {
 
-        return (<SignInPresenter
-            handleSubmit={this.handleSubmit}
-        />);
+        const alertComp = this.enableAlert ? (<Alert 
+            text={this.alertText}
+            isConfirm={this.isConfirm}
+            onSubmit={this.onSubmit}
+            onCancel={this.onCancel}
+        />) : '';
+
+        return (
+            <div>
+                {alertComp}
+                <SignInPresenter
+                    handleSubmit={this.handleSubmit}
+                />
+            </div>
+        );
     }
 }
 

@@ -71,7 +71,6 @@ function AddStudentComp({ student, iconNum, handleSubmit }) {
     // console.log(iconNum);
     let icon = <SelectIcon src={iconNum ? MainRoot.IconList[iconNum] : MainRoot.IconList[student.ic_id]} alt='프로필 사진' />;
     state = {name: student.name, birth: student.birth.replaceAll('-', ''), gender: (student.gender === 'm' ? '남자' : '여자')};
-    console.log(state);
 
     return (
         <CompBox>

@@ -1,5 +1,6 @@
 import React from 'react';
 import UserInfoPresenter from './UserInfoPresenter';
+import Alert from 'Components/Alert';
 import { withRouter } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -13,21 +14,42 @@ class UserInfo extends React.Component {
         dispatch: PropTypes.func.isRequired,
     };
 
+    constructor() {
+        super();
+        this.enableAlert = false;
+    }
+
     handleSubmit = (e, text) => {
         const {user} = this.props;
         const {dispatch} = this.props;
         if(text === '회원탈퇴') {
-            if(window.confirm('정말 탈퇴하시겠습니까?')) {
+            this.makeAlert('정말 탈퇴하시겠습니까?', true, (() => {
                 dispatch(user_delete(user.user.u_id));
                 this.props.history.push('/root/signin');
-            }
+            }), (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
         } else if(text === '로그아웃') {
-            if(window.confirm('정말 로그아웃하시겠습니까?')) {
+            this.makeAlert('정말 로그아웃하시겠습니까?', true, (() => {
                 dispatch(user_logout(user.user.u_id));
                 this.props.history.push('/root/signin');
-            }
+            }), (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
         }
     };
+
+    makeAlert(text, isConfirm, onSubmit, onCancel) {
+        this.enableAlert = true;
+        this.alertText = text;
+        this.isConfirm = isConfirm;
+        this.onSubmit = onSubmit;
+        this.onCancel = onCancel;
+
+        this.forceUpdate();
+    }
 
     componentDidMount() {
         const { user } = this.props;
@@ -35,8 +57,9 @@ class UserInfo extends React.Component {
 
         console.log(user);
         if(!user.user.u_id) {
-            alert('잘못된 접근입니다.');
-            this.props.history.push('/root/signin');
+            this.makeAlert('잘못된 접근입니다.', false, (() => {
+                this.props.history.push('/root/signin');
+            }));
         }
 
         if(!user.user.email) {
@@ -55,13 +78,23 @@ class UserInfo extends React.Component {
         */
         const { user } = this.props;
         if(!user.user.email) return null;
+
+        const alertComp = this.enableAlert ? (<Alert 
+            text={this.alertText}
+            isConfirm={this.isConfirm}
+            onSubmit={this.onSubmit}
+            onCancel={this.onCancel}
+        />) : '';
         
         return (
-            <UserInfoPresenter
-                email={user.user.email}
-                handleSubmit={this.handleSubmit}
-                goBack={this.goBack}
-            />);
+            <div>
+                {alertComp}
+                <UserInfoPresenter
+                    email={user.user.email}
+                    handleSubmit={this.handleSubmit}
+                    goBack={this.goBack} 
+                />
+            </div>);
     }
 }
 

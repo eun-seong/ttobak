@@ -11,6 +11,7 @@ import { STUDENT_MODIFY_REQUEST, STUDENT_MODIFY_SUCCESS, STUDENT_MODIFY_FAILURE 
 import { STUDENT_DELETE_REQUEST, STUDENT_DELETE_SUCCESS, STUDENT_DELETE_FAILURE } from './action.js';
 import { STUDENT_GET_REQUEST, STUDENT_GET_SUCCESS, STUDENT_GET_FAILURE } from './action.js';
 import { STUDENT_CHANGE_SUCCESS } from './action.js';
+import { RESPONSE_CLEAR_SUCCESS } from './action.js';
 
 const defaultState = {
   isLoggedIn: false,
@@ -49,6 +50,8 @@ const userReducer = (state = defaultState, action) => {
         fetchingUpdate: true
       };
     case USER_SIGNIN_SUCCESS:
+      window.localStorage.setItem('uid', action.result.data.usr_id);
+
       return {
         ...state,
         fetchingUpdate: false,
@@ -218,6 +221,11 @@ const userReducer = (state = defaultState, action) => {
         fetchingUpdate: true, 
         student: {s_id: action.data.s_id}
       };
+    case RESPONSE_CLEAR_SUCCESS:
+      return {
+        ...state,
+        response: {}
+      }
     default:
       return state;
   }

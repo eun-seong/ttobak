@@ -53,6 +53,9 @@ export const STUDENT_GET_FAILURE = 'STUDENT_GET_FAILURE';
 export const STUDENT_CHANGE = 'STUDENT_CHANGE';
 export const STUDENT_CHANGE_SUCCESS = 'STUDENT_CHANGE_SUCCESS';
 
+export const RESPONSE_CLEAR = 'RESPONSE_CLEAR';
+export const RESPONSE_CLEAR_SUCCESS = 'RESPONSE_CLEAR_SUCCESS';
+
 
 export const user_register = (email, pw, name) => {
   return {
@@ -144,3 +147,9 @@ export const student_change = (s_id) => {
   };
 }
 
+export const response_clear = () => {
+  return {
+    type: RESPONSE_CLEAR, 
+    data: {}
+  }
+}

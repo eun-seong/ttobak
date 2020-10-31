@@ -1,9 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import Alert from 'Components/Alert';
 import StdManagingPresenter from './StdManagingPresenter';
+
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { student_modify, student_get, student_delete } from 'Sessions/action.js';
+import { student_modify, student_get, student_delete, response_clear } from 'Sessions/action.js';
 import moment from 'moment';
 
 class StdManaging extends React.Component {
@@ -13,6 +15,13 @@ class StdManaging extends React.Component {
         dispatch: PropTypes.func.isRequired,
     };
 
+    constructor() {
+        super();
+
+        this.enableAlert = false;
+        this.isModifyCalled = false;
+    }
+
     goBack = () => {
         this.props.history.goBack();
     }
@@ -20,15 +29,9 @@ class StdManaging extends React.Component {
     componentDidMount() {
         const { user } = this.props;
         const { dispatch } = this.props;
-        const student = this.props.match.params.student;
-        if (!student) {
-            alert('잘못된 접근입니다.');
-            this.props.history.push('/root/signin');
-            return;
-        }
 
-        if (!user.user.u_id) {
-            alert('잘못된 접근입니다.');
+        const student = this.props.match.params.student;
+        if (!student || !user.user.u_id) {
             this.props.history.push('/root/signin');
             return;
         }
@@ -38,7 +41,6 @@ class StdManaging extends React.Component {
 
 
     handleSubmit = (e, op, { name, birth, gender }) => {
-        console.log(name, birth, gender);
         e.preventDefault();
         const { user } = this.props;
         const { dispatch } = this.props;
@@ -46,22 +48,34 @@ class StdManaging extends React.Component {
         const student = this.props.match.params.student;
         const icon = this.props.match.params.icon || user.student.ic_id;
         if (!icon) {
-            alert('아이콘을 선택해주세요.');
+            this.makeAlert('아이콘을 선택해주세요.', false, (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
             return false;
         }
 
         if (!name || !birth || !gender) {
-            alert('빠진 부분 없이 입력해 주세요.');
+            this.makeAlert('빠진 부분 없이 입력해 주세요.', false, (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
             return false;
         }
 
         if (birth.length !== 8 || isNaN(birth) || !moment(birth, 'YYYYMMDD', true).isValid()) {
-            alert('올바른 생일을 입력해 주세요.(예시: 20100813)');
+            this.makeAlert('올바른 생일을 입력해 주세요.', false, (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
             return false;
         }
 
         if (gender !== '남자' && gender !== '여자') {
-            alert('올바른 성별을 입력해 주세요.(예시; 여자)');
+            this.makeAlert('올바른 성별을 입력해 주세요.(예시; 여자)', false, (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
             return false;
         }
 
@@ -69,18 +83,34 @@ class StdManaging extends React.Component {
         birth = moment(birth).format('YYYY-MM-DD');
 
         if (op === 'save') {
-            dispatch(student_modify(name, birth, gender, icon, student, user.user.u_id));
-            alert('저장했습니다.');
-            this.props.history.push('/user/setting');
+            this.makeAlert('정말 저장하시겠습니까?', true, (() => {
+                dispatch(student_modify(name, birth, gender, icon, student, user.user.u_id));
+                this.props.history.push('/root/signin');
+            }), (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
         } else if (op === 'delete') {
-            if (window.confirm('정말 삭제하시겠습니까?')) {
+            this.makeAlert('정말 삭제하시겠습니까?', true, (() => {
                 dispatch(student_delete(student, user.user.u_id));
-                alert('삭제했습니다.');
-                this.props.history.push('/user/setting');
-            }
+                this.props.history.push('/root/signin');
+            }), (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
         }
 
         return true;
+    }
+
+    makeAlert(text, isConfirm, onSubmit, onCancel) {
+        this.enableAlert = true;
+        this.alertText = text;
+        this.isConfirm = isConfirm;
+        this.onSubmit = onSubmit;
+        this.onCancel = onCancel;
+
+        this.forceUpdate();
     }
 
     render() {
@@ -91,15 +121,26 @@ class StdManaging extends React.Component {
         */
 
         const { user } = this.props;
-        console.log(user);
         if (!user.student.name) return null;
+
+        const alertComp = this.enableAlert ? (<Alert 
+            text={this.alertText}
+            isConfirm={this.isConfirm}
+            onSubmit={this.onSubmit}
+            onCancel={this.onCancel}
+        />) : '';
+
         return (
-            <StdManagingPresenter
-                student={user.student}
-                iconNum={this.props.match.params.icon || undefined}
-                handleSubmit={this.handleSubmit}
-                goBack={this.goBack}
-            />);
+            <div>
+                {alertComp}
+                <StdManagingPresenter
+                    student={user.student}
+                    iconNum={this.props.match.params.icon || undefined}
+                    handleSubmit={this.handleSubmit}
+                    goBack={this.goBack}
+                />
+            </div>
+            );
     }
 }
 

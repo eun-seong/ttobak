@@ -1,9 +1,10 @@
 import React from 'react';
 import AddStudentPresenter from './AddStudentPresenter';
+import Alert from 'Components/Alert';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { student_add } from 'Sessions/action.js';
+import { student_add, response_clear } from 'Sessions/action.js';
 import moment from 'moment';
 
 class AddStudent extends React.Component {
@@ -17,6 +18,13 @@ class AddStudent extends React.Component {
         dispatch: PropTypes.func.isRequired,
     };
 
+    constructor() {
+        super();
+
+        this.enableAlert = false;
+        this.isStudentAddCalled = false;
+    }
+
     goBack = () => {
         this.props.history.goBack();
     };
@@ -27,53 +35,95 @@ class AddStudent extends React.Component {
         const { dispatch } = this.props;
 
         const icon = this.props.match.params.icon;
-        if (icon === undefined) {
-            alert('아이콘을 선택해주세요.');
+        if (!icon) {
+            this.makeAlert('아이콘을 선택해주세요.', false, (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
             return false;
         }
 
         if (!name || !birth || !gender) {
-            alert('빠진 부분 없이 입력해 주세요.');
+            this.makeAlert('빠진 부분 없이 입력해 주세요.', false, (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
             return false;
         }
 
         if (birth.length !== 8 || isNaN(birth) || !moment(birth, 'YYYYMMDD', true).isValid()) {
-            alert('올바른 생일을 입력해 주세요.(예시: 20100813)');
+            this.makeAlert('올바른 생일을 입력해 주세요.', false, (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
             return false;
         }
 
         if (gender !== '남자' && gender !== '여자') {
-            alert('올바른 성별을 입력해 주세요.(예시; 여자)');
+            this.makeAlert('올바른 성별을 입력해 주세요.(예시; 여자)', false, (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
             return false;
         }
 
         gender = (gender === '남자' ? 'm' : 'f');
         birth = moment(birth).format('YYYY-MM-DD');
 
-        console.log(user);
         dispatch(student_add(name, birth, gender, icon, user.user.u_id));
+        this.isStudentAddCalled = true;
 
         return true;
     }
+
+    makeAlert(text, isConfirm, onSubmit, onCancel) {
+        this.enableAlert = true;
+        this.alertText = text;
+        this.isConfirm = isConfirm;
+        this.onSubmit = onSubmit;
+        this.onCancel = onCancel;
+
+        this.forceUpdate();
+    }
+
     componentDidMount() {
         const { user } = this.props;
-        console.log(user);
         if (!user.user.u_id) {
-            alert('잘못된 접근입니다.');
-            this.props.history.push('/root/signin');
+            this.makeAlert('잘못된 접근입니다.', false, (() => {
+                this.props.history.push('/root/signin');
+            }));
         }
     }
 
     componentDidUpdate() {
         const { user } = this.props;
-        console.log(user);
-        if (user.student.s_id && user.user.u_id) {
-            alert('사용자 추가를 성공했습니다. 검사 페이지로 이동합니다.');
-            this.props.history.push('/diagnose/sweep');
+        const { dispatch } = this.props;
+
+        if (this.isStudentAddCalled && user.student.s_id && user.user.u_id) {
+            dispatch(response_clear());
+            this.makeAlert('검사 페이지로 이동합니다.', false, (() => {
+                this.props.history.push('/diagnose/sweep');
+            }));
+            this.isStudentAddCalled = false;
+            return;
         }
 
-        if (user.response.data && user.response.data.code == 2) {
-            alert('존재하지 않는 회원입니다.');
+        if (this.isStudentAddCalled && user.response.data && user.response.data.code == 2) {
+            dispatch(response_clear());
+            this.makeAlert('존재하지 않는 회원입니다.', false, (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
+            this.isStudentAddCalled = false;
+        }
+
+        if (this.isStudentAddCalled && user.response.data && user.response.data.code == 3) {
+            dispatch(response_clear());
+            this.makeAlert('학습자는 3명까지 추가 가능합니다.', false, (() => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            }));
+            this.isStudentAddCalled = false;
         }
     }
 
@@ -82,13 +132,24 @@ class AddStudent extends React.Component {
         presenter로 가는 모든 스테이트 값 렌더링
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
+        
+        const alertComp = this.enableAlert ? (<Alert 
+            text={this.alertText}
+            isConfirm={this.isConfirm}
+            onSubmit={this.onSubmit}
+            onCancel={this.onCancel}
+        />) : '';
 
-        return (<
-            AddStudentPresenter
-            handleSubmit={this.handleSubmit}
-            iconNum={this.props.match.params.icon}
-            goBack={this.goBack}
-        />);
+        return (
+            <div>
+                {alertComp}
+                <AddStudentPresenter
+                    handleSubmit={this.handleSubmit}
+                    iconNum={this.props.match.params.icon}
+                    goBack={this.goBack}
+                />
+            </div>
+            );
     }
 }
 

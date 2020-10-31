@@ -27,10 +27,10 @@ const DivInner = styled.div`
 
 const Title = styled.div`
     width: 100%;
-    margin: 6% 0 0 0;
+    margin: 10% 0 0 0;
     text-align: center;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.5rem;
 `;
 
 const Content = styled.div`
@@ -58,15 +58,22 @@ const Text = styled.div`
     padding: 10px 30px;
 `;
 
-const Alert = ({ text, onButtonTouchEnd }) => {
+const Alert = ({ text, isConfirm, onSubmit, onCancel }) => {
+    const cancleButton = isConfirm ? (
+        <ButtonDiv onClick={onCancel}>
+            <Text>취소</Text>
+        </ButtonDiv>
+        ) : '';
+
     return (
         <Div>
             <DivInner>
                 <Title>{text}</Title>
                 <Content>
-                    <ButtonDiv onTouchEnd={onButtonTouchEnd}>
+                    <ButtonDiv onClick={onSubmit}>
                         <Text>확인</Text>
                     </ButtonDiv>
+                    {cancleButton}
                 </Content>
             </DivInner>
         </Div>

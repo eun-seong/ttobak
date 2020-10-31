@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import { withRouter } from 'react-router-dom';
 import StdStatisticsPresenter from './StdStatisticsPresenter';
+import Alert from 'Components/Alert';
 
 import { Stat_Api } from 'api';
 
@@ -27,18 +28,15 @@ class StdStatstics extends React.Component {
             period: 'day',
             is_ready: false
         };
+        this.enableAlert = false;
 
         const { user } = props;
+        
 
-        if (!user.user.u_id) {
-            alert('잘못된 접근입니다.');
-            props.history.push('/root/signin');
-            return;
-        }
-
-        if (!user.student.s_id) {
-            alert('잘못된 접근입니다.');
-            props.history.push('/root/selectstd');
+        if (!user.user.u_id || !user.student.s_id) {
+            this.makeAlert('잘못된 접근입니다.', false, (() => {
+                props.history.push('/root/signin');
+            }));
             return;
         }
         this.Stat(true, 'day');
@@ -76,21 +74,41 @@ class StdStatstics extends React.Component {
         console.log(data.data);
     }
 
+    makeAlert(text, isConfirm, onSubmit, onCancel) {
+        this.enableAlert = true;
+        this.alertText = text;
+        this.isConfirm = isConfirm;
+        this.onSubmit = onSubmit;
+        this.onCancel = onCancel;
+
+        this.forceUpdate();
+    }
+
     render() {
         console.log(this.props.history);
         const { user } = this.props;
-        if (!user.student.s_id) return null;
+
+        const alertComp = this.enableAlert ? (<Alert 
+            text={this.alertText}
+            isConfirm={this.isConfirm}
+            onSubmit={this.onSubmit}
+            onCancel={this.onCancel}
+        />) : '';
 
         return (
-            <StdStatisticsPresenter
-                student={user.student}
-                goBack={this.goBack}
-                state={this.state}
-                Stat={this.Stat}
-                isReady={this.state.is_ready}
-                isCure={this.state.is_cure}
-                period={this.state.period}
-            />);
+            <div>
+                {alertComp}
+                <StdStatisticsPresenter
+                    student={user.student}
+                    goBack={this.goBack}
+                    state={this.state}
+                    Stat={this.Stat}
+                    isReady={this.state.is_ready}
+                    isCure={this.state.is_cure}
+                    period={this.state.period}
+                />
+            </div>
+            );
     }
 }
 

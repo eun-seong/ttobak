@@ -1,9 +1,10 @@
 import React from 'react';
 import SelectStudentPresenter from './SelectStudentPresenter';
+import Alert from 'Components/Alert';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { user_get, student_get } from 'Sessions/action.js';
+import { user_get, student_get, response_clear } from 'Sessions/action.js';
 
 class SelectStudent extends React.Component {
     /* 
@@ -16,6 +17,12 @@ class SelectStudent extends React.Component {
         dispatch: PropTypes.func.isRequired,
     };
 
+    constructor() {
+        super();
+
+        this.enableAlert = false;
+        this.isSelectStudentCalled = false;
+    }
 
     goBack = () => {
         this.props.history.goBack();
@@ -28,16 +35,27 @@ class SelectStudent extends React.Component {
         const { dispatch } = this.props;
 
         dispatch(student_get(s_id, user.user.u_id));
+        this.isSelectStudentCalled = true;
+    }
+
+    makeAlert(text, isConfirm, onSubmit, onCancel) {
+        this.enableAlert = true;
+        this.alertText = text;
+        this.isConfirm = isConfirm;
+        this.onSubmit = onSubmit;
+        this.onCancel = onCancel;
+
+        this.forceUpdate();
     }
 
     componentDidMount() {
         const { user } = this.props;
         const { dispatch } = this.props;
-        console.log(user.user.u_id);
 
         if (!user.user.u_id) {
-            alert('잘못된 접근입니다.');
-            this.props.history.push('/root/signin');
+            this.makeAlert('잘못된 접근입니다.', false, (() => {
+                this.props.history.push('/root/signin');
+            }));
             return;
         }
 
@@ -46,13 +64,20 @@ class SelectStudent extends React.Component {
 
     componentDidUpdate() {
         const { user } = this.props;
+        const { dispatch } = this.props;
 
-        if (user.student.s_id) {
+        if (this.isSelectStudentCalled && user.student.s_id && user.response.data && user.response.data.code === 1) {
+            dispatch(response_clear());
             this.props.history.push('/');
+            this.isSelectStudentCalled = false;
             return;
         }
-        if (user.response.data && user.response.data.code !== 1) {
-            alert('존재하지 않는 회원입니다.');
+        if (this.isSelectStudentCalled && user.response.data && user.response.data.code !== 1) {
+            dispatch(response_clear());
+            this.makeAlert('존재하지 않는 회원입니다.', false, (() => {
+                this.props.history.push('/root/signin');
+            }));
+            this.isSelectStudentCalled = false;
             return;
         }
     }
@@ -63,12 +88,24 @@ class SelectStudent extends React.Component {
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
         const { user } = this.props;
-        return (<
-            SelectStudentPresenter
-            students={user.user.students || []}
-            handler={this.handleSubmit}
-            goBack={this.goBack}
-        />);
+        console.log(user);
+        const alertComp = this.enableAlert ? (<Alert 
+            text={this.alertText}
+            isConfirm={this.isConfirm}
+            onSubmit={this.onSubmit}
+            onCancel={this.onCancel}
+        />) : '';
+
+        return (
+            <div>
+                {alertComp}
+                <SelectStudentPresenter
+                    students={user.user.students || []}
+                    handler={this.handleSubmit}
+                    goBack={this.goBack}
+                />
+            </div>
+            );
     }
 }
 
