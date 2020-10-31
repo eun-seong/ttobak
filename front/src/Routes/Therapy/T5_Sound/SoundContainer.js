@@ -160,7 +160,8 @@ class Sound extends React.Component {
                 CardTextList[index],
                 this.currentCure.cure_id,
                 this.learning_type === 'review' ? 'T' : 'F',
-                this.type
+                this.type,
+                this.learning_type === 'daily' ? 'T' : 'F',
             );
             console.log(data);
 

@@ -170,7 +170,8 @@ class Shadowing extends React.Component {
                     this.audioResult.rhythm_score,
                     this.learning_type === 'review' ? 'T' : 'F',
                     this.currentCure.cure_id,
-                    this.idx_text
+                    this.idx_text,
+                    this.learning_type === 'daily' ? 'T' : 'F',
                 );
                 console.log(data);
 

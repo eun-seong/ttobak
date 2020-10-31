@@ -193,7 +193,8 @@ class ConsoMatch extends React.Component {
                 cure_id,
                 this.getListFilter('cure_tid', this.currentCure[id]).cure_word,
                 this.getListFilter('cure_tid', this.currentCure[3][0]).cure_word,
-                this.learning_type === 'review' ? 'T' : 'F'
+                this.learning_type === 'review' ? 'T' : 'F',
+                this.learning_type === 'daily' ? 'T' : 'F',
             );
             console.log(data);
 

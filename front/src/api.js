@@ -183,7 +183,7 @@ export const T1_Api = {
             's_id': s_id,
             'idx_txt': idx_txt,
         }),
-    answer: (s_id, full_score, phone_score, speed_score, rhythm_score, is_review, cure_id, idx_txt) =>
+    answer: (s_id, full_score, phone_score, speed_score, rhythm_score, is_review, cure_id, idx_txt, is_daily) =>
         api.post(url.therapy_answer, {
             's_id': s_id,
             'idx_txt': idx_txt,
@@ -192,7 +192,8 @@ export const T1_Api = {
             'speed_score': speed_score,
             'rhythm_score': rhythm_score,
             'is_review': is_review,
-            'cure_id': cure_id
+            'cure_id': cure_id,
+            'is_daily': is_daily,
         }),
 };
 
@@ -202,7 +203,7 @@ export const T_Api2 = {
             's_id': s_id,
             'idx_txt': idx_txt,
         }),
-    answer: (s_id, ori_answer, stu_answer, cure_id, is_review, idx_txt) =>
+    answer: (s_id, ori_answer, stu_answer, cure_id, is_review, idx_txt, is_daily) =>
         api.post(url.therapy_answer, {
             's_id': s_id,
             'cure_id': cure_id,
@@ -210,6 +211,7 @@ export const T_Api2 = {
             'is_review': is_review || 'F',
             'ori_answer': ori_answer,
             'stu_answer': stu_answer,
+            'is_daily': is_daily,
         }),
 };
 
@@ -219,10 +221,11 @@ export const T_Api3 = {
             's_id': s_id,
             'idx_txt': idx_txt.vowelword,
         }),
-    answer: (s_id) =>
+    answer: (s_id, is_daily) =>
         api.post(url.therapy_answer, {
             's_id': s_id,
             'idx_txt': idx_txt.vowelword,
+            'is_daily': is_daily,
         }),
 };
 
@@ -232,7 +235,7 @@ export const T_Api4 = {
             's_id': s_id,
             'idx_txt': idx_txt.consomatch,
         }),
-    answer: (s_id, cure_id, stu_answer, ori_answer, is_review) =>
+    answer: (s_id, cure_id, stu_answer, ori_answer, is_review, is_daily) =>
         api.post(url.therapy_answer, {
             's_id': s_id,
             'idx_txt': idx_txt.consomatch,
@@ -241,7 +244,8 @@ export const T_Api4 = {
             'cure_id3': cure_id[2],
             'stu_answer': stu_answer,
             'ori_answer': ori_answer,
-            'is_review': is_review
+            'is_review': is_review.
+            'is_daily': is_daily,
         }),
 };
 

@@ -66,7 +66,7 @@ class Attention extends React.Component {
             this.currentAudio.pause();
             this.currentAudio = null;
         }
-        window.removeEventListener("android", this.androidResponse)
+        window.removeEventListener('android', this.androidResponse)
         window.removeEventListener('androidStopRecording', this.stopRecording);
         this.sample_ques = null;
         this.voice = null;

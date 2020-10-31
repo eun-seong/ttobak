@@ -143,7 +143,8 @@ class ConsoCommon extends React.Component {
                 this.state.CardTextList[id],
                 this.currentCure.cure_id,
                 this.learning_type === 'review' ? 'T' : 'F',
-                idx_text
+                idx_text,
+                this.learning_type === 'daily' ? 'T' : 'F',
             );
             console.log(data);
 

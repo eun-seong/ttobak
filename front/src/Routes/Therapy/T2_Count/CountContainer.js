@@ -54,6 +54,7 @@ class Count extends React.Component {
         this.numOfLoadedImage = 0;
         this.picture = { T2, TTobak };
         this.totalImages = Object.keys(T2).length + Object.keys(TTobak).length + 3;
+        this.voc_script = null;
         this.state = initState;
     }
 
@@ -214,10 +215,51 @@ class Count extends React.Component {
             numOfApples.toString(),
             this.cure[this.currentIndex].cure_id,
             this.learning_type === 'review' ? 'T' : 'F',
-            idx_txt
+            idx_txt,
+            this.learning_type === 'daily' ? 'T' : 'F',
         );
         console.log(data);
 
+        if (data.code === 1) {
+            if (data.correct_voice.voc_desc === 'retry') {
+                this.retry_script = new Audio(soundURL + data.correct_voice.voc_path);
+                this.retry_script.addEventListener('ended', () => {
+                    this.setState({
+                        TTobaki: TTobak.ttobak1_1,
+                        Apple: {
+                            randomApple: T2.t2_Apples[Math.floor(Math.random() * 4)],
+                            applesInBasket: [],
+                            numOfApples: 0,
+                        },
+                    });
+                    setTimeout(() => {
+                        this.currentAudio.play();
+                        this.setState({
+                            TTobaki: TTobak.ttobak3_2,
+                        });
+                    }, 1000);
+                });
+                setTimeout(() => {
+                    this.retry_script.play();
+                    this.setState({
+                        TTobaki: TTobak.ttobak3_2,
+                    });
+                }, 1200);
+                return;
+            } else {
+                this.good_script = new Audio(soundURL + data.correct_voice.voc_path);
+                this.good_script.addEventListener('ended', () => this.nextStep());
+                setTimeout(() => {
+                    this.good_script.play();
+                    this.setState({
+                        TTobaki: TTobak.ttobak2_2,
+                    });
+                }, 1000);
+            }
+        }
+    }
+
+    nextStep = () => {
         if (this.currentIndex < this.cure.length - 1) this.currentIndex++;
         else {
             this.gameDone();
@@ -241,11 +283,11 @@ class Count extends React.Component {
                 },
                 currentIndex: this.currentIndex + 1
             });
-        }, 1500);
+        }, 1000);
 
         setTimeout(() => {
             this.playSound();
-        }, 2500);
+        }, 2000);
     }
 
     createRandomApple = () => {

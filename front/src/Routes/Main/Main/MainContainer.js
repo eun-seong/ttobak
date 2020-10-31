@@ -36,7 +36,7 @@ class Main extends React.Component {
     async componentDidMount() {
         const { user } = this.props;
         const { dispatch } = this.props;
-        
+
         if (!user.user.u_id || !user.student.s_id) {
             this.props.history.push('/root/signin');
             return;
@@ -60,7 +60,7 @@ class Main extends React.Component {
             if (data.code === 1 || data.code === 'tutorial') {
                 if (!!save.data.current) {
                     const content = ContentsList.filter(c => {
-                        return c.name === save.data.current[1];
+                        return c.name === save.data.current[0];
                     })[0];
 
                     this.setState({

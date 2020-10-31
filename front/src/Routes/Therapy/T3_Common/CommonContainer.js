@@ -222,7 +222,8 @@ class Common extends React.Component {
                 boxTextList[index],
                 this.cure[this.currentIndex].com_id,
                 is_review,
-                idx_text
+                idx_text,
+                this.learning_type === 'daily' ? 'T' : 'F',
             );
             console.log(data);
 
