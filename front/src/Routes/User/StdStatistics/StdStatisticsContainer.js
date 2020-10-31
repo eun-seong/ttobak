@@ -106,6 +106,7 @@ class StdStatstics extends React.Component {
                     isReady={this.state.is_ready}
                     isCure={this.state.is_cure}
                     period={this.state.period}
+                    history={this.props.history}
                 />
             </div>
             );

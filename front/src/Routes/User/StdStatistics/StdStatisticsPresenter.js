@@ -61,7 +61,7 @@ const TabButton = styled.div`
 
 
 
-const StdStatistics = ({ goBack, student, state, Stat, isReady, isCure, period }) => {
+const StdStatistics = ({ goBack, student, state, Stat, isReady, isCure, period, history }) => {
 	if(!isReady) return (<Container></Container>);
 	let targets = (isCure ? [state.amount, state.score, state.voice_score] : [state.score_swp, state.score_swp, state.score_foc]);
 	let tickles = targets.map(element => Math.ceil(Math.max(...Object.values(element))/20));
@@ -76,6 +76,7 @@ const StdStatistics = ({ goBack, student, state, Stat, isReady, isCure, period }
 	            	<TabButton selected={period === 'day'} onClick={() => Stat(true, 'day')}>일간</TabButton>
 	            	<TabButton selected={period === 'week'} onClick={() => Stat(true, 'week')}>주간</TabButton>
 	            	<TabButton selected={period === 'month'} onClick={() => Stat(true, 'month')}>월간</TabButton>
+					<TabButton onClick={() => {history.push('/diagnose/result');}}>검사</TabButton>
 	            </TabContainer>
 				{[0, 1, 2].map((idx) => {
 					return (<GraphComp
