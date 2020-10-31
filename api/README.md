@@ -783,44 +783,6 @@ OR
 		},success : function(r) {
 	         console.log(r)
       }
-    }); 
-
- **okay**
-----
-* **URL**
-	/diagnose/okay
-
-* **Method:**
-	  `POST`
-*  **URL Params**
-   **Required:**
-   **Optional:**
-
-* **Data Params**
-	   `s_id = [integer]` 
-		  
-* **Success Response:**
-
-  * **Code:** 200 <br />
-    **Content:** `{ "is_okay" : True/False} "code":1}`
-          
-   OR
-
-  * **Code:** 200 <br />
-    **Content:** `{ "message" : "해당하는 학습자가 존재하지 않습니다.","code": 2 }`
-
-
-* **Sample Call:**
-  ```javascript
-    $.ajax({
-      url: "link/to/api/diagnose/okay",
-      dataType: "json",
-      type : "POST",
-      data : { 
-	     "s_id" : 1
-		},success : function(r) {
-	         console.log(r)
-      }
     });   
   
 
@@ -884,7 +846,7 @@ answer(1) - read(poem,text,selfpoem,selftext)
    **Optional:**
 
 * **Data Params**
-	   `s_id = [integer]` | `cure_id = [integer] | full_score = [integer] | phone_score = [integer] | rhythm_score = [integer] | speed_score = [integer] | is_review = ["T" or "F"] | idx_txt = [idx_txt]`
+	   `s_id = [integer]` | `cure_id = [integer] | full_score = [integer] | phone_score = [integer] | rhythm_score = [integer] | speed_score = [integer] | is_review = ["T" or "F"] | is_daily = ["T" or "F"] |  idx_txt = [idx_txt]`
 		  
 * **Success Response:**
 
@@ -943,7 +905,7 @@ answer(1) - read(poem,text,selfpoem,selftext)
    **Optional:**
 
 * **Data Params**
-	   `s_id = [integer]` | `cure_id = [integer] | ori_answer = [character] | stu_answer = [character] | is_review = ["T" or "F"] | idx_txt = [idx_txt]`
+	   `s_id = [integer]` | `cure_id = [integer] | ori_answer = [character] | stu_answer = [character] | is_review = ["T" or "F"] | is_daily = ["T" or "F"] | idx_txt = [idx_txt]`
 
 *in case of count, stu_answer & ori_answer can be integer*
 *for the others, they should be character/word*
@@ -1000,7 +962,7 @@ answer(1) - read(poem,text,selfpoem,selftext)
    **Optional:**
 
 * **Data Params**
-	   `s_id = [integer]` | `cure_id = [integer] | full_score = [integer] | phone_score = [integer] | rhythm_score = [integer] | speed_score = [integer] | is_review = ["T" or "F"] | idx_txt = [idx_txt]`
+	   `s_id = [integer]` | `cure_id = [integer] | full_score = [integer] | phone_score = [integer] | rhythm_score = [integer] | speed_score = [integer] | is_review = ["T" or "F"] | is_daily = ["T" or "F"] | idx_txt = [idx_txt]`
 		  
 * **Success Response:**
 
@@ -1056,7 +1018,7 @@ answer(1) - read(poem,text,selfpoem,selftext)
    **Optional:**
 
 * **Data Params**
-	   `s_id = [integer]` | `cure_id = [integer] | cure_id2 = [integer] | cure_id3 = [integer] | ori_answer = [character] | stu_answer = [character] | is_review = ["T" or "F"] | idx_txt = [idx_txt]`
+	   `s_id = [integer]` | `cure_id = [integer] | cure_id2 = [integer] | cure_id3 = [integer] | ori_answer = [character] | stu_answer = [character] | is_review = ["T" or "F"] | is_daily = ["T" or "F"] | idx_txt = [idx_txt]`
 
 *ori_answer & stu_answer should be the word*
 
