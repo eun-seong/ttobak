@@ -5,6 +5,7 @@ import random
 import requests
 import time
 import datetime
+import math
 
 from .models  import User,Student,UsrStu,StuIc,Icon,TestMaster,StuTest,CureMaster,StuCure,StuCurrent,TestIdx,CureIdx,ComCure,TestCurrent,Voice
 from . import serializers as sz
@@ -554,66 +555,68 @@ class TestResult(View):
         s_id = data['s_id']
         if Student.objects.filter(pk=s_id).exists():
             student = Student.objects.get(pk=s_id)
-            date = datetime.datetime.now()
+            # date = datetime.datetime.now()
             # date = '2020-10-25'
             # date = date.strftime("%Y-%m-%d")
-            date = '2020-10-30'
+            # date = '2020-10-30'
             results ={}
             swp = {}
             ph = {}
             foc = {}
-            if StuTest.objects.filter(stu=student,date = date,is_review='F').exists():
-                results['총 문제 개수'] = StuTest.objects.filter(stu=student,date=date,is_review='F').count()
-                results['총 맞은 개수'] = StuTest.objects.filter(stu=student,date=date,is_review='F',is_correct='T').count()
-                swp['총 문제 개수'] = StuTest.objects.filter(stu=student,date=date,test_txt='swp',is_review='F').count()
-                swp['맞은 개수'] = StuTest.objects.filter(stu=student,date=date,test_txt='swp',is_review='F',is_correct ='T').count()
-                ph ['총 문제 개수'] = StuTest.objects.filter(stu=student,date=date,test_txt='ph',is_review='F').count()
-                ph['맞은 개수'] = StuTest.objects.filter(stu=student,date=date,test_txt='ph',is_review='F',is_correct='T').count()
-                foc['총 문제 개수'] = StuTest.objects.filter(stu=student,date=date,test_txt='foc',is_review='F').count()
-                foc['평균 발음 정확도'] = StuTest.objects.filter(stu=student,date=date,test_txt='foc').aggregate(Avg('full_score'))['full_score__avg']
-                results['청각처리속도'] = swp
-                results['음운청취력'] = ph
-                results['선택적집중력'] = foc
-                levels = [1,1,1]
-                slevels = [1,1,1]
-                every_swp = StuTest.objects.filter(stu=student,test_txt = 'swp',is_correct = 'T',date=date,is_review='F')
-                if every_swp.count() ==0:
-                    levels[1] = 1
-                for s in every_swp:
-                    sw = TestMaster.objects.get(pk=s.ques_id)
-                    freq = sw.ques_int
-                    if freq == 500:
-                        if slevels[0] <= sw.ques_level +1:
-                            slevels[0] = sw.ques_level +1
-                    elif freq == 1000:
-                        if slevels[1] <= sw.ques_level +1:
-                            slevels[1] = sw.ques_level +1
-                    elif freq == 2000:
-                        if slevels[2] <= sw.ques_level +1:
-                            slevels[2] = sw.ques_level +1
-                levels[0] = min(slevels)
-                every_ph = StuTest.objects.filter(stu=student,test_txt = 'ph',date=date,is_review='F')
-                c_ph = len([p for p in every_ph if p.is_correct == 'T'])
-                pscore = (c_ph/25) * 100
-                if pscore >= 96:
-                    levels[1]= 6
-                elif pscore >= 86:
-                    levels[1] =5
-                elif pscore >= 70:
-                    levels[1] = 4
-                elif pscore >= 50:
-                    levels[1] = 3
-                elif pscore >= 33:
-                    levles[1] = 2
-                levels[2] = TestCurrent.objects.get(stu = student).focus_lev +1
-                tot_lev = min(levels)
-                if tot_lev >=5:
-                    status = '경미'
-                elif tot_lev >=3:
-                    status = '저위험군'
-                elif tot_lev >=1:
-                    status = '고위험군'
-                results['status'] = status
+            if StuTest.objects.filter(stu=student,is_review='F').exists():
+                date = StuTest.objects.filter(stu=student,is_review='F').order_by('-date')[0].date
+                if StuTest.objects.filter(stu=student,date = date,is_review='F').exists():
+                    results['총 문제 개수'] = StuTest.objects.filter(stu=student,date=date,is_review='F').count()
+                    results['총 맞은 개수'] = StuTest.objects.filter(stu=student,date=date,is_review='F',is_correct='T').count()
+                    swp['총 문제 개수'] = StuTest.objects.filter(stu=student,date=date,test_txt='swp',is_review='F').count()
+                    swp['맞은 개수'] = StuTest.objects.filter(stu=student,date=date,test_txt='swp',is_review='F',is_correct ='T').count()
+                    ph ['총 문제 개수'] = StuTest.objects.filter(stu=student,date=date,test_txt='ph',is_review='F').count()
+                    ph['맞은 개수'] = StuTest.objects.filter(stu=student,date=date,test_txt='ph',is_review='F',is_correct='T').count()
+                    foc['총 문제 개수'] = StuTest.objects.filter(stu=student,date=date,test_txt='foc',is_review='F').count()
+                    foc['평균 발음 정확도'] = StuTest.objects.filter(stu=student,date=date,test_txt='foc').aggregate(Avg('full_score'))['full_score__avg']
+                    results['청각처리속도'] = swp
+                    results['음운청취력'] = ph
+                    results['선택적집중력'] = foc
+                    levels = [1,1,1]
+                    slevels = [1,1,1]
+                    every_swp = StuTest.objects.filter(stu=student,test_txt = 'swp',is_correct = 'T',date=date,is_review='F')
+                    if every_swp.count() ==0:
+                        levels[1] = 1
+                    for s in every_swp:
+                        sw = TestMaster.objects.get(pk=s.ques_id)
+                        freq = sw.ques_int
+                        if freq == 500:
+                            if slevels[0] <= sw.ques_level +1:
+                                slevels[0] = sw.ques_level +1
+                        elif freq == 1000:
+                            if slevels[1] <= sw.ques_level +1:
+                                slevels[1] = sw.ques_level +1
+                        elif freq == 2000:
+                            if slevels[2] <= sw.ques_level +1:
+                                slevels[2] = sw.ques_level +1
+                    levels[0] = min(slevels)
+                    every_ph = StuTest.objects.filter(stu=student,test_txt = 'ph',date=date,is_review='F')
+                    c_ph = len([p for p in every_ph if p.is_correct == 'T'])
+                    pscore = (c_ph/25) * 100
+                    if pscore >= 96:
+                        levels[1]= 6
+                    elif pscore >= 86:
+                        levels[1] =5
+                    elif pscore >= 70:
+                        levels[1] = 4
+                    elif pscore >= 50:
+                        levels[1] = 3
+                    elif pscore >= 33:
+                        levles[1] = 2
+                    levels[2] = math.ceil(TestCurrent.objects.get(stu = student).focus_lev/5) +1
+                    tot_lev = min(levels)
+                    if tot_lev >=5:
+                        status = '경미'
+                    elif tot_lev >=3:
+                        status = '저위험군'
+                    elif tot_lev >=1:
+                        status = '고위험군'
+                    results['status'] = status
                 
             return JsonResponse({"results":results,"code":1},status=200)
         else:
@@ -841,6 +844,11 @@ class CureGet(View):
             cures = list(ComCure.objects.filter(com_level = level))
             rand_cures = random.sample(cures,10)
             s_cures = self.serialized(rand_cures,idx_id)
+        elif idx_id == 1 or idx_id == 11:
+            level = random.randint(1,3)
+            tid = random.randint(1,20)
+            cures = list(CureMaster.objects.filter(cure_idx=idx_id,cure_level=level,cure_tid = tid))
+            s_cures = self.serialized(cures,idx_id)
         elif idx_id != 7:
             cures = list(CureMaster.objects.filter(cure_idx = idx_id))
             rand_cures = random.sample(cures,10)
@@ -920,6 +928,16 @@ class CureGet(View):
     def get_tutorial(self,student,idx_txt):
         idx_id = CureIdx.objects.get(idx_txt = idx_txt).idx_id
         voices = []
+        if idx_id == 1:
+            sound = [9,35,40,38,34]
+            for s in sound:
+                voices.append(Voice.objects.get(pk=s))
+            sdat = sz.VoiceSerializer(data=voices,many=True)
+            sdat.is_valid()
+            # sample_ques = CureMaster.objects.get(pk=1259)
+            # sample_ques = sz.CountSerializer(instance=sample_ques)
+            return sdat.data
+
         if idx_id == 3:
             sound = [10,11,12]
             for s in sound:
@@ -953,8 +971,13 @@ class CureGet(View):
                 voices.append(Voice.objects.get(voc_id=s))
             sdat = sz.VoiceSerializer(data=voices,many=True)
             sdat.is_valid()
-            sample_ques = CureMaster.objects.get(pk=2246)
-            sample_ques = sz.ConsomatchSerializer(instance = sample_ques)
+            ques = [2246,2247,2248]
+            sample_ques = []
+            for q in ques:
+                sample_q = CureMaster.objects.get(pk=q)
+                sample_ques.append(sample_q)
+            sample_ques = sz.ConsomatchSerializer(data = sample_ques,many=True)
+            sample_ques.is_valid()
             return sdat.data, sample_ques.data
         if idx_id == 8:
             sound = [27,28]
@@ -998,6 +1021,14 @@ class CureGet(View):
                     read, cure, answer = self.get_review(s_id)
                     return JsonResponse({"read":read,"cure":cure,"answer":answer,"code":"review"},status=200)
                 else:
+                    if idx_txt == 'poem':
+                        tutorial = self.get_tutorial(student,idx_txt)
+                        cure,answer,level = self.get_specified(s_id,idx_txt)
+                        return JsonResponse({"cure":cure,"answer":answer,"read_voice":tutorial,"code":"specified"},status=200)
+                    if idx_txt == "selfpoem":
+                        # tutorial = self.get_tutorial(student,idx_txt)
+                        cure,answer,level = self.get_specified(s_id,idx_txt)
+                        return JsonResponse({"cure":cure,"code":"specified"},status=200)
                     cure, answer,level = self.get_specified(s_id,idx_txt)
                     tutorial , sample_ques = [],[]
                     if idx_txt == "common":
@@ -1035,12 +1066,12 @@ class CureGet(View):
                                 sample_ques = sz.CommonSerializer(instance=sample_ques).data
                                 tutorial = sdat.data
                                 code = "tutorial"
-                        return JsonResponse({"cure":cure,"answer":answer,"tut_vocie":tutorial,"sample_ques":sample_ques,"code":code},status=200)
+                        return JsonResponse({"cure":cure,"answer":answer,"tut_voice":tutorial,"sample_ques":sample_ques,"code":code},status=200)
                     else:    
                         if not StuCure.objects.filter(stu_id = s_id , cure_txt = idx_txt).exists():
                             tutorial , sample_ques = self.get_tutorial(student,idx_txt)
                             code = "tutorial"
-                        return JsonResponse({"cure":cure,"answer":answer,"tut_vocie":tutorial,"sample_ques":sample_ques,"code":code},status=200)
+                        return JsonResponse({"cure":cure,"answer":answer,"tut_voice":tutorial,"sample_ques":sample_ques,"code":code},status=200)
             if not StuCurrent.objects.filter(stu_id = s_id).exists():
                 StuCurrent.objects.create(
                     stu = student,
