@@ -175,10 +175,10 @@ def calc_score(res, words, ans, trans, final):
         # 100점 만점으로 phone_score를 계산
         phone_score = 100.0 - (distance / total * 100.0)
         
-        # -10 ~ 0점으로 speed 점수 계산
+        # -10 ~ 0점으로 speed 점수 계산(정답 스크립트의 띄어쓰기 개수에서 느리게 말한 개수를 빼준 값)
         for idx in range(len(data)-1):
             speed_score += get_time_score(data[idx], data[idx+1])
-        if speed_score < -10.0: speed_score = -10.0
+        speed_score = min(max(speed_score + ans.count('_'), -10), 0)
 
         underbar_count = abs(ans.count('_') - res.count('_'))
         rhythm_count_score = 5.0 - min(underbar_count*0.5, 10.0) # 띄어쓰기 개수가 맞으면 5점, 틀리면 틀린 개수마다 0.5점 감점(-5 ~ 5점)
