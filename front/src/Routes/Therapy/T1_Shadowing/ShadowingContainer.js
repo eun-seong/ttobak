@@ -118,7 +118,7 @@ class Shadowing extends React.Component {
         console.log(this.props.location.state.data);
         this.intro(this.props.location.state.data.read_voice);
 
-        this.cure = this.props.location.state.data.cure;
+        this.cure = this.props.location.state.data.read;
         this.currentCure = this.cure[this.currentIndex];
         this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
         if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
@@ -134,18 +134,10 @@ class Shadowing extends React.Component {
         this.reac_voice = null;
         this.read_voice = [
             new Audio(soundURL + data[0].voc_path),
-            new Audio(soundURL + data[1].voc_path),
-            new Audio(soundURL + data[2].voc_path),
-            new Audio(soundURL + data[3].voc_path),
-            new Audio(soundURL + data[4].voc_path),
         ];
 
         this.read_voice[0].addEventListener('ended', () => {
             setTimeout(() => this.playSound(), 1000);
-        });
-
-        this.read_voice[4].addEventListener('ended', () => {
-            this.nextStep();
         });
 
         this.read_voice[0].play();
@@ -214,8 +206,13 @@ class Shadowing extends React.Component {
                     }, 1000);
                     return;
                 } else {
+                    this.good_script = new Audio(soundURL + data.class_voice.voc_path);
+                    this.good_script.addEventListener('ended', () => this.nextStep());
                     setTimeout(() => {
-                        this.read_voice[4].play();
+                        this.good_script.play();
+                        this.setState({
+                            TTobaki: TTobak.ttobak2_2,
+                        });
                     }, 1000);
                 }
 

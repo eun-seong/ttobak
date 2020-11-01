@@ -29,7 +29,7 @@ const InfoBox = styled.div`
     justify-content: space-between;
 `;
 
-const StdInfo = ({ student, goBack }) => {
+const StdInfo = ({ student, goBack, amount, score, voice_score }) => {
     const { color, text } = level.level3;
 
     return (
@@ -38,19 +38,23 @@ const StdInfo = ({ student, goBack }) => {
             학습자 페이지 UI 변경 */}
             <BoxContainer><StdBox student={student} goBack={goBack} /></BoxContainer>
             <InfoBox>
-                <ExplainBoxComp Content={<StdInfoComp title={'총 학습량'} />} />
+                <ExplainBoxComp Content={<StdInfoComp
+                    title={'총 학습량'}
+                    score={amount && amount + ' 분'} />} />
                 <ExplainBoxComp
                     Content={<StdInfoComp
                         title={'성취도'}
                         color={color}
                         text={text}
-                        per={'78%'} />} />
+                        per={'78%'}
+                        score={score && score + '%'} />} />
                 <ExplainBoxComp
                     Content={<StdInfoComp
                         title={'발음 정확도'}
                         color={color}
                         text={text}
-                        per={'64%'} />} />
+                        per={'64%'}
+                        score={voice_score && voice_score + ' 점'} />} />
             </InfoBox>
         </Container >
     );

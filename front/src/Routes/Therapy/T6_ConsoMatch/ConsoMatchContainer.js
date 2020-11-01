@@ -143,13 +143,13 @@ class ConsoMatch extends React.Component {
 
         this.setState({
             PicBoxList: [
-                soundURL + this.currentCure.cure_path2,
-                soundURL + this.currentCure.cure_path2,
-                soundURL + this.currentCure.cure_path2,
+                soundURL + this.currentCure[0].cure_path2,
+                soundURL + this.currentCure[1].cure_path2,
+                soundURL + this.currentCure[2].cure_path2,
             ]
         });
 
-        this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
+        this.currentAudio = new Audio(soundURL + this.currentCure[0].cure_path);
         this.currentAudio.addEventListener('ended', () => {
             this.setState({
                 Worm: Characters.worm2_2,
