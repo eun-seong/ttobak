@@ -2,8 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import GameBackground from 'Components/GameBackground';
+import PausePopup from 'Components/PausePopup';
+import DonePopup from 'Components/DonePopup';
+import DailyPopup from 'Components/DailyPopup';
 
 import TextBoxComponent from './TextBoxComponent';
+import { T1, TTobak } from 'images';
 
 const Div = styled.div`
     display: flex;
@@ -25,22 +29,51 @@ const TextBox = styled.div`
     margin-bottom: 5%;
 `;
 
-const Self = ({ props }) => {
+const CompleteButton = styled.img`
+    position: absolute;
+    width: 9%;
+    top: 15vh;
+    right: 10px;
+`;
+
+const Shadowing = ({ props }) => {
     return (
         <Div>
+            <CompleteButton src={T1.bt_complete} alt='complete' onTouchEnd={props.onCompleteButtonHandle} />
             <TTobakComponent src={props.TTobak} alt='또박이' />
             <TextBox>
-                <TextBoxComponent src={props.TextBox} type={props.type} text={props.text} isRecording={props.isRecording} />
+                <TextBoxComponent src={props.TextBox} text={props.text} isRecording={props.RecordingCircle} />
             </TextBox>
+            {
+                props.showPopup ?
+                    <PausePopup
+                        onContinueButtonHandle={props.onContinueButtonHandle} />
+                    : null
+            }
+            {
+                props.showDonePopup ?
+                    <DonePopup
+                        onRestartButtonHandle={props.onRestartButtonHandle} />
+                    : null
+            }
+            {
+                props.showDailyPopup ?
+                    <DailyPopup />
+                    : null
+            }
         </Div>
     );
 }
 
-const Game = ({ Background, ...props }) => {
+const Game = ({ Background, onPauseButtonHandle, ...props }) => {
     return (
-        <GameBackground BackgroundImg={Background}
+        <GameBackground
+            BackgroundImg={Background}
+            onPauseButtonHandle={onPauseButtonHandle}
+            currentIndex={props.currentIndex}
+            totalNum={props.totalNum}
             Children={
-                <Self props={props} />
+                <Shadowing props={props} />
             }>
         </GameBackground>
     );

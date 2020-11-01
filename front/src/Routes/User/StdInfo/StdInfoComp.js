@@ -60,7 +60,7 @@ border-radius: 50px;
 background-color: ${props => props.color || 'green'};
 `;
 
-const PercentBox = ({ title, userInfo, color, text, per, score }) => {
+const PercentBox = ({ title, color, text, per, score }) => {
     return (
         <ContentsContainer>
             <InfoHeader title={title} color={color} text={text} score={score} />

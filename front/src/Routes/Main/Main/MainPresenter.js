@@ -5,6 +5,7 @@ import StdBox from './StdBox';
 import ButtonBox from './ButtonBox';
 import CustomLearning from './CustomLearning';
 import { colors } from 'const';
+import Alert from 'Components/Alert';
 
 /* styled-components */
 const Container = styled.div`
@@ -45,48 +46,57 @@ const FirstDiag = styled.div`
     line-height: 1.7rem;
 `;
 
-const Main = ({ data, student, isImageLoaded, daily_custom, daily_link, daily_complete, isDiagOkay, isFirstDiagnose }) => {
+const Main = ({ data, student, isImageLoaded, daily_custom, daily_link, daily_complete, isDiagOkay, isFirstDiagnose, ...props }) => {
     return (
-        <Container>
-            <StdBox student={student} isDiagOkay={isDiagOkay} />
-            <Component>
-                <ButtonBox
-                    text={'맞춤 학습'} width={'56vw'}
-                    headercolor={colors.main_header_yellow}
-                    color={colors.main_yellow}
-                    linkto={daily_link} data={data}
-                    Contents={<CustomLearning daily_custom={daily_custom} daily_complete={daily_complete} />}
-                />
-                <SubComp>
+        <>
+            {
+                props.showPopUp ?
+                    <Alert
+                        text={'마지막 검사로부터 일주일 후에 진행할 수 있습니다.'}
+                        onSubmit={props.onOkButtonHandle} />
+                    : null
+            }
+            <Container>
+                <StdBox student={student} isDiagOkay={isDiagOkay} />
+                <Component>
                     <ButtonBox
-                        text={'복습하기'}
-                        Contents={<div>이전에 했던 내용을 복습해요!</div>}
-                        headercolor={colors.main_header_blue}
-                        color={colors.main_blue}
-                        width={'31w'} height={'34vh'}
-                        linkto={'/main/select'}
-                        isImageLoaded={isImageLoaded}
+                        text={'맞춤 학습'} width={'56vw'}
+                        headercolor={colors.main_header_yellow}
+                        color={colors.main_yellow}
+                        linkto={daily_link} data={data}
+                        Contents={<CustomLearning daily_custom={daily_custom} daily_complete={daily_complete} />}
                     />
-                    <ButtonBox
-                        text={'학습 선택하기'}
-                        Contents={<div>학습을 선택해요!</div>}
-                        headercolor={colors.main_header_red}
-                        color={colors.main_red}
-                        width={'31vw'} height={'34vh'}
-                        linkto={'/main/select'}
-                        isImageLoaded={isImageLoaded}
-                    />
-                </SubComp>
-                {
-                    isFirstDiagnose ?
-                        <FirstDiag>
-                            상단의 [검사하기] 버튼을 눌러,<br />
+                    <SubComp>
+                        <ButtonBox
+                            text={'복습하기'}
+                            Contents={<div>이전에 했던 내용을 복습해요!</div>}
+                            headercolor={colors.main_header_blue}
+                            color={colors.main_blue}
+                            width={'31w'} height={'34vh'}
+                            linkto={'/main/select'}
+                            isImageLoaded={isImageLoaded}
+                        />
+                        <ButtonBox
+                            text={'학습 선택하기'}
+                            Contents={<div>학습을 선택해요!</div>}
+                            headercolor={colors.main_header_red}
+                            color={colors.main_red}
+                            width={'31vw'} height={'34vh'}
+                            linkto={'/main/select'}
+                            isImageLoaded={isImageLoaded}
+                        />
+                    </SubComp>
+                    {
+                        isFirstDiagnose ?
+                            <FirstDiag>
+                                상단의 [검사하기] 버튼을 눌러,<br />
                             첫 번째 검사를 시작해주세요.
                     </FirstDiag> :
-                        null
-                }
-            </Component>
-        </Container>
+                            null
+                    }
+                </Component>
+            </Container>
+        </>
     );
 }
 

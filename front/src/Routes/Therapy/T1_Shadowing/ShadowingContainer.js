@@ -97,7 +97,6 @@ class Shadowing extends React.Component {
         const { data } = await T1_Api.ask(s_id, this.idx_text);
         console.log(data);
 
-        this.intro(data.read_voice);
 
         if (data.code === 'specified' || data.code === 1) {
             this.currentIndex = 0;
@@ -112,11 +111,11 @@ class Shadowing extends React.Component {
                 totalNum: this.cure.length,
             });
         }
+        this.intro(data.read_voice);
     }
 
     daily = () => {
         console.log(this.props.location.state.data);
-        this.intro(this.props.location.state.data.read_voice);
 
         this.cure = this.props.location.state.data.read;
         this.currentCure = this.cure[this.currentIndex];
@@ -128,6 +127,7 @@ class Shadowing extends React.Component {
             totalNum: this.cure.length,
             cureText: this.currentCure.cure_text
         });
+        this.intro(this.props.location.state.data.read_voice);
     }
 
     intro = (data) => {

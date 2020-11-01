@@ -17,7 +17,7 @@ export default () => (
     <Router>
         <Switch>
             <Route path='/therapy/shadowing/:type/:learning_type' exect component={Shadowing} />
-            <Route path='/therapy/self/:type/:learning_type' exect component={Self} />
+            <Route path='/therapy/selfpoem/:learning_type' exect component={Self} />
             <Route path='/therapy/count/:learning_type' exect component={Count} />
             <Route path='/therapy/common/:learning_type' exect component={Common} />
             <Route path='/therapy/sound/:type/:learning_type' exect component={Sound} />

@@ -5,12 +5,12 @@ import level from 'const';
 import { VictoryChart, VictoryBar, VictoryAxis, VictoryLine, VictoryTheme, VictoryContainer } from "victory";
 
 const DateFormat = (d) => {
-	if(d.includes('~')) {
+	if (d.includes('~')) {
 		d = d.split('~')[0];
 	}
 
 	let date = new Date(d);
-	return (date.getMonth()+1) + '/' + date.getDate();
+	return (date.getMonth() + 1) + '/' + date.getDate();
 };
 
 
@@ -43,9 +43,8 @@ const GraphMain = styled.div`
 const Badge = styled.div`
 		width: 40px;
 		height: 20px;
-		background-color: ${
-			props => Object.entries(level).find(el => el[1].text === props.level)[1]['color']
-		};
+		background-color: ${props => Object.entries(level).find(el => el[1].text === props.level)[1]['color']
+	};
 		border-radius: 5px;
 		display: flex;
 		justify-content: center;
@@ -80,56 +79,56 @@ const Bar = {
 
 function GraphComp({ isCure, title, target, classLevel, tickle, axis }) {
 	let axis_arr = [];
-	for(var i=0;i<=4;i++) {
-		axis_arr.push((tickle*i*5));
+	for (var i = 0; i <= 4; i++) {
+		axis_arr.push((tickle * i * 5));
 	}
 
 	return (
 		<GraphContainer>
-    	<GraphHeader>
-    		<Badge level={classLevel}>{classLevel}</Badge>
-    		<Title>{title}</Title>
-    		<Detail>상세 내용 보기</Detail>
-    	</GraphHeader>
-    	<GraphMain>
-    		<VictoryChart 
-    			maxDomain={{ y:tickle * 25}}
-				width={500}
-				containerComponent={
-					<VictoryContainer 
-						style={{
-							pointerEvents: "auto",
-							userSelect: "auto",
-							touchAction: "auto"
-						}}
+			<GraphHeader>
+				<Badge level={classLevel}>{classLevel}</Badge>
+				<Title>{title}</Title>
+				<Detail>(준비중) 상세 내용 보기</Detail>
+			</GraphHeader>
+			<GraphMain>
+				<VictoryChart
+					maxDomain={{ y: tickle * 25 }}
+					width={500}
+					containerComponent={
+						<VictoryContainer
+							style={{
+								pointerEvents: "auto",
+								userSelect: "auto",
+								touchAction: "auto"
+							}}
+						/>
+					}
+				>
+					<VictoryAxis
+						offsetX={40}
+						dependentAxis
+						tickValues={axis_arr}
+						style={{ axis: { stroke: "none" } }}
 					/>
-				}
-    			>
-    			<VictoryAxis
-    				offsetX={40}
-    				dependentAxis
-    				tickValues={axis_arr}
-	          style={{ axis: {stroke: "none"} }}
-	        />
-	        <VictoryAxis
-	        	offsetY={40}
-	          crossAxis
-	          style={{ axis: {stroke: "none"} }}
-	        />
-    			<VictoryLine y={() => 0} style={Line}/>
-    			<VictoryLine y={() => tickle * 5} style={Line}/>
-    			<VictoryLine y={() => tickle * 10} style={Line}/>
-    			<VictoryLine y={() => tickle * 15} style={Line}/>
-					<VictoryLine y={() => tickle * 20} style={Line}/>
-    			<VictoryBar 
-    				barWidth={10}
-    				style={Bar}
-    				categories={{x: Object.keys(target).map(day => DateFormat(day))}}
-    				data={Object.entries(target).map(el => { return {x: DateFormat(el[0]), y: el[1]}})}
-    			/>
-    		</VictoryChart>
-    	</GraphMain>
-    </GraphContainer>
+					<VictoryAxis
+						offsetY={40}
+						crossAxis
+						style={{ axis: { stroke: "none" } }}
+					/>
+					<VictoryLine y={() => 0} style={Line} />
+					<VictoryLine y={() => tickle * 5} style={Line} />
+					<VictoryLine y={() => tickle * 10} style={Line} />
+					<VictoryLine y={() => tickle * 15} style={Line} />
+					<VictoryLine y={() => tickle * 20} style={Line} />
+					<VictoryBar
+						barWidth={10}
+						style={Bar}
+						categories={{ x: Object.keys(target).map(day => DateFormat(day)) }}
+						data={Object.entries(target).map(el => { return { x: DateFormat(el[0]), y: el[1] } })}
+					/>
+				</VictoryChart>
+			</GraphMain>
+		</GraphContainer>
 	);
 }
 

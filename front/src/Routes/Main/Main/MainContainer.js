@@ -25,6 +25,7 @@ class Main extends React.Component {
             daily_link: null,
             daily_complete: false,
             isFirstDiagnose: false,
+            showPopUp: false,
         }
         this.numOfLoadedImage = 0;
         this.pictures = { Images, MainRoot, Pause };
@@ -46,7 +47,14 @@ class Main extends React.Component {
         dispatch(user_get(user.user.u_id));
         dispatch(student_get(user.student.s_id, user.user.u_id));
 
-        this.isDiagOkay();
+        Result_Api.ask(user.student.s_id).then(result => {
+            if (Object.keys(result.data.results).length === 0) {
+                this.setState({
+                    isFirstDiagnose: true,
+                });
+            }
+        });
+
         this.request();
         this.imagesPreloading(this.pictures);
     }
@@ -105,23 +113,26 @@ class Main extends React.Component {
     }
 
     isDiagOkay = async () => {
+        console.log('isokay', this.state.showPopUp)
         const { user } = this.props;
         const { data } = await Daily_Api.okay(user.student.s_id);
 
         console.log(data);
-
-        Result_Api.ask(user.student.s_id).then(result => {
-            if (Object.keys(result.data.results).length === 0) {
-                this.setState({
-                    isFirstDiagnose: true,
-                });
-            }
+        if (data.is_okay) this.props.history.push('/diagnose/sweep');
+        else this.setState({
+            showPopUp: true,
         });
+    }
 
+    onOkButtonHandle = () => {
+        this.setState({
+            showPopUp: false,
+        });
     }
 
     render() {
-        const { data, isImageLoaded, daily_custom, daily_link, daily_complete, isFirstDiagnose } = this.state;
+        console.log('render', this.state.showPopUp)
+        const { data, isImageLoaded, daily_custom, daily_link, daily_complete, isFirstDiagnose, showPopUp } = this.state;
         const { user } = this.props;
 
         if (!user.student.s_id || !user.student.name) {
@@ -140,10 +151,10 @@ class Main extends React.Component {
                 daily_complete={daily_complete}
                 isDiagOkay={this.isDiagOkay}
                 isFirstDiagnose={isFirstDiagnose}
+                onOkButtonHandle={this.onOkButtonHandle}
+                showPopUp={showPopUp}
             />
         );
-
-
     }
 }
 

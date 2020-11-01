@@ -1,38 +1,51 @@
 import React from 'react';
-import SelfPresenter from './SelfPresenter';
-
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import * as Sentry from '@sentry/browser';
 
-import { T1, TTobak } from 'images';
-import { T1_Api, soundURL } from 'api';
+import SelfPresenter from './SelfPresenter';
+import { T1, TTobak, SoundEffect } from 'images';
+import { T1_Api, soundURL, T_tutorial } from 'api';
+import LoadingComp from 'Components/LoadingComp';
 
-class Self extends React.Component {
+const idx_txt = 'selfpoem';
+const inistState = {
+    cureText: null,
+    isRecording: false,
+    TTobaki: TTobak.ttobak1_1,
+    isImageLoaded: false,
+    showPopup: false,
+    showDonePopup: false,
+    showDailyPopup: false,
+    percent: 0,
+    currentIndex: 1,
+    totalNum: 0,
+    RecordingCircle: false,
+    err: false,
+    errorInfo: false,
+};
+
+class Selfpoem extends React.Component {
     static propTypes = {
         user: PropTypes.objectOf(PropTypes.any).isRequired,
         dispatch: PropTypes.func.isRequired,
     };
 
-    constructor({ match, location }) {
+    constructor({ match }) {
         super();
-        this.idx_text = match.params.type;
         this.learning_type = match.params.learning_type;
+        this.recording_start_sound = new Audio(SoundEffect.recording_start);
+        this.recording_end_sound = new Audio(SoundEffect.recording_end);
         this.cure = null;
         this.currentCure = null;
         this.currentIndex = 0;
-        this.currentAudio = null;
         this.audioResult = null;
-
-        this.state = {
-            cureText: null,
-            isRecording: false,
-            TTobaki: TTobak.ttobak1_1,
-        }
-
-        if (this.learning_type === 'daily') this.setState({
-            data: location.state.data,
-        })
+        this.retryAudio = null;
+        this.picture = { T1, TTobak };
+        this.totalImages = Object.keys(this.picture.T1).length + Object.keys(this.picture.TTobak).length;
+        this.numOfLoadedImage = 0;
+        this.state = inistState;
     }
 
     async componentDidMount() {
@@ -43,23 +56,30 @@ class Self extends React.Component {
             return;
         }
 
-        this.newRequest();
-        setTimeout(() => window.BRIDGE.recordAudio(this.props.user.student.gender, this.currentCure.cure_text), 1000);
+        this.imagesPreloading(this.picture);
 
-        window.addEventListener("android", async (e) => {
-            console.log(e.detail);
-            this.setState({
-                isRecording: false,
-            })
-            this.audioResult = e.detail;
-            this.audioListener();
-        });
+        window.addEventListener('android', this.androidResponse);
+        window.addEventListener('androidStopRecording', this.stopRecording);
     }
 
     componentWillUnmount() {
-        if (!!this.currentAudio) {
-            this.currentAudio.pause();
-            this.currentAudio = null;
+        if (!!this.retryAudio) {
+            this.retryAudio.pause();
+            this.retryAudio = null;
+        }
+        window.removeEventListener('android', this.androidResponse);
+        window.removeEventListener('androidStopRecording', this.stopRecording);
+    }
+
+    componentDidCatch(err, errorInfo) {
+        console.error(err);
+        this.setState(() => ({
+            err: true,
+            errorInfo: errorInfo,
+        }));
+
+        if (process.env.NODE_ENV === 'production') {
+            Sentry.captureException(err, { extra: errorInfo });
         }
     }
 
@@ -68,112 +88,270 @@ class Self extends React.Component {
         const { user } = this.props;
         const s_id = user.student.s_id;
 
-        try {
-            const { data } = await T1_Api.ask(s_id, this.idx_text);
-            console.log(data);
+        const { data } = await T1_Api.ask(s_id, idx_txt);
+        console.log(data);
 
-            if (data.code === 'specified' || data.code === 1) {
-                this.cure = data.cure;
-                this.currentCure = data.cure[this.currentIndex];
-                this.setState({
-                    cureText: this.currentCure.cure_text
-                });
-            }
-        } catch (e) {
-            console.log(e);
+
+        if (data.code === 'specified' || data.code === 1) {
+            this.currentIndex = 0;
+            this.cure = data.cure;
+            this.currentCure = data.cure[this.currentIndex];
+            if (idx_txt === 'vowelword' || idx_txt === 'consoword')
+                this.currentCure.cure_text = this.currentCure.cure_word;
+            this.setState({
+                TTobaki: TTobak.ttobak1_1,
+                cureText: this.currentCure.cure_text,
+                totalNum: this.cure.length,
+            });
         }
+        setTimeout(() => this.playRecording(), 2000);
+        // this.intro(data.read_voice);
     }
 
-    audioListener = async () => {
+    daily = () => {
+        console.log(this.props.location.state.data);
+
+        this.cure = this.props.location.state.data.read;
+        this.currentCure = this.cure[this.currentIndex];
+
+        if (idx_txt === 'vowelword' || idx_txt === 'consoword')
+            this.currentCure.cure_text = this.currentCure.cure_word;
+
+        this.setState({
+            totalNum: this.cure.length,
+            cureText: this.currentCure.cure_text
+        });
+        this.intro(this.props.location.state.data.read_voice);
+    }
+
+    intro = (data) => {
+        this.reac_voice = null;
+        this.read_voice = [
+            new Audio(soundURL + data[0].voc_path),
+        ];
+
+        this.read_voice[0].addEventListener('ended', () => {
+            setTimeout(() => this.playRecording(), 2000);
+        });
+
+        this.read_voice[0].play();
+    }
+
+    androidResponse = async (e) => {
+        console.log(e.detail);
+        this.audioResult = e.detail;
+        this.andriodListener();
+    }
+
+    stopRecording = (e) => {
+        console.log(e.detail);
+        clearInterval(this.setRecording);
+        this.recording_end_sound.play();
+        this.setState({
+            isRecording: false,
+            RecordingCircle: false,
+        });
+    }
+
+    andriodListener = async () => {
         this.setState({
             TTobaki: TTobak.ttobak2_1,
         });
 
-        try {
-            if (this.audioResult.status === 'Success') {
-                const { user } = this.props;
-                const s_id = user.student.s_id;
-                const { data } = await T1_Api.answer(
-                    s_id,
-                    this.audioResult.score,
-                    this.audioResult.phone_score,
-                    this.audioResult.speed_score,
-                    this.audioResult.rhythm_score,
-                    this.learning_type === 'review' ? 'T' : 'F',
-                    this.currentCure.cure_id,
-                    this.idx_text
-                );
-                console.log(data);
+        if (this.audioResult.status === 'Success') {
+            const { user } = this.props;
+            const s_id = user.student.s_id;
+            const { data } = await T1_Api.answer(
+                s_id,
+                this.audioResult.score,
+                this.audioResult.phone_score,
+                this.audioResult.speed_score,
+                this.audioResult.rhythm_score,
+                this.learning_type === 'review' ? 'T' : 'F',
+                this.currentCure.cure_id,
+                idx_txt,
+                this.learning_type === 'daily' ? 'T' : 'F',
+            );
+            console.log(data);
 
-                if (data.code === 1) {
-                    if (this.currentIndex < this.cure.length - 1) {
-                        this.currentIndex++;
-                    } else {
-                        this.gameDone();
-                        return;
-                    }
-                    this.currentCure = this.cure[this.currentIndex];
-                    this.currentAudio = null;
-                    this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
-                    if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
-                        this.currentCure.cure_text = this.currentCure.cure_word;
-
-                    setTimeout(() => {
+            if (data.code === 1) {
+                if (data.retry) {
+                    this.retryAudio = new Audio(soundURL + data.class_voice.voc_path);
+                    this.retryAudio.addEventListener('ended', () => {
                         this.setState({
-                            TTobaki: TTobak.ttobak1_1,
-                            cureText: this.currentCure.cure_text
-                        });
-                    }, 2000);
+                            TTobaki: TTobak.ttobak3_1,
+                        })
+                        setTimeout(() => {
+                            this.playRecording();
+                        }, 2000);
+                    });
 
                     setTimeout(() => {
-                        this.playSound();
-                    }, 3500);
-
-                } else if (data.code === 2) {
-                    this.gameDone();
+                        if (!!this.retryAudio) {
+                            this.retryAudio.play();
+                            this.setState({
+                                TTobaki: TTobak.ttobak3_2,
+                            });
+                        }
+                    }, 1000);
+                    return;
+                } else {
+                    this.good_script = new Audio(soundURL + data.class_voice.voc_path);
+                    this.good_script.addEventListener('ended', () => this.nextStep());
+                    setTimeout(() => {
+                        this.good_script.play();
+                        this.setState({
+                            TTobaki: TTobak.ttobak2_2,
+                        });
+                    }, 1000);
                 }
-                else console.log(data.message);
 
-            } else {
-                console.log(this.audioResult.message);
+            } else if (data.code === 2) {
+                this.gameDone();
             }
-        } catch (e) {
-            console.log(e);
+            else console.log(data.message);
+
+        } else {
+            console.log(this.audioResult.message);
         }
     }
 
-    playSound = () => {
-        if (!!this.currentAudio) {
-            this.setState({
-                TTobaki: TTobak.ttobak3_2,
-            });
-            this.currentAudio.play();
-            this.currentAudio.addEventListener('ended', () => {
-                console.log('이제 따라 읽어볼까요?');
-                this.setState({
-                    TTobaki: TTobak.ttobak1_1,
-                    isRecording: true,
-                })
-                window.BRIDGE.recordAudio(this.props.user.student.gender, this.currentCure.cure_text);
-            });
+    nextStep = () => {
+        if (this.currentIndex < this.cure.length - 1) {
+            this.currentIndex++;
+        } else {
+            this.gameDone();
+            return;
         }
+        this.currentCure = this.cure[this.currentIndex];
+
+        setTimeout(() => {
+            this.setState({
+                TTobaki: TTobak.ttobak1_1,
+                cureText: this.currentCure.cure_text,
+                currentIndex: this.currentIndex + 1
+            });
+        }, 2000);
+
+        setTimeout(() => {
+            this.playRecording();
+        }, 4000);
+    }
+
+    playRecording = () => {
+        this.setState({
+            TTobaki: TTobak.ttobak1_1,
+        });
+        setTimeout(() => {
+            this.recording_start_sound.play();
+            this.setState({
+                isRecording: true,
+                RecordingCircle: true,
+            })
+            this.setRecording = setInterval(() => {
+                this.setState({
+                    RecordingCircle: !this.state.RecordingCircle,
+                });
+            }, 500);
+            setTimeout(() => {
+                window.BRIDGE.recordAudio(this.props.user.student.gender, this.currentCure.cure_text);
+            }, 200);
+        }, 800);
     }
 
     gameDone = () => {
-        console.log('done!!');
+        console.log('game doen!');
+        if (this.learning_type !== 'daily') {
+            this.setState({
+                showDonePopup: true,
+            })
+        } else {
+            this.setState({
+                showDailyPopup: true,
+            })
+        }
+    }
+
+    imagesPreloading = (picture) => {
+        let timeoutPreloading = setTimeout(() => {
+            this.props.history.replace('/main/main');
+        }, 10000);
+
+        for (let i in picture) {
+            for (let prop in picture[i]) {
+                let img = new Image();
+                img.src = picture[i][prop];
+                img.onload = () => {
+                    this.setState({
+                        percent: (++this.numOfLoadedImage / this.totalImages) * 100
+                    })
+                    if (this.numOfLoadedImage === this.totalImages) {
+                        this.setState({
+                            isImageLoaded: true,
+                            TTobaki: TTobak.ttobak1_1,
+                        });
+                        clearTimeout(timeoutPreloading);
+                        if (this.learning_type !== 'daily') this.newRequest();
+                        else this.daily();
+                    }
+                };
+            }
+        }
+    }
+
+    onContinueButtonHandle = () => {
+        this.setState({
+            showPopup: false,
+        })
+    }
+
+    onRestartButtonHandle = () => {
+        this.setState({
+            showDonePopup: false,
+        })
+        this.newRequest();
+    }
+
+    onPauseButtonHandle = () => {
+        this.setState({
+            showPopup: true,
+        })
+    }
+
+    onCompleteButtonHandle = () => {
+        if (this.state.isRecording) {
+            window.BRIDGE.requestStopRecording();
+        }
     }
 
     render() {
-        const { type, cureText, TTobaki, isRecording } = this.state;
+        const { cureText, TTobaki, RecordingCircle, isImageLoaded,
+            showPopup, showDonePopup, showDailyPopup, percent,
+            currentIndex, totalNum } = this.state;
 
-        return (<SelfPresenter
-            Background={T1.t1_background}
-            TTobak={TTobaki}
-            TextBox={T1.t1_textbox}
-            type={type}
-            text={cureText}
-            isRecording={isRecording}
-        />);
+        if (this.state.err) {
+            return <div>error</div>;
+        }
+
+        if (isImageLoaded) {
+            return (<SelfPresenter
+                Background={T1.t1_background} TextBox={T1.t1_textbox} bt_complete={T1.bt_complete}
+                TTobak={TTobaki}
+                text={cureText} RecordingCircle={RecordingCircle}
+                onCompleteButtonHandle={this.onCompleteButtonHandle}
+                onContinueButtonHandle={this.onContinueButtonHandle}
+                onRestartButtonHandle={this.onRestartButtonHandle}
+                onPauseButtonHandle={this.onPauseButtonHandle}
+                showPopup={showPopup}
+                showDailyPopup={showDailyPopup}
+                showDonePopup={showDonePopup}
+                currentIndex={currentIndex}
+                totalNum={totalNum}
+            />);
+        }
+        else {
+            return <LoadingComp percent={percent} />
+        }
     }
 }
 
@@ -181,4 +359,4 @@ function mapStateToProps(state) {
     return { user: state.user }
 }
 
-export default connect(mapStateToProps)(withRouter(Self));
+export default connect(mapStateToProps)(withRouter(Selfpoem));

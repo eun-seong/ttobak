@@ -23,14 +23,15 @@ const DivInner = styled.div`
     border-radius: 40px 90px / 80px 40px;
     background-color: white;
     border: 3px solid ${colors.border_purple};
+    padding: 7%;
 `;
 
 const Title = styled.div`
     width: 100%;
-    margin: 10% 0 0 0;
     text-align: center;
     font-weight: bold;
     font-size: 1.5rem;
+    line-height: 2rem;
 `;
 
 const Content = styled.div`
@@ -44,6 +45,7 @@ const Content = styled.div`
 `;
 
 const ButtonDiv = styled.button`
+    align-self: flex-end;
     border-radius: 26px;
     border: 0px solid;
     margin-top: 10px;
@@ -63,7 +65,7 @@ const Alert = ({ text, isConfirm, onSubmit, onCancel }) => {
         <ButtonDiv onClick={onCancel}>
             <Text>취소</Text>
         </ButtonDiv>
-        ) : '';
+    ) : null;
 
     return (
         <Div>

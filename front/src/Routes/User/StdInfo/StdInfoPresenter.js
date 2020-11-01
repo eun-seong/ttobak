@@ -46,14 +46,14 @@ const StdInfo = ({ student, goBack, amount, score, voice_score }) => {
                         title={'성취도'}
                         color={color}
                         text={text}
-                        per={'78%'}
+                        per={!!score ? score + '%' : '0%'}
                         score={score && score + '%'} />} />
                 <ExplainBoxComp
                     Content={<StdInfoComp
                         title={'발음 정확도'}
                         color={color}
                         text={text}
-                        per={'64%'}
+                        per={!!voice_score ? voice_score + '%' : '0%'}
                         score={voice_score && voice_score + ' 점'} />} />
             </InfoBox>
         </Container >

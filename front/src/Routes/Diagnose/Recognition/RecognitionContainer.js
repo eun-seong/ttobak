@@ -60,11 +60,11 @@ class Recognition extends React.PureComponent {
     componentWillUnmount() {
         let audioArr = [this.phSound, this.sample_ques, this.voice];
         for (let i = 0; i < audioArr.length; i++) {
-            if (!!this.audioArr[i]) {
+            if (!!audioArr[i]) {
                 for (var j = 0; i < this.phSound.length; j++) {
-                    if (!!this.audioArr[i][j]) {
-                        this.audioArr[i][j].pause();
-                        this.audioArr[i][j] = null;
+                    if (!!audioArr[i][j]) {
+                        audioArr[i][j].pause();
+                        audioArr[i][j] = null;
                     }
                 }
             }

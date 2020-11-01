@@ -11,7 +11,7 @@ const ContentsList = [
     {
         name: 'selfpoem',
         img: MainTherapy[0],
-        url: '/therapy/shadowing/selfpoem',
+        url: '/therapy/selfpoem',
         title: '의미 | 혼자 읽기',
         explain: '동요와 동시를 혼자 읽어요',
     },
