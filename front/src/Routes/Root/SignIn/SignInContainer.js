@@ -54,9 +54,10 @@ class SignIn extends React.Component {
         const { user } = this.props;
         const { dispatch } = this.props;
         const { history } = this.props;
-
-        if (user.user.u_id) {
+        
+        if (user.isLoggedIn) {
             this.props.history.push('/root/selectstd');
+            this.isSigninCalled = false;
             return;
         }
 

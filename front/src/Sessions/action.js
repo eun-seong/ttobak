@@ -71,31 +71,31 @@ export const user_signin = (email, pw) => {
   };
 };
 
-export const user_modify = (email, pw, name, id) => {
+export const user_modify = (email, pw, name, u_id) => {
   return {
     type: USER_MODIFY,
-    promise: { method: 'post', url: 'user/modify', data: { email, pw, name, id } }
+    promise: { method: 'post', url: 'user/modify', data: { email, pw, name, u_id } }
   };
 };
 
-export const user_delete = (id) => {
-  window.localStorage.removeItem('uid');
+export const user_delete = (u_id) => {
+  window.localStorage.removeItem('u_id');
 
   return {
     type: USER_DELETE,
-    promise: { method: 'post', url: 'user/delete', data: { id } }
+    promise: { method: 'post', url: 'user/delete', data: { u_id } }
   };
 };
 
-export const user_get = (id) => {
+export const user_get = (u_id) => {
   return {
     type: USER_GET,
-    promise: { method: 'post', url: 'user/get', data: { id } }
+    promise: { method: 'post', url: 'user/get', data: { u_id } }
   };
 };
 
 export const user_autologin = () => {
-  const u_id = window.localStorage.getItem('uid');
+  const u_id = window.localStorage.getItem('u_id');
 
   return {
     type: USER_AUTOLOGIN, 
@@ -104,7 +104,7 @@ export const user_autologin = () => {
 }
 
 export const user_logout = (u_id) => {
-  window.localStorage.removeItem('uid');
+  window.localStorage.removeItem('u_id');
 
   return {
     type: USER_LOGOUT, 

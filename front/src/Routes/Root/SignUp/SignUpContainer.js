@@ -67,15 +67,17 @@ class SignUp extends React.Component {
         const { user } = this.props;
         const { dispatch } = this.props;
         const { history } = this.props;
-
-        if (user.user.u_id) {
+        
+        
+        if (user.user.u_id && this.isRegisterCalled && user.response.data && user.response.data.code === 1) {
             this.makeAlert('회원 가입에 성공했습니다.', false, (() => {
                 this.props.history.push('/root/signin');
             }));
+            this.isRegisterCalled = false;
             return;
         }
 
-        if (this.isRegisterCalled && user.response.data && user.response.data.code == 2) {
+        if (this.isRegisterCalled && user.response.data && user.response.data.code === 2) {
             dispatch(response_clear());
             this.makeAlert('이미 존재하는 이메일입니다.', false, (() => {
                 this.enableAlert = false;

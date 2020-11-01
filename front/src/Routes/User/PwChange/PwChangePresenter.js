@@ -56,7 +56,7 @@ const Settings = ({ goBack, handleSubmit }) => {
                 </InputContainer>
                 <ButtonConainer>
                     <SubmitButton isModify={true} text={'변경'} onClick={(e) => {handleSubmit(e, state);}} />
-                    <SubmitButton isModify={false} text={'취소'} onClick={(e)=> {}} />
+                    <SubmitButton isModify={false} text={'취소'} onClick={goBack} />
                 </ButtonConainer>
             </Div>
         </Container>
