@@ -107,9 +107,9 @@ class Common extends React.Component {
 
     tutorial = (data) => {
         this.voice = [
-            new Audio(soundURL + data.tut_vocie[0].voc_path),
-            new Audio(soundURL + data.tut_vocie[1].voc_path),
-            new Audio(soundURL + data.tut_vocie[2].voc_path),
+            new Audio(soundURL + data.tut_voice[0].voc_path),
+            new Audio(soundURL + data.tut_voice[1].voc_path),
+            new Audio(soundURL + data.tut_voice[2].voc_path),
         ];
 
         this.currentCure = data.sample_ques;

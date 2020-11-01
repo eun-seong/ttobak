@@ -31,8 +31,8 @@ const InfoHeader = ({ title, score, color, text }) => {
         <HeaderContainer>
             <Title>{title || '제목'}</Title>
             <Score>
-                {text && <Level><StdLevel text={text} color={color} fontSize={'0.8em'} /></Level>}
-                {score || '50%'}
+                {/* {text && <Level><StdLevel text={text} color={color} fontSize={'0.8em'} /></Level>} */}
+                {score || '학습을 시작해주세요.'}
             </Score>
         </HeaderContainer>
     );
@@ -60,14 +60,16 @@ border-radius: 50px;
 background-color: ${props => props.color || 'green'};
 `;
 
-const PercentBox = ({ title, userInfo, color, text, per }) => {
+const PercentBox = ({ title, userInfo, color, text, per, score }) => {
     return (
         <ContentsContainer>
-            <InfoHeader title={title} color={color} text={text} />
-            {!per ||
+            <InfoHeader title={title} color={color} text={text} score={score} />
+            {
+                !per ||
                 <Percent>
                     <Student per={per} color={color} />
-                </Percent>}
+                </Percent>
+            }
         </ContentsContainer>
     );
 }
