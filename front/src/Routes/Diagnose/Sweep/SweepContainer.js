@@ -56,12 +56,24 @@ class Sweep extends React.PureComponent {
             this.props.history.push('/root/signin');
             return;
         }
-        
+
         this.imagesPreloading(this.picture);
         this.newRequest();
     }
 
     componentWillUnmount() {
+        let audioArr = [this.voice, this.voice_desc, this.swp];
+        for (let i = 0; i < audioArr.length; i++) {
+            if (!!this.audioArr[i]) {
+                for (var j = 0; i < this.phSound.length; j++) {
+                    if (!!this.audioArr[i][j]) {
+                        this.audioArr[i][j].pause();
+                        this.audioArr[i][j] = null;
+                    }
+                }
+            }
+        }
+
         if (!!this.state.swpSound) {
             this.state.swpSound[0].pause();
             this.state.swpSound[1].pause();
@@ -69,10 +81,6 @@ class Sweep extends React.PureComponent {
         this.setState({
             swpSound: null,
         });
-        this.voice = null;
-        this.voice_desc = null;
-        this.swp = null;
-        this.buttonSound = null;
     }
 
     newRequest = async () => {

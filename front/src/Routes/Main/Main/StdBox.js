@@ -66,7 +66,7 @@ const StdBox = ({ student }) => {
                 <ProfileIcon size={'33px'} iconNum={student['ic_id']} />
                 <Name>{student['name']}</Name>
             </Bar>
-            <Diagnose to='/diagnose/result'>검사하기</Diagnose>
+            <Diagnose to='/diagnose/attention'>검사하기</Diagnose>
             <Setting to='/user/setting'>설정</Setting>
         </StdComp >
     );

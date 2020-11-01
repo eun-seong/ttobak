@@ -58,15 +58,21 @@ class Recognition extends React.PureComponent {
     }
 
     componentWillUnmount() {
-        if (!!this.phSound) {
-            for (var i = 0; i < this.phSound.length; i++) {
-                this.phSound[i].pause();
-                this.phSound[i] = null;
+        let audioArr = [this.phSound, this.sample_ques, this.voice];
+        for (let i = 0; i < audioArr.length; i++) {
+            if (!!this.audioArr[i]) {
+                for (var j = 0; i < this.phSound.length; j++) {
+                    if (!!this.audioArr[i][j]) {
+                        this.audioArr[i][j].pause();
+                        this.audioArr[i][j] = null;
+                    }
+                }
             }
         }
-        this.sample_answer = null;
-        this.sample_ques = null;
-        this.voice = null;
+        if (!!this.sample_answer) {
+            this.sample_answer.pause();
+            this.sample_answer = null;
+        }
     }
 
     newRequest = async () => {
@@ -127,12 +133,14 @@ class Recognition extends React.PureComponent {
         ];
 
         this.voice[0].addEventListener('ended', () => {
+            this.setState({ TTobaki: TTobak.ttobak1_1 });
             setTimeout(() => {
                 if (!!this.sample_answer) this.sample_answer.play();
             }, 1000);
         });
 
         this.sample_answer.addEventListener('ended', () => {
+            this.setState({ TTobaki: TTobak.ttobak1_1 });
             setTimeout(() => {
                 if (!!this.voice[1]) this.voice[1].play();
             }, 1000);
@@ -178,7 +186,10 @@ class Recognition extends React.PureComponent {
         });
 
         setTimeout(() => {
-            if (!!this.voice[0]) this.voice[0].play();
+            if (!!this.voice[0]) {
+                this.voice[0].play();
+                this.setState({ TTobaki: TTobak.ttobak3_2 });
+            }
         }, 2000);
     }
 
@@ -187,7 +198,10 @@ class Recognition extends React.PureComponent {
             this.setState({
                 gameState: false,
             })
-            if (!!this.voice[2]) this.voice[2].play();
+            if (!!this.voice[2]) {
+                this.voice[2].play();
+                this.setState({ TTobaki: TTobak.ttobak3_2 });
+            }
         }, 1000);
     }
 

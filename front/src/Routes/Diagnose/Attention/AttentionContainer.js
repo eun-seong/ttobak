@@ -66,10 +66,20 @@ class Attention extends React.Component {
             this.currentAudio.pause();
             this.currentAudio = null;
         }
-        window.removeEventListener('android', this.androidResponse)
-        window.removeEventListener('androidStopRecording', this.stopRecording);
-        this.sample_ques = null;
-        this.voice = null;
+        if (!!this.sample_ques) {
+            this.sample_ques.pause();
+            this.sample_ques = null;
+        }
+        if (!!this.voice) {
+            for (let i = 0; i < this.voice.length; i++) {
+                if (!!this.voice[i]) {
+                    this.voice.pause();
+                    this.voice = null;
+                }
+            }
+            window.removeEventListener('android', this.androidResponse)
+            window.removeEventListener('androidStopRecording', this.stopRecording);
+        }
     }
 
     androidResponse = async (e) => {
@@ -286,6 +296,7 @@ class Attention extends React.Component {
                             RecordingCircle: !this.state.RecordingCircle,
                         });
                     }, 500);
+                    console.log(this.props.user.student.gender);
                     window.BRIDGE.recordAudio(this.props.user.student.gender, this.currentCure.ques_char);
                 }, 800);
             });
