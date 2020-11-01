@@ -101,8 +101,8 @@ class AddStudent extends React.Component {
 
         if (this.isStudentAddCalled && user.student.s_id && user.user.u_id) {
             dispatch(response_clear());
-            this.makeAlert('검사 페이지로 이동합니다.', false, (() => {
-                this.props.history.push('/diagnose/sweep');
+            this.makeAlert('학습자 추가가 완료되었습니다.', false, (() => {
+                this.props.history.push('/main/main');
             }));
             this.isStudentAddCalled = false;
             return;
@@ -132,8 +132,8 @@ class AddStudent extends React.Component {
         presenter로 가는 모든 스테이트 값 렌더링
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
-        
-        const alertComp = this.enableAlert ? (<Alert 
+
+        const alertComp = this.enableAlert ? (<Alert
             text={this.alertText}
             isConfirm={this.isConfirm}
             onSubmit={this.onSubmit}
@@ -149,7 +149,7 @@ class AddStudent extends React.Component {
                     goBack={this.goBack}
                 />
             </div>
-            );
+        );
     }
 }
 

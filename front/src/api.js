@@ -10,6 +10,7 @@ export const api = axios.create({
 const url = {
     diagnose_ask: 'diagnose/ask',
     diagnose_answer: 'diagnose/answer',
+    diagnose_okay: 'diagnose/okay',
     therapy_ask: 'cure/ask',
     therapy_answer: 'cure/answer',
     therapy_save: 'cure/save',
@@ -163,6 +164,10 @@ export const Daily_Api = {
         }),
     save: (s_id) =>
         api.post(url.therapy_save, {
+            's_id': s_id,
+        }),
+    okay: (s_id) =>
+        api.post(url.diagnose_okay, {
             's_id': s_id,
         })
 }

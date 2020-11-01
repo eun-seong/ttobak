@@ -37,7 +37,7 @@ const Setting = styled(Link)`
     font-size: 0.6rem;
 `;
 
-const Diagnose = styled(Link)`
+const Diagnose = styled.div`
     height: 37px;
     padding: 15px;
     background-color: #ffffff;
@@ -59,14 +59,14 @@ const Name = styled.div`
     text-align: center;
 `;
 
-const StdBox = ({ student }) => {
+const StdBox = ({ student, isDiagOkay }) => {
     return (
         <StdComp>
             <Bar to={'/user/stdinfo'}>
                 <ProfileIcon size={'33px'} iconNum={student['ic_id']} />
                 <Name>{student['name']}</Name>
             </Bar>
-            <Diagnose to='/diagnose/attention'>검사하기</Diagnose>
+            <Diagnose onTouchEnd={isDiagOkay}>검사하기</Diagnose>
             <Setting to='/user/setting'>설정</Setting>
         </StdComp >
     );

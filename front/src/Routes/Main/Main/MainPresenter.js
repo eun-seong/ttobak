@@ -18,7 +18,7 @@ const Container = styled.div`
 
 const Component = styled.div`
     display: flex;
-    height: 73vh;
+    flex: 1;
     flex-direction: row;
     justify-content: space-between;
 `;
@@ -30,10 +30,25 @@ const SubComp = styled.div`
     height: 100%;
 `;
 
-const Main = ({ data, student, isImageLoaded, daily_custom, daily_link, daily_complete }) => {
+const FirstDiag = styled.div`
+    display: flex;
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(222,222,222, 0.9);
+    justify-content: center;
+    text-align: center;
+    padding-top: 30vh;
+    touch-action: none;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+`;
+
+const Main = ({ data, student, isImageLoaded, daily_custom, daily_link, daily_complete, isDiagOkay, isFirstDiagnose }) => {
     return (
         <Container>
-            <StdBox student={student} />
+            <StdBox student={student} isDiagOkay={isDiagOkay} />
             <Component>
                 <ButtonBox
                     text={'맞춤 학습'} width={'56vw'}
@@ -62,6 +77,14 @@ const Main = ({ data, student, isImageLoaded, daily_custom, daily_link, daily_co
                         isImageLoaded={isImageLoaded}
                     />
                 </SubComp>
+                {
+                    isFirstDiagnose ?
+                        <FirstDiag>
+                            상단의 [검사하기] 버튼을 눌러,<br />
+                            첫 번째 검사를 시작해주세요.
+                    </FirstDiag> :
+                        null
+                }
             </Component>
         </Container>
     );

@@ -17,13 +17,8 @@ const ScrollBox = styled.div`
     align-items: center;
 `;
 
-const UserInfo = styled.div`
-    
-`;
-
 const Result = ({ result, name, birth }) => {
     document.body.style.overflow = 'visible';
-    console.log(result)
 
     return (
         <div>

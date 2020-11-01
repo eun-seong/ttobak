@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import MainPresenter from './MainPresenter';
 
-import { Daily_Api } from 'api';
+import { Daily_Api, Result_Api } from 'api';
 import Images, { MainRoot, Pause } from 'images';
 import ContentsList from '../ContentsList';
 
@@ -24,6 +24,7 @@ class Main extends React.Component {
             daily_custom: null,
             daily_link: null,
             daily_complete: false,
+            isFirstDiagnose: false,
         }
         this.numOfLoadedImage = 0;
         this.pictures = { Images, MainRoot, Pause };
@@ -45,6 +46,7 @@ class Main extends React.Component {
         dispatch(user_get(user.user.u_id));
         dispatch(student_get(user.student.s_id, user.user.u_id));
 
+        this.isDiagOkay();
         this.request();
         this.imagesPreloading(this.pictures);
     }
@@ -102,8 +104,24 @@ class Main extends React.Component {
         }
     }
 
+    isDiagOkay = async () => {
+        const { user } = this.props;
+        const { data } = await Daily_Api.okay(user.student.s_id);
+
+        console.log(data);
+
+        Result_Api.ask(user.student.s_id).then(result => {
+            if (Object.keys(result.data.results).length === 0) {
+                this.setState({
+                    isFirstDiagnose: true,
+                });
+            }
+        });
+
+    }
+
     render() {
-        const { data, isImageLoaded, daily_custom, daily_link, daily_complete } = this.state;
+        const { data, isImageLoaded, daily_custom, daily_link, daily_complete, isFirstDiagnose } = this.state;
         const { user } = this.props;
 
         if (!user.student.s_id || !user.student.name) {
@@ -120,6 +138,8 @@ class Main extends React.Component {
                 daily_custom={daily_custom}
                 daily_link={daily_link}
                 daily_complete={daily_complete}
+                isDiagOkay={this.isDiagOkay}
+                isFirstDiagnose={isFirstDiagnose}
             />
         );
 

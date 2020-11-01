@@ -18,7 +18,7 @@ const initState = {
     showPopup: false,
     showNextPopup: false,
     isRecording: false,
-    TTobak: TTobak.ttobak1_1,
+    TTobaki: TTobak.ttobak1_1,
     currentIndex: 1,
     totalNum: 0,
     isPlaying: false,
@@ -110,6 +110,7 @@ class Attention extends React.Component {
                 this.cure = data.focus;
                 this.currentIndex = 0;
                 this.currentCure = this.cure[this.currentIndex];
+                this.currentAudio = null;
                 this.currentAudio = new Audio(soundURL + this.currentCure.ques_path1);
                 this.setState({
                     totalNum: this.cure.length,
@@ -216,6 +217,10 @@ class Attention extends React.Component {
             if (this.audioResult.status === 'Success') {
                 const { user } = this.props;
                 if (this.state.gameState === 'tutorial') {
+                    this.setState({
+                        TTobaki: TTobak.ttobak3_2,
+                    });
+
                     if (this.audioResult.score < 85) {
                         if (!!this.voice[2]) this.voice[2].play();
                     } else {
@@ -223,6 +228,7 @@ class Attention extends React.Component {
                     }
                     return;
                 }
+
                 const { data } = await D3_Api.answer(
                     user.student.s_id,
                     this.currentCure.ques_id,
@@ -234,13 +240,10 @@ class Attention extends React.Component {
                 console.log(data);
 
                 if (data.code === 1) {
-                    if (data.is_stop) {
+                    if (data.is_stop || data.to_next_level === '모든 문제를 학습했습니다') {
                         this.gameDone();
                     } else if (data.to_next_level) {
                         this.newRequest();
-                        setTimeout(() => {
-                            this.playSound();
-                        }, 3000);
                     } else {
                         if (this.currentIndex < this.cure.length - 1) {
                             this.currentIndex++;
@@ -276,30 +279,35 @@ class Attention extends React.Component {
 
     playSound = () => {
         if (!!this.currentAudio) {
-            this.setState({
-                TTobaki: TTobak.ttobak3_2,
-                isPlaying: true,
-            });
-            this.currentAudio.play();
             this.currentAudio.addEventListener('ended', () => {
                 this.setState({
                     TTobaki: TTobak.ttobak1_1,
                     isPlaying: false,
                 });
+
                 setTimeout(() => {
                     this.recording_start_sound.play();
                     this.setState({
                         isRecording: true,
-                    })
+                    });
+
                     this.setRecording = setInterval(() => {
                         this.setState({
                             RecordingCircle: !this.state.RecordingCircle,
                         });
                     }, 500);
-                    console.log(this.props.user.student.gender);
+
                     window.BRIDGE.recordAudio(this.props.user.student.gender, this.currentCure.ques_char);
                 }, 800);
             });
+
+            this.currentAudio.play();
+
+            this.setState({
+                TTobaki: TTobak.ttobak3_2,
+                isPlaying: true,
+            });
+
         }
     }
 
@@ -354,12 +362,12 @@ class Attention extends React.Component {
     }
 
     render() {
-        const { isImageLoaded, showPopup, showNextPopup, percent, TTobak, RecordingCircle, isPlaying } = this.state;
+        const { isImageLoaded, showPopup, showNextPopup, percent, TTobaki, RecordingCircle, isPlaying } = this.state;
 
         if (isImageLoaded) {
             return (<AttentionPresenter
                 Background={D3.d3_background}
-                TTobak={TTobak}
+                TTobak={TTobaki}
                 RecordingCircle={RecordingCircle} isPlaying={isPlaying}
                 showPopup={showPopup}
                 showNextPopup={showNextPopup}

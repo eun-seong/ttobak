@@ -40,7 +40,6 @@ const ResultExplain = styled.div`
 `;
 
 const ResultContent = ({ student, result, diagnose }) => {
-    console.log(result);
     document.body.style.overflow = "visible"
 
     return (
