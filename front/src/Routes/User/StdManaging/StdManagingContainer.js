@@ -82,10 +82,10 @@ class StdManaging extends React.Component {
         gender = (gender === '남자' ? 'm' : 'f');
         birth = moment(birth).format('YYYY-MM-DD');
 
+        dispatch(response_clear());
         if (op === 'save') {
             this.makeAlert('정말 저장하시겠습니까?', true, (() => {
                 dispatch(student_modify(name, birth, gender, icon, student, user.user.u_id));
-                this.props.history.push('/root/signin');
             }), (() => {
                 this.enableAlert = false;
                 this.forceUpdate();
@@ -93,12 +93,13 @@ class StdManaging extends React.Component {
         } else if (op === 'delete') {
             this.makeAlert('정말 삭제하시겠습니까?', true, (() => {
                 dispatch(student_delete(student, user.user.u_id));
-                this.props.history.push('/root/signin');
             }), (() => {
                 this.enableAlert = false;
                 this.forceUpdate();
             }));
         }
+
+        this.isModifyCalled = true;
 
         return true;
     }
@@ -111,6 +112,14 @@ class StdManaging extends React.Component {
         this.onCancel = onCancel;
 
         this.forceUpdate();
+    }
+
+    componentDidUpdate() {
+        const { user } = this.props;
+        if(this.isModifyCalled && user.response.data && user.response.data.code === 1) {
+            this.props.history.push('/root/selectstd');
+            this.isModifyCalled = false;
+        }
     }
 
     render() {
