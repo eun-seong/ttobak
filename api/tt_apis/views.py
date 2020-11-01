@@ -47,11 +47,11 @@ class LogIn(View):
         if not 'email' in data:
             return JsonResponse({"message":"이메일을 입력해주세요","code":4},status=200)
 
-        if User.objects.filter(usr_email=data['email']).exists():
+        if User.objects.filter(usr_email=data['email']).exclude(activated='F').exists():
             user = User.objects.get(usr_email=data['email'])
 
             if bcrypt.checkpw(data['pw'].encode("UTF-8"),user.usr_pw.encode("UTF-8")):
-                return JsonResponse({"usr_id":user.usr_id,"code":1},status=200)
+                return JsonResponse({"u_id":user.usr_id,"code":1},status=200)
 
             return JsonResponse({"message":"비밀번호가 일치하지 않습니다.","code":2},status=200)
 
@@ -61,7 +61,7 @@ class UserModify(View):
     @csrf_exempt
     def post(self,request):
         data = json.loads(request.body)
-        uk = data['id']
+        uk = data['u_id']
 
         if User.objects.filter(usr_id = uk).exclude(activated='F').exists():
             user = User.objects.get(usr_id=uk)
@@ -83,11 +83,11 @@ class UserDelete(View):
     @csrf_exempt
     def post(self,request):
         data = json.loads(request.body)
-        uk = data['id']
+        uk = data['u_id']
 
         if User.objects.filter(usr_id = uk).exists():
             user = User.objects.get(usr_id=uk)
-            user.usr_email = ''
+            user.usr_email = uk
             user.usr_name = ''
             user.usr_pw = ''
             user.activated = 'F'
@@ -99,7 +99,7 @@ class UserGet(View):
     @csrf_exempt
     def post(self,request):
         data = json.loads(request.body)
-        uk = data['id']
+        uk = data['u_id']
 
         if User.objects.filter(usr_id = uk).exists():
             user = User.objects.get(usr_id=uk)
@@ -111,7 +111,7 @@ class UserGet(View):
                     sid = Student.objects.get(stu_id = usrstu[0].stu_id)
                     if not sid.activated == 'F':
                         sdat = sz.StudentSerializer(instance = sid)
-                        student = sdat.data
+                        student.append(sdat.data)
                 else :
                     for u in usrstu:
                         sids.append(u.stu_id)
@@ -162,7 +162,7 @@ class StuAdd(View):
             #     ic = icon
             # )
 
-            return JsonResponse({"message":"성공적으로 추가되었습니다.","stu_id":stu.stu_id,"code":1},status=200)
+            return JsonResponse({"message":"성공적으로 추가되었습니다.","s_id":stu.stu_id,"code":1},status=200)
 
         return JsonResponse({"message":"존재하지 않는 회원입니다.","code":2},status=200)
 
@@ -220,7 +220,7 @@ class StuGet(View):
 
                 student = Student.objects.get(pk=sk)
 
-                return JsonResponse({"stu_id":student.stu_id,"name":student.stu_name,"birth":student.stu_birth,"gender":student.stu_gender,"ic_id":student.ic_id,"code":1,},status=200)
+                return JsonResponse({"s_id":student.stu_id,"name":student.stu_name,"birth":student.stu_birth,"gender":student.stu_gender,"ic_id":student.ic_id,"code":1,},status=200)
             return JsonResponse({"message":"존재하지 않는 학습자 입니다.","code":2},status=200)
         return JsonResponse({"message":"존재하지 않는 회원입니다.","code":3},status=200)
 
@@ -1204,8 +1204,11 @@ class CureAns(View):
             class_txt = 'D'
         if rhythm_score <=0:
             class_voice = Voice.objects.get(pk=40)
+            retry = True
         if speed_score <=0 :
             class_voice = Voice.objects.get(pk=38)
+            retry = True
+
         StuCure.objects.create(
             stu = student,
             full_score = score,
