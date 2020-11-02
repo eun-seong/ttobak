@@ -225,3 +225,11 @@ class Voice(models.Model):
 
     class Meta:
         db_table = "voice"
+
+class StuStatus(models.Model):
+    stu = models.ForeignKey('Student',on_delete = models.PROTECT,null=True,db_column ='stu_id')
+    status = models.CharField(max_length = 10)
+    date = models.DateField(auto_now = True)
+
+    class Meta:
+        db_table = 'stu_status'

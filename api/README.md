@@ -29,7 +29,7 @@ All of the APIs include responses automatically created by server. i.e) 404 not 
 * **Response:**
 
 	* **Code:** 200 <br />
-     **Content:** `{ "message" : '성공적으로 회원가입 되었습니다.',"code": 1 }`
+     **Content:** `{ "message" : '성공적으로 회원가입 되었습니다.',"u_id":integer,"code": 1 }`
 
 OR
 
@@ -69,7 +69,7 @@ OR
 * **Success Response:**  
    
    * **Code:** 200 <br />
-    **Content:** `{ "usr_id" : [integer],"code" : 1  }`
+    **Content:** `{ "u_id" : [integer],"code" : 1  }`
  
 OR
 
@@ -108,7 +108,7 @@ OR
    **Optional:**
 
 * **Data Params**
-	  `email=[alphanumeric]` |  `pw = [alphanumeric]`  | `name =[alphanumeric]` | `id = [integer]`
+	  `email=[alphanumeric]` |  `pw = [alphanumeric]`  | `name =[alphanumeric]` | `u_id = [integer]`
 * **Success Response:**  
   
   * **Code:** 200 <br />
@@ -151,7 +151,7 @@ OR
    **Optional:**
 
 * **Data Params**
-	  `id=[integer]`
+	  `u_id=[integer]`
 * **Success Response:**
 
   * **Code:** 200 <br />
@@ -187,12 +187,12 @@ OR
    **Optional:**
 
 * **Data Params**
-	  `id = [integer]`
+	  `u_id = [integer]`
 	  
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ "name" : [alphanumeric], "email" : [alphanumeric], "code" : 1 }`
+    **Content:** `{ "u_id":[integer],"name" : [alphanumeric], "email" : [alphanumeric], "students": [list of students],"code" : 1 }`
  
 OR 
 
@@ -232,13 +232,18 @@ OR
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ "message" : "성공적으로 추가 되었습니다.","code" : 1 }`
+    **Content:** `{ "message" : "성공적으로 추가 되었습니다.","s_id":[integer],"code" : 1 }`
  
 OR 
 
   * **Code:** 200 <br />
     **Content:** `{ "message" : "존재하지 않는 회원입니다.", "code" :2 }`
 
+OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "학습자는 3명까지만 추가할 수 있습니다.", "code" :3 }`
+    
 * **Sample Call:**
   ```javascript
     $.ajax({
@@ -361,7 +366,7 @@ OR
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ "name": [string], "birth" : [date] , "gender" : ['male' or 'female'],"icon" : [path],"code":1 }`
+    **Content:** `{ "s_id":[integer],"name": [string], "birth" : [date] , "gender" : ['male' or 'female'],"ic_id" : [integer],"code":1 }`
  
 OR
 
@@ -424,7 +429,7 @@ OR
   * **Code:** 200 <br />
     **Content:** `{ "voice" : [list of sample voice]("voc_path" : path, "voc_script" : script "voc_desc" : description for voice),"sample_ques" : ["ques_id": 71,"ques_path1":"/diagnose/01_sweeps/d_500_80.mp3","ques_path2":"/diagnose/01_sweeps/u_500_80.mp3"],"code": "tutorial" }`
 
-*Please do not send back the answer for tutorial question.*
+
 
   
   
@@ -531,7 +536,7 @@ OR
     **Content:** `{ "voice" : [list of sample voice]("voc_path" : path, "voc_script" : script "voc_desc" : description for voice),"sample_ques" : [sample question] {"ques_id": 84,"ques_path1": "/diagnose/02_recognition/text_01_0001_0001.mp3","ques_char": "귀"},{"ques_id": 85,"ques_path1": "/diagnose/02_recognition/text_01_0002_0001.mp3",
 "ques_char": "남"},"code": "tutorial" }`
 
-*Please do not send back the answer for tutorial question.*
+
 
 * **Sample Call:**
   ```javascript
@@ -634,7 +639,6 @@ OR
   * **Code:** 200 <br />
     **Content:** `{ "voice" : [list of sample voice]("voc_path" : path, "voc_script" : script "voc_desc" : description for voice),"sample_ques" : [sample question]{"ques_id": 534,"ques_path1": "/diagnose/03_attention/atten_01_01_0001.mp3","ques_char": "엄마랑 동물원에 갔습니다"},"code": "tutorial" }`
 
-*Please do not send back the answer for tutorial question.*
 
 * **Sample Call:**
   ```javascript
@@ -785,7 +789,130 @@ OR
       }
     });   
   
+ **okay**
+----
+*return if student can conduct another  test or not*
+* **URL**
+	/diagnose/okay
 
+* **Method:**
+	  `POST`
+*  **URL Params**
+   **Required:**
+   **Optional:**
+
+* **Data Params**
+	   `s_id = [integer]` 
+		  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ "is_okay" : True/False} "code":1}`
+    
+   OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당하는 학습자가 존재하지 않습니다.","code": 2 }`
+
+
+* **Sample Call:**
+  ```javascript
+    $.ajax({
+      url: "link/to/api/diagnose/okay",
+      dataType: "json",
+      type : "POST",
+      data : { 
+	     "s_id" : 1,
+	     "idx_txt" : "swp",
+	     "tutorial" : "true"
+		},success : function(r) {
+	         console.log(r)
+      }
+    });   
+  
+   **tutorial answer**
+----
+* **URL**
+	/diagnose/answer
+
+* **Method:**
+	  `POST`
+*  **URL Params**
+   **Required:**
+   **Optional:**
+
+* **Data Params**
+	   `s_id = [integer] | idx_txt = [character] | tutorial = "true"` 
+		  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ "is_okay" : True/False} "code":1}`
+    
+  OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당하는 검사가 존재하지 않습니다.","code": 2 }`
+      
+   OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당하는 학습자가 존재하지 않습니다.","code": 3 }`
+
+
+* **Sample Call:**
+  ```javascript
+    $.ajax({
+      url: "link/to/api/diagnose/answer",
+      dataType: "json",
+      type : "POST",
+      data : { 
+	     "s_id" : 1
+		},success : function(r) {
+	         console.log(r)
+      }
+    });   
+
+ **did**
+----
+*tells if the this diagnose is the students' first or not*
+* **URL**
+	/diagnose/did
+
+* **Method:**
+	  `POST`
+*  **URL Params**
+   **Required:**
+   **Optional:**
+
+* **Data Params**
+	   `s_id = [integer]` 
+		  
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ "is_first" : True/False} "code":1}`
+    
+
+   OR
+
+  * **Code:** 200 <br />
+    **Content:** `{ "message" : "해당 학습자가 존재하지 않습니다.","code": 2 }`
+
+
+* **Sample Call:**
+  ```javascript
+    $.ajax({
+      url: "link/to/api/diagnose/did",
+      dataType: "json",
+      type : "POST",
+      data : { 
+	     "s_id" : 1
+		},success : function(r) {
+	         console.log(r)
+      }
+    });    
+    
 ## Part6 - Treatment
 
  **ask**

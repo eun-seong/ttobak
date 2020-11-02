@@ -7,7 +7,7 @@ import time
 import datetime
 import math
 
-from .models  import User,Student,UsrStu,StuIc,Icon,TestMaster,StuTest,CureMaster,StuCure,StuCurrent,TestIdx,CureIdx,ComCure,TestCurrent,Voice
+from .models  import User,Student,UsrStu,StuIc,Icon,TestMaster,StuTest,CureMaster,StuCure,StuCurrent,TestIdx,CureIdx,ComCure,TestCurrent,Voice,StuStatus
 from . import serializers as sz
 
 from django.views import View
@@ -533,11 +533,11 @@ class TestProceed(View):
         is_okay = False
         if Student.objects.filter(pk=s_id).exists():
             student = Student.objects.get(pk=s_id)
-            if StuTest.objects.filter(stu_id = s_id).exists():
+            if StuStatus.objects.filter(stu_id = s_id).exists():
                 today = datetime.datetime.now()
                 # today = datetime.datetime(2020,11,7)
-                recent = StuTest.objects.filter(stu_id = s_id).order_by('date')
-                recent = recent[0].date
+                recent = StuStatus.objects.get(stu_id = s_id)
+                recent = recent.date
                 point  = today + datetime.timedelta(weeks = -1)
                 point = point.date()
                 if point >= recent:
@@ -617,198 +617,44 @@ class TestResult(View):
                     elif tot_lev >=1:
                         status = '고위험군'
                     results['status'] = status
-                
+                    if StuStatus.objects.filter(stu_id = s_id).exists():
+                        stustat = StuStatus.objects.get(stu_id = s_id)
+                        stustat.status = status
+                        stustat.save()
+                    else:
+                        StuStatus.objects.create(
+                            stu = student,
+                            status = status
+                        ).save()
             return JsonResponse({"results":results,"code":1},status=200)
         else:
             return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":2},status=200)
 
-# class SwpGet(View):
-#     @csrf_exempt
-#     def post(self,request):
-#         data = json.loads(request.body)
-#         url = 'https://ttobakaudio.s3-ap-northeast-2.amazonaws.com'
+class Testdid(View):
+    @csrf_exempt
+    def post(self,request):
+        data = json.loads(request.body)
+        s_id = data['s_id']
+        if Student.objects.filter(stu_id = s_id).exists():
+            student = Student.objects.get(pk=s_id)
+            is_first = True
+            if StuStatus.objects.filter(stu_id = s_id).exists():
+                is_first = False
+            else:
+                if StuTest.objects.filter(stu_id = s_id).exists():
+                    stucur = TestCurrent.objects.get(stu_id = s_id)
+                    stucur.swp_freq = 500
+                    stucur.swp_lev = 1
+                    stucur.focus_lev= 1
+                    stucur.swp_passed = 0
+                    stucur.swp_did = 0
+                    stucur.focus_passed = 0
+                    stucur.focus_did = 0
+                    stucur.save()
+            return JsonResponse({"is_first":is_first,"code":1},status=200)
+        else:
+            return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":2},status=200)
 
-#         freq = data['freq']
-#         level = data['level']
-#         s_id = data['s_id']
-#         if Student.objects.filter(pk=s_id).exists():
-#             student = Student.objects.get(pk=s_id)
-#             if TestMaster.objects.filter(ques_level = level,ques_int=freq,test_idx=1).exists():
-#                 sounds = TestMaster.objects.get(ques_level=level,ques_int=freq,test_idx=1)
-
-#                 x = random.randint(1,2)
-#                 y = random.randint(1,2)
-#                 answer1 = 'up'
-#                 answer2 = 'up'
-#                 if x ==1:
-#                     answer1 = 'down'
-#                 if y == 1:
-#                     answer2= 'down' 
-#                 return JsonResponse({"up_path":url+sounds.ques_path2,"down_path":url+sounds.ques_path1,"answer1":answer1,"answer2":answer2,"swp_id":sounds.ques_id,"code":1},status=200)
-#             return JsonResponse({"message":"해당 문제가 존재하지 않습니다.","code":2},status=200)
-#         return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":3},status=200)
-
-# class SwpAns(View):
-#     @csrf_exempt
-#     def post(self,request):
-#         data = json.loads(request.body)
-
-#         s_id = data['s_id']
-#         swp_id = data['swp_id']
-#         ori1 = data['ori_answer1']
-#         ori2 = data['ori_answer2']
-#         stu1 = data['stu_answer1']
-#         stu2 = data['stu_answer2']
-        
-#         if Student.objects.filter(pk=s_id).exists():
-#             student = Student.objects.get(pk = s_id)
-#             if TestMaster.objects.filter(pk=swp_id).exists():
-#                 swp = TestMaster.objects.get(pk=swp_id)
-
-#                 iscorrect = 'N'
-#                 mes = "답이 틀렸습니다."
-#                 if ori1 == stu1 and ori2 == stu2 :
-#                     iscorrect = 'Y'
-#                     mes = "답이 맞았습니다."
-#                 StuTest.objects.create(
-#                     stu = student,
-#                     ques = swp,
-#                     is_correct = iscorrect,
-#                     test_txt = 'swp'
-#                 )
-#                 return JsonResponse({"message":mes,"code":1},status=200)
-#             return JsonResponse({"message":"해당 문제가 없습니다.","code":2},status=200)
-#         return JsonResponse({"message":"해당 학습자가 없습니다.","code":3},status=200)
-
-# class PhGet(View):
-#     @csrf_exempt
-#     def post(self,request):
-#         data = json.loads(request.body)
-#         url = 'https://ttobakaudio.s3-ap-northeast-2.amazonaws.com'
-
-#         lev = data['level']
-#         s_id = data['s_id']
-
-#         if Student.objects.filter(pk=s_id).exists():
-#             student = Student.objects.get(pk=s_id)
-#             if TestMaster.objects.filter(ques_level=lev,test_idx=2).exists():
-#                Phset = TestMaster.objects.filter(ques_level = lev,test_idx=2)
-#                cnt = Phset.count()
-#                n1 = random.randrange(cnt)
-#                n2 = random.randrange(cnt)
-               
-#                while n1 == n2 :
-#                    n2 = random.randrange(cnt)
-               
-#                answer = n1
-#                if random.randint(1,2) == 1:
-#                    answer = n2
-               
-#                ph1 = Phset[n1]
-#                ph2 = Phset[n2]
-
-
-
-#                return JsonResponse({"ph1":ph1.ques_char,"ph1_path":url+ph1.ques_path1,"ph2":ph2.ques_char,"ph2_path":url+ph2.ques_path1,"answer":Phset[answer].ques_char,"code":1},status=200)
-#             return JsonResponse({"message":"해당 레벨의 문제가 존재하지 않습니다.","code":2},status=200) 
-#         return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":3},status=200)
-
-
-# class PhAns(View):
-#     @csrf_exempt
-#     def post(self,request):
-#         data = json.loads(request.body)
-        
-#         s_id = data['s_id']
-#         ph1 = data['ph1']
-#         ph2 = data['ph2']
-#         stu_answer = data['stu_answer']
-#         ori_answer = data['ori_answer']
-
-#         if Student.objects.filter(pk=s_id).exists():
-#             student = Student.objects.get(pk=s_id)
-#             if TestMaster.objects.filter(ques_char = ph1,test_idx=2).exists():
-#                 p1 = TestMaster.objects.get(ques_char=ph1,test_idx=2)
-#                 if TestMaster.objects.filter(ques_char=ph2,test_idx=2).exists():
-#                     p2 = TestMaster.objects.get(ques_char=ph2,test_idx=2)
-
-#                     message = "답이 틀렸습니다."
-#                     is_correct = "N"
-#                     if stu_answer == ori_answer :
-#                         message = "답이 맞았습니다."
-#                         is_correct = "Y"
-
-#                     StuTest.objects.create(
-#                         stu = student,
-#                         ques = p1,
-#                         ques2 = p2,
-#                         is_correct = is_correct,
-#                         test_txt = 'ph'
-#                     )
-
-#                     return JsonResponse({"message":message,"code":1},status=200)
-#                 return JsonResponse({"message":"ph2가 존재하지 않습니다.","code":2},status=200)
-#             return JsonResponse({"message":"ph1이 존재하지 않습니다.","code":3},status=200)
-#         return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":4},status=200)
-
-
-
-# class FocGet(View):
-#     @csrf_exempt
-#     def post(self,request):
-#         data = json.loads(request.body)
-#         url = 'https://ttobakaudio.s3-ap-northeast-2.amazonaws.com'
-
-#         s_id = data['s_id']
-#         level = data['level']
-
-#         if Student.objects.filter(pk=s_id).exists():
-#             student = Student.objects.get(pk=s_id)
-#             if TestMaster.objects.filter(ques_level = level,test_idx=3).exists():
-#                 focs = TestMaster.objects.filter(ques_level = level,test_idx=3)
-#                 foc = sz.FocSerializer(focs,many=True)
-#                 new_list = []
-#                 r_num = random.randint(1,10)
-#                 for i in range(10):
-#                     while r_num in new_list:
-#                         r_num = random.randint(1,10)
-#                     new_list.append(r_num)
-                     
-#                 return JsonResponse({"focs" : foc.data,"script_order": new_list,"code":1},status=200)
-                
-#                 # return JsonResponse({"focs" : foc.data,"code":1},status=200)
-#             return JsonResponse({"message":"해당 레벨에 해당하는 문제가 없습니다.","code":2},status=200)
-#         return JsonResponse({"message":"해당 학습자가 없습니다.","code":3},status=200)
-
-# class FocAns(View):
-#     @csrf_exempt
-#     def post(self,request):
-#         s_id = request.POST['s_id']
-#         ques_id = request.POST['ques_id']
-        
-
-#         if not request.FILES:
-#             return JsonResponse({"message":"파일이 올바르지 않습니다.","code":4},status=200)
-#         files = request.FILES['file']
-#         if Student.objects.filter(pk=s_id).exists():
-#             student = Student.objects.get(pk=s_id)
-#             if TestMaster.objects.filter(pk=ques_id).exists():
-#                 foc = TestMaster.objects.get(pk=ques_id)
-#                 transcript = foc.ques_char
-#                 gender = student.stu_gender
-#                 url = 'http://54.180.102.87/api/segscore'
-#                 # fname = make_filename(files.name)
-#                 # f = open('temp_files/'+filename,'wb')
-#                 # f.write(f.read())
-#                 # f.close
-#                 data = {"gender":gender,"transcript":transcript,"file":files}
-#                 response = requests.request("POST",url,data=data)
-#                 res = response.json()
-#                 # print(files.open())
-                 
-#                 return JsonResponse({"score" : res ,"code":1},status=200) 
-#             return JsonResponse({"message":"해당 레벨에 해당하는 문제가 없습니다.","code":2},status=200)
-#         return JsonResponse({"message":"해당 학습자가 없습니다.","code":3},status=200)
 
 
 class CureGet(View):
@@ -937,7 +783,14 @@ class CureGet(View):
             # sample_ques = CureMaster.objects.get(pk=1259)
             # sample_ques = sz.CountSerializer(instance=sample_ques)
             return sdat.data
+        if idx_id == 11:
+            sound = [35,40,38,34]
+            for s in sound:
+                voices.append(Voice.objects.get(pk=s))
+            sdat = sz.VoiceSerializer(data=voices,many=True)
+            sdat.is_valid()
 
+            return sdat.data
         if idx_id == 3:
             sound = [10,11,12]
             for s in sound:
@@ -1026,9 +879,9 @@ class CureGet(View):
                         cure,answer,level = self.get_specified(s_id,idx_txt)
                         return JsonResponse({"cure":cure,"answer":answer,"read_voice":tutorial,"code":"specified"},status=200)
                     if idx_txt == "selfpoem":
-                        # tutorial = self.get_tutorial(student,idx_txt)
+                        tutorial = self.get_tutorial(student,idx_txt)
                         cure,answer,level = self.get_specified(s_id,idx_txt)
-                        return JsonResponse({"cure":cure,"code":"specified"},status=200)
+                        return JsonResponse({"cure":cure,"read_voice":tutorial,"code":"specified"},status=200)
                     cure, answer,level = self.get_specified(s_id,idx_txt)
                     tutorial , sample_ques = [],[]
                     if idx_txt == "common":
@@ -1073,13 +926,22 @@ class CureGet(View):
                             code = "tutorial"
                         return JsonResponse({"cure":cure,"answer":answer,"tut_voice":tutorial,"sample_ques":sample_ques,"code":code},status=200)
             if not StuCurrent.objects.filter(stu_id = s_id).exists():
+                if not StuStatus.objects.filter(stu_id = s_id).exists():
+                    return JsonResponse({"message":"검사를 먼저 진행해주세요","code":3},status=200)
+                status = StuStatus.objects.get(stu_id = s_id).status
+                if status == '고위험군':
+                    curr = 'count'
+                elif status == '저위험군':
+                    curr = 'vowelword'
+                else :
+                    curr = 'consosword'
                 StuCurrent.objects.create(
                     stu = student,
                     cur_read = 'poem',
                     read_level = 1,
                     curr_level = 1,
                     cur_read_id = 1259,
-                    cur_curr = 'count',
+                    cur_curr = curr,
                     cur_curr_last1 = 0,
                     cur_curr_last2 = 0,
                     cur_curr_last3 = 0
@@ -1205,7 +1067,7 @@ class CureAns(View):
         if rhythm_score <=0:
             class_voice = Voice.objects.get(pk=40)
             retry = True
-        if speed_score <=0 :
+        if speed_score <= -5 :
             class_voice = Voice.objects.get(pk=38)
             retry = True
 
@@ -1366,7 +1228,7 @@ class CureAns(View):
             class_txt = 'D'
         if rhythm_score <=0:
             class_voice = Voice.objects.get(pk=40)
-        if speed_score <=0 :
+        if speed_score <= -5 :
             class_voice = Voice.objects.get(pk=38)
         StuCure.objects.create(
             stu = student,
@@ -1574,7 +1436,11 @@ class CureSave(View):
             student = Student.objects.filter(pk = s_id)
             stucur = StuCurrent.objects.get(stu_id=s_id)
             status = stucur.cur_read
-            if StuCure.objects.filter(stu_id = s_id,cure_txt = status,is_daily = 'T', full_score__gte = 85, date = date).count() >=10:
+            cur_lev = stucur.read_level
+            cur_read = stucur.cur_read_id
+            idx_id = CureIdx.objects.get(idx_txt = status).idx_id
+            tid = CureMaster.objects.get(pk=cur_read).cure_tid
+            if StuCure.objects.filter(stu_id = s_id,cure_txt = status,is_daily = 'T', full_score__gte = 85, date = date).count() >= CureMaster.objects.filter(cure_idx_id = idx_id, cure_level = cur_lev, cure_tid = tid).count():
                 status = stucur.cur_curr
             elif StuCure.objects.filter(stu_id = s_id,cure_txt = stucur.cur_curr,is_daily = 'T',date=date).count() >= 10:
                 status = stucur.cur_read
