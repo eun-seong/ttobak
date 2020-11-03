@@ -7,24 +7,24 @@ import GraphComp from 'Components/GraphComp';
 
 const GraphVariable = {
 	'cure': [
-		{'title': '학습량', 'y_axis': '분'},
-		{'title': '성취도', 'y_axis': '점'}, 
-		{'title': '발음 정확도', 'y_axis': '%'}
-	], 
+		{ 'title': '학습량', 'y_axis': '분' },
+		{ 'title': '성취도', 'y_axis': '점' },
+		{ 'title': '발음 정확도', 'y_axis': '%' }
+	],
 	'test': [
-		{'title': '청각 처리 속도', 'y_axis': '점'},
-		{'title': '어음 청취력', 'y_axis': '점'}, 
-		{'title': '선택적 집중력', 'y_axis': '점'}
+		{ 'title': '청각 처리 속도', 'y_axis': '점' },
+		{ 'title': '어음 청취력', 'y_axis': '점' },
+		{ 'title': '선택적 집중력', 'y_axis': '점' }
 	]
 };
 
 const DateFormat = (d) => {
-	if(d.includes('~')) {
+	if (d.includes('~')) {
 		d = d.split('~')[0];
 	}
 
 	let date = new Date(d);
-	return (date.getMonth()+1) + '/' + date.getDate();
+	return (date.getMonth() + 1) + '/' + date.getDate();
 };
 
 /* styled-components */
@@ -61,26 +61,26 @@ const TabButton = styled.div`
 
 
 
-const StdStatistics = ({ goBack, student, state, Stat, isReady, isCure, period, history }) => {
-	if(!isReady) return (<Container></Container>);
+const StdStatistics = ({ goBack, student, state, Stat, isReady, isCure, period, isFirstDiag }) => {
+	if (!isReady) return (<Container></Container>);
 	let targets = (isCure ? [state.amount, state.score, state.voice_score] : [state.score_swp, state.score_swp, state.score_foc]);
-	let tickles = targets.map(element => Math.ceil(Math.max(...Object.values(element))/20));
+	let tickles = targets.map(element => Math.ceil(Math.max(...Object.values(element)) / 20));
 
 	let graphs = [0, 1, 2];
 
-    return (
-        <Container>
-            <HeaderComp title={'학습자 통계'} goBack={goBack} />
-            <MainContainer>
-            	<TabContainer>
-	            	<TabButton selected={period === 'day'} onClick={() => Stat(true, 'day')}>일간</TabButton>
-	            	<TabButton selected={period === 'week'} onClick={() => Stat(true, 'week')}>주간</TabButton>
-	            	<TabButton selected={period === 'month'} onClick={() => Stat(true, 'month')}>월간</TabButton>
-					<TabButton onClick={() => {history.push('/diagnose/result');}}>검사</TabButton>
-	            </TabContainer>
+	return (
+		<Container>
+			<HeaderComp title={'학습자 통계'} goBack={goBack} />
+			<MainContainer>
+				<TabContainer>
+					<TabButton selected={period === 'day'} onClick={() => Stat(true, 'day')}>일간</TabButton>
+					<TabButton selected={period === 'week'} onClick={() => Stat(true, 'week')}>주간</TabButton>
+					<TabButton selected={period === 'month'} onClick={() => Stat(true, 'month')}>월간</TabButton>
+					<TabButton onClick={isFirstDiag}>검사</TabButton>
+				</TabContainer>
 				{[0, 1, 2].map((idx) => {
 					return (<GraphComp
-						key={idx} 
+						key={idx}
 						isCure={isCure}
 						title={(isCure ? GraphVariable['cure'][idx]['title'] : GraphVariable['test'][idx]['title'])}
 						target={targets[idx]}
@@ -89,9 +89,9 @@ const StdStatistics = ({ goBack, student, state, Stat, isReady, isCure, period, 
 						axis={(isCure ? GraphVariable['cure'][idx]['y_axis'] : GraphVariable['test'][idx]['y_axis'])}
 					/>);
 				})}
-            </MainContainer>
-        </Container >
-    );
+			</MainContainer>
+		</Container >
+	);
 }
 
 export default StdStatistics;

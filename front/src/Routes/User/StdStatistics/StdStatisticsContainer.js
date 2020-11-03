@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import StdStatisticsPresenter from './StdStatisticsPresenter';
 import Alert from 'Components/Alert';
 
-import { Stat_Api } from 'api';
+import { Stat_Api, Daily_Api } from 'api';
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -26,12 +26,11 @@ class StdStatstics extends React.Component {
             score_foc: {},
             is_cure: true,
             period: 'day',
-            is_ready: false
+            is_ready: false,
         };
         this.enableAlert = false;
 
         const { user } = props;
-        
 
         if (!user.user.u_id || !user.student.s_id) {
             this.makeAlert('잘못된 접근입니다.', false, (() => {
@@ -41,7 +40,6 @@ class StdStatstics extends React.Component {
         }
         this.Stat(true, 'day');
     }
-
 
     goBack = () => {
         this.props.history.goBack();
@@ -75,7 +73,7 @@ class StdStatstics extends React.Component {
     }
 
     makeAlert(text, isConfirm, onSubmit, onCancel) {
-        this.enableAlert = true;
+        this.enableAlert = true
         this.alertText = text;
         this.isConfirm = isConfirm;
         this.onSubmit = onSubmit;
@@ -84,11 +82,24 @@ class StdStatstics extends React.Component {
         this.forceUpdate();
     }
 
+    isFirstDiag = async () => {
+        const { data } = await Daily_Api.did(this.props.user.student.s_id);
+        console.log(data);
+
+        if (data.is_first) {
+            this.makeAlert('첫 번째 검사를 진행해주세요', false, () => {
+                this.enableAlert = false;
+                this.forceUpdate();
+            });
+        }
+        else this.props.history.push('/diagnose/result');
+    }
+
     render() {
         console.log(this.props.history);
         const { user } = this.props;
 
-        const alertComp = this.enableAlert ? (<Alert 
+        const alertComp = this.enableAlert ? (<Alert
             text={this.alertText}
             isConfirm={this.isConfirm}
             onSubmit={this.onSubmit}
@@ -106,10 +117,10 @@ class StdStatstics extends React.Component {
                     isReady={this.state.is_ready}
                     isCure={this.state.is_cure}
                     period={this.state.period}
-                    history={this.props.history}
+                    isFirstDiag={this.isFirstDiag}
                 />
             </div>
-            );
+        );
     }
 }
 

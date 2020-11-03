@@ -47,6 +47,7 @@ class Shadowing extends React.Component {
         this.picture = { T1, TTobak };
         this.totalImages = Object.keys(this.picture.T1).length + Object.keys(this.picture.TTobak).length;
         this.numOfLoadedImage = 0;
+        this.continuePlay = false;
         this.state = inistState;
     }
 
@@ -328,7 +329,11 @@ class Shadowing extends React.Component {
     onContinueButtonHandle = () => {
         this.setState({
             showPopup: false,
-        })
+        });
+
+        if (this.continuePlay) {
+            this.currentAudio.play();
+        }
     }
 
     onRestartButtonHandle = () => {
@@ -342,7 +347,12 @@ class Shadowing extends React.Component {
     onPauseButtonHandle = () => {
         this.setState({
             showPopup: true,
-        })
+        });
+
+        if (this.currentAudio.isPlaying()) {
+            this.currentAudio.pause();
+            this.continuePlay = true;
+        }
     }
 
     onCompleteButtonHandle = () => {

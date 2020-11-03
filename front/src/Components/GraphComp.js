@@ -19,6 +19,7 @@ const GraphContainer = styled.div`
 		flex-direction: column;
 		margin: 10px 5vw;
 		height: 400px;
+		z-index: 0;
 `;
 
 const GraphHeader = styled.div`
