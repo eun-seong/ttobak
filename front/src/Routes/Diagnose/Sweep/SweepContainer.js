@@ -65,7 +65,7 @@ class Sweep extends React.PureComponent {
         let audioArr = [this.voice, this.voice_desc, this.swp];
         for (let i = 0; i < audioArr.length; i++) {
             if (!!audioArr[i]) {
-                for (var j = 0; i < this.phSound.length; j++) {
+                for (var j = 0; i < audioArr[i].length; j++) {
                     if (!!audioArr[i][j]) {
                         audioArr[i][j].pause();
                         audioArr[i][j] = null;

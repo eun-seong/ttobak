@@ -140,7 +140,7 @@ class Shadowing extends React.Component {
             setTimeout(() => this.playSound(), 1000);
         });
 
-        this.read_voice[0].play();
+        if (!!this.read_voice[0]) this.read_voice[0].play();
     }
 
     androidResponse = async (e) => {
@@ -188,11 +188,13 @@ class Shadowing extends React.Component {
                             TTobaki: TTobak.ttobak3_1,
                         })
                         setTimeout(() => {
-                            this.currentAudio.play();
-                            this.setState({
-                                TTobaki: TTobak.ttobak3_2,
-                                isPlaying: true,
-                            })
+                            if (!!this.currentAudio) {
+                                this.currentAudio.play();
+                                this.setState({
+                                    TTobaki: TTobak.ttobak3_2,
+                                    isPlaying: true,
+                                })
+                            }
                         }, 3000);
                     });
 
@@ -209,7 +211,7 @@ class Shadowing extends React.Component {
                     this.good_script = new Audio(soundURL + data.class_voice.voc_path);
                     this.good_script.addEventListener('ended', () => this.nextStep());
                     setTimeout(() => {
-                        this.good_script.play();
+                        if (!!this.good_script) this.good_script.play();
                         this.setState({
                             TTobaki: TTobak.ttobak2_2,
                         });

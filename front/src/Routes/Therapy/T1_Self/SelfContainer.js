@@ -134,7 +134,7 @@ class Selfpoem extends React.Component {
             setTimeout(() => this.playRecording(), 2000);
         });
 
-        this.read_voice[0].play();
+        if (!!this.read_voice[0]) this.read_voice[0].play();
     }
 
     androidResponse = async (e) => {
