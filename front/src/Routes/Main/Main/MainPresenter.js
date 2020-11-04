@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import StdBox from './StdBox';
 
@@ -46,8 +46,15 @@ const FirstDiag = styled.div`
     line-height: 1.7rem;
 `;
 
+
 const Main = ({ data, student, isImageLoaded, daily_custom, daily_link, daily_complete, isDiagOkay, isFirstDiagnose, ...props }) => {
-    console.log(isFirstDiagnose)
+    const [num, setNum] = useState(0);
+    const increase = () => {
+        console.log(num);
+        if (num > 10) props.developMode();
+        else setNum(num + 1);
+    }
+
     return (
         <>
             {
@@ -89,7 +96,7 @@ const Main = ({ data, student, isImageLoaded, daily_custom, daily_link, daily_co
                     </SubComp>
                     {
                         isFirstDiagnose ?
-                            <FirstDiag>
+                            <FirstDiag onTouchEnd={increase}>
                                 상단의 [검사하기] 버튼을 눌러,<br />
                             첫 번째 검사를 시작해주세요.
                     </FirstDiag> :

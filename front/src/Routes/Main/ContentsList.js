@@ -4,7 +4,7 @@ const ContentsList = [
     {
         name: 'poem',
         img: MainTherapy[0],
-        url: '/therapy/shadowing/poem',
+        url: '/therapy/poem',
         title: '의미 | 따라 읽기',
         explain: '동요와 동시를 따라 읽어요',
     },
@@ -18,7 +18,7 @@ const ContentsList = [
     {
         name: 'vowelword',
         img: MainTherapy[1],
-        url: '/therapy/shadowing/vowelword',
+        url: '/therapy/word/vowelword',
         title: '모음 | 단어',
         explain: '모음 단어를 듣고 무엇인지 맞혀 봐요',
     },
@@ -46,7 +46,7 @@ const ContentsList = [
     {
         name: 'consoword',
         img: MainTherapy[5],
-        url: '/therapy/shadowing/consoword',
+        url: '/therapy/word/consoword',
         title: '자음 | 단어 발음하기',
         explain: '단어를 발음해  봐요',
     },

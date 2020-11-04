@@ -26,6 +26,7 @@ class Main extends React.Component {
             daily_complete: false,
             isFirstDiagnose: false,
             showPopUp: false,
+            develop: false,
         }
         this.numOfLoadedImage = 0;
         this.pictures = { Images, MainRoot, Pause };
@@ -48,7 +49,6 @@ class Main extends React.Component {
         dispatch(student_get(user.student.s_id, user.user.u_id));
 
         const { data } = await Daily_Api.did(user.student.s_id);
-        console.log(data);
         if (data.is_first) {
             this.setState({
                 isFirstDiagnose: true,
@@ -115,21 +115,28 @@ class Main extends React.Component {
     }
 
     isDiagOkay = async () => {
-        // const { user } = this.props;
-        // const { data } = await Daily_Api.okay(user.student.s_id);
+        const { user } = this.props;
+        const { data } = await Daily_Api.okay(user.student.s_id);
 
-        // console.log(data);
-        // if (data.is_okay) this.props.history.push('/diagnose/sweep');
-        // else this.setState({
-        //     showPopUp: true,
-        // });
-        this.props.history.push('/diagnose/recognition');
+        console.log(data);
+        if (data.is_okay) this.props.history.push('/diagnose/sweep');
+        else this.setState({
+            showPopUp: true,
+        });
+        // this.props.history.push('/diagnose/attention');
     }
 
     onOkButtonHandle = () => {
         this.setState({
             showPopUp: false,
         });
+    }
+
+    developMode = () => {
+        this.setState({
+            develop: true,
+            isFirstDiagnose: false,
+        })
     }
 
     render() {
@@ -154,6 +161,7 @@ class Main extends React.Component {
                 isFirstDiagnose={isFirstDiagnose}
                 onOkButtonHandle={this.onOkButtonHandle}
                 showPopUp={showPopUp}
+                developMode={this.developMode}
             />
         );
     }

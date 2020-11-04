@@ -9,6 +9,7 @@ import { T1, TTobak, SoundEffect } from 'images';
 import { T1_Api, soundURL, T_tutorial } from 'api';
 import LoadingComp from 'Components/LoadingComp';
 
+const idx_txt = 'poem';
 const inistState = {
     cureText: null,
     isRecording: false,
@@ -34,7 +35,6 @@ class Shadowing extends React.Component {
 
     constructor({ match }) {
         super();
-        this.idx_text = match.params.type;
         this.learning_type = match.params.learning_type;
         this.recording_start_sound = new Audio(SoundEffect.recording_start);
         this.recording_end_sound = new Audio(SoundEffect.recording_end);
@@ -66,15 +66,17 @@ class Shadowing extends React.Component {
     }
 
     componentWillUnmount() {
-        if (!!this.currentAudio) {
-            this.currentAudio.pause();
-            this.currentAudio.remove();
-            this.currentAudio = null;
+        if (this.state.isRecording) {
+            window.BRIDGE.requestStopRecording();
         }
-        if (!!this.retryAudio) {
-            this.retryAudio.pause();
-            this.retryAudio.remove();
-            this.retryAudio = null;
+
+        let audioArr = [this.currentAudio, this.read_voice, this.retryAudio, this.good_script];
+        for (let i = 0; i < audioArr.length; i++) {
+            if (!!audioArr[i]) {
+                audioArr[i].pause();
+                audioArr[i].remove();
+                audioArr[i] = null;
+            }
         }
 
         if (!!this.voice) {
@@ -107,28 +109,24 @@ class Shadowing extends React.Component {
         const { user } = this.props;
         const s_id = user.student.s_id;
 
-        const { data } = await T1_Api.ask(s_id, this.idx_text);
-        console.log(data);
+        const { data } = await T1_Api.ask(s_id, idx_txt);
+        console.log('new', data);
 
         if (data.code === 'specified' || data.code === 1) {
+
             this.currentIndex = 0;
             this.cure = data.cure;
             this.currentCure = data.cure[this.currentIndex];
             this.currentCure.is_first = 'T';
             this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
-            if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
-                this.currentCure.cure_text = this.currentCure.cure_word;
             this.setState({
                 TTobaki: TTobak.ttobak1_1,
                 cureText: this.currentCure.cure_text,
                 totalNum: this.cure.length,
+                currentIndex: this.currentIndex + 1,
             });
+            this.intro(data.read_voice);
         }
-        if (data.code === 'tutorial') {
-            this.tutorial(data);
-            return;
-        }
-        else this.intro(data.read_voice || data.tut_voice);
     }
 
     daily = () => {
@@ -138,106 +136,27 @@ class Shadowing extends React.Component {
         this.currentCure = this.cure[this.currentIndex];
         this.currentCure.is_first = 'T';
         this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
-        if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
-            this.currentCure.cure_text = this.currentCure.cure_word;
 
         this.setState({
             totalNum: this.cure.length,
-            cureText: this.currentCure.cure_text
+            cureText: this.currentCure.cure_text,
+            currentIndex: this.currentIndex + 1,
         });
-
-        if (this.props.location.state.data.code === 'tutorial') {
-            this.tutorial(this.props.location.state.data);
-            return;
-        }
-        else this.intro(this.props.location.state.data.read_voice || this.props.location.state.data.tut_voice);
+        this.intro(this.props.location.state.data.read_voice);
     }
 
     intro = (data) => {
         this.reac_voice = null;
-        this.read_voice = [
-            new Audio(soundURL + data[0].voc_path),
-        ];
+        this.read_voice = new Audio(soundURL + data[0].voc_path);
 
-        this.read_voice[0].addEventListener('ended', () => {
+        this.read_voice.addEventListener('ended', () => {
             setTimeout(() => this.playSound(), 1000);
         });
 
-        if (!!this.read_voice[0]) this.read_voice[0].play();
-    }
-
-    tutorial = (data) => {
-        this.setState({
-            cureText: data.sample_ques.cure_word,
-        })
-        this.currentAudio = new Audio(soundURL + data.sample_ques.cure_path);
-        this.voice = [
-            new Audio(soundURL + data.tut_voice[0].voc_path),
-            new Audio(soundURL + data.tut_voice[1].voc_path),
-            new Audio(soundURL + data.tut_voice[2].voc_path),
-            new Audio(soundURL + data.tut_voice[3].voc_path),
-            new Audio(soundURL + data.tut_voice[4].voc_path),
-            new Audio(soundURL + data.tut_voice[5].voc_path),
-        ];
-
-        this.voice[0].addEventListener('ended', () => {
+        if (!!this.read_voice)
             setTimeout(() => {
-                this.currentAudio.play();
+                this.read_voice.play();
             }, 1000);
-        });
-
-        this.currentAudio.addEventListener('ended', () => {
-            setTimeout(() => {
-                this.voice[1].play();
-            }, 1000);
-        });
-
-        this.voice[1].addEventListener('ended', () => {
-            setTimeout(() => {
-                this.recording_start_sound.play();
-                this.setState({
-                    isRecording: true,
-                    RecordingCircle: true,
-                })
-                this.setRecording = setInterval(() => {
-                    this.setState({
-                        RecordingCircle: !this.state.RecordingCircle,
-                    });
-                }, 500);
-                setTimeout(() => {
-                    window.BRIDGE.recordAudio(this.props.user.student.gender, this.currentCure.cure_text);
-                }, 200);
-            }, 800);
-        });
-
-        this.voice[2].addEventListener('ended', () => {
-            setTimeout(() => {
-                this.recording_start_sound.play();
-                this.setState({
-                    isRecording: true,
-                    RecordingCircle: true,
-                })
-                this.setRecording = setInterval(() => {
-                    this.setState({
-                        RecordingCircle: !this.state.RecordingCircle,
-                    });
-                }, 500);
-                setTimeout(() => {
-                    window.BRIDGE.recordAudio(this.props.user.student.gender, this.currentCure.cure_text);
-                }, 200);
-            }, 800);
-        })
-
-        this.voice[5].addEventListener('ended', () => {
-            setTimeout(() => {
-                if (this.learning_type !== 'daily') this.newRequest();
-                else this.daily();
-            }, 1000);
-        })
-
-        setTimeout(() => {
-            this.voice[0].play();
-        }, 1000);
     }
 
     androidResponse = async (e) => {
@@ -262,16 +181,6 @@ class Shadowing extends React.Component {
         });
 
         if (this.audioResult.status === 'Success') {
-            if (this.gameState === 'tutorial') {
-                if (this.audioResult.score < 85) {
-                    this.voice[2].play();
-                    return;
-                } else {
-                    this.voice[5].play();
-                }
-            }
-
-
             const { user } = this.props;
             const s_id = user.student.s_id;
             const { data } = await T1_Api.answer(
@@ -282,7 +191,7 @@ class Shadowing extends React.Component {
                 this.audioResult.rhythm_score,
                 this.learning_type === 'review' ? 'T' : 'F',
                 this.currentCure.cure_id,
-                this.idx_text,
+                idx_txt,
                 this.learning_type === 'daily' ? 'T' : 'F',
                 this.currentCure.is_first
             );
@@ -304,7 +213,7 @@ class Shadowing extends React.Component {
                                     isPlaying: true,
                                 })
                             }
-                        }, 3000);
+                        }, 1000);
                     });
 
                     setTimeout(() => {
@@ -346,10 +255,10 @@ class Shadowing extends React.Component {
         }
         this.currentCure = this.cure[this.currentIndex];
         this.currentCure.is_first = 'T';
-        this.currentAudio.remove();
+        if (!!this.currentAudio) this.currentAudio.remove();
         this.currentAudio = null;
         this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
-        if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
+        if (idx_txt === 'vowelword' || idx_txt === 'consoword')
             this.currentCure.cure_text = this.currentCure.cure_word;
 
         setTimeout(() => {
@@ -459,7 +368,7 @@ class Shadowing extends React.Component {
             showPopup: true,
         });
 
-        if (!this.currentAudio.paused) {
+        if (!!this.currentAudio && !this.currentAudio.paused) {
             this.currentAudio.pause();
             this.continuePlay = true;
         }

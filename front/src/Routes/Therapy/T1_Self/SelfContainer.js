@@ -173,7 +173,7 @@ class Selfpoem extends React.Component {
                 this.currentCure.cure_id,
                 idx_txt,
                 this.learning_type === 'daily' ? 'T' : 'F',
-                this.currentCure.is_first,
+                this.currentCure.is_first
             );
             console.log(data);
 

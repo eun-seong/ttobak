@@ -95,6 +95,7 @@ class Sound extends React.Component {
             this.setState({
                 CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
                 totalNum: this.cure.length,
+                currentIndex: this.currentIndex + 1,
             });
             setTimeout(() => this.playSound(), 2000);
         }
@@ -116,6 +117,7 @@ class Sound extends React.Component {
         this.setState = {
             totalNum: this.cure.length,
             CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
+            currentIndex: this.currentIndex + 1,
         };
         setTimeout(() => this.playSound(), 2000);
     }
@@ -154,9 +156,6 @@ class Sound extends React.Component {
             });
             if (this.learning_type === 'daily') this.daily();
             else this.newRequest();
-
-            this.currentCure = null;
-            this.voice = null;
         });
 
         setTimeout(() => {
@@ -165,7 +164,7 @@ class Sound extends React.Component {
     }
 
     setAudio = (isTutorial) => {
-        this.currentAudio.remove();
+        if (!!this.currentAudio) this.currentAudio.remove();
         this.currentAudio = null;
         if (this.type === 'consosound') {
             this.currentCure.answer = Math.floor(Math.random() * 2) + 1;

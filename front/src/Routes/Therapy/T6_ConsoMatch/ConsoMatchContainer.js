@@ -104,6 +104,7 @@ class ConsoMatch extends React.Component {
 
             this.setState({
                 totalNum: this.cure.length,
+                currentIndex: this.currentIndex + 1,
             })
             setTimeout(() => this.playSound(), 2000);
         }
@@ -128,6 +129,7 @@ class ConsoMatch extends React.Component {
 
         this.setState({
             totalNum: this.answer.length,
+            currentIndex: this.currentIndex + 1,
             PicBoxList: [
                 soundURL + this.getListFilter('cure_tid', this.currentCure[0]).cure_path2,
                 soundURL + this.getListFilter('cure_tid', this.currentCure[1]).cure_path2,
@@ -204,7 +206,7 @@ class ConsoMatch extends React.Component {
         this.currentCure = this.answer[this.currentIndex];
         this.currentCure.is_first = 'T';
 
-        this.currentAudio.remove();
+        if (!!this.currentAudio) this.currentAudio.remove();
         this.currentAudio = null;
         this.currentAudio = new Audio(soundURL + this.getListFilter('cure_tid', this.currentCure[3][0]).cure_path);
         this.currentAudio.addEventListener('ended', () => {

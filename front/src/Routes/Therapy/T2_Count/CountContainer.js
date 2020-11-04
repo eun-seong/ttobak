@@ -100,6 +100,8 @@ class Count extends React.Component {
         this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
         this.setState({
             totalNum: this.cure.length,
+            currentIndex: this.currentIndex + 1,
+            cureText: this.currentCure.cure_text,
         });
         setTimeout(() => this.playSound(), 1000);
     }
@@ -126,6 +128,7 @@ class Count extends React.Component {
 
             this.setState({
                 totalNum: this.cure.length,
+                currentIndex: this.currentIndex + 1,
             });
             setTimeout(() => this.playSound(), 1000);
         }

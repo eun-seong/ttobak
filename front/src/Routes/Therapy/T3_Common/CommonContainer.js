@@ -90,6 +90,7 @@ class Common extends React.Component {
 
             this.setState({
                 totalNum: this.cure.length,
+                currentIndex: this.currentIndex + 1,
             })
             setTimeout(() => this.playSound(), 2000);
         }
@@ -105,6 +106,7 @@ class Common extends React.Component {
         this.cure = this.props.location.state.data.cure;
         this.setState = {
             totalNum: this.cure.length,
+            currentIndex: this.currentIndex + 1,
         }
         this.setCurrent(0);
         setTimeout(() => this.playSound(), 2000);
@@ -153,7 +155,10 @@ class Common extends React.Component {
         });
 
         this.voice[2].addEventListener('ended', async () => {
-            const { data } = await T_tutorial.answer(this.props.user.student.s_id, idx_txt, this.currentCure.com_id);
+            const { data } = await T_tutorial.answer(
+                this.props.user.student.s_id,
+                idx_txt,
+                this.currentCure.com_id)
             console.log(data);
             this.setState({
                 gameState: false,
@@ -175,7 +180,7 @@ class Common extends React.Component {
         this.currentCure = this.cure[this.currentIndex];
         this.currentCure.is_first = 'T';
         for (let i = 0; i < this.currentCure.length; i++) {
-            this.currentCure[i].remove();
+            if (!!this.currentCure[i]) this.currentCure[i].remove();
             this.currentCure[i] = null;
         }
         this.currentAudio = [

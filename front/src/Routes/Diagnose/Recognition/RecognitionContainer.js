@@ -34,7 +34,6 @@ class Recognition extends React.PureComponent {
     constructor() {
         super();
         this.state = initState;
-
         this.phs = null;
         this.answers = null;
         this.phSound = null;
@@ -195,9 +194,6 @@ class Recognition extends React.PureComponent {
 
     tutorialBoxHandle = () => {
         setTimeout(() => {
-            this.setState({
-                gameState: false,
-            })
             if (!!this.voice[2]) {
                 this.voice[2].play();
                 this.setState({ TTobaki: TTobak.ttobak3_2 });
@@ -207,7 +203,7 @@ class Recognition extends React.PureComponent {
 
     setListener = () => {
         if (!!this.phSound) {
-            for (let i = 0; i > this.phSound.length; i++) {
+            for (let i = 0; i < this.phSound.length; i++) {
                 this.phSound[i].remove();
             }
         }
@@ -270,6 +266,15 @@ class Recognition extends React.PureComponent {
 
     onBoxTouchHandle = async (id) => {
         const { Box, answerIndex, TTobaki, gameState } = this.state;
+        if (gameState === 'tutorial') {
+            if (id === 0) {
+                this.setState({
+                    gameState: false,
+                })
+                this.tutorialBoxHandle();
+            }
+            else return;
+        }
         if (gameState === false) return;
 
         switch (id) {
@@ -291,10 +296,6 @@ class Recognition extends React.PureComponent {
                 break;
         }
 
-        if (gameState === 'tutorial') {
-            this.tutorialBoxHandle();
-            return;
-        }
         this.finished(id);
     }
 

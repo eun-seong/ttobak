@@ -97,6 +97,7 @@ class ConsoCommon extends React.Component {
                     [this.currentCure.cure_word, this.currentCure.cure_word2] :
                     [this.currentCure.cure_word2, this.currentCure.cure_word],
                 totalNum: this.cure.length,
+                currentIndex: this.currentIndex + 1,
             })
         }
         else console.log('data message: ' + data.message);
@@ -114,6 +115,7 @@ class ConsoCommon extends React.Component {
         this.currentCure.is_first = 'T';
         this.setState({
             totalNum: this.cure.length,
+            currentIndex: this.currentIndex + 1,
             picBox: soundURL + this.currentCure.cure_path,
             CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2]
         });
