@@ -114,6 +114,7 @@ class Shadowing extends React.Component {
             this.currentIndex = 0;
             this.cure = data.cure;
             this.currentCure = data.cure[this.currentIndex];
+            this.currentCure.is_first = 'T';
             this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
             if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
                 this.currentCure.cure_text = this.currentCure.cure_word;
@@ -135,6 +136,7 @@ class Shadowing extends React.Component {
 
         this.cure = this.props.location.state.data.read;
         this.currentCure = this.cure[this.currentIndex];
+        this.currentCure.is_first = 'T';
         this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
         if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
             this.currentCure.cure_text = this.currentCure.cure_word;
@@ -282,11 +284,13 @@ class Shadowing extends React.Component {
                 this.currentCure.cure_id,
                 this.idx_text,
                 this.learning_type === 'daily' ? 'T' : 'F',
+                this.currentCure.is_first
             );
             console.log(data);
 
             if (data.code === 1) {
                 if (data.retry) {
+                    this.currentCure.is_first = 'F';
                     this.retryAudio = new Audio(soundURL + data.class_voice.voc_path);
                     this.retryAudio.addEventListener('ended', () => {
                         this.setState({
@@ -341,6 +345,7 @@ class Shadowing extends React.Component {
             return;
         }
         this.currentCure = this.cure[this.currentIndex];
+        this.currentCure.is_first = 'T';
         this.currentAudio.remove();
         this.currentAudio = null;
         this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);

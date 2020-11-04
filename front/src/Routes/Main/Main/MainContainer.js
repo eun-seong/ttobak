@@ -68,7 +68,12 @@ class Main extends React.Component {
             console.log(save.data.current);
 
             if (data.code === 1 || data.code === 'tutorial') {
-                if (!!save.data.current) {
+                if (save.data.current.length === 0) {
+                    this.setState({
+                        daily_complete: true,
+                    })
+                }
+                else {
                     const content = ContentsList.filter(c => {
                         return c.name === save.data.current;
                     })[0];
@@ -79,9 +84,6 @@ class Main extends React.Component {
                         daily_link: content.url,
                     });
                 }
-                else this.setState({
-                    daily_complete: true,
-                })
             }
         } catch (e) {
             console.log(e);

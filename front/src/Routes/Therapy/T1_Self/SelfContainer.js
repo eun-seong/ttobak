@@ -96,6 +96,7 @@ class Selfpoem extends React.Component {
             this.currentIndex = 0;
             this.cure = data.cure;
             this.currentCure = data.cure[this.currentIndex];
+            this.currentCure.is_first = 'T';
             if (idx_txt === 'vowelword' || idx_txt === 'consoword')
                 this.currentCure.cure_text = this.currentCure.cure_word;
             this.setState({
@@ -113,6 +114,7 @@ class Selfpoem extends React.Component {
 
         this.cure = this.props.location.state.data.read;
         this.currentCure = this.cure[this.currentIndex];
+        this.currentCure.is_first = 'T';
 
         if (idx_txt === 'vowelword' || idx_txt === 'consoword')
             this.currentCure.cure_text = this.currentCure.cure_word;
@@ -171,11 +173,13 @@ class Selfpoem extends React.Component {
                 this.currentCure.cure_id,
                 idx_txt,
                 this.learning_type === 'daily' ? 'T' : 'F',
+                this.currentCure.is_first,
             );
             console.log(data);
 
             if (data.code === 1) {
                 if (data.retry) {
+                    this.currentCure.is_first = 'F';
                     this.retryAudio = new Audio(soundURL + data.class_voice.voc_path);
                     this.retryAudio.addEventListener('ended', () => {
                         this.setState({
@@ -224,6 +228,7 @@ class Selfpoem extends React.Component {
             return;
         }
         this.currentCure = this.cure[this.currentIndex];
+        this.currentCure.is_first = 'T';
 
         setTimeout(() => {
             this.setState({

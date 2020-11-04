@@ -89,6 +89,7 @@ class Sound extends React.Component {
             this.currentIndex = 0;
             this.cure = data.cure;
             this.currentCure = data.cure[this.currentIndex];
+            this.currentCure.is_first = 'T';
             this.setAudio();
 
             this.setState({
@@ -109,6 +110,7 @@ class Sound extends React.Component {
         console.log(this.props.location.state.data.cure);
         this.cure = this.props.location.state.data.cure;
         this.currentCure = this.cure[this.currentIndex];
+        this.currentCure.is_first = 'T';
         this.setAudio();
 
         this.setState = {
@@ -233,11 +235,13 @@ class Sound extends React.Component {
             this.learning_type === 'review' ? 'T' : 'F',
             this.type,
             this.learning_type === 'daily' ? 'T' : 'F',
+            this.currentCure.is_first
         );
         console.log(data);
 
         if (data.code === 1) {
             if (data.correct_voice.voc_desc === 'retry') {
+                this.currentCure.is_first = 'F';
                 this.retry_script = new Audio(soundURL + data.correct_voice.voc_path);
                 this.retry_script.addEventListener('ended', () => {
                     this.setState({
@@ -283,6 +287,7 @@ class Sound extends React.Component {
             return;
         }
         this.currentCure = this.cure[this.currentIndex];
+        this.currentCure.is_first = 'T';
         this.setAudio();
 
         setTimeout(() => {

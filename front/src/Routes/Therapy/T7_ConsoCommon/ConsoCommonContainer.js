@@ -85,6 +85,7 @@ class ConsoCommon extends React.Component {
             this.totalImages += this.cure.length;
             this.pictursPreloading(this.cure);
             this.currentCure = this.cure[this.currentIndex];
+            this.currentCure.is_first = 'T';
             for (let i in this.cure) {
                 this.cure[i].answer = Math.floor(Math.random() * 2);
             }
@@ -110,6 +111,7 @@ class ConsoCommon extends React.Component {
         console.log(this.props.location.state.data.cure);
         this.cure = this.props.location.state.data.cure;
         this.currentCure = this.cure[this.currentIndex];
+        this.currentCure.is_first = 'T';
         this.setState({
             totalNum: this.cure.length,
             picBox: soundURL + this.currentCure.cure_path,
@@ -201,11 +203,13 @@ class ConsoCommon extends React.Component {
             this.learning_type === 'review' ? 'T' : 'F',
             idx_txt,
             this.learning_type === 'daily' ? 'T' : 'F',
+            this.currentCure.is_first
         );
         console.log(data);
 
         if (data.code === 1) {
             if (data.correct_voice.voc_desc === 'retry') {
+                this.currentCure.is_first = 'F';
                 this.retry_script = new Audio(soundURL + data.correct_voice.voc_path);
                 this.retry_script.addEventListener('ended', () => {
                     this.setState({
@@ -240,6 +244,7 @@ class ConsoCommon extends React.Component {
             return;
         }
         this.currentCure = this.cure[this.currentIndex];
+        this.currentCure.is_first = 'T';
 
         this.setState({
             gameState: true,

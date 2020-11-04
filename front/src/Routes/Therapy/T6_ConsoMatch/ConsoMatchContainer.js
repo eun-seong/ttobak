@@ -122,6 +122,7 @@ class ConsoMatch extends React.Component {
         this.answer = this.props.location.state.data.answer;
         this.cure = this.props.location.state.data.cure;
         this.currentCure = this.answer[this.currentIndex];
+        this.currentCure.is_first = 'T';
 
         if (this.numOfLoadedImage !== this.totalImages) this.pictursPreloading(this.cure);
 
@@ -201,6 +202,7 @@ class ConsoMatch extends React.Component {
 
     setCurrent = (timeout) => {
         this.currentCure = this.answer[this.currentIndex];
+        this.currentCure.is_first = 'T';
 
         this.currentAudio.remove();
         this.currentAudio = null;
@@ -279,12 +281,14 @@ class ConsoMatch extends React.Component {
             this.getListFilter('cure_tid', this.currentCure[3][0]).cure_word,
             this.learning_type === 'review' ? 'T' : 'F',
             this.learning_type === 'daily' ? 'T' : 'F',
+            this.currentCure.is_first
         );
         console.log(data);
 
         switch (data.code) {
             case 1:
                 if (data.correct_voice.voc_desc === 'retry') {
+                    this.currentCure.is_first = 'F';
                     this.retry_script = new Audio(soundURL + data.correct_voice.voc_path);
                     this.retry_script.addEventListener('ended', () => {
                         this.setState({

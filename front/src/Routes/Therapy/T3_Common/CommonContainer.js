@@ -173,6 +173,7 @@ class Common extends React.Component {
 
     setCurrent = (timeout) => {
         this.currentCure = this.cure[this.currentIndex];
+        this.currentCure.is_first = 'T';
         for (let i = 0; i < this.currentCure.length; i++) {
             this.currentCure[i].remove();
             this.currentCure[i] = null;
@@ -311,11 +312,13 @@ class Common extends React.Component {
                 is_review,
                 idx_txt,
                 this.learning_type === 'daily' ? 'T' : 'F',
+                this.currentCure.is_first
             );
             console.log(data);
 
             if (data.code === 1) {
                 if (data.correct_voice.voc_desc === 'retry') {
+                    this.currentCure.is_first = 'F';
                     this.retry_script = new Audio(soundURL + data.correct_voice.voc_path);
                     this.retry_script.addEventListener('ended', () => {
                         this.setState({

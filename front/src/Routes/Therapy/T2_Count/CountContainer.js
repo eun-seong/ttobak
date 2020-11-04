@@ -96,6 +96,7 @@ class Count extends React.Component {
         this.cure = this.props.location.state.data.cure;
         console.log(this.cure.length);
         this.currentCure = this.cure[this.currentIndex];
+        this.currentCure.is_first = 'T';
         this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
         this.setState({
             totalNum: this.cure.length,
@@ -120,6 +121,7 @@ class Count extends React.Component {
             this.currentIndex = 0;
             this.cure = data.cure;
             this.currentCure = data.cure[this.currentIndex];
+            this.currentCure.is_first = 'T';
             this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
 
             this.setState({
@@ -227,11 +229,13 @@ class Count extends React.Component {
             this.learning_type === 'review' ? 'T' : 'F',
             idx_txt,
             this.learning_type === 'daily' ? 'T' : 'F',
+            this.currentCure.is_first
         );
         console.log(data);
 
         if (data.code === 1) {
             if (data.correct_voice.voc_desc === 'retry') {
+                this.currentCure.is_first = 'F';
                 this.retry_script = new Audio(soundURL + data.correct_voice.voc_path);
                 this.retry_script.addEventListener('ended', () => {
                     this.setState({
@@ -277,6 +281,7 @@ class Count extends React.Component {
         }
 
         this.currentCure = this.cure[this.currentIndex];
+        this.currentCure.is_first = 'T';
         this.currentAudio = new Audio(soundURL + this.cure[this.currentIndex].cure_path);
 
         setTimeout(() => {
