@@ -58,10 +58,11 @@ class Recognition extends React.PureComponent {
     }
 
     componentWillUnmount() {
+        console.log('componentWillUnmount start')
         let audioArr = [this.phSound, this.sample_ques, this.voice];
         for (let i = 0; i < audioArr.length; i++) {
             if (!!audioArr[i]) {
-                for (var j = 0; i < audioArr[i].length; j++) {
+                for (var j = 0; j < audioArr[i].length; j++) {
                     if (!!audioArr[i][j]) {
                         audioArr[i][j].pause();
                         audioArr[i][j].remove();
@@ -75,6 +76,7 @@ class Recognition extends React.PureComponent {
             this.sample_answer.remove();
             this.sample_answer = null;
         }
+        console.log('componentWillUnmount finished')
     }
 
     newRequest = async () => {

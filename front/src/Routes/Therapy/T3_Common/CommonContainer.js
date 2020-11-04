@@ -59,7 +59,7 @@ class Common extends React.Component {
         let audioArr = [this.currentAudio, this.voice];
         for (let i = 0; i < audioArr.length; i++) {
             if (!!audioArr[i]) {
-                for (var j = 0; i < audioArr[i].length; j++) {
+                for (var j = 0; j < audioArr[i].length; j++) {
                     if (!!audioArr[i][j]) {
                         audioArr[i][j].pause();
                         audioArr[i][j].remove();

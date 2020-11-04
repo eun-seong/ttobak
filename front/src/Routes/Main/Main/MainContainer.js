@@ -115,15 +115,15 @@ class Main extends React.Component {
     }
 
     isDiagOkay = async () => {
-        console.log('isokay', this.state.showPopUp)
-        const { user } = this.props;
-        const { data } = await Daily_Api.okay(user.student.s_id);
+        // const { user } = this.props;
+        // const { data } = await Daily_Api.okay(user.student.s_id);
 
-        console.log(data);
-        if (data.is_okay) this.props.history.push('/diagnose/sweep');
-        else this.setState({
-            showPopUp: true,
-        });
+        // console.log(data);
+        // if (data.is_okay) this.props.history.push('/diagnose/sweep');
+        // else this.setState({
+        //     showPopUp: true,
+        // });
+        this.props.history.push('/diagnose/recognition');
     }
 
     onOkButtonHandle = () => {
