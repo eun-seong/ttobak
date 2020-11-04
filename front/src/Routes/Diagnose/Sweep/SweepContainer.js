@@ -422,7 +422,7 @@ class Sweep extends React.PureComponent {
     }
 
     onPopupButtonHandle = () => {
-        this.props.history.replace('/diagnose/recognition');
+        this.props.history.push('/diagnose/recognition');
     }
 
     onContinueButtonHandle = () => {

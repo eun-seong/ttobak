@@ -61,7 +61,18 @@ class ConsoMatch extends React.Component {
     componentWillUnmount() {
         if (!!this.currentAudio) {
             this.currentAudio.pause();
+            this.currentAudio.remove();
             this.currentAudio = null;
+        }
+
+        if (!!this.voice) {
+            for (let i = 0; i < this.voice.length; i++) {
+                if (!!this.voice[i]) {
+                    this.voice[i].pause();
+                    this.voice[i].remove();
+                    this.voice[i] = null;
+                }
+            }
         }
     }
 
@@ -191,6 +202,8 @@ class ConsoMatch extends React.Component {
     setCurrent = (timeout) => {
         this.currentCure = this.answer[this.currentIndex];
 
+        this.currentAudio.remove();
+        this.currentAudio = null;
         this.currentAudio = new Audio(soundURL + this.getListFilter('cure_tid', this.currentCure[3][0]).cure_path);
         this.currentAudio.addEventListener('ended', () => {
             this.setState({
@@ -307,7 +320,7 @@ class ConsoMatch extends React.Component {
                 this.gameDone();
                 break;
             default:
-                this.props.history.replace('/main/main')
+                this.props.history.push('/main/main')
                 break;
         }
     }
@@ -331,7 +344,7 @@ class ConsoMatch extends React.Component {
 
     pictursPreloading = (picture) => {
         let timeoutPreloading = setTimeout(() => {
-            this.props.history.replace('/main/main');
+            this.props.history.push('/main/main');
         }, 10000);
 
         try {

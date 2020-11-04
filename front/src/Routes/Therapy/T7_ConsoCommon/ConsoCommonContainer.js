@@ -54,6 +54,18 @@ class ConsoCommon extends React.Component {
         this.imagesPreloading(this.picture);
     }
 
+    componentWillUnmount() {
+        if (!!this.voice) {
+            for (let i = 0; i < this.voice.length; i++) {
+                if (!!this.voice[i]) {
+                    this.voice[i].pause();
+                    this.voice[i].remove();
+                    this.voice[i] = null;
+                }
+            }
+        }
+    }
+
     newRequest = async () => {
         console.log('new request');
         const { user } = this.props;
@@ -247,7 +259,7 @@ class ConsoCommon extends React.Component {
 
     pictursPreloading = (picture) => {
         let timeoutPreloading = setTimeout(() => {
-            this.props.history.replace('/main/main');
+            this.props.history.push('/main/main');
         }, 10000);
 
         try {

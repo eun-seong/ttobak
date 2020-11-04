@@ -57,9 +57,19 @@ class Sound extends React.Component {
     componentWillUnmount() {
         if (!!this.currentAudio) {
             this.currentAudio.pause();
+            this.currentAudio.remove();
             this.currentAudio = null;
         }
-        this.currentAudio = null;
+
+        if (!!this.voice) {
+            for (let i = 0; i < this.voice.length; i++) {
+                if (!!this.voice[i]) {
+                    this.voice[i].pause();
+                    this.voice[i].remove();
+                    this.voice[i] = null;
+                }
+            }
+        }
     }
 
     newRequest = async () => {
@@ -153,6 +163,8 @@ class Sound extends React.Component {
     }
 
     setAudio = (isTutorial) => {
+        this.currentAudio.remove();
+        this.currentAudio = null;
         if (this.type === 'consosound') {
             this.currentCure.answer = Math.floor(Math.random() * 2) + 1;
             this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
@@ -301,7 +313,7 @@ class Sound extends React.Component {
 
     imagesPreloading = (picture) => {
         let timeoutPreloading = setTimeout(() => {
-            this.props.history.replace('/main/main');
+            this.props.history.push('/main/main');
         }, 10000);
 
         for (let i in picture) {

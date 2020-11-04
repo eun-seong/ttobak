@@ -64,6 +64,7 @@ class Attention extends React.Component {
     componentWillUnmount() {
         if (!!this.currentAudio) {
             this.currentAudio.pause();
+            this.currentAudio.remove();
             this.currentAudio = null;
         }
         if (!!this.sample_ques) {
@@ -252,6 +253,7 @@ class Attention extends React.Component {
                             return;
                         }
                         this.currentCure = this.cure[this.currentIndex];
+                        this.currentAudio.remove();
                         this.currentAudio = null;
                         this.currentAudio = new Audio(soundURL + this.currentCure.ques_path1);
 
@@ -340,7 +342,7 @@ class Attention extends React.Component {
     }
 
     onPopupButtonHandle = () => {
-        this.props.history.replace('/diagnose/result');
+        this.props.history.push('/diagnose/result');
     }
 
     onContinueButtonHandle = () => {

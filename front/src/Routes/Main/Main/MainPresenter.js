@@ -47,6 +47,7 @@ const FirstDiag = styled.div`
 `;
 
 const Main = ({ data, student, isImageLoaded, daily_custom, daily_link, daily_complete, isDiagOkay, isFirstDiagnose, ...props }) => {
+    console.log(isFirstDiagnose)
     return (
         <>
             {

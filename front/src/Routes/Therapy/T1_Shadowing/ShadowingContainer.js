@@ -68,11 +68,23 @@ class Shadowing extends React.Component {
     componentWillUnmount() {
         if (!!this.currentAudio) {
             this.currentAudio.pause();
+            this.currentAudio.remove();
             this.currentAudio = null;
         }
         if (!!this.retryAudio) {
             this.retryAudio.pause();
+            this.retryAudio.remove();
             this.retryAudio = null;
+        }
+
+        if (!!this.voice) {
+            for (let i = 0; i < this.voice.length; i++) {
+                if (!!this.voice[i]) {
+                    this.voice[i].pause();
+                    this.voice[i].remove();
+                    this.voice[i] = null;
+                }
+            }
         }
         window.removeEventListener('android', this.androidResponse);
         window.removeEventListener('androidStopRecording', this.stopRecording);
@@ -98,7 +110,6 @@ class Shadowing extends React.Component {
         const { data } = await T1_Api.ask(s_id, this.idx_text);
         console.log(data);
 
-
         if (data.code === 'specified' || data.code === 1) {
             this.currentIndex = 0;
             this.cure = data.cure;
@@ -112,7 +123,11 @@ class Shadowing extends React.Component {
                 totalNum: this.cure.length,
             });
         }
-        this.intro(data.read_voice);
+        if (data.code === 'tutorial') {
+            this.tutorial(data);
+            return;
+        }
+        else this.intro(data.read_voice || data.tut_voice);
     }
 
     daily = () => {
@@ -128,7 +143,12 @@ class Shadowing extends React.Component {
             totalNum: this.cure.length,
             cureText: this.currentCure.cure_text
         });
-        this.intro(this.props.location.state.data.read_voice);
+
+        if (this.props.location.state.data.code === 'tutorial') {
+            this.tutorial(this.props.location.state.data);
+            return;
+        }
+        else this.intro(this.props.location.state.data.read_voice || this.props.location.state.data.tut_voice);
     }
 
     intro = (data) => {
@@ -142,6 +162,80 @@ class Shadowing extends React.Component {
         });
 
         if (!!this.read_voice[0]) this.read_voice[0].play();
+    }
+
+    tutorial = (data) => {
+        this.setState({
+            cureText: data.sample_ques.cure_word,
+        })
+        this.currentAudio = new Audio(soundURL + data.sample_ques.cure_path);
+        this.voice = [
+            new Audio(soundURL + data.tut_voice[0].voc_path),
+            new Audio(soundURL + data.tut_voice[1].voc_path),
+            new Audio(soundURL + data.tut_voice[2].voc_path),
+            new Audio(soundURL + data.tut_voice[3].voc_path),
+            new Audio(soundURL + data.tut_voice[4].voc_path),
+            new Audio(soundURL + data.tut_voice[5].voc_path),
+        ];
+
+        this.voice[0].addEventListener('ended', () => {
+            setTimeout(() => {
+                this.currentAudio.play();
+            }, 1000);
+        });
+
+        this.currentAudio.addEventListener('ended', () => {
+            setTimeout(() => {
+                this.voice[1].play();
+            }, 1000);
+        });
+
+        this.voice[1].addEventListener('ended', () => {
+            setTimeout(() => {
+                this.recording_start_sound.play();
+                this.setState({
+                    isRecording: true,
+                    RecordingCircle: true,
+                })
+                this.setRecording = setInterval(() => {
+                    this.setState({
+                        RecordingCircle: !this.state.RecordingCircle,
+                    });
+                }, 500);
+                setTimeout(() => {
+                    window.BRIDGE.recordAudio(this.props.user.student.gender, this.currentCure.cure_text);
+                }, 200);
+            }, 800);
+        });
+
+        this.voice[2].addEventListener('ended', () => {
+            setTimeout(() => {
+                this.recording_start_sound.play();
+                this.setState({
+                    isRecording: true,
+                    RecordingCircle: true,
+                })
+                this.setRecording = setInterval(() => {
+                    this.setState({
+                        RecordingCircle: !this.state.RecordingCircle,
+                    });
+                }, 500);
+                setTimeout(() => {
+                    window.BRIDGE.recordAudio(this.props.user.student.gender, this.currentCure.cure_text);
+                }, 200);
+            }, 800);
+        })
+
+        this.voice[5].addEventListener('ended', () => {
+            setTimeout(() => {
+                if (this.learning_type !== 'daily') this.newRequest();
+                else this.daily();
+            }, 1000);
+        })
+
+        setTimeout(() => {
+            this.voice[0].play();
+        }, 1000);
     }
 
     androidResponse = async (e) => {
@@ -166,6 +260,16 @@ class Shadowing extends React.Component {
         });
 
         if (this.audioResult.status === 'Success') {
+            if (this.gameState === 'tutorial') {
+                if (this.audioResult.score < 85) {
+                    this.voice[2].play();
+                    return;
+                } else {
+                    this.voice[5].play();
+                }
+            }
+
+
             const { user } = this.props;
             const s_id = user.student.s_id;
             const { data } = await T1_Api.answer(
@@ -237,6 +341,7 @@ class Shadowing extends React.Component {
             return;
         }
         this.currentCure = this.cure[this.currentIndex];
+        this.currentAudio.remove();
         this.currentAudio = null;
         this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
         if (this.idx_text === 'vowelword' || this.idx_text === 'consoword')
@@ -301,7 +406,7 @@ class Shadowing extends React.Component {
 
     imagesPreloading = (picture) => {
         let timeoutPreloading = setTimeout(() => {
-            this.props.history.replace('/main/main');
+            this.props.history.push('/main/main');
         }, 10000);
 
         for (let i in picture) {
@@ -349,7 +454,7 @@ class Shadowing extends React.Component {
             showPopup: true,
         });
 
-        if (this.currentAudio.isPlaying()) {
+        if (!this.currentAudio.paused) {
             this.currentAudio.pause();
             this.continuePlay = true;
         }

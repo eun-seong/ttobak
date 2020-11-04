@@ -11,7 +11,7 @@ const url = {
     diagnose_ask: 'diagnose/ask',
     diagnose_answer: 'diagnose/answer',
     diagnose_okay: 'diagnose/okay',
-    diagnose_did: '/diagnose/did',
+    diagnose_did: 'diagnose/did',
     therapy_ask: 'cure/ask',
     therapy_answer: 'cure/answer',
     therapy_save: 'cure/save',

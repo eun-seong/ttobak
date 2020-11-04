@@ -47,13 +47,13 @@ class Main extends React.Component {
         dispatch(user_get(user.user.u_id));
         dispatch(student_get(user.student.s_id, user.user.u_id));
 
-        Result_Api.ask(user.student.s_id).then(result => {
-            if (Object.keys(result.data.results).length === 0) {
-                this.setState({
-                    isFirstDiagnose: true,
-                });
-            }
-        });
+        const { data } = await Daily_Api.did(user.student.s_id);
+        console.log(data);
+        if (data.is_first) {
+            this.setState({
+                isFirstDiagnose: true,
+            });
+        }
 
         this.request();
         this.imagesPreloading(this.pictures);
@@ -131,7 +131,6 @@ class Main extends React.Component {
     }
 
     render() {
-        console.log('render', this.state.showPopUp)
         const { data, isImageLoaded, daily_custom, daily_link, daily_complete, isFirstDiagnose, showPopUp } = this.state;
         const { user } = this.props;
 

@@ -64,6 +64,7 @@ class Recognition extends React.PureComponent {
                 for (var j = 0; i < audioArr[i].length; j++) {
                     if (!!audioArr[i][j]) {
                         audioArr[i][j].pause();
+                        audioArr[i][j].remove();
                         audioArr[i][j] = null;
                     }
                 }
@@ -71,6 +72,7 @@ class Recognition extends React.PureComponent {
         }
         if (!!this.sample_answer) {
             this.sample_answer.pause();
+            this.sample_answer.remove();
             this.sample_answer = null;
         }
     }
@@ -147,9 +149,7 @@ class Recognition extends React.PureComponent {
         });
 
         this.voice[1].addEventListener('ended', () => {
-            this.setState({
-                TTobaki: TTobak.ttobak1_1
-            })
+            this.setState({ TTobaki: TTobak.ttobak1_1 });
             setTimeout(() => {
                 if (!!this.sample_ques[0]) this.sample_ques[0].play();
                 this.setState({
@@ -160,9 +160,7 @@ class Recognition extends React.PureComponent {
         });
 
         this.sample_ques[0].addEventListener('ended', () => {
-            this.setState({
-                TTobaki: TTobak.ttobak1_1
-            })
+            this.setState({ TTobaki: TTobak.ttobak1_1 });
             setTimeout(() => {
                 if (!!this.sample_ques[1]) this.sample_ques[1].play();
                 this.setState({
@@ -206,6 +204,11 @@ class Recognition extends React.PureComponent {
     }
 
     setListener = () => {
+        if (!!this.phSound) {
+            for (let i = 0; i > this.phSound.length; i++) {
+                this.phSound[i].remove();
+            }
+        }
         this.phSound = [
             new Audio(soundURL + this.currentDiag[0].ques_path1),
             new Audio(soundURL + this.currentDiag[1].ques_path1),
@@ -390,7 +393,7 @@ class Recognition extends React.PureComponent {
     }
 
     onPopupButtonHandle = () => {
-        this.props.history.replace('/diagnose/attention');
+        this.props.history.push('/diagnose/attention');
     }
 
     onContinueButtonHandle = () => {

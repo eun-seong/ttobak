@@ -56,13 +56,18 @@ class Common extends React.Component {
     }
 
     componentWillUnmount() {
-        if (!!this.currentAudio[i]) {
-            for (var i = 0; i < 7; i++) {
-                this.currentAudio[i].pause();
-                this.currentAudio[i] = null;
+        let audioArr = [this.currentAudio, this.voice];
+        for (let i = 0; i < audioArr.length; i++) {
+            if (!!audioArr[i]) {
+                for (var j = 0; i < audioArr[i].length; j++) {
+                    if (!!audioArr[i][j]) {
+                        audioArr[i][j].pause();
+                        audioArr[i][j].remove();
+                        audioArr[i][j] = null;
+                    }
+                }
             }
         }
-        this.currentAudio = null;
     }
 
     newRequest = async () => {
@@ -168,6 +173,10 @@ class Common extends React.Component {
 
     setCurrent = (timeout) => {
         this.currentCure = this.cure[this.currentIndex];
+        for (let i = 0; i < this.currentCure.length; i++) {
+            this.currentCure[i].remove();
+            this.currentCure[i] = null;
+        }
         this.currentAudio = [
             new Audio(soundURL + this.currentCure.com_e1path),
             new Audio(soundURL + this.currentCure.com_e2path),
@@ -373,7 +382,7 @@ class Common extends React.Component {
 
     imagesPreloading = (picture) => {
         let timeoutPreloading = setTimeout(() => {
-            this.props.history.replace('/main/main');
+            this.props.history.push('/main/main');
         }, 10000);
 
         for (let i in picture) {
