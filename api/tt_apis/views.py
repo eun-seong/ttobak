@@ -845,7 +845,7 @@ class CureGet(View):
             sound = [29,35,40,38,30]
             for s in sound:
                 voices.append(Voice.objects.get(voc_id=s))
-            sdat = sz.CountSerializer(data=voices,many=True)
+            sdat = sz.VoiceSerializer(data=voices,many=True)
             sdat.is_valid()
             sample_ques = CureMaster.objects.get(pk=2724)
             sample_ques = sz.ConsocommonSerializer(instance = sample_ques)
@@ -1094,6 +1094,7 @@ class CureAns(View):
         cure_txt = CureIdx.objects.get(pk=idx_id).idx_txt
         is_review = data['is_review']
         is_daily = data['is_daily']
+        is_first = data['is_first']
         is_correct = 'F'
         correct_voice = Voice.objects.get(pk=36)
         if ori_answer == stu_answer:
@@ -1105,6 +1106,7 @@ class CureAns(View):
             cure_id = cure_id,
             is_review = is_review,
             is_daily = is_daily,
+            is_first = is_first,
             ori_answer = ori_answer,
             stu_answer = stu_answer,
             cure_txt = cure_txt
@@ -1118,7 +1120,7 @@ class CureAns(View):
         stucur = StuCurrent.objects.get(stu_id = s_id)
         temp1 = 0
         temp2 = 0
-        cures = StuCure.objects.filter(stu = student,cure_txt = idx_txt,is_review = 'F',is_daily = 'T')
+        cures = StuCure.objects.filter(stu = student,cure_txt = idx_txt,is_review = 'F',is_daily = 'T',is_first = 'T')
         length = cures.count()
         if length % 10 == 0:
             cures = list(cures)[-10:]
@@ -1191,6 +1193,7 @@ class CureAns(View):
             correct_voice = Voice.objects.get(pk=34)
         is_review  = data['is_review']
         is_daily = data['is_daily']
+        is_first = data['is_first']
         StuCure.objects.create(
             stu = student,
             cure_txt = idx_txt,
@@ -1200,6 +1203,7 @@ class CureAns(View):
             ori_answer = ori_answer,
             stu_answer = stu_answer,
             is_daily = is_daily,
+            is_first = is_first
         ).save()
         correct_voice = sz.VoiceSerializer(instance = correct_voice)
         s = self.update_current(data,student,idx_txt,idx_id)
@@ -1216,6 +1220,7 @@ class CureAns(View):
         is_pass = False
         is_review = data['is_review']
         is_daily = data['is_daily']
+        is_first = data['is_first']
         class_voice = Voice.objects.get(pk = 35)
         if score >= 85:
             is_pass = True
@@ -1239,6 +1244,7 @@ class CureAns(View):
             rhythm_score = rhythm_score,
             is_review = is_review,
             is_daily = is_daily,
+            is_first = is_first,
             cure_txt = idx_txt
         ).save()
         s = self.update_sound(data,student,idx_txt,idx_id)
@@ -1250,7 +1256,7 @@ class CureAns(View):
         stucur = StuCurrent.objects.get(stu_id = s_id)
         temp1 = 0
         temp2 = 0
-        cures = StuCure.objects.filter(stu = student,cure_txt = idx_txt,is_review = 'F',is_daily = 'T')
+        cures = StuCure.objects.filter(stu = student,cure_txt = idx_txt,is_review = 'F',is_daily = 'T',is_first='T')
         length = cures.count()
         if length % 10 == 0:
             cures = list(cures)[-10:]
@@ -1305,6 +1311,7 @@ class CureAns(View):
             correct_voice = Voice.objects.get(pk = 34)
         is_review = data['is_review']
         is_daily = data['is_daily']
+        is_first = data['is_first']
         StuCure.objects.create(
             stu = student,
             cure_txt = idx_txt,
@@ -1314,6 +1321,7 @@ class CureAns(View):
             is_correct = is_correct,
             is_review = is_review,
             is_daily = is_daily,
+            is_first = is_first,
             ori_answer = ori_answer,
             stu_answer = stu_answer
         ).save()
@@ -1327,7 +1335,7 @@ class CureAns(View):
         stucur = StuCurrent.objects.get(stu_id = s_id)
         temp1 = 0
         temp2 = 0
-        cures = StuCure.objects.filter(stu = student,cure_txt = idx_txt,is_review = 'F',is_daily = 'T')
+        cures = StuCure.objects.filter(stu = student,cure_txt = idx_txt,is_review = 'F',is_daily = 'T',is_first = 'T')
         length = cures.count()
         if length % 10 == 0:
             cures = list(cures)[-10:]
@@ -1440,9 +1448,10 @@ class CureSave(View):
             cur_read = stucur.cur_read_id
             idx_id = CureIdx.objects.get(idx_txt = status).idx_id
             tid = CureMaster.objects.get(pk=cur_read).cure_tid
+            status = []
             if StuCure.objects.filter(stu_id = s_id,cure_txt = status,is_daily = 'T', full_score__gte = 85, date = date).count() >= CureMaster.objects.filter(cure_idx_id = idx_id, cure_level = cur_lev, cure_tid = tid).count():
                 status = stucur.cur_curr
-            elif StuCure.objects.filter(stu_id = s_id,cure_txt = stucur.cur_curr,is_daily = 'T',date=date).count() >= 10:
+            elif StuCure.objects.filter(stu_id = s_id,cure_txt = stucur.cur_curr,is_daily = 'T',date=date,is_first = 'T').count() >= 10:
                 status = stucur.cur_read
             return JsonResponse({"current":status,"code":1},status=200)
         return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":2},satus=200)

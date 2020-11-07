@@ -168,6 +168,7 @@ class StuCure(models.Model):
     rhythm_score = models.IntegerField(null=True)
     is_review = models.CharField(max_length=1,choices=T_OR_F,null=True)
     is_daily = models.CharField(max_length=1,choices = T_OR_F,null=True)
+    is_first = models.CharField(max_length = 1, choices = T_OR_F,null=True)
     stu_answer = models.CharField(max_length = 255,null=True)
     ori_answer = models.CharField(max_length = 255,null=True)
     class Meta:
