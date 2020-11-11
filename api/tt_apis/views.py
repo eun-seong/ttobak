@@ -927,7 +927,8 @@ class CureGet(View):
                         return JsonResponse({"cure":cure,"answer":answer,"tut_voice":tutorial,"sample_ques":sample_ques,"code":code},status=200)
             if not StuCurrent.objects.filter(stu_id = s_id).exists():
                 if not StuStatus.objects.filter(stu_id = s_id).exists():
-                    return JsonResponse({"message":"검사를 먼저 진행해주세요","code":3},status=200)
+                    # return JsonResponse({"message":"검사를 먼저 진행해주세요","code":3},status=200)
+                    curr = 'count'
                 status = StuStatus.objects.get(stu_id = s_id).status
                 if status == '고위험군':
                     curr = 'count'
