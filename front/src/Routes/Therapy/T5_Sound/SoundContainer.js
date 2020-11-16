@@ -60,6 +60,11 @@ class Sound extends React.Component {
             this.currentAudio.remove();
             this.currentAudio = null;
         }
+        if (!!this.tutorialAudio) {
+            this.tutorialAudio.pause();
+            this.tutorialAudio.remove();
+            this.tutorialAudio = null;
+        }
 
         if (!!this.voice) {
             for (let i = 0; i < this.voice.length; i++) {
@@ -129,7 +134,14 @@ class Sound extends React.Component {
             new Audio(soundURL + data.tut_voice[2].voc_path),
         ];
         this.currentCure = data.sample_ques;
-        this.setAudio(true);
+        this.tutorialAudio = new Audio(soundURL + this.currentCure.cure_path);
+
+        this.tutorialAudio.addEventListener('ended', () => {
+            this.setState({ TTobaki: TTobak.ttobak1_1 })
+            setTimeout(() => {
+                this.voice[1].play();
+            }, 1000);
+        })
 
         this.setState({
             CardTextList: [this.currentCure.cure_word, this.currentCure.cure_word2],
@@ -137,7 +149,11 @@ class Sound extends React.Component {
 
         this.voice[0].addEventListener('ended', () => {
             setTimeout(() => {
-                this.playSound();
+                this.setState({
+                    gameState: false,
+                    TTobaki: TTobak.ttobak1_2
+                });
+                this.tutorialAudio.play();
             }, 1000);
         });
 
@@ -163,9 +179,11 @@ class Sound extends React.Component {
         }, 2000);
     }
 
-    setAudio = (isTutorial) => {
-        if (!!this.currentAudio) this.currentAudio.remove();
-        this.currentAudio = null;
+    setAudio = () => {
+        if (!!this.currentAudio) {
+            this.currentAudio.remove();
+            this.currentAudio = null;
+        }
         if (this.type === 'consosound') {
             this.currentCure.answer = Math.floor(Math.random() * 2) + 1;
             this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
@@ -181,14 +199,10 @@ class Sound extends React.Component {
         }
 
         this.currentAudio.addEventListener('ended', () => {
-            if (isTutorial) {
-                setTimeout(() => {
-                    this.voice[1].play();
-                }, 1000);
-            } else this.setState({
+            this.setState({
                 gameState: true,
                 TTobaki: TTobak.ttobak1_1
-            })
+            });
         })
     }
 
@@ -213,7 +227,8 @@ class Sound extends React.Component {
         const s_id = user.student.s_id;
 
         if (gameState === 'tutorial') {
-            if (CardTextList[index] === (this.currentCure.answer === 1 ? this.currentCure.cure_word : this.currentCure.cure_word2)) {
+            if (index === 0) {
+                this.setState({ gameState: false })
                 setTimeout(() => {
                     this.voice[2].play();
                 }, 1000);

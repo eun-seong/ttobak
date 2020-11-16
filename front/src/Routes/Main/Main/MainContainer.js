@@ -68,20 +68,21 @@ class Main extends React.Component {
             console.log(save.data.current);
 
             if (data.code === 1 || data.code === 'tutorial') {
-                if (save.data.current.length === 0) {
-                    this.setState({
-                        daily_complete: true,
-                    })
-                }
-                else {
+                // if (save.data.current.length === 0) {
+                //     this.setState({
+                //         daily_complete: true,
+                //     })
+                // }
+                // else 
+                {
                     const content = ContentsList.filter(c => {
                         return c.name === save.data.current;
                     })[0];
 
                     this.setState({
                         data: data,
-                        daily_custom: content,
-                        daily_link: content.url,
+                        daily_custom: ContentsList[0],
+                        daily_link: ContentsList[0].url,
                     });
                 }
             }
@@ -115,15 +116,15 @@ class Main extends React.Component {
     }
 
     isDiagOkay = async () => {
-        const { user } = this.props;
-        const { data } = await Daily_Api.okay(user.student.s_id);
+        // const { user } = this.props;
+        // const { data } = await Daily_Api.okay(user.student.s_id);
 
-        console.log(data);
-        if (data.is_okay) this.props.history.push('/diagnose/sweep');
-        else this.setState({
-            showPopUp: true,
-        });
-        // this.props.history.push('/diagnose/attention');
+        // console.log(data);
+        // if (data.is_okay) this.props.history.push('/diagnose/sweep');
+        // else this.setState({
+        //     showPopUp: true,
+        // });
+        this.props.history.push('/diagnose/attention');
     }
 
     onOkButtonHandle = () => {

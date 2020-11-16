@@ -21,12 +21,12 @@ class PwChange extends React.Component {
         this.isModifyCalled = false;
     }
 
-    handleSubmit = (e, {pw, pw_check}) => {
-        e.preventDefault(); 
+    handleSubmit = (e, { pw, pw_check }) => {
+        e.preventDefault();
         const { user } = this.props;
-        const {dispatch} = this.props;
+        const { dispatch } = this.props;
 
-        if(pw !== pw_check) {
+        if (pw !== pw_check) {
             this.makeAlert('비밀번호와 비밀번호 확인이 같지 않습니다.', false, (() => {
                 this.enableAlert = false;
                 this.forceUpdate();
@@ -52,7 +52,7 @@ class PwChange extends React.Component {
         const { user } = this.props;
         const { dispatch } = this.props;
 
-        if (this.isModifyCalled && user.response && user.response.data.code == 1) {
+        if (this.isModifyCalled && user.response && user.response.data.code === 1) {
             dispatch(response_clear());
             this.makeAlert('비밀번호를 변경했습니다.', false, (() => {
                 dispatch(user_logout());
@@ -65,9 +65,9 @@ class PwChange extends React.Component {
 
     componentDidMount() {
         const { user } = this.props;
-        const {dispatch} = this.props;
+        const { dispatch } = this.props;
 
-        if(!user.user.u_id) {
+        if (!user.user.u_id) {
             this.makeAlert('잘못된 접근입니다.', false, (() => {
                 this.props.history.push('/root/signin');
             }));
@@ -88,7 +88,7 @@ class PwChange extends React.Component {
         예시) const { nowPlaying, upcoming, popular, error, loading } = this.state;
         */
 
-        const alertComp = this.enableAlert ? (<Alert 
+        const alertComp = this.enableAlert ? (<Alert
             text={this.alertText}
             isConfirm={this.isConfirm}
             onSubmit={this.onSubmit}
@@ -103,12 +103,12 @@ class PwChange extends React.Component {
                     handleSubmit={this.handleSubmit}
                 />
             </div>
-            );
+        );
     }
 }
 
 function mapStateToProps(state) {
-  return { user: state.user }
+    return { user: state.user }
 }
 
 export default connect(mapStateToProps)(withRouter(PwChange));

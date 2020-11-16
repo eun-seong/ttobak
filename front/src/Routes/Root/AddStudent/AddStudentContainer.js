@@ -108,7 +108,7 @@ class AddStudent extends React.Component {
             return;
         }
 
-        if (this.isStudentAddCalled && user.response.data && user.response.data.code == 2) {
+        if (this.isStudentAddCalled && user.response.data && user.response.data.code === 2) {
             dispatch(response_clear());
             this.makeAlert('존재하지 않는 회원입니다.', false, (() => {
                 this.enableAlert = false;
@@ -117,7 +117,7 @@ class AddStudent extends React.Component {
             this.isStudentAddCalled = false;
         }
 
-        if (this.isStudentAddCalled && user.response.data && user.response.data.code == 3) {
+        if (this.isStudentAddCalled && user.response.data && user.response.data.code === 3) {
             dispatch(response_clear());
             this.makeAlert('학습자는 3명까지 추가 가능합니다.', false, (() => {
                 this.enableAlert = false;

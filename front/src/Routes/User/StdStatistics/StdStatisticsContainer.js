@@ -49,7 +49,7 @@ class StdStatstics extends React.Component {
     Stat = async (is_cure, period) => {
         const { user } = this.props;
         const data = await Stat_Api.ask(user.student.s_id, is_cure, period);
-        if (data.data.code == 'cure') {
+        if (data.data.code === 'cure') {
             this.setState({
                 amount: data.data.amount,
                 score: data.data.score,
