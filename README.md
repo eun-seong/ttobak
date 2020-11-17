@@ -7,7 +7,6 @@
 
 ## Router
 #### Root(/root)
-* -2.compute.amazonaws.com:8000/root/signin)
 * [회원 가입(/signup)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/root/signup)
 * [비밀번호 찾기(/forgotpassword)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/root/forgotpassword)
 * [학습자 추가(/addstd)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/root/addstd)
@@ -24,11 +23,16 @@
 * [검사 결과(/result)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/diagnose/result)
 
 #### Therapy(/therapy)
-* [음절 수 계산(/counting)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/therapy/counting)
-* [음운 인식(/phoneme)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/therapy/phoneme)
-* [따라 읽기(/shadowing)](http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/therapy/shadowing)
-
-
+* 의미 | 따라 읽기
+* 의미 | 혼자 읽기
+* 모음 | 단어
+* 모음 | 소리 구분
+* 자음 | 그림-소리 매칭
+* 자음 | 음운 포함 여부
+* 자음 | 단어 발음하기
+* 자음 | 소리 구분
+* 음운 | 음절 수 계산
+* 음운 | 공통소리 찾기
 ## 스타일링
 `styled-component`를 사용하여 `css` 적용
 # 화면
@@ -67,4 +71,3 @@
 1. 그림카드와 함께 단어를 들려준다.
 2. 원숭이가 각자 들고 있는 음소의 소리를 들려준다.
 3. 학습자는 원숭이가 들고 있는 음소 중 단어의 첫소리와 같은 것을 찾아 클릭한다.
-로그인(/signin)](http://ec2-13-125-100-8.ap-northeast[

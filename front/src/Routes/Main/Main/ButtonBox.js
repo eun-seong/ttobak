@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Box = styled(Link)`
     align-items: center;
@@ -8,6 +8,11 @@ const Box = styled(Link)`
     height: ${props => props.height || '100%'};
     background-color: ${props => props.color || 'grey'};
     border-radius: 15px;
+    ${props => {
+        if (props.touchNone) return css`
+            touch-action: none;
+        `;
+    }}
 `;
 
 const Header = styled.div`
@@ -33,7 +38,16 @@ const Content = styled.div`
     text-align: ${props => props.isDaily ? 'start' : 'center'};
 `;
 
-const ButtonBox = ({ text, Contents, color, headercolor, width, height, linkto, isImageLoaded, data }) => {
+const TouchDiable = styled.div`
+    align-items: center;
+    width: ${props => props.width || '100%'};
+    height: ${props => props.height || '100%'};
+    background-color: ${props => props.color || 'grey'};
+    border-radius: 15px;
+    touch-action: none;
+`;
+
+const ButtonBox = ({ text, Contents, color, headercolor, width, height, linkto, isImageLoaded, data, isFirstDiagnose, touchNone }) => {
     let to_data = null;
     let isDaily = false;
     if (!!data) {
@@ -53,8 +67,20 @@ const ButtonBox = ({ text, Contents, color, headercolor, width, height, linkto, 
         }
     }
 
+    if (!!touchNone || !!isFirstDiagnose) {
+        return (
+            <TouchDiable color={color} width={width} height={height}>
+                <Header color={headercolor}>{text}</Header>
+                <Content isDaily={isDaily}>
+                    {Contents}
+                </Content>
+            </TouchDiable>
+        );
+    }
+
+
     return (
-        <Box to={to_data} color={color} width={width} height={height}>
+        <Box to={to_data} color={color} width={width} height={height} touchNone={touchNone}>
             <Header color={headercolor}>{text}</Header>
             <Content isDaily={isDaily}>
                 {Contents}

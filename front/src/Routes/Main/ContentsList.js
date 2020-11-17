@@ -8,13 +8,13 @@ const ContentsList = [
         title: '의미 | 따라 읽기',
         explain: '동요와 동시를 따라 읽어요',
     },
-    {
-        name: 'selfpoem',
-        img: MainTherapy[0],
-        url: '/therapy/selfpoem',
-        title: '의미 | 혼자 읽기',
-        explain: '동요와 동시를 혼자 읽어요',
-    },
+    // {
+    //     name: 'selfpoem',
+    //     img: MainTherapy[0],
+    //     url: '/therapy/selfpoem',
+    //     title: '의미 | 혼자 읽기',
+    //     explain: '동요와 동시를 혼자 읽어요',
+    // },
     {
         name: 'vowelword',
         img: MainTherapy[1],

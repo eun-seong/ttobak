@@ -62,10 +62,11 @@ class Main extends React.Component {
     request = async () => {
         const { user } = this.props;
         try {
+            console.log(user.student.s_id);
             const { data } = await Daily_Api.ask(user.student.s_id);
             const save = await Daily_Api.save(user.student.s_id);
-            console.log(data);
-            console.log(save.data.current);
+            console.log('data', data);
+            console.log('save', save.data.current);
 
             if (data.code === 1 || data.code === 'tutorial') {
                 // if (save.data.current.length === 0) {
@@ -116,15 +117,15 @@ class Main extends React.Component {
     }
 
     isDiagOkay = async () => {
-        // const { user } = this.props;
-        // const { data } = await Daily_Api.okay(user.student.s_id);
+        const { user } = this.props;
+        const { data } = await Daily_Api.okay(user.student.s_id);
 
-        // console.log(data);
-        // if (data.is_okay) this.props.history.push('/diagnose/sweep');
-        // else this.setState({
-        //     showPopUp: true,
-        // });
-        this.props.history.push('/diagnose/attention');
+        console.log(data);
+        if (data.is_okay) this.props.history.push('/diagnose/sweep');
+        else this.setState({
+            showPopUp: true,
+        });
+        // this.props.history.push('/diagnose/sweep');
     }
 
     onOkButtonHandle = () => {

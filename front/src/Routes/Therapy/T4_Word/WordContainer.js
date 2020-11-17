@@ -22,9 +22,13 @@ const inistState = {
     totalNum: 0,
     isPlaying: false,
     RecordingCircle: false,
-    err: false,
-    errorInfo: false,
 };
+
+const PAUSED = 'PAUSED';
+const PLAYING = 'PLAUING';
+const RECORDING = 'RECORDING';
+const AUDIOPLAYING = 'AUDIOPLAYING';
+const failedMax = 3;
 
 class Word extends React.Component {
     static propTypes = {
@@ -47,8 +51,11 @@ class Word extends React.Component {
         this.picture = { T1, TTobak };
         this.totalImages = Object.keys(this.picture.T1).length + Object.keys(this.picture.TTobak).length;
         this.numOfLoadedImage = 0;
-        this.continuePlay = false;
+        this.continuePlay = null;
         this.state = inistState;
+        this.failedNum = 0;
+        this.gameState = PLAYING;
+        this.isTutorial = false;
     }
 
     async componentDidMount() {
@@ -69,15 +76,13 @@ class Word extends React.Component {
         if (this.state.isRecording) {
             window.BRIDGE.requestStopRecording();
         }
-        if (!!this.currentAudio) {
-            this.currentAudio.pause();
-            this.currentAudio.remove();
-            this.currentAudio = null;
-        }
-        if (!!this.retryAudio) {
-            this.retryAudio.pause();
-            this.retryAudio.remove();
-            this.retryAudio = null;
+        let audioArr = [this.currentAudio, this.retryAudio, this.good_script];
+        for (let i = 0; i < audioArr.length; i++) {
+            if (!!audioArr[i]) {
+                audioArr[i].pause();
+                audioArr[i].remove();
+                audioArr[i] = null;
+            }
         }
 
         if (!!this.voice) {
@@ -115,7 +120,8 @@ class Word extends React.Component {
         console.log(data);
 
         if (data.code === 'tutorial') {
-            this.tutorial(data);
+            if (this.idx_text === 'vowelword') this.voweltutorial(data);
+            else this.consotutorial(data);
             return;
         }
 
@@ -143,7 +149,8 @@ class Word extends React.Component {
         console.log(this.props.location.state.data);
 
         if (this.props.location.state.data.code === 'tutorial') {
-            this.tutorial(this.props.location.state.data);
+            if (this.idx_text === 'vowelword') this.voweltutorial(this.props.location.state.data);
+            else this.consotutorial(this.props.location.state.data);
             return;
         }
 
@@ -164,23 +171,10 @@ class Word extends React.Component {
         }, 12000);
     }
 
-    intro = (data) => {
-        this.read_voice = null;
-        this.read_voice = [
-            new Audio(soundURL + data[0].voc_path),
-        ];
-
-        this.read_voice[0].addEventListener('ended', () => {
-            setTimeout(() => this.playSound(), 1000);
-        });
-
-        if (!!this.read_voice[0]) this.read_voice[0].play();
-    }
-
-    tutorial = (data) => {
+    voweltutorial = (data) => {
+        this.isTutorial = true;
         this.setState({
             cureText: data.sample_ques.cure_word,
-            gameState: 'tutorial',
         });
 
         this.currentCure = data.sample_ques;
@@ -211,6 +205,7 @@ class Word extends React.Component {
         this.voice[1].addEventListener('ended', () => {
             setTimeout(() => {
                 this.recording_start_sound.play();
+                this.gameState = RECORDING;
                 this.setState({
                     isRecording: true,
                     RecordingCircle: true,
@@ -266,6 +261,84 @@ class Word extends React.Component {
         }, 1000);
     }
 
+    consotutorial = (data) => {
+        this.isTutorial = false;
+        this.setState({
+            cureText: data.sample_ques.cure_word,
+        });
+
+        this.currentCure = data.sample_ques;
+        this.tutorialAudio = new Audio(soundURL + this.currentCure.cure_path);
+        this.currentAudio = new Audio(soundURL + this.currentCure.cure_path);
+        this.currentAudio.addEventListener('ended', this.currentAudioListner);
+        this.voice = [
+            null,
+            new Audio(soundURL + data.tut_voice[0].voc_path),
+            new Audio(soundURL + data.tut_voice[1].voc_path),
+            new Audio(soundURL + data.tut_voice[2].voc_path),
+            new Audio(soundURL + data.tut_voice[3].voc_path),
+            new Audio(soundURL + data.tut_voice[4].voc_path),
+        ];
+
+        this.voice[1].addEventListener('ended', () => {
+            setTimeout(() => {
+                this.recording_start_sound.play();
+                this.gameState = RECORDING;
+                this.setState({
+                    isRecording: true,
+                    RecordingCircle: true,
+                })
+                this.setRecording = setInterval(() => {
+                    this.setState({
+                        RecordingCircle: !this.state.RecordingCircle,
+                    });
+                }, 500);
+                setTimeout(() => {
+                    window.BRIDGE.recordAudio(this.props.user.student.gender, this.currentCure.cure_word);
+                }, 200);
+            }, 800);
+        });
+
+        for (let i = 2; i < 5; i++) {
+            this.voice[i].addEventListener('ended', () => {
+                setTimeout(() => {
+                    this.setState({
+                        TTobaki: TTobak.ttobak3_1,
+                    })
+                    setTimeout(() => {
+                        if (!!this.currentAudio) {
+                            this.playSound();
+                            this.setState({
+                                TTobaki: TTobak.ttobak3_2,
+                                isPlaying: true,
+                            })
+                        }
+                    }, 1000);
+                }, 800);
+            })
+        }
+
+        this.voice[5].addEventListener('ended', async () => {
+            const { data } = await T_tutorial.answer(
+                this.props.user.student.s_id,
+                this.idx_text,
+                this.currentCure.com_id);
+            console.log(data);
+            setTimeout(() => {
+                if (this.learning_type !== 'daily') this.newRequest();
+                else this.daily();
+            }, 1000);
+            if (!!this.currentAudio) {
+                this.currentAudio.remove();
+                this.currentAudio = null;
+            }
+        })
+
+        setTimeout(() => {
+            this.voice[1].play();
+        }, 1000);
+    }
+
     androidResponse = async (e) => {
         console.log(e.detail);
         this.audioResult = e.detail;
@@ -276,6 +349,7 @@ class Word extends React.Component {
         console.log(e.detail);
         clearInterval(this.setRecording);
         this.recording_end_sound.play();
+        if (this.gameState !== PAUSED) this.gameState = PLAYING;
         this.setState({
             isRecording: false,
             RecordingCircle: false,
@@ -283,23 +357,23 @@ class Word extends React.Component {
     }
 
     andriodListener = async () => {
+        if (this.gameState === PAUSED) return;
         this.setState({
             TTobaki: TTobak.ttobak2_1,
         });
 
         if (this.audioResult.status === 'Success') {
-            if (this.state.gameState === 'tutorial') {
-                if (this.audioResult.score < 85) {
+            if (this.isTutorial) {
+                if (this.audioResult.score < 85 && ++this.failedNum < failedMax) {
                     this.voice[2].play();
-                } else if (this.audioResult.rhythm_score < 0) {
+                } else if (this.audioResult.rhythm_score < 0 && ++this.failedNum < failedMax) {
                     this.voice[3].play();
-                } else if (this.audioResult.speed_score < -5) {
+                } else if (this.audioResult.speed_score < -5 && ++this.failedNum < failedMax) {
                     this.voice[4].play();
                 } else {
+                    this.failedNum = 0;
                     this.voice[5].play();
-                    this.setState({
-                        gameState: false,
-                    })
+                    this.isTutorial = false;
                 }
                 return;
             }
@@ -321,13 +395,13 @@ class Word extends React.Component {
             console.log(data);
 
             if (data.code === 1) {
-                if (!data.is_pass) {
+                if (!data.is_pass && ++this.failedNum < failedMax) {
                     this.currentCure.is_first = 'F';
                     if (!!this.retryAudio) {
                         this.retryAudio.remove();
                         this.retryAudio = null;
                     }
-                    this.retryAudio = new Audio(soundURL + data.class_voice.voc_path);
+                    this.retryAudio = new Audio(soundURL + data.class_voice[0].voc_path);
                     this.retryAudio.addEventListener('ended', () => {
                         this.setState({
                             TTobaki: TTobak.ttobak3_1,
@@ -346,20 +420,22 @@ class Word extends React.Component {
                         }
                     }, 1000);
                     return;
-                } else {
-                    if (!!this.good_script) {
-                        this.good_script.remove();
-                        this.good_script = null;
-                    }
-                    this.good_script = new Audio(soundURL + data.class_voice.voc_path);
-                    this.good_script.addEventListener('ended', () => this.nextStep());
-                    setTimeout(() => {
-                        if (!!this.good_script) this.good_script.play();
-                        this.setState({
-                            TTobaki: TTobak.ttobak2_2,
-                        });
-                    }, 1000);
                 }
+
+                if (!!this.good_script) {
+                    this.good_script.remove();
+                    this.good_script = null;
+                }
+                this.failedNum = 0;
+                if (data.is_pass) this.good_script = new Audio(soundURL + data.class_voice.voc_path);
+                else this.good_script = new Audio(soundURL + data.class_voice[1].voc_path);
+                this.good_script.addEventListener('ended', () => this.nextStep());
+                setTimeout(() => {
+                    if (!!this.good_script) this.good_script.play();
+                    this.setState({
+                        TTobaki: TTobak.ttobak2_2,
+                    });
+                }, 500);
 
             } else if (data.code === 2) {
                 this.gameDone();
@@ -407,6 +483,7 @@ class Word extends React.Component {
                 isPlaying: true,
             });
             this.currentAudio.play();
+            this.gameState = AUDIOPLAYING;
         }
     }
 
@@ -417,6 +494,7 @@ class Word extends React.Component {
         });
         setTimeout(() => {
             this.recording_start_sound.play();
+            this.gameState = RECORDING;
             this.setState({
                 isRecording: true,
                 RecordingCircle: true,
@@ -477,9 +555,18 @@ class Word extends React.Component {
             showPopup: false,
         });
 
-        if (this.continuePlay) {
-            this.currentAudio.play();
-        }
+        setTimeout(() => {
+            if (this.continuePlay === this.currentAudio) {
+                this.playSound();
+            }
+            else {
+                this.gameState = AUDIOPLAYING;
+                this.continuePlay.play();
+            }
+            this.setState({
+                TTobaki: TTobak.ttobak3_2,
+            });
+        }, 1000);
     }
 
     onRestartButtonHandle = () => {
@@ -491,13 +578,24 @@ class Word extends React.Component {
     }
 
     onPauseButtonHandle = () => {
+        if (this.gameState === RECORDING) {
+            window.BRIDGE.requestStopRecording();
+            this.continuePlay = this.currentAudio;
+        }
+        this.gameState = PAUSED;
         this.setState({
             showPopup: true,
         });
 
-        if (!!this.currentAudio && !this.currentAudio.paused) {
-            this.currentAudio.pause();
-            this.continuePlay = true;
+        let audioArr = [this.currentAudio, this.voice, this.retryAudio, this.good_script];
+        console.log(audioArr)
+
+        for (let i = 0; i < audioArr.length; i++) {
+            if (!!audioArr[i] && !audioArr[i].paused && audioArr[i].duration > 0) {
+                audioArr[i].pause();
+                this.continuePlay = audioArr[i];
+                break;
+            }
         }
     }
 

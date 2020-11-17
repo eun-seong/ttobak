@@ -31,22 +31,6 @@ const SubComp = styled.div`
     height: 100%;
 `;
 
-const FirstDiag = styled.div`
-    display: flex;
-    position: absolute;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    background-color: rgba(222,222,222, 0.9);
-    justify-content: center;
-    text-align: center;
-    padding-top: 30vh;
-    touch-action: none;
-    font-size: 1.2rem;
-    line-height: 1.7rem;
-`;
-
-
 const Main = ({ data, student, isImageLoaded, daily_custom, daily_link, daily_complete, isDiagOkay, isFirstDiagnose, ...props }) => {
     const [num, setNum] = useState(0);
     const increase = () => {
@@ -68,21 +52,28 @@ const Main = ({ data, student, isImageLoaded, daily_custom, daily_link, daily_co
                 <StdBox student={student} isDiagOkay={isDiagOkay} />
                 <Component>
                     <ButtonBox
+                        isFirstDiagnose={isFirstDiagnose}
                         text={'맞춤 학습'} width={'56vw'}
                         headercolor={colors.main_header_yellow}
                         color={colors.main_yellow}
                         linkto={daily_link} data={data}
-                        Contents={<CustomLearning daily_custom={daily_custom} daily_complete={daily_complete} />}
+                        Contents={isFirstDiagnose ?
+                            <div>첫 번째 검사를 진행해주세요.</div> :
+                            <CustomLearning
+                                daily_custom={daily_custom}
+                                daily_complete={daily_complete}
+                            />}
                     />
                     <SubComp>
                         <ButtonBox
                             text={'복습하기'}
-                            Contents={<div>이전에 했던 내용을 복습해요!</div>}
+                            Contents={<div>(준비 중)</div>}
                             headercolor={colors.main_header_blue}
                             color={colors.main_blue}
                             width={'31w'} height={'34vh'}
                             linkto={'/main/select'}
                             isImageLoaded={isImageLoaded}
+                            touchNone={true}
                         />
                         <ButtonBox
                             text={'학습 선택하기'}
@@ -94,14 +85,6 @@ const Main = ({ data, student, isImageLoaded, daily_custom, daily_link, daily_co
                             isImageLoaded={isImageLoaded}
                         />
                     </SubComp>
-                    {
-                        isFirstDiagnose ?
-                            <FirstDiag onTouchEnd={increase}>
-                                상단의 [검사하기] 버튼을 눌러,<br />
-                            첫 번째 검사를 시작해주세요.
-                    </FirstDiag> :
-                            null
-                    }
                 </Component>
             </Container>
         </>

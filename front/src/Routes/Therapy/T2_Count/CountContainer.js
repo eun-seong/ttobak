@@ -56,6 +56,7 @@ class Count extends React.Component {
         this.totalImages = Object.keys(T2).length + Object.keys(TTobak).length + 3;
         this.voc_script = null;
         this.state = initState;
+        this.continuePlay = null;
     }
 
     async componentDidMount() {
@@ -151,13 +152,19 @@ class Count extends React.Component {
 
         this.voice[0].addEventListener('ended', () => {
             setTimeout(() => {
-                this.currentAudio.play();
+                if (!!this.currentAudio) this.currentAudio.play();
+                this.setState({
+                    TTobaki: TTobak.ttobak2_2,
+                })
             }, 1000);
         });
 
         this.currentAudio.addEventListener('ended', () => {
+            this.setState({
+                TTobaki: TTobak.ttobak1_1,
+            })
             setTimeout(() => {
-                this.voice[1].play();
+                if (!!this.voice[1]) this.voice[1].play();
             }, 1000);
         })
 
@@ -165,7 +172,8 @@ class Count extends React.Component {
             const { data } = await T_tutorial.answer(this.props.user.student.s_id, idx_txt, this.currentCure.cure_id);
             console.log(data);
             this.setState({
-                gameState: false,
+                ...initState,
+                isImageLoaded: true,
             });
             if (this.learning_type === 'daily') this.daily();
             else this.newRequest();
@@ -176,7 +184,7 @@ class Count extends React.Component {
         });
 
         setTimeout(() => {
-            this.voice[0].play();
+            if (!!this.voice[0]) this.voice[0].play();
         }, 2000);
     }
 
@@ -217,7 +225,7 @@ class Count extends React.Component {
             TTobaki: TTobak.ttobak2_1
         });
         if (this.state.gameState === 'tutorial') {
-            this.voice[2].play();
+            if (!!this.voice[2]) this.voice[2].play();
             return;
         }
         const { Apple: { numOfApples } } = this.state;
@@ -250,14 +258,14 @@ class Count extends React.Component {
                         },
                     });
                     setTimeout(() => {
-                        this.currentAudio.play();
+                        if (!!this.currentAudio) this.currentAudio.play();
                         this.setState({
                             TTobaki: TTobak.ttobak3_2,
                         });
                     }, 1000);
                 });
                 setTimeout(() => {
-                    this.retry_script.play();
+                    if (!!this.retry_script) this.retry_script.play();
                     this.setState({
                         TTobaki: TTobak.ttobak3_2,
                     });
@@ -267,7 +275,7 @@ class Count extends React.Component {
                 this.good_script = new Audio(soundURL + data.correct_voice.voc_path);
                 this.good_script.addEventListener('ended', () => this.nextStep());
                 setTimeout(() => {
-                    this.good_script.play();
+                    if (!!this.good_script) this.good_script.play();
                     this.setState({
                         TTobaki: TTobak.ttobak2_2,
                     });
@@ -442,7 +450,27 @@ class Count extends React.Component {
     onPauseButtonHandle = () => {
         this.setState({
             showPopup: true,
-        })
+        });
+
+        let audioArr = [this.currentAudio, this.currentAudio, this.retryAudio, this.good_script];
+
+        for (let i = 0; i < audioArr.length; i++) {
+            if (!!audioArr[i] && !audioArr[i].paused && audioArr[i].duration > 0) {
+                audioArr[i].pause();
+                this.continuePlay = audioArr[i];
+                break;
+            }
+        }
+
+        if (!!this.voice) {
+            for (let i = 0; i < this.voice.length; i++) {
+                if (!!this.voice[i] && !this.voice[i].paused && this.voice[i].duration > 0) {
+                    this.voice[i].pause();
+                    this.continuePlay = this.voice[i];
+                    break;
+                }
+            }
+        }
     }
 
     onCompleteButtonHandle = () => {

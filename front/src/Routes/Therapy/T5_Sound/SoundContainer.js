@@ -139,7 +139,7 @@ class Sound extends React.Component {
         this.tutorialAudio.addEventListener('ended', () => {
             this.setState({ TTobaki: TTobak.ttobak1_1 })
             setTimeout(() => {
-                this.voice[1].play();
+                if (!!this.voice[1]) this.voice[1].play();
             }, 1000);
         })
 
@@ -153,7 +153,7 @@ class Sound extends React.Component {
                     gameState: false,
                     TTobaki: TTobak.ttobak1_2
                 });
-                this.tutorialAudio.play();
+                if (!!this.tutorialAudio) this.tutorialAudio.play();
             }, 1000);
         });
 
@@ -175,7 +175,7 @@ class Sound extends React.Component {
         });
 
         setTimeout(() => {
-            this.voice[0].play();
+            if (!!this.voice[0]) this.voice[0].play();
         }, 2000);
     }
 
@@ -230,7 +230,7 @@ class Sound extends React.Component {
             if (index === 0) {
                 this.setState({ gameState: false })
                 setTimeout(() => {
-                    this.voice[2].play();
+                    if (!!this.voice[2]) this.voice[2].play();
                 }, 1000);
             }
             return;
@@ -265,7 +265,7 @@ class Sound extends React.Component {
                 });
 
                 setTimeout(() => {
-                    this.retry_script.play();
+                    if (!!this.retry_script) this.retry_script.play();
                     this.setState({
                         TTobaki: TTobak.ttobak3_2,
                         gameState: false,
@@ -279,7 +279,7 @@ class Sound extends React.Component {
                 this.good_script = new Audio(soundURL + data.correct_voice.voc_path);
                 this.good_script.addEventListener('ended', () => this.nextStep());
                 setTimeout(() => {
-                    this.good_script.play();
+                    if (!!this.good_script) this.good_script.play();
                     this.setState({
                         gameState: false,
                     });

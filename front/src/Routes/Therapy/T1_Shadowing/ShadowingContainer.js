@@ -27,6 +27,12 @@ const inistState = {
     errorInfo: false,
 };
 
+const PAUSED = 'PAUSED';
+const PLAYING = 'PLAUING';
+const RECORDING = 'RECORDING';
+const AUDIOPLAYING = 'AUDIOPLAYING';
+const failedMax = 3;
+
 class Shadowing extends React.Component {
     static propTypes = {
         user: PropTypes.objectOf(PropTypes.any).isRequired,
@@ -47,8 +53,10 @@ class Shadowing extends React.Component {
         this.picture = { T1, TTobak };
         this.totalImages = Object.keys(this.picture.T1).length + Object.keys(this.picture.TTobak).length;
         this.numOfLoadedImage = 0;
-        this.continuePlay = false;
+        this.continuePlay = null;
+        this.failedNum = 0;
         this.state = inistState;
+        this.gameState = PLAYING;
     }
 
     async componentDidMount() {
@@ -73,7 +81,7 @@ class Shadowing extends React.Component {
         let audioArr = [this.currentAudio, this.read_voice, this.retryAudio, this.good_script];
         for (let i = 0; i < audioArr.length; i++) {
             if (!!audioArr[i]) {
-                audioArr[i].pause();
+                if (!audioArr[i].paused) audioArr[i].pause();
                 audioArr[i].remove();
                 audioArr[i] = null;
             }
@@ -146,7 +154,7 @@ class Shadowing extends React.Component {
     }
 
     intro = (data) => {
-        this.reac_voice = null;
+        this.read_voice = null;
         this.read_voice = new Audio(soundURL + data[0].voc_path);
 
         this.read_voice.addEventListener('ended', () => {
@@ -169,6 +177,7 @@ class Shadowing extends React.Component {
         console.log(e.detail);
         clearInterval(this.setRecording);
         this.recording_end_sound.play();
+        if (this.gameState !== PAUSED) this.gameState = PLAYING;
         this.setState({
             isRecording: false,
             RecordingCircle: false,
@@ -176,11 +185,13 @@ class Shadowing extends React.Component {
     }
 
     andriodListener = async () => {
+        if (this.gameState === PAUSED) return;
         this.setState({
             TTobaki: TTobak.ttobak2_1,
         });
 
         if (this.audioResult.status === 'Success') {
+
             const { user } = this.props;
             const s_id = user.student.s_id;
             const { data } = await T1_Api.answer(
@@ -198,7 +209,7 @@ class Shadowing extends React.Component {
             console.log(data);
 
             if (data.code === 1) {
-                if (data.retry) {
+                if (data.retry && ++this.failedNum < failedMax) {
                     this.currentCure.is_first = 'F';
                     this.retryAudio = new Audio(soundURL + data.class_voice.voc_path);
                     this.retryAudio.addEventListener('ended', () => {
@@ -208,10 +219,12 @@ class Shadowing extends React.Component {
                         setTimeout(() => {
                             if (!!this.currentAudio) {
                                 this.currentAudio.play();
+                                this.gameState = AUDIOPLAYING;
                                 this.setState({
                                     TTobaki: TTobak.ttobak3_2,
                                     isPlaying: true,
                                 })
+
                             }
                         }, 1000);
                     });
@@ -225,16 +238,18 @@ class Shadowing extends React.Component {
                         }
                     }, 1000);
                     return;
-                } else {
-                    this.good_script = new Audio(soundURL + data.class_voice.voc_path);
-                    this.good_script.addEventListener('ended', () => this.nextStep());
-                    setTimeout(() => {
-                        if (!!this.good_script) this.good_script.play();
-                        this.setState({
-                            TTobaki: TTobak.ttobak2_2,
-                        });
-                    }, 1000);
                 }
+
+                this.failedNum = 0;
+                if (data.is_pass) this.good_script = new Audio(soundURL + data.class_voice.voc_path);
+                else this.good_script = new Audio(soundURL + data.class_voice[1].voc_path);
+                this.good_script.addEventListener('ended', () => this.nextStep());
+                setTimeout(() => {
+                    if (!!this.good_script) this.good_script.play();
+                    this.setState({
+                        TTobaki: TTobak.ttobak2_2,
+                    });
+                }, 500);
 
             } else if (data.code === 2) {
                 this.gameDone();
@@ -287,6 +302,7 @@ class Shadowing extends React.Component {
                 });
                 setTimeout(() => {
                     this.recording_start_sound.play();
+                    this.gameState = RECORDING;
                     this.setState({
                         isRecording: true,
                         RecordingCircle: true,
@@ -302,6 +318,7 @@ class Shadowing extends React.Component {
                 }, 800);
             });
             this.currentAudio.play();
+            this.gameState = AUDIOPLAYING;
         }
     }
 
@@ -350,9 +367,18 @@ class Shadowing extends React.Component {
             showPopup: false,
         });
 
-        if (this.continuePlay) {
-            this.currentAudio.play();
-        }
+        setTimeout(() => {
+            this.continuePlay.play();
+            this.gameState = AUDIOPLAYING;
+            if (this.continuePlay === this.currentAudio) {
+                this.setState({
+                    isPlaying: true,
+                });
+            }
+            this.setState({
+                TTobaki: TTobak.ttobak3_2,
+            });
+        }, 1000);
     }
 
     onRestartButtonHandle = () => {
@@ -364,13 +390,24 @@ class Shadowing extends React.Component {
     }
 
     onPauseButtonHandle = () => {
+        if (this.gameState === RECORDING) {
+            window.BRIDGE.requestStopRecording();
+            this.continuePlay = this.currentAudio;
+        }
+        this.gameState = PAUSED;
         this.setState({
             showPopup: true,
         });
 
-        if (!!this.currentAudio && !this.currentAudio.paused) {
-            this.currentAudio.pause();
-            this.continuePlay = true;
+        let audioArr = [this.currentAudio, this.read_voice, this.retryAudio, this.good_script];
+        console.log(audioArr)
+
+        for (let i = 0; i < audioArr.length; i++) {
+            if (!!audioArr[i] && !audioArr[i].paused && audioArr[i].duration > 0) {
+                audioArr[i].pause();
+                this.continuePlay = audioArr[i];
+                break;
+            }
         }
     }
 
