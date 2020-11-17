@@ -23,19 +23,29 @@ class AddStudent extends React.Component {
 
         this.enableAlert = false;
         this.isStudentAddCalled = false;
+
+        this.state = {
+            name: '', 
+            birth: '', 
+            gender: 'm'
+        };
     }
 
     goBack = () => {
         this.props.history.goBack();
     };
 
-    handleSubmit = (e, { name, birth, gender }) => {
+    handleSubmit = (e, state) => {
         e.preventDefault();
         const { user } = this.props;
         const { dispatch } = this.props;
 
+        const {name, birth, gender} = state;
+        this.setState({name, birth, gender});
+        
         const icon = this.props.match.params.icon;
         if (!icon) {
+            
             this.makeAlert('아이콘을 선택해주세요.', false, (() => {
                 this.enableAlert = false;
                 this.forceUpdate();
@@ -51,24 +61,13 @@ class AddStudent extends React.Component {
             return false;
         }
 
-        if (birth.length !== 8 || isNaN(birth) || !moment(birth, 'YYYYMMDD', true).isValid()) {
-            this.makeAlert('올바른 생일을 입력해 주세요.', false, (() => {
+        if (birth.length !== 4 || isNaN(birth) || !moment(birth, 'YYYY', true).isValid()) {
+            this.makeAlert('올바른 년도를 입력해 주세요.', false, (() => {
                 this.enableAlert = false;
                 this.forceUpdate();
             }));
             return false;
         }
-
-        if (gender !== '남자' && gender !== '여자') {
-            this.makeAlert('올바른 성별을 입력해 주세요.(예시; 여자)', false, (() => {
-                this.enableAlert = false;
-                this.forceUpdate();
-            }));
-            return false;
-        }
-
-        gender = (gender === '남자' ? 'm' : 'f');
-        birth = moment(birth).format('YYYY-MM-DD');
 
         dispatch(student_add(name, birth, gender, icon, user.user.u_id));
         this.isStudentAddCalled = true;
@@ -139,13 +138,14 @@ class AddStudent extends React.Component {
             onSubmit={this.onSubmit}
             onCancel={this.onCancel}
         />) : '';
-
+        
         return (
             <div>
                 {alertComp}
                 <AddStudentPresenter
                     handleSubmit={this.handleSubmit}
                     iconNum={this.props.match.params.icon}
+                    state={this.state}
                     goBack={this.goBack}
                 />
             </div>

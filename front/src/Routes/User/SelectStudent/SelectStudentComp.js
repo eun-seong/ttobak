@@ -47,7 +47,7 @@ function SelectStudentComp({students}) {
     return (
         <Icons>
             {icons}
-            <Link to={'/root/addstd/'} key='0'><Icon><Div><Plus src={MainRoot.IconList[0]}></Plus></Div><Text>추가</Text></Icon></Link>
+            <Link to={'/root/addstd/1'} key='0'><Icon><Div><Plus src={MainRoot.IconList[0]}></Plus></Div><Text>추가</Text></Icon></Link>
         </Icons>
     );
 }

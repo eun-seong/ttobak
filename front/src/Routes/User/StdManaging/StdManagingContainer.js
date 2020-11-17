@@ -62,25 +62,15 @@ class StdManaging extends React.Component {
             }));
             return false;
         }
-
-        if (birth.length !== 8 || isNaN(birth) || !moment(birth, 'YYYYMMDD', true).isValid()) {
-            this.makeAlert('올바른 생일을 입력해 주세요.', false, (() => {
+        console.log(birth.length);
+        if (birth.length !== 4 || isNaN(birth) || !moment(birth, 'YYYY', true).isValid()) {
+            this.makeAlert('올바른 년도를 입력해 주세요.', false, (() => {
                 this.enableAlert = false;
                 this.forceUpdate();
             }));
             return false;
         }
 
-        if (gender !== '남자' && gender !== '여자') {
-            this.makeAlert('올바른 성별을 입력해 주세요.(예시; 여자)', false, (() => {
-                this.enableAlert = false;
-                this.forceUpdate();
-            }));
-            return false;
-        }
-
-        gender = (gender === '남자' ? 'm' : 'f');
-        birth = moment(birth).format('YYYY-MM-DD');
 
         dispatch(response_clear());
         if (op === 'save') {
