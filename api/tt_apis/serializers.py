@@ -52,8 +52,6 @@ class ConsomatchSerializer(serializers.ModelSerializer):
         model = tmodel.CureMaster
         fields = ("cure_id","cure_level","cure_path","cure_path2","cure_word","cure_tid")
 
-
-
 class ConsocommonSerializer(serializers.ModelSerializer):
     class Meta:
         model = tmodel.CureMaster

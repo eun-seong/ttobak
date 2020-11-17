@@ -36,7 +36,7 @@ class StuIc(models.Model):
 class Student(models.Model):
     stu_id = models.AutoField(primary_key=True)
     stu_name = models.CharField(max_length=255)
-    stu_birth = models.DateField(null=True)
+    stu_birth = models.IntegerField(null=True)
     stu_gender = models.CharField(max_length=5)
     regi_date = models.DateField(auto_now_add = True)
     modi_date = models.DateField(auto_now = True)

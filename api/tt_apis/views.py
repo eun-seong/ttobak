@@ -555,10 +555,6 @@ class TestResult(View):
         s_id = data['s_id']
         if Student.objects.filter(pk=s_id).exists():
             student = Student.objects.get(pk=s_id)
-            # date = datetime.datetime.now()
-            # date = '2020-10-25'
-            # date = date.strftime("%Y-%m-%d")
-            # date = '2020-10-30'
             results ={}
             swp = {}
             ph = {}
@@ -929,13 +925,14 @@ class CureGet(View):
                 if not StuStatus.objects.filter(stu_id = s_id).exists():
                     # return JsonResponse({"message":"검사를 먼저 진행해주세요","code":3},status=200)
                     curr = 'count'
-                status = StuStatus.objects.get(stu_id = s_id).status
-                if status == '고위험군':
-                    curr = 'count'
-                elif status == '저위험군':
-                    curr = 'vowelword'
-                else :
-                    curr = 'consosword'
+                else:
+                    status = StuStatus.objects.get(stu_id = s_id).status
+                    if status == '고위험군':
+                        curr = 'count'
+                    elif status == '저위험군':
+                        curr = 'vowelword'
+                    else :
+                        curr = 'consosword'
                 StuCurrent.objects.create(
                     stu = student,
                     cur_read = 'poem',
@@ -1059,6 +1056,7 @@ class CureAns(View):
             class_voice = Voice.objects.get(pk = 33)
             retry = False
             cure_id = int(cure_id)+1
+            # class_voice = sz.VoiceSerializer(instance=class_voice)
         elif score >= 75 :
             class_txt = 'B'
         elif score >= 65:
@@ -1066,7 +1064,7 @@ class CureAns(View):
         else:
             class_txt = 'D'
         if rhythm_score <=0:
-            class_voice = Voice.objects.get(pk=40)
+            class_voice = Voice.objects.get(pk=35)
             retry = True
         if speed_score <= -5 :
             class_voice = Voice.objects.get(pk=38)
@@ -1083,8 +1081,16 @@ class CureAns(View):
             is_daily = is_daily,
             cure_txt = cure_txt
         ).save()
-        
+
         class_voice = sz.VoiceSerializer(instance=class_voice)
+        if retry ==  True:
+            good_voice = Voice.objects.get(pk=33)
+            good_voice = sz.VoiceSerializer(instance = good_voice)
+            voices = []
+            voices.append(class_voice.data)
+            voices.append(good_voice.data)
+            return cure_id,class_txt,is_pass,voices,retry
+
         return cure_id, class_txt, is_pass, class_voice.data , retry
 
     def answer_alternative(self,student,data,idx_id):
@@ -1234,8 +1240,10 @@ class CureAns(View):
             class_txt = 'D'
         if rhythm_score <=0:
             class_voice = Voice.objects.get(pk=40)
+            is_pass = False
         if speed_score <= -5 :
             class_voice = Voice.objects.get(pk=38)
+            is_pass = False
         StuCure.objects.create(
             stu = student,
             full_score = score,
@@ -1250,6 +1258,13 @@ class CureAns(View):
         ).save()
         s = self.update_sound(data,student,idx_txt,idx_id)
         class_voice = sz.VoiceSerializer(instance=class_voice)
+        if is_pass ==  False:
+            good_voice = Voice.objects.get(pk=33)
+            good_voice = sz.VoiceSerializer(instance = good_voice)
+            voices = []
+            voices.append(class_voice.data)
+            voices.append(good_voice.data)
+            return is_pass,class_txt,s,voices
         return is_pass , class_txt, s , class_voice.data
 
     def update_sound(self,data,student,idx_txt,idx_id):
@@ -1443,17 +1458,20 @@ class CureSave(View):
         date = date.strftime('%Y-%m-%d')
         if Student.objects.filter(pk=s_id).exists():
             student = Student.objects.filter(pk = s_id)
-            stucur = StuCurrent.objects.get(stu_id=s_id)
-            status = stucur.cur_read
-            cur_lev = stucur.read_level
-            cur_read = stucur.cur_read_id
-            idx_id = CureIdx.objects.get(idx_txt = status).idx_id
-            tid = CureMaster.objects.get(pk=cur_read).cure_tid
-            status = []
-            if StuCure.objects.filter(stu_id = s_id,cure_txt = status,is_daily = 'T', full_score__gte = 85, date = date).count() >= CureMaster.objects.filter(cure_idx_id = idx_id, cure_level = cur_lev, cure_tid = tid).count():
-                status = stucur.cur_curr
-            elif StuCure.objects.filter(stu_id = s_id,cure_txt = stucur.cur_curr,is_daily = 'T',date=date,is_first = 'T').count() >= 10:
+            if not StuCurrent.objects.filter(stu_id = s_id).exists():
+                status = []
+            else:
+                stucur = StuCurrent.objects.get(stu_id=s_id)
                 status = stucur.cur_read
+                cur_lev = stucur.read_level
+                cur_read = stucur.cur_read_id
+                idx_id = CureIdx.objects.get(idx_txt = status).idx_id
+                tid = CureMaster.objects.get(pk=cur_read).cure_tid
+            # status = []
+                if StuCure.objects.filter(stu_id = s_id,cure_txt = status,is_daily = 'T', full_score__gte = 85, date = date).count() >= CureMaster.objects.filter(cure_idx_id = idx_id, cure_level = cur_lev, cure_tid = tid).count():
+                    status = stucur.cur_curr
+                elif StuCure.objects.filter(stu_id = s_id,cure_txt = stucur.cur_curr,is_daily = 'T',date=date,is_first = 'T').count() >= 10:
+                    status = stucur.cur_read
             return JsonResponse({"current":status,"code":1},status=200)
         return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":2},satus=200)
    
