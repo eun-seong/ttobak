@@ -651,6 +651,19 @@ class Testdid(View):
         else:
             return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":2},status=200)
 
+class TestReset(View):
+    @csrf_exempt
+    def post(self,request):
+        data = json.loads(request.body)
+        s_id = data['s_id']
+        idx_txt = data['idx_txt']
+        if Student.objects.filter(stu_id = s_id).exists():
+            student = Student.objects.get(pk = s_id)
+            if StuTest.objects.filter(stu_id = s_id,test_txt = idx_txt).exists():
+                StuTest.objects.filter(stu_id=s_id,test_txt = idx_txt).delete()
+                return JsonResponse({"reset":True,"code":1},status=200)
+            return JsonResponse({"message":"학습 기록이 존재하지 않습니다.","code":2},status=200)
+        return JsonResponse({"message":"해당 학습자가 존재하지 않습니다.","code":3},status=200)
 
 
 class CureGet(View):
