@@ -1742,6 +1742,12 @@ class Statistic(View):
                 classes[idx]  ='보통'
             else:
                 classes[idx] = '미흡' 
+        if cscore[0]/7 >= 30:
+            classes[0] = '우수'
+        elif cscore[0]/7 >= 20:
+            classes[0] = '보통'
+        else:
+            classes[0] = '미흡'
         return amount,score,voice_score,classes   
 
 

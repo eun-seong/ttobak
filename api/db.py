@@ -1,20 +1,24 @@
 import pymysql
+import random
 
 conn = pymysql.connect(host='ttobak.cbbaovh5sf1x.ap-northeast-2.rds.amazonaws.com',user='root',password='soma2020',db='ttobak',charset='utf8')
 
 curs = conn.cursor()
 
-sql = """insert into main_img(img_path,img_desc) values (%s,%s)"""
+sql = """insert into stu_cure(cure_txt,date,cure_id,stu_id,ori_answer,stu_answer,is_review,is_daily,is_first,is_correct) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
 
-desc = ['a','모음 단어','모음 소리구분','자음 그림소리매칭','자음 음운 포함 여부','자음 단어 발음하기','자음 소리 구분','음운 음절 수 계산','음운 공통소리 찾기','청각처리속도','어음청취력','선택적 집중력']
-num = [1,2,3,4,5,6,7,8,9,10,11]
+dates = ['2020-11-14','2020-11-15','2020-11-16','2020-11-17','2020-11-18','2020-11-19']
 
-for n in num:
-    
-    path1 = '/Main/'+str(n)+'.png'
-    
+for d in dates:
+    for i in range(10):
+        ori_answer = random.randint(1,3)
+        stu_answer = random.randint(1,3)
+        is_correct = 'F'
+        if ori_answer == stu_answer:
+            is_correct = 'T'
+            
 
-    curs.execute(sql,(path1,desc[n]))
+        curs.execute(sql,('count',d,1898,85,ori_answer,stu_answer,'F','F','F',is_correct))
     
 conn.commit()
 
