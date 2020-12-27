@@ -206,12 +206,12 @@ class Shadowing extends React.Component {
                 this.learning_type === 'daily' ? 'T' : 'F',
                 this.currentCure.is_first
             );
-            console.log(data);
+            console.log('androidListener', data);
 
             if (data.code === 1) {
                 if (data.retry && ++this.failedNum < failedMax) {
                     this.currentCure.is_first = 'F';
-                    this.retryAudio = new Audio(soundURL + data.class_voice.voc_path);
+                    this.retryAudio = new Audio(soundURL + data.class_voice[0].voc_path);
                     this.retryAudio.addEventListener('ended', () => {
                         this.setState({
                             TTobaki: TTobak.ttobak3_1,
@@ -241,7 +241,7 @@ class Shadowing extends React.Component {
                 }
 
                 this.failedNum = 0;
-                if (data.is_pass) this.good_script = new Audio(soundURL + data.class_voice.voc_path);
+                if (!data.retry) this.good_script = new Audio(soundURL + data.class_voice.voc_path);
                 else this.good_script = new Audio(soundURL + data.class_voice[1].voc_path);
                 this.good_script.addEventListener('ended', () => this.nextStep());
                 setTimeout(() => {

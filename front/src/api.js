@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-export const soundURL = 'https://ttobakaudio.s3-ap-northeast-2.amazonaws.com';
+export const soundURL = 'https://ttobak.s3.ap-northeast-2.amazonaws.com';
 
 
 export const api = axios.create({
-    baseURL: 'http://ec2-13-125-100-8.ap-northeast-2.compute.amazonaws.com:8000/api/'
+    baseURL: 'http://ec2-3-35-71-135.ap-northeast-2.compute.amazonaws.com:8000/api/'
 });
 
 const url = {

@@ -54,9 +54,8 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
 
-//        webView.loadUrl("http://13.125.100.8/main/main");//웹뷰 실행
+        webView.loadUrl("http://3.35.71.135/main/main");//웹뷰 실행
 //        webView.loadUrl("http://172.30.1.53:3000/main/main");//웹뷰 실행
-        webView.loadUrl("http://165.246.224.134:3000/main/main");//웹뷰 실행
 
         /* Recording */
         fileName = Objects.requireNonNull(getExternalCacheDir()).getAbsolutePath();
@@ -94,6 +93,13 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+
+
     }
 
     private void startRecording() {

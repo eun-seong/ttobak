@@ -1,4 +1,4 @@
-export const imageURL = 'https://ttobakaudio.s3-ap-northeast-2.amazonaws.com/';
+export const imageURL = 'https://ttobak.s3.ap-northeast-2.amazonaws.com/';
 
 const Images = {
     bt_pause: imageURL + 'img/button/bt_pause.png',

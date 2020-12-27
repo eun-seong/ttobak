@@ -27,7 +27,7 @@ public class HttpConnection extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        final String urlStr = "http://54.180.102.87/api/segscore";
+        final String urlStr = "http://13.125.213.48/api/segscore";
         final String twoHyphens = "--";
         String[] dataName = {"gender", "transcript", "file"};
         String resp = "";
